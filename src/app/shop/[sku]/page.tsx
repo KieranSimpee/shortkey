@@ -28,81 +28,107 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const product = getCatalogProduct(sku);
   if (!product) notFound();
 
+  const price = getUnitPriceUsd(sku);
+
   const seenOn = siteContent.aiLab.hosts.filter((host) =>
     host.shopProducts.some((p) => p.sku.toUpperCase() === product.sku.toUpperCase()),
   );
+
+  const related = getCatalogProducts()
+    .filter((p) => p.sku !== product.sku)
+    .slice(0, 4);
 
   return (
     <MockPageShell
       shortcut="CTRL + P"
       badge="PRODUCT"
       title={product.name}
-      description={`${product.sku}${product.type ? ` · ${product.type}` : ""} — mock PDP for review.`}
+      description={`${product.sku}${product.type ? ` · ${product.type}` : ""} — Asian beauty, curated and try-on ready.`}
       ctas={[
         { label: "Try this shade →", href: "/try-on" },
         { label: "Back to shop →", href: "/shop", variant: "outline" },
       ]}
     >
       <MockNote>
-        Cart is live in-browser. Checkout uses Stripe or Shopify via /api/checkout once env keys are
-        set.
+        Cart is live in-browser. Checkout routes to Stripe or Shopify via /api/checkout once env keys are set.
       </MockNote>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        {/* Product image */}
         <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/50 bg-white/40">
           <Image
             src={product.image}
             alt={product.name}
             fill
             className="object-cover"
-            sizes="(max-width: 1024px) 90vw, 40vw"
+            sizes="(max-width: 1024px) 100vw, 50vw"
             priority
           />
         </div>
 
-        <div className="space-y-4">
-          <MockBlock title="Purchase">
-            <p className="text-2xl font-semibold text-ink">
-              {formatMoney(getUnitPriceUsd(product.sku))}
-            </p>
-            <p className="mt-1 text-sm text-ink-muted">Catalog price · override in commerce pricing map</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {["01", "02", "03", "04"].map((shade) => (
-                <span
-                  key={shade}
-                  className="rounded-full border border-white/60 bg-white/60 px-3 py-1 text-[10px] font-semibold text-ink"
+        {/* Product details */}
+        <div className="flex flex-col justify-center gap-5">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-brand">{product.sku}{product.type ? ` · ${product.type}` : ""}</p>
+            <h1 className="mt-1 text-2xl font-semibold text-ink sm:text-3xl">{product.name}</h1>
+            {price ? (
+              <p className="mt-2 text-xl font-semibold text-brand">{formatMoney(price)}</p>
+            ) : null}
+          </div>
+
+          <div className="space-y-2 text-sm text-ink-muted">
+            <p>Curated from K / J / C beauty. Try-on ready — see this shade on your face before you buy.</p>
+            <p className="text-[11px]">Free shipping over $75 · 14-day returns on sealed items · Authentic brands only</p>
+          </div>
+
+          <AddToCartButton sku={product.sku} name={product.name} image={product.image} />
+
+          <div className="grid grid-cols-2 gap-3">
+            <MockBlock title="Try it on first" body="Open AI try-on to see this shade mapped to your face in real time." />
+            <MockBlock title="Authentic guaranteed" body="All Shortkey products are sourced direct from verified Asian beauty brands." />
+          </div>
+        </div>
+      </div>
+
+      {/* Seen on creators */}
+      {seenOn.length > 0 && (
+        <div className="mt-8">
+          <MockBlock title="Seen in creator shops">
+            <div className="mt-3 flex flex-wrap gap-2">
+              {seenOn.map((host) => (
+                <Link
+                  key={host.id}
+                  href={`/influencers/${host.id}`}
+                  className="rounded-full border border-brand/25 bg-brand/5 px-3 py-1.5 text-[11px] font-semibold text-brand transition hover:bg-brand/10"
                 >
-                  Shade {shade}
-                </span>
+                  {host.name} →
+                </Link>
               ))}
             </div>
-            <AddToCartButton
-              className="mt-4"
-              sku={product.sku}
-              name={product.name}
-              image={product.image}
-            />
-          </MockBlock>
-
-          <MockBlock title="Seen on influencer shops">
-            {seenOn.length ? (
-              <ul className="space-y-2">
-                {seenOn.map((host) => (
-                  <li key={host.id}>
-                    <Link
-                      href={`/influencers/${host.id}`}
-                      className="text-sm font-semibold text-brand hover:text-brand/80"
-                    >
-                      {host.name} →
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-sm text-ink-muted">Not featured on a creator shop yet.</p>
-            )}
           </MockBlock>
         </div>
+      )}
+
+      {/* Related products */}
+      <div className="mt-6">
+        <MockBlock title="You might also like">
+          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {related.map((p) => (
+              <Link
+                key={p.sku}
+                href={`/shop/${p.sku}`}
+                className="group overflow-hidden rounded-xl border border-white/50 bg-white/40 transition hover:border-brand/20 hover:shadow-soft"
+              >
+                <div className="relative aspect-square">
+                  <Image src={p.image} alt={p.name} fill className="object-cover" sizes="25vw" />
+                </div>
+                <div className="px-2 py-2">
+                  <p className="text-[10px] font-semibold text-ink leading-snug group-hover:text-brand transition-colors">{p.name}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </MockBlock>
       </div>
     </MockPageShell>
   );
