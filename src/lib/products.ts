@@ -1,11 +1,9 @@
 // lib/products.ts
 // ShortKey Master Product Library
-// Source of Truth: Base44 Product Entity
-// Last updated: 16 Jul 2026
-// DO NOT hardcode products here — always fetch from Base44
+// Source of Truth: Base44 Backend Function (getShortKeyProducts)
+// Last updated: 16 Jul 2026 - Updated by Simpee (Gor Gor)
 
-const BASE44_APP_ID = '69ddc914cfcf229762ac123d'
-const BASE44_API = `https://app.base44.com/api/apps/${BASE44_APP_ID}/entities/Product`
+const BACKEND_URL = "https://app.base44.com/api/apps/69ddc914cfcf229762ac123d/functions/getShortKeyProducts"
 
 export interface ShortKeyProduct {
   id: string
@@ -21,47 +19,59 @@ export interface ShortKeyProduct {
   notes?: string
 }
 
-// Fetch all live products from Base44
 export async function getProducts(): Promise<ShortKeyProduct[]> {
   try {
-    const res = await fetch(`${BASE44_API}?status=Live&limit=100`, {
-      next: { revalidate: 60 }, // cache for 60 seconds, auto-refresh
+    const res = await fetch(`${BACKEND_URL}?limit=100`, {
+      next: { revalidate: 60 },
     })
-    if (!res.ok) throw new Error(`Base44 fetch failed: ${res.status}`)
+    if (!res.ok) throw new Error(`Backend fetch failed: ${res.status}`)
     const data = await res.json()
-    return data.records ?? []
+    return data.products ?? []
   } catch (err) {
-    console.error('[ShortKey] Failed to fetch products from Base44:', err)
+    console.error("[ShortKey] Failed to fetch products:", err)
     return []
   }
 }
 
-// Fetch products by category
 export async function getProductsByCategory(category: string): Promise<ShortKeyProduct[]> {
-  const all = await getProducts()
-  return all.filter(p => p.category === category)
+  try {
+    const res = await fetch(`${BACKEND_URL}?category=${encodeURIComponent(category)}&limit=100`, {
+      next: { revalidate: 60 },
+    })
+    if (!res.ok) throw new Error(`Backend fetch failed: ${res.status}`)
+    const data = await res.json()
+    return data.products ?? []
+  } catch (err) {
+    console.error("[ShortKey] Failed to fetch products by category:", err)
+    return []
+  }
 }
 
-// Fetch a single product by Shopify SKU
 export async function getProductBySku(sku: string): Promise<ShortKeyProduct | null> {
-  const all = await getProducts()
-  return all.find(p => p.shopify_sku === sku) ?? null
+  try {
+    const res = await fetch(`${BACKEND_URL}?sku=${encodeURIComponent(sku)}`, {
+      next: { revalidate: 60 },
+    })
+    if (!res.ok) return null
+    const data = await res.json()
+    return data.products?.[0] ?? null
+  } catch {
+    return null
+  }
 }
 
-// Get all unique categories
 export async function getCategories(): Promise<string[]> {
   const all = await getProducts()
   return [...new Set(all.map(p => p.category))].sort()
 }
 
-// Category constants (from Shopify master)
 export const CATEGORIES = {
-  LIP: 'Lip',
-  FACE: 'Face',
-  EYES: 'Eyes',
-  MASKS: 'Masks & Treatments',
-  HYDRATE: 'Prep & Hydrate',
-  FINISH: 'Prep & Finish',
-  CLEANSE: 'Cleanse & Remove',
-  LIP_EYE: 'Lip & Eye Care',
+  LIP: "Lip",
+  FACE: "Face",
+  EYES: "Eyes",
+  MASKS: "Masks & Treatments",
+  PREP_HYDRATE: "Prep & Hydrate",
+  PREP_FINISH: "Prep & Finish",
+  CLEANSE: "Cleanse & Remove",
+  LIP_EYE: "Lip & Eye Care",
 } as const
