@@ -1,0 +1,24 @@
+yaml
+name: Sky Architectural Guard
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Sky Type Integrity Check
+        run: npm run build
+      - name: Sky Error Notification
+        if: failure()
+        run: |
+          echo "🚨 [System Alert] Build Failed. Sky is analyzing the logs."
