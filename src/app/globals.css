@@ -134,6 +134,29 @@
     mask-composite: intersect;
   }
 
+  /* Model scales with viewport — stays inside hero, shrinks on narrow windows */
+  .hero-model-scale {
+    height: 100%;
+    width: auto;
+    max-width: min(100%, 52vw);
+    max-height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    transform-origin: bottom center;
+  }
+
+  @media (min-width: 640px) {
+    .hero-model-scale {
+      max-width: min(100%, 44vw);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-model-scale {
+      max-width: min(100%, 34vw, 520px);
+    }
+  }
+
   .section-panel {
     background-color: rgba(255, 255, 255, 0.38);
     background-image: linear-gradient(

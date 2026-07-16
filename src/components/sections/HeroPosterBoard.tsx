@@ -52,11 +52,11 @@ export function HeroPosterBoard() {
     <>
       <div
         id="try-on"
-        className="pointer-events-none absolute inset-x-0 -bottom-10 top-0 z-[56] min-h-0 overflow-visible sm:-bottom-12"
+        className="pointer-events-none absolute inset-x-0 top-0 z-[56] h-[clamp(28rem,78svh,42rem)] overflow-visible sm:h-[clamp(30rem,82svh,44rem)] lg:h-[clamp(32rem,85svh,46rem)]"
       >
         <div className="mx-auto grid h-full min-h-0 max-w-7xl grid-cols-1 px-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.15fr)_minmax(0,0.9fr)] lg:px-8">
           <div className="hidden min-h-0 lg:block" aria-hidden />
-          <div className="relative mx-auto h-full min-h-0 w-full max-w-[380px] overflow-visible sm:max-w-[460px] lg:max-w-none">
+          <div className="relative mx-auto flex h-full min-h-0 w-full max-w-[min(100%,52vw,380px)] items-end justify-center overflow-visible sm:max-w-[min(100%,44vw,460px)] lg:max-w-[min(100%,34vw,520px)]">
             {poster === "skin-analysis" ? (
               <HeroModelCutout />
             ) : (

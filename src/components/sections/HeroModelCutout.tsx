@@ -12,7 +12,7 @@ export function HeroModelCutout({ className = "" }: { className?: string }) {
   return (
     <div
       aria-hidden
-      className={`pointer-events-none absolute inset-x-0 -bottom-10 top-0 flex min-h-0 items-end justify-center overflow-visible [perspective:1200px] sm:-bottom-12 ${className}`}
+      className={`pointer-events-none absolute inset-0 flex min-h-0 items-end justify-center overflow-visible [perspective:1200px] ${className}`}
     >
       {/* Soft ground glow — reads as float, not a shelf */}
       <div className="absolute bottom-[6%] left-1/2 h-[28%] w-[78%] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(ellipse,rgba(255,255,255,0.45)_0%,rgba(214,198,245,0.2)_40%,transparent_72%)] blur-2xl" />
@@ -25,8 +25,8 @@ export function HeroModelCutout({ className = "" }: { className?: string }) {
           width={1000}
           height={1300}
           priority
-          className="hero-model-blend h-[106%] w-auto max-w-none origin-bottom"
-          sizes="(max-width: 1024px) 70vw, 560px"
+          className="hero-model-blend hero-model-scale"
+          sizes="(max-width: 640px) 48vw, (max-width: 1024px) 42vw, 34vw"
         />
       </div>
     </div>
