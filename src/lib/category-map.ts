@@ -137,19 +137,21 @@ export function filterByShortKeyCategory(
 
   return products.filter(p => {
     // Match by Shopify type
-    if (cat.shopify_types && cat.shopify_types.length > 0) {
-      if (cat.shopify_types.includes(p.category)) return true
+    const shopifyTypes = cat.shopify_types as unknown as string[]
+    if (shopifyTypes && shopifyTypes.length > 0) {
+      if (shopifyTypes.includes(p.category)) return true
     }
 
     // Match by brand
-    if ('brands' in cat && cat.brands.length > 0) {
-      if (cat.brands.includes(p.brand_name)) return true
+    if ('brands' in cat) {
+      const brands = cat.brands as unknown as string[]
+      if (brands.length > 0 && brands.includes(p.brand_name)) return true
     }
 
     // Match by tag (stored in notes field in Base44)
-    if (cat.tags && cat.tags.length > 0) {
+    if ('tags' in cat && cat.tags && (cat.tags as readonly string[]).length > 0) {
       const productTags = (p.notes || '').split(',').map((t: string) => t.trim())
-      if (cat.tags.some(tag => productTags.includes(tag))) return true
+      if ((cat.tags as readonly string[]).some((tag: string) => productTags.includes(tag))) return true
     }
 
     return false

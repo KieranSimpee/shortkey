@@ -925,7 +925,7 @@ export const siteContent = {
       breakdown: [
         { label: "TINT AI Technology Setup", value: "USD 2,500" },
         { label: "Collective Ad Fund", value: "USD 2,500" },
-        { label: "Shortkey commission", value: "5% only ✓" },,
+        { label: "Shortkey commission", value: "5% only ✓" },
         { label: "Rate locked forever", value: "✓ FOUNDING" },
         { label: "Platform access", value: "Lifetime" },
       ] satisfies BrandPriceLine[],

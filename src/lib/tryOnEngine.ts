@@ -161,15 +161,17 @@ async function getFaceLandmarker(): Promise<FaceLandmarkerLike | null> {
 
       try {
         const local = await import("@mediapipe/tasks-vision");
-        FaceLandmarker = local.FaceLandmarker;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        FaceLandmarker = local.FaceLandmarker as any;
         FilesetResolver = local.FilesetResolver;
       } catch {
-        // @ts-expect-error remote ESM fallback when bundler can't resolve the package
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         const remote = await import(
           /* webpackIgnore: true */
           "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.21/+esm"
         );
-        FaceLandmarker = remote.FaceLandmarker;
+        FaceLandmarker = remote.FaceLandmarker as any; // eslint-disable-line
         FilesetResolver = remote.FilesetResolver;
       }
 
