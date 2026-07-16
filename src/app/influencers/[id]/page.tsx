@@ -24,6 +24,8 @@ export default async function InfluencerProfilePage({ params }: PageProps) {
   const host = siteContent.aiLab.hosts.find((h) => h.id === id);
   if (!host) notFound();
 
+  const tabs = siteContent.aiLab.hostTabs;
+
   return (
     <main className="min-h-screen bg-[#0A0A0A]">
       {/* Hero */}
@@ -39,7 +41,7 @@ export default async function InfluencerProfilePage({ params }: PageProps) {
 
       {/* Profile tabs (client) */}
       <div className="px-4 sm:px-8">
-        <InfluencerProfileClient host={host} />
+        <InfluencerProfileClient host={host} tabs={tabs} />
       </div>
 
       {/* Back */}
