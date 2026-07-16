@@ -1,82 +1,67 @@
 // lib/products.ts
 // ShortKey Master Product Library
-// Source of Truth: Senti ShortKeyProduct Entity (mirrored from Simpee)
-// Field mapping matches Simpee Product entity exactly
-// Last synced: 16 Jul 2026 — 51 products
+// Source of Truth: Base44 Product Entity
+// Last updated: 16 Jul 2026
+// DO NOT hardcode products here — always fetch from Base44
 
-const SENTI_FUNCTION_URL = 'https://superagent-6f027335.base44.app/functions/getShortKeyProducts'
+const BASE44_APP_ID = '69ddc914cfcf229762ac123d'
+const BASE44_API = `https://app.base44.com/api/apps/${BASE44_APP_ID}/entities/Product`
 
 export interface ShortKeyProduct {
   id: string
+  shopify_sku: string
   name: string
   brand_name: string
-  brand_id?: string
-  shopify_sku: string           // e.g. romand-zero-velvet-tint-01
-  category: string              // Lip / Face / Eye / Prep & Hydrate / Masks & Treatments
+  category: string
   price_usd: number
   image_url: string
   description?: string
-  notes?: string                // comma-separated tags: 'bestseller, creator-pick, made-the-edit'
-  status: string                // Live / Draft / Archived
-  stock_status?: string         // 'In Stock' / null
-  featured?: boolean
-  influencer_id?: string
-  influencer_name?: string
-  external_shopify_url?: string
-  shopify_variant_id?: string
-  stripe_price_id?: string
-  tint_sku?: string
-  try_on_enabled?: boolean
-  region?: string
-  phase?: string
+  stock_status: string
+  status: string
+  notes?: string
 }
 
-// Fetch all live products from Senti backend function
+// Fetch all live products from Base44
 export async function getProducts(): Promise<ShortKeyProduct[]> {
   try {
-    const res = await fetch(SENTI_FUNCTION_URL, {
-      next: { revalidate: 60 },
+    const res = await fetch(`${BASE44_API}?status=Live&limit=100`, {
+      next: { revalidate: 60 }, // cache for 60 seconds, auto-refresh
     })
-    if (!res.ok) throw new Error(`Senti fetch failed: ${res.status}`)
+    if (!res.ok) throw new Error(`Base44 fetch failed: ${res.status}`)
     const data = await res.json()
-    const records: ShortKeyProduct[] = data.records ?? []
-    return records.filter((p) => p.status === 'Live')
+    return data.records ?? []
   } catch (err) {
-    console.error('[ShortKey] Failed to fetch products from Senti:', err)
+    console.error('[ShortKey] Failed to fetch products from Base44:', err)
     return []
   }
 }
 
+// Fetch products by category
 export async function getProductsByCategory(category: string): Promise<ShortKeyProduct[]> {
   const all = await getProducts()
   return all.filter(p => p.category === category)
 }
 
+// Fetch a single product by Shopify SKU
 export async function getProductBySku(sku: string): Promise<ShortKeyProduct | null> {
   const all = await getProducts()
   return all.find(p => p.shopify_sku === sku) ?? null
 }
 
+// Get all unique categories
 export async function getCategories(): Promise<string[]> {
   const all = await getProducts()
   return [...new Set(all.map(p => p.category))].sort()
 }
 
-export async function getFeaturedProducts(): Promise<ShortKeyProduct[]> {
-  const all = await getProducts()
-  return all.filter(p => p.featured === true || (p.notes ?? '').includes('bestseller'))
-}
-
-export async function getProductsByTag(tag: string): Promise<ShortKeyProduct[]> {
-  const all = await getProducts()
-  return all.filter(p => (p.notes ?? '').includes(tag))
-}
-
+// Category constants (from Shopify master)
 export const CATEGORIES = {
   LIP: 'Lip',
   FACE: 'Face',
-  EYE: 'Eye',
-  CHEEK: 'Cheek',
-  PREP_HYDRATE: 'Prep & Hydrate',
+  EYES: 'Eyes',
   MASKS: 'Masks & Treatments',
+  HYDRATE: 'Prep & Hydrate',
+  FINISH: 'Prep & Finish',
+  CLEANSE: 'Cleanse & Remove',
+  LIP_EYE: 'Lip & Eye Care',
 } as const
