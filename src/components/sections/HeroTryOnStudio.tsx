@@ -333,17 +333,17 @@ export function HeroTryOnModelCutout({
   const displaySrc = tryOn.previewUrl ?? src;
 
   return (
-    <div className="pointer-events-none absolute inset-0 flex min-h-0 items-end justify-center overflow-visible">
+    <div className="pointer-events-none absolute inset-x-0 -bottom-10 top-0 flex min-h-0 items-end justify-center overflow-visible sm:-bottom-12">
       <div className="absolute left-1/2 top-[6%] h-[34%] w-[64%] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.35)_0%,rgba(214,198,245,0.18)_45%,transparent_70%)] blur-3xl" />
       <div className="relative z-[1] flex h-full w-full min-h-0 items-end justify-center pb-2">
-        <div className="relative inline-block h-full max-h-full max-w-full origin-bottom">
+        <div className="relative inline-block h-[106%] max-w-none origin-bottom">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={displaySrc}
             alt=""
             width={1024}
             height={1536}
-            className="hero-model-blend hero-model-scale"
+            className="hero-model-blend h-full w-auto max-w-none"
           />
           <span className="pointer-events-none absolute bottom-[12%] left-1/2 z-[2] w-[min(90%,15rem)] -translate-x-1/2 rounded-full border border-white/50 bg-white/85 px-3 py-2 text-center text-[9px] font-semibold uppercase tracking-[0.12em] text-ink shadow-sm backdrop-blur-md">
             {tryOn.status ??

@@ -10,7 +10,7 @@ import { CmsZone } from "@/components/cms/CmsZone";
 export function HeroSection() {
   return (
     <CmsZone id="hero">
-      <section className="hero-atmosphere relative z-50 -mt-[3.75rem] flex min-h-[clamp(28rem,78svh,42rem)] flex-col overflow-visible sm:-mt-[4rem] sm:min-h-[clamp(30rem,82svh,44rem)] lg:min-h-[clamp(32rem,85svh,46rem)]">
+      <section className="hero-atmosphere relative z-50 -mt-[3.75rem] flex min-h-[calc(560px+3.75rem)] flex-col overflow-visible sm:-mt-[4rem] sm:min-h-[calc(600px+4rem)] lg:min-h-[calc(640px+4rem)]">
         <HeroBackground />
 
         <div className="relative z-10 flex min-h-0 flex-1 flex-col pt-[3.75rem] sm:pt-[4rem]">
