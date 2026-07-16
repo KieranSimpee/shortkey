@@ -136,7 +136,7 @@ export function HeroPosterBoard() {
         </div>
 
         {/* Tablet / phone — model stage inside the banner flow (not a cropped overlay) */}
-        <div className="relative order-2 mx-auto h-[min(48svh,26rem)] w-full max-w-[22rem] sm:h-[min(52svh,28rem)] sm:max-w-[26rem] lg:hidden">
+        <div className="relative order-2 mx-auto h-[min(36svh,20rem)] w-full max-w-[18rem] sm:h-[min(44svh,24rem)] sm:max-w-[22rem] lg:hidden">
           {stagedModel}
         </div>
 
