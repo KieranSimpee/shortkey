@@ -1,52 +1,60 @@
-import { MockBlock, MockNote, MockPageShell } from "@/components/mock/MockPageShell";
+import Link from "next/link";
 
-export const metadata = { title: "Press | Shortkey" };
+export const metadata = { title: "Press & Media | Shortkey" };
+
+const BOILERPLATE = `Shortkey is the first AI-powered Asian beauty platform for North American consumers. Built by Simplex-ity Ltd, Shortkey unites K-Beauty, J-Beauty, and C-Beauty brands with consumers through keyboard-shortcut discovery, TINT virtual try-on technology, and creator-led live commerce. The platform operates at a flat 5% fee — replacing the fragmented, high-cost channel model that has held Asian beauty brands back in the West.`;
+
+const FACTS = [
+  { label: "Founded", value: "2025" },
+  { label: "HQ", value: "Hong Kong" },
+  { label: "Target Market", value: "North America (Phase 1)" },
+  { label: "Platform Fee", value: "5% flat — no hidden commissions" },
+  { label: "Brands Profiled", value: "51 K / J / C Beauty brands" },
+  { label: "Technology", value: "TINT AI Virtual Try-On · Beauty OS · Creator Live Commerce" },
+];
 
 export default function PressPage() {
   return (
-    <MockPageShell
-      shortcut="CTRL + P"
-      badge="PRESS"
-      title="Press & Media"
-      description="Brand assets, boilerplate, and press contact for Shortkey — the AI Asian beauty platform."
-      ctas={[
-        { label: "Press enquiries →", href: "mailto:press@shortkey.beauty" },
-        { label: "About us →", href: "/about", variant: "outline" },
-      ]}
-    >
-      <MockNote>Press page mock — swap coverage placeholders with real links when live.</MockNote>
+    <main className="min-h-screen bg-[#0A0A0A] px-4 py-16 sm:px-8">
+      <div className="mx-auto max-w-3xl">
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">CTRL + P</p>
+        <h1 className="mb-2 text-3xl font-bold uppercase tracking-[0.1em] text-[#F4F4F4]">Press & Media</h1>
+        <p className="mb-10 text-sm text-[#9A9A9A]">Brand assets, boilerplate, and press contact for Shortkey.</p>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <MockBlock
-          title="Boilerplate"
-          body="Shortkey is the first AI-powered Asian beauty platform connecting K-Beauty, J-Beauty, and C-Beauty brands with Asian consumers in North America. The platform unites brands, creators, and consumers via AI try-on, creator-guided education, and curated assortment — at a flat 5% fee."
-        />
-        <MockBlock
-          title="Key facts"
-          body="Founded: 2026 · HQ: Hong Kong · Founder: Kieran Li · Markets: North America Phase 1 · Beauty blocs: K / J / C · Platform fee: 5% flat · Try-on: TINT AI · Commerce: Shopify + Stripe"
-        />
-        <MockBlock
-          title="Brand assets (mock)"
-          body="Shortkey logo (PNG, SVG) · Founder headshot · Platform screenshots · Product images. Contact press@shortkey.beauty to request the full media kit."
-        />
-        <MockBlock
-          title="Press contact"
-          body="press@shortkey.beauty · Response within 48 hours · For urgent enquiries please mark your subject: URGENT PRESS"
-        />
-      </div>
+        {/* Boilerplate */}
+        <div className="mb-8 rounded-xl border border-[#2B2B2B] bg-[#111] px-6 py-5">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Company Boilerplate</p>
+          <p className="text-sm leading-relaxed text-[#9A9A9A]">{BOILERPLATE}</p>
+        </div>
 
-      <div className="mt-6">
-        <MockBlock title="Featured coverage (mock — replace with real links)">
-          <div className="mt-3 grid gap-2 sm:grid-cols-3">
-            {["Jing Daily", "WWD Beauty", "BeautyMatter", "Glossy", "Business of Fashion", "Beauty Independent"].map((pub) => (
-              <div key={pub} className="rounded-lg border border-white/50 bg-white/40 px-3 py-2.5 text-center">
-                <p className="text-[11px] font-semibold text-ink-muted">{pub}</p>
-                <p className="mt-0.5 text-[10px] text-brand">Coverage placeholder →</p>
+        {/* Fast Facts */}
+        <div className="mb-8">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">Fast Facts</p>
+          <div className="space-y-2">
+            {FACTS.map((f) => (
+              <div key={f.label} className="flex items-start gap-4 rounded-xl border border-[#2B2B2B] bg-[#111] px-5 py-3">
+                <p className="min-w-[140px] text-[10px] font-semibold uppercase tracking-[0.1em] text-[#6E6E6E]">{f.label}</p>
+                <p className="text-sm text-[#F4F4F4]">{f.value}</p>
               </div>
             ))}
           </div>
-        </MockBlock>
+        </div>
+
+        {/* Coverage (placeholder) */}
+        <div className="mb-8 rounded-xl border border-[#2B2B2B] bg-[#111] px-6 py-5">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Media Coverage</p>
+          <p className="text-sm text-[#6E6E6E]">Coverage links will appear here as Shortkey launches. Press enquiries welcome at press@shortkey.beauty.</p>
+        </div>
+
+        {/* Contact */}
+        <div className="rounded-xl border border-[#2B2B2B] bg-[#111] px-6 py-6">
+          <p className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">Press Contact</p>
+          <p className="mb-4 text-sm text-[#9A9A9A]">Media enquiries, brand asset requests, and interview coordination.</p>
+          <a href="mailto:press@shortkey.beauty" className="inline-block rounded-full bg-[#F4F4F4] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-[#0A0A0A] hover:bg-white transition">
+            press@shortkey.beauty
+          </a>
+        </div>
       </div>
-    </MockPageShell>
+    </main>
   );
 }

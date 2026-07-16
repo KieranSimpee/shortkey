@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { MockBlock, MockNote, MockPageShell } from "@/components/mock/MockPageShell";
 import { siteContent } from "@/content/homepage";
 
-export const metadata = {
-  title: "Videos | Shortkey",
-  description: "Tutorial and live video library for Asian beauty.",
-};
+export const metadata = { title: "Videos | Shortkey" };
+
+const TABS = ["All", "LIVE", "Replay", "Clip", "K-Beauty", "J-Beauty", "C-Beauty"];
 
 export default function VideosPage() {
   const clips = siteContent.aiLab.hosts.flatMap((host) =>
@@ -14,65 +12,63 @@ export default function VideosPage() {
       hostName: host.name,
       hostId: host.id,
       region: host.region,
-    })),
+    }))
   );
 
   return (
-    <MockPageShell
-      shortcut="CTRL + V"
-      badge="VIDEOS"
-      title="Tutorials & live library"
-      description="Aggregated creator lives, replays, and clips. External YouTube makeover search stays available."
-      ctas={[
-        {
-          label: "Korean / Asian tutorials on YouTube →",
-          href: "https://www.youtube.com/results?search_query=korean+asian+makeup+tutorial",
-        },
-        { label: "Makeover landing →", href: "/makeover", variant: "outline" },
-      ]}
-    >
-      <MockNote>Embeds are mocked as cards — swap for players later.</MockNote>
+    <main className="min-h-screen bg-[#0A0A0A] px-4 py-12 sm:px-8">
+      {/* Header */}
+      <div className="mb-10 border-b border-[#2B2B2B] pb-8">
+        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">CTRL + V</p>
+        <h1 className="text-3xl font-bold uppercase tracking-[0.12em] text-[#F4F4F4]">Videos</h1>
+        <p className="mt-2 text-sm text-[#9A9A9A]">Tutorials, replays, and creator lives. Asian beauty in action.</p>
+      </div>
 
-      <div className="mt-6 flex flex-wrap gap-2">
-        {["All", "LIVE", "Replay", "Clip", "K-Beauty", "J-Beauty", "C-Beauty"].map((tab) => (
-          <span
-            key={tab}
-            className="rounded-full border border-white/60 bg-white/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-muted"
-          >
+      {/* Category Tabs */}
+      <div className="mb-8 flex flex-wrap gap-2">
+        {TABS.map((tab) => (
+          <button key={tab} className="rounded-full border border-[#2B2B2B] bg-[#111] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#9A9A9A] hover:border-[#6E6E6E] hover:text-[#F4F4F4] transition">
             {tab}
-          </span>
+          </button>
         ))}
       </div>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {clips.map((clip) => (
-          <div
-            key={`${clip.hostId}-${clip.title}`}
-            className="rounded-xl border border-white/50 bg-white/45 p-4"
-          >
-            <div className="flex aspect-video items-center justify-center rounded-lg border border-white/50 bg-ink/10 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
-              Video placeholder
-            </div>
-            <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.1em] text-brand/80">
-              {clip.meta} · {clip.region}
-            </p>
-            <h2 className="mt-1 text-sm font-semibold text-ink">{clip.title}</h2>
-            <Link
-              href={`/influencers/${clip.hostId}`}
-              className="mt-2 inline-flex text-[11px] font-semibold text-brand hover:text-brand/80"
-            >
-              {clip.hostName} →
-            </Link>
-          </div>
-        ))}
-      </div>
+      {/* Clip Grid */}
+      {clips.length > 0 && (
+        <div className="mb-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {clips.map((clip, i) => (
+            <a key={`${clip.hostId}-${i}`} href={clip.href} className="group rounded-xl border border-[#2B2B2B] bg-[#111] overflow-hidden hover:border-[#6E6E6E] transition">
+              <div className="flex aspect-video items-center justify-center bg-[#1A1A1A]">
+                <span className="text-[#6E6E6E] text-xs">▶</span>
+              </div>
+              <div className="px-4 py-3">
+                <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[#6E6E6E]">{clip.hostName} · {clip.region}</p>
+                <p className="mt-1 text-xs font-semibold text-[#F4F4F4] line-clamp-2">{clip.title}</p>
+                <p className="mt-0.5 text-[9px] text-[#6E6E6E]">{clip.meta}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
 
-      <div className="mt-6">
-        <MockBlock
-          title="Also open Makeover"
-          body="Command card Makeover can land here or on /makeover with YouTube deep links."
-        />
+      {/* External CTA */}
+      <div className="rounded-xl border border-[#2B2B2B] bg-[#111] px-6 py-5">
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">External Tutorial Library</p>
+        <div className="flex flex-wrap gap-3">
+          <a href="https://www.youtube.com/results?search_query=korean+asian+makeup+tutorial" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#2B2B2B] px-4 py-2 text-xs text-[#9A9A9A] hover:text-[#F4F4F4] hover:border-[#6E6E6E] transition">
+            Korean tutorials → YouTube
+          </a>
+          <a href="https://www.youtube.com/results?search_query=chinese+beauty+makeup" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#2B2B2B] px-4 py-2 text-xs text-[#9A9A9A] hover:text-[#F4F4F4] hover:border-[#6E6E6E] transition">
+            C-Beauty → YouTube
+          </a>
+          <a href="https://www.youtube.com/results?search_query=japanese+beauty+routine" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#2B2B2B] px-4 py-2 text-xs text-[#9A9A9A] hover:text-[#F4F4F4] hover:border-[#6E6E6E] transition">
+            J-Beauty routines → YouTube
+          </a>
+          <Link href="/makeover" className="rounded-full border border-[#2B2B2B] px-4 py-2 text-xs text-[#9A9A9A] hover:text-[#F4F4F4] hover:border-[#6E6E6E] transition">
+            Makeover page
+          </Link>
+        </div>
       </div>
-    </MockPageShell>
+    </main>
   );
 }

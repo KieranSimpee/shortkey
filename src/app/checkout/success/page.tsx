@@ -1,8 +1,6 @@
-import { MockBlock, MockPageShell } from "@/components/mock/MockPageShell";
+import Link from "next/link";
 
-export const metadata = {
-  title: "Order confirmed | Shortkey",
-};
+export const metadata = { title: "Order Confirmed | Shortkey" };
 
 export default async function CheckoutSuccessPage({
   searchParams,
@@ -13,46 +11,34 @@ export default async function CheckoutSuccessPage({
   const isMock = !params.session_id;
 
   return (
-    <MockPageShell
-      shortcut="CTRL + $"
-      badge="ORDER CONFIRMED"
-      title="Thank you for your order"
-      description="Your payment was received. Your Asian beauty order is on its way."
-      ctas={[
-        { label: "Continue shopping →", href: "/shop" },
-        { label: "Try on more shades →", href: "/try-on", variant: "outline" },
-      ]}
-    >
-      <div className="grid gap-3 sm:grid-cols-2">
-        <MockBlock
-          title={isMock ? "Mock order reference" : "Order reference"}
-          body={
-            params.session_id
-              ? `Stripe session: ${params.session_id.slice(0, 24)}...`
-              : `Mock checkout confirmed · ${params.items ?? "0"} item(s) · Reference: MOCK-${Date.now().toString(36).toUpperCase()}`
-          }
-        />
-        <MockBlock
-          title="What happens next"
-          body="You will receive a confirmation email shortly. Orders are processed within 1–2 business days. Track your shipment via the link in your email."
-        />
-        <MockBlock
-          title="Questions about your order"
-          body="Contact help@shortkey.beauty with your order reference. We respond within 24 hours."
-        />
-        <MockBlock
-          title="Returns"
-          body="14-day returns on unopened sealed items. Visit /returns for the full policy and to start a return."
-        />
-      </div>
-
-      {isMock && (
-        <div className="mt-4 rounded-lg border border-dashed border-brand/30 bg-brand/5 px-4 py-3">
-          <p className="text-[11px] font-medium text-brand">
-            Mock mode — add STRIPE_SECRET_KEY + SHOPIFY keys to .env.local to go live. Webhooks ready at /api/webhooks/stripe and /api/webhooks/shopify.
-          </p>
+    <main className="min-h-screen bg-[#0A0A0A] flex items-center justify-center px-4">
+      <div className="text-center max-w-sm">
+        <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full border border-green-800 bg-green-900/30">
+          <span className="text-green-400 text-lg">✓</span>
         </div>
-      )}
-    </MockPageShell>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">
+          {isMock ? "Mock Order" : `Order ${params.session_id?.slice(-6).toUpperCase()}`}
+        </p>
+        <h1 className="mb-2 text-2xl font-bold uppercase tracking-[0.1em] text-[#F4F4F4]">
+          {isMock ? "Mock Confirmed" : "Thank You"}
+        </h1>
+        <p className="mb-2 text-sm text-[#9A9A9A]">
+          {isMock
+            ? "This is a mock order confirmation. No payment was taken."
+            : "Your payment was received. Your Asian beauty order is on its way."}
+        </p>
+        {!isMock && (
+          <p className="mb-6 text-xs text-[#6E6E6E]">A confirmation email has been sent to you with your tracking details.</p>
+        )}
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <Link href="/shop" className="rounded-full bg-[#F4F4F4] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-[#0A0A0A] hover:bg-white transition">
+            Continue Shopping
+          </Link>
+          <Link href="/" className="rounded-full border border-[#2B2B2B] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-[#9A9A9A] hover:border-[#F4F4F4] hover:text-[#F4F4F4] transition">
+            Home
+          </Link>
+        </div>
+      </div>
+    </main>
   );
 }

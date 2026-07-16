@@ -1,37 +1,22 @@
-import { MockBlock, MockNote, MockPageShell } from "@/components/mock/MockPageShell";
-
+import Link from "next/link";
 export const metadata = { title: "Terms of Service | Shortkey" };
-
 export default function TermsPage() {
   return (
-    <MockPageShell
-      shortcut="CTRL + T"
-      badge="LEGAL"
-      title="Terms of Service"
-      description="These terms govern your use of the Shortkey platform, including try-on, shopping, and creator features."
-      ctas={[
-        { label: "Privacy policy →", href: "/privacy" },
-        { label: "Cookie policy →", href: "/cookies", variant: "outline" },
-      ]}
-    >
-      <MockNote>Mock terms — must be replaced with counsel-approved copy before launch. Internal review only.</MockNote>
-
-      <div className="mt-6 space-y-3">
-        {[
-          { title: "1. Acceptance of terms", body: "By accessing or using Shortkey, you agree to be bound by these Terms of Service. If you do not agree, please do not use the platform." },
-          { title: "2. Platform use", body: "Shortkey is for personal, non-commercial use unless you are a registered brand or creator partner. You must be 16 or older to create an account." },
-          { title: "3. Try-on and camera data", body: "Virtual try-on uses your device camera or uploaded images. Camera frames are processed locally and are not stored on Shortkey servers. See our Privacy Policy." },
-          { title: "4. Creator content", body: "Creators retain ownership of their content but grant Shortkey a licence to display it on the platform. Creators are responsible for ensuring their content complies with applicable laws." },
-          { title: "5. Brand partnerships", body: "Founding brand agreements are governed by separate Brand Partnership Agreements. The platform fee is 5% of gross sales processed through Shortkey." },
-          { title: "6. Orders and commerce", body: "Commerce is processed via Stripe or Shopify. Shortkey acts as agent for brand partners. Refunds and returns are governed by our Returns Policy." },
-          { title: "7. Intellectual property", body: "Shortkey and its licensors own all platform IP including the Beauty OS interface, TINT try-on integration, and Shortkey brand assets. Do not reproduce without permission." },
-          { title: "8. Limitation of liability", body: "To the maximum extent permitted by law, Shortkey is not liable for indirect, incidental, or consequential damages arising from platform use." },
-          { title: "9. Changes to terms", body: "We may update these terms at any time. Continued use after changes constitutes acceptance. We will notify registered users of material changes." },
-          { title: "10. Contact", body: "Questions about these terms: legal@shortkey.beauty" },
-        ].map((s) => (
-          <MockBlock key={s.title} title={s.title} body={s.body} />
-        ))}
+    <main className="min-h-screen bg-[#0A0A0A] px-4 py-16 sm:px-8">
+      <div className="mx-auto max-w-2xl">
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">Legal</p>
+        <h1 className="mb-2 text-3xl font-bold uppercase tracking-[0.1em] text-[#F4F4F4]">Terms of Service</h1>
+        <p className="mb-10 text-sm text-[#9A9A9A]">Last updated: July 2026</p>
+        <div className="space-y-6 text-sm leading-relaxed text-[#9A9A9A]">
+          <section><h2 className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Acceptance</h2><p>By accessing Shortkey, you agree to these Terms. If you do not agree, please do not use the platform.</p></section>
+          <section><h2 className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Platform Use</h2><p>Shortkey grants a limited, non-exclusive licence to use the platform for personal shopping. You may not scrape, reproduce, or resell any content without written permission.</p></section>
+          <section><h2 className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Orders and Payments</h2><p>All orders are subject to product availability and payment authorisation. Payment is processed via Stripe. We reserve the right to cancel orders that cannot be fulfilled.</p></section>
+          <section><h2 className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Returns</h2><p>Our return policy is on the <Link href="/returns" className="text-[#F4F4F4] underline underline-offset-2">Returns page</Link>. Contact us within 14 days of delivery to initiate a return.</p></section>
+          <section><h2 className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Brand and Creator Terms</h2><p>Brands and creators are subject to a separate Partnership Agreement. The 5% platform fee applies to all transactions processed through Shortkey.</p></section>
+          <section><h2 className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Intellectual Property</h2><p>All Shortkey content and technology is the property of Simplex-ity Ltd. Brand assets remain the property of their respective owners.</p></section>
+          <section><h2 className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Contact</h2><p>Legal questions: <Link href="/contact" className="text-[#F4F4F4] underline underline-offset-2">Contact us</Link>.</p></section>
+        </div>
       </div>
-    </MockPageShell>
+    </main>
   );
 }
