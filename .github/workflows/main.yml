@@ -21,4 +21,3 @@ jobs:
       - name: Sky Error Notification
         if: failure()
         run: |
-          echo "🚨 [System Alert] Build Failed. Sky is analyzing the logs."
