@@ -23,7 +23,7 @@ function posterFromHash(): PosterId | null {
   return null;
 }
 
-/** Hero board — try-on stays on homepage model canvas (no camera / no leave). */
+/** Hero board — desktop composition locked; tablet/phone reflow as one banner. */
 export function HeroPosterBoard() {
   const { hero } = siteContent;
   const [poster, setPoster] = useState<PosterId>(hero.defaultPoster);
@@ -48,27 +48,38 @@ export function HeroPosterBoard() {
     }
   };
 
+  const model =
+    poster === "skin-analysis" ? (
+      <HeroModelCutout />
+    ) : (
+      <HeroTryOnModelCutout src={hero.tryOnModelImage} tryOn={tryOn} />
+    );
+
+  const stagedModel =
+    poster === "skin-analysis" ? (
+      <HeroModelCutout fit="stage" />
+    ) : (
+      <HeroTryOnModelCutout fit="stage" src={hero.tryOnModelImage} tryOn={tryOn} />
+    );
+
   return (
     <>
-      <div
-        id="try-on"
-        className="pointer-events-none absolute inset-x-0 -bottom-10 top-0 z-[56] min-h-0 overflow-visible sm:-bottom-12"
-      >
+      {/* Desktop only — locked composition / current model display size */}
+      <div className="pointer-events-none absolute inset-x-0 -bottom-10 top-0 z-[56] hidden min-h-0 overflow-visible sm:-bottom-12 lg:block">
         <div className="mx-auto grid h-full min-h-0 max-w-7xl grid-cols-1 px-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.15fr)_minmax(0,0.9fr)] lg:px-8">
           <div className="hidden min-h-0 lg:block" aria-hidden />
           <div className="relative mx-auto h-full min-h-0 w-full max-w-[380px] overflow-visible sm:max-w-[460px] lg:max-w-none">
-            {poster === "skin-analysis" ? (
-              <HeroModelCutout />
-            ) : (
-              <HeroTryOnModelCutout src={hero.tryOnModelImage} tryOn={tryOn} />
-            )}
+            {model}
           </div>
           <div className="hidden min-h-0 lg:block" aria-hidden />
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-end gap-6 px-4 pb-8 pt-2 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.15fr)_minmax(0,0.9fr)] lg:gap-4 lg:px-8 lg:pb-10">
-        <div className="relative z-[2] max-w-md self-end">
+      <div
+        id="try-on"
+        className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-end gap-5 px-4 pb-6 pt-2 sm:gap-6 sm:pb-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.15fr)_minmax(0,0.9fr)] lg:gap-4 lg:px-8 lg:pb-10"
+      >
+        <div className="relative z-[2] order-1 max-w-md self-end">
           <div className="mb-4 inline-flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />
             <span className="type-eyebrow text-brand/90">{hero.badge}</span>
@@ -87,7 +98,7 @@ export function HeroPosterBoard() {
           </p>
 
           <div className="mt-6 max-w-sm">
-            <ShortcutKeysLogo className="max-w-[200px] sm:max-w-[220px]" />
+            <ShortcutKeysLogo className="max-w-[180px] sm:max-w-[220px]" />
             {hero.subheadlineExtra ? (
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand/80">
                 {hero.subheadlineExtra}
@@ -124,9 +135,14 @@ export function HeroPosterBoard() {
           </div>
         </div>
 
-        <div className="hidden min-h-[1px] lg:block" aria-hidden />
+        {/* Tablet / phone — model stage inside the banner flow (not a cropped overlay) */}
+        <div className="relative order-2 mx-auto h-[min(48svh,26rem)] w-full max-w-[22rem] sm:h-[min(52svh,28rem)] sm:max-w-[26rem] lg:hidden">
+          {stagedModel}
+        </div>
 
-        <div className="relative z-[70] flex justify-end pb-1 lg:self-start lg:pl-2 lg:pt-10">
+        <div className="order-2 hidden min-h-[1px] lg:block" aria-hidden />
+
+        <div className="relative z-[70] order-3 flex justify-start pb-1 sm:justify-end lg:self-start lg:pl-2 lg:pt-10">
           {poster === "skin-analysis" ? (
             <HeroStatsStrip className="hero-stats-float" />
           ) : (

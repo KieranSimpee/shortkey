@@ -5,11 +5,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     @apply text-ink antialiased;
     font-feature-settings: "kern" 1, "liga" 1;
+    min-width: 0;
+    overflow-x: clip;
     /* Purple silk / light-ribbon atmosphere — homepage design element */
     background-color: #ebe4f6;
     background-image:
@@ -24,6 +27,13 @@
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
     background-attachment: fixed, fixed;
+  }
+
+  @media (max-width: 1023px) {
+    body {
+      /* fixed backgrounds can jank on mobile browsers */
+      background-attachment: scroll, scroll;
+    }
   }
 
   h1, h2, h3 {
