@@ -1,70 +1,87 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MockNote, MockPageShell } from "@/components/mock/MockPageShell";
-import { getCatalogProducts } from "@/lib/catalog";
+import { getProducts } from "@/lib/products";
 
 export const metadata = {
   title: "Shop | Shortkey",
   description: "Shop Asian beauty essentials — makeup and skin care.",
 };
 
-export default function ShopPage() {
-  const products = getCatalogProducts();
+export default async function ShopPage() {
+  const products = await getProducts();
+
+  const categories = ["All", "Lip", "Face", "Eyes", "Skin", "K-Beauty", "J-Beauty", "C-Beauty"];
 
   return (
-    <MockPageShell
-      shortcut="CTRL + S"
-      badge="SHOP"
-      title="Shop Asian beauty essentials"
-      description="Browse catalog SKUs pulled from Beauty OS and influencer shops. Checkout is mocked."
-      ctas={[
-        { label: "Try on →", href: "/try-on" },
-        { label: "Influencers →", href: "/influencers", variant: "outline" },
-      ]}
-    >
-      <MockNote>Mock PLP — filters and cart not wired yet.</MockNote>
+    <main className="min-h-screen bg-[#0A0A0A] px-4 py-12 sm:px-8">
+      {/* Header */}
+      <div className="mb-10 border-b border-[#2B2B2B] pb-8">
+        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">
+          CTRL + S
+        </p>
+        <h1 className="text-3xl font-bold uppercase tracking-[0.12em] text-[#F4F4F4]">
+          Shop
+        </h1>
+        <p className="mt-2 text-sm text-[#9A9A9A]">
+          Asian beauty essentials. Curated, guided, trusted.
+        </p>
+        <p className="mt-1 font-mono text-xs text-[#6E6E6E]">
+          {products.length} products
+        </p>
+      </div>
 
-      <div className="mt-6 flex flex-wrap gap-2">
-        {["All", "Makeup", "Skin Care", "K-Beauty", "J-Beauty", "C-Beauty"].map((filter) => (
+      {/* Category filters */}
+      <div className="mb-8 flex flex-wrap gap-2">
+        {categories.map((filter) => (
           <span
             key={filter}
-            className="rounded-full border border-white/60 bg-white/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-muted"
+            className="rounded-full border border-[#2B2B2B] bg-[#0A0A0A] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#9A9A9A] cursor-pointer hover:border-[#F4F4F4] hover:text-[#F4F4F4] transition"
           >
             {filter}
           </span>
         ))}
       </div>
 
-      <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
+      {/* Product grid */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
         {products.map((product) => (
           <Link
-            key={product.sku}
-            href={`/shop/${product.sku}`}
-            className="group overflow-hidden rounded-xl border border-white/50 bg-white/45 transition hover:shadow-soft"
+            key={product.id}
+            href={`/shop/${product.shopify_sku}`}
+            className="group overflow-hidden rounded-xl border border-[#2B2B2B] bg-[#111111] transition hover:border-[#6E6E6E]"
           >
-            <div className="relative aspect-square overflow-hidden">
+            <div className="relative aspect-square overflow-hidden bg-[#1A1A1A]">
               <Image
-                src={product.image}
+                src={product.image_url}
                 alt={product.name}
                 fill
                 className="object-cover transition duration-500 group-hover:scale-[1.03]"
                 sizes="(max-width: 1024px) 40vw, 20vw"
               />
             </div>
-            <div className="border-t border-white/40 px-2.5 py-2">
-              <p className="font-mono text-[9px] uppercase tracking-wider text-brand/70">
-                {product.sku}
+            <div className="border-t border-[#2B2B2B] px-3 py-2.5">
+              <p className="font-mono text-[9px] uppercase tracking-wider text-[#6E6E6E]">
+                {product.brand_name}
               </p>
-              <h2 className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-ink">
+              <h2 className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#D7D7D7] group-hover:text-[#F4F4F4] transition">
                 {product.name}
               </h2>
-              {product.type ? (
-                <p className="mt-0.5 text-[10px] text-ink-muted">{product.type}</p>
-              ) : null}
+              <p className="mt-1 text-[11px] font-medium text-[#9A9A9A]">
+                ${product.price_usd}
+              </p>
+              <p className="mt-0.5 text-[10px] text-[#6E6E6E]">
+                {product.category}
+              </p>
             </div>
           </Link>
         ))}
       </div>
-    </MockPageShell>
+
+      {products.length === 0 && (
+        <div className="mt-20 text-center">
+          <p className="text-[#6E6E6E]">No products found.</p>
+        </div>
+      )}
+    </main>
   );
 }
