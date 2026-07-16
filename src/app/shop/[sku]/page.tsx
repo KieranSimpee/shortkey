@@ -53,7 +53,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             )}
 
             <div className="mt-6">
-              <AddToCartButton sku={sku} />
+              <AddToCartButton sku={sku} name={product.name} image={product.image} />
             </div>
 
             <div className="mt-8 space-y-2">
