@@ -13,24 +13,24 @@ const REGIONS = [
 
 export default function ShippingPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] px-4 py-16 sm:px-8">
+    <main className="page-shell px-4 py-16 sm:px-8">
       <div className="mx-auto max-w-2xl">
-        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">Orders</p>
-        <h1 className="mb-2 text-3xl font-bold uppercase tracking-[0.1em] text-[#F4F4F4]">Shipping</h1>
-        <p className="mb-10 text-sm text-[#9A9A9A]">We ship Asian beauty direct to you — across North America, Asia Pacific, and select international regions.</p>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-subtle">Orders</p>
+        <h1 className="mb-2 text-3xl font-bold uppercase tracking-[0.1em] text-ink">Shipping</h1>
+        <p className="mb-10 text-sm text-ink-muted">We ship Asian beauty direct to you — across North America, Asia Pacific, and select international regions.</p>
 
         {/* Shipping Table */}
         <div className="mb-8">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">Delivery Times & Carriers</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-ink-subtle">Delivery Times & Carriers</p>
           <div className="space-y-2">
             {REGIONS.map((r) => (
-              <div key={r.region} className="rounded-xl border border-[#2B2B2B] bg-[#111] px-5 py-4">
+              <div key={r.region} className="rounded-xl border border-white/50 bg-white/45 px-5 py-4">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-sm font-bold text-[#F4F4F4]">{r.region}</p>
-                    <p className="mt-0.5 text-xs text-[#9A9A9A]">{r.carrier} · {r.eta}</p>
+                    <p className="text-sm font-bold text-ink">{r.region}</p>
+                    <p className="mt-0.5 text-xs text-ink-muted">{r.carrier} · {r.eta}</p>
                   </div>
-                  <span className="shrink-0 rounded-full bg-[#1A1A1A] px-3 py-1 text-[9px] font-semibold uppercase tracking-wider text-[#9A9A9A]">{r.note}</span>
+                  <span className="shrink-0 rounded-full bg-white/40 px-3 py-1 text-[9px] font-semibold uppercase tracking-wider text-ink-muted">{r.note}</span>
                 </div>
               </div>
             ))}
@@ -44,18 +44,18 @@ export default function ShippingPage() {
             { t: "Duties & Tariffs", d: "US imports from China-origin brands may be subject to Section 301 tariffs following the May 2025 de minimis suspension. Applicable duties are calculated at checkout. K-Beauty and J-Beauty shipments to the US benefit from KORUS and US-Japan tariff agreements." },
             { t: "Shipping Address", d: "Ensure your shipping address is correct at checkout. We cannot redirect parcels once dispatched." },
           ].map((n) => (
-            <div key={n.t} className="rounded-xl border border-[#2B2B2B] bg-[#111] px-5 py-4">
-              <p className="mb-1 text-xs font-bold uppercase tracking-[0.12em] text-[#F4F4F4]">{n.t}</p>
-              <p className="text-sm leading-relaxed text-[#9A9A9A]">{n.d}</p>
+            <div key={n.t} className="rounded-xl border border-white/50 bg-white/45 px-5 py-4">
+              <p className="mb-1 text-xs font-bold uppercase tracking-[0.12em] text-ink">{n.t}</p>
+              <p className="text-sm leading-relaxed text-ink-muted">{n.d}</p>
             </div>
           ))}
         </div>
 
         <div className="flex flex-wrap gap-3">
-          <Link href="/returns" className="rounded-full bg-[#F4F4F4] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-[#0A0A0A] hover:bg-white transition">
+          <Link href="/returns" className="rounded-full bg-brand px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-brand-dark transition">
             Returns Policy
           </Link>
-          <Link href="/contact" className="rounded-full border border-[#2B2B2B] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-[#9A9A9A] hover:border-[#F4F4F4] hover:text-[#F4F4F4] transition">
+          <Link href="/contact" className="rounded-full border border-white/50 px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-ink-muted hover:border-brand/40 hover:text-ink transition">
             Contact Support
           </Link>
         </div>

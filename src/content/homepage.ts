@@ -12,9 +12,28 @@ export type HeroButton = {
   variant: "primary" | "outline" | "highlight";
 };
 
-/** Poster switcher controls for the hero banner */
+export type HeroPosterId = "skin-analysis" | "try-on" | "launch" | "partners";
+
+/** One rotational hero poster — copy + 3 CTAs */
+export type HeroPosterSlide = {
+  id: HeroPosterId;
+  controlLabel: string;
+  badge: string;
+  headline: {
+    before: string;
+    highlight1: string;
+    middle: string;
+    highlight2: string;
+    after: string;
+  };
+  subheadline: string;
+  subheadlineExtra?: string;
+  buttons: [HeroButton, HeroButton, HeroButton];
+};
+
+/** @deprecated use HeroPosterSlide — kept for CMS field hints */
 export type HeroPosterControl = {
-  id: "skin-analysis" | "try-on";
+  id: HeroPosterId;
   label: string;
   variant: "primary" | "outline" | "highlight";
 };
@@ -202,24 +221,93 @@ export const siteContent = {
     subheadlineExtra: "BEAUTY. YOUR CTRL.",
     /** Same locked-cleared mark used in hero shortcut lockup */
     logoSrc: "/images/shortkey-logo-clear.png",
-    /** Active hero poster —skin analysis is the current build */
+    /** Active hero poster — rotation starts here */
     defaultPoster: "skin-analysis" as const,
-    posterControls: [
+    /** Auto-rotate interval (ms) — high-end pace */
+    rotateMs: 7500,
+    posters: [
       {
         id: "skin-analysis",
-        label: "AI SKIN ANALYSIS →",
-        variant: "highlight",
+        controlLabel: "AI Skin",
+        badge: "AI SKIN ANALYSIS",
+        headline: {
+          before: "SEE YOUR ",
+          highlight1: "SKIN",
+          middle: " — THEN ",
+          highlight2: "SHOP THE MATCH",
+          after: ".",
+        },
+        subheadline: "LANDMARK READS. ROUTINE SUGGESTIONS. K / J / C BEAUTY THAT FITS YOU.",
+        subheadlineExtra: "ANALYSIS → ROUTINE → CART.",
+        buttons: [
+          { label: "START ANALYSIS →", href: "#skin-analysis", variant: "highlight" },
+          { label: "SHOP SKIN →", href: "/shop", variant: "outline" },
+          { label: "TRY ON NEXT →", href: "#try-on", variant: "outline" },
+        ],
       },
       {
         id: "try-on",
-        label: "TRY AI TRY-ON →",
-        variant: "outline",
+        controlLabel: "Try-On",
+        badge: "VIRTUAL TRY-ON",
+        headline: {
+          before: "TRY IT ON ",
+          highlight1: "YOUR FACE",
+          middle: " — ",
+          highlight2: "BEFORE YOU BUY",
+          after: ".",
+        },
+        subheadline: "REAL-TIME TINT. REAL SHADE. NO FILTER SOFTENING.",
+        subheadlineExtra: "LIP · CHEEK · EYE — YOUR CTRL.",
+        buttons: [
+          { label: "OPEN TRY-ON →", href: "#try-on", variant: "highlight" },
+          { label: "SHOP MAKEUP →", href: "/shop", variant: "outline" },
+          { label: "MEET CREATORS →", href: "/influencers", variant: "outline" },
+        ],
       },
-    ] satisfies HeroPosterControl[],
-    buttons: [
-      { label: "EXPLORE LOOKS →", href: "/influencers", variant: "outline" },
-      { label: "FOR BRANDS →", href: "/brands", variant: "outline" },
-    ] satisfies HeroButton[],
+      {
+        id: "launch",
+        controlLabel: "Launch",
+        badge: "SHORTKEY LAUNCH MONTH",
+        headline: {
+          before: "THE PLATFORM ",
+          highlight1: "THAT CONNECTS",
+          middle: " ",
+          highlight2: "BRANDS TO CUSTOMERS",
+          after: ".",
+        },
+        subheadline:
+          "AI DISCOVERY. CREATOR SHOPS. SHORTCUT COMMERCE. WE CARE HOW THE MATCH IS MADE.",
+        subheadlineExtra: "AMBITION · FEATURES · TRUST.",
+        buttons: [
+          { label: "OUR AMBITION →", href: "/about", variant: "highlight" },
+          { label: "SEE FEATURES →", href: "/#commands", variant: "outline" },
+          { label: "ENTER SHOP →", href: "/shop", variant: "outline" },
+        ],
+      },
+      {
+        id: "partners",
+        controlLabel: "Partners",
+        badge: "BRANDS & INFLUENCERS",
+        headline: {
+          before: "BUILD WITH ",
+          highlight1: "SHORTKEY",
+          middle: " — ",
+          highlight2: "CREATORS & BRANDS",
+          after: ".",
+        },
+        subheadline:
+          "FOUNDING PARTNERS. CREATOR LIVE SHOPS. BOOK A 1-HOUR MEETING WITH OUR TEAM.",
+        subheadlineExtra: "YOUR STYLE. YOUR CTRL.",
+        buttons: [
+          { label: "CREATOR SIGNUP →", href: "/signup/creator", variant: "highlight" },
+          { label: "BRAND SIGNUP →", href: "/signup/brand", variant: "outline" },
+          { label: "MEET CREATORS →", href: "/influencers", variant: "outline" },
+        ],
+      },
+    ] satisfies HeroPosterSlide[],
+    /** Poster images for launch / partners rotations */
+    launchImage: "/images/hero-premium.png",
+    partnersImage: "/images/hero-editorial.png",
     visualImage: "/images/home-purple-atmosphere.png",
     backgroundImage: "/images/home-purple-atmosphere.png",
     atmosphereImage: "/images/home-purple-atmosphere.png",

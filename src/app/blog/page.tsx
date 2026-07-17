@@ -23,18 +23,18 @@ const TAG_COLOURS: Record<string, string> = {
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] px-4 py-12 sm:px-8">
+    <main className="page-shell px-4 py-12 sm:px-8">
       {/* Header */}
-      <div className="mb-10 border-b border-[#2B2B2B] pb-8">
-        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">CTRL + B</p>
-        <h1 className="text-3xl font-bold uppercase tracking-[0.12em] text-[#F4F4F4]">Journal</h1>
-        <p className="mt-2 text-sm text-[#9A9A9A]">Routines, edits, and creator guides from the Shortkey team.</p>
+      <div className="mb-10 border-b border-white/50 pb-8">
+        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-subtle">CTRL + B</p>
+        <h1 className="text-3xl font-bold uppercase tracking-[0.12em] text-ink">Journal</h1>
+        <p className="mt-2 text-sm text-ink-muted">Routines, edits, and creator guides from the Shortkey team.</p>
       </div>
 
       {/* Category Filter */}
       <div className="mb-8 flex flex-wrap gap-2">
         {CATEGORIES.map((c) => (
-          <button key={c} className="rounded-full border border-[#2B2B2B] bg-[#111] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#9A9A9A] hover:border-[#6E6E6E] hover:text-[#F4F4F4] transition">
+          <button key={c} className="rounded-full border border-white/50 bg-white/45 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-muted hover:border-brand/25 hover:shadow-soft hover:text-ink transition">
             {c}
           </button>
         ))}
@@ -43,24 +43,24 @@ export default function BlogPage() {
       {/* Posts Grid */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {POSTS.map((post) => (
-          <article key={post.title} className="group flex flex-col rounded-xl border border-[#2B2B2B] bg-[#111] overflow-hidden hover:border-[#6E6E6E] transition cursor-pointer">
-            <div className="aspect-[16/9] bg-[#1A1A1A]" />
+          <article key={post.title} className="group flex flex-col rounded-xl border border-white/50 bg-white/45 overflow-hidden hover:border-brand/25 hover:shadow-soft transition cursor-pointer">
+            <div className="aspect-[16/9] bg-white/40" />
             <div className="flex flex-1 flex-col px-5 py-4">
               <div className="mb-3 flex items-center justify-between">
-                <span className={`text-[9px] font-bold uppercase tracking-[0.15em] ${TAG_COLOURS[post.tag] || "text-[#9A9A9A]"}`}>{post.tag}</span>
-                <span className="text-[9px] text-[#6E6E6E]">{post.date}</span>
+                <span className={`text-[9px] font-bold uppercase tracking-[0.15em] ${TAG_COLOURS[post.tag] || "text-ink-muted"}`}>{post.tag}</span>
+                <span className="text-[9px] text-ink-subtle">{post.date}</span>
               </div>
-              <p className="mb-2 text-sm font-bold leading-snug text-[#F4F4F4]">{post.title}</p>
-              <p className="text-xs leading-relaxed text-[#9A9A9A] line-clamp-3">{post.excerpt}</p>
+              <p className="mb-2 text-sm font-bold leading-snug text-ink">{post.title}</p>
+              <p className="text-xs leading-relaxed text-ink-muted line-clamp-3">{post.excerpt}</p>
             </div>
           </article>
         ))}
       </div>
 
       {/* CTA */}
-      <div className="mt-10 rounded-xl border border-[#2B2B2B] bg-[#111] px-6 py-5 text-center">
-        <p className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">More on the way</p>
-        <p className="text-sm text-[#9A9A9A]">New guides every week. Try the products in the virtual try-on studio before reading.</p>
+      <div className="mt-10 rounded-xl border border-white/50 bg-white/45 px-6 py-5 text-center">
+        <p className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-ink-subtle">More on the way</p>
+        <p className="text-sm text-ink-muted">New guides every week. Try the products in the virtual try-on studio before reading.</p>
       </div>
     </main>
   );

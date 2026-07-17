@@ -89,6 +89,19 @@
     backdrop-filter: blur(8px);
   }
 
+  /* Interior pages — transparent so body homepage atmosphere shows through */
+  .page-shell {
+    @apply min-h-screen bg-transparent;
+  }
+
+  .page-card {
+    @apply rounded-xl border border-white/50 bg-white/45;
+  }
+
+  .page-chip {
+    @apply rounded-full border border-white/60 bg-white/50 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-muted transition hover:border-brand/40 hover:text-ink;
+  }
+
   /* Old-school folder tabs (Beauty OS) */
   .folder-tab {
     border: 1px solid rgba(255, 255, 255, 0.55);
@@ -330,6 +343,67 @@
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.95) inset,
       0 16px 32px rgba(80, 60, 120, 0.14);
+  }
+
+  /* High-end hero poster rotation */
+  .hero-rotate-copy {
+    animation: hero-rotate-copy-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-rotate-visual {
+    animation: hero-rotate-visual-in 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-rotate-panel-enter {
+    animation: hero-rotate-panel-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+  }
+
+  .hero-rotate-panel {
+    animation: hero-rotate-panel-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes hero-rotate-copy-in {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes hero-rotate-visual-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97) translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes hero-rotate-panel-in {
+    from {
+      opacity: 0;
+      transform: translateX(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-rotate-copy,
+    .hero-rotate-visual,
+    .hero-rotate-panel-enter,
+    .hero-rotate-panel {
+      animation: none;
+    }
   }
 
   .hero-tint-cta {

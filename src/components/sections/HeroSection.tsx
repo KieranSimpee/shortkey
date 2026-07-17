@@ -4,8 +4,8 @@ import { HeroShortcutBar } from "@/components/sections/HeroShortcutBar";
 import { CmsZone } from "@/components/cms/CmsZone";
 
 /**
- * Hero banner with poster controls:
- * AI Skin Analysis (current) · Try AI Try-On (next).
+ * Hero banner — rotational posters:
+ * AI Skin Analysis · Try-On · Launch Month · Brands & Influencers.
  * Desktop min-height / model size stay locked; below lg the banner reflows as a unit.
  */
 export function HeroSection() {

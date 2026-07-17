@@ -11,22 +11,22 @@ const STEPS = [
 
 export default function ReturnsPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] px-4 py-16 sm:px-8">
+    <main className="page-shell px-4 py-16 sm:px-8">
       <div className="mx-auto max-w-2xl">
-        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">Orders</p>
-        <h1 className="mb-2 text-3xl font-bold uppercase tracking-[0.1em] text-[#F4F4F4]">Returns</h1>
-        <p className="mb-10 text-sm text-[#9A9A9A]">Simple 14-day returns for unopened Asian beauty items.</p>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-subtle">Orders</p>
+        <h1 className="mb-2 text-3xl font-bold uppercase tracking-[0.1em] text-ink">Returns</h1>
+        <p className="mb-10 text-sm text-ink-muted">Simple 14-day returns for unopened Asian beauty items.</p>
 
         {/* Process */}
         <div className="mb-8">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">Return Process</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-ink-subtle">Return Process</p>
           <div className="space-y-2">
             {STEPS.map((s) => (
-              <div key={s.n} className="flex gap-4 rounded-xl border border-[#2B2B2B] bg-[#111] px-5 py-4">
-                <span className="font-mono text-xs font-bold text-[#6E6E6E] pt-0.5">{s.n}</span>
+              <div key={s.n} className="flex gap-4 rounded-xl border border-white/50 bg-white/45 px-5 py-4">
+                <span className="font-mono text-xs font-bold text-ink-subtle pt-0.5">{s.n}</span>
                 <div>
-                  <p className="text-sm font-bold text-[#F4F4F4]">{s.t}</p>
-                  <p className="mt-1 text-sm text-[#9A9A9A]">{s.d}</p>
+                  <p className="text-sm font-bold text-ink">{s.t}</p>
+                  <p className="mt-1 text-sm text-ink-muted">{s.d}</p>
                 </div>
               </div>
             ))}
@@ -35,24 +35,24 @@ export default function ReturnsPage() {
 
         {/* Eligibility */}
         <div className="mb-8 space-y-2">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">Eligibility</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-ink-subtle">Eligibility</p>
           {[
             { t: "Eligible", d: "Unopened, sealed items in original packaging returned within 14 days of delivery." },
             { t: "Not Eligible", d: "Opened beauty products (hygiene policy), items marked final sale, or returns requested after 14 days." },
             { t: "Damaged or Incorrect Items", d: "If you receive a damaged or incorrect item, contact us immediately — we will resolve this at no cost to you." },
           ].map((e) => (
-            <div key={e.t} className="rounded-xl border border-[#2B2B2B] bg-[#111] px-5 py-4">
-              <p className="mb-1 text-xs font-bold uppercase tracking-[0.12em] text-[#F4F4F4]">{e.t}</p>
-              <p className="text-sm text-[#9A9A9A]">{e.d}</p>
+            <div key={e.t} className="rounded-xl border border-white/50 bg-white/45 px-5 py-4">
+              <p className="mb-1 text-xs font-bold uppercase tracking-[0.12em] text-ink">{e.t}</p>
+              <p className="text-sm text-ink-muted">{e.d}</p>
             </div>
           ))}
         </div>
 
         <div className="flex flex-wrap gap-3">
-          <a href="mailto:help@shortkey.beauty" className="rounded-full bg-[#F4F4F4] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-[#0A0A0A] hover:bg-white transition">
+          <a href="mailto:help@shortkey.beauty" className="rounded-full bg-brand px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-brand-dark transition">
             Start a Return
           </a>
-          <Link href="/shipping" className="rounded-full border border-[#2B2B2B] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-[#9A9A9A] hover:border-[#F4F4F4] hover:text-[#F4F4F4] transition">
+          <Link href="/shipping" className="rounded-full border border-white/50 px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-ink-muted hover:border-brand/40 hover:text-ink transition">
             Shipping Info
           </Link>
         </div>

@@ -55,11 +55,11 @@ export function CheckoutContent() {
 
   if (!itemCount) {
     return (
-      <div className="rounded-xl border border-[#2B2B2B] bg-[#111] p-6 text-center">
-        <p className="text-sm text-[#9A9A9A]">Your bag is empty.</p>
+      <div className="rounded-xl border border-white/50 bg-white/45 p-6 text-center">
+        <p className="text-sm text-ink-muted">Your bag is empty.</p>
         <Link
           href="/shop"
-          className="mt-4 inline-flex text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F4F4F4]"
+          className="mt-4 inline-flex text-[11px] font-semibold uppercase tracking-[0.12em] text-ink"
         >
           Continue shopping →
         </Link>
@@ -73,15 +73,15 @@ export function CheckoutContent() {
         {lines.map((line) => (
           <li
             key={line.sku}
-            className="flex gap-3 rounded-xl border border-[#2B2B2B] bg-[#111] p-3"
+            className="flex gap-3 rounded-xl border border-white/50 bg-white/45 p-3"
           >
-            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-[#2B2B2B] bg-[#1A1A1A]">
+            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-white/50 bg-white/40">
               <Image src={line.image} alt={line.name} fill className="object-cover" sizes="80px" />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="font-mono text-[9px] text-[#6E6E6E]">{line.sku}</p>
-              <p className="text-sm font-semibold text-[#F4F4F4]">{line.name}</p>
-              <p className="text-xs text-[#9A9A9A]">{formatMoney(line.unitPrice)}</p>
+              <p className="font-mono text-[9px] text-ink-subtle">{line.sku}</p>
+              <p className="text-sm font-semibold text-ink">{line.name}</p>
+              <p className="text-xs text-ink-muted">{formatMoney(line.unitPrice)}</p>
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 <input
                   type="number"
@@ -89,12 +89,12 @@ export function CheckoutContent() {
                   max={99}
                   value={line.quantity}
                   onChange={(e) => setQuantity(line.sku, Number(e.target.value) || 1)}
-                  className="w-16 rounded-full border border-[#2B2B2B] bg-[#0A0A0A] px-2 py-1 text-xs text-[#F4F4F4]"
+                  className="w-16 rounded-full border border-white/60 bg-white/50 px-2 py-1 text-xs text-ink"
                 />
                 <button
                   type="button"
                   onClick={() => removeItem(line.sku)}
-                  className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#6E6E6E] hover:text-[#F4F4F4]"
+                  className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-subtle hover:text-ink"
                 >
                   Remove
                 </button>
@@ -104,25 +104,25 @@ export function CheckoutContent() {
         ))}
       </ul>
 
-      <div className="h-fit rounded-xl border border-[#2B2B2B] bg-[#111] p-4 sm:p-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9A9A9A]">
+      <div className="h-fit rounded-xl border border-white/50 bg-white/45 p-4 sm:p-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
           Checkout
         </p>
-        <p className="mt-3 text-2xl font-semibold text-[#F4F4F4]">{formatMoney(subtotal)}</p>
-        <p className="mt-1 text-xs text-[#6E6E6E]">{itemCount} item(s) · USD</p>
+        <p className="mt-3 text-2xl font-semibold text-ink">{formatMoney(subtotal)}</p>
+        <p className="mt-1 text-xs text-ink-subtle">{itemCount} item(s) · USD</p>
 
-        <label className="mt-4 block text-[10px] font-semibold uppercase tracking-[0.1em] text-[#6E6E6E]">
+        <label className="mt-4 block text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-subtle">
           Email (optional)
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@email.com"
-            className="mt-1 w-full rounded-full border border-[#2B2B2B] bg-[#0A0A0A] px-3 py-2 text-sm text-[#F4F4F4]"
+            className="mt-1 w-full rounded-full border border-white/60 bg-white/50 px-3 py-2 text-sm text-ink"
           />
         </label>
 
-        <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#6E6E6E]">
+        <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-subtle">
           Payment gateway
         </p>
         <div className="mt-2 flex gap-2">
@@ -139,8 +139,8 @@ export function CheckoutContent() {
               className={cn(
                 "rounded-full border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em]",
                 provider === id
-                  ? "border-[#F4F4F4] bg-[#F4F4F4] text-[#0A0A0A]"
-                  : "border-[#2B2B2B] bg-[#0A0A0A] text-[#9A9A9A]",
+                  ? "border-brand bg-brand text-white"
+                  : "border-white/60 bg-white/50 text-ink-muted",
               )}
             >
               {label}
@@ -152,14 +152,14 @@ export function CheckoutContent() {
           type="button"
           disabled={busy}
           onClick={startCheckout}
-          className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#F4F4F4] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[#0A0A0A] disabled:opacity-60"
+          className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-brand px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white disabled:opacity-60"
         >
           {busy ? "Redirecting…" : `Pay with ${provider === "stripe" ? "Stripe" : "Shopify"} →`}
         </button>
 
         {status ? <p className="mt-3 text-xs text-red-400">{status}</p> : null}
 
-        <p className="mt-4 text-[10px] leading-relaxed text-[#6E6E6E]">
+        <p className="mt-4 text-[10px] leading-relaxed text-ink-subtle">
           Cart lines are enriched by the bridge hub on checkout (Senti / static SKU map → Stripe or
           Shopify).
         </p>

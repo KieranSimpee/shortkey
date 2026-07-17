@@ -23,28 +23,28 @@ const CREATOR_STYLE_LANES = [
 
 export default function MakeoverPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] px-4 py-12 sm:px-8">
+    <main className="page-shell px-4 py-12 sm:px-8">
       {/* Header */}
-      <div className="mb-10 border-b border-[#2B2B2B] pb-8">
-        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">CTRL + M</p>
-        <h1 className="text-3xl font-bold uppercase tracking-[0.12em] text-[#F4F4F4]">Makeover</h1>
-        <p className="mt-2 text-sm text-[#9A9A9A]">
+      <div className="mb-10 border-b border-white/50 pb-8">
+        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-subtle">CTRL + M</p>
+        <h1 className="text-3xl font-bold uppercase tracking-[0.12em] text-ink">Makeover</h1>
+        <p className="mt-2 text-sm text-ink-muted">
           Full-face Korean and Asian makeup tutorials. Guided by creators who know exactly why each product was selected.
         </p>
       </div>
 
       {/* Tutorial Styles */}
       <div className="mb-10">
-        <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">Tutorial Styles</p>
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-ink-subtle">Tutorial Styles</p>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {TUTORIAL_STYLES.map((t) => (
-            <div key={t.name} className="rounded-xl border border-[#2B2B2B] bg-[#111] px-5 py-4">
+            <div key={t.name} className="rounded-xl border border-white/50 bg-white/45 px-5 py-4">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-bold text-[#F4F4F4]">{t.name}</p>
-                <span className="rounded-full bg-[#1A1A1A] px-2 py-0.5 font-mono text-[8px] text-[#6E6E6E]">{t.shortcut}</span>
+                <p className="text-sm font-bold text-ink">{t.name}</p>
+                <span className="rounded-full bg-white/40 px-2 py-0.5 font-mono text-[8px] text-ink-subtle">{t.shortcut}</span>
               </div>
-              <p className="text-xs text-[#9A9A9A]">{t.desc}</p>
-              <p className="mt-2 text-[9px] font-semibold uppercase tracking-wider text-[#6E6E6E]">{t.tag}</p>
+              <p className="text-xs text-ink-muted">{t.desc}</p>
+              <p className="mt-2 text-[9px] font-semibold uppercase tracking-wider text-ink-subtle">{t.tag}</p>
             </div>
           ))}
         </div>
@@ -52,42 +52,42 @@ export default function MakeoverPage() {
 
       {/* Creator Style Lanes */}
       <div className="mb-10">
-        <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">Creator Style Lanes</p>
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-ink-subtle">Creator Style Lanes</p>
         <div className="space-y-2">
           {CREATOR_STYLE_LANES.map((c) => (
-            <div key={c.name} className="flex items-start gap-4 rounded-xl border border-[#2B2B2B] bg-[#111] px-5 py-3">
-              <p className="min-w-[110px] text-xs font-bold text-[#F4F4F4]">{c.name}</p>
-              <p className="text-xs text-[#9A9A9A]">{c.spec}</p>
+            <div key={c.name} className="flex items-start gap-4 rounded-xl border border-white/50 bg-white/45 px-5 py-3">
+              <p className="min-w-[110px] text-xs font-bold text-ink">{c.name}</p>
+              <p className="text-xs text-ink-muted">{c.spec}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Try On CTA */}
-      <div className="mb-6 rounded-xl border border-[#2B2B2B] bg-[#111] px-6 py-6">
-        <p className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">Try Before You Buy</p>
-        <p className="mb-4 text-sm text-[#9A9A9A]">
+      <div className="mb-6 rounded-xl border border-white/50 bg-white/45 px-6 py-6">
+        <p className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-ink-subtle">Try Before You Buy</p>
+        <p className="mb-4 text-sm text-ink-muted">
           Test every shade, lip colour, and eye look with the Shortkey virtual try-on studio before adding to cart.
         </p>
-        <Link href="/try-on" className="inline-block rounded-full bg-[#F4F4F4] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-[#0A0A0A] hover:bg-white transition">
+        <Link href="/try-on" className="inline-block rounded-full bg-brand px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-brand-dark transition">
           Open Try-On Studio
         </Link>
       </div>
 
       {/* External Tutorials */}
-      <div className="rounded-xl border border-[#2B2B2B] bg-[#0A0A0A] px-6 py-5">
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">External Tutorial Library</p>
+      <div className="rounded-xl border border-white/60 bg-white/50 px-6 py-5">
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-ink-subtle">External Tutorial Library</p>
         <div className="flex flex-wrap gap-3">
-          <a href="https://www.youtube.com/results?search_query=korean+makeup+tutorial" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#2B2B2B] px-4 py-2 text-xs text-[#9A9A9A] hover:text-[#F4F4F4] hover:border-[#6E6E6E] transition">
+          <a href="https://www.youtube.com/results?search_query=korean+makeup+tutorial" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/50 px-4 py-2 text-xs text-ink-muted hover:text-ink hover:border-brand/25 hover:shadow-soft transition">
             Korean makeup → YouTube
           </a>
-          <a href="https://www.youtube.com/results?search_query=chinese+beauty+makeup+tutorial" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#2B2B2B] px-4 py-2 text-xs text-[#9A9A9A] hover:text-[#F4F4F4] hover:border-[#6E6E6E] transition">
+          <a href="https://www.youtube.com/results?search_query=chinese+beauty+makeup+tutorial" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/50 px-4 py-2 text-xs text-ink-muted hover:text-ink hover:border-brand/25 hover:shadow-soft transition">
             C-Beauty → YouTube
           </a>
-          <a href="https://www.youtube.com/results?search_query=japanese+skincare+routine+2025" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#2B2B2B] px-4 py-2 text-xs text-[#9A9A9A] hover:text-[#F4F4F4] hover:border-[#6E6E6E] transition">
+          <a href="https://www.youtube.com/results?search_query=japanese+skincare+routine+2025" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/50 px-4 py-2 text-xs text-ink-muted hover:text-ink hover:border-brand/25 hover:shadow-soft transition">
             J-Beauty routines → YouTube
           </a>
-          <Link href="/videos" className="rounded-full border border-[#2B2B2B] px-4 py-2 text-xs text-[#9A9A9A] hover:text-[#F4F4F4] hover:border-[#6E6E6E] transition">
+          <Link href="/videos" className="rounded-full border border-white/50 px-4 py-2 text-xs text-ink-muted hover:text-ink hover:border-brand/25 hover:shadow-soft transition">
             Shortkey video library
           </Link>
         </div>

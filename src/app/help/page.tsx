@@ -25,21 +25,21 @@ const FAQS: Record<string, { q: string; a: string }[]> = {
 
 export default function HelpPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] px-4 py-16 sm:px-8">
+    <main className="page-shell px-4 py-16 sm:px-8">
       <div className="mx-auto max-w-2xl">
-        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#6E6E6E]">Support</p>
-        <h1 className="mb-2 text-3xl font-bold uppercase tracking-[0.1em] text-[#F4F4F4]">Help Center</h1>
-        <p className="mb-10 text-sm text-[#9A9A9A]">Answers to the most common questions about Shortkey.</p>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-subtle">Support</p>
+        <h1 className="mb-2 text-3xl font-bold uppercase tracking-[0.1em] text-ink">Help Center</h1>
+        <p className="mb-10 text-sm text-ink-muted">Answers to the most common questions about Shortkey.</p>
 
         <div className="space-y-8">
           {Object.entries(FAQS).map(([category, items]) => (
             <section key={category}>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#6E6E6E]">{category}</p>
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-ink-subtle">{category}</p>
               <div className="space-y-2">
                 {items.map((item) => (
-                  <div key={item.q} className="rounded-xl border border-[#2B2B2B] bg-[#111] px-5 py-4">
-                    <p className="mb-2 text-sm font-semibold text-[#F4F4F4]">{item.q}</p>
-                    <p className="text-sm leading-relaxed text-[#9A9A9A]">{item.a}</p>
+                  <div key={item.q} className="rounded-xl border border-white/50 bg-white/45 px-5 py-4">
+                    <p className="mb-2 text-sm font-semibold text-ink">{item.q}</p>
+                    <p className="text-sm leading-relaxed text-ink-muted">{item.a}</p>
                   </div>
                 ))}
               </div>
@@ -47,10 +47,10 @@ export default function HelpPage() {
           ))}
         </div>
 
-        <div className="mt-10 rounded-xl border border-[#2B2B2B] bg-[#111] px-6 py-5">
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F4F4F4]">Still need help?</p>
-          <p className="mb-4 text-sm text-[#9A9A9A]">Our support team is here. Response within 24 hours.</p>
-          <Link href="/contact" className="inline-block rounded-full bg-[#F4F4F4] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-[#0A0A0A] hover:bg-white transition">
+        <div className="mt-10 rounded-xl border border-white/50 bg-white/45 px-6 py-5">
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-ink">Still need help?</p>
+          <p className="mb-4 text-sm text-ink-muted">Our support team is here. Response within 24 hours.</p>
+          <Link href="/contact" className="inline-block rounded-full bg-brand px-6 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-brand-dark transition">
             Contact Support
           </Link>
         </div>
