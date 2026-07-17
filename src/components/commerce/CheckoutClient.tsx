@@ -3,12 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useCart } from "@/components/commerce/CartProvider";
+import { useCart } from "@/context/CartContext";
 import { formatMoney } from "@/lib/commerce/pricing";
 import type { CheckoutResponse } from "@/lib/commerce/types";
 import { cn } from "@/lib/utils";
 
-export function CheckoutClient() {
+/** Client checkout body — uses live cart + bridged /api/checkout */
+export function CheckoutContent() {
   const { lines, subtotal, setQuantity, removeItem, clear, itemCount } = useCart();
   const [provider, setProvider] = useState<"stripe" | "shopify">("stripe");
   const [email, setEmail] = useState("");
@@ -54,11 +55,11 @@ export function CheckoutClient() {
 
   if (!itemCount) {
     return (
-      <div className="rounded-xl border border-white/50 bg-white/40 p-6 text-center">
-        <p className="text-sm text-ink-muted">Your bag is empty.</p>
+      <div className="rounded-xl border border-[#2B2B2B] bg-[#111] p-6 text-center">
+        <p className="text-sm text-[#9A9A9A]">Your bag is empty.</p>
         <Link
           href="/shop"
-          className="mt-4 inline-flex text-[11px] font-semibold uppercase tracking-[0.12em] text-brand"
+          className="mt-4 inline-flex text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F4F4F4]"
         >
           Continue shopping →
         </Link>
@@ -72,15 +73,15 @@ export function CheckoutClient() {
         {lines.map((line) => (
           <li
             key={line.sku}
-            className="flex gap-3 rounded-xl border border-white/50 bg-white/45 p-3"
+            className="flex gap-3 rounded-xl border border-[#2B2B2B] bg-[#111] p-3"
           >
-            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-white/50">
+            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-[#2B2B2B] bg-[#1A1A1A]">
               <Image src={line.image} alt={line.name} fill className="object-cover" sizes="80px" />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="font-mono text-[9px] text-brand/70">{line.sku}</p>
-              <p className="text-sm font-semibold text-ink">{line.name}</p>
-              <p className="text-xs text-ink-muted">{formatMoney(line.unitPrice)}</p>
+              <p className="font-mono text-[9px] text-[#6E6E6E]">{line.sku}</p>
+              <p className="text-sm font-semibold text-[#F4F4F4]">{line.name}</p>
+              <p className="text-xs text-[#9A9A9A]">{formatMoney(line.unitPrice)}</p>
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 <input
                   type="number"
@@ -88,12 +89,12 @@ export function CheckoutClient() {
                   max={99}
                   value={line.quantity}
                   onChange={(e) => setQuantity(line.sku, Number(e.target.value) || 1)}
-                  className="w-16 rounded-full border border-white/60 bg-white/70 px-2 py-1 text-xs"
+                  className="w-16 rounded-full border border-[#2B2B2B] bg-[#0A0A0A] px-2 py-1 text-xs text-[#F4F4F4]"
                 />
                 <button
                   type="button"
                   onClick={() => removeItem(line.sku)}
-                  className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-muted hover:text-ink"
+                  className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#6E6E6E] hover:text-[#F4F4F4]"
                 >
                   Remove
                 </button>
@@ -103,25 +104,25 @@ export function CheckoutClient() {
         ))}
       </ul>
 
-      <div className="h-fit rounded-xl border border-white/50 bg-white/45 p-4 sm:p-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand/80">
+      <div className="h-fit rounded-xl border border-[#2B2B2B] bg-[#111] p-4 sm:p-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9A9A9A]">
           Checkout
         </p>
-        <p className="mt-3 text-2xl font-semibold text-ink">{formatMoney(subtotal)}</p>
-        <p className="mt-1 text-xs text-ink-muted">{itemCount} item(s) · USD</p>
+        <p className="mt-3 text-2xl font-semibold text-[#F4F4F4]">{formatMoney(subtotal)}</p>
+        <p className="mt-1 text-xs text-[#6E6E6E]">{itemCount} item(s) · USD</p>
 
-        <label className="mt-4 block text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-muted">
+        <label className="mt-4 block text-[10px] font-semibold uppercase tracking-[0.1em] text-[#6E6E6E]">
           Email (optional)
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@email.com"
-            className="mt-1 w-full rounded-full border border-white/60 bg-white/70 px-3 py-2 text-sm text-ink"
+            className="mt-1 w-full rounded-full border border-[#2B2B2B] bg-[#0A0A0A] px-3 py-2 text-sm text-[#F4F4F4]"
           />
         </label>
 
-        <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-muted">
+        <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#6E6E6E]">
           Payment gateway
         </p>
         <div className="mt-2 flex gap-2">
@@ -138,8 +139,8 @@ export function CheckoutClient() {
               className={cn(
                 "rounded-full border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em]",
                 provider === id
-                  ? "border-brand bg-brand/10 text-brand"
-                  : "border-white/60 bg-white/50 text-ink-muted",
+                  ? "border-[#F4F4F4] bg-[#F4F4F4] text-[#0A0A0A]"
+                  : "border-[#2B2B2B] bg-[#0A0A0A] text-[#9A9A9A]",
               )}
             >
               {label}
@@ -151,18 +152,21 @@ export function CheckoutClient() {
           type="button"
           disabled={busy}
           onClick={startCheckout}
-          className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-brand px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white disabled:opacity-60"
+          className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#F4F4F4] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[#0A0A0A] disabled:opacity-60"
         >
           {busy ? "Redirecting…" : `Pay with ${provider === "stripe" ? "Stripe" : "Shopify"} →`}
         </button>
 
-        {status ? <p className="mt-3 text-xs text-red-600/90">{status}</p> : null}
+        {status ? <p className="mt-3 text-xs text-red-400">{status}</p> : null}
 
-        <p className="mt-4 text-[10px] leading-relaxed text-ink-muted">
-          Without API keys the request uses mock success. With keys, you are redirected to Stripe
-          Checkout or Shopify checkout.
+        <p className="mt-4 text-[10px] leading-relaxed text-[#6E6E6E]">
+          Cart lines are enriched by the bridge hub on checkout (Senti / static SKU map → Stripe or
+          Shopify).
         </p>
       </div>
     </div>
   );
 }
+
+/** @deprecated use CheckoutContent — kept for existing imports */
+export const CheckoutClient = CheckoutContent;
