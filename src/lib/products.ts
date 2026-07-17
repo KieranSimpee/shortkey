@@ -22,6 +22,7 @@ export interface ShortKeyProduct {
   stock_status: string;
   status: string;
   notes?: string;
+  region?: string;
 }
 
 function staticAsProducts(): ShortKeyProduct[] {
@@ -36,6 +37,10 @@ function staticAsProducts(): ShortKeyProduct[] {
     description: p.description,
     stock_status: "in_stock",
     status: p.syncReady === false ? "coming_soon" : "active",
+    notes: [p.region, p.category, p.syncReady ? "made-the-edit" : ""]
+      .filter(Boolean)
+      .join(", "),
+    region: p.region,
   }));
 }
 

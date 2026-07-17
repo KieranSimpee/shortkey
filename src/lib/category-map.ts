@@ -129,33 +129,63 @@ export type ShortKeyCategory = keyof typeof SHORTKEY_CATEGORIES
 // FILTER FUNCTION
 // Use this to filter products by ShortKey category
 // ─────────────────────────────────────────────
+function normalizeBrand(value: string | undefined | null): string {
+  return (value || "").trim().toLowerCase();
+}
+
+function productRegion(p: {
+  region?: string;
+  notes?: string;
+  brand_name?: string;
+  category?: string;
+}): string {
+  if (p.region) return p.region;
+  const notes = (p.notes || "").toLowerCase();
+  if (notes.includes("k-beauty") || notes.includes("korea")) return "K-Beauty";
+  if (notes.includes("j-beauty") || notes.includes("japan")) return "J-Beauty";
+  if (notes.includes("c-beauty") || notes.includes("china")) return "C-Beauty";
+  return "";
+}
+
 export function filterByShortKeyCategory(
   products: any[],
-  categoryKey: ShortKeyCategory
+  categoryKey: ShortKeyCategory,
 ): any[] {
-  const cat = SHORTKEY_CATEGORIES[categoryKey]
+  const cat = SHORTKEY_CATEGORIES[categoryKey];
 
-  return products.filter(p => {
-    // Match by Shopify type
-    const shopifyTypes = cat.shopify_types as unknown as string[]
+  return products.filter((p) => {
+    // Match by Shopify type / category
+    const shopifyTypes = cat.shopify_types as unknown as string[];
     if (shopifyTypes && shopifyTypes.length > 0) {
-      if (shopifyTypes.includes(p.category)) return true
+      if (shopifyTypes.includes(p.category)) return true;
     }
 
-    // Match by brand
-    if ('brands' in cat) {
-      const brands = cat.brands as unknown as string[]
-      if (brands.length > 0 && brands.includes(p.brand_name)) return true
+    // Match by brand (case-insensitive)
+    if ("brands" in cat) {
+      const brands = (cat.brands as unknown as string[]).map(normalizeBrand);
+      if (brands.length > 0 && brands.includes(normalizeBrand(p.brand_name))) return true;
     }
+
+    // Region shortcuts for CTRL+K / J / C beauty portals
+    const region = productRegion(p);
+    if (categoryKey === "ctrl-k" && /k-beauty|korea/i.test(region)) return true;
+    if (categoryKey === "ctrl-j" && /j-beauty|japan/i.test(region)) return true;
+    if (categoryKey === "ctrl-c-beauty" && /c-beauty|china/i.test(region)) return true;
 
     // Match by tag (stored in notes field in Base44)
-    if ('tags' in cat && cat.tags && (cat.tags as readonly string[]).length > 0) {
-      const productTags = (p.notes || '').split(',').map((t: string) => t.trim())
-      if ((cat.tags as readonly string[]).some((tag: string) => productTags.includes(tag))) return true
+    if ("tags" in cat && cat.tags && (cat.tags as readonly string[]).length > 0) {
+      const productTags = (p.notes || "").split(",").map((t: string) => t.trim().toLowerCase());
+      if (
+        (cat.tags as readonly string[]).some((tag: string) =>
+          productTags.includes(tag.toLowerCase()),
+        )
+      ) {
+        return true;
+      }
     }
 
-    return false
-  })
+    return false;
+  });
 }
 
 // ─────────────────────────────────────────────
