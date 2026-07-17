@@ -63,3 +63,12 @@ export const skuGatewayMap: Record<string, SkuGatewayMap> = {
 export function getGatewayIdsForSku(sku: string): SkuGatewayMap {
   return skuGatewayMap[sku.toUpperCase()] ?? skuGatewayMap[sku] ?? {};
 }
+
+/**
+ * Prefer live Senti SKU map, then static map.
+ * Use from server routes / RSC — keeps commerce bridges in sync.
+ */
+export async function resolveGatewayIdsForSku(sku: string): Promise<SkuGatewayMap> {
+  const { resolveGatewayIdsForSku: resolve } = await import("@/lib/bridges/hub");
+  return resolve(sku);
+}

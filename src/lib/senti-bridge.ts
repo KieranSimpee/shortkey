@@ -63,7 +63,7 @@ export async function getSentiData(type: "products" | "influencers" | "brands" |
     const res = await fetch(`${SENTI_API}?type=${type}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      next: { revalidate: 300 }, // cache 5 minutes in Next.js
+      next: { revalidate: 30 }, // keep bridges fresh
     });
     if (!res.ok) throw new Error(`Senti API error: ${res.status}`);
     const json = await res.json();
