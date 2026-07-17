@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${montserrat.variable} font-sans`}>
         {COMING_SOON ? (
-          children
+          <CartProvider>{children}</CartProvider>
         ) : (
           <ContentStudioShell>
             <CartProvider>
