@@ -10,11 +10,13 @@ type Props = {
   name: string;
   image: string;
   className?: string;
+  size?: "md" | "sm";
 };
 
-export function AddToCartButton({ sku, name, image, className }: Props) {
+export function AddToCartButton({ sku, name, image, className, size = "md" }: Props) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
+  const compact = size === "sm";
 
   return (
     <div className={cn("flex flex-wrap items-center gap-2", className)}>
@@ -24,14 +26,24 @@ export function AddToCartButton({ sku, name, image, className }: Props) {
           addItem({ sku, name, image, quantity: 1 });
           setAdded(true);
         }}
-        className="inline-flex rounded-full bg-brand px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white transition hover:bg-brand-dark"
+        className={cn(
+          "inline-flex rounded-full bg-brand font-medium uppercase text-white transition hover:bg-brand-dark",
+          compact
+            ? "px-2 py-1 text-[7px] tracking-[0.1em]"
+            : "px-5 py-2.5 text-[11px] tracking-[0.14em]",
+        )}
       >
-        {added ? "Added to bag" : "Add to bag"}
+        {added ? "Added" : "Add to bag"}
       </button>
       {added ? (
         <Link
           href="/checkout"
-          className="inline-flex rounded-full border border-brand/30 bg-brand/10 px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-brand"
+          className={cn(
+            "inline-flex rounded-full border border-brand/30 bg-brand/10 font-medium uppercase text-brand",
+            compact
+              ? "px-2 py-1 text-[7px] tracking-[0.1em]"
+              : "px-4 py-2.5 text-[11px] tracking-[0.14em]",
+          )}
         >
           Checkout →
         </Link>

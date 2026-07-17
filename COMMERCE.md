@@ -40,8 +40,19 @@ Recommended split:
 
 ## 3. Shopify
 
-1. Create a Custom App with **Storefront API** access
-2. Set `SHOPIFY_STORE_DOMAIN` + `SHOPIFY_STOREFRONT_ACCESS_TOKEN`
+### Push first product batch (catalog → Shopify)
+
+Shop products live in `src/content/shopCatalog.ts` (`syncReady: true` = first wave).
+
+```bash
+npm run sync:shopify              # dry-run → scripts/shopify-sync-payload.json
+npm run sync:shopify -- --push    # create draft products (needs Admin token)
+```
+
+After `--push`, paste printed variant GIDs into `src/lib/commerce/sku-map.ts`.
+
+1. Create a Custom App with **Storefront API** (+ **Admin API** write_products for sync)
+2. Set `SHOPIFY_STORE_DOMAIN` + `SHOPIFY_STOREFRONT_ACCESS_TOKEN` (+ `SHOPIFY_ADMIN_ACCESS_TOKEN` for push)
 3. Map each Shortkey SKU → variant GID in `src/lib/commerce/sku-map.ts`:
 
 ```ts
@@ -63,10 +74,24 @@ Shopify checkout requires mapped `shopifyVariantId` per line. Until mapped, choo
 3. Enable webhook verification + fulfillment emails
 4. Flip `NEXT_PUBLIC_COMMERCE_MODE=live`
 
-## 5. Key files
+## Bridge sync (always-on)
 
-- `src/lib/commerce/config.ts` — env detection  
-- `src/lib/commerce/stripe-server.ts` / `shopify-server.ts` — session/cart creators  
-- `src/lib/commerce/sku-map.ts` — SKU ↔ Price/Variant IDs  
-- `src/components/commerce/*` — cart + checkout UI  
-- `src/app/api/checkout/*` — HTTP surface for both gateways  
+Shortkey keeps commerce/data bridges aligned through `src/lib/bridges/hub.ts`:
+
+| Bridge | Role |
+|--------|------|
+| Base44 products API | Live shop products (`src/lib/products.ts`) |
+| Senti data bridge | Products + SKU→Shopify/Stripe map (`src/lib/senti-bridge.ts`) |
+| Static catalog / sku-map | Offline fallback |
+
+Live sources revalidate every **30s**. If a live bridge fails, static catalog fills the gap so `/shop` and checkout never go empty.
+
+Health check:
+
+```http
+GET /api/bridges/status
+```
+
+Checkout enrichment uses `resolveGatewayIdsForSku()` so Senti SKU maps stay applied without manual sku-map edits when Senti has IDs.
+
+ 

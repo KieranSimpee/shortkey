@@ -9,6 +9,7 @@ import {
   type InfluencerHostTabId,
   type InfluencerLiveHost,
 } from "@/content/homepage";
+import { AddToCartButton } from "@/components/commerce/AddToCartButton";
 import { Button } from "@/components/ui/Button";
 import { SectionShortcutBar } from "@/components/ui/SectionShortcutBar";
 import { ShortcutChip } from "@/components/ui/KeyCap";
@@ -184,27 +185,36 @@ function ShopPanel({ host }: { host: InfluencerLiveHost }) {
       </div>
       <div className="grid grid-cols-2 gap-2">
         {host.shopProducts.map((product) => (
-          <Link
+          <div
             key={`${host.id}-${product.sku}`}
-            href={product.href}
             className="group min-w-0 overflow-hidden rounded-lg border border-white/50 bg-white/55 transition-shadow hover:shadow-soft"
           >
-            <div className="relative aspect-square overflow-hidden">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                sizes="(max-width: 1024px) 30vw, 12vw"
+            <Link href={product.href} className="block">
+              <div className="relative aspect-square overflow-hidden">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  sizes="(max-width: 1024px) 30vw, 12vw"
+                />
+              </div>
+              <div className="border-t border-white/40 px-1.5 pt-1">
+                <p className="truncate font-mono text-[7px] uppercase tracking-wider text-brand/70">
+                  {product.sku}
+                </p>
+                <h4 className="type-nav-label truncate text-[9px] text-ink">{product.name}</h4>
+              </div>
+            </Link>
+            <div className="px-1.5 pb-1.5 pt-1">
+              <AddToCartButton
+                size="sm"
+                sku={product.sku}
+                name={product.name}
+                image={product.image}
               />
             </div>
-            <div className="border-t border-white/40 px-1.5 py-1">
-              <p className="truncate font-mono text-[7px] uppercase tracking-wider text-brand/70">
-                {product.sku}
-              </p>
-              <h4 className="type-nav-label truncate text-[9px] text-ink">{product.name}</h4>
-            </div>
-          </Link>
+          </div>
         ))}
       </div>
       <Link

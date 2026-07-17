@@ -1,4 +1,5 @@
 import { getCatalogProduct } from "@/lib/catalog";
+import { getShopCatalogRecord } from "@/content/shopCatalog";
 
 /**
  * Per-SKU price overrides.
@@ -45,13 +46,15 @@ const DEFAULT_UNIT_PRICE_USD = 24;
 
 /**
  * Returns USD price for a SKU.
- * Priority: PRICE_OVERRIDES → Shopify live price (future) → default $24
+ * Priority: shopCatalog → PRICE_OVERRIDES → catalog priceUsd → default $24
  */
 export function getUnitPriceUsd(sku: string): number {
   const key = sku.toUpperCase();
+  const shop = getShopCatalogRecord(key);
+  if (shop) return shop.priceUsd;
   if (PRICE_OVERRIDES[key] != null) return PRICE_OVERRIDES[key];
   const product = getCatalogProduct(sku);
-  if (!product) return DEFAULT_UNIT_PRICE_USD;
+  if (product?.priceUsd != null) return product.priceUsd;
   return DEFAULT_UNIT_PRICE_USD;
 }
 
