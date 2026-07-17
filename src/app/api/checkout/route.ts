@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCommerceConfig } from "@/lib/commerce/config";
-import { resolveGatewayIdsForSku } from "@/lib/commerce/sku-map";
+import { getGatewayIdsForSku } from "@/lib/commerce/sku-map";
 import { getUnitPriceUsd } from "@/lib/commerce/pricing";
 import { createShopifyCheckout } from "@/lib/commerce/shopify-server";
 import { createStripeCheckout } from "@/lib/commerce/stripe-server";
@@ -13,7 +13,7 @@ async function enrichLines(request: CheckoutRequest): Promise<CheckoutRequest> {
   const lines = await Promise.all(
     request.lines.map(async (line) => {
       const catalog = await getBridgedProduct(line.sku);
-      const map = await resolveGatewayIdsForSku(line.sku);
+      const map = await getGatewayIdsForSku(line.sku);
       return {
         ...line,
         name: line.name ?? catalog?.name ?? line.sku,
