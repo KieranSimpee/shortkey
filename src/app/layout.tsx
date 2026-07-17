@@ -35,11 +35,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} font-sans`}>
-        <CartProvider>
-          {COMING_SOON ? (
-            children
-          ) : (
-            <ContentStudioShell>
+        {COMING_SOON ? (
+          <CartProvider>{children}</CartProvider>
+        ) : (
+          <ContentStudioShell>
+            <CartProvider>
               <CmsHeader>
                 <Header />
               </CmsHeader>
@@ -50,9 +50,9 @@ export default function RootLayout({
               <CmsFooter>
                 <Footer />
               </CmsFooter>
-            </ContentStudioShell>
-          )}
-        </CartProvider>
+            </CartProvider>
+          </ContentStudioShell>
+        )}
       </body>
     </html>
   );
