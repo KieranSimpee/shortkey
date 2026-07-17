@@ -1,0 +1,3900 @@
+{
+  "source": "shopify-products-export.csv",
+  "importedAt": "2026-07-16T07:06:35.076Z",
+  "productCount": 45,
+  "variantCount": 110,
+  "products": [
+    {
+      "sku": "jungsaemmool-artist-eye-palette-01",
+      "handle": "jungsaemmool-artist-eye-palette",
+      "name": "Artist Eye Palette — 01 Pink Believe",
+      "title": "Artist Eye Palette",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Eyes",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 42,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-01.webp?v=1779882580",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-01.webp?v=1779882580",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-02.webp?v=1779882580",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-03.webp?v=1779882580"
+      ],
+      "tags": [
+        "creator-pick",
+        "eyes",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Pink Believe",
+      "status": "active",
+      "published": true,
+      "description": "A six-pan eye palette across matte, satin, and shimmer in three editions.",
+      "bodyHtml": "<p>A six-pan eye palette across matte, satin, and shimmer in three editions.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Sweep the lightest matte across the lid as a base. Layer the shimmer through the centre and deepen the outer corner with the darkest tone.",
+      "bestFor": [
+        "Daily eye",
+        "Soft shimmer",
+        "Defined finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-artist-eye-palette-02",
+      "handle": "jungsaemmool-artist-eye-palette",
+      "name": "Artist Eye Palette — 02 Mint Beauty",
+      "title": "Artist Eye Palette",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Eyes",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 42,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-02.webp?v=1779882580",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-01.webp?v=1779882580",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-02.webp?v=1779882580",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-03.webp?v=1779882580"
+      ],
+      "tags": [
+        "creator-pick",
+        "eyes",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Mint Beauty",
+      "status": "active",
+      "published": true,
+      "description": "A six-pan eye palette across matte, satin, and shimmer in three editions.",
+      "bodyHtml": "<p>A six-pan eye palette across matte, satin, and shimmer in three editions.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Sweep the lightest matte across the lid as a base. Layer the shimmer through the centre and deepen the outer corner with the darkest tone.",
+      "bestFor": [
+        "Daily eye",
+        "Soft shimmer",
+        "Defined finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-artist-eye-palette-03",
+      "handle": "jungsaemmool-artist-eye-palette",
+      "name": "Artist Eye Palette — 03 Nude Edit",
+      "title": "Artist Eye Palette",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Eyes",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 42,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-03.webp?v=1779882580",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-01.webp?v=1779882580",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-02.webp?v=1779882580",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-artist-eye-palette-03.webp?v=1779882580"
+      ],
+      "tags": [
+        "creator-pick",
+        "eyes",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "03 Nude Edit",
+      "status": "active",
+      "published": true,
+      "description": "A six-pan eye palette across matte, satin, and shimmer in three editions.",
+      "bodyHtml": "<p>A six-pan eye palette across matte, satin, and shimmer in three editions.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Sweep the lightest matte across the lid as a base. Layer the shimmer through the centre and deepen the outer corner with the darkest tone.",
+      "bestFor": [
+        "Daily eye",
+        "Soft shimmer",
+        "Defined finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "cosme-chef-baekdango-ampoule-01",
+      "handle": "cosme-chef-baekdango-ampoule",
+      "name": "Baekdango Ampoule",
+      "title": "Baekdango Ampoule",
+      "vendor": "Cosme Chef",
+      "type": "Masks & Treatments",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 32,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/cosme-chef-baekdango-ampoule-01.webp?v=1779882695",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/cosme-chef-baekdango-ampoule-01.webp?v=1779882695",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/cosme-chef-baekdango-ampoule-02.webp?v=1779882695",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/cosme-chef-baekdango-ampoule-03.webp?v=1779882695"
+      ],
+      "tags": [
+        "masks-and-treatments",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "30 ml",
+      "status": "active",
+      "published": true,
+      "description": "A rice wine ferment ampoule for tone and hydration. 30 ml.",
+      "bodyHtml": "<p>A rice wine ferment ampoule for tone and hydration. 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [],
+      "syncReady": true
+    },
+    {
+      "sku": "rejuran-biome-healer-youth-formula-cream-01",
+      "handle": "rejuran-biome-healer-youth-formula-cream",
+      "name": "Biome Healer Youth Formula Cream",
+      "title": "Biome Healer Youth Formula Cream",
+      "vendor": "REJURAN",
+      "type": "Prep & Hydrate",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 64,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rejuran-biome-healer-youth-cream-01.webp?v=1779882736",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rejuran-biome-healer-youth-cream-01.webp?v=1779882736",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rejuran-biome-healer-youth-cream-02.webp?v=1779882736"
+      ],
+      "tags": [
+        "new",
+        "prep-and-hydrate",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "50 ml",
+      "status": "active",
+      "published": true,
+      "description": "A barrier cream from REJURAN's Biome Healer line. 50 ml.",
+      "bodyHtml": "<p>A barrier cream from REJURAN's Biome Healer line. 50 ml.</p>",
+      "whyItMadeTheEdit": "A quiet, derm-leaning jar from REJURAN's Biome Healer line. The brief is barrier and biome rather than active overload.",
+      "howToUse": "",
+      "bestFor": [
+        "Barrier support",
+        "Daily moisture"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "romand-black-lip-trio-edition-01",
+      "handle": "romand-black-lip-trio-edition",
+      "name": "Black Lip Trio Edition — 01 Dusty Pink",
+      "title": "Black Lip Trio Edition",
+      "vendor": "rom&nd",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/romand-black-lip-trio-01.webp?v=1779882654",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/romand-black-lip-trio-01.webp?v=1779882654",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/romand-black-lip-trio-02.webp?v=1779882654",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/romand-black-lip-trio-03.webp?v=1779882654"
+      ],
+      "tags": [
+        "lips",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Dusty Pink",
+      "status": "active",
+      "published": true,
+      "description": "A three-lip set in a collectible black case. Tint, gloss, and matte.",
+      "bodyHtml": "<p>A three-lip set in a collectible black case. Tint, gloss, and matte.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Apply directly from the doe-foot for a saturated lip, or press in with a fingertip for a blurred stain.",
+      "bestFor": [
+        "Editorial looks",
+        "Layered lip",
+        "High-contrast makeup"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "romand-black-lip-trio-edition-02",
+      "handle": "romand-black-lip-trio-edition",
+      "name": "Black Lip Trio Edition — 02 Fig Mauve",
+      "title": "Black Lip Trio Edition",
+      "vendor": "rom&nd",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/romand-black-lip-trio-02.webp?v=1779882654",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/romand-black-lip-trio-01.webp?v=1779882654",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/romand-black-lip-trio-02.webp?v=1779882654",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/romand-black-lip-trio-03.webp?v=1779882654"
+      ],
+      "tags": [
+        "lips",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Fig Mauve",
+      "status": "active",
+      "published": true,
+      "description": "A three-lip set in a collectible black case. Tint, gloss, and matte.",
+      "bodyHtml": "<p>A three-lip set in a collectible black case. Tint, gloss, and matte.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Apply directly from the doe-foot for a saturated lip, or press in with a fingertip for a blurred stain.",
+      "bestFor": [
+        "Editorial looks",
+        "Layered lip",
+        "High-contrast makeup"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-classic-shine-lipstick-02",
+      "handle": "jungsaemmool-classic-shine-lipstick",
+      "name": "Classic Shine Lipstick — Alluring",
+      "title": "Classic Shine Lipstick",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 32,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-02.webp?v=1779882590",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-01.webp?v=1779882590",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-02.webp?v=1779882590",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-03.webp?v=1779882590"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Alluring",
+      "status": "active",
+      "published": true,
+      "description": "A satin-shine lipstick with rich colour payoff and a comfortable feel.",
+      "bodyHtml": "<p>A satin-shine lipstick with rich colour payoff and a comfortable feel.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-classic-shine-lipstick-01",
+      "handle": "jungsaemmool-classic-shine-lipstick",
+      "name": "Classic Shine Lipstick — Essential",
+      "title": "Classic Shine Lipstick",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 32,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-01.webp?v=1779882590",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-01.webp?v=1779882590",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-02.webp?v=1779882590",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-03.webp?v=1779882590"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Essential",
+      "status": "active",
+      "published": true,
+      "description": "A satin-shine lipstick with rich colour payoff and a comfortable feel.",
+      "bodyHtml": "<p>A satin-shine lipstick with rich colour payoff and a comfortable feel.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-classic-shine-lipstick-03",
+      "handle": "jungsaemmool-classic-shine-lipstick",
+      "name": "Classic Shine Lipstick — Iconic",
+      "title": "Classic Shine Lipstick",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 32,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-03.webp?v=1779882590",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-01.webp?v=1779882590",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-02.webp?v=1779882590",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-classic-shine-lipstick-03.webp?v=1779882590"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Iconic",
+      "status": "active",
+      "published": true,
+      "description": "A satin-shine lipstick with rich colour payoff and a comfortable feel.",
+      "bodyHtml": "<p>A satin-shine lipstick with rich colour payoff and a comfortable feel.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [],
+      "syncReady": true
+    },
+    {
+      "sku": "ahc-colla-juvenation-lift-4-treatment-essence-01",
+      "handle": "ahc-colla-juvenation-lift-4-treatment-essence",
+      "name": "Colla-Juvenation Lift 4 Treatment Essence",
+      "title": "Colla-Juvenation Lift 4 Treatment Essence",
+      "vendor": "AHC",
+      "type": "Masks & Treatments",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 58,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/ahc-colla-juvenation-lift4-essence-01.webp?v=1779882676",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/ahc-colla-juvenation-lift4-essence-01.webp?v=1779882676",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/ahc-colla-juvenation-lift4-essence-02.webp?v=1779882676"
+      ],
+      "tags": [
+        "made-the-edit",
+        "masks-and-treatments",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "150 ml",
+      "status": "active",
+      "published": true,
+      "description": "A lifting essence with collagen and peptides. 150 ml.",
+      "bodyHtml": "<p>A lifting essence with collagen and peptides. 150 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "After cleansing, press 2 to 3 drops into the skin morning and night before serum and moisturiser.",
+      "bestFor": [
+        "First step after cleansing",
+        "Layering under serum",
+        "Daily hydration"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "giverny-dewy-lip-glaze-01",
+      "handle": "giverny-dewy-lip-glaze",
+      "name": "Dewy Lip Glaze — 01 Muted Peach",
+      "title": "Dewy Lip Glaze",
+      "vendor": "Giverny",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-02.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-03.webp?v=1779882575"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Muted Peach",
+      "status": "active",
+      "published": true,
+      "description": "A glassy, cushioned lip glaze with non-sticky shine.",
+      "bodyHtml": "<p>A glassy, cushioned lip glaze with non-sticky shine.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [
+        "Daily wear",
+        "Layering over balm or tint"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "giverny-dewy-lip-glaze-02",
+      "handle": "giverny-dewy-lip-glaze",
+      "name": "Dewy Lip Glaze — 02 Mellow Beige",
+      "title": "Dewy Lip Glaze",
+      "vendor": "Giverny",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-02.webp?v=1779882575",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-02.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-03.webp?v=1779882575"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Mellow Beige",
+      "status": "active",
+      "published": true,
+      "description": "A glassy, cushioned lip glaze with non-sticky shine.",
+      "bodyHtml": "<p>A glassy, cushioned lip glaze with non-sticky shine.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [
+        "Daily wear",
+        "Layering over balm or tint"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "giverny-dewy-lip-glaze-03",
+      "handle": "giverny-dewy-lip-glaze",
+      "name": "Dewy Lip Glaze — 03 Kitten Coral",
+      "title": "Dewy Lip Glaze",
+      "vendor": "Giverny",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-03.webp?v=1779882575",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-02.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-03.webp?v=1779882575"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "03 Kitten Coral",
+      "status": "active",
+      "published": true,
+      "description": "A glassy, cushioned lip glaze with non-sticky shine.",
+      "bodyHtml": "<p>A glassy, cushioned lip glaze with non-sticky shine.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [
+        "Daily wear",
+        "Layering over balm or tint"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "giverny-dewy-lip-glaze-04",
+      "handle": "giverny-dewy-lip-glaze",
+      "name": "Dewy Lip Glaze — 04 Youth Pink",
+      "title": "Dewy Lip Glaze",
+      "vendor": "Giverny",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-02.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-03.webp?v=1779882575"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "04 Youth Pink",
+      "status": "active",
+      "published": true,
+      "description": "A glassy, cushioned lip glaze with non-sticky shine.",
+      "bodyHtml": "<p>A glassy, cushioned lip glaze with non-sticky shine.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [
+        "Daily wear",
+        "Layering over balm or tint"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "giverny-dewy-lip-glaze-05",
+      "handle": "giverny-dewy-lip-glaze",
+      "name": "Dewy Lip Glaze — 05 Refine Mauve",
+      "title": "Dewy Lip Glaze",
+      "vendor": "Giverny",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-02.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-03.webp?v=1779882575"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "05 Refine Mauve",
+      "status": "active",
+      "published": true,
+      "description": "A glassy, cushioned lip glaze with non-sticky shine.",
+      "bodyHtml": "<p>A glassy, cushioned lip glaze with non-sticky shine.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [
+        "Daily wear",
+        "Layering over balm or tint"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "giverny-dewy-lip-glaze-06",
+      "handle": "giverny-dewy-lip-glaze",
+      "name": "Dewy Lip Glaze — 06 Lychee Red",
+      "title": "Dewy Lip Glaze",
+      "vendor": "Giverny",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-02.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-03.webp?v=1779882575"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "06 Lychee Red",
+      "status": "active",
+      "published": true,
+      "description": "A glassy, cushioned lip glaze with non-sticky shine.",
+      "bodyHtml": "<p>A glassy, cushioned lip glaze with non-sticky shine.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [
+        "Daily wear",
+        "Layering over balm or tint"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "giverny-dewy-lip-glaze-07",
+      "handle": "giverny-dewy-lip-glaze",
+      "name": "Dewy Lip Glaze — 07 Creamy Rose",
+      "title": "Dewy Lip Glaze",
+      "vendor": "Giverny",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-02.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-03.webp?v=1779882575"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "07 Creamy Rose",
+      "status": "active",
+      "published": true,
+      "description": "A glassy, cushioned lip glaze with non-sticky shine.",
+      "bodyHtml": "<p>A glassy, cushioned lip glaze with non-sticky shine.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [
+        "Daily wear",
+        "Layering over balm or tint"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "giverny-dewy-lip-glaze-08",
+      "handle": "giverny-dewy-lip-glaze",
+      "name": "Dewy Lip Glaze — 08 Mauve Muhly",
+      "title": "Dewy Lip Glaze",
+      "vendor": "Giverny",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-01.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-02.webp?v=1779882575",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/giverny-dewy-lip-glaze-03.webp?v=1779882575"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "08 Mauve Muhly",
+      "status": "active",
+      "published": true,
+      "description": "A glassy, cushioned lip glaze with non-sticky shine.",
+      "bodyHtml": "<p>A glassy, cushioned lip glaze with non-sticky shine.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [
+        "Daily wear",
+        "Layering over balm or tint"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "nobev-easy-peasy-filter-cover-cushion-01",
+      "handle": "nobev-easy-peasy-filter-cover-cushion",
+      "name": "Easy Peasy Filter Cover Cushion — 01 Light",
+      "title": "Easy Peasy Filter Cover Cushion",
+      "vendor": "nobev",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/nobev-easy-peasy-filter-cover-cushion-01.webp?v=1779882631",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/nobev-easy-peasy-filter-cover-cushion-01.webp?v=1779882631",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/nobev-easy-peasy-filter-cover-cushion-02.webp?v=1779882631",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/nobev-easy-peasy-filter-cover-cushion-03.webp?v=1779882631"
+      ],
+      "tags": [
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Light",
+      "status": "active",
+      "published": true,
+      "description": "A lightweight cushion with a natural filter finish. SPF 50+ PA++++.",
+      "bodyHtml": "<p>A lightweight cushion with a natural filter finish. SPF 50+ PA++++.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Snap in the refill once the original runs out.",
+      "bestFor": [
+        "Daily wear",
+        "Soft-focus finish",
+        "Touch-ups on the go"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "nobev-easy-peasy-filter-cover-cushion-02",
+      "handle": "nobev-easy-peasy-filter-cover-cushion",
+      "name": "Easy Peasy Filter Cover Cushion — 02 Natural",
+      "title": "Easy Peasy Filter Cover Cushion",
+      "vendor": "nobev",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/nobev-easy-peasy-filter-cover-cushion-02.webp?v=1779882631",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/nobev-easy-peasy-filter-cover-cushion-01.webp?v=1779882631",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/nobev-easy-peasy-filter-cover-cushion-02.webp?v=1779882631",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/nobev-easy-peasy-filter-cover-cushion-03.webp?v=1779882631"
+      ],
+      "tags": [
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Natural",
+      "status": "active",
+      "published": true,
+      "description": "A lightweight cushion with a natural filter finish. SPF 50+ PA++++.",
+      "bodyHtml": "<p>A lightweight cushion with a natural filter finish. SPF 50+ PA++++.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Snap in the refill once the original runs out.",
+      "bestFor": [
+        "Daily wear",
+        "Soft-focus finish",
+        "Touch-ups on the go"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "the-whoo-essential-lip-glow-balm-01",
+      "handle": "the-whoo-essential-lip-glow-balm",
+      "name": "Essential Lip Glow Balm — 01 Nude",
+      "title": "Essential Lip Glow Balm",
+      "vendor": "The Whoo",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 32,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-essential-lip-glow-balm-01.webp?v=1779882672",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-essential-lip-glow-balm-01.webp?v=1779882672",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-essential-lip-glow-balm-02.webp?v=1779882672",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-essential-lip-glow-balm-03.webp?v=1779882672"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Nude",
+      "status": "active",
+      "published": true,
+      "description": "A heritage lip balm with a subtle glow and gilded case.",
+      "bodyHtml": "<p>A heritage lip balm with a subtle glow and gilded case.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Glide directly onto bare lips for a sheer wash of colour and comfort. Reapply through the day as needed.",
+      "bestFor": [
+        "Daily lip care",
+        "Soft tinted finish",
+        "Dressing up bare skin"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "the-whoo-essential-lip-glow-balm-02",
+      "handle": "the-whoo-essential-lip-glow-balm",
+      "name": "Essential Lip Glow Balm — 02 Pink",
+      "title": "Essential Lip Glow Balm",
+      "vendor": "The Whoo",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 32,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-essential-lip-glow-balm-02.webp?v=1779882672",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-essential-lip-glow-balm-01.webp?v=1779882672",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-essential-lip-glow-balm-02.webp?v=1779882672",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-essential-lip-glow-balm-03.webp?v=1779882672"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Pink",
+      "status": "active",
+      "published": true,
+      "description": "A heritage lip balm with a subtle glow and gilded case.",
+      "bodyHtml": "<p>A heritage lip balm with a subtle glow and gilded case.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Glide directly onto bare lips for a sheer wash of colour and comfort. Reapply through the day as needed.",
+      "bestFor": [
+        "Daily lip care",
+        "Soft tinted finish",
+        "Dressing up bare skin"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-essential-skin-nuder-cushion-01",
+      "handle": "jungsaemmool-essential-skin-nuder-cushion",
+      "name": "Essential Skin Nuder Long Wear Cushion — 21 Light",
+      "title": "Essential Skin Nuder Long Wear Cushion",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 54,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-02.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-03.webp?v=1779882549"
+      ],
+      "tags": [
+        "bestseller",
+        "creator-pick",
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "21 Light",
+      "status": "active",
+      "published": true,
+      "description": "A long-wear cushion with a soft satin finish. Refill included.",
+      "bodyHtml": "<p>A long-wear cushion with a soft satin finish. Refill included.</p>",
+      "whyItMadeTheEdit": "Built by a working artist for working skin. The finish reads as skin under daylight and stage light, and a refill is included so the case becomes a long-term object rather than a single use.",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Layer where needed. Snap in the refill once the original runs out.",
+      "bestFor": [
+        "Daily wear",
+        "Photography",
+        "Normal to combination"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-essential-skin-nuder-cushion-02",
+      "handle": "jungsaemmool-essential-skin-nuder-cushion",
+      "name": "Essential Skin Nuder Long Wear Cushion — 21N Neutral",
+      "title": "Essential Skin Nuder Long Wear Cushion",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 54,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-02.webp?v=1779882549",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-02.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-03.webp?v=1779882549"
+      ],
+      "tags": [
+        "bestseller",
+        "creator-pick",
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "21N Neutral",
+      "status": "active",
+      "published": true,
+      "description": "A long-wear cushion with a soft satin finish. Refill included.",
+      "bodyHtml": "<p>A long-wear cushion with a soft satin finish. Refill included.</p>",
+      "whyItMadeTheEdit": "Built by a working artist for working skin. The finish reads as skin under daylight and stage light, and a refill is included so the case becomes a long-term object rather than a single use.",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Layer where needed. Snap in the refill once the original runs out.",
+      "bestFor": [
+        "Daily wear",
+        "Photography",
+        "Normal to combination"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-essential-skin-nuder-cushion-03",
+      "handle": "jungsaemmool-essential-skin-nuder-cushion",
+      "name": "Essential Skin Nuder Long Wear Cushion — 23 Natural",
+      "title": "Essential Skin Nuder Long Wear Cushion",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 54,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-03.webp?v=1779882549",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-02.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-03.webp?v=1779882549"
+      ],
+      "tags": [
+        "bestseller",
+        "creator-pick",
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "23 Natural",
+      "status": "active",
+      "published": true,
+      "description": "A long-wear cushion with a soft satin finish. Refill included.",
+      "bodyHtml": "<p>A long-wear cushion with a soft satin finish. Refill included.</p>",
+      "whyItMadeTheEdit": "Built by a working artist for working skin. The finish reads as skin under daylight and stage light, and a refill is included so the case becomes a long-term object rather than a single use.",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Layer where needed. Snap in the refill once the original runs out.",
+      "bestFor": [
+        "Daily wear",
+        "Photography",
+        "Normal to combination"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-essential-skin-nuder-cushion-04",
+      "handle": "jungsaemmool-essential-skin-nuder-cushion",
+      "name": "Essential Skin Nuder Long Wear Cushion — 23N Warm",
+      "title": "Essential Skin Nuder Long Wear Cushion",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 54,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-02.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-03.webp?v=1779882549"
+      ],
+      "tags": [
+        "bestseller",
+        "creator-pick",
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "23N Warm",
+      "status": "active",
+      "published": true,
+      "description": "A long-wear cushion with a soft satin finish. Refill included.",
+      "bodyHtml": "<p>A long-wear cushion with a soft satin finish. Refill included.</p>",
+      "whyItMadeTheEdit": "Built by a working artist for working skin. The finish reads as skin under daylight and stage light, and a refill is included so the case becomes a long-term object rather than a single use.",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Layer where needed. Snap in the refill once the original runs out.",
+      "bestFor": [
+        "Daily wear",
+        "Photography",
+        "Normal to combination"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-essential-skin-nuder-cushion-05",
+      "handle": "jungsaemmool-essential-skin-nuder-cushion",
+      "name": "Essential Skin Nuder Long Wear Cushion — 25 Tan",
+      "title": "Essential Skin Nuder Long Wear Cushion",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 54,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-02.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-03.webp?v=1779882549"
+      ],
+      "tags": [
+        "bestseller",
+        "creator-pick",
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "25 Tan",
+      "status": "active",
+      "published": true,
+      "description": "A long-wear cushion with a soft satin finish. Refill included.",
+      "bodyHtml": "<p>A long-wear cushion with a soft satin finish. Refill included.</p>",
+      "whyItMadeTheEdit": "Built by a working artist for working skin. The finish reads as skin under daylight and stage light, and a refill is included so the case becomes a long-term object rather than a single use.",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Layer where needed. Snap in the refill once the original runs out.",
+      "bestFor": [
+        "Daily wear",
+        "Photography",
+        "Normal to combination"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-essential-skin-nuder-cushion-06",
+      "handle": "jungsaemmool-essential-skin-nuder-cushion",
+      "name": "Essential Skin Nuder Long Wear Cushion — 27 Deep",
+      "title": "Essential Skin Nuder Long Wear Cushion",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 54,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-01.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-02.webp?v=1779882549",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-cushion-03.webp?v=1779882549"
+      ],
+      "tags": [
+        "bestseller",
+        "creator-pick",
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "27 Deep",
+      "status": "active",
+      "published": true,
+      "description": "A long-wear cushion with a soft satin finish. Refill included.",
+      "bodyHtml": "<p>A long-wear cushion with a soft satin finish. Refill included.</p>",
+      "whyItMadeTheEdit": "Built by a working artist for working skin. The finish reads as skin under daylight and stage light, and a refill is included so the case becomes a long-term object rather than a single use.",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Layer where needed. Snap in the refill once the original runs out.",
+      "bestFor": [
+        "Daily wear",
+        "Photography",
+        "Normal to combination"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "demar3-etsere-melacare-creme-01",
+      "handle": "demar3-etsere-melacare-creme",
+      "name": "Etsere Melacare Crème",
+      "title": "Etsere Melacare Crème",
+      "vendor": "DEMAR3",
+      "type": "Prep & Hydrate",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 72,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-etsere-melacare-creme-01.webp?v=1779882704",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-etsere-melacare-creme-01.webp?v=1779882704",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-etsere-melacare-creme-02.webp?v=1779882704",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-etsere-melacare-creme-03.webp?v=1779882704"
+      ],
+      "tags": [
+        "prep-and-hydrate",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "50 ml",
+      "status": "active",
+      "published": true,
+      "description": "A brightening cream with melanin-care actives. 50 ml.",
+      "bodyHtml": "<p>A brightening cream with melanin-care actives. 50 ml.</p>",
+      "whyItMadeTheEdit": "A quiet, sculptural jar with a focused brief: smooth dry-looking skin, brighten tone, and leave a healthy, glowing finish.",
+      "howToUse": "After serum, scoop a pea-sized amount and press evenly across the face morning and night.",
+      "bestFor": [
+        "Dry-looking skin",
+        "Tone brightening",
+        "Daily moisture"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "demar3-etsere-melatonic-ampoule-01",
+      "handle": "demar3-etsere-melatonic-ampoule",
+      "name": "Etsere Melatonic Ampoule",
+      "title": "Etsere Melatonic Ampoule",
+      "vendor": "DEMAR3",
+      "type": "Masks & Treatments",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 64,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-etsere-melatonic-ampoule-01.webp?v=1779882709",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-etsere-melatonic-ampoule-01.webp?v=1779882709",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-etsere-melatonic-ampoule-02.webp?v=1779882709",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-etsere-melatonic-ampoule-03.webp?v=1779882709"
+      ],
+      "tags": [
+        "masks-and-treatments",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "30 ml",
+      "status": "active",
+      "published": true,
+      "description": "A concentrated brightening ampoule for tone correction. 30 ml.",
+      "bodyHtml": "<p>A concentrated brightening ampoule for tone correction. 30 ml.</p>",
+      "whyItMadeTheEdit": "A quiet, sculptural ampoule with a focused brief: brighten dark, dull-looking skin and leave a healthy, glowing finish.",
+      "howToUse": "After toner, dispense a small amount and press evenly across the face morning and night. Follow with cream.",
+      "bestFor": [
+        "Dull-looking skin",
+        "Tone brightening",
+        "Daily glow"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "toxnfill-eye-and-face-serum-01",
+      "handle": "toxnfill-eye-and-face-serum",
+      "name": "Eye & Face Serum",
+      "title": "Eye & Face Serum",
+      "vendor": "TOXNFILL",
+      "type": "Lip & Eye Care",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 48,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/toxnfill-eye-face-serum-01.webp?v=1779882753",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/toxnfill-eye-face-serum-01.webp?v=1779882753",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/toxnfill-eye-face-serum-02.webp?v=1779882753",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/toxnfill-eye-face-serum-03.webp?v=1779882753"
+      ],
+      "tags": [
+        "lip-and-eye-care",
+        "new",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "30 ml",
+      "status": "active",
+      "published": true,
+      "description": "A slow-aging serum for eye and face. 30 ml.",
+      "bodyHtml": "<p>A slow-aging serum for eye and face. 30 ml.</p>",
+      "whyItMadeTheEdit": "A single serum that does double duty across the eye area and the face, with a slow-aging brief focused on lift, elasticity, and the wrinkle barrier.",
+      "howToUse": "Dispense one to two pumps. Press across the face and gently pat around the eye area morning and night.",
+      "bestFor": [
+        "Eye area",
+        "Lift and elasticity",
+        "Daily use"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "lbb-goldrella-peptide-28-anti-melanin-essence-01",
+      "handle": "lbb-goldrella-peptide-28-anti-melanin-essence",
+      "name": "Goldrella Peptide 28 Anti-Melanin Essence",
+      "title": "Goldrella Peptide 28 Anti-Melanin Essence",
+      "vendor": "LBB",
+      "type": "Masks & Treatments",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 68,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/lbb-goldrella-peptide-28-essence-01.webp?v=1779882733",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/lbb-goldrella-peptide-28-essence-01.webp?v=1779882733",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/lbb-goldrella-peptide-28-essence-02.webp?v=1779882733",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/lbb-goldrella-peptide-28-essence-03.webp?v=1779882733"
+      ],
+      "tags": [
+        "masks-and-treatments",
+        "new",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "150 ml",
+      "status": "active",
+      "published": true,
+      "description": "A brightening essence with Goldrella Peptide. 150 ml.",
+      "bodyHtml": "<p>A brightening essence with Goldrella Peptide. 150 ml.</p>",
+      "whyItMadeTheEdit": "A focused brightening essence built around Goldrella Peptide and Idebenonesome, with a clinical brief: tone, turnover, elasticity.",
+      "howToUse": "After toner, dispense a small amount and press evenly across the face morning and night. Follow with cream.",
+      "bestFor": [
+        "Tone brightening",
+        "Pigmentation care",
+        "Elasticity"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "fully-green-tomato-cream-01",
+      "handle": "fully-green-tomato-cream",
+      "name": "Green Tomato Cream",
+      "title": "Green Tomato Cream",
+      "vendor": "Fully",
+      "type": "Prep & Hydrate",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 32,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/fully-green-tomato-cream-01.webp?v=1779882723",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/fully-green-tomato-cream-01.webp?v=1779882723",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/fully-green-tomato-cream-02.webp?v=1779882723",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/fully-green-tomato-cream-03.webp?v=1779882723"
+      ],
+      "tags": [
+        "new",
+        "prep-and-hydrate",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "90 ml",
+      "status": "active",
+      "published": true,
+      "description": "A vegan pore-lifting cream with 65% green tomato. 90 ml.",
+      "bodyHtml": "<p>A vegan pore-lifting cream with 65% green tomato. 90 ml.</p>",
+      "whyItMadeTheEdit": "A clean, single-hero formula: 65% green tomato in a vegan base, with a clear pore-lifting brief.",
+      "howToUse": "After serum, scoop a small amount and press evenly across the face morning and night.",
+      "bestFor": [
+        "Pore care",
+        "Daily moisture",
+        "Vegan routines"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "cosme-chef-heukdango-ampoule-01",
+      "handle": "cosme-chef-heukdango-ampoule",
+      "name": "Heukdango Ampoule",
+      "title": "Heukdango Ampoule",
+      "vendor": "Cosme Chef",
+      "type": "Masks & Treatments",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 32,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/cosme-chef-heukdango-ampoule-01.webp?v=1779882699",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/cosme-chef-heukdango-ampoule-01.webp?v=1779882699",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/cosme-chef-heukdango-ampoule-02.webp?v=1779882699",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/cosme-chef-heukdango-ampoule-03.webp?v=1779882699"
+      ],
+      "tags": [
+        "masks-and-treatments",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "30 ml",
+      "status": "active",
+      "published": true,
+      "description": "A black rice ferment ampoule for elasticity and nourishment. 30 ml.",
+      "bodyHtml": "<p>A black rice ferment ampoule for elasticity and nourishment. 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-homme-black-active-2p-set-01",
+      "handle": "hera-homme-black-active-2p-set",
+      "name": "Homme Black Active 2P Set",
+      "title": "Homme Black Active 2P Set",
+      "vendor": "HERA",
+      "type": "Prep & Hydrate",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 98,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-homme-black-active-set-01.webp?v=1779882728",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-homme-black-active-set-01.webp?v=1779882728",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-homme-black-active-set-02.webp?v=1779882728",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-homme-black-active-set-03.webp?v=1779882728"
+      ],
+      "tags": [
+        "new",
+        "prep-and-hydrate",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "Toner 125 ml + Emulsion 110 ml",
+      "status": "active",
+      "published": true,
+      "description": "A two-step men's ritual: Toner 125 ml and Emulsion 110 ml.",
+      "bodyHtml": "<p>A two-step men's ritual: Toner 125 ml and Emulsion 110 ml.</p>",
+      "whyItMadeTheEdit": "HERA's quiet, prestige men's ritual paired in a single set: a refining toner and a comforting emulsion in dark, weighted glass.",
+      "howToUse": "Morning and night after cleansing, smooth the toner across the face, then follow with the emulsion.",
+      "bestFor": [
+        "Men's daily ritual",
+        "Two-step routines",
+        "Gifting"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "easydew-lift-pdrn-neck-patch-01",
+      "handle": "easydew-lift-pdrn-neck-patch",
+      "name": "Lift PDRN Neck Patch",
+      "title": "Lift PDRN Neck Patch",
+      "vendor": "Easydew",
+      "type": "Masks & Treatments",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 42,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/easydew-lift-pdrn-neck-patch-01.webp?v=1779882718",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/easydew-lift-pdrn-neck-patch-01.webp?v=1779882718",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/easydew-lift-pdrn-neck-patch-02.webp?v=1779882718",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/easydew-lift-pdrn-neck-patch-03.webp?v=1779882718"
+      ],
+      "tags": [
+        "masks-and-treatments",
+        "new",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "4 sheets",
+      "status": "active",
+      "published": true,
+      "description": "A lifting neck patch with DW-EGF, PDRN, and peptide complex. 4 sheets.",
+      "bodyHtml": "<p>A lifting neck patch with DW-EGF, PDRN, and peptide complex. 4 sheets.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "After cleansing and toning, apply a patch to the neck area. Leave on for 20 to 30 minutes, then gently pat any remaining essence into the skin.",
+      "bestFor": [
+        "Neck care",
+        "Lift and firm",
+        "Targeted treatment"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "sum37-micro-active-powder-wash-01",
+      "handle": "sum37-micro-active-powder-wash",
+      "name": "Micro-Active Powder Wash",
+      "title": "Micro-Active Powder Wash",
+      "vendor": "su:m37°",
+      "type": "Cleanse & Remove",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 48,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-powder-wash-01.webp?v=1779882561",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-powder-wash-01.webp?v=1779882561",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-powder-wash-02.webp?v=1779882561",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-powder-wash-03.webp?v=1779882561"
+      ],
+      "tags": [
+        "bestseller",
+        "cleanse-and-remove",
+        "made-the-edit",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "60 g",
+      "status": "active",
+      "published": true,
+      "description": "A naturally fermented enzyme powder cleanser for soft, refined skin.",
+      "bodyHtml": "<p>A naturally fermented enzyme powder cleanser for soft, refined skin.</p>",
+      "whyItMadeTheEdit": "A daily-suitable enzyme cleanser that refines texture without stripping. The fermented base reads gentle on reactive skin.",
+      "howToUse": "Tip a small amount into wet palms. Build a foam, massage onto damp skin for thirty seconds, rinse with lukewarm water.",
+      "bestFor": [
+        "Daily second cleanse",
+        "Texture refinement",
+        "Sensitive skin"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "dasique-mood-painting-lip-cheek-palette-01",
+      "handle": "dasique-mood-painting-lip-cheek-palette",
+      "name": "Mood Painting Lip and Cheek Palette — Mood 01 Pink",
+      "title": "Mood Painting Lip and Cheek Palette",
+      "vendor": "dasique",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-01.webp?v=1779882570",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-01.webp?v=1779882570",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-02.webp?v=1779882570",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-03.webp?v=1779882570"
+      ],
+      "tags": [
+        "face",
+        "limited",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Mood 01 Pink",
+      "status": "active",
+      "published": true,
+      "description": "A multi-use cream palette for cheeks and lips, in tied-together tones.",
+      "bodyHtml": "<p>A multi-use cream palette for cheeks and lips, in tied-together tones.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Tap a fingertip or small brush into a single shade. Press onto the apples of the cheeks, then layer the same tone onto the lips for a tied-together finish.",
+      "bestFor": [
+        "Lip and cheek",
+        "Soft daily flush",
+        "Travel"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "dasique-mood-painting-lip-cheek-palette-02",
+      "handle": "dasique-mood-painting-lip-cheek-palette",
+      "name": "Mood Painting Lip and Cheek Palette — Mood 02 Coral",
+      "title": "Mood Painting Lip and Cheek Palette",
+      "vendor": "dasique",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-02.webp?v=1779882570",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-01.webp?v=1779882570",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-02.webp?v=1779882570",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-03.webp?v=1779882570"
+      ],
+      "tags": [
+        "face",
+        "limited",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Mood 02 Coral",
+      "status": "active",
+      "published": true,
+      "description": "A multi-use cream palette for cheeks and lips, in tied-together tones.",
+      "bodyHtml": "<p>A multi-use cream palette for cheeks and lips, in tied-together tones.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Tap a fingertip or small brush into a single shade. Press onto the apples of the cheeks, then layer the same tone onto the lips for a tied-together finish.",
+      "bestFor": [
+        "Lip and cheek",
+        "Soft daily flush",
+        "Travel"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "dasique-mood-painting-lip-cheek-palette-03",
+      "handle": "dasique-mood-painting-lip-cheek-palette",
+      "name": "Mood Painting Lip and Cheek Palette — Mood 03 Mauve",
+      "title": "Mood Painting Lip and Cheek Palette",
+      "vendor": "dasique",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-03.webp?v=1779882570",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-01.webp?v=1779882570",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-02.webp?v=1779882570",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-03.webp?v=1779882570"
+      ],
+      "tags": [
+        "face",
+        "limited",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Mood 03 Mauve",
+      "status": "active",
+      "published": true,
+      "description": "A multi-use cream palette for cheeks and lips, in tied-together tones.",
+      "bodyHtml": "<p>A multi-use cream palette for cheeks and lips, in tied-together tones.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Tap a fingertip or small brush into a single shade. Press onto the apples of the cheeks, then layer the same tone onto the lips for a tied-together finish.",
+      "bestFor": [
+        "Lip and cheek",
+        "Soft daily flush",
+        "Travel"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "dasique-mood-painting-lip-cheek-palette-04",
+      "handle": "dasique-mood-painting-lip-cheek-palette",
+      "name": "Mood Painting Lip and Cheek Palette — Mood 04 Sweet Bear",
+      "title": "Mood Painting Lip and Cheek Palette",
+      "vendor": "dasique",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-01.webp?v=1779882570",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-01.webp?v=1779882570",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-02.webp?v=1779882570",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/dasique-lip-cheek-palette-03.webp?v=1779882570"
+      ],
+      "tags": [
+        "face",
+        "limited",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Mood 04 Sweet Bear",
+      "status": "active",
+      "published": true,
+      "description": "A multi-use cream palette for cheeks and lips, in tied-together tones.",
+      "bodyHtml": "<p>A multi-use cream palette for cheeks and lips, in tied-together tones.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Tap a fingertip or small brush into a single shade. Press onto the apples of the cheeks, then layer the same tone onto the lips for a tied-together finish.",
+      "bestFor": [
+        "Lip and cheek",
+        "Soft daily flush",
+        "Travel"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-moodwear-blur-lipstick-01",
+      "handle": "muzigae-mansion-moodwear-blur-lipstick",
+      "name": "Moodwear Blur Lipstick — 01 Drift",
+      "title": "Moodwear Blur Lipstick",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 24,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-01.webp?v=1779882616",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-01.webp?v=1779882616",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-02.webp?v=1779882616",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-03.webp?v=1779882616"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Drift",
+      "status": "active",
+      "published": true,
+      "description": "A soft-focus matte lipstick with a lived-in blur finish.",
+      "bodyHtml": "<p>A soft-focus matte lipstick with a lived-in blur finish.</p>",
+      "whyItMadeTheEdit": "A matte that reads soft rather than dry. The blurred finish gives weight and edge without the flatness most matte bullets settle into.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out. For a softer edge, tap out with a fingertip.",
+      "bestFor": [
+        "Defined lip",
+        "Editorial finish",
+        "Evening"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-moodwear-blur-lipstick-02",
+      "handle": "muzigae-mansion-moodwear-blur-lipstick",
+      "name": "Moodwear Blur Lipstick — 02 Grain",
+      "title": "Moodwear Blur Lipstick",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 24,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-02.webp?v=1779882616",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-01.webp?v=1779882616",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-02.webp?v=1779882616",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-03.webp?v=1779882616"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Grain",
+      "status": "active",
+      "published": true,
+      "description": "A soft-focus matte lipstick with a lived-in blur finish.",
+      "bodyHtml": "<p>A soft-focus matte lipstick with a lived-in blur finish.</p>",
+      "whyItMadeTheEdit": "A matte that reads soft rather than dry. The blurred finish gives weight and edge without the flatness most matte bullets settle into.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out. For a softer edge, tap out with a fingertip.",
+      "bestFor": [
+        "Defined lip",
+        "Editorial finish",
+        "Evening"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-moodwear-blur-lipstick-03",
+      "handle": "muzigae-mansion-moodwear-blur-lipstick",
+      "name": "Moodwear Blur Lipstick — 03 Warmth",
+      "title": "Moodwear Blur Lipstick",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 24,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-03.webp?v=1779882616",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-01.webp?v=1779882616",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-02.webp?v=1779882616",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-03.webp?v=1779882616"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "03 Warmth",
+      "status": "active",
+      "published": true,
+      "description": "A soft-focus matte lipstick with a lived-in blur finish.",
+      "bodyHtml": "<p>A soft-focus matte lipstick with a lived-in blur finish.</p>",
+      "whyItMadeTheEdit": "A matte that reads soft rather than dry. The blurred finish gives weight and edge without the flatness most matte bullets settle into.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out. For a softer edge, tap out with a fingertip.",
+      "bestFor": [
+        "Defined lip",
+        "Editorial finish",
+        "Evening"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-moodwear-blur-lipstick-04",
+      "handle": "muzigae-mansion-moodwear-blur-lipstick",
+      "name": "Moodwear Blur Lipstick — 04 Flush",
+      "title": "Moodwear Blur Lipstick",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 24,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-01.webp?v=1779882616",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-01.webp?v=1779882616",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-02.webp?v=1779882616",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-moodwear-blur-lipstick-03.webp?v=1779882616"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "04 Flush",
+      "status": "active",
+      "published": true,
+      "description": "A soft-focus matte lipstick with a lived-in blur finish.",
+      "bodyHtml": "<p>A soft-focus matte lipstick with a lived-in blur finish.</p>",
+      "whyItMadeTheEdit": "A matte that reads soft rather than dry. The blurred finish gives weight and edge without the flatness most matte bullets settle into.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out. For a softer edge, tap out with a fingertip.",
+      "bestFor": [
+        "Defined lip",
+        "Editorial finish",
+        "Evening"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-new-classic-matte-lipstick-04",
+      "handle": "jungsaemmool-new-classic-matte-lipstick",
+      "name": "New Classic Matte Lipstick — Muted",
+      "title": "New Classic Matte Lipstick",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 34,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-01.webp?v=1779882605",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-01.webp?v=1779882605",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-02.webp?v=1779882605",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-03.webp?v=1779882606"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Muted",
+      "status": "active",
+      "published": true,
+      "description": "A velvet matte lipstick with a buildable, second-skin finish.",
+      "bodyHtml": "<p>A velvet matte lipstick with a buildable, second-skin finish.</p>",
+      "whyItMadeTheEdit": "A matte from a working artist's brand that prioritises wear over flatness. Pigment lays evenly in one pass and stays comfortable through the day.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out to the edge. Blot for an even softer finish.",
+      "bestFor": [
+        "Defined lip",
+        "Photography",
+        "All-day wear"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-new-classic-matte-lipstick-03",
+      "handle": "jungsaemmool-new-classic-matte-lipstick",
+      "name": "New Classic Matte Lipstick — Refined",
+      "title": "New Classic Matte Lipstick",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 34,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-03.webp?v=1779882606",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-01.webp?v=1779882605",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-02.webp?v=1779882605",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-03.webp?v=1779882606"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Refined",
+      "status": "active",
+      "published": true,
+      "description": "A velvet matte lipstick with a buildable, second-skin finish.",
+      "bodyHtml": "<p>A velvet matte lipstick with a buildable, second-skin finish.</p>",
+      "whyItMadeTheEdit": "A matte from a working artist's brand that prioritises wear over flatness. Pigment lays evenly in one pass and stays comfortable through the day.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out to the edge. Blot for an even softer finish.",
+      "bestFor": [
+        "Defined lip",
+        "Photography",
+        "All-day wear"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-new-classic-matte-lipstick-02",
+      "handle": "jungsaemmool-new-classic-matte-lipstick",
+      "name": "New Classic Matte Lipstick — Statement",
+      "title": "New Classic Matte Lipstick",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 34,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-02.webp?v=1779882605",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-01.webp?v=1779882605",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-02.webp?v=1779882605",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-03.webp?v=1779882606"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Statement",
+      "status": "active",
+      "published": true,
+      "description": "A velvet matte lipstick with a buildable, second-skin finish.",
+      "bodyHtml": "<p>A velvet matte lipstick with a buildable, second-skin finish.</p>",
+      "whyItMadeTheEdit": "A matte from a working artist's brand that prioritises wear over flatness. Pigment lays evenly in one pass and stays comfortable through the day.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out to the edge. Blot for an even softer finish.",
+      "bestFor": [
+        "Defined lip",
+        "Photography",
+        "All-day wear"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-new-classic-matte-lipstick-01",
+      "handle": "jungsaemmool-new-classic-matte-lipstick",
+      "name": "New Classic Matte Lipstick — Understated",
+      "title": "New Classic Matte Lipstick",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 34,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-01.webp?v=1779882605",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-01.webp?v=1779882605",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-02.webp?v=1779882605",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-new-classic-matte-lipstick-03.webp?v=1779882606"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Understated",
+      "status": "active",
+      "published": true,
+      "description": "A velvet matte lipstick with a buildable, second-skin finish.",
+      "bodyHtml": "<p>A velvet matte lipstick with a buildable, second-skin finish.</p>",
+      "whyItMadeTheEdit": "A matte from a working artist's brand that prioritises wear over flatness. Pigment lays evenly in one pass and stays comfortable through the day.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out to the edge. Blot for an even softer finish.",
+      "bestFor": [
+        "Defined lip",
+        "Photography",
+        "All-day wear"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-objet-water-01",
+      "handle": "muzigae-mansion-objet-water",
+      "name": "Objet Water — 001",
+      "title": "Objet Water",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 19,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-02.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-03.webp?v=1779882565"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "001",
+      "status": "active",
+      "published": true,
+      "description": "A water-light liquid lip tint that sets to a soft, lived-in stain.",
+      "bodyHtml": "<p>A water-light liquid lip tint that sets to a soft, lived-in stain.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab from the tube applicator onto the centre of the lips and press out with a fingertip for a diffused edge.",
+      "bestFor": [
+        "Daily wear",
+        "Soft stain finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-objet-water-02",
+      "handle": "muzigae-mansion-objet-water",
+      "name": "Objet Water — 002",
+      "title": "Objet Water",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 19,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-02.webp?v=1779882565",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-02.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-03.webp?v=1779882565"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "002",
+      "status": "active",
+      "published": true,
+      "description": "A water-light liquid lip tint that sets to a soft, lived-in stain.",
+      "bodyHtml": "<p>A water-light liquid lip tint that sets to a soft, lived-in stain.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab from the tube applicator onto the centre of the lips and press out with a fingertip for a diffused edge.",
+      "bestFor": [
+        "Daily wear",
+        "Soft stain finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-objet-water-03",
+      "handle": "muzigae-mansion-objet-water",
+      "name": "Objet Water — 003 Posh",
+      "title": "Objet Water",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 19,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-03.webp?v=1779882565",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-02.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-03.webp?v=1779882565"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "003 Posh",
+      "status": "active",
+      "published": true,
+      "description": "A water-light liquid lip tint that sets to a soft, lived-in stain.",
+      "bodyHtml": "<p>A water-light liquid lip tint that sets to a soft, lived-in stain.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab from the tube applicator onto the centre of the lips and press out with a fingertip for a diffused edge.",
+      "bestFor": [
+        "Daily wear",
+        "Soft stain finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-objet-water-04",
+      "handle": "muzigae-mansion-objet-water",
+      "name": "Objet Water — 004",
+      "title": "Objet Water",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 19,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-02.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-03.webp?v=1779882565"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "004",
+      "status": "active",
+      "published": true,
+      "description": "A water-light liquid lip tint that sets to a soft, lived-in stain.",
+      "bodyHtml": "<p>A water-light liquid lip tint that sets to a soft, lived-in stain.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab from the tube applicator onto the centre of the lips and press out with a fingertip for a diffused edge.",
+      "bestFor": [
+        "Daily wear",
+        "Soft stain finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-objet-water-05",
+      "handle": "muzigae-mansion-objet-water",
+      "name": "Objet Water — 005",
+      "title": "Objet Water",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 19,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-02.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-03.webp?v=1779882565"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "005",
+      "status": "active",
+      "published": true,
+      "description": "A water-light liquid lip tint that sets to a soft, lived-in stain.",
+      "bodyHtml": "<p>A water-light liquid lip tint that sets to a soft, lived-in stain.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab from the tube applicator onto the centre of the lips and press out with a fingertip for a diffused edge.",
+      "bestFor": [
+        "Daily wear",
+        "Soft stain finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-objet-water-06",
+      "handle": "muzigae-mansion-objet-water",
+      "name": "Objet Water — 006",
+      "title": "Objet Water",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 19,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-02.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-03.webp?v=1779882565"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "006",
+      "status": "active",
+      "published": true,
+      "description": "A water-light liquid lip tint that sets to a soft, lived-in stain.",
+      "bodyHtml": "<p>A water-light liquid lip tint that sets to a soft, lived-in stain.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab from the tube applicator onto the centre of the lips and press out with a fingertip for a diffused edge.",
+      "bestFor": [
+        "Daily wear",
+        "Soft stain finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-objet-water-07",
+      "handle": "muzigae-mansion-objet-water",
+      "name": "Objet Water — 008 Pitch",
+      "title": "Objet Water",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 19,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-01.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-02.webp?v=1779882565",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-objet-water-03.webp?v=1779882565"
+      ],
+      "tags": [
+        "lips",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "008 Pitch",
+      "status": "active",
+      "published": true,
+      "description": "A water-light liquid lip tint that sets to a soft, lived-in stain.",
+      "bodyHtml": "<p>A water-light liquid lip tint that sets to a soft, lived-in stain.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab from the tube applicator onto the centre of the lips and press out with a fingertip for a diffused edge.",
+      "bestFor": [
+        "Daily wear",
+        "Soft stain finish"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-one-only-single-shadow-01",
+      "handle": "muzigae-mansion-one-only-single-shadow",
+      "name": "One & Only Single Shadow — Glitter",
+      "title": "One & Only Single Shadow",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Eyes",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 16,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-01.webp?v=1779882621",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-01.webp?v=1779882621",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-02.webp?v=1779882621",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-03.webp?v=1779882621"
+      ],
+      "tags": [
+        "eyes",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Glitter",
+      "status": "active",
+      "published": true,
+      "description": "A single-pan eye shadow with a soft, buildable finish. Four textures.",
+      "bodyHtml": "<p>A single-pan eye shadow with a soft, buildable finish. Four textures.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press onto the lid with a fingertip for full payoff or sweep with a soft brush for a wash. Layer with other shades to build a defined eye.",
+      "bestFor": [
+        "Single-shade eye",
+        "Layering",
+        "Travel-friendly"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-one-only-single-shadow-03",
+      "handle": "muzigae-mansion-one-only-single-shadow",
+      "name": "One & Only Single Shadow — Matte",
+      "title": "One & Only Single Shadow",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Eyes",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 16,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-03.webp?v=1779882621",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-01.webp?v=1779882621",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-02.webp?v=1779882621",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-03.webp?v=1779882621"
+      ],
+      "tags": [
+        "eyes",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Matte",
+      "status": "active",
+      "published": true,
+      "description": "A single-pan eye shadow with a soft, buildable finish. Four textures.",
+      "bodyHtml": "<p>A single-pan eye shadow with a soft, buildable finish. Four textures.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press onto the lid with a fingertip for full payoff or sweep with a soft brush for a wash. Layer with other shades to build a defined eye.",
+      "bestFor": [
+        "Single-shade eye",
+        "Layering",
+        "Travel-friendly"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-one-only-single-shadow-04",
+      "handle": "muzigae-mansion-one-only-single-shadow",
+      "name": "One & Only Single Shadow — Satin",
+      "title": "One & Only Single Shadow",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Eyes",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 16,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-01.webp?v=1779882621",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-01.webp?v=1779882621",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-02.webp?v=1779882621",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-03.webp?v=1779882621"
+      ],
+      "tags": [
+        "eyes",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Satin",
+      "status": "active",
+      "published": true,
+      "description": "A single-pan eye shadow with a soft, buildable finish. Four textures.",
+      "bodyHtml": "<p>A single-pan eye shadow with a soft, buildable finish. Four textures.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press onto the lid with a fingertip for full payoff or sweep with a soft brush for a wash. Layer with other shades to build a defined eye.",
+      "bestFor": [
+        "Single-shade eye",
+        "Layering",
+        "Travel-friendly"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-one-only-single-shadow-02",
+      "handle": "muzigae-mansion-one-only-single-shadow",
+      "name": "One & Only Single Shadow — Shimmer",
+      "title": "One & Only Single Shadow",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Eyes",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 16,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-02.webp?v=1779882621",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-01.webp?v=1779882621",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-02.webp?v=1779882621",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-one-only-single-shadow-03.webp?v=1779882621"
+      ],
+      "tags": [
+        "eyes",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Shimmer",
+      "status": "active",
+      "published": true,
+      "description": "A single-pan eye shadow with a soft, buildable finish. Four textures.",
+      "bodyHtml": "<p>A single-pan eye shadow with a soft, buildable finish. Four textures.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press onto the lid with a fingertip for full payoff or sweep with a soft brush for a wash. Layer with other shades to build a defined eye.",
+      "bestFor": [
+        "Single-shade eye",
+        "Layering",
+        "Travel-friendly"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "obge-perfect-homme-cushion-01",
+      "handle": "obge-perfect-homme-cushion",
+      "name": "Perfect Homme Cushion — 01 Light",
+      "title": "Perfect Homme Cushion",
+      "vendor": "OBgE",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 38,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/obge-perfect-homme-cushion-01.webp?v=1779882639",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/obge-perfect-homme-cushion-01.webp?v=1779882639",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/obge-perfect-homme-cushion-02.webp?v=1779882639"
+      ],
+      "tags": [
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Light",
+      "status": "active",
+      "published": true,
+      "description": "A men's cushion with a natural matte finish. SPF 50+ PA++++.",
+      "bodyHtml": "<p>A men's cushion with a natural matte finish. SPF 50+ PA++++.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Layer only where needed.",
+      "bestFor": [
+        "Daily wear",
+        "Skin-true finish",
+        "Low-shine base"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "obge-perfect-homme-cushion-02",
+      "handle": "obge-perfect-homme-cushion",
+      "name": "Perfect Homme Cushion — 02 Natural",
+      "title": "Perfect Homme Cushion",
+      "vendor": "OBgE",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 38,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/obge-perfect-homme-cushion-02.webp?v=1779882639",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/obge-perfect-homme-cushion-01.webp?v=1779882639",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/obge-perfect-homme-cushion-02.webp?v=1779882639"
+      ],
+      "tags": [
+        "face",
+        "made-the-edit",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Natural",
+      "status": "active",
+      "published": true,
+      "description": "A men's cushion with a natural matte finish. SPF 50+ PA++++.",
+      "bodyHtml": "<p>A men's cushion with a natural matte finish. SPF 50+ PA++++.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press the puff onto the cushion, then tap onto the centre of the face and blend outward. Layer only where needed.",
+      "bestFor": [
+        "Daily wear",
+        "Skin-true finish",
+        "Low-shine base"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "athe-porexel-programming-ampoule-duo-01",
+      "handle": "athe-porexel-programming-ampoule-duo",
+      "name": "Porexel Programming Ampoule Duo",
+      "title": "Porexel Programming Ampoule Duo",
+      "vendor": "a;t fox",
+      "type": "Masks & Treatments",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 54,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/athe-porexel-programming-ampoule-01.webp?v=1779882685",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/athe-porexel-programming-ampoule-01.webp?v=1779882685",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/athe-porexel-programming-ampoule-02.webp?v=1779882685",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/athe-porexel-programming-ampoule-03.webp?v=1779882685"
+      ],
+      "tags": [
+        "bestseller",
+        "made-the-edit",
+        "masks-and-treatments",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "Duo set",
+      "status": "active",
+      "published": true,
+      "description": "A two-step ampoule programme for pore refinement and hydration.",
+      "bodyHtml": "<p>A two-step ampoule programme for pore refinement and hydration.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Use one bottle as a 7-day programme. After cleansing and toning, press a few drops onto the face before serum and moisturiser.",
+      "bestFor": [
+        "Pore elasticity care",
+        "Short treatment cycles",
+        "Targeted ritual"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "rmk-pure-complexion-blush-01",
+      "handle": "rmk-pure-complexion-blush",
+      "name": "Pure Complexion Blush — 01 Shy Pink",
+      "title": "Pure Complexion Blush",
+      "vendor": "RMK",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-01.webp?v=1779882649",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-01.webp?v=1779882649",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-02.webp?v=1779882649",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-03.webp?v=1779882649"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Shy Pink",
+      "status": "active",
+      "published": true,
+      "description": "A sheer, buildable powder blush for a natural flush.",
+      "bodyHtml": "<p>A sheer, buildable powder blush for a natural flush.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Sweep a soft brush across the pan and tap off excess, then build colour onto the apples of the cheeks and blend outward.",
+      "bestFor": [
+        "Soft daily flush",
+        "Layering over base",
+        "Travel-friendly"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "rmk-pure-complexion-blush-02",
+      "handle": "rmk-pure-complexion-blush",
+      "name": "Pure Complexion Blush — 02 Baby Coral",
+      "title": "Pure Complexion Blush",
+      "vendor": "RMK",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-02.webp?v=1779882649",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-01.webp?v=1779882649",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-02.webp?v=1779882649",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-03.webp?v=1779882649"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Baby Coral",
+      "status": "active",
+      "published": true,
+      "description": "A sheer, buildable powder blush for a natural flush.",
+      "bodyHtml": "<p>A sheer, buildable powder blush for a natural flush.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Sweep a soft brush across the pan and tap off excess, then build colour onto the apples of the cheeks and blend outward.",
+      "bestFor": [
+        "Soft daily flush",
+        "Layering over base",
+        "Travel-friendly"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "rmk-pure-complexion-blush-03",
+      "handle": "rmk-pure-complexion-blush",
+      "name": "Pure Complexion Blush — 03 Dusk Rose",
+      "title": "Pure Complexion Blush",
+      "vendor": "RMK",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-03.webp?v=1779882649",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-01.webp?v=1779882649",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-02.webp?v=1779882649",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/rmk-pure-complexion-blush-03.webp?v=1779882649"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "03 Dusk Rose",
+      "status": "active",
+      "published": true,
+      "description": "A sheer, buildable powder blush for a natural flush.",
+      "bodyHtml": "<p>A sheer, buildable powder blush for a natural flush.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Sweep a soft brush across the pan and tap off excess, then build colour onto the apples of the cheeks and blend outward.",
+      "bestFor": [
+        "Soft daily flush",
+        "Layering over base",
+        "Travel-friendly"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "anua-rice-70-glow-milky-set-01",
+      "handle": "anua-rice-70-glow-milky-set",
+      "name": "Rice 70 Glow Milky Set",
+      "title": "Rice 70 Glow Milky Set",
+      "vendor": "Anua",
+      "type": "Prep & Hydrate",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 42,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/anua-rice-70-glow-milky-set-01.webp?v=1779882681",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/anua-rice-70-glow-milky-set-01.webp?v=1779882681",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/anua-rice-70-glow-milky-set-02.webp?v=1779882681",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/anua-rice-70-glow-milky-set-03.webp?v=1779882681"
+      ],
+      "tags": [
+        "prep-and-hydrate",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "Full set",
+      "status": "active",
+      "published": true,
+      "description": "A rice-extract hydration set with toner, essence, and cream.",
+      "bodyHtml": "<p>A rice-extract hydration set with toner, essence, and cream.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-rouge-classy-02",
+      "handle": "hera-rouge-classy",
+      "name": "Rouge Classy — 176 Nude Beige",
+      "title": "Rouge Classy",
+      "vendor": "HERA",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-02.webp?v=1779882595",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-01.webp?v=1779882595",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-02.webp?v=1779882595",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-03.webp?v=1779882595"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "176 Nude Beige",
+      "status": "active",
+      "published": true,
+      "description": "A creamy, full-coverage lipstick with a sophisticated semi-matte finish.",
+      "bodyHtml": "<p>A creamy, full-coverage lipstick with a sophisticated semi-matte finish.</p>",
+      "whyItMadeTheEdit": "A clean, prestige red in a slim case. The satin finish reads as colour without the weight of a matte, and the slimline bullet lays a precise edge in a single pass.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out to the edge.",
+      "bestFor": [
+        "Evening",
+        "Polished daily wear",
+        "Precise application"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-rouge-classy-01",
+      "handle": "hera-rouge-classy",
+      "name": "Rouge Classy — 250 Rosy Suede",
+      "title": "Rouge Classy",
+      "vendor": "HERA",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-01.webp?v=1779882595",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-01.webp?v=1779882595",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-02.webp?v=1779882595",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-03.webp?v=1779882595"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "250 Rosy Suede",
+      "status": "active",
+      "published": true,
+      "description": "A creamy, full-coverage lipstick with a sophisticated semi-matte finish.",
+      "bodyHtml": "<p>A creamy, full-coverage lipstick with a sophisticated semi-matte finish.</p>",
+      "whyItMadeTheEdit": "A clean, prestige red in a slim case. The satin finish reads as colour without the weight of a matte, and the slimline bullet lays a precise edge in a single pass.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out to the edge.",
+      "bestFor": [
+        "Evening",
+        "Polished daily wear",
+        "Precise application"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-rouge-classy-03",
+      "handle": "hera-rouge-classy",
+      "name": "Rouge Classy — 277 Red Vibe",
+      "title": "Rouge Classy",
+      "vendor": "HERA",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-03.webp?v=1779882595",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-01.webp?v=1779882595",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-02.webp?v=1779882595",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-rouge-classy-03.webp?v=1779882595"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "277 Red Vibe",
+      "status": "active",
+      "published": true,
+      "description": "A creamy, full-coverage lipstick with a sophisticated semi-matte finish.",
+      "bodyHtml": "<p>A creamy, full-coverage lipstick with a sophisticated semi-matte finish.</p>",
+      "whyItMadeTheEdit": "A clean, prestige red in a slim case. The satin finish reads as colour without the weight of a matte, and the slimline bullet lays a precise edge in a single pass.",
+      "howToUse": "Apply directly from the bullet, starting at the centre of the lip and pressing out to the edge.",
+      "bestFor": [
+        "Evening",
+        "Polished daily wear",
+        "Precise application"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "the-whoo-royal-regina-energetic-special-set-01",
+      "handle": "the-whoo-royal-regina-energetic-special-set",
+      "name": "Royal Regina Energetic Special Set",
+      "title": "Royal Regina Energetic Special Set",
+      "vendor": "The Whoo",
+      "type": "Prep & Hydrate",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 188,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-royal-regina-set-01.webp?v=1779882749",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-royal-regina-set-01.webp?v=1779882749",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/the-whoo-royal-regina-set-02.webp?v=1779882749"
+      ],
+      "tags": [
+        "limited",
+        "new",
+        "prep-and-hydrate",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "Serum 30 ml + Cream 50 ml",
+      "status": "active",
+      "published": true,
+      "description": "The Royal Regina duo: Serum 30 ml and Cream 50 ml, with travel companions.",
+      "bodyHtml": "<p>The Royal Regina duo: Serum 30 ml and Cream 50 ml, with travel companions.</p>",
+      "whyItMadeTheEdit": "The Royal Regina line distilled into a two-step ritual. A heritage skincare set with the kind of object weight and finish that justifies a slow shelf.",
+      "howToUse": "After cleansing and toning, press the Energetic Repair Serum across the face, then seal with the Royal Regina Cream morning and night.",
+      "bestFor": [
+        "Daily ritual",
+        "Gifting",
+        "Mature skin"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "sum37-secret-rice-nuruk-daily-exfoliating-cleanser-01",
+      "handle": "sum37-secret-rice-nuruk-daily-exfoliating-cleanser",
+      "name": "Secret Rice Nuruk Daily Exfoliating Cleanser",
+      "title": "Secret Rice Nuruk Daily Exfoliating Cleanser",
+      "vendor": "su:m37°",
+      "type": "Cleanse & Remove",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 38,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-rice-nuruk-exfoliating-cleanser-01.webp?v=1779882745",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-rice-nuruk-exfoliating-cleanser-01.webp?v=1779882745",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-rice-nuruk-exfoliating-cleanser-02.webp?v=1779882745",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-rice-nuruk-exfoliating-cleanser-03.webp?v=1779882745"
+      ],
+      "tags": [
+        "cleanse-and-remove",
+        "new",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "120 g",
+      "status": "active",
+      "published": true,
+      "description": "A daily exfoliating cleanser with Rice Nuruk Ferment, PHA and Ceramide. 120 g.",
+      "bodyHtml": "<p>A daily exfoliating cleanser with Rice Nuruk Ferment, PHA and Ceramide. 120 g.</p>",
+      "whyItMadeTheEdit": "A daily exfoliating cleanser from su:m37°'s naturally fermented line, built around Rice Nuruk Ferment with PHA and Ceramide.",
+      "howToUse": "Massage onto damp skin morning or night, then rinse with lukewarm water.",
+      "bestFor": [
+        "Daily use",
+        "Gentle exfoliation",
+        "Smoothing"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "demar3-signature-silt-vale-creme-01",
+      "handle": "demar3-signature-silt-vale-creme",
+      "name": "Signature Silt Vale Crème",
+      "title": "Signature Silt Vale Crème",
+      "vendor": "DEMAR3",
+      "type": "Prep & Hydrate",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 82,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-signature-silt-vale-creme-01.webp?v=1779882713",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-signature-silt-vale-creme-01.webp?v=1779882713",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/demar3-signature-silt-vale-creme-02.webp?v=1779882713"
+      ],
+      "tags": [
+        "prep-and-hydrate",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "50 ml",
+      "status": "active",
+      "published": true,
+      "description": "A nourishing cream with mineral-rich silt extract. 50 ml.",
+      "bodyHtml": "<p>A nourishing cream with mineral-rich silt extract. 50 ml.</p>",
+      "whyItMadeTheEdit": "A sculptural dark-tube cream built around Centella Asiatica from a secluded Kerala jungle and Madecassoside, for skin that feels clear and elastic.",
+      "howToUse": "After serum, dispense a small amount and press evenly across the face morning and night.",
+      "bestFor": [
+        "Skin clarity",
+        "Elasticity",
+        "Daily moisture"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-silky-stay-24h-foundation-01",
+      "handle": "hera-silky-stay-24h-foundation",
+      "name": "Silky Stay 24H Longwear Foundation — 13 Ivory",
+      "title": "Silky Stay 24H Longwear Foundation",
+      "vendor": "HERA",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 58,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-02.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-03.webp?v=1779882584"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "13 Ivory",
+      "status": "active",
+      "published": true,
+      "description": "A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.",
+      "bodyHtml": "<p>A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto the centre of the face and blend outward with fingertips, brush, or sponge. Build only where needed.",
+      "bestFor": [
+        "Longwear",
+        "Satin finish",
+        "Daily SPF"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-silky-stay-24h-foundation-02",
+      "handle": "hera-silky-stay-24h-foundation",
+      "name": "Silky Stay 24H Longwear Foundation — 17 Vanilla",
+      "title": "Silky Stay 24H Longwear Foundation",
+      "vendor": "HERA",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 58,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-02.webp?v=1779882584",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-02.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-03.webp?v=1779882584"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "17 Vanilla",
+      "status": "active",
+      "published": true,
+      "description": "A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.",
+      "bodyHtml": "<p>A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto the centre of the face and blend outward with fingertips, brush, or sponge. Build only where needed.",
+      "bestFor": [
+        "Longwear",
+        "Satin finish",
+        "Daily SPF"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-silky-stay-24h-foundation-05",
+      "handle": "hera-silky-stay-24h-foundation",
+      "name": "Silky Stay 24H Longwear Foundation — 21C1 Cool Vanilla",
+      "title": "Silky Stay 24H Longwear Foundation",
+      "vendor": "HERA",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 58,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-02.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-03.webp?v=1779882584"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "21C1 Cool Vanilla",
+      "status": "active",
+      "published": true,
+      "description": "A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.",
+      "bodyHtml": "<p>A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto the centre of the face and blend outward with fingertips, brush, or sponge. Build only where needed.",
+      "bestFor": [
+        "Longwear",
+        "Satin finish",
+        "Daily SPF"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-silky-stay-24h-foundation-03",
+      "handle": "hera-silky-stay-24h-foundation",
+      "name": "Silky Stay 24H Longwear Foundation — 21N1 Vanilla Cover",
+      "title": "Silky Stay 24H Longwear Foundation",
+      "vendor": "HERA",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 58,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-03.webp?v=1779882584",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-02.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-03.webp?v=1779882584"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "21N1 Vanilla Cover",
+      "status": "active",
+      "published": true,
+      "description": "A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.",
+      "bodyHtml": "<p>A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto the centre of the face and blend outward with fingertips, brush, or sponge. Build only where needed.",
+      "bestFor": [
+        "Longwear",
+        "Satin finish",
+        "Daily SPF"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-silky-stay-24h-foundation-04",
+      "handle": "hera-silky-stay-24h-foundation",
+      "name": "Silky Stay 24H Longwear Foundation — 21N2 Beige Vanilla",
+      "title": "Silky Stay 24H Longwear Foundation",
+      "vendor": "HERA",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 58,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-02.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-03.webp?v=1779882584"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "21N2 Beige Vanilla",
+      "status": "active",
+      "published": true,
+      "description": "A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.",
+      "bodyHtml": "<p>A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto the centre of the face and blend outward with fingertips, brush, or sponge. Build only where needed.",
+      "bestFor": [
+        "Longwear",
+        "Satin finish",
+        "Daily SPF"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-silky-stay-24h-foundation-06",
+      "handle": "hera-silky-stay-24h-foundation",
+      "name": "Silky Stay 24H Longwear Foundation — 23N1 Beige",
+      "title": "Silky Stay 24H Longwear Foundation",
+      "vendor": "HERA",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 58,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-02.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-03.webp?v=1779882584"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "23N1 Beige",
+      "status": "active",
+      "published": true,
+      "description": "A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.",
+      "bodyHtml": "<p>A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto the centre of the face and blend outward with fingertips, brush, or sponge. Build only where needed.",
+      "bestFor": [
+        "Longwear",
+        "Satin finish",
+        "Daily SPF"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-silky-stay-24h-foundation-07",
+      "handle": "hera-silky-stay-24h-foundation",
+      "name": "Silky Stay 24H Longwear Foundation — 23N2 Sand",
+      "title": "Silky Stay 24H Longwear Foundation",
+      "vendor": "HERA",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 58,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-02.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-03.webp?v=1779882584"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "23N2 Sand",
+      "status": "active",
+      "published": true,
+      "description": "A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.",
+      "bodyHtml": "<p>A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto the centre of the face and blend outward with fingertips, brush, or sponge. Build only where needed.",
+      "bestFor": [
+        "Longwear",
+        "Satin finish",
+        "Daily SPF"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-silky-stay-24h-foundation-08",
+      "handle": "hera-silky-stay-24h-foundation",
+      "name": "Silky Stay 24H Longwear Foundation — 25N1 Tan",
+      "title": "Silky Stay 24H Longwear Foundation",
+      "vendor": "HERA",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 58,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-01.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-02.webp?v=1779882584",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-silky-stay-foundation-03.webp?v=1779882584"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "25N1 Tan",
+      "status": "active",
+      "published": true,
+      "description": "A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.",
+      "bodyHtml": "<p>A longwear liquid foundation with a satin finish. SPF 20 PA++, 30 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto the centre of the face and blend outward with fingertips, brush, or sponge. Build only where needed.",
+      "bestFor": [
+        "Longwear",
+        "Satin finish",
+        "Daily SPF"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "biodance-skin-glow-essence-cream-01",
+      "handle": "biodance-skin-glow-essence-cream",
+      "name": "Skin Glow Essence Cream",
+      "title": "Skin Glow Essence Cream",
+      "vendor": "Biodance",
+      "type": "Prep & Hydrate",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/biodance-skin-glow-essence-cream-01.webp?v=1779882690",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/biodance-skin-glow-essence-cream-01.webp?v=1779882690",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/biodance-skin-glow-essence-cream-02.webp?v=1779882690",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/biodance-skin-glow-essence-cream-03.webp?v=1779882690"
+      ],
+      "tags": [
+        "prep-and-hydrate",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "50 ml",
+      "status": "active",
+      "published": true,
+      "description": "A lightweight essence cream for a dewy, glowing complexion. 50 ml.",
+      "bodyHtml": "<p>A lightweight essence cream for a dewy, glowing complexion. 50 ml.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "After serum, pump a small amount and press evenly across the face morning and night.",
+      "bestFor": [
+        "Daily moisture",
+        "Barrier care",
+        "Glow finish under makeup"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-skin-nuder-foundation-01",
+      "handle": "jungsaemmool-skin-nuder-foundation",
+      "name": "Skin Nuder Foundation — Light",
+      "title": "Skin Nuder Foundation",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 48,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-01.webp?v=1779882611",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-01.webp?v=1779882611",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-02.webp?v=1779882611",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-03.webp?v=1779882611"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Light",
+      "status": "active",
+      "published": true,
+      "description": "A lightweight liquid foundation for a sheer, skin-true finish. 30 ml.",
+      "bodyHtml": "<p>A lightweight liquid foundation for a sheer, skin-true finish. 30 ml.</p>",
+      "whyItMadeTheEdit": "An iF Design Award winning bottle around a base built by a working artist. The finish reads as skin rather than coverage, which is the harder thing to engineer.",
+      "howToUse": "Press a small amount onto the puff or fingertips. Tap onto the centre of the face and blend outward, building only where needed.",
+      "bestFor": [
+        "Daily wear",
+        "Skin-true finish",
+        "Layering with a powder set"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-skin-nuder-foundation-03",
+      "handle": "jungsaemmool-skin-nuder-foundation",
+      "name": "Skin Nuder Foundation — Medium",
+      "title": "Skin Nuder Foundation",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 48,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-03.webp?v=1779882611",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-01.webp?v=1779882611",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-02.webp?v=1779882611",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-03.webp?v=1779882611"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Medium",
+      "status": "active",
+      "published": true,
+      "description": "A lightweight liquid foundation for a sheer, skin-true finish. 30 ml.",
+      "bodyHtml": "<p>A lightweight liquid foundation for a sheer, skin-true finish. 30 ml.</p>",
+      "whyItMadeTheEdit": "An iF Design Award winning bottle around a base built by a working artist. The finish reads as skin rather than coverage, which is the harder thing to engineer.",
+      "howToUse": "Press a small amount onto the puff or fingertips. Tap onto the centre of the face and blend outward, building only where needed.",
+      "bestFor": [
+        "Daily wear",
+        "Skin-true finish",
+        "Layering with a powder set"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-skin-nuder-foundation-04",
+      "handle": "jungsaemmool-skin-nuder-foundation",
+      "name": "Skin Nuder Foundation — Medium Deep",
+      "title": "Skin Nuder Foundation",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 48,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-01.webp?v=1779882611",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-01.webp?v=1779882611",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-02.webp?v=1779882611",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-03.webp?v=1779882611"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Medium Deep",
+      "status": "active",
+      "published": true,
+      "description": "A lightweight liquid foundation for a sheer, skin-true finish. 30 ml.",
+      "bodyHtml": "<p>A lightweight liquid foundation for a sheer, skin-true finish. 30 ml.</p>",
+      "whyItMadeTheEdit": "An iF Design Award winning bottle around a base built by a working artist. The finish reads as skin rather than coverage, which is the harder thing to engineer.",
+      "howToUse": "Press a small amount onto the puff or fingertips. Tap onto the centre of the face and blend outward, building only where needed.",
+      "bestFor": [
+        "Daily wear",
+        "Skin-true finish",
+        "Layering with a powder set"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "jungsaemmool-skin-nuder-foundation-02",
+      "handle": "jungsaemmool-skin-nuder-foundation",
+      "name": "Skin Nuder Foundation — Medium Light",
+      "title": "Skin Nuder Foundation",
+      "vendor": "JUNGSAEMMOOL",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 48,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-02.webp?v=1779882611",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-01.webp?v=1779882611",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-02.webp?v=1779882611",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/jungsaemmool-skin-nuder-foundation-03.webp?v=1779882611"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Medium Light",
+      "status": "active",
+      "published": true,
+      "description": "A lightweight liquid foundation for a sheer, skin-true finish. 30 ml.",
+      "bodyHtml": "<p>A lightweight liquid foundation for a sheer, skin-true finish. 30 ml.</p>",
+      "whyItMadeTheEdit": "An iF Design Award winning bottle around a base built by a working artist. The finish reads as skin rather than coverage, which is the harder thing to engineer.",
+      "howToUse": "Press a small amount onto the puff or fingertips. Tap onto the centre of the face and blend outward, building only where needed.",
+      "bestFor": [
+        "Daily wear",
+        "Skin-true finish",
+        "Layering with a powder set"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "yunjac-skin-perfecting-protective-base-prep-01",
+      "handle": "yunjac-skin-perfecting-protective-base-prep",
+      "name": "Skin Perfecting Protective Base Prep — Pearl Echo",
+      "title": "Skin Perfecting Protective Base Prep",
+      "vendor": "YUNJAC",
+      "type": "Prep & Finish",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 52,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/yunjac-skin-perfecting-base-prep-01.webp?v=1779882758",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/yunjac-skin-perfecting-base-prep-01.webp?v=1779882758",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/yunjac-skin-perfecting-base-prep-02.webp?v=1779882758"
+      ],
+      "tags": [
+        "makeup",
+        "new",
+        "prep-and-finish"
+      ],
+      "optionName": "Option",
+      "optionValue": "Pearl Echo",
+      "status": "active",
+      "published": true,
+      "description": "A protective base prep that smooths skin under makeup. 25 ml.",
+      "bodyHtml": "<p>A protective base prep that smooths skin under makeup. 25 ml.</p>",
+      "whyItMadeTheEdit": "A base prep that reads as skincare, with two distinct finishes: a soft pearled glow and a quiet velvet matte. Designed to live under base, not on top of it.",
+      "howToUse": "After skincare, press a pea-sized amount across the face. Allow to settle, then apply base.",
+      "bestFor": [
+        "Under base",
+        "Daily prep",
+        "Even-finish skin"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "yunjac-skin-perfecting-protective-base-prep-02",
+      "handle": "yunjac-skin-perfecting-protective-base-prep",
+      "name": "Skin Perfecting Protective Base Prep — Silent Velvet",
+      "title": "Skin Perfecting Protective Base Prep",
+      "vendor": "YUNJAC",
+      "type": "Prep & Finish",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 52,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/yunjac-skin-perfecting-base-prep-02.webp?v=1779882758",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/yunjac-skin-perfecting-base-prep-01.webp?v=1779882758",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/yunjac-skin-perfecting-base-prep-02.webp?v=1779882758"
+      ],
+      "tags": [
+        "makeup",
+        "new",
+        "prep-and-finish"
+      ],
+      "optionName": "Option",
+      "optionValue": "Silent Velvet",
+      "status": "active",
+      "published": true,
+      "description": "A protective base prep that smooths skin under makeup. 25 ml.",
+      "bodyHtml": "<p>A protective base prep that smooths skin under makeup. 25 ml.</p>",
+      "whyItMadeTheEdit": "A base prep that reads as skincare, with two distinct finishes: a soft pearled glow and a quiet velvet matte. Designed to live under base, not on top of it.",
+      "howToUse": "After skincare, press a pea-sized amount across the face. Allow to settle, then apply base.",
+      "bestFor": [
+        "Under base",
+        "Daily prep",
+        "Even-finish skin"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "sum37-skin-stay-moisture-lipcerin-01",
+      "handle": "sum37-skin-stay-moisture-lipcerin",
+      "name": "Skin Stay Moisture Lipcerin — 01 Pure Nude",
+      "title": "Skin Stay Moisture Lipcerin",
+      "vendor": "su:m37°",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 26,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-skin-stay-moisture-lipcerin-01.webp?v=1779882664",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-skin-stay-moisture-lipcerin-01.webp?v=1779882664",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-skin-stay-moisture-lipcerin-02.webp?v=1779882664",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-skin-stay-moisture-lipcerin-03.webp?v=1779882664"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Pure Nude",
+      "status": "active",
+      "published": true,
+      "description": "A moisture-rich lip serum with a glossy, hydrating finish.",
+      "bodyHtml": "<p>A moisture-rich lip serum with a glossy, hydrating finish.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto clean lips morning and night, or use as a hydrating base before lip colour.",
+      "bestFor": [
+        "Dry, tight lips",
+        "Overnight care",
+        "Layering under colour"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "sum37-skin-stay-moisture-lipcerin-02",
+      "handle": "sum37-skin-stay-moisture-lipcerin",
+      "name": "Skin Stay Moisture Lipcerin — 02 Coral Touch",
+      "title": "Skin Stay Moisture Lipcerin",
+      "vendor": "su:m37°",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 26,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-skin-stay-moisture-lipcerin-02.webp?v=1779882664",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-skin-stay-moisture-lipcerin-01.webp?v=1779882664",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-skin-stay-moisture-lipcerin-02.webp?v=1779882664",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/sum37-skin-stay-moisture-lipcerin-03.webp?v=1779882664"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Coral Touch",
+      "status": "active",
+      "published": true,
+      "description": "A moisture-rich lip serum with a glossy, hydrating finish.",
+      "bodyHtml": "<p>A moisture-rich lip serum with a glossy, hydrating finish.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Press a small amount onto clean lips morning and night, or use as a hydrating base before lip colour.",
+      "bestFor": [
+        "Dry, tight lips",
+        "Overnight care",
+        "Layering under colour"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "hera-soft-finish-loose-powder-01",
+      "handle": "hera-soft-finish-loose-powder",
+      "name": "Soft Finish Loose Powder",
+      "title": "Soft Finish Loose Powder",
+      "vendor": "HERA",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 44,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-soft-finish-loose-powder-01.webp?v=1779882600",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-soft-finish-loose-powder-01.webp?v=1779882600",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-soft-finish-loose-powder-02.webp?v=1779882600",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/hera-soft-finish-loose-powder-03.webp?v=1779882600"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "One size",
+      "status": "active",
+      "published": true,
+      "description": "A finishing powder that blurs pores and sets base with a soft-focus effect.",
+      "bodyHtml": "<p>A finishing powder that blurs pores and sets base with a soft-focus effect.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Tap a small amount onto the puff or brush, press into the T-zone and any areas prone to movement, then dust off any excess.",
+      "bestFor": [
+        "Setting base",
+        "Soft-focus finish",
+        "Travel-friendly"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "portre-tint-glow-jour-01",
+      "handle": "portre-tint-glow-jour",
+      "name": "Tint Glow Jour — 01 Mute Rose",
+      "title": "Tint Glow Jour",
+      "vendor": "Portré",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 26,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/portre-tint-glow-jour-01.webp?v=1779882643",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/portre-tint-glow-jour-01.webp?v=1779882643",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/portre-tint-glow-jour-02.webp?v=1779882643"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Mute Rose",
+      "status": "active",
+      "published": true,
+      "description": "A glow-finish lip tint with sculptural packaging.",
+      "bodyHtml": "<p>A glow-finish lip tint with sculptural packaging.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab the doe-foot applicator onto the centre of the lips and press out with a fingertip for a softer edge.",
+      "bestFor": [
+        "Daily wear",
+        "Glossy finish",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "portre-tint-glow-jour-02",
+      "handle": "portre-tint-glow-jour",
+      "name": "Tint Glow Jour — 02 Fig Cashmere",
+      "title": "Tint Glow Jour",
+      "vendor": "Portré",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 26,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/portre-tint-glow-jour-02.webp?v=1779882643",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/portre-tint-glow-jour-01.webp?v=1779882643",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/portre-tint-glow-jour-02.webp?v=1779882643"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Fig Cashmere",
+      "status": "active",
+      "published": true,
+      "description": "A glow-finish lip tint with sculptural packaging.",
+      "bodyHtml": "<p>A glow-finish lip tint with sculptural packaging.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab the doe-foot applicator onto the centre of the lips and press out with a fingertip for a softer edge.",
+      "bestFor": [
+        "Daily wear",
+        "Glossy finish",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "portre-tint-glow-jour-03",
+      "handle": "portre-tint-glow-jour",
+      "name": "Tint Glow Jour — 03 Coral Silk",
+      "title": "Tint Glow Jour",
+      "vendor": "Portré",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 26,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/portre-tint-glow-jour-01.webp?v=1779882643",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/portre-tint-glow-jour-01.webp?v=1779882643",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/portre-tint-glow-jour-02.webp?v=1779882643"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "03 Coral Silk",
+      "status": "active",
+      "published": true,
+      "description": "A glow-finish lip tint with sculptural packaging.",
+      "bodyHtml": "<p>A glow-finish lip tint with sculptural packaging.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Dab the doe-foot applicator onto the centre of the lips and press out with a fingertip for a softer edge.",
+      "bestFor": [
+        "Daily wear",
+        "Glossy finish",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-tinted-lip-balm-02",
+      "handle": "muzigae-mansion-tinted-lip-balm",
+      "name": "Tinted Lip Balm — Bare",
+      "title": "Tinted Lip Balm",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-02.webp?v=1779882555",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-02.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-03.webp?v=1779882555"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "Bare",
+      "status": "active",
+      "published": true,
+      "description": "A tinted balm with a soft, lived-in finish. Eight wearable shades.",
+      "bodyHtml": "<p>A tinted balm with a soft, lived-in finish. Eight wearable shades.</p>",
+      "whyItMadeTheEdit": "A tinted balm that stays comfortable and reads as lived-in colour rather than gloss. The shade range is unusually restrained for a balm format.",
+      "howToUse": "Apply directly from the bullet. Press together to even out. Reapply through the day as wanted.",
+      "bestFor": [
+        "Daily wear",
+        "Off-duty",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-tinted-lip-balm-07",
+      "handle": "muzigae-mansion-tinted-lip-balm",
+      "name": "Tinted Lip Balm — Berry",
+      "title": "Tinted Lip Balm",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-02.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-03.webp?v=1779882555"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "Berry",
+      "status": "active",
+      "published": true,
+      "description": "A tinted balm with a soft, lived-in finish. Eight wearable shades.",
+      "bodyHtml": "<p>A tinted balm with a soft, lived-in finish. Eight wearable shades.</p>",
+      "whyItMadeTheEdit": "A tinted balm that stays comfortable and reads as lived-in colour rather than gloss. The shade range is unusually restrained for a balm format.",
+      "howToUse": "Apply directly from the bullet. Press together to even out. Reapply through the day as wanted.",
+      "bestFor": [
+        "Daily wear",
+        "Off-duty",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-tinted-lip-balm-05",
+      "handle": "muzigae-mansion-tinted-lip-balm",
+      "name": "Tinted Lip Balm — Mauve",
+      "title": "Tinted Lip Balm",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-02.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-03.webp?v=1779882555"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "Mauve",
+      "status": "active",
+      "published": true,
+      "description": "A tinted balm with a soft, lived-in finish. Eight wearable shades.",
+      "bodyHtml": "<p>A tinted balm with a soft, lived-in finish. Eight wearable shades.</p>",
+      "whyItMadeTheEdit": "A tinted balm that stays comfortable and reads as lived-in colour rather than gloss. The shade range is unusually restrained for a balm format.",
+      "howToUse": "Apply directly from the bullet. Press together to even out. Reapply through the day as wanted.",
+      "bestFor": [
+        "Daily wear",
+        "Off-duty",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-tinted-lip-balm-03",
+      "handle": "muzigae-mansion-tinted-lip-balm",
+      "name": "Tinted Lip Balm — Petal",
+      "title": "Tinted Lip Balm",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-03.webp?v=1779882555",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-02.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-03.webp?v=1779882555"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "Petal",
+      "status": "active",
+      "published": true,
+      "description": "A tinted balm with a soft, lived-in finish. Eight wearable shades.",
+      "bodyHtml": "<p>A tinted balm with a soft, lived-in finish. Eight wearable shades.</p>",
+      "whyItMadeTheEdit": "A tinted balm that stays comfortable and reads as lived-in colour rather than gloss. The shade range is unusually restrained for a balm format.",
+      "howToUse": "Apply directly from the bullet. Press together to even out. Reapply through the day as wanted.",
+      "bestFor": [
+        "Daily wear",
+        "Off-duty",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-tinted-lip-balm-08",
+      "handle": "muzigae-mansion-tinted-lip-balm",
+      "name": "Tinted Lip Balm — Plum",
+      "title": "Tinted Lip Balm",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-02.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-03.webp?v=1779882555"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "Plum",
+      "status": "active",
+      "published": true,
+      "description": "A tinted balm with a soft, lived-in finish. Eight wearable shades.",
+      "bodyHtml": "<p>A tinted balm with a soft, lived-in finish. Eight wearable shades.</p>",
+      "whyItMadeTheEdit": "A tinted balm that stays comfortable and reads as lived-in colour rather than gloss. The shade range is unusually restrained for a balm format.",
+      "howToUse": "Apply directly from the bullet. Press together to even out. Reapply through the day as wanted.",
+      "bestFor": [
+        "Daily wear",
+        "Off-duty",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-tinted-lip-balm-06",
+      "handle": "muzigae-mansion-tinted-lip-balm",
+      "name": "Tinted Lip Balm — Rosewood",
+      "title": "Tinted Lip Balm",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-02.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-03.webp?v=1779882555"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "Rosewood",
+      "status": "active",
+      "published": true,
+      "description": "A tinted balm with a soft, lived-in finish. Eight wearable shades.",
+      "bodyHtml": "<p>A tinted balm with a soft, lived-in finish. Eight wearable shades.</p>",
+      "whyItMadeTheEdit": "A tinted balm that stays comfortable and reads as lived-in colour rather than gloss. The shade range is unusually restrained for a balm format.",
+      "howToUse": "Apply directly from the bullet. Press together to even out. Reapply through the day as wanted.",
+      "bestFor": [
+        "Daily wear",
+        "Off-duty",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-tinted-lip-balm-01",
+      "handle": "muzigae-mansion-tinted-lip-balm",
+      "name": "Tinted Lip Balm — Stillness",
+      "title": "Tinted Lip Balm",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-02.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-03.webp?v=1779882555"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "Stillness",
+      "status": "active",
+      "published": true,
+      "description": "A tinted balm with a soft, lived-in finish. Eight wearable shades.",
+      "bodyHtml": "<p>A tinted balm with a soft, lived-in finish. Eight wearable shades.</p>",
+      "whyItMadeTheEdit": "A tinted balm that stays comfortable and reads as lived-in colour rather than gloss. The shade range is unusually restrained for a balm format.",
+      "howToUse": "Apply directly from the bullet. Press together to even out. Reapply through the day as wanted.",
+      "bestFor": [
+        "Daily wear",
+        "Off-duty",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-tinted-lip-balm-04",
+      "handle": "muzigae-mansion-tinted-lip-balm",
+      "name": "Tinted Lip Balm — Whisper",
+      "title": "Tinted Lip Balm",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 22,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-01.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-02.webp?v=1779882555",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-lip-balm-03.webp?v=1779882555"
+      ],
+      "tags": [
+        "bestseller",
+        "lips",
+        "made-the-edit",
+        "makeup",
+        "new"
+      ],
+      "optionName": "Option",
+      "optionValue": "Whisper",
+      "status": "active",
+      "published": true,
+      "description": "A tinted balm with a soft, lived-in finish. Eight wearable shades.",
+      "bodyHtml": "<p>A tinted balm with a soft, lived-in finish. Eight wearable shades.</p>",
+      "whyItMadeTheEdit": "A tinted balm that stays comfortable and reads as lived-in colour rather than gloss. The shade range is unusually restrained for a balm format.",
+      "howToUse": "Apply directly from the bullet. Press together to even out. Reapply through the day as wanted.",
+      "bestFor": [
+        "Daily wear",
+        "Off-duty",
+        "Layering over balm"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "surratt-torche-lumiere-01",
+      "handle": "surratt-torche-lumiere",
+      "name": "Torche Lumière",
+      "title": "Torche Lumière",
+      "vendor": "SURRATT",
+      "type": "Face",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 48,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/surratt-torche-lumiere-01.webp?v=1779882667",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/surratt-torche-lumiere-01.webp?v=1779882667",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/surratt-torche-lumiere-02.webp?v=1779882667"
+      ],
+      "tags": [
+        "face",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "One size",
+      "status": "active",
+      "published": true,
+      "description": "A light-catching highlighter pen for sculpted, lit-from-within glow.",
+      "bodyHtml": "<p>A light-catching highlighter pen for sculpted, lit-from-within glow.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Sweep directly onto the high points of the face and tap out the edges with a fingertip.",
+      "bestFor": [
+        "Cheekbones",
+        "Brow bone",
+        "Layering over base"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-twist-pot-eye-palette-01",
+      "handle": "muzigae-mansion-twist-pot-eye-palette",
+      "name": "Twist Pot Eye Palette — 01 Warm Suede",
+      "title": "Twist Pot Eye Palette",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Eyes",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-twist-pot-eye-palette-01.webp?v=1779882626",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-twist-pot-eye-palette-01.webp?v=1779882626",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-twist-pot-eye-palette-02.webp?v=1779882626",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-twist-pot-eye-palette-03.webp?v=1779882626"
+      ],
+      "tags": [
+        "eyes",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "01 Warm Suede",
+      "status": "active",
+      "published": true,
+      "description": "A compact, stackable eye palette with four coordinated shades.",
+      "bodyHtml": "<p>A compact, stackable eye palette with four coordinated shades.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Sweep the lightest tone across the lid, layer the shimmer through the centre, and deepen the outer corner with the darkest pan.",
+      "bestFor": [
+        "Daily eye",
+        "Travel",
+        "Soft daily flush"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "muzigae-mansion-twist-pot-eye-palette-02",
+      "handle": "muzigae-mansion-twist-pot-eye-palette",
+      "name": "Twist Pot Eye Palette — 02 Cool Dust",
+      "title": "Twist Pot Eye Palette",
+      "vendor": "MUZIGAE MANSION",
+      "type": "Eyes",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-twist-pot-eye-palette-02.webp?v=1779882626",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-twist-pot-eye-palette-01.webp?v=1779882626",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-twist-pot-eye-palette-02.webp?v=1779882626",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/muzigae-twist-pot-eye-palette-03.webp?v=1779882626"
+      ],
+      "tags": [
+        "eyes",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "02 Cool Dust",
+      "status": "active",
+      "published": true,
+      "description": "A compact, stackable eye palette with four coordinated shades.",
+      "bodyHtml": "<p>A compact, stackable eye palette with four coordinated shades.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "Sweep the lightest tone across the lid, layer the shimmer through the centre, and deepen the outer corner with the darkest pan.",
+      "bestFor": [
+        "Daily eye",
+        "Travel",
+        "Soft daily flush"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "ohui-ultimate-cover-primer-01",
+      "handle": "ohui-ultimate-cover-primer",
+      "name": "Ultimate Cover Primer",
+      "title": "Ultimate Cover Primer",
+      "vendor": "O HUI",
+      "type": "Prep & Finish",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 50,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/ohui-ultimate-cover-primer-01.webp?v=1779882635",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/ohui-ultimate-cover-primer-01.webp?v=1779882635",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/ohui-ultimate-cover-primer-02.webp?v=1779882635",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/ohui-ultimate-cover-primer-03.webp?v=1779882635"
+      ],
+      "tags": [
+        "made-the-edit",
+        "makeup",
+        "prep-and-finish"
+      ],
+      "optionName": "Option",
+      "optionValue": "One size",
+      "status": "active",
+      "published": true,
+      "description": "A tone-correcting primer that smooths and preps skin under base. SPF 30 PA++.",
+      "bodyHtml": "<p>A tone-correcting primer that smooths and preps skin under base. SPF 30 PA++.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "After skincare, dispense a small amount and press across the face, focusing on areas where tone correction is needed. Follow with foundation or cushion.",
+      "bestFor": [
+        "Tone correction",
+        "Smoothing base",
+        "Daily SPF prep"
+      ],
+      "syncReady": true
+    },
+    {
+      "sku": "simihaze-velvet-blur-lip-balm-01",
+      "handle": "simihaze-velvet-blur-lip-balm",
+      "name": "Velvet Blur Lip Balm — Soft Haze",
+      "title": "Velvet Blur Lip Balm",
+      "vendor": "SIMIHAZE BEAUTY",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/simihaze-velvet-blur-lip-balm-01.webp?v=1779882658",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/simihaze-velvet-blur-lip-balm-01.webp?v=1779882658",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/simihaze-velvet-blur-lip-balm-02.webp?v=1779882659",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/simihaze-velvet-blur-lip-balm-03.webp?v=1779882659"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Soft Haze",
+      "status": "active",
+      "published": true,
+      "description": "A velvet-finish lip balm with a soft blur effect.",
+      "bodyHtml": "<p>A velvet-finish lip balm with a soft blur effect.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [],
+      "syncReady": true
+    },
+    {
+      "sku": "simihaze-velvet-blur-lip-balm-02",
+      "handle": "simihaze-velvet-blur-lip-balm",
+      "name": "Velvet Blur Lip Balm — Warm Dust",
+      "title": "Velvet Blur Lip Balm",
+      "vendor": "SIMIHAZE BEAUTY",
+      "type": "Lip",
+      "category": "Makeup",
+      "region": "K-Beauty",
+      "priceUsd": 28,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/simihaze-velvet-blur-lip-balm-02.webp?v=1779882659",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/simihaze-velvet-blur-lip-balm-01.webp?v=1779882658",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/simihaze-velvet-blur-lip-balm-02.webp?v=1779882659",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/simihaze-velvet-blur-lip-balm-03.webp?v=1779882659"
+      ],
+      "tags": [
+        "lips",
+        "makeup"
+      ],
+      "optionName": "Option",
+      "optionValue": "Warm Dust",
+      "status": "active",
+      "published": true,
+      "description": "A velvet-finish lip balm with a soft blur effect.",
+      "bodyHtml": "<p>A velvet-finish lip balm with a soft blur effect.</p>",
+      "whyItMadeTheEdit": "",
+      "howToUse": "",
+      "bestFor": [],
+      "syncReady": true
+    },
+    {
+      "sku": "returnity-yulmu-skinclean-pore-ampoule-01",
+      "handle": "returnity-yulmu-skinclean-pore-ampoule",
+      "name": "Yulmu Skinclean Pore Ampoule",
+      "title": "Yulmu Skinclean Pore Ampoule",
+      "vendor": "RETURNITY",
+      "type": "Masks & Treatments",
+      "category": "Skin Care",
+      "region": "K-Beauty",
+      "priceUsd": 36,
+      "image": "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/returnity-yulmu-skinclean-pore-ampoule-01.webp?v=1779882740",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/returnity-yulmu-skinclean-pore-ampoule-01.webp?v=1779882740",
+        "https://cdn.shopify.com/s/files/1/0830/5741/0292/files/returnity-yulmu-skinclean-pore-ampoule-02.webp?v=1779882740"
+      ],
+      "tags": [
+        "masks-and-treatments",
+        "new",
+        "skincare"
+      ],
+      "optionName": "Option",
+      "optionValue": "40 ml",
+      "status": "active",
+      "published": true,
+      "description": "A yulmu ampoule for pore refinement and hydration. 40 ml.",
+      "bodyHtml": "<p>A yulmu ampoule for pore refinement and hydration. 40 ml.</p>",
+      "whyItMadeTheEdit": "A single-grain ampoule built around yulmu, with a quiet brief: refine pores, calm, hydrate.",
+      "howToUse": "",
+      "bestFor": [
+        "Pore care",
+        "Smoothing",
+        "Hydration"
+      ],
+      "syncReady": true
+    }
+  ]
+}

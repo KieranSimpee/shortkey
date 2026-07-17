@@ -6,7 +6,9 @@
     "dev": "node scripts/dev.mjs",
     "build": "next build",
     "start": "next start -p 3001",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync:shopify": "node scripts/sync-shopify-products.mjs",
+    "sync:shopify:live": "node scripts/sync-shopify-products.mjs --live"
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "^0.10.21",

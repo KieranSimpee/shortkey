@@ -40,8 +40,19 @@ Recommended split:
 
 ## 3. Shopify
 
-1. Create a Custom App with **Storefront API** access
-2. Set `SHOPIFY_STORE_DOMAIN` + `SHOPIFY_STOREFRONT_ACCESS_TOKEN`
+### Push first product batch (catalog → Shopify)
+
+Shop products live in `src/content/shopCatalog.ts` (`syncReady: true` = first wave).
+
+```bash
+npm run sync:shopify              # dry-run → scripts/shopify-sync-payload.json
+npm run sync:shopify -- --push    # create draft products (needs Admin token)
+```
+
+After `--push`, paste printed variant GIDs into `src/lib/commerce/sku-map.ts`.
+
+1. Create a Custom App with **Storefront API** (+ **Admin API** write_products for sync)
+2. Set `SHOPIFY_STORE_DOMAIN` + `SHOPIFY_STOREFRONT_ACCESS_TOKEN` (+ `SHOPIFY_ADMIN_ACCESS_TOKEN` for push)
 3. Map each Shortkey SKU → variant GID in `src/lib/commerce/sku-map.ts`:
 
 ```ts

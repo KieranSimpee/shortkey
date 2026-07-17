@@ -10,4 +10,5 @@ tmp-oy.html
 revision.txt
 .env
 .env.local
+scripts/shopify-sync-payload.json
 

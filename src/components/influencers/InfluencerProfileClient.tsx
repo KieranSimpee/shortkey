@@ -8,6 +8,7 @@ import {
   type InfluencerHostTabId,
   type InfluencerLiveHost,
 } from "@/content/homepage";
+import { AddToCartButton } from "@/components/commerce/AddToCartButton";
 import { MockNote } from "@/components/mock/MockPageShell";
 import { ShortcutChip } from "@/components/ui/KeyCap";
 import { cn } from "@/lib/utils";
@@ -126,21 +127,30 @@ export function InfluencerProfileClient({
         {activeTab === "shop" ? (
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {host.shopProducts.map((product) => (
-              <Link
+              <div
                 key={product.sku}
-                href={`/shop/${product.sku}`}
                 className="overflow-hidden rounded-xl border border-white/50 bg-white/50"
               >
-                <div className="relative aspect-square">
-                  <Image src={product.image} alt={product.name} fill className="object-cover" sizes="160px" />
+                <Link href={`/shop/${product.sku}`} className="block">
+                  <div className="relative aspect-square">
+                    <Image src={product.image} alt={product.name} fill className="object-cover" sizes="160px" />
+                  </div>
+                  <div className="border-t border-white/40 px-2 pt-1.5">
+                    <p className="font-mono text-[8px] text-brand/70">{product.sku}</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink">
+                      {product.name}
+                    </p>
+                  </div>
+                </Link>
+                <div className="px-2 pb-2 pt-1">
+                  <AddToCartButton
+                    size="sm"
+                    sku={product.sku}
+                    name={product.name}
+                    image={product.image}
+                  />
                 </div>
-                <div className="border-t border-white/40 px-2 py-1.5">
-                  <p className="font-mono text-[8px] text-brand/70">{product.sku}</p>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink">
-                    {product.name}
-                  </p>
-                </div>
-              </Link>
+              </div>
             ))}
           </div>
         ) : null}
