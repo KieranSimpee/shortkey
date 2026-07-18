@@ -8,7 +8,8 @@
     "start": "next start -p 3001",
     "lint": "next lint",
     "sync:shopify": "node scripts/sync-shopify-products.mjs",
-    "sync:shopify:live": "node scripts/sync-shopify-products.mjs --live"
+    "sync:shopify:live": "node scripts/sync-shopify-products.mjs --live",
+    "connections:check": "node scripts/check-connections.mjs"
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "^0.10.21",

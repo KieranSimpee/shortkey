@@ -4,11 +4,10 @@
 // Always falls back to bridged/static catalog so the shop never goes empty.
 
 import { getCatalogProducts } from "@/lib/catalog";
+import { productsApiUrl } from "@/lib/connections";
 import { productImg } from "@/lib/images";
 
-const BACKEND_URL =
-  process.env.SHORTKEY_PRODUCTS_API_URL ??
-  "https://app.base44.com/api/apps/69ddc914cfcf229762ac123d/functions/getShortKeyProducts";
+const BACKEND_URL = productsApiUrl();
 
 export interface ShortKeyProduct {
   id: string;

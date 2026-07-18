@@ -7,11 +7,11 @@
  *   import { getSentiProducts, getSentiSkuMap } from "@/lib/senti-bridge";
  *   const products = await getSentiProducts();   // use instead of getCatalogProducts()
  *   const skuMap = await getSentiSkuMap();        // use instead of static skuGatewayMap
- *
- * API: POST https://app.base44.com/api/apps/6a42029cc124d0206f027335/functions/getShortKeyData
  */
 
-const SENTI_API = "https://app.base44.com/api/apps/6a42029cc124d0206f027335/functions/getShortKeyData";
+import { CONNECTIONS } from "@/lib/connections";
+
+const SENTI_API = CONNECTIONS.base44.sentiUrl;
 
 export type SentiProduct = {
   sku: string;

@@ -16,6 +16,14 @@ Each domain serves a specific purpose with maximum function.
 All domains share a single source of truth (**Base44 + Shopify**).  
 No domain depends on another to function — but all share the same data.
 
+**Permanent account wiring (do not rebuild):** see [`CONNECTIONS.md`](./CONNECTIONS.md)
+
+```
+Repo → GitHub KieranSimpee/shortkey → Vercel → Base44 → Shopify (simplex-ity-dev)
+```
+
+Verify anytime: `npm run connections:check`
+
 ---
 
 ## ARCHITECTURE PRINCIPLE

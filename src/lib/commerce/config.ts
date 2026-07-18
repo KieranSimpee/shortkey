@@ -1,4 +1,5 @@
 import type { CommerceProvider } from "@/lib/commerce/types";
+import { shopifyStoreDomain } from "@/lib/connections";
 
 function env(name: string): string | undefined {
   const value = process.env[name]?.trim();
@@ -11,13 +12,14 @@ export function getCommerceConfig() {
   const stripeWebhookSecret = env("STRIPE_WEBHOOK_SECRET");
   const stripeFoundingPriceId = env("STRIPE_FOUNDING_BRAND_PRICE_ID");
 
-  const shopifyStoreDomain = env("SHOPIFY_STORE_DOMAIN") ?? env("NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN");
+  const shopifyStoreDomainValue =
+    env("SHOPIFY_STORE_DOMAIN") ?? env("NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN") ?? shopifyStoreDomain();
   const shopifyStorefrontToken = env("SHOPIFY_STOREFRONT_ACCESS_TOKEN");
   const shopifyAdminToken = env("SHOPIFY_ADMIN_ACCESS_TOKEN");
   const shopifyWebhookSecret = env("SHOPIFY_WEBHOOK_SECRET");
 
   const stripeConfigured = Boolean(stripeSecretKey && stripePublishableKey);
-  const shopifyConfigured = Boolean(shopifyStoreDomain && shopifyStorefrontToken);
+  const shopifyConfigured = Boolean(shopifyStoreDomainValue && shopifyStorefrontToken);
 
   const requested = (env("COMMERCE_PROVIDER") ?? "dual").toLowerCase() as CommerceProvider;
   let provider: CommerceProvider = requested;
@@ -48,7 +50,7 @@ export function getCommerceConfig() {
     },
     shopify: {
       configured: shopifyConfigured,
-      storeDomain: shopifyStoreDomain?.replace(/^https?:\/\//, "").replace(/\/$/, ""),
+      storeDomain: shopifyStoreDomainValue.replace(/^https?:\/\//, "").replace(/\/$/, ""),
       storefrontToken: shopifyStorefrontToken,
       adminToken: shopifyAdminToken,
       webhookSecret: shopifyWebhookSecret,
