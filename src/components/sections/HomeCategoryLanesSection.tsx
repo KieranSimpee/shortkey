@@ -47,7 +47,7 @@ export function HomeCategoryLanesSection({ variant = "live" }: { variant?: Varia
 
         <div className="mt-6 space-y-5">
           {c.lanes.map((lane, i) => {
-            const isCreator = Boolean(lane.videoOffers);
+            const isCreator = "videoOffers" in lane && Boolean(lane.videoOffers);
             return (
               <article
                 key={lane.id}
