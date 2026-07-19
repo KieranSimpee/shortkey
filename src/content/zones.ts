@@ -48,6 +48,7 @@ export const cmsZones: CmsZoneDefinition[] = [
       "tryOnStudio",
       "launchImage",
       "partnersImage",
+      "launchFees",
       "sealLabel",
     ],
   },
@@ -71,10 +72,31 @@ export const cmsZones: CmsZoneDefinition[] = [
     fields: ["titleLeft", "cards[].title", "cards[].shortcut", "cards[].image"],
   },
   {
+    id: "home-collections",
+    label: "Homepage Collections",
+    description: "Routines, makeup, seasonal, summer+SPF rails plus markets and brands.",
+    contentPath: "src/content/homepage.ts → homeCollections",
+    fields: ["title", "items[]", "markets", "brandsStrip"],
+  },
+  {
+    id: "home-commerce",
+    label: "Bestsellers · Gift · Subscribe",
+    description: "Best sellers grid, gift card amounts, and subscription plans.",
+    contentPath: "src/content/homepage.ts → homeCommerce",
+    fields: ["bestsellers", "giftCard", "subscription"],
+  },
+  {
+    id: "home-why",
+    label: "Why Shortkey",
+    description: "Catch market attention — product stage + creator/brand join pitch.",
+    contentPath: "src/content/homepage.ts → homeWhy",
+    fields: ["titleHighlight", "body", "points[]", "ctaCreator", "ctaBrand"],
+  },
+  {
     id: "ai-lab",
-    label: "Influencer Introduction",
+    label: "Influencer Hub",
     description:
-      "Creator hosts for live streaming, fan try-on sessions, and screenshot looks.",
+      "Creator hosts — Brand, Shop, Live, Video tabs for fan try-on and storefronts.",
     contentPath: "src/content/homepage.ts → aiLab",
     fields: [
       "badge",
@@ -94,6 +116,13 @@ export const cmsZones: CmsZoneDefinition[] = [
       "hosts[].blogPosts[]",
       "cta.label",
     ],
+  },
+  {
+    id: "home-community",
+    label: "Homepage Community",
+    description: "Tutorials, inspiration, Gratitude Mind, Asia trends, and join echo CTAs.",
+    contentPath: "src/content/homepage.ts → homeCommunity",
+    fields: ["title", "stories[]", "joinEcho"],
   },
   {
     id: "brands",

@@ -4,11 +4,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { siteContent } from "@/content/homepage";
 import type { HeroPosterId, HeroPosterSlide } from "@/content/homepage";
 import { Button } from "@/components/ui/Button";
-import { ShortcutKeysLogo } from "@/components/ui/ShortcutKeysLogo";
 import { HeroModelCutout } from "@/components/sections/HeroModelCutout";
 import { HeroStatsStrip } from "@/components/sections/HeroStatsStrip";
 import { HeroLaunchPanel } from "@/components/sections/HeroLaunchPanel";
 import { HeroPartnersPanel } from "@/components/sections/HeroPartnersPanel";
+import { HeroLaunchFeeBar } from "@/components/sections/HeroLaunchFeeBar";
+import { ShortcutKeysLogo } from "@/components/ui/ShortcutKeysLogo";
 import {
   HeroTryOnModelCutout,
   HeroTryOnPanel,
@@ -191,14 +192,11 @@ export function HeroPosterBoard() {
             {slide.subheadline}
           </p>
 
-          <div className="mt-6 max-w-sm">
-            <ShortcutKeysLogo className="max-w-[180px] sm:max-w-[220px]" />
-            {slide.subheadlineExtra ? (
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand/80">
-                {slide.subheadlineExtra}
-              </p>
-            ) : null}
-          </div>
+          {slide.subheadlineExtra ? (
+            <p className="mt-4 max-w-sm text-[10px] font-semibold uppercase tracking-[0.18em] text-brand/80">
+              {slide.subheadlineExtra}
+            </p>
+          ) : null}
 
           {/* Per-slide 3 CTAs */}
           <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:gap-3">
@@ -239,6 +237,13 @@ export function HeroPosterBoard() {
               );
             })}
           </div>
+
+          {/* Full mark below the 3 CTAs — Sky-cleared, wording included */}
+          <div className="mt-6 max-w-sm">
+            <ShortcutKeysLogo className="max-w-[180px] sm:max-w-[220px]" />
+          </div>
+
+          <HeroLaunchFeeBar />
 
           {/* Rotation rail */}
           <div className="mt-7 flex flex-col gap-2.5">

@@ -1,11 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
-import { Header } from "@/components/layout/Header";
-import { HeaderBrandSection } from "@/components/layout/HeaderBrandSection";
-import { Footer } from "@/components/layout/Footer";
 import { ContentStudioShell } from "@/components/cms/ContentStudioShell";
-import { CmsHeader, CmsHeaderBrand, CmsFooter } from "@/components/cms/CmsLayoutZones";
 import { CartProvider } from "@/components/commerce/CartProvider";
+import { AppChrome } from "@/components/layout/AppChrome";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -36,16 +33,7 @@ export default function RootLayout({
       <body className={`${montserrat.variable} font-sans`}>
         <ContentStudioShell>
           <CartProvider>
-            <CmsHeader>
-              <Header />
-            </CmsHeader>
-            <CmsHeaderBrand>
-              <HeaderBrandSection />
-            </CmsHeaderBrand>
-            <main className="min-w-0">{children}</main>
-            <CmsFooter>
-              <Footer />
-            </CmsFooter>
+            <AppChrome>{children}</AppChrome>
           </CartProvider>
         </ContentStudioShell>
       </body>

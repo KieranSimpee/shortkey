@@ -72,6 +72,25 @@ export type InfluencerLiveClip = {
   href: string;
 };
 
+/** Short app-made samples — enough to promote a brand (15–45s) */
+export type InfluencerShortClip = {
+  id: string;
+  title: string;
+  /** e.g. "22s" */
+  duration: string;
+  brandName: string;
+  productName: string;
+  productSku: string;
+  productHref: string;
+  /** Poster / cover frame */
+  poster: string;
+  /**
+   * Drop file under public/videos/creators/{hostId}/
+   * Leave empty until sample is exported from your app.
+   */
+  videoSrc?: string;
+};
+
 export type InfluencerBlogPost = {
   title: string;
   excerpt: string;
@@ -96,6 +115,10 @@ export type InfluencerLiveHost = {
   liveClips: InfluencerLiveClip[];
   photos: string[];
   blogPosts: InfluencerBlogPost[];
+  /** Launch set: show on homepage / design as on-platform creators */
+  onPlatform?: boolean;
+  /** Short brand-promo samples (app exports OK — not long videos) */
+  shortClips?: InfluencerShortClip[];
 };
 
 export type BrandFeature = {
@@ -197,6 +220,7 @@ export const siteContent = {
 
   header: {
     welcome: "Welcome to the first AI Asian Beauty world",
+    /** Shown with CTRL keycap — horizontal Beauty OS mark (not vertical) */
     categoryLabel: "Beauty",
     searchPlaceholder: "Search",
     nav: [
@@ -267,21 +291,21 @@ export const siteContent = {
       {
         id: "launch",
         controlLabel: "Launch",
-        badge: "SHORTKEY LAUNCH MONTH",
+        badge: "AUGUST LAUNCH MONTH",
         headline: {
-          before: "THE PLATFORM ",
-          highlight1: "THAT CONNECTS",
+          before: "AI SKIN + TRY-ON ",
+          highlight1: "NO PLATFORM",
           middle: " ",
-          highlight2: "BRANDS TO CUSTOMERS",
+          highlight2: "MATCHES THIS",
           after: ".",
         },
         subheadline:
-          "AI DISCOVERY. CREATOR SHOPS. SHORTCUT COMMERCE. WE CARE HOW THE MATCH IS MADE.",
-        subheadlineExtra: "AMBITION · FEATURES · TRUST.",
+          "LANDMARK SKIN READS. LIVE TRY-ON. CREATOR SHOPS. K / J / C BEAUTY — ONE ASIAN BEAUTY OS.",
+        subheadlineExtra: "PRE-REGISTER · LOCK YOUR FEE TIER.",
         buttons: [
-          { label: "OUR AMBITION →", href: "/about", variant: "highlight" },
-          { label: "SEE FEATURES →", href: "/#commands", variant: "outline" },
-          { label: "ENTER SHOP →", href: "/shop", variant: "outline" },
+          { label: "START ANALYSIS →", href: "#skin-analysis", variant: "highlight" },
+          { label: "CREATOR MEETING →", href: "/signup/creator", variant: "outline" },
+          { label: "BRAND MEETING →", href: "/signup/brand", variant: "outline" },
         ],
       },
       {
@@ -296,15 +320,53 @@ export const siteContent = {
           after: ".",
         },
         subheadline:
-          "FOUNDING PARTNERS. CREATOR LIVE SHOPS. BOOK A 1-HOUR MEETING WITH OUR TEAM.",
+          "BOOK A 1-HOUR MEETING. BUILD YOUR CTRL STOREFRONT. JOIN BEFORE AUGUST RATES STEP UP.",
         subheadlineExtra: "YOUR STYLE. YOUR CTRL.",
         buttons: [
           { label: "CREATOR SIGNUP →", href: "/signup/creator", variant: "highlight" },
           { label: "BRAND SIGNUP →", href: "/signup/brand", variant: "outline" },
-          { label: "MEET CREATORS →", href: "/influencers", variant: "outline" },
+          { label: "WHO WE ARE →", href: "/about", variant: "outline" },
         ],
       },
     ] satisfies HeroPosterSlide[],
+    /** Launch-month platform fee windows (shown under hero CTAs) */
+    launchFees: {
+      label: "SIGN UP PLAN · PLATFORM FEE",
+      /** Homepage hero — S+ turns around → +5 (full ladder on signup pages) */
+      heroTeaser: {
+        line: "S+ → +5",
+        whisper: "Pre-register · Aug steps up",
+        brandLine: "AI Asian beauty · your CTRL",
+        /** Seal face copy */
+        sealFront: "S+",
+        sealBack: "+5",
+      },
+      tiers: [
+        {
+          id: "pre",
+          window: "Jul 20 – Jul 31",
+          rate: "5%",
+          note: "Pre-register",
+          emphasis: true,
+        },
+        {
+          id: "early",
+          window: "Aug 1 – Aug 14",
+          rate: "8%",
+          note: "Launch early",
+          emphasis: false,
+        },
+        {
+          id: "standard",
+          window: "Aug 15+",
+          rate: "12%",
+          note: "Standard",
+          emphasis: false,
+        },
+      ],
+      footnote:
+        "Rate locks at signup. Creators → CTRL Twin. Brands → founding partner + Twin campaigns. Full terms on each signup page.",
+    },
     /** Poster images for launch / partners rotations */
     launchImage: "/images/hero-premium.png",
     partnersImage: "/images/hero-editorial.png",
@@ -456,7 +518,7 @@ export const siteContent = {
         label: "Makeup",
         shortcuts: [
           { id: "pout", shortcut: "CTRL + B", label: "Brighten", href: "#commands" },
-          { id: "wing", shortcut: "CTRL + H", label: "Hydrate", href: "#commands" },
+          { id: "premakeup", shortcut: "CTRL + ALT + P", label: "Pre-Makeup", href: "#commands" },
           { id: "contour", shortcut: "CTRL + G", label: "Glow", href: "#commands" },
           { id: "blend", shortcut: "CTRL + Z", label: "Undo", href: "#commands" },
           { id: "tint", shortcut: "DEL + D", label: "Delete Dullness", href: "#commands" },
@@ -466,9 +528,9 @@ export const siteContent = {
         id: "skincare",
         label: "Skin Care",
         shortcuts: [
+          { id: "moisture", shortcut: "CTRL + H", label: "Hydration", href: "#commands" },
           { id: "sun", shortcut: "CTRL + S", label: "Sun Protect", href: "#commands" },
           { id: "cleanse", shortcut: "CTRL + C", label: "Cleanse", href: "#commands" },
-          { id: "moisture", shortcut: "CTRL + M", label: "Moisture", href: "#commands" },
           { id: "essence", shortcut: "CTRL + E", label: "Essence", href: "#commands" },
           { id: "repair", shortcut: "CTRL + R", label: "Repair", href: "#commands" },
           { id: "ampoule", shortcut: "CTRL + A", label: "Ampoule", href: "#commands" },
@@ -476,6 +538,19 @@ export const siteContent = {
       },
     ] satisfies BeautyOsCategory[],
     folders: [
+      {
+        id: "premakeup",
+        title: "Pre-Makeup",
+        description: "Prep → Base → Crease → Powder — build your face in shortcut steps.",
+        products: [
+          { sku: "SK-M012", name: "Blur Primer Base", type: "Prep", image: productImg("SK-M012"), href: "/shop/SK-M012" },
+          { sku: "SK-M010", name: "Skin Fit Cushion", type: "Base", image: productImg("SK-M010"), href: "/shop/SK-M010" },
+          { sku: "SK-M007", name: "Soft Sculpt Palette", type: "Crease / Sculpt", image: productImg("SK-M007"), href: "/shop/SK-M007" },
+          { sku: "SK-M016", name: "Cloud Setting Powder", type: "Powder", image: productImg("SK-M016"), href: "/shop/SK-M016" },
+          { sku: "SK-M011", name: "Seamless Concealer", type: "Base", image: productImg("SK-M011"), href: "/shop/SK-M011" },
+          { sku: "SK-M017", name: "Dew Fix Mist", type: "Finish", image: productImg("SK-M017"), href: "/shop/SK-M017" },
+        ],
+      },
       {
         id: "pout",
         title: "Pout",
@@ -684,19 +759,19 @@ export const siteContent = {
   },
 
   aiLab: {
-    badge: "INFLUENCER LIVE",
+    badge: "INFLUENCER HUB",
     poweredBy: "CREATOR TRY-ON STUDIO",
     title: "Meet the influencers",
     subtitle:
-      "Eight creators on the homepage — open Intro, Shop, Live, or Photo & Blog for each one.",
+      "Each creator storefront — Shop, Brand partners, Live, and Video review. Your style. Your CTRL.",
     cta: { label: "WATCH LIVE TRY-ONS →", href: "/influencers" },
-    secondaryCta: { label: "TRY ON THE HERO →", href: "/try-on" },
+    secondaryCta: { label: "JOIN AS CREATOR →", href: "/signup/creator" },
     /** Per-influencer folder tabs (same style as Beauty OS) */
     hostTabs: [
-      { id: "intro", shortcut: "CTRL + 1", label: "Intro" },
+      { id: "intro", shortcut: "CTRL + 1", label: "Brand" },
       { id: "shop", shortcut: "CTRL + 2", label: "Shop" },
       { id: "live", shortcut: "CTRL + 3", label: "Live" },
-      { id: "photo", shortcut: "CTRL + 4", label: "Photo" },
+      { id: "photo", shortcut: "CTRL + 4", label: "Video" },
     ] satisfies InfluencerHostTab[],
     hosts: [
       {
@@ -705,13 +780,14 @@ export const siteContent = {
         handle: "@hannalee",
         region: "K-Beauty",
         image: lookImg("look-1"),
-        status: "LIVE",
-        viewers: "2.4K watching",
-        activity: "Live stream · fan try-on",
-        tagline: "Glass-skin looks with fans screenshotting shades in chat",
-        bio: "Seoul-based glass-skin creator. Hosts weekly fan try-on rooms and shade-match chats.",
+        status: "REPLAY",
+        viewers: "Brand promo samples",
+        activity: "Short clips · brand try-on",
+        tagline: "Bloom-skin looks that sell the shade — short clips, clear brand CTA",
+        bio: "On-platform creator. Short app samples promote partner brands with try-on + shop link. Long livestreams optional later.",
         shopHref: "/shop",
         shopLabel: "Influencer shop →",
+        onPlatform: true,
         brands: [
           { name: "Laneige", logo: productImg("SK-M003") },
           { name: "Rom&nd", logo: productImg("SK-M008") },
@@ -723,13 +799,37 @@ export const siteContent = {
           { sku: "SK-M013", name: "Cherry Lip Cheek Tint", image: productImg("SK-M013"), href: "/shop/SK-M013" },
         ],
         liveClips: [
-          { title: "Glass skin shade match", meta: "LIVE · 42m", href: "/influencers" },
-          { title: "Fan try-on replay", meta: "Replay · 28m", href: "/influencers" },
+          { title: "Rose oil tint — brand swipe", meta: "15s · brand promo", href: "/influencers/hanna" },
+          { title: "Rom&nd contour — before/after", meta: "28s · brand promo", href: "/influencers/hanna" },
+        ],
+        shortClips: [
+          {
+            id: "hanna-laneige-tint",
+            title: "Rose oil tint on camera",
+            duration: "18s",
+            brandName: "Laneige",
+            productName: "Rose Oil Lip Tint",
+            productSku: "SK-M003",
+            productHref: "/shop/SK-M003",
+            poster: productImg("SK-M003"),
+            videoSrc: "/videos/creators/hanna/laneige-rose-oil-tint.mp4",
+          },
+          {
+            id: "hanna-romand-contour",
+            title: "Cream contour soft sculpt",
+            duration: "25s",
+            brandName: "Rom&nd",
+            productName: "Cream Contour Stick",
+            productSku: "SK-M008",
+            productHref: "/shop/SK-M008",
+            poster: productImg("SK-M008"),
+            videoSrc: "/videos/creators/hanna/romand-cream-contour.mp4",
+          },
         ],
         photos: [lookImg("look-1"), productImg("SK-M003"), productImg("SK-M001"), productImg("SK-M013")],
         blogPosts: [
-          { title: "How fans screenshot my glass look", excerpt: "Drop your shade in chat and I?�ll pin matches.", href: "/influencers" },
-          { title: "Laneige + Rom&nd live kit", excerpt: "The two products I always open with on stream.", href: "/influencers" },
+          { title: "How short clips sell a tint", excerpt: "Show shade · name brand · tap shop. Under 30s.", href: "/influencers/hanna" },
+          { title: "Laneige + Rom&nd kit", excerpt: "Two SKUs I always open brand promos with.", href: "/influencers/hanna" },
         ],
       },
       {
@@ -738,13 +838,14 @@ export const siteContent = {
         handle: "@soojin.beauty",
         region: "K-Beauty",
         image: lookImg("look-2"),
-        status: "LIVE",
-        viewers: "1.8K watching",
-        activity: "Live stream · lip & cheek match",
-        tagline: "Host + fans try the same tint —drop a screenshot for your match",
-        bio: "Lip & cheek specialist. Builds matched looks with fans in real time.",
+        status: "REPLAY",
+        viewers: "Brand promo samples",
+        activity: "Short clips · lip & cheek",
+        tagline: "Lip + cheek twin looks — short enough for brands, clear enough to convert",
+        bio: "On-platform creator. App-length samples promote 3CE & Anua with product + cart path. Brands get proof without long shoots.",
         shopHref: "/shop",
         shopLabel: "Influencer shop →",
+        onPlatform: true,
         brands: [
           { name: "3CE", logo: productImg("SK-M015") },
           { name: "Anua", logo: productImg("SK-M011") },
@@ -756,13 +857,37 @@ export const siteContent = {
           { sku: "SK-M010", name: "Skin Fit Cushion", image: productImg("SK-M010"), href: "/shop/SK-M010" },
         ],
         liveClips: [
-          { title: "Lip & cheek twin look", meta: "LIVE · 31m", href: "/influencers" },
-          { title: "Tint match Q&A", meta: "Clip · 12m", href: "/influencers" },
+          { title: "Peach flush — brand swipe", meta: "20s · brand promo", href: "/influencers/soojin" },
+          { title: "Concealer cover demo", meta: "32s · brand promo", href: "/influencers/soojin" },
+        ],
+        shortClips: [
+          {
+            id: "soojin-3ce-flush",
+            title: "Peach flush stick — cheek map",
+            duration: "20s",
+            brandName: "3CE",
+            productName: "Peach Flush Stick",
+            productSku: "SK-M015",
+            productHref: "/shop/SK-M015",
+            poster: productImg("SK-M015"),
+            videoSrc: "/videos/creators/soojin/3ce-peach-flush.mp4",
+          },
+          {
+            id: "soojin-anua-conceal",
+            title: "Seamless conceal — under-eye",
+            duration: "30s",
+            brandName: "Anua",
+            productName: "Seamless Concealer",
+            productSku: "SK-M011",
+            productHref: "/shop/SK-M011",
+            poster: productImg("SK-M011"),
+            videoSrc: "/videos/creators/soojin/anua-seamless-concealer.mp4",
+          },
         ],
         photos: [lookImg("look-2"), productImg("SK-M015"), productImg("SK-M002"), productImg("SK-M011")],
         blogPosts: [
-          { title: "Screenshot your twin tint", excerpt: "Tag me with the same cheek + lip combo.", href: "/influencers" },
-          { title: "Soft peach flush guide", excerpt: "Placement tips from tonight?�s live.", href: "/influencers" },
+          { title: "Screenshot your twin tint", excerpt: "Same cheek + lip — brand name on screen.", href: "/influencers/soojin" },
+          { title: "Soft peach flush guide", excerpt: "20-second brand promo formula.", href: "/influencers/soojin" },
         ],
       },
       {
@@ -966,6 +1091,318 @@ export const siteContent = {
     ] satisfies InfluencerLiveHost[],
   },
 
+  /** Homepage collection rails — product variety without dumping the full catalog */
+  homeCollections: {
+    eyebrow: "COLLECTIONS",
+    title: "SHOP BY SHORTCUT SET",
+    subtitle: "Routines, looks, and seasonal edits — K / J / C beauty curated for you.",
+    items: [
+      {
+        id: "best-routines",
+        shortcut: "CTRL + R",
+        title: "Best routines",
+        description: "Toner → serum → cream matched paths",
+        href: "/shop",
+        image: productImg("SK-H001"),
+        countLabel: "12 products",
+      },
+      {
+        id: "makeup",
+        shortcut: "CTRL + B",
+        title: "Makeup collection",
+        description: "Lip, cheek, eye — try-on ready",
+        href: "/shop",
+        image: productImg("SK-M001"),
+        countLabel: "18 products",
+      },
+      {
+        id: "seasonal-skincare",
+        shortcut: "CTRL + H",
+        title: "Seasonal skincare",
+        description: "Barrier + glow for the season",
+        href: "/shop",
+        image: productImg("SK-B001"),
+        countLabel: "14 products",
+      },
+      {
+        id: "summer-spf",
+        shortcut: "CTRL + S",
+        title: "Summer vibe + SPF",
+        description: "Dewy makeup with sun protection",
+        href: "/shop",
+        image: productImg("SK-Z001"),
+        countLabel: "10 products",
+      },
+    ],
+    markets: {
+      label: "MARKETS",
+      items: [
+        { label: "KBeauty", href: "/kbeauty" },
+        { label: "JBeauty", href: "/jbeauty" },
+        { label: "CBeauty", href: "/cbeauty" },
+      ],
+    },
+    brandsStrip: {
+      label: "BRANDS ON SHORTKEY",
+      names: ["Laneige", "Rom&nd", "3CE", "Anua", "TIRTIR", "COSRX", "Canmake", "Winona"],
+      href: "/brands",
+    },
+  },
+
+  /**
+   * Homepage trio: Makeup+Try-On · Skin+Analysis · Creator video jobs.
+   * Top of page carries signup fee plan (see hero.launchFees).
+   */
+  homeCategoryLanes: {
+    eyebrow: "THREE WAYS IN",
+    title: "MAKEUP · SKIN · CTRL TWIN",
+    subtitle:
+      "Shop AI lanes — or join as a creator. CTRL Twin is teased here; full rates stay in your signup meeting.",
+    lanes: [
+      {
+        id: "makeup-tryon",
+        shortcut: "CTRL + T",
+        category: "Makeup",
+        title: "Makeup + AI try-on",
+        description:
+          "Lip, cheek, eye — try the shade on your face before you buy. Real tint. No filter soften.",
+        aiLabel: "AI TRY-ON",
+        aiHref: "/try-on",
+        aiCta: "Open try-on →",
+        shopHref: "/shop",
+        shopCta: "Shop makeup →",
+        products: [
+          { sku: "SK-M001", name: "Glass Lip Gloss", type: "Gloss", image: productImg("SK-M001"), href: "/shop/SK-M001" },
+          { sku: "SK-M003", name: "Rose Oil Lip Tint", type: "Tint", image: productImg("SK-M003"), href: "/shop/SK-M003" },
+          { sku: "SK-M008", name: "Cream Contour Stick", type: "Sculpt", image: productImg("SK-M008"), href: "/shop/SK-M008" },
+          { sku: "SK-M015", name: "Peach Flush Stick", type: "Cheek", image: productImg("SK-M015"), href: "/shop/SK-M015" },
+          { sku: "SK-M010", name: "Skin Fit Cushion", type: "Base", image: productImg("SK-M010"), href: "/shop/SK-M010" },
+          { sku: "SK-M013", name: "Cherry Lip Cheek Tint", type: "Multi", image: productImg("SK-M013"), href: "/shop/SK-M013" },
+        ],
+      },
+      {
+        id: "skin-analysis",
+        shortcut: "CTRL + A",
+        category: "Skincare",
+        title: "Skincare + AI skin analysis",
+        description:
+          "Landmark skin read → matched K / J / C routine. Shop the steps that fit your skin.",
+        aiLabel: "AI SKIN ANALYSIS",
+        aiHref: "#skin-analysis",
+        aiCta: "Start analysis →",
+        shopHref: "/shop",
+        shopCta: "Shop skincare →",
+        products: [
+          { sku: "SK-H001", name: "Hydro Glow Cream", type: "Moisture", image: productImg("SK-H001"), href: "/shop/SK-H001" },
+          { sku: "SK-B001", name: "Bright First Essence", type: "Essence", image: productImg("SK-B001"), href: "/shop/SK-B001" },
+          { sku: "SK-Z001", name: "Daily Soft SPF", type: "Sun", image: productImg("SK-Z001"), href: "/shop/SK-Z001" },
+          { sku: "SK-D001", name: "Barrier Reset Cream", type: "Repair", image: productImg("SK-D001"), href: "/shop/SK-D001" },
+          { sku: "SK-G001", name: "Glow Shot Ampoule", type: "Ampoule", image: productImg("SK-G001"), href: "/shop/SK-G001" },
+          { sku: "SK-H002", name: "Water Bank Gel", type: "Hydra", image: productImg("SK-H002"), href: "/shop/SK-H002" },
+        ],
+      },
+      {
+        id: "creator-jobs",
+        shortcut: "CTRL + TWIN",
+        category: "Creators",
+        title: "CTRL Twin · do less, earn more",
+        description:
+          "License your look once. Your approved AI twin try-ons, answers shade questions, and sells — while you film less and keep the upside. Full rates in creator signup.",
+        aiLabel: "CTRL TWIN",
+        aiHref: "/signup/creator",
+        aiCta: "Creator meeting →",
+        shopHref: "/influencers",
+        shopCta: "See creator shops →",
+        products: [],
+        /** Homepage teaser only — full offer math lives on /signup/creator */
+        videoOffers: {
+          jobOffer: {
+            label: "Brand jobs + twin",
+            range: "Paid campaigns",
+            qty: "human + twin",
+            note: "Brand briefs. You approve. Twin scales the booth.",
+          },
+          platformOffer: {
+            label: "Earn while offline",
+            range: "Rev-share + offers",
+            qty: "your CTRL shop",
+            note: "Details & rate windows unlocked in your creator meeting.",
+          },
+        },
+      },
+    ],
+  },
+
+  /**
+   * Competitive “Why Shortkey?” — catch market attention before big retail affiliates.
+   * Layout inspired by K-beauty affiliate banners (product stage + join copy).
+   */
+  homeWhy: {
+    eyebrow: "WHY SHORTKEY",
+    titleBefore: "Why ",
+    titleHighlight: "SHORTKEY",
+    titleAfter: "?",
+    body: "Catch market attention before them. Join the Shortkey creator & brand program — become a trend leader, offer followers trustworthy AI-matched Asian beauty, and earn through your unique CTRL shop link with try-on built in.",
+    points: [
+      "First AI Asian beauty OS — skin analysis + live try-on in one flow",
+      "Your CTRL storefront — Shop · Brand · Live · Video under your shortcut",
+      "Lock platform fee early — 5% pre-register before August steps up",
+    ],
+    ctaCreator: { label: "JOIN AS CREATOR →", href: "/signup/creator" },
+    ctaBrand: { label: "JOIN AS BRAND →", href: "/signup/brand" },
+    stageLabel: "shortkey",
+    products: [
+      { sku: "SK-M001", name: "Glass Lip Gloss", image: productImg("SK-M001") },
+      { sku: "SK-H001", name: "Hydro Glow Cream", image: productImg("SK-H001") },
+      { sku: "SK-Z001", name: "Daily Soft SPF", image: productImg("SK-Z001") },
+      { sku: "SK-M003", name: "Rose Oil Lip Tint", image: productImg("SK-M003") },
+      { sku: "SK-B001", name: "Bright First Essence", image: productImg("SK-B001") },
+      { sku: "SK-M010", name: "Skin Fit Cushion", image: productImg("SK-M010") },
+    ],
+  },
+
+  /** Bestsellers · gift card · subscription — commerce row after collections */
+  homeCommerce: {
+    bestsellers: {
+      eyebrow: "CTRL + HOT",
+      title: "Best sellers",
+      subtitle: "What Asian beauty lovers are adding to cart right now.",
+      href: "/shop",
+      cta: "Shop best sellers →",
+      products: [
+        {
+          sku: "SK-M001",
+          name: "Glass Lip Gloss",
+          type: "High-Shine Gloss",
+          price: "$18",
+          image: productImg("SK-M001"),
+          href: "/shop/SK-M001",
+          badge: "No.1",
+        },
+        {
+          sku: "SK-H001",
+          name: "Hydro Glow Cream",
+          type: "Daily Moisturizer",
+          price: "$28",
+          image: productImg("SK-H001"),
+          href: "/shop/SK-H001",
+          badge: "Top 3",
+        },
+        {
+          sku: "SK-Z001",
+          name: "Daily Soft SPF",
+          type: "Lightweight Sunscreen",
+          price: "$22",
+          image: productImg("SK-Z001"),
+          href: "/shop/SK-Z001",
+          badge: "SPF pick",
+        },
+        {
+          sku: "SK-M003",
+          name: "Rose Oil Lip Tint",
+          type: "Tinted Lip Oil",
+          price: "$16",
+          image: productImg("SK-M003"),
+          href: "/shop/SK-M003",
+          badge: "Try-on fav",
+        },
+      ],
+    },
+    giftCard: {
+      eyebrow: "CTRL + GIFT",
+      title: "Best gift card",
+      subtitle:
+        "Send Shortkey credit for K / J / C beauty — perfect for birthdays, thank-yous, and creator shoutouts.",
+      amounts: ["$25", "$50", "$100", "$200"],
+      href: "/shop",
+      cta: "Send a gift card →",
+      image: productImg("SK-M009"),
+      note: "Digital delivery · redeemable on Shortkey shop & creator picks",
+    },
+    subscription: {
+      eyebrow: "CTRL + SUB",
+      title: "Beauty subscription",
+      subtitle:
+        "Monthly curated Asian beauty — skincare or makeup boxes matched to your skin analysis.",
+      plans: [
+        {
+          id: "glow",
+          name: "Glow Edit",
+          cadence: "Monthly",
+          price: "$39/mo",
+          perks: ["3–4 skincare minis", "Routine card", "Free shade tips"],
+        },
+        {
+          id: "look",
+          name: "Look Edit",
+          cadence: "Monthly",
+          price: "$49/mo",
+          perks: ["Makeup try-on picks", "Creator tip sheet", "Member early access"],
+        },
+        {
+          id: "vip",
+          name: "VIP CTRL",
+          cadence: "Quarterly+",
+          price: "$99/mo",
+          perks: ["Full-size hero SKU", "Live try-on seat", "5% member fee lock*"],
+        },
+      ],
+      href: "/shop",
+      cta: "See subscription plans →",
+      footnote: "*VIP CTRL member rate subject to launch-window signup rules.",
+    },
+  },
+
+  /** Who we are + join echo + community content */
+  homeCommunity: {
+    eyebrow: "SHORTKEY WORLD",
+    title: "LEARN · SHARE · JOIN",
+    subtitle: "Tutorials, creator inspiration, gratitude practice, and Asia market trends.",
+    joinEcho: {
+      title: "Join the platform",
+      description: "Same doors as the hero — book a 1-hour meeting.",
+      buttons: [
+        { label: "WHO WE ARE →", href: "/about", variant: "outline" as const },
+        { label: "JOIN AS CREATOR →", href: "/signup/creator", variant: "highlight" as const },
+        { label: "JOIN AS BRAND →", href: "/signup/brand", variant: "outline" as const },
+      ],
+    },
+    stories: [
+      {
+        id: "tutorials",
+        shortcut: "CTRL + M",
+        title: "Makeup tutorials",
+        description: "Step-by-step Asian makeup sharing with products in each step.",
+        href: "/makeover",
+        image: commandImg("cmd-makeover"),
+      },
+      {
+        id: "inspiration",
+        shortcut: "CTRL + L",
+        title: "Influencer inspiration",
+        description: "Looks and stories from creators across K / J / C markets.",
+        href: "/influencers",
+        image: lookImg("look-1"),
+      },
+      {
+        id: "gratitude",
+        shortcut: "CTRL + G",
+        title: "The Gratitude Mind",
+        description: "Beauty rituals rooted in self-care and intentional gratitude.",
+        href: "/blog",
+        image: lookImg("look-2"),
+      },
+      {
+        id: "asia-trends",
+        shortcut: "CTRL + A",
+        title: "Asia market trends",
+        description: "Reposts and edits on what’s moving in Asian beauty right now.",
+        href: "/blog",
+        image: lookImg("look-3"),
+      },
+    ],
+  },
+
   brands: {
     title: "JOIN AS A FOUNDING BRAND",
     tag: "FOUNDING BRAND PROGRAMME —10 SLOTS ONLY",
@@ -974,7 +1411,7 @@ export const siteContent = {
     slotsLabel: "10 slots available —closes August 13, 2026",
     foundingFee: "USD 5,000",
     commissionNote: "5% commission. That's it. We do not increase your retail price.",
-    cta: { label: "JOIN AS FOUNDING BRAND →", href: "/brands" },
+    cta: { label: "JOIN AS FOUNDING BRAND →", href: "/signup/brand" },
     aim: {
       label: "THE AIM",
       title: "Why brands choose Shortkey.",

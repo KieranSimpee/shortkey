@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>shortkey.live — Who's Live Next</title>
+<style>
+:root{
+  --cat:#9B7AE3;--deep:#7B5AC3;--ink:#111111;--silk:#F9F7FF;
+  --white:#FFFFFF;--mid:#6E6E6E;--border:#E8E2F5;--red:#E84855;
+  --blue:#7AC4E3;--green:#2ECC71;
+  --font:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+  --mono:'SF Mono','Fira Code',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--silk);color:var(--ink);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;background:var(--deep);display:flex;align-items:center;padding:0 32px;gap:12px;box-shadow:0 2px 16px rgba(123,90,195,0.2);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-box{width:30px;height:30px;border-radius:7px;overflow:hidden;flex-shrink:0;}
+.nav-logo-box img{width:100%;height:100%;object-fit:cover;}
+.nav-wordmark{font-size:14px;font-weight:800;letter-spacing:-0.02em;color:white;}
+.nav-wordmark span{color:rgba(255,255,255,0.55);}
+.nav-key{padding:5px 11px;border-radius:6px;font-size:9px;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;font-weight:700;border:1px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.82);background:rgba(255,255,255,0.07);transition:all 0.15s;text-decoration:none;display:inline-block;white-space:nowrap;}
+.nav-key:hover{background:rgba(255,255,255,0.16);transform:translateY(-1px);}
+.nav-key.active{background:white;color:var(--deep);border-color:white;}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px;}
+.nav-btn{padding:7px 16px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;background:white;color:var(--deep);border:none;cursor:pointer;text-decoration:none;display:inline-block;}
+.nav-badge{display:flex;align-items:center;gap:5px;background:var(--red);color:white;padding:4px 10px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;}
+.live-dot{width:5px;height:5px;border-radius:50%;background:white;animation:blink 1.2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
+
+section{scroll-margin-top:64px;}
+
+/* HERO */
+.hero{padding:112px 48px 56px;text-align:center;background:linear-gradient(180deg,#F0EAFF 0%,#F9F7FF 100%);}
+.eyebrow{font-size:10px;font-family:var(--mono);font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--cat);margin-bottom:14px;}
+.h1{font-size:clamp(40px,6vw,80px);font-weight:800;letter-spacing:-0.03em;line-height:1.0;color:var(--ink);margin-bottom:18px;}
+.h1 span{color:var(--cat);}
+.hero-sub{font-size:15px;color:var(--mid);max-width:500px;margin:0 auto 28px;line-height:1.6;}
+.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.btn-p{padding:13px 26px;border-radius:100px;font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;background:var(--cat);color:white;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
+.btn-p:hover{opacity:0.88;transform:translateY(-1px);}
+.btn-g{padding:12px 24px;border-radius:100px;font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;background:transparent;color:var(--cat);border:1.5px solid var(--cat);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
+.btn-g:hover{background:rgba(155,122,227,0.06);}
+
+/* VIP STRIP */
+.vip-strip{background:white;border:1.5px solid var(--border);border-radius:16px;margin:0 48px 40px;padding:18px 24px;display:flex;align-items:center;gap:18px;}
+.vip-badge{font-size:9px;font-family:var(--mono);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:4px 12px;border-radius:100px;background:rgba(155,122,227,0.1);color:var(--cat);border:1px solid rgba(155,122,227,0.2);white-space:nowrap;flex-shrink:0;}
+.vip-text{font-size:13px;color:var(--ink);line-height:1.5;flex:1;}
+.vip-slots{text-align:right;flex-shrink:0;}
+.vip-count{font-size:26px;font-weight:800;letter-spacing:-0.02em;color:var(--cat);}
+.vip-sub{font-size:9px;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+
+/* SECTION WRAPPER */
+.s{padding:0 48px 56px;}
+.sec-lbl{font-size:10px;font-family:var(--mono);letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:18px;display:flex;align-items:center;gap:12px;}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* CALENDAR TABS */
+.cal-tab-bar{display:flex;gap:8px;margin-bottom:24px;background:white;border:1.5px solid var(--border);border-radius:14px;padding:6px;}
+.cal-tab{flex:1;padding:10px 16px;border-radius:10px;font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;border:none;background:transparent;color:var(--mid);cursor:pointer;transition:all 0.2s;text-align:center;}
+.cal-tab:hover{background:var(--silk);}
+.cal-tab.active{background:var(--cat);color:white;}
+.cal-pane{display:none;}
+.cal-pane.active{display:block;}
+
+/* CALENDAR GRID */
+.cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;}
+
+/* CALENDAR CARD */
+.cal-card{background:white;border:1.5px solid var(--border);border-radius:16px;padding:18px;transition:all 0.2s;}
+.cal-card:hover{box-shadow:0 6px 20px rgba(155,122,227,0.1);transform:translateY(-2px);}
+.cal-card.live{border-color:var(--cat);box-shadow:0 0 0 4px rgba(155,122,227,0.07);}
+.live-pill{display:inline-flex;align-items:center;gap:5px;background:var(--red);color:white;padding:3px 10px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:9px;}
+.cal-date{font-size:9px;font-family:var(--mono);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--cat);margin-bottom:5px;}
+.cal-title{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-0.01em;margin-bottom:3px;line-height:1.2;}
+.cal-creator{font-size:11px;color:var(--mid);margin-bottom:10px;}
+.cal-brands{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;}
+.brand-tag{font-size:8px;font-family:var(--mono);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:rgba(155,122,227,0.07);border:1px solid rgba(155,122,227,0.18);color:var(--cat);}
+.vip-bar-wrap{margin-bottom:12px;}
+.vip-bar-lbl{font-size:8px;font-family:var(--mono);color:var(--mid);margin-bottom:4px;display:flex;justify-content:space-between;}
+.vip-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.vip-fill{height:100%;background:var(--cat);border-radius:2px;}
+.vip-fill.urgent{background:var(--red);}
+.card-btns{display:flex;gap:7px;}
+.c-btn{flex:1;padding:9px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;border:1.5px solid var(--border);color:var(--mid);background:white;cursor:pointer;transition:all 0.2s;text-decoration:none;display:flex;align-items:center;justify-content:center;}
+.c-btn:hover{border-color:var(--cat);color:var(--cat);}
+.c-btn.p{background:var(--cat);color:white;border-color:var(--cat);}
+.c-btn.p:hover{opacity:0.88;}
+.cal-card.approved{border-left:4px solid var(--green);}
+.cal-card.pending{border-left:4px solid #F9A825;opacity:0.85;}
+.status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.status-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.status-lbl{font-size:9px;font-family:var(--mono);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+
+/* STREAM */
+.stream-layout{display:grid;grid-template-columns:1fr 320px;gap:16px;margin-bottom:16px;}
+.stream-player{background:#EDE8F8;border-radius:16px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);position:relative;}
+.stream-inner{text-align:center;}
+.play-circle{width:56px;height:56px;border-radius:50%;background:rgba(155,122,227,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;cursor:pointer;}
+.play-tri{width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:17px solid #9B7AE3;margin-left:3px;}
+.player-lbl{font-size:11px;font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;color:#7B5AC3;}
+.live-abs{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:4px;background:var(--red);color:white;padding:4px 11px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;}
+.stream-right{display:flex;flex-direction:column;gap:12px;}
+.vip-panel{background:white;border:1.5px solid var(--border);border-radius:14px;padding:16px;}
+.vip-panel-title{font-size:9px;font-family:var(--mono);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--cat);margin-bottom:10px;}
+.slot-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:12px;}
+.slot{height:28px;border-radius:6px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:8px;font-family:var(--mono);font-weight:700;color:var(--mid);}
+.slot.filled{background:rgba(155,122,227,0.1);border-color:rgba(155,122,227,0.3);color:var(--cat);}
+.slot.open{border-style:dashed;}
+.chat-panel{background:white;border:1.5px solid var(--border);border-radius:14px;padding:14px;flex:1;}
+.chat-title{font-size:9px;font-family:var(--mono);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;}
+.chat-msg{font-size:11px;color:var(--mid);padding:5px 0;border-bottom:1px solid #F5F2FF;line-height:1.4;}
+.chat-msg:last-child{border-bottom:none;}
+.chat-msg b{color:var(--cat);}
+
+/* PRODUCT SHELF */
+.shelf{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.shelf::-webkit-scrollbar{height:4px;}
+.shelf::-webkit-scrollbar-thumb{background:#D8CEF0;border-radius:2px;}
+.p-card{background:white;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;min-width:170px;max-width:170px;flex-shrink:0;transition:all 0.2s;}
+.p-card:hover{box-shadow:0 5px 16px rgba(155,122,227,0.1);transform:translateY(-2px);}
+.p-cat{font-size:8px;font-family:var(--mono);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;text-align:center;padding:9px 0 3px;color:var(--cat);}
+.p-img{width:106px;height:106px;margin:0 auto 9px;background:var(--silk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:var(--mono);color:#ccc;border:1px solid var(--border);}
+.p-body{padding:0 11px 11px;text-align:center;}
+.p-brand{font-size:11px;font-weight:800;margin-bottom:2px;}
+.p-name{font-size:9px;color:var(--mid);margin-bottom:4px;line-height:1.4;}
+.p-price{font-size:12px;font-weight:700;margin-bottom:7px;}
+.p-add{display:block;width:100%;padding:7px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;background:var(--cat);color:white;border:none;cursor:pointer;margin-bottom:4px;text-decoration:none;text-align:center;}
+.p-try{display:block;width:100%;padding:6px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;background:transparent;color:var(--mid);border:1px solid var(--border);cursor:pointer;text-decoration:none;text-align:center;}
+
+/* INSTRUCTIONS */
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.how-card{background:white;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;}
+.how-header{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.how-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.how-header-text .ht{font-size:14px;font-weight:800;color:var(--ink);}
+.how-header-text .hs{font-size:11px;color:var(--mid);margin-top:2px;}
+.how-steps{padding:18px 22px;}
+.step{display:flex;gap:14px;margin-bottom:16px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--cat);color:white;font-size:10px;font-weight:800;font-family:var(--mono);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.step-body .sb{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;}
+.step-body .sd{font-size:11px;color:var(--mid);line-height:1.5;}
+.step-body .sc{display:inline-block;margin-top:5px;font-size:9px;font-family:var(--mono);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(155,122,227,0.1);border:1px solid rgba(155,122,227,0.2);color:var(--cat);}
+.how-note{padding:12px 22px;background:rgba(155,122,227,0.04);border-top:1px solid var(--border);font-size:11px;color:var(--mid);line-height:1.5;}
+
+/* B2B SUBMIT FORM */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-field{display:flex;flex-direction:column;gap:5px;}
+.form-field.full{grid-column:1/-1;}
+.form-lbl{font-size:10px;font-family:var(--mono);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+.form-input{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:var(--font);background:var(--silk);outline:none;transition:border-color 0.2s;color:var(--ink);resize:none;}
+.form-input:focus{border-color:var(--cat);background:white;}
+.form-select{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:var(--font);background:var(--silk);outline:none;color:var(--ink);}
+.form-submit{padding:13px 32px;border-radius:100px;font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;background:var(--cat);color:white;border:none;cursor:pointer;transition:opacity 0.2s;}
+.form-submit:hover{opacity:0.88;}
+.rules-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.rule-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--mid);line-height:1.5;}
+.rule-dot{width:6px;height:6px;border-radius:50%;background:var(--cat);flex-shrink:0;margin-top:5px;}
+
+/* POSTER */
+.poster{margin:0 48px 56px;background:var(--cat);border-radius:20px;padding:48px;text-align:center;}
+.p-ey{font-size:10px;font-family:var(--mono);font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:10px;}
+.p-h{font-size:clamp(28px,4vw,46px);font-weight:800;color:white;letter-spacing:-0.02em;margin-bottom:10px;line-height:1.05;}
+.p-sub{font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.6;}
+.p-btn{display:inline-block;padding:12px 28px;border:1.5px solid rgba(255,255,255,0.4);color:white;border-radius:100px;font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;}
+
+/* JOIN */
+.join-card{background:white;border:1.5px solid var(--border);border-radius:20px;padding:36px;text-align:center;max-width:520px;margin:0 auto;}
+.j-ey{font-size:10px;font-family:var(--mono);font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--cat);margin-bottom:10px;}
+.j-h{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--ink);letter-spacing:-0.02em;margin-bottom:10px;}
+.j-sub{font-size:13px;color:var(--mid);margin-bottom:24px;line-height:1.6;}
+.j-form{display:flex;flex-direction:column;gap:9px;max-width:340px;margin:0 auto;}
+.j-input{padding:11px 15px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:var(--font);background:var(--silk);outline:none;transition:border-color 0.2s;}
+.j-input:focus{border-color:var(--cat);background:white;}
+.j-btn{padding:12px;border-radius:100px;font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;background:var(--cat);color:white;border:none;cursor:pointer;}
+
+/* FOOTER */
+footer{background:var(--deep);padding:26px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.foot-logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.foot-logo-box{width:26px;height:26px;border-radius:6px;overflow:hidden;}
+.foot-logo-box img{width:100%;height:100%;object-fit:cover;}
+.foot-wm{font-size:13px;font-weight:800;letter-spacing:-0.02em;color:white;}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap;}
+.foot-link{font-size:9px;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;}
+.foot-link:hover{color:white;}
+.foot-copy{font-size:9px;font-family:var(--mono);color:rgba(255,255,255,0.3);}
+
+@media(max-width:800px){
+  nav{padding:0 16px;gap:6px;}
+  .nav-key{display:none;}
+  .hero{padding:96px 20px 44px;}
+  .s{padding:0 20px 44px;}
+  .vip-strip{margin:0 20px 32px;flex-wrap:wrap;}
+  .poster{margin:0 20px 44px;padding:32px 20px;}
+  .stream-layout{grid-template-columns:1fr;}
+  .how-grid{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <div class="nav-logo-box"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="Shortkey"></div>
+    <div class="nav-wordmark">shortkey<span>.live</span></div>
+  </a>
+  <a class="nav-key active" href="#calendar">Calendar</a>
+  <a class="nav-key" href="#stream">Watch Now</a>
+  <a class="nav-key" href="#products">Products</a>
+  <a class="nav-key" href="#how-to">How It Works</a>
+  <a class="nav-key" href="#submit">Submit Show</a>
+  <div class="nav-right">
+    <div class="nav-badge"><span class="live-dot"></span>Live Now</div>
+    <a class="nav-btn" href="#join">Join Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="eyebrow">K-Beauty Live Commerce</div>
+  <div class="h1">Live. <span>Try.</span> Buy.</div>
+  <div class="hero-sub">Watch K-beauty live shows, try every product on your own face with TINT AI, and claim your VIP slot — first 10 buyers of the full set get an exclusive personal photo with the influencer.</div>
+  <div class="hero-btns">
+    <a class="btn-p" href="#stream">Watch Live Now</a>
+    <a class="btn-g" href="#calendar">View Schedule</a>
+  </div>
+</section>
+
+<!-- VIP STRIP -->
+<div class="vip-strip">
+  <div class="vip-badge">VIP Mechanic — Every Show</div>
+  <div class="vip-text"><strong>First 10 buyers of the complete product set</strong> each receive their own exclusive personal Try-On photo — your face, the full look, side-by-side with the influencer. One per member. Auto-delivered after the show ends.</div>
+  <div class="vip-slots">
+    <div class="vip-count">7<span style="font-size:15px;font-weight:400;color:var(--mid);">/10</span></div>
+    <div class="vip-sub">Slots Left</div>
+  </div>
+</div>
+
+<!-- LIVE STREAM -->
+<section id="stream" class="s">
+  <div class="sec-lbl">Live Now</div>
+  <div class="stream-layout">
+    <div class="stream-player">
+      <div class="live-abs"><span class="live-dot"></span>Live</div>
+      <div class="stream-inner">
+        <div class="play-circle"><div class="play-tri"></div></div>
+        <div class="player-lbl">Vimeo Player — shortkey.live</div>
+      </div>
+    </div>
+    <div class="stream-right">
+      <div class="vip-panel">
+        <div class="vip-panel-title">VIP Slots — Tonight</div>
+        <div class="slot-grid">
+          <div class="slot filled">1</div><div class="slot filled">2</div><div class="slot filled">3</div>
+          <div class="slot filled">4</div><div class="slot filled">5</div><div class="slot filled">6</div>
+          <div class="slot filled">7</div><div class="slot open">8</div><div class="slot open">9</div><div class="slot open">10</div>
+        </div>
+        <a class="c-btn p" href="#products" style="display:flex;text-align:center;justify-content:center;text-decoration:none;">Buy Set — Claim Slot</a>
+      </div>
+      <div class="chat-panel">
+        <div class="chat-title">Live Chat</div>
+        <div class="chat-msg"><b>@gracekim</b> The COSRX essence is amazing!</div>
+        <div class="chat-msg"><b>@shortkey</b> Buy all 3 products to qualify for VIP</div>
+        <div class="chat-msg"><b>@miabeauty</b> Just ordered — fingers crossed</div>
+        <div class="chat-msg"><b>@beautylover</b> What's in tonight's full set?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR (PUBLIC + B2B TABS) -->
+<section id="calendar" class="s">
+  <div class="sec-lbl">Live Schedule</div>
+
+  <div class="cal-tab-bar">
+    <button class="cal-tab active" data-pane="public" onclick="switchCal(this)">Who's Live — Public Schedule</button>
+    <button class="cal-tab" data-pane="b2b" onclick="switchCal(this)">Brand &amp; Influencer Submissions</button>
+  </div>
+
+  <!-- PUBLIC SCHEDULE -->
+  <div class="cal-pane active" id="pane-public">
+    <div class="cal-grid">
+      <!-- LIVE NOW -->
+      <div class="cal-card live">
+        <div class="live-pill"><span class="live-dot"></span>Live Now</div>
+        <div class="cal-title">Summer Glow K-Beauty Show</div>
+        <div class="cal-creator">@beautybySarah &middot; shortkey.live</div>
+        <div class="cal-brands">
+          <span class="brand-tag">COSRX</span>
+          <span class="brand-tag">LANEIGE</span>
+          <span class="brand-tag">Sulwhasoo</span>
+        </div>
+        <div class="vip-bar-wrap">
+          <div class="vip-bar-lbl"><span>VIP Slots</span><span style="color:var(--red);font-weight:700;">3 Remaining</span></div>
+          <div class="vip-bar"><div class="vip-fill urgent" style="width:70%;"></div></div>
+        </div>
+        <div class="card-btns">
+          <a class="c-btn" href="#tryon">Quick Try-On</a>
+          <a class="c-btn p" href="#stream">Watch Live</a>
+        </div>
+      </div>
+
+      <!-- WED -->
+      <div class="cal-card">
+        <div class="cal-date">Wed &middot; Jul 23 &middot; 8PM HKT</div>
+        <div class="cal-title">Clean Skin Morning Ritual</div>
+        <div class="cal-creator">@skinwithMia &middot; shortkey.live</div>
+        <div class="cal-brands">
+          <span class="brand-tag">MISSHA</span>
+          <span class="brand-tag">Klairs</span>
+          <span class="brand-tag">Isntree</span>
+        </div>
+        <div class="vip-bar-wrap">
+          <div class="vip-bar-lbl"><span>VIP Slots</span><span>10 Available</span></div>
+          <div class="vip-bar"><div class="vip-fill" style="width:0%;"></div></div>
+        </div>
+        <div class="card-btns">
+          <a class="c-btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260723T120000Z%0ADTEND:20260723T140000Z%0ASUMMARY:Shortkey Live - Clean Skin Morning Ritual%0ADESCRIPTION:Watch @skinwithMia live on shortkey.live. Buy the full set to claim a VIP slot.%0AURL:https://shortkey.live%0AEND:VEVENT%0AEND:VCALENDAR" download="shortkey_jul23.ics">Save Date</a>
+          <a class="c-btn p" href="#join">Set Reminder</a>
+        </div>
+      </div>
+
+      <!-- SAT -->
+      <div class="cal-card">
+        <div class="cal-date">Sat &middot; Jul 26 &middot; 7PM HKT</div>
+        <div class="cal-title">Full Glam Makeup Night</div>
+        <div class="cal-creator">@glowbyJenn &middot; shortkey.live</div>
+        <div class="cal-brands">
+          <span class="brand-tag">rom&amp;nd</span>
+          <span class="brand-tag">CLIO</span>
+          <span class="brand-tag">PERIPERA</span>
+        </div>
+        <div class="vip-bar-wrap">
+          <div class="vip-bar-lbl"><span>VIP Slots</span><span>10 Available</span></div>
+          <div class="vip-bar"><div class="vip-fill" style="width:0%;"></div></div>
+        </div>
+        <div class="card-btns">
+          <a class="c-btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260726T110000Z%0ADTEND:20260726T130000Z%0ASUMMARY:Shortkey Live - Full Glam Makeup Night%0ADESCRIPTION:Watch @glowbyJenn live on shortkey.live. Buy the full set to claim a VIP slot.%0AURL:https://shortkey.live%0AEND:VEVENT%0AEND:VCALENDAR" download="shortkey_jul26.ics">Save Date</a>
+          <a class="c-btn p" href="#join">Set Reminder</a>
+        </div>
+      </div>
+
+      <!-- AUG 2 -->
+      <div class="cal-card">
+        <div class="cal-date">Sun &middot; Aug 2 &middot; 9PM HKT</div>
+        <div class="cal-title">Skincare Minimalist Routine</div>
+        <div class="cal-creator">@jinheebeauty &middot; shortkey.live</div>
+        <div class="cal-brands">
+          <span class="brand-tag">Anua</span>
+          <span class="brand-tag">Round Lab</span>
+        </div>
+        <div class="vip-bar-wrap">
+          <div class="vip-bar-lbl"><span>VIP Slots</span><span>10 Available</span></div>
+          <div class="vip-bar"><div class="vip-fill" style="width:0%;"></div></div>
+        </div>
+        <div class="card-btns">
+          <a class="c-btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260802T130000Z%0ADTEND:20260802T150000Z%0ASUMMARY:Shortkey Live - Skincare Minimalist Routine%0ADESCRIPTION:Watch @jinheebeauty live on shortkey.live.%0AURL:https://shortkey.live%0AEND:VEVENT%0AEND:VCALENDAR" download="shortkey_aug2.ics">Save Date</a>
+          <a class="c-btn p" href="#join">Set Reminder</a>
+        </div>
+      </div>
+
+      <!-- AUG 9 -->
+      <div class="cal-card">
+        <div class="cal-date">Sun &middot; Aug 9 &middot; 8PM HKT</div>
+        <div class="cal-title">Summer Lip Collection Launch</div>
+        <div class="cal-creator">@makeupbySophia &middot; shortkey.live</div>
+        <div class="cal-brands">
+          <span class="brand-tag">3CE</span>
+          <span class="brand-tag">Romand</span>
+        </div>
+        <div class="vip-bar-wrap">
+          <div class="vip-bar-lbl"><span>VIP Slots</span><span>10 Available</span></div>
+          <div class="vip-bar"><div class="vip-fill" style="width:0%;"></div></div>
+        </div>
+        <div class="card-btns">
+          <a class="c-btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260809T120000Z%0ADTEND:20260809T140000Z%0ASUMMARY:Shortkey Live - Summer Lip Collection Launch%0AURL:https://shortkey.live%0AEND:VEVENT%0AEND:VCALENDAR" download="shortkey_aug9.ics">Save Date</a>
+          <a class="c-btn p" href="#join">Set Reminder</a>
+        </div>
+      </div>
+
+      <!-- AUG 14 -->
+      <div class="cal-card">
+        <div class="cal-date">Fri &middot; Aug 14 &middot; 7PM HKT</div>
+        <div class="cal-title">K-Glow Anniversary Special</div>
+        <div class="cal-creator">@beautybySarah &amp; @glowbyJenn &middot; shortkey.live</div>
+        <div class="cal-brands">
+          <span class="brand-tag">COSRX</span>
+          <span class="brand-tag">Sulwhasoo</span>
+          <span class="brand-tag">CLIO</span>
+          <span class="brand-tag">3CE</span>
+        </div>
+        <div class="vip-bar-wrap">
+          <div class="vip-bar-lbl"><span>VIP Slots</span><span>10 Available</span></div>
+          <div class="vip-bar"><div class="vip-fill" style="width:0%;"></div></div>
+        </div>
+        <div class="card-btns">
+          <a class="c-btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260814T110000Z%0ADTEND:20260814T140000Z%0ASUMMARY:Shortkey Live - K-Glow Anniversary Special%0AURL:https://shortkey.live%0AEND:VEVENT%0AEND:VCALENDAR" download="shortkey_aug14.ics">Save Date</a>
+          <a class="c-btn p" href="#join">Set Reminder</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B2B SUBMISSION VIEW -->
+  <div class="cal-pane" id="pane-b2b">
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:20px;">
+      <!-- LEFT: SUBMISSIONS LIST -->
+      <div>
+        <div style="font-size:11px;font-family:var(--mono);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:14px;">Submitted Requests — Pending Approval Wednesday</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+
+          <div class="cal-card approved">
+            <div class="status-row">
+              <div class="status-dot" style="background:var(--green);"></div>
+              <div class="status-lbl" style="color:var(--green);">Approved — Confirmed on calendar</div>
+            </div>
+            <div class="cal-date">Wed &middot; Jul 23 &middot; 8PM HKT</div>
+            <div class="cal-title">Clean Skin Morning Ritual</div>
+            <div class="cal-creator">@skinwithMia · submitted by Klairs</div>
+            <div class="cal-brands"><span class="brand-tag">MISSHA</span><span class="brand-tag">Klairs</span><span class="brand-tag">Isntree</span></div>
+          </div>
+
+          <div class="cal-card approved">
+            <div class="status-row">
+              <div class="status-dot" style="background:var(--green);"></div>
+              <div class="status-lbl" style="color:var(--green);">Approved — Confirmed on calendar</div>
+            </div>
+            <div class="cal-date">Sat &middot; Jul 26 &middot; 7PM HKT</div>
+            <div class="cal-title">Full Glam Makeup Night</div>
+            <div class="cal-creator">@glowbyJenn · submitted by rom&amp;nd</div>
+            <div class="cal-brands"><span class="brand-tag">rom&amp;nd</span><span class="brand-tag">CLIO</span><span class="brand-tag">PERIPERA</span></div>
+          </div>
+
+          <div class="cal-card pending">
+            <div class="status-row">
+              <div class="status-dot" style="background:#F9A825;"></div>
+              <div class="status-lbl" style="color:#C8850A;">Pending — Review on Wednesday</div>
+            </div>
+            <div class="cal-date">Requested: Aug 16 &middot; 8PM HKT</div>
+            <div class="cal-title">Glow Serum Masterclass</div>
+            <div class="cal-creator">@beautybyTina · submitted by Anua</div>
+            <div class="cal-brands"><span class="brand-tag">Anua</span><span class="brand-tag">Rovectin</span></div>
+          </div>
+
+          <div class="cal-card pending">
+            <div class="status-row">
+              <div class="status-dot" style="background:#F9A825;"></div>
+              <div class="status-lbl" style="color:#C8850A;">Pending — Review on Wednesday</div>
+            </div>
+            <div class="cal-date">Requested: Aug 20 &middot; 7PM HKT</div>
+            <div class="cal-title">Cushion & Foundation Launch</div>
+            <div class="cal-creator">@makeupHana · submitted by MISSHA</div>
+            <div class="cal-brands"><span class="brand-tag">MISSHA</span><span class="brand-tag">HERA</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: SUBMIT FORM -->
+      <div id="submit">
+        <div style="background:white;border:1.5px solid var(--border);border-radius:16px;padding:22px;">
+          <div style="font-size:12px;font-family:var(--mono);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--cat);margin-bottom:16px;">Submit a Show Request</div>
+          <div class="form-grid">
+            <div class="form-field">
+              <label class="form-lbl">Brand Name</label>
+              <input class="form-input" type="text" placeholder="e.g. COSRX">
+            </div>
+            <div class="form-field">
+              <label class="form-lbl">Vendor Number</label>
+              <input class="form-input" type="text" placeholder="e.g. SK-B-042">
+            </div>
+            <div class="form-field">
+              <label class="form-lbl">Influencer Handle</label>
+              <input class="form-input" type="text" placeholder="e.g. @beautybySarah">
+            </div>
+            <div class="form-field">
+              <label class="form-lbl">Preferred Date</label>
+              <input class="form-input" type="date">
+            </div>
+            <div class="form-field">
+              <label class="form-lbl">Preferred Time (HKT)</label>
+              <select class="form-select">
+                <option>7:00 PM</option>
+                <option>8:00 PM</option>
+                <option>9:00 PM</option>
+                <option>10:00 PM</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-lbl">Show Duration</label>
+              <select class="form-select">
+                <option>60 minutes</option>
+                <option>90 minutes</option>
+                <option>120 minutes</option>
+              </select>
+            </div>
+            <div class="form-field full">
+              <label class="form-lbl">Show Title</label>
+              <input class="form-input" type="text" placeholder="e.g. Summer Glow K-Beauty Show">
+            </div>
+            <div class="form-field full">
+              <label class="form-lbl">Products to Feature (one per line)</label>
+              <textarea class="form-input" rows="3" placeholder="COSRX Snail Essence&#10;COSRX AHA Toner&#10;Sulwhasoo Balancing Water"></textarea>
+            </div>
+            <div class="form-field full">
+              <label class="form-lbl">Collaborating Brands (optional)</label>
+              <input class="form-input" type="text" placeholder="e.g. LANEIGE, Sulwhasoo">
+            </div>
+          </div>
+          <div style="margin-top:16px;padding:12px;background:rgba(155,122,227,0.05);border-radius:10px;border:1px solid rgba(155,122,227,0.15);font-size:11px;color:var(--mid);line-height:1.6;margin-bottom:16px;">
+            Submissions are reviewed every <strong>Wednesday</strong>. Approved shows are added to the public calendar and auto-emailed to your brand email. You will hear back within 48 hours.
+          </div>
+          <button class="form-submit" onclick="alert('Request submitted. Kieran will review on Wednesday and confirm via email.')">Submit Request</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="s">
+  <div class="sec-lbl">Featured Products — Tonight's Show</div>
+  <div class="shelf">
+    <div class="p-card"><div class="p-cat">K-BEAUTY</div><div class="p-img">Image</div><div class="p-body"><div class="p-brand">Sulwhasoo</div><div class="p-name">Essential Balancing Water 150ml</div><div class="p-price">$68.00</div><a class="p-add" href="https://shortkey.store/products/sulwhasoo-balancing-water">Add to Cart</a><a class="p-try" href="#tryon">Try-On</a></div></div>
+    <div class="p-card"><div class="p-cat">SKINCARE</div><div class="p-img">Image</div><div class="p-body"><div class="p-brand">COSRX</div><div class="p-name">Snail 96 Mucin Essence</div><div class="p-price">$25.00</div><a class="p-add" href="https://shortkey.store/products/cosrx-snail">Add to Cart</a><a class="p-try" href="#tryon">Try-On</a></div></div>
+    <div class="p-card"><div class="p-cat">SKINCARE</div><div class="p-img">Image</div><div class="p-body"><div class="p-brand">LANEIGE</div><div class="p-name">Water Sleeping Mask 70ml</div><div class="p-price">$35.00</div><a class="p-add" href="https://shortkey.store/products/laneige-mask">Add to Cart</a><a class="p-try" href="#tryon">Try-On</a></div></div>
+    <div class="p-card"><div class="p-cat">K-BEAUTY</div><div class="p-img">Image</div><div class="p-body"><div class="p-brand">Sulwhasoo</div><div class="p-name">Concentrated Ginseng Cream</div><div class="p-price">$145.00</div><a class="p-add" href="https://shortkey.store/products/sulwhasoo-ginseng">Add to Cart</a><a class="p-try" href="#tryon">Try-On</a></div></div>
+    <div class="p-card"><div class="p-cat">SKINCARE</div><div class="p-img">Image</div><div class="p-body"><div class="p-brand">COSRX</div><div class="p-name">AHA/BHA Clarifying Toner</div><div class="p-price">$22.00</div><a class="p-add" href="https://shortkey.store/products/cosrx-toner">Add to Cart</a><a class="p-try" href="#tryon">Try-On</a></div></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-to" class="s">
+  <div class="sec-lbl">How It Works</div>
+  <div class="how-grid">
+
+    <!-- CUSTOMER -->
+    <div class="how-card">
+      <div class="how-header">
+        <div class="how-icon" style="background:rgba(155,122,227,0.1);">👤</div>
+        <div class="how-header-text">
+          <div class="ht">For Customers</div>
+          <div class="hs">How to watch, try, buy, and claim your VIP slot</div>
+        </div>
+      </div>
+      <div class="how-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="sb">Join shortkey.live free</div>
+            <div class="sd">Create your free account below. You need a membership to claim VIP slots and receive your personal Try-On photo.</div>
+            <span class="sc">Join Free — scroll to bottom</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="sb">Check the public schedule</div>
+            <div class="sd">See Who's Live Now and upcoming shows on the calendar. Tap Save Date to download a .ics file — it opens in Google Calendar, Apple Calendar, or Outlook automatically.</div>
+            <span class="sc">Calendar tab above</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="sb">Try-On before you buy</div>
+            <div class="sd">Click Quick Try-On on any product or calendar card. The TINT AI engine lets you see every shade on your own face — no app download needed.</div>
+            <span class="sc">shortkey.fashion/try-on</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="sb">Watch the live show</div>
+            <div class="sd">Click Watch Live when the show starts. The influencer demos every product live. Ask questions in the live chat.</div>
+            <span class="sc">Watch Now nav link</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <div class="sb">Buy the complete set — claim VIP</div>
+            <div class="sd">During the show, purchase all featured products from tonight's show. If you are one of the first 10 to complete the full set, you qualify for the VIP slot.</div>
+            <span class="sc">Buy Set — Claim Slot button</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <div class="sb">Receive your exclusive photo</div>
+            <div class="sd">After the show ends, the system generates your personal Try-On photo — your face, the full look, side-by-side with the influencer. Delivered to your account. One tap to share on Instagram or TikTok.</div>
+          </div>
+        </div>
+      </div>
+      <div class="how-note">VIP slots are strictly first-come-first-served. Once all 10 slots are filled, the show closes to new VIP claims. Join free to get real-time slot alerts.</div>
+    </div>
+
+    <!-- INFLUENCER / BRAND -->
+    <div class="how-card">
+      <div class="how-header">
+        <div class="how-icon" style="background:rgba(232,72,85,0.08);">🎥</div>
+        <div class="how-header-text">
+          <div class="ht">For Influencers &amp; Brands</div>
+          <div class="hs">How to submit, get approved, and go live</div>
+        </div>
+      </div>
+      <div class="how-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="sb">Brand must be onboarded</div>
+            <div class="sd">Only brands with an active Vendor Number (SK-B-XXX) can submit show requests. If your brand is not yet onboarded, go to shortkey.info to apply.</div>
+            <span class="sc">shortkey.info/onboard</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="sb">Submit your show request</div>
+            <div class="sd">Click the "Brand &amp; Influencer Submissions" tab above. Fill in your brand name, vendor number, influencer handle, preferred date/time, show title, and products to feature.</div>
+            <span class="sc">Submissions tab above</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="sb">Wait for Wednesday review</div>
+            <div class="sd">Kieran reviews all submissions every Wednesday. Approved shows are confirmed and automatically added to the public Who's Live calendar. You receive confirmation by email within 48 hours.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="sb">Confirm products are stocked</div>
+            <div class="sd">Before your show date, confirm that all featured products have at least 500 units in stock and your DHL account is active. Minimum 7-day shipping commitment to customers.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <div class="sb">Go live on shortkey.live</div>
+            <div class="sd">On show day, the Shortkey team sets up the Vimeo stream. The influencer connects and goes live on shortkey.live. TINT Try-On syncs automatically with your featured products — viewers can try everything without leaving the stream.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <div class="sb">Commission settled in 45 days</div>
+            <div class="sd">Revenue is tracked per show. Commission is calculated after the 45-day payment term — allowing time for influencer commissions and returns to be reconciled before paying out to your brand.</div>
+            <span class="sc">Platform rate: 5–15% (tier-based)</span>
+          </div>
+        </div>
+      </div>
+      <div class="how-note">Show slots are limited. Submit early — popular dates fill up. Collaborating with other brands on one show increases audience and is encouraged.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRY-ON -->
+<section id="tryon" class="s">
+  <div class="sec-lbl">VIP Try-On</div>
+  <div style="background:white;border:1.5px solid var(--border);border-radius:20px;padding:36px;text-align:center;max-width:460px;margin:0 auto;">
+    <div style="font-size:10px;font-family:var(--mono);font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--cat);margin-bottom:10px;">TINT AI Try-On</div>
+    <div style="font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;margin-bottom:8px;">See it on your face</div>
+    <div style="font-size:13px;color:var(--mid);margin-bottom:22px;line-height:1.6;">Try every shade from tonight's show on your face before you buy. No app needed.</div>
+    <div style="width:110px;height:140px;background:linear-gradient(160deg,#EDE8F8,#DDD4F2);border-radius:55px 55px 36px 36px;margin:0 auto 18px;border:1.5px solid rgba(155,122,227,0.22);display:flex;align-items:center;justify-content:center;">
+      <div style="font-size:9px;font-family:var(--mono);color:#9B7AE3;text-align:center;line-height:1.7;">Face<br>Preview</div>
+    </div>
+    <div style="display:flex;gap:7px;justify-content:center;margin-bottom:18px;">
+      <div style="width:30px;height:30px;border-radius:50%;background:#F5C5A3;border:2px solid white;box-shadow:0 0 0 1.5px var(--border);cursor:pointer;"></div>
+      <div style="width:30px;height:30px;border-radius:50%;background:#E8956D;border:2px solid white;box-shadow:0 0 0 1.5px var(--border);cursor:pointer;"></div>
+      <div style="width:30px;height:30px;border-radius:50%;background:#C97B4B;border:2px solid white;box-shadow:0 0 0 1.5px var(--border);cursor:pointer;"></div>
+      <div style="width:30px;height:30px;border-radius:50%;background:#9B7AE3;border:2.5px solid #9B7AE3;box-shadow:0 0 0 2px rgba(155,122,227,0.3);cursor:pointer;transform:scale(1.12);"></div>
+      <div style="width:30px;height:30px;border-radius:50%;background:#E84855;border:2px solid white;box-shadow:0 0 0 1.5px var(--border);cursor:pointer;"></div>
+    </div>
+    <a class="btn-p" href="https://shortkey.fashion/try-on" style="display:block;text-align:center;margin-bottom:8px;">Try On Now</a>
+    <a class="btn-g" href="#join" style="display:block;text-align:center;">Join Free to Save Look</a>
+  </div>
+</section>
+
+<!-- POSTER -->
+<div class="poster">
+  <div class="p-ey">VIP Exclusive &middot; Every Show</div>
+  <div class="p-h">Buy the full set.<br>Get your photo.</div>
+  <div class="p-sub">First 10 members to purchase the complete product set in any live show receive an exclusive personal Try-On photo. Your face. The full look. Auto-delivered after the show.</div>
+  <a class="p-btn" href="#join">Join Free to Qualify</a>
+</div>
+
+<!-- JOIN -->
+<section id="join" class="s">
+  <div class="join-card">
+    <div class="j-ey">Free Membership</div>
+    <div class="j-h">Join shortkey.live</div>
+    <div class="j-sub">Get VIP Try-On access, live show reminders, real-time slot alerts, and exclusive member-only early access. Free forever.</div>
+    <div class="j-form">
+      <input class="j-input" type="text" placeholder="Your name">
+      <input class="j-input" type="email" placeholder="Email address">
+      <button class="j-btn" onclick="alert('Welcome to shortkey.live — check your email to confirm your membership!')">Join Free</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="foot-logo" href="#hero">
+    <div class="foot-logo-box"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="Shortkey"></div>
+    <div class="foot-wm">shortkey.live</div>
+  </a>
+  <div class="foot-links">
+    <a class="foot-link" href="https://shortkey.store">shortkey.store</a>
+    <a class="foot-link" href="https://shortkey.info">shortkey.info</a>
+    <a class="foot-link" href="https://shortkey.social">shortkey.social</a>
+    <a class="foot-link" href="https://shortkey.fashion">shortkey.fashion</a>
+    <a class="foot-link" href="https://shortkey.studio">shortkey.studio</a>
+  </div>
+  <div class="foot-copy">Managed by shortkey.studio &middot; 2026</div>
+</footer>
+
+<script>
+function switchCal(btn){
+  var pane = btn.dataset.pane;
+  document.querySelectorAll('.cal-tab').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.cal-pane').forEach(function(p){ p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('pane-'+pane).classList.add('active');
+}
+</script>
+</body>
+</html>

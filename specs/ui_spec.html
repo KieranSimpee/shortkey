@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Shortkey Visual Ecosystem Blueprint v1.0</title>
+<style>
+:root{
+  --l:#9B7AE3;--ld:#7B5AC3;--lbg:#F9F7FF;--lb:#E8E2F5;--lt:#EDE8F8;
+  --bl:#3C82FF;--bld:#2563EB;--blbg:#F0F6FF;--blb:#C7DCFF;
+  --re:#E84855;--in:#111111;--mi:#6E6E6E;--wh:#FFFFFF;--gr:#2ECC71;
+  --f:-apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  --m:"SF Mono","Fira Code",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--f);background:#F5F3FF;color:var(--in);}
+
+/* header */
+.hdr{background:var(--ld);padding:40px 48px;}
+.hdr-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.hdr-logo-box{width:32px;height:32px;border-radius:8px;overflow:hidden;}
+.hdr-logo-box img{width:100%;height:100%;object-fit:cover;}
+.hdr-wm{font-size:14px;font-weight:800;letter-spacing:-0.02em;color:white;}
+.hdr-wm span{color:rgba(255,255,255,0.5);}
+.hdr-title{font-size:clamp(24px,4vw,48px);font-weight:800;letter-spacing:-0.03em;line-height:1.0;color:white;margin-bottom:8px;}
+.hdr-sub{font-size:13px;color:rgba(255,255,255,0.7);max-width:560px;line-height:1.6;margin-bottom:18px;}
+.hdr-meta{display:flex;gap:20px;flex-wrap:wrap;}
+.hm{font-size:9px;font-family:var(--m);letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+.hm b{color:white;}
+
+/* layout */
+.layout{display:flex;min-height:100vh;}
+.sidebar{width:216px;flex-shrink:0;background:white;border-right:1px solid var(--lb);padding:12px 0;position:sticky;top:0;height:100vh;overflow-y:auto;}
+.main{flex:1;min-width:0;padding:28px 36px;}
+.sidebar::-webkit-scrollbar{width:3px;}
+.sidebar::-webkit-scrollbar-thumb{background:#D8CEF0;border-radius:2px;}
+
+/* sidebar nav */
+.sbs{font-size:8px;font-family:var(--m);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#CCCCCC;padding:14px 16px 5px;}
+.sbb{display:block;width:100%;padding:8px 16px;font-size:11px;font-weight:600;color:var(--mi);background:transparent;border:none;cursor:pointer;text-align:left;border-left:2px solid transparent;transition:all 0.15s;}
+.sbb:hover{color:var(--l);background:#FAF8FF;}
+.sbb.active{color:var(--l);background:#F5F1FF;border-left-color:var(--l);font-weight:700;}
+
+/* panels */
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* theme switcher */
+.ts{display:flex;gap:5px;margin-bottom:24px;background:white;border:1.5px solid var(--lb);border-radius:12px;padding:5px;}
+.tsb{flex:1;padding:9px 10px;border-radius:8px;font-size:9px;font-weight:700;font-family:var(--m);letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;background:transparent;color:var(--mi);transition:all 0.2s;text-align:center;}
+.tsb:hover{background:#F5F1FF;}
+.tsb.tl.active{background:#9B7AE3;color:white;}
+.tsb.tb.active{background:#3C82FF;color:white;}
+.tsb.tr.active{background:linear-gradient(90deg,#E84855,#FF9B4E,#FFE04E,#7AC4E3,#9B7AE3);color:white;}
+
+/* section header */
+.sec-hdr{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;}
+.sec-num{font-size:11px;font-family:var(--m);font-weight:700;color:white;background:var(--l);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;letter-spacing:0.05em;}
+.sec-title{font-size:20px;font-weight:800;letter-spacing:-0.02em;margin-bottom:4px;}
+.sec-desc{font-size:12px;color:var(--mi);line-height:1.55;max-width:600px;}
+
+/* spec card */
+.sc{background:white;border:1.5px solid var(--lb);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+.sh{padding:11px 16px;border-bottom:1px solid var(--lb);display:flex;align-items:center;justify-content:space-between;}
+.sh-t{font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--l);}
+.sh-d{font-size:10px;font-family:var(--m);color:var(--mi);}
+.sp{padding:20px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px;min-height:100px;}
+.st{padding:0;}
+.sr{display:flex;justify-content:space-between;align-items:center;padding:6px 16px;border-bottom:1px solid #F5F0FF;font-size:11px;}
+.sr:last-child{border-bottom:none;}
+.sk{color:var(--mi);font-family:var(--m);font-size:10px;letter-spacing:0.06em;}
+.sv{color:var(--in);font-weight:700;}
+.sv.g{color:var(--gr);}
+.sv.r{color:var(--re);}
+.sv.p{color:var(--l);}
+.sv.w{color:#C8850A;}
+
+/* grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+
+/* colour chip */
+.cc{border-radius:10px;overflow:hidden;border:1px solid var(--lb);}
+.cs{height:52px;}
+.ci{padding:8px 10px;background:white;}
+.cn{font-size:11px;font-weight:700;margin-bottom:1px;}
+.ch{font-size:9px;font-family:var(--m);color:var(--mi);}
+.cu{font-size:8px;color:var(--mi);margin-top:1px;}
+
+/* product cards */
+.pcv{width:150px;background:white;border-radius:12px;overflow:hidden;border:1.5px solid var(--lb);}
+.pch{width:100%;background:white;border-radius:12px;overflow:hidden;border:1.5px solid var(--lb);display:flex;}
+.pci{display:flex;align-items:center;justify-content:center;background:var(--lt);font-size:8px;font-family:var(--m);color:var(--mi);}
+.pcb{padding:9px 11px;}
+.pcc{font-size:8px;font-family:var(--m);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-align:center;padding:7px 0 2px;}
+.pcbr{font-size:10px;font-weight:800;margin-bottom:2px;}
+.pcn{font-size:8px;color:var(--mi);margin-bottom:3px;line-height:1.4;}
+.pcp{font-size:11px;font-weight:700;margin-bottom:6px;}
+.pcbtn{padding:5px;border-radius:100px;font-size:7px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:var(--l);color:white;text-align:center;margin-bottom:3px;cursor:pointer;display:block;}
+.pcbtn2{padding:4px;border-radius:100px;font-size:7px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--lb);color:var(--mi);text-align:center;cursor:pointer;display:block;}
+
+/* btn demos */
+.bp{padding:9px 18px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--m);letter-spacing:0.1em;text-transform:uppercase;background:var(--l);color:white;border:none;cursor:pointer;}
+.bg{padding:8px 16px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--m);letter-spacing:0.1em;text-transform:uppercase;background:transparent;color:var(--l);border:1.5px solid var(--l);cursor:pointer;}
+.bw{padding:8px 16px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--m);letter-spacing:0.1em;text-transform:uppercase;background:rgba(155,122,227,0.12);color:var(--l);border:none;cursor:pointer;}
+.bf{padding:9px 18px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--m);letter-spacing:0.1em;text-transform:uppercase;background:var(--l);color:white;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(155,122,227,0.35);}
+.bst{width:100%;padding:11px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--m);letter-spacing:0.1em;text-transform:uppercase;background:var(--l);color:white;border:none;cursor:pointer;}
+.bd{padding:8px 16px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--m);letter-spacing:0.1em;text-transform:uppercase;background:#E8E2F5;color:#BBBBBB;border:none;cursor:not-allowed;}
+.bl{padding:8px 16px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--m);letter-spacing:0.1em;text-transform:uppercase;background:var(--lt);color:var(--l);border:none;cursor:wait;opacity:0.7;}
+
+/* live dot */
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.ld{width:4px;height:4px;border-radius:50%;background:white;animation:blink 1.2s infinite;display:inline-block;}
+
+/* compliance */
+.cr{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #F5F0FF;}
+.cr:last-child{border-bottom:none;}
+.ck{font-size:13px;font-weight:600;}
+.cv{font-size:10px;font-family:var(--m);font-weight:700;padding:3px 10px;border-radius:100px;}
+.cv.pass{background:rgba(46,204,113,0.12);color:#27AE60;}
+.cv.fail{background:rgba(232,72,85,0.1);color:var(--re);}
+.cv.warn{background:rgba(249,168,37,0.1);color:#C8850A;}
+
+/* journey */
+.jstep{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;}
+.jstep-icon{width:48px;height:48px;border-radius:12px;background:rgba(155,122,227,0.1);border:1.5px solid var(--lb);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.jstep-label{font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);text-align:center;}
+.jarrow{font-size:16px;color:var(--lb);align-self:center;margin-top:-20px;flex-shrink:0;}
+
+/* automation */
+.auto-card{background:white;border:1.5px solid var(--lb);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
+.auto-trigger{font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(155,122,227,0.1);color:var(--l);border:1px solid rgba(155,122,227,0.2);white-space:nowrap;flex-shrink:0;}
+.auto-arrow{color:var(--lb);font-weight:700;flex-shrink:0;}
+.auto-action{font-size:12px;font-weight:700;color:var(--in);}
+
+/* matrix table */
+.mt{width:100%;border-collapse:collapse;font-size:11px;}
+.mt th{font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);padding:8px 12px;border-bottom:2px solid var(--lb);text-align:left;background:#F9F7FF;}
+.mt td{padding:8px 12px;border-bottom:1px solid #F5F0FF;}
+.mt tr:last-child td{border-bottom:none;}
+.mtag{display:inline-block;padding:2px 7px;border-radius:100px;font-size:8px;font-family:var(--m);font-weight:700;background:rgba(155,122,227,0.1);border:1px solid rgba(155,122,227,0.18);color:var(--l);margin:1px;}
+
+/* preview frames */
+.pf{border:2px solid var(--lb);border-radius:10px;overflow:hidden;background:white;}
+.pfbar{background:#F5F1FF;padding:5px 10px;font-size:8px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--l);text-align:center;}
+.pfinner{padding:10px;}
+
+/* domain card */
+.dc{background:white;border:1.5px solid var(--lb);border-radius:12px;padding:13px 16px;display:flex;align-items:center;gap:12px;}
+.dlogo{width:34px;height:34px;border-radius:8px;overflow:hidden;flex-shrink:0;}
+.dlogo img{width:100%;height:100%;object-fit:cover;}
+.dname{font-size:13px;font-weight:800;margin-bottom:2px;letter-spacing:-0.01em;}
+.drole{font-size:8px;font-family:var(--m);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--l);}
+.ddesc{font-size:11px;color:var(--mi);margin-top:2px;line-height:1.4;}
+
+/* theme preview strip */
+.tps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;}
+.tp-col-label{font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-align:center;margin-bottom:8px;}
+
+@media(max-width:900px){
+  .layout{flex-direction:column;}
+  .sidebar{width:100%;height:auto;position:static;display:flex;flex-wrap:wrap;padding:8px;gap:4px;}
+  .sbs{display:none;}
+  .sbb{border-left:none;border-radius:8px;padding:6px 12px;font-size:10px;border:1px solid var(--lb);}
+  .sbb.active{background:var(--l);color:white;border-color:var(--l);}
+  .main{padding:20px;}
+  .g2,.g3,.g4{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-logo">
+    <div class="hdr-logo-box"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+    <div class="hdr-wm">shortkey<span>.studio</span></div>
+  </div>
+  <div class="hdr-title">Visual Ecosystem Blueprint v1.0</div>
+  <div class="hdr-sub">Every component. Every rule. Every variant. Every theme. Complete specification for all 12 Shortkey domains — from Copilot structure, Kieran's DOCX, and Kura's cross-verified architecture.</div>
+  <div class="hdr-meta">
+    <div class="hm">Version <b>1.0</b></div>
+    <div class="hm">Date <b>July 2026</b></div>
+    <div class="hm">Domains <b>12</b></div>
+    <div class="hm">Themes <b>3</b></div>
+    <div class="hm">Components <b>30+</b></div>
+    <div class="hm">Status <b>Active</b></div>
+  </div>
+</div>
+
+<div class="layout">
+<div class="sidebar">
+  <div class="sbs">Foundation</div>
+  <button class="sbb active" onclick="nav('core',this)">Core Principle</button>
+  <button class="sbb" onclick="nav('domains',this)">Domain Ecosystem</button>
+  <button class="sbb" onclick="nav('themes',this)">Brand Themes</button>
+  <div class="sbs">Components</div>
+  <button class="sbb" onclick="nav('colours',this)">Colour System</button>
+  <button class="sbb" onclick="nav('typography',this)">Typography</button>
+  <button class="sbb" onclick="nav('spacing',this)">Spacing</button>
+  <button class="sbb" onclick="nav('nav-sys',this)">Navigation</button>
+  <button class="sbb" onclick="nav('product',this)">Product Cards</button>
+  <button class="sbb" onclick="nav('calendar',this)">Calendar Cards</button>
+  <button class="sbb" onclick="nav('buttons',this)">Buttons</button>
+  <button class="sbb" onclick="nav('banner',this)">Banners</button>
+  <button class="sbb" onclick="nav('poster',this)">Posters</button>
+  <button class="sbb" onclick="nav('motion',this)">Motion Rules</button>
+  <div class="sbs">System</div>
+  <button class="sbb" onclick="nav('journey',this)">User Journey</button>
+  <button class="sbb" onclick="nav('automation',this)">Automation</button>
+  <button class="sbb" onclick="nav('matrix',this)">Options Matrix</button>
+  <button class="sbb" onclick="nav('governance',this)">Governance</button>
+  <button class="sbb" onclick="nav('preview',this)">Preview System</button>
+</div>
+
+<div class="main">
+
+<div class="ts">
+  <button class="tsb tl active" onclick="setTheme('l',this)">Lilac — Main</button>
+  <button class="tsb tb" onclick="setTheme('b',this)">Blue — Skincare</button>
+  <button class="tsb tr" onclick="setTheme('r',this)">Rainbow — Makeup</button>
+</div>
+
+<div class="panel active" id="panel-core">
+  <div class="sec-hdr">
+  <div class="sec-num">00</div>
+  <div><div class="sec-title">Core Principle</div><div class="sec-desc">The Studio is the Single Source of Truth. Every domain, every component, every theme change flows from shortkey.studio.</div></div>
+</div>
+  <div class="g3" style="margin-bottom:20px;">
+    <div class="sc">
+      <div class="sh"><span class="sh-t">Theme Override</span></div>
+      <div class="sp" style="flex-direction:column;align-items:flex-start;gap:8px;">
+        <div style="font-size:13px;color:var(--mi);line-height:1.6;">Change theme once in Studio. All 12 domains update instantly. No individual domain edits needed.</div>
+        <div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;background:rgba(155,122,227,0.1);border:1px solid rgba(155,122,227,0.2);color:var(--l);">Global · Instant · Atomic</div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sh"><span class="sh-t">Page Manager</span></div>
+      <div class="sp" style="flex-direction:column;align-items:flex-start;gap:8px;">
+        <div style="font-size:13px;color:var(--mi);line-height:1.6;">Create, edit, or delete pages across all domains from one interface. AI agents build using Preset Library only.</div>
+        <div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;background:rgba(155,122,227,0.1);border:1px solid rgba(155,122,227,0.2);color:var(--l);">Centralised · Preset-based</div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sh"><span class="sh-t">Store Auto-Sync</span></div>
+      <div class="sp" style="flex-direction:column;align-items:flex-start;gap:8px;">
+        <div style="font-size:13px;color:var(--mi);line-height:1.6;">Edit a product card once. It auto-syncs to every page using it — shortkey.beauty, shortkey.store, shortkey.live, and more.</div>
+        <div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;background:rgba(155,122,227,0.1);border:1px solid rgba(155,122,227,0.2);color:var(--l);">One Edit · All Pages</div>
+      </div>
+    </div>
+  </div>
+  <div class="sc">
+    <div class="sh"><span class="sh-t">The Rule — Non-Negotiable</span></div>
+    <div class="st">
+      <div class="sr"><span class="sk">Every page must inherit from Studio</span><span class="sv ">No exceptions. No standalone pages outside the system.</span></div>
+      <div class="sr"><span class="sk">Every component must use the Preset Library</span><span class="sv ">AI agents cannot invent new component styles.</span></div>
+      <div class="sr"><span class="sk">Every CTA must link to a real destination</span><span class="sv ">No placeholder buttons. No dead hrefs.</span></div>
+      <div class="sr"><span class="sk">Every page must pass the 9-point compliance check</span><span class="sv ">Before publishing.</span></div>
+      <div class="sr"><span class="sk">Every visual output follows Brand DNA</span><span class="sv ">Typography, colour, spacing, motion — all locked.</span></div>
+    </div>
+  </div>
+</div>
+<div class="panel" id="panel-domains">
+  <div class="sec-hdr">
+  <div class="sec-num">01</div>
+  <div><div class="sec-title">Domain Ecosystem</div><div class="sec-desc">12 domains managed from shortkey.studio. Every domain serves a distinct purpose and audience.</div></div>
+</div>
+  <div class="g2"><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">01</span>
+      <div class="dname">beauty.shortkey</div>
+    </div>
+    <div class="drole">Main Website</div>
+    <div class="ddesc">Primary storefront — all products, brands, AI tools</div>
+  </div>
+  <a href="https://shortkey.beauty" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">02</span>
+      <div class="dname">club.shortkey</div>
+    </div>
+    <div class="drole">Membership</div>
+    <div class="ddesc">VIP benefits, order history, exclusive member access</div>
+  </div>
+  <a href="https://shortkey.club" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">03</span>
+      <div class="dname">community.shortkey</div>
+    </div>
+    <div class="drole">Blog & Sharing</div>
+    <div class="ddesc">Blog, tutorials, UGC, community reviews</div>
+  </div>
+  <a href="https://shortkey.community" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">04</span>
+      <div class="dname">events.shortkey</div>
+    </div>
+    <div class="drole">Promotion / Game Zone</div>
+    <div class="ddesc">Flash deals, giveaways, promotions, campaigns</div>
+  </div>
+  <a href="https://shortkey.events" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">05</span>
+      <div class="dname">fashion.shortkey</div>
+    </div>
+    <div class="drole">Makeover / AI Try-On</div>
+    <div class="ddesc">TINT AI Try-On engine — virtual makeup and skincare</div>
+  </div>
+  <a href="https://shortkey.fashion" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">06</span>
+      <div class="dname">info.shortkey</div>
+    </div>
+    <div class="drole">Brand Portal</div>
+    <div class="ddesc">B2B onboarding, brand management, DHL setup</div>
+  </div>
+  <a href="https://shortkey.info" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">07</span>
+      <div class="dname">live.shortkey</div>
+    </div>
+    <div class="drole">Live Stream & Calendar</div>
+    <div class="ddesc">Influencer live commerce, VIP slots, schedule</div>
+  </div>
+  <a href="https://shortkey.live" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">08</span>
+      <div class="dname">social.shortkey</div>
+    </div>
+    <div class="drole">Influencer Portal</div>
+    <div class="ddesc">Creator management — campaigns, commissions</div>
+  </div>
+  <a href="https://shortkey.social" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">09</span>
+      <div class="dname">store.shortkey</div>
+    </div>
+    <div class="drole">Shop Portal</div>
+    <div class="ddesc">Products, cart, checkout, order tracking</div>
+  </div>
+  <a href="https://shortkey.store" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">10</span>
+      <div class="dname">studio.shortkey</div>
+    </div>
+    <div class="drole">Control Center</div>
+    <div class="ddesc">Master Control Panel — this page</div>
+  </div>
+  <a href="https://shortkey.studio" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">11</span>
+      <div class="dname">world.shortkey</div>
+    </div>
+    <div class="drole">Global Expansion</div>
+    <div class="ddesc">Country selector, regional landing pages</div>
+  </div>
+  <a href="https://shortkey.world" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div><div class="dc">
+  <div class="dlogo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div style="flex:1;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+      <span style="font-size:8px;font-family:var(--m);font-weight:700;color:var(--mi);">12</span>
+      <div class="dname">wtf.shortkey</div>
+    </div>
+    <div class="drole">Content Management</div>
+    <div class="ddesc">Reserved — purpose TBC by Kieran</div>
+  </div>
+  <a href="https://shortkey.wtf" target="_blank" style="flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);letter-spacing:0.08em;text-transform:uppercase;background:#F0EAFF;color:var(--l);border:1px solid #D8CEF0;text-decoration:none;white-space:nowrap;">Visit</a>
+</div></div>
+</div>
+<div class="panel" id="panel-themes">
+  <div class="sec-hdr">
+  <div class="sec-num">02</div>
+  <div><div class="sec-title">Brand Themes</div><div class="sec-desc">Three themes. Three personalities. One brand. Applied globally from Studio — never per-page.</div></div>
+</div>
+  <div class="g3" style="margin-bottom:20px;">
+    <div class="sc">
+      <div class="sh"><span class="sh-t" style="color:#9B7AE3;">Lilac — Main Theme</span></div>
+      <div class="sp" style="flex-direction:column;background:linear-gradient(180deg,#F0EAFF,#F9F7FF);">
+        <div style="font-size:32px;font-weight:800;letter-spacing:-0.03em;color:#7B5AC3;">shortkey</div>
+        <div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#9B7AE3;">YOUR STYLE. YOUR CTRL.</div>
+      </div>
+      <div class="st">
+        <div class="sr"><span class="sk">Personality</span><span class="sv ">Creative · Premium · Calm</span></div>
+        <div class="sr"><span class="sk">Primary</span><span class="sv p">#9B7AE3</span></div>
+        <div class="sr"><span class="sk">Deep</span><span class="sv p">#7B5AC3</span></div>
+        <div class="sr"><span class="sk">Background</span><span class="sv ">#F9F7FF</span></div>
+        <div class="sr"><span class="sk">Border</span><span class="sv ">#E8E2F5</span></div>
+        <div class="sr"><span class="sk">Use</span><span class="sv ">Homepage, club, community, events, fashion, info, live, social, store, world</span></div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sh"><span class="sh-t" style="color:#3C82FF;">Blue — Skincare Theme</span></div>
+      <div class="sp" style="flex-direction:column;background:linear-gradient(180deg,#DBEAFE,#F0F8FF);">
+        <div style="font-size:32px;font-weight:800;letter-spacing:-0.03em;color:#2563EB;">shortkey</div>
+        <div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#3C82FF;">YOUR SKIN. SIMPLIFIED.</div>
+      </div>
+      <div class="st">
+        <div class="sr"><span class="sk">Personality</span><span class="sv ">Corporate · Professional · Trustworthy</span></div>
+        <div class="sr"><span class="sk">Primary</span><span class="sv ">#3C82FF</span></div>
+        <div class="sr"><span class="sk">Deep</span><span class="sv ">#2563EB</span></div>
+        <div class="sr"><span class="sk">Background</span><span class="sv ">#F0F6FF</span></div>
+        <div class="sr"><span class="sk">Border</span><span class="sv ">#C7DCFF</span></div>
+        <div class="sr"><span class="sk">Use</span><span class="sv ">Skincare category pages — within shortkey.beauty and shortkey.store</span></div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sh"><span class="sh-t" style="color:#E84855;">Rainbow — Makeup Theme</span></div>
+      <div class="sp" style="flex-direction:column;background:linear-gradient(180deg,#FFF0F1,#FFF8FA);">
+        <div style="font-size:32px;font-weight:800;letter-spacing:-0.03em;background:linear-gradient(90deg,#E84855,#FF9B4E,#FFE04E,#7AC4E3,#9B7AE3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">shortkey</div>
+        <div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E84855;">EXPRESS EVERY VERSION.</div>
+      </div>
+      <div class="st">
+        <div class="sr"><span class="sk">Personality</span><span class="sv ">Experimental · Community · AI Family</span></div>
+        <div class="sr"><span class="sk">Primary</span><span class="sv ">Dynamic Gradient</span></div>
+        <div class="sr"><span class="sk">Gradient</span><span class="sv ">#E84855 → #FF9B4E → #FFE04E → #7AC4E3 → #9B7AE3</span></div>
+        <div class="sr"><span class="sk">Background</span><span class="sv ">#FFF5F6</span></div>
+        <div class="sr"><span class="sk">Border</span><span class="sv ">#FCE4E6</span></div>
+        <div class="sr"><span class="sk">Use</span><span class="sv ">Makeup category pages — within shortkey.beauty and shortkey.fashion</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JOURNEY PANEL -->
+<div class="panel" id="panel-journey">
+  <div class="sec-hdr"><div class="sec-num">06</div><div><div class="sec-title">User Journey</div><div class="sec-desc">Every visitor follows this path. Every page must support the next step. No dead ends.</div></div></div>
+  <div class="sc" style="margin-bottom:14px;"><div class="sh"><span class="sh-t">8-Step Customer Journey</span></div><div class="sp" style="flex-wrap:nowrap;overflow-x:auto;gap:8px;padding:24px 20px;justify-content:flex-start;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;"><div style="width:48px;height:48px;border-radius:12px;background:rgba(155,122,227,0.1);border:1.5px solid var(--lb);display:flex;align-items:center;justify-content:center;font-size:18px;">👤</div><div style="font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);text-align:center;">Visitor</div></div>
+    <div style="font-size:16px;color:var(--lb);align-self:center;">→</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;"><div style="width:48px;height:48px;border-radius:12px;background:rgba(155,122,227,0.1);border:1.5px solid var(--lb);display:flex;align-items:center;justify-content:center;font-size:18px;">🏠</div><div style="font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);text-align:center;">Landing</div></div>
+    <div style="font-size:16px;color:var(--lb);align-self:center;">→</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;"><div style="width:48px;height:48px;border-radius:12px;background:rgba(155,122,227,0.1);border:1.5px solid var(--lb);display:flex;align-items:center;justify-content:center;font-size:18px;">🔍</div><div style="font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);text-align:center;">Discovery</div></div>
+    <div style="font-size:16px;color:var(--lb);align-self:center;">→</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;"><div style="width:48px;height:48px;border-radius:12px;background:rgba(155,122,227,0.1);border:1.5px solid var(--lb);display:flex;align-items:center;justify-content:center;font-size:18px;">💄</div><div style="font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);text-align:center;">Product</div></div>
+    <div style="font-size:16px;color:var(--lb);align-self:center;">→</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;"><div style="width:48px;height:48px;border-radius:12px;background:rgba(155,122,227,0.1);border:1.5px solid var(--lb);display:flex;align-items:center;justify-content:center;font-size:18px;">🛒</div><div style="font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);text-align:center;">Checkout</div></div>
+    <div style="font-size:16px;color:var(--lb);align-self:center;">→</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;"><div style="width:48px;height:48px;border-radius:12px;background:rgba(155,122,227,0.1);border:1.5px solid var(--lb);display:flex;align-items:center;justify-content:center;font-size:18px;">✅</div><div style="font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);text-align:center;">Confirm</div></div>
+    <div style="font-size:16px;color:var(--lb);align-self:center;">→</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;"><div style="width:48px;height:48px;border-radius:12px;background:rgba(155,122,227,0.1);border:1.5px solid var(--lb);display:flex;align-items:center;justify-content:center;font-size:18px;">🤝</div><div style="font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);text-align:center;">Community</div></div>
+    <div style="font-size:16px;color:var(--lb);align-self:center;">→</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;"><div style="width:48px;height:48px;border-radius:12px;background:rgba(155,122,227,0.1);border:1.5px solid var(--lb);display:flex;align-items:center;justify-content:center;font-size:18px;">🔁</div><div style="font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mi);text-align:center;">Repeat</div></div>
+  </div></div>
+  <div class="g2">
+    <div class="sc"><div class="sh"><span class="sh-t">Domain Mapping</span></div><div class="st">
+      <div class="sr"><span class="sk">Visitor → Landing</span><span class="sv">shortkey.beauty homepage</span></div>
+      <div class="sr"><span class="sk">Landing → Discovery</span><span class="sv">shortkey.store · shortkey.fashion</span></div>
+      <div class="sr"><span class="sk">Discovery → Product</span><span class="sv">shortkey.store/product/[slug]</span></div>
+      <div class="sr"><span class="sk">Product → Checkout</span><span class="sv">shortkey.store/checkout (Shopify/Stripe)</span></div>
+      <div class="sr"><span class="sk">Checkout → Confirmation</span><span class="sv">Order confirmed + VIP Try-On offer</span></div>
+      <div class="sr"><span class="sk">Confirmation → Community</span><span class="sv">shortkey.community · shortkey.live</span></div>
+      <div class="sr"><span class="sk">Community → Repeat</span><span class="sv">shortkey.club membership</span></div>
+    </div></div>
+    <div class="sc"><div class="sh"><span class="sh-t">Brand & Influencer Journey</span></div><div class="st">
+      <div class="sr"><span class="sk">Discover Shortkey</span><span class="sv">shortkey.info</span></div>
+      <div class="sr"><span class="sk">Submit Application</span><span class="sv">shortkey.info/onboard</span></div>
+      <div class="sr"><span class="sk">Receive Vendor Number</span><span class="sv">Assigned SK-B-XXX</span></div>
+      <div class="sr"><span class="sk">Submit Show Request</span><span class="sv">shortkey.live submissions tab</span></div>
+      <div class="sr"><span class="sk">Approved Wednesday</span><span class="sv">Added to public calendar</span></div>
+      <div class="sr"><span class="sk">Go Live</span><span class="sv">shortkey.live stream</span></div>
+      <div class="sr"><span class="sk">Commission Settled</span><span class="sv">45-day payment term</span></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- AUTOMATION PANEL -->
+<div class="panel" id="panel-automation">
+  <div class="sec-hdr"><div class="sec-num">07</div><div><div class="sec-title">Automation Rules</div><div class="sec-desc">Studio triggers automated actions on key events. No manual syncing needed across domains.</div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <div style="background:white;border:1.5px solid var(--lb);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;"><div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(155,122,227,0.1);color:var(--l);border:1px solid rgba(155,122,227,0.2);white-space:nowrap;flex-shrink:0;">New Product</div><div style="color:var(--lb);font-weight:700;flex-shrink:0;">→</div><div><div style="font-size:12px;font-weight:700;">Create Product Card in Preset Library</div><div style="font-size:11px;color:#6E6E6E;margin-top:2px;">Auto-syncs to shortkey.store, shortkey.beauty, shortkey.live product shelf</div></div></div>
+    <div style="background:white;border:1.5px solid var(--lb);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;"><div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(155,122,227,0.1);color:var(--l);border:1px solid rgba(155,122,227,0.2);white-space:nowrap;flex-shrink:0;">Store Update</div><div style="color:var(--lb);font-weight:700;flex-shrink:0;">→</div><div><div style="font-size:12px;font-weight:700;">Sync All Landing Pages</div><div style="font-size:11px;color:#6E6E6E;margin-top:2px;">Price, stock, info updates across every page using that product card</div></div></div>
+    <div style="background:white;border:1.5px solid var(--lb);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;"><div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(155,122,227,0.1);color:var(--l);border:1px solid rgba(155,122,227,0.2);white-space:nowrap;flex-shrink:0;">Theme Change</div><div style="color:var(--lb);font-weight:700;flex-shrink:0;">→</div><div><div style="font-size:12px;font-weight:700;">Override All 12 Domains</div><div style="font-size:11px;color:#6E6E6E;margin-top:2px;">CSS variables update globally — nav, buttons, badges, borders switch instantly</div></div></div>
+    <div style="background:white;border:1.5px solid var(--lb);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;"><div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(155,122,227,0.1);color:var(--l);border:1px solid rgba(155,122,227,0.2);white-space:nowrap;flex-shrink:0;">New Member</div><div style="color:var(--lb);font-weight:700;flex-shrink:0;">→</div><div><div style="font-size:12px;font-weight:700;">Create Member Profile</div><div style="font-size:11px;color:#6E6E6E;margin-top:2px;">shortkey.club profile + VIP slot tracking + email confirmation</div></div></div>
+    <div style="background:white;border:1.5px solid var(--lb);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;"><div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(155,122,227,0.1);color:var(--l);border:1px solid rgba(155,122,227,0.2);white-space:nowrap;flex-shrink:0;">Show Approved</div><div style="color:var(--lb);font-weight:700;flex-shrink:0;">→</div><div><div style="font-size:12px;font-weight:700;">Publish to Public Calendar</div><div style="font-size:11px;color:#6E6E6E;margin-top:2px;">Card on shortkey.live + .ics file generated + reminder emails to subscribers</div></div></div>
+    <div style="background:white;border:1.5px solid var(--lb);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;"><div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(155,122,227,0.1);color:var(--l);border:1px solid rgba(155,122,227,0.2);white-space:nowrap;flex-shrink:0;">VIP 10/10</div><div style="color:var(--lb);font-weight:700;flex-shrink:0;">→</div><div><div style="font-size:12px;font-weight:700;">Close Slot + Generate Photos</div><div style="font-size:11px;color:#6E6E6E;margin-top:2px;">VIP locked. Personal Try-On photos generated for all 10 members. Auto-delivered post-show.</div></div></div>
+  </div>
+</div>
+
+<!-- MATRIX PANEL -->
+<div class="panel" id="panel-matrix">
+  <div class="sec-hdr"><div class="sec-num">13</div><div><div class="sec-title">Options Matrix</div><div class="sec-desc">Every valid Product Card combination. AI agents must only use approved combos from this table.</div></div></div>
+  <div class="sc"><div class="sh"><span class="sh-t">Product Card — Valid Combinations</span></div><div class="sp" style="padding:0;overflow-x:auto;"><table class="mt"><thead><tr><th>Variant</th><th>Orientation</th><th>Sizes</th><th>CTA Position</th><th>Themes</th><th>Best Use</th></tr></thead><tbody><tr><td><b>A</b></td><td>Vertical</td><td><span class="mtag">S</span><span class="mtag">M</span><span class="mtag">L</span></td><td>Bottom full-width</td><td><span class="mtag">Lilac</span><span class="mtag">Blue</span><span class="mtag">Rainbow</span></td><td>Shelf, grid</td></tr><tr><td><b>B</b></td><td>Horizontal</td><td><span class="mtag">M</span><span class="mtag">L</span></td><td>Right compact</td><td><span class="mtag">Lilac</span><span class="mtag">Blue</span><span class="mtag">Rainbow</span></td><td>List, search, mobile</td></tr><tr><td><b>C</b></td><td>Featured Wide</td><td><span class="mtag">L</span><span class="mtag">XL</span></td><td>Right inline</td><td><span class="mtag">Lilac</span><span class="mtag">Blue</span><span class="mtag">Rainbow</span></td><td>Live show hero product</td></tr><tr><td><b>D</b></td><td>Large CTA</td><td><span class="mtag">XL</span></td><td>Center</td><td><span class="mtag">Lilac</span><span class="mtag">Blue</span><span class="mtag">Rainbow</span></td><td>Campaign hero, VIP mechanic</td></tr></tbody></table></div></div>
+  <div class="sc" style="margin-top:14px;"><div class="sh"><span class="sh-t">Button Position Rules</span></div><div class="st"><div class="sr"><span class="sk">Bottom</span><span class="sv">Full-width inside card — Vertical primary</span></div><div class="sr"><span class="sk">Right</span><span class="sv">Inline with price — Horizontal + Featured Wide</span></div><div class="sr"><span class="sk">Center</span><span class="sv">Below all content — Large CTA only</span></div><div class="sr"><span class="sk">Floating</span><span class="sv">fixed bottom-right · page-level only · not inside cards</span></div><div class="sr"><span class="sk">Sticky</span><span class="sv">fixed bottom full-width · mobile product detail only</span></div></div></div>
+</div>
+
+<!-- GOVERNANCE PANEL -->
+<div class="panel" id="panel-governance">
+  <div class="sec-hdr"><div class="sec-num">14</div><div><div class="sec-title">Governance</div><div class="sec-desc">9-point compliance check before every publish. AI agents self-check. Kura reviews on request.</div></div></div>
+  <div class="g2">
+    <div class="sc"><div class="sh"><span class="sh-t">Compliance Checklist — Pass</span></div><div style="padding:14px 16px;"><div class="cr"><span class="ck">Approved Theme Applied</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Approved Typography Only</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Approved Button Type</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Approved Card Variant</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Approved Navigation</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Motion Rules Followed</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Responsive Tested</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Logo Present</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">All CTAs Functional</span><span class="cv pass">Pass</span></div><div style="padding-top:12px;font-size:10px;font-family:var(--m);font-weight:700;color:#27AE60;letter-spacing:0.1em;text-transform:uppercase;">All checks passed — ready to publish</div></div></div>
+    <div class="sc"><div class="sh"><span class="sh-t">Compliance Checklist — Fail</span></div><div style="padding:14px 16px;"><div class="cr"><span class="ck">Approved Theme Applied</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Approved Typography Only</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Approved Button Type</span><span class="cv fail">Fail — off-brand colour</span></div><div class="cr"><span class="ck">Approved Card Variant</span><span class="cv warn">Warn — size not in matrix</span></div><div class="cr"><span class="ck">Approved Navigation</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Motion Rules Followed</span><span class="cv fail">Fail — infinite gradient</span></div><div class="cr"><span class="ck">Responsive Tested</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">Logo Present</span><span class="cv pass">Pass</span></div><div class="cr"><span class="ck">All CTAs Functional</span><span class="cv fail">Fail — 2 dead buttons</span></div><div style="padding-top:12px;font-size:10px;font-family:var(--m);font-weight:700;color:var(--re);letter-spacing:0.1em;text-transform:uppercase;">3 failures — do not publish</div></div></div>
+  </div>
+</div>
+
+<!-- PREVIEW PANEL -->
+<div class="panel" id="panel-preview">
+  <div class="sec-hdr"><div class="sec-num">15</div><div><div class="sec-title">Preview System</div><div class="sec-desc">3 themes × 3 viewports. Every component shown side-by-side before use.</div></div></div>
+  <div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--mi);margin-bottom:12px;">Product Card — All 3 Themes</div>
+  <div class="g3" style="margin-bottom:24px;">
+    <div style="text-align:center;"><div style="font-size:9px;font-family:var(--m);font-weight:700;color:#9B7AE3;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.12em;">Lilac</div><div class="pcv" style="margin:0 auto;"><div class="pcc" style="color:#9B7AE3;">SKINCARE</div><div class="pci" style="height:80px;background:#EDE8F8;">Image</div><div class="pcb"><div class="pcbr">COSRX</div><div class="pcn">Snail 96 Essence</div><div class="pcp">$25.00</div><div class="pcbtn" style="background:#9B7AE3;">Add to Cart</div><div class="pcbtn2">Try-On</div></div></div></div>
+    <div style="text-align:center;"><div style="font-size:9px;font-family:var(--m);font-weight:700;color:#3C82FF;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.12em;">Blue</div><div class="pcv" style="margin:0 auto;border-color:#C7DCFF;"><div class="pcc" style="color:#3C82FF;">SKINCARE</div><div class="pci" style="height:80px;background:#DBEAFE;">Image</div><div class="pcb"><div class="pcbr">COSRX</div><div class="pcn">Snail 96 Essence</div><div class="pcp">$25.00</div><div class="pcbtn" style="background:#3C82FF;">Add to Cart</div><div class="pcbtn2">Try-On</div></div></div></div>
+    <div style="text-align:center;"><div style="font-size:9px;font-family:var(--m);font-weight:700;color:#E84855;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.12em;">Rainbow</div><div class="pcv" style="margin:0 auto;border-color:#FCE4E6;"><div class="pcc" style="color:#E84855;">MAKEUP</div><div class="pci" style="height:80px;background:#FFF0F1;">Image</div><div class="pcb"><div class="pcbr">CLIO</div><div class="pcn">Lip Color</div><div class="pcp">$18.00</div><div class="pcbtn" style="background:linear-gradient(90deg,#E84855,#9B7AE3);">Add to Cart</div><div class="pcbtn2">Try-On</div></div></div></div>
+  </div>
+  <div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--mi);margin-bottom:12px;">Product Card — Responsive</div>
+  <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;">
+    <div><div style="background:#F5F1FF;padding:5px 10px;font-size:8px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9B7AE3;text-align:center;border-radius:8px 8px 0 0;">Desktop 1280+</div><div style="border:2px solid var(--lb);border-radius:0 0 10px 10px;background:white;padding:10px;"><div style="display:flex;gap:7px;"><div class="pcv" style="width:106px;"><div class="pcc" style="color:#9B7AE3;font-size:7px;">SKIN</div><div class="pci" style="height:62px;font-size:7px;">Img</div><div class="pcb" style="padding:5px 7px 7px;text-align:center;"><div style="font-size:9px;font-weight:800;margin-bottom:1px;">COSRX</div><div style="font-size:7px;color:#6E6E6E;margin-bottom:3px;">Snail</div><div style="font-size:9px;font-weight:700;margin-bottom:4px;">$25</div><div class="pcbtn" style="font-size:6px;padding:4px;">Cart</div></div></div><div class="pcv" style="width:106px;"><div class="pcc" style="color:#9B7AE3;font-size:7px;">SKIN</div><div class="pci" style="height:62px;font-size:7px;">Img</div><div class="pcb" style="padding:5px 7px 7px;text-align:center;"><div style="font-size:9px;font-weight:800;margin-bottom:1px;">LANEIGE</div><div style="font-size:7px;color:#6E6E6E;margin-bottom:3px;">Mask</div><div style="font-size:9px;font-weight:700;margin-bottom:4px;">$35</div><div class="pcbtn" style="font-size:6px;padding:4px;">Cart</div></div></div></div></div></div>
+    <div><div style="background:#F5F1FF;padding:5px 10px;font-size:8px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9B7AE3;text-align:center;border-radius:8px 8px 0 0;">Mobile 390</div><div style="border:2px solid var(--lb);border-radius:0 0 10px 10px;background:white;padding:8px;width:160px;"><div class="pch" style="max-width:100%;"><div class="pci" style="width:56px;flex-shrink:0;height:auto;font-size:7px;">Img</div><div style="padding:7px;flex:1;"><div style="font-size:7px;font-family:var(--m);font-weight:700;color:#9B7AE3;margin-bottom:1px;text-transform:uppercase;letter-spacing:0.07em;">SKIN</div><div style="font-size:9px;font-weight:800;margin-bottom:1px;">COSRX</div><div style="font-size:7px;color:#6E6E6E;margin-bottom:3px;">Snail Essence</div><div style="font-size:9px;font-weight:700;margin-bottom:4px;">$25</div><div style="padding:4px 8px;border-radius:100px;font-size:6px;font-weight:700;font-family:var(--m);text-transform:uppercase;background:#9B7AE3;color:white;display:inline-block;">Cart</div></div></div></div></div>
+  </div>
+</div>
+
+</div><!-- /main -->
+</div><!-- /layout -->
+
+<script>
+function nav(id,btn){
+  var p=document.querySelectorAll('.panel');
+  for(var i=0;i<p.length;i++) p[i].classList.remove('active');
+  var b=document.querySelectorAll('.sbb');
+  for(var i=0;i<b.length;i++) b[i].classList.remove('active');
+  var t=document.getElementById('panel-'+id);
+  if(t) t.classList.add('active');
+  if(btn) btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+function setTheme(t,btn){
+  var bs=document.querySelectorAll('.tsb');
+  for(var i=0;i<bs.length;i++) bs[i].classList.remove('active');
+  btn.classList.add('active');
+  var r=document.documentElement;
+  if(t==='l'){r.style.setProperty('--l','#9B7AE3');r.style.setProperty('--ld','#7B5AC3');r.style.setProperty('--lb','#E8E2F5');r.style.setProperty('--lt','#EDE8F8');}
+  else if(t==='b'){r.style.setProperty('--l','#3C82FF');r.style.setProperty('--ld','#2563EB');r.style.setProperty('--lb','#C7DCFF');r.style.setProperty('--lt','#DBEAFE');}
+  else{r.style.setProperty('--l','#E84855');r.style.setProperty('--ld','#C0392B');r.style.setProperty('--lb','#FCE4E6');r.style.setProperty('--lt','#FFF0F1');}
+}
+</script>
+</body>
+</html>

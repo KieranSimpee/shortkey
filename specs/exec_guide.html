@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Shortkey — Homepage Execution Guide</title>
+<style>
+:root{
+  --p:#9B7AE3;--pd:#7B5AC3;--in:#111111;--mi:#6E6E6E;
+  --wh:#FFFFFF;--si:#F9F7FF;--bo:#E8E2F5;
+  --gr:#2ECC71;--re:#E84855;--am:#F9A825;
+  --f:-apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  --m:"SF Mono","Fira Code",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--f);background:#FAFAFA;color:#111111;min-height:100vh;}
+
+/* HEADER */
+.hdr{background:#FFFFFF;border-bottom:1px solid #222;padding:18px 40px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100;}
+.hdr-logo{width:28px;height:28px;border-radius:7px;overflow:hidden;}
+.hdr-logo img{width:100%;height:100%;object-fit:cover;}
+.hdr-title{font-size:14px;font-weight:800;letter-spacing:-0.02em;}
+.hdr-title span{color:#999999;}
+.hdr-sub{font-size:10px;font-family:var(--m);letter-spacing:0.12em;text-transform:uppercase;color:#999999;margin-left:auto;}
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--p);transition:width 0.3s;z-index:200;width:0%;}
+
+/* STEP LAYOUT */
+.steps{max-width:1100px;margin:0 auto;padding:40px 32px;}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:56px;opacity:0;transform:translateY(24px);transition:all 0.5s ease-out;}
+.step.visible{opacity:1;transform:translateY(0);}
+.step.reverse{direction:rtl;}
+.step.reverse > *{direction:ltr;}
+
+/* STEP CARD */
+.step-info{display:flex;flex-direction:column;gap:14px;}
+.step-num{font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#9B7AE3;}
+.step-title{font-size:22px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;}
+.step-desc{font-size:13px;color:#6E6E6E;line-height:1.7;}
+.step-actions{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
+.action-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#F5F3FF;border:1px solid #2A2A32;border-radius:10px;}
+.action-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.action-text{font-size:12px;color:#AAAAAA444;flex:1;line-height:1.4;}
+.action-status{font-size:8px;font-family:var(--m);font-weight:700;padding:2px 8px;border-radius:100px;white-space:nowrap;}
+.s-done{background:rgba(46,204,113,0.12);color:#2ECC71;}
+.s-next{background:rgba(155,122,227,0.15);color:var(--p);}
+.s-wait{background:rgba(100,100,100,0.15);color:#999999;}
+
+/* CODE BLOCK */
+.code-block{background:#F5F3FF;border:1px solid #222;border-radius:10px;padding:14px 16px;font-size:11px;font-family:var(--m);color:#27AE60;line-height:1.8;overflow-x:auto;}
+.code-block .cm{color:#999999;}
+.code-block .ck{color:#9B7AE3;}
+.code-block .cv{color:#60A5FA;}
+.code-block .cs{color:#F9A825;}
+
+/* PREVIEW FRAME */
+.preview-frame{border-radius:14px;overflow:hidden;border:1.5px solid #2A2A32;background:#F9F7FF;}
+.preview-bar{background:#F5F3FF;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #222;}
+.preview-dots{display:flex;gap:5px;}
+.dot{width:10px;height:10px;border-radius:50%;}
+.preview-url{flex:1;background:#F9F7FF;border:1px solid #2A2A32;border-radius:5px;padding:4px 10px;font-size:10px;font-family:var(--m);color:#999999;text-align:center;}
+.preview-tag{font-size:8px;font-family:var(--m);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:2px 8px;border-radius:100px;}
+
+/* MOCK BROWSER SCREENS */
+.screen{background:#FAFAFA;padding:0;overflow:hidden;}
+
+/* NAV MOCK */
+.mock-nav{background:#7B5AC3;padding:0 20px;height:40px;display:flex;align-items:center;gap:8px;}
+.mock-logo{font-size:11px;font-weight:800;color:white;letter-spacing:-0.02em;}
+.mock-key{padding:3px 8px;border-radius:4px;font-size:7px;font-family:var(--m);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.07);}
+.mock-key.act{background:white;color:#7B5AC3;}
+.mock-cta{margin-left:auto;padding:4px 12px;border-radius:100px;font-size:7px;font-weight:700;font-family:var(--m);text-transform:uppercase;background:white;color:#7B5AC3;}
+
+/* HERO MOCK */
+.mock-hero{background:#FFFFFF;padding:28px 24px 20px;text-align:center;}
+.mock-eyebrow{font-size:8px;font-family:var(--m);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#9B7AE3;margin-bottom:8px;}
+.mock-h1{font-size:clamp(18px,3vw,28px);font-weight:800;letter-spacing:-0.03em;line-height:1.0;color:#111;margin-bottom:10px;}
+.mock-h1 span{color:#9B7AE3;}
+.mock-sub{font-size:10px;color:#6E6E6E;margin-bottom:16px;line-height:1.5;}
+.mock-btns{display:flex;gap:8px;justify-content:center;}
+.mock-btn-p{padding:8px 18px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);text-transform:uppercase;background:#9B7AE3;color:white;border:none;}
+.mock-btn-g{padding:7px 16px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);text-transform:uppercase;background:transparent;color:#9B7AE3;border:1.5px solid #9B7AE3;}
+
+/* SLIDE DOTS */
+.slide-dots{display:flex;gap:4px;justify-content:center;padding:10px;background:#FFFFFF;}
+.sdot{width:6px;height:6px;border-radius:50%;background:#E8E2F5;}
+.sdot.a{background:#9B7AE3;width:18px;border-radius:3px;}
+
+/* CATEGORIES */
+.mock-cats{background:#F9F7FF;padding:10px 20px;display:flex;gap:6px;overflow:hidden;}
+.mock-cat{padding:5px 12px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);text-transform:uppercase;letter-spacing:0.06em;border:1px solid #E8E2F5;color:#6E6E6E;white-space:nowrap;}
+.mock-cat.a{background:#9B7AE3;color:white;border-color:#9B7AE3;}
+
+/* STATS */
+.mock-stats{background:white;padding:12px 20px;display:flex;gap:0;border-top:1px solid #F0EDF8;border-bottom:1px solid #F0EDF8;}
+.mock-stat{flex:1;text-align:center;padding:6px 0;border-right:1px solid #F0EDF8;}
+.mock-stat:last-child{border-right:none;}
+.mock-stat-v{font-size:16px;font-weight:800;color:#9B7AE3;letter-spacing:-0.02em;}
+.mock-stat-l{font-size:7px;font-family:var(--m);color:#6E6E6E;text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;}
+
+/* PRODUCT GRID */
+.mock-grid{background:#FAFAFA;padding:14px 16px;}
+.mock-grid-title{font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9B7AE3;margin-bottom:10px;}
+.mock-cards{display:flex;gap:8px;}
+.mock-card{background:white;border-radius:8px;overflow:hidden;flex:1;border:1px solid #E8E2F5;}
+.mock-card-img{height:52px;background:#EDE8F8;display:flex;align-items:center;justify-content:center;font-size:7px;font-family:var(--m);color:#9B7AE3;}
+.mock-card-body{padding:6px 8px;}
+.mock-card-brand{font-size:8px;font-weight:800;color:#111;margin-bottom:1px;}
+.mock-card-name{font-size:7px;color:#6E6E6E;margin-bottom:3px;}
+.mock-card-price{font-size:9px;font-weight:700;color:#9B7AE3;margin-bottom:4px;}
+.mock-card-btn{display:block;width:100%;padding:4px;border-radius:100px;font-size:6px;font-weight:700;font-family:var(--m);text-transform:uppercase;background:#9B7AE3;color:white;text-align:center;border:none;}
+
+/* VERCEL */
+.mock-vercel{background:#F9F7FF;padding:16px 20px;}
+.mock-vercel-title{font-size:10px;font-family:var(--m);font-weight:700;color:#FFF;margin-bottom:10px;}
+.mock-deploy-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #E8E2F5;}
+.mock-deploy-row:last-child{border-bottom:none;}
+.mock-dep-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.mock-dep-text{font-size:10px;font-family:var(--m);color:#6E6E6E;flex:1;}
+.mock-dep-time{font-size:9px;font-family:var(--m);color:#AAAAAA;}
+
+/* LIVE BADGE */
+.live-badge{display:inline-flex;align-items:center;gap:4px;background:#2ECC71;color:white;padding:2px 8px;border-radius:100px;font-size:8px;font-weight:700;font-family:var(--m);text-transform:uppercase;}
+.live-dot{width:5px;height:5px;border-radius:50%;background:white;animation:blink 1.2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+
+/* SEPARATOR */
+.sep{display:flex;align-items:center;gap:16px;margin:0 0 40px;padding:0;}
+.sep-line{flex:1;height:1px;background:#E8E2F5;}
+.sep-label{font-size:9px;font-family:var(--m);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#9B7AE3;}
+
+/* FINAL CTA */
+.final{text-align:center;padding:48px 32px;background:#FFFFFF;border-radius:16px;margin-bottom:40px;}
+.final-title{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-0.02em;margin-bottom:10px;}
+.final-sub{font-size:13px;color:#6E6E6E;margin-bottom:24px;line-height:1.6;}
+.final-steps{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.final-step{padding:10px 20px;border-radius:100px;font-size:10px;font-weight:700;font-family:var(--m);letter-spacing:0.1em;text-transform:uppercase;background:rgba(155,122,227,0.15);color:var(--p);border:1px solid rgba(155,122,227,0.25);}
+.final-step.done{background:rgba(46,204,113,0.12);color:#2ECC71;border-color:rgba(46,204,113,0.2);}
+
+@media(max-width:700px){
+  .step{grid-template-columns:1fr;}
+  .step.reverse{direction:ltr;}
+  .steps{padding:24px 16px;}
+  .hdr{padding:14px 20px;}
+}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-logo"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" alt="SK"></div>
+  <div class="hdr-title">shortkey<span>.studio</span></div>
+  <div style="font-size:11px;font-weight:700;color:#999999;margin:0 8px;">|</div>
+  <div style="font-size:12px;font-weight:700;color:#111111;">Homepage Execution Guide</div>
+  <div class="hdr-sub">6 Steps — Visual Walkthrough</div>
+</div>
+
+<div class="steps">
+
+<!-- INTRO -->
+<div style="text-align:center;padding:48px 0 32px;">
+  <div style="font-size:10px;font-family:var(--m);font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--p);margin-bottom:12px;">Visual Execution Guide</div>
+  <div style="font-size:clamp(24px,4vw,44px);font-weight:800;letter-spacing:-0.03em;line-height:1.0;margin-bottom:14px;">From File to Live.<br><span style="color:var(--p);">Every step. Every preview.</span></div>
+  <div style="font-size:13px;color:#6E6E6E;max-width:480px;margin:0 auto;line-height:1.7;">This is exactly how the homepage_CLEAN.tsx file goes from your Kura workspace to a live production website on shortkey.beauty</div>
+</div>
+
+<!-- ── STEP 1 ── -->
+<div class="sep"><div class="sep-line"></div><div class="sep-label">Step 01</div><div class="sep-line"></div></div>
+<div class="step" id="step1">
+  <div class="step-info">
+    <div class="step-num">Step 01 of 06</div>
+    <div class="step-title">The File is Built</div>
+    <div class="step-desc">Kura already built homepage_CLEAN.tsx. It lives in your Kura workspace at /app/shortkey_deliverables/. The file contains 4 hero slides, category strip, stats bar, and product grid — all using the 3-colour design system.</div>
+    <div class="step-actions">
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(46,204,113,0.12);">✅</div>
+        <div class="action-text">homepage_CLEAN.tsx — 4 hero slides, categories, stats, product grid</div>
+        <div class="action-status s-done">Ready</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(46,204,113,0.12);">✅</div>
+        <div class="action-text">globals_CLEAN.css — 3-colour design system, fluid typography</div>
+        <div class="action-status s-done">Ready</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(46,204,113,0.12);">✅</div>
+        <div class="action-text">tailwind_CLEAN.config.ts — brand tokens locked</div>
+        <div class="action-status s-done">Ready</div>
+      </div>
+    </div>
+  </div>
+  <div class="preview-frame">
+    <div class="preview-bar">
+      <div class="preview-dots"><div class="dot" style="background:#E84855;"></div><div class="dot" style="background:#F9A825;"></div><div class="dot" style="background:#2ECC71;"></div></div>
+      <div class="preview-url">kura workspace / shortkey_deliverables /</div>
+      <div class="preview-tag" style="background:rgba(46,204,113,0.12);color:#2ECC71;">3 files ready</div>
+    </div>
+    <div style="background:#F5F3FF;padding:16px;font-family:monospace;font-size:11px;line-height:1.8;">
+      <div style="color:#999999;margin-bottom:8px;"># Kura workspace files</div>
+      <div style="color:#27AE60;">shortkey_deliverables/</div>
+      <div style="color:#9B7AE3;padding-left:16px;">├── homepage_CLEAN.tsx <span style="color:#2ECC71;">✓ built</span></div>
+      <div style="color:#9B7AE3;padding-left:16px;">├── globals_CLEAN.css <span style="color:#2ECC71;">✓ built</span></div>
+      <div style="color:#9B7AE3;padding-left:16px;">├── tailwind_CLEAN.config.ts <span style="color:#2ECC71;">✓ built</span></div>
+      <div style="color:#999999;padding-left:16px;">├── shortkey_live.html</div>
+      <div style="color:#999999;padding-left:16px;">└── shortkey_studio_v2.html</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STEP 2 ── -->
+<div class="sep"><div class="sep-line"></div><div class="sep-label">Step 02</div><div class="sep-line"></div></div>
+<div class="step reverse" id="step2">
+  <div class="step-info">
+    <div class="step-num">Step 02 of 06</div>
+    <div class="step-title">Simpee Copies the Files</div>
+    <div class="step-desc">Simpee pulls the 3 files from Kura and places them in the correct locations inside the monorepo. The repo is KieranSimpee/shortkey on GitHub.</div>
+    <div class="step-actions">
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(155,122,227,0.12);">📋</div>
+        <div class="action-text">homepage_CLEAN.tsx → apps/shortkey-beauty/src/app/page.tsx</div>
+        <div class="action-status s-next">Simpee</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(155,122,227,0.12);">📋</div>
+        <div class="action-text">globals_CLEAN.css → apps/shortkey-beauty/src/app/globals.css</div>
+        <div class="action-status s-next">Simpee</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(155,122,227,0.12);">📋</div>
+        <div class="action-text">tailwind_CLEAN.config.ts → apps/shortkey-beauty/tailwind.config.ts</div>
+        <div class="action-status s-next">Simpee</div>
+      </div>
+    </div>
+    <div class="code-block" style="margin-top:12px;">
+      <span class="cm"># Simpee runs these commands</span>
+cp homepage_CLEAN.tsx \
+  apps/shortkey-beauty/src/app/page.tsx
+
+cp globals_CLEAN.css \
+  apps/shortkey-beauty/src/app/globals.css
+
+cp tailwind_CLEAN.config.ts \
+  apps/shortkey-beauty/tailwind.config.ts
+    </div>
+  </div>
+  <div class="preview-frame">
+    <div class="preview-bar">
+      <div class="preview-dots"><div class="dot" style="background:#E84855;"></div><div class="dot" style="background:#F9A825;"></div><div class="dot" style="background:#2ECC71;"></div></div>
+      <div class="preview-url">github.com / KieranSimpee / shortkey</div>
+      <div class="preview-tag" style="background:rgba(155,122,227,0.15);color:var(--p);">monorepo</div>
+    </div>
+    <div style="background:#F5F3FF;padding:16px;font-family:monospace;font-size:11px;line-height:1.8;">
+      <div style="color:#27AE60;">shortkey/ <span style="color:#999999;">(monorepo root)</span></div>
+      <div style="color:#999999;padding-left:8px;">├── apps/</div>
+      <div style="color:#9B7AE3;padding-left:20px;">├── shortkey-beauty/ <span style="color:#F9A825;">← target</span></div>
+      <div style="color:#9B7AE3;padding-left:32px;">└── src/app/</div>
+      <div style="color:#2ECC71;padding-left:44px;">├── page.tsx <span style="color:#F9A825;">← replace</span></div>
+      <div style="color:#2ECC71;padding-left:44px;">├── globals.css <span style="color:#F9A825;">← replace</span></div>
+      <div style="color:#2ECC71;padding-left:28px;">└── tailwind.config.ts <span style="color:#F9A825;">← replace</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STEP 3 ── -->
+<div class="sep"><div class="sep-line"></div><div class="sep-label">Step 03</div><div class="sep-line"></div></div>
+<div class="step" id="step3">
+  <div class="step-info">
+    <div class="step-num">Step 03 of 06</div>
+    <div class="step-title">Git Push to Main</div>
+    <div class="step-desc">Simpee commits the 3 changed files and pushes to the main branch. This is the trigger that starts the automatic Vercel deployment. Nothing else needs to be done manually.</div>
+    <div class="code-block">
+<span class="cm"># Simpee runs this once</span>
+<span class="ck">git</span> add apps/shortkey-beauty/src/app/page.tsx
+<span class="ck">git</span> add apps/shortkey-beauty/src/app/globals.css
+<span class="ck">git</span> add apps/shortkey-beauty/tailwind.config.ts
+
+<span class="ck">git</span> commit -m <span class="cs">"homepage: clean minimal v2.0 — Kura"</span>
+
+<span class="ck">git</span> push origin main
+    </div>
+    <div class="step-actions" style="margin-top:12px;">
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(155,122,227,0.12);">🔀</div>
+        <div class="action-text">Push triggers Vercel webhook automatically — no manual deploy needed</div>
+        <div class="action-status s-next">Auto</div>
+      </div>
+    </div>
+  </div>
+  <div class="preview-frame">
+    <div class="preview-bar">
+      <div class="preview-dots"><div class="dot" style="background:#E84855;"></div><div class="dot" style="background:#F9A825;"></div><div class="dot" style="background:#2ECC71;"></div></div>
+      <div class="preview-url">github.com / KieranSimpee / shortkey / commits</div>
+      <div class="preview-tag" style="background:rgba(155,122,227,0.15);color:var(--p);">pushed</div>
+    </div>
+    <div style="background:#F6F8FA;padding:16px;">
+      <div style="font-size:10px;font-family:monospace;color:#6E6E6E;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.1em;">Recent commits — main branch</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:#FFFFFF;border:1px solid #21262D;border-radius:6px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#2ECC71;flex-shrink:0;"></div>
+          <div style="flex:1;"><div style="font-size:11px;font-weight:700;color:#111111;">homepage: clean minimal v2.0 — Kura</div><div style="font-size:10px;color:#999999;margin-top:2px;">Simpee · just now · 3 files changed</div></div>
+          <div style="font-size:9px;font-family:monospace;color:#9B7AE3;">91b5b31</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #21262D;border-radius:6px;padding:10px 12px;display:flex;align-items:center;gap:10px;opacity:0.5;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#555;flex-shrink:0;"></div>
+          <div style="flex:1;"><div style="font-size:11px;color:#6E6E6E;">feat: monorepo structure setup</div><div style="font-size:10px;color:#AAAAAA;margin-top:2px;">Simpee · yesterday</div></div>
+          <div style="font-size:9px;font-family:monospace;color:#999999;">91b5b30</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STEP 4 ── -->
+<div class="sep"><div class="sep-line"></div><div class="sep-label">Step 04</div><div class="sep-line"></div></div>
+<div class="step reverse" id="step4">
+  <div class="step-info">
+    <div class="step-num">Step 04 of 06</div>
+    <div class="step-title">Vercel Builds Automatically</div>
+    <div class="step-desc">The moment Simpee pushes, Vercel picks it up and builds the site. This takes about 90 seconds. You can watch the build log in real time on the Vercel dashboard. If anything fails, the error shows here and Kura fixes it.</div>
+    <div class="step-actions">
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(46,204,113,0.12);">⚡</div>
+        <div class="action-text">Vercel detects push → starts build automatically</div>
+        <div class="action-status s-done">Auto</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(46,204,113,0.12);">🔧</div>
+        <div class="action-text">Next.js compiles TypeScript + Tailwind — takes ~90 seconds</div>
+        <div class="action-status s-done">Auto</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(46,204,113,0.12);">🌍</div>
+        <div class="action-text">Deployed globally via Vercel Edge Network — instant worldwide</div>
+        <div class="action-status s-done">Auto</div>
+      </div>
+    </div>
+  </div>
+  <div class="preview-frame">
+    <div class="preview-bar">
+      <div class="preview-dots"><div class="dot" style="background:#E84855;"></div><div class="dot" style="background:#F9A825;"></div><div class="dot" style="background:#2ECC71;"></div></div>
+      <div class="preview-url">vercel.com / shortkey-beauty / deployments</div>
+      <div class="preview-tag" style="background:rgba(46,204,113,0.12);color:#2ECC71;">Building</div>
+    </div>
+    <div class="mock-vercel">
+      <div class="mock-vercel-title">Deployment Log</div>
+      <div class="mock-deploy-row"><div class="mock-dep-dot" style="background:#2ECC71;"></div><div class="mock-dep-text">Triggered by push to main (91b5b31)</div><div class="mock-dep-time">0s</div></div>
+      <div class="mock-deploy-row"><div class="mock-dep-dot" style="background:#2ECC71;"></div><div class="mock-dep-text">Installing dependencies...</div><div class="mock-dep-time">12s</div></div>
+      <div class="mock-deploy-row"><div class="mock-dep-dot" style="background:#2ECC71;"></div><div class="mock-dep-text">Building Next.js application...</div><div class="mock-dep-time">34s</div></div>
+      <div class="mock-deploy-row"><div class="mock-dep-dot" style="background:#2ECC71;"></div><div class="mock-dep-text">Compiling Tailwind CSS...</div><div class="mock-dep-time">58s</div></div>
+      <div class="mock-deploy-row"><div class="mock-dep-dot" style="background:#9B7AE3;animation:blink 1s infinite;"></div><div class="mock-dep-text" style="color:#9B7AE3;">Deploying to Edge Network...</div><div class="mock-dep-time">82s</div></div>
+      <div class="mock-deploy-row" style="opacity:0.3;"><div class="mock-dep-dot" style="background:#333;"></div><div class="mock-dep-text">Ready</div><div class="mock-dep-time">~90s</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STEP 5 ── -->
+<div class="sep"><div class="sep-line"></div><div class="sep-label">Step 05</div><div class="sep-line"></div></div>
+<div class="step" id="step5">
+  <div class="step-info">
+    <div class="step-num">Step 05 of 06</div>
+    <div class="step-title">Preview Before Going Live</div>
+    <div class="step-desc">Vercel gives a preview URL before touching the production domain. Kieran checks this preview link first. If it looks right — approve. If something is off — Kura fixes it and Simpee pushes again. Nothing goes to shortkey.beauty until Kieran confirms.</div>
+    <div class="step-actions">
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(155,122,227,0.12);">👁</div>
+        <div class="action-text">Vercel preview URL: shortkey-beauty-git-main-kieransimpee.vercel.app</div>
+        <div class="action-status s-next">Kieran reviews</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(155,122,227,0.12);">✅</div>
+        <div class="action-text">Kieran approves → Simpee promotes to production domain</div>
+        <div class="action-status s-next">Kieran</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(232,72,85,0.1);">🔁</div>
+        <div class="action-text">Kieran finds issue → Kura fixes → Simpee pushes → new preview</div>
+        <div class="action-status" style="background:rgba(232,72,85,0.1);color:#E84855;">If needed</div>
+      </div>
+    </div>
+  </div>
+  <div class="preview-frame">
+    <div class="preview-bar">
+      <div class="preview-dots"><div class="dot" style="background:#E84855;"></div><div class="dot" style="background:#F9A825;"></div><div class="dot" style="background:#2ECC71;"></div></div>
+      <div class="preview-url">shortkey-beauty-git-main.vercel.app</div>
+      <div class="preview-tag" style="background:rgba(249,168,37,0.12);color:#F9A825;">Preview</div>
+    </div>
+    <div class="screen">
+      <div class="mock-nav">
+        <div class="mock-logo">shortkey</div>
+        <div class="mock-key act">Shop</div>
+        <div class="mock-key">Live</div>
+        <div class="mock-key">Try-On</div>
+        <div class="mock-cta">Join Free</div>
+      </div>
+      <div class="mock-hero">
+        <div class="mock-eyebrow">AI Skin Analysis</div>
+        <div class="mock-h1">Know Your Skin,<br><span>Own Your Glow.</span></div>
+        <div class="mock-sub">Personalised beauty intelligence powered by AI.</div>
+        <div class="mock-btns">
+          <button class="mock-btn-p">Try Free</button>
+          <button class="mock-btn-g">Learn More</button>
+        </div>
+      </div>
+      <div class="slide-dots"><div class="sdot a"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div></div>
+      <div class="mock-cats">
+        <div class="mock-cat a">K-Beauty</div>
+        <div class="mock-cat">J-Beauty</div>
+        <div class="mock-cat">Skincare</div>
+        <div class="mock-cat">Makeup</div>
+      </div>
+      <div class="mock-stats">
+        <div class="mock-stat"><div class="mock-stat-v">60+</div><div class="mock-stat-l">Brands</div></div>
+        <div class="mock-stat"><div class="mock-stat-v">300+</div><div class="mock-stat-l">Products</div></div>
+        <div class="mock-stat"><div class="mock-stat-v">AI</div><div class="mock-stat-l">Skin Analysis</div></div>
+        <div class="mock-stat"><div class="mock-stat-v">Live</div><div class="mock-stat-l">Try-On</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STEP 6 ── -->
+<div class="sep"><div class="sep-line"></div><div class="sep-label">Step 06</div><div class="sep-line"></div></div>
+<div class="step reverse" id="step6">
+  <div class="step-info">
+    <div class="step-num">Step 06 of 06</div>
+    <div class="step-title">Live on shortkey.beauty</div>
+    <div class="step-desc">Kieran approves the preview. Simpee promotes to production. shortkey.beauty now serves the new homepage instantly to every visitor worldwide. This is the final state — fully live.</div>
+    <div class="step-actions">
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(46,204,113,0.12);">🟢</div>
+        <div class="action-text">shortkey.beauty — homepage live globally</div>
+        <div class="action-status s-done">Live</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(46,204,113,0.12);">⚡</div>
+        <div class="action-text">Vercel Edge — served from nearest server to every visitor</div>
+        <div class="action-status s-done">Live</div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon" style="background:rgba(46,204,113,0.12);">🔁</div>
+        <div class="action-text">Any future change: Kura builds → Simpee pushes → auto-deploys</div>
+        <div class="action-status s-done">Ongoing</div>
+      </div>
+    </div>
+  </div>
+  <div class="preview-frame">
+    <div class="preview-bar">
+      <div class="preview-dots"><div class="dot" style="background:#E84855;"></div><div class="dot" style="background:#F9A825;"></div><div class="dot" style="background:#2ECC71;"></div></div>
+      <div class="preview-url">shortkey.beauty</div>
+      <div class="live-badge"><span class="live-dot"></span>Live</div>
+    </div>
+    <div class="screen">
+      <div class="mock-nav">
+        <div class="mock-logo">shortkey</div>
+        <div class="mock-key act">Shop</div>
+        <div class="mock-key">Live</div>
+        <div class="mock-key">Try-On</div>
+        <div class="mock-cta">Join Free</div>
+      </div>
+      <div class="mock-hero">
+        <div class="mock-eyebrow">AI Skin Analysis</div>
+        <div class="mock-h1">Know Your Skin,<br><span>Own Your Glow.</span></div>
+        <div class="mock-sub">Personalised beauty intelligence powered by AI.</div>
+        <div class="mock-btns">
+          <button class="mock-btn-p">Try Free</button>
+          <button class="mock-btn-g">Learn More</button>
+        </div>
+      </div>
+      <div class="slide-dots"><div class="sdot a"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div></div>
+      <div class="mock-cats">
+        <div class="mock-cat a">K-Beauty</div>
+        <div class="mock-cat">J-Beauty</div>
+        <div class="mock-cat">Skincare</div>
+        <div class="mock-cat">Makeup</div>
+      </div>
+      <div class="mock-stats">
+        <div class="mock-stat"><div class="mock-stat-v">60+</div><div class="mock-stat-l">Brands</div></div>
+        <div class="mock-stat"><div class="mock-stat-v">300+</div><div class="mock-stat-l">Products</div></div>
+        <div class="mock-stat"><div class="mock-stat-v">AI</div><div class="mock-stat-l">Skin Analysis</div></div>
+        <div class="mock-stat"><div class="mock-stat-v">Live</div><div class="mock-stat-l">Try-On</div></div>
+      </div>
+      <div class="mock-grid">
+        <div class="mock-grid-title">Featured Tonight</div>
+        <div class="mock-cards">
+          <div class="mock-card"><div class="mock-card-img">Image</div><div class="mock-card-body"><div class="mock-card-brand">COSRX</div><div class="mock-card-name">Snail Essence</div><div class="mock-card-price">$25</div><button class="mock-card-btn">Add to Cart</button></div></div>
+          <div class="mock-card"><div class="mock-card-img">Image</div><div class="mock-card-body"><div class="mock-card-brand">LANEIGE</div><div class="mock-card-name">Sleeping Mask</div><div class="mock-card-price">$35</div><button class="mock-card-btn">Add to Cart</button></div></div>
+          <div class="mock-card"><div class="mock-card-img">Image</div><div class="mock-card-body"><div class="mock-card-brand">Sulwhasoo</div><div class="mock-card-name">Ginseng Cream</div><div class="mock-card-price">$145</div><button class="mock-card-btn">Add to Cart</button></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL -->
+<div class="sep"><div class="sep-line"></div><div class="sep-label">Complete</div><div class="sep-line"></div></div>
+<div class="final">
+  <div class="final-title">That's the full execution.<br><span style="color:var(--p);">Every step. Every preview.</span></div>
+  <div class="final-sub">Kura builds. Simpee deploys. Kieran approves. Vercel goes live.<br>Same process for every page across all 12 domains.</div>
+  <div class="final-steps">
+    <div class="final-step done">01 File Built</div>
+    <div class="final-step done">02 Files Copied</div>
+    <div class="final-step done">03 Git Push</div>
+    <div class="final-step done">04 Vercel Builds</div>
+    <div class="final-step done">05 Preview Check</div>
+    <div class="final-step done">06 Live</div>
+  </div>
+</div>
+
+</div><!-- /steps -->
+
+<script>
+// Progress bar
+window.addEventListener('scroll',function(){
+  var d=document.documentElement;
+  var pct=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100;
+  document.getElementById('progress').style.width=pct+'%';
+});
+
+// Step reveal on scroll
+var steps=document.querySelectorAll('.step');
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting) e.target.classList.add('visible');});
+},{threshold:0.15});
+steps.forEach(function(s){obs.observe(s);});
+</script>
+</body>
+</html>

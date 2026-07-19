@@ -174,6 +174,71 @@ export function InfluencerProfileClient({
 
         {activeTab === "photo" ? (
           <div className="space-y-4">
+            {host.shortClips && host.shortClips.length > 0 ? (
+              <div>
+                <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-brand">
+                  Brand promo · short samples
+                </p>
+                <p className="mt-1 text-[11px] text-ink-muted">
+                  App-length clips (15–45s). Enough to name the brand and open shop.
+                </p>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  {host.shortClips.map((clip) => (
+                    <article
+                      key={clip.id}
+                      className="overflow-hidden rounded-xl border border-white/50 bg-white/55"
+                    >
+                      <div className="relative aspect-[9/16] max-h-[280px] bg-ink/5 sm:aspect-video sm:max-h-none">
+                        {clip.videoSrc ? (
+                          <video
+                            className="h-full w-full object-cover"
+                            controls
+                            playsInline
+                            preload="metadata"
+                            poster={clip.poster}
+                          >
+                            <source src={clip.videoSrc} type="video/mp4" />
+                          </video>
+                        ) : (
+                          <Image
+                            src={clip.poster}
+                            alt=""
+                            fill
+                            className="object-cover"
+                            sizes="320px"
+                          />
+                        )}
+                        <span className="absolute left-2 top-2 rounded-full bg-ink/80 px-2 py-0.5 text-[8px] font-bold uppercase tracking-[0.12em] text-white">
+                          {clip.duration}
+                        </span>
+                      </div>
+                      <div className="border-t border-white/40 px-3 py-2.5">
+                        <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-brand">
+                          {clip.brandName}
+                        </p>
+                        <p className="mt-0.5 text-[12px] font-semibold text-ink">{clip.title}</p>
+                        <p className="text-[10px] text-ink-muted">{clip.productName}</p>
+                        <div className="mt-2 flex flex-wrap items-center gap-2">
+                          <Link
+                            href={clip.productHref}
+                            className="text-[10px] font-bold uppercase tracking-[0.1em] text-brand hover:text-brand-dark"
+                          >
+                            Shop brand SKU →
+                          </Link>
+                          <AddToCartButton
+                            size="sm"
+                            sku={clip.productSku}
+                            name={clip.productName}
+                            image={clip.poster}
+                          />
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
             <div className="grid grid-cols-4 gap-2">
               {host.photos.map((src, i) => (
                 <div key={i} className="relative aspect-square overflow-hidden rounded-lg border border-white/50">

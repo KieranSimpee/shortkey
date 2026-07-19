@@ -461,6 +461,32 @@
     animation: hero-seal-text-shine 7.5s linear infinite;
   }
 
+  /* S+ seal turns around → +5 (pre-register rate) */
+  @keyframes signup-plus-five-flip {
+    0%,
+    42% {
+      transform: rotateY(0deg);
+    }
+    50%,
+    92% {
+      transform: rotateY(180deg);
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
+  }
+
+  .signup-plus-five-flip {
+    animation: signup-plus-five-flip 5.5s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .signup-plus-five-flip {
+      animation: none;
+    }
+  }
+
   @keyframes hero-seal-text-shine {
     0% {
       background-position: 100% 50%;

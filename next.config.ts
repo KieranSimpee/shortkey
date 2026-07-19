@@ -10,6 +10,23 @@ const nextConfig: NextConfig = {
     ],
   },
   serverExternalPackages: ["@mediapipe/tasks-vision"],
+  async headers() {
+    // Exact paths — avoid path-to-regexp repeat errors on Windows Next 15
+    const logoFiles = [
+      "/images/shortkey-logo-clear.png",
+      "/images/shortkey-logo.png",
+      "/images/shortkey-logo-locked.png",
+    ];
+    return logoFiles.map((source) => ({
+      source,
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "no-cache, no-store, must-revalidate",
+        },
+      ],
+    }));
+  },
 };
 
 export default nextConfig;

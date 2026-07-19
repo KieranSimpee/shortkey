@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteContent } from "@/content/homepage";
+import { logoMeta } from "@/generated/logoMeta";
 import { cn } from "@/lib/utils";
 
 type LogoProps = {
@@ -23,10 +24,10 @@ export function Logo({ className, href = "/", showTagline = false }: LogoProps) 
       aria-label="shortkey home"
     >
       <Image
-        src={brand.logoSrc}
+        src={`${logoMeta.src}?v=${logoMeta.v}`}
         alt={`${brand.name} — ${brand.tagline}`}
-        width={280}
-        height={120}
+        width={logoMeta.width}
+        height={logoMeta.height}
         className={cn(
           "h-auto w-auto drop-shadow-[0_4px_12px_rgba(40,25,80,0.2)]",
           showTagline

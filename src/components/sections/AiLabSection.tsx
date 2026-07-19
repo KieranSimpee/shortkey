@@ -138,7 +138,10 @@ function IntroPanel({ host }: { host: InfluencerLiveHost }) {
           <p className="mt-2 text-[10px] leading-relaxed text-ink/80">{host.bio}</p>
         </div>
         <div>
-          <ul className="flex flex-wrap gap-1.5">
+          <p className="text-[8px] font-bold uppercase tracking-[0.12em] text-brand/70">
+            Brands I trust
+          </p>
+          <ul className="mt-1 flex flex-wrap gap-1.5">
             {host.brands.map((brand) => (
               <li
                 key={`${host.id}-intro-${brand.name}`}
@@ -276,7 +279,7 @@ function PhotoPanel({ host }: { host: InfluencerLiveHost }) {
   return (
     <div className="space-y-2.5">
       <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-brand/80">
-        Photo · blog · fans
+        Video review · looks · fans
       </p>
       <div className="grid grid-cols-4 gap-1.5">
         {host.photos.map((src, index) => (
@@ -311,7 +314,7 @@ function PhotoPanel({ host }: { host: InfluencerLiveHost }) {
   );
 }
 
-/** Homepage influencer grid — 2 columns × 4 rows, each with Intro / Shop / Live / Photo tabs */
+/** Homepage influencer grid — Brand / Shop / Live / Video tabs per creator */
 export function AiLabSection({ embedded = false }: Props) {
   const { aiLab } = siteContent;
 

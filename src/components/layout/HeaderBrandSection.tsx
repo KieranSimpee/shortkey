@@ -2,10 +2,12 @@ import Link from "next/link";
 import { CartNavButton } from "@/components/commerce/CartNavButton";
 import { siteContent } from "@/content/homepage";
 import { Button } from "@/components/ui/Button";
+import { KeyCap } from "@/components/ui/KeyCap";
+import { cn } from "@/lib/utils";
 
 /**
  * Beauty header between sticky welcome and hero —
- * category label, nav, search, cart, AI Lab CTA (no logo mark).
+ * CTRL + Beauty OS mark (horizontal — not vertical BEAUTY), markets, search, cart, AI Lab.
  */
 export function HeaderBrandSection() {
   const { header } = siteContent;
@@ -13,34 +15,42 @@ export function HeaderBrandSection() {
   return (
     <section
       aria-label="Brand navigation"
-      className="relative z-[54] min-h-[3.75rem] border-b border-transparent bg-transparent sm:min-h-[4rem]"
+      className="relative z-[54] min-h-[3.75rem] border-b border-white/40 bg-white/25 backdrop-blur-[6px] sm:min-h-[4rem]"
     >
       <div className="mx-auto flex h-full min-h-[3.75rem] max-w-7xl flex-nowrap items-center justify-between gap-3 px-4 py-2 sm:min-h-[4rem] sm:py-2.5 lg:px-8">
-        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
-          {header.categoryLabel ? (
-            <span
-              className="hidden shrink-0 text-[9px] font-semibold uppercase tracking-[0.22em] text-brand lg:inline-block"
-              style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-            >
+        <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+          {/* Brand OS — horizontal key DNA instead of vertical BEAUTY */}
+          <Link
+            href="/"
+            className="group flex shrink-0 items-center gap-1.5 rounded-full border border-brand/20 bg-white/50 py-1 pl-1.5 pr-2.5 transition hover:border-brand/35 hover:bg-white/80"
+            aria-label="Shortkey Beauty OS home"
+          >
+            <KeyCap size="sm" className="!px-1.5 !py-0.5 !text-[8px] tracking-wide">
+              ctrl
+            </KeyCap>
+            <span className="text-[8px] font-medium text-brand/40" aria-hidden>
+              +
+            </span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand group-hover:text-brand-dark">
               {header.categoryLabel}
             </span>
-          ) : null}
+          </Link>
 
-          <nav className="hidden min-w-0 items-center md:flex">
-            {header.nav.map((item, index) => (
-              <span key={item.label} className="flex items-center">
-                {index > 0 && (
-                  <span className="mx-2 text-[10px] font-light text-brand/35" aria-hidden>
-                    |
-                  </span>
+          <nav
+            className="hidden min-w-0 items-center gap-1 md:flex"
+            aria-label="Beauty markets"
+          >
+            {header.nav.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "relative z-[60] rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em]",
+                  "text-ink-muted transition-colors hover:bg-brand/10 hover:text-brand",
                 )}
-                <Link
-                  href={item.href}
-                  className="relative z-[60] text-[10px] font-medium uppercase tracking-[0.12em] text-brand transition-colors hover:text-brand-dark"
-                >
-                  {item.label}
-                </Link>
-              </span>
+              >
+                {item.label}
+              </Link>
             ))}
           </nav>
         </div>
@@ -52,7 +62,7 @@ export function HeaderBrandSection() {
               type="search"
               name="q"
               placeholder={header.searchPlaceholder}
-              className="relative z-[60] h-8 w-full rounded-full border border-brand/25 bg-white/20 px-3 pr-8 text-[10px] uppercase tracking-[0.1em] text-brand placeholder:text-brand/45 outline-none backdrop-blur-sm transition focus:border-brand/50 focus:bg-white/35"
+              className="relative z-[60] h-8 w-full rounded-full border border-brand/25 bg-white/40 px-3 pr-8 text-[10px] uppercase tracking-[0.1em] text-brand placeholder:text-brand/45 outline-none backdrop-blur-sm transition focus:border-brand/50 focus:bg-white/60"
             />
             <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-brand/60">
               <SearchIcon />
