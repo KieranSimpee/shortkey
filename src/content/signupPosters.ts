@@ -13,6 +13,11 @@ export type SignupPoster = {
   src: string;
   /** Landscape banner — hero only */
   heroSrc: string;
+  /**
+   * Keep face/product on the right so left copy never covers it
+   * when object-cover crops (default: right center).
+   */
+  heroObjectPosition?: string;
   alt: string;
   audience: "shopper" | "creator" | "brand" | "both";
   ctaHref: string;
@@ -36,6 +41,7 @@ export const signupPosterSeries = {
       ],
       src: "/images/posters/signup/google-bloom-skin-ai-try-on-shortkey.png",
       heroSrc: "/images/posters/hero/hero-bloom-skin.png",
+      heroObjectPosition: "78% center",
       alt: "Shortkey bloom skin AI try-on — K-beauty soft luminous glow",
       audience: "both",
       ctaHref: "/signup/creator",
@@ -55,6 +61,7 @@ export const signupPosterSeries = {
       src: "/images/posters/signup/google-cushion-foundation-lip-tint-virtual-try-on.png",
       /** Landscape: skincare on RIGHT, open left for brand copy (was makeup-left overlap) */
       heroSrc: "/images/posters/hero/hero-cushion-tint.png",
+      heroObjectPosition: "82% center",
       alt: "Shortkey K-beauty skincare on right — open left for signup copy",
       audience: "shopper",
       ctaHref: "/signup/brand",
@@ -73,6 +80,7 @@ export const signupPosterSeries = {
       ],
       src: "/images/posters/signup/google-ai-skin-analysis-barrier-repair-kbeauty.png",
       heroSrc: "/images/posters/hero/hero-skin-analysis.png",
+      heroObjectPosition: "75% center",
       alt: "Shortkey AI skin analysis barrier repair K-beauty",
       audience: "shopper",
       ctaHref: "/signup/creator",
@@ -92,6 +100,7 @@ export const signupPosterSeries = {
       src: "/images/posters/signup/google-founding-brand-creator-signup-ctrl-twin.png",
       /** Landscape: skincare on RIGHT, open left for copy (replaces old left-product + baked text) */
       heroSrc: "/images/posters/hero/hero-founding-brand.png",
+      heroObjectPosition: "80% center",
       alt: "Shortkey founding brand — skincare on right, open left for signup copy",
       audience: "both",
       ctaHref: "/signup/brand",

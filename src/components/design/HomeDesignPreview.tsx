@@ -70,72 +70,60 @@ export function HomeDesignPreview({ preview = false }: Props) {
             <Button href="/signup/creator" variant="highlight" size="sm" className="!px-2.5 !py-1 !text-[9px]">
               Creator →
             </Button>
-            <Button href="/signup/brand" variant="outline" size="sm" className="!px-2.5 !py-1 !text-[9px]">
+            <Button
+              href="/signup/brand"
+              variant="outline"
+              size="sm"
+              className="!border-brand/40 !bg-white !px-2.5 !py-1 !text-[9px] !font-semibold !text-brand-dark"
+            >
               Brand →
             </Button>
           </div>
         </div>
       </div>
 
-      {/* HERO — left copy (worked for other slides); founding banner rebuilt with skincare on RIGHT */}
-      <section className="relative min-h-[min(78vh,620px)] overflow-hidden">
-        {posters.map((p, i) => (
-          <div
-            key={p.id}
-            className={cn(
-              "absolute inset-0 transition-opacity duration-[1200ms] ease-out",
-              i === posterIdx ? "opacity-100" : "opacity-0",
-            )}
-            aria-hidden={i !== posterIdx}
-          >
-            <Image
-              src={p.heroSrc}
-              alt=""
-              fill
-              className="object-cover object-center"
-              priority={i === 0}
-              sizes="100vw"
-            />
-          </div>
-        ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2a2438]/65 via-[#2a2438]/25 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2a2438]/40 via-transparent to-transparent" />
-
-        <div className="relative z-10 mx-auto flex min-h-[min(78vh,620px)] max-w-6xl flex-col justify-end px-4 pb-8 pt-8 sm:px-8 lg:justify-center lg:pb-12">
-          <div className="max-w-lg">
+      {/* HERO — split layout: copy NEVER overlays the photo (auto-safe at every width) */}
+      <section className="grid min-h-[min(78vh,640px)] overflow-hidden bg-[#1c1628] lg:grid-cols-[minmax(300px,42%)_minmax(0,1fr)]">
+        {/* Copy column — solid atmosphere, no photo behind */}
+        <div className="relative z-10 order-2 flex flex-col justify-center px-5 py-8 sm:px-8 lg:order-1 lg:px-10 lg:py-12 xl:px-14">
+          <div className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-light">
               {active?.googleHotSearch}
             </p>
-            <h1 className="mt-2 text-balance text-3xl font-bold uppercase leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[2.5rem]">
+            <h1 className="mt-2 text-balance text-3xl font-bold uppercase leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[2.35rem]">
               {active?.headline}
             </h1>
-            <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/75">
+            <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/80">
               {active?.subline}
             </p>
 
             {teaser ? (
-              <p className="mt-4 inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white">
+              <p className="mt-3 inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white">
                 <SignupPlusFiveLockup className="text-[11px] text-white [&_span:first-child]:text-brand-light [&_span:last-child]:text-white" />
                 <span className="text-white/35">·</span>
-                <span className="font-medium text-white/65">{teaser.whisper}</span>
+                <span className="font-medium text-white/70">{teaser.whisper}</span>
               </p>
             ) : null}
 
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
               <Button href="/signup/creator" variant="highlight" size="sm">
                 Creator signup →
               </Button>
-              <Button href="/signup/brand" variant="outline" size="sm">
+              <Button href="/signup/brand" variant="on-dark" size="sm">
                 Brand signup →
               </Button>
-              <Button href="#category-lanes" variant="outline" size="sm">
+              <Button
+                href="#category-lanes"
+                variant="outline-light"
+                size="sm"
+                className="!border-white/70 !bg-white/20 !text-white"
+              >
                 Shop AI lanes →
               </Button>
             </div>
 
-            {/* Full mark below CTAs — Sky lock then clear; keys + shortkey + tagline */}
             <div className="mt-6">
-              <ShortcutKeysLogo className="max-w-[200px] !drop-shadow-none sm:max-w-[240px]" />
+              <ShortcutKeysLogo className="max-w-[170px] !drop-shadow-none sm:max-w-[200px]" />
             </div>
 
             <div className="mt-5 flex flex-wrap gap-1.5">
@@ -153,6 +141,31 @@ export function HomeDesignPreview({ preview = false }: Props) {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Photo column — image only, face stays in this pane */}
+        <div className="relative order-1 min-h-[240px] sm:min-h-[320px] lg:order-2 lg:min-h-full">
+          {posters.map((p, i) => (
+            <div
+              key={p.id}
+              className={cn(
+                "absolute inset-0 transition-opacity duration-[1200ms] ease-out",
+                i === posterIdx ? "opacity-100" : "opacity-0",
+              )}
+              aria-hidden={i !== posterIdx}
+            >
+              <Image
+                src={p.heroSrc}
+                alt=""
+                fill
+                className="object-cover"
+                style={{ objectPosition: p.heroObjectPosition ?? "70% center" }}
+                priority={i === 0}
+                sizes="(max-width: 1024px) 100vw, 58vw"
+              />
+            </div>
+          ))}
+          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-16 bg-gradient-to-r from-[#1c1628] to-transparent lg:block" />
         </div>
       </section>
 
