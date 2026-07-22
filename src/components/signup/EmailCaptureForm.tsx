@@ -5,12 +5,14 @@ import { cn } from "@/lib/utils";
 
 type Props = {
   className?: string;
+  /** Match hero appointment CTAs when provided */
+  buttonClassName?: string;
   /** Visual surface — light card or on-dark hero context */
   surface?: "light" | "dark";
 };
 
 /** Coming Soon — pre-register email capture (no product/pricing details exposed). */
-export function EmailCaptureForm({ className, surface = "light" }: Props) {
+export function EmailCaptureForm({ className, buttonClassName, surface = "light" }: Props) {
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -60,7 +62,7 @@ export function EmailCaptureForm({ className, surface = "light" }: Props) {
 
   return (
     <div className={className}>
-      <form onSubmit={onSubmit} className="flex flex-col gap-2 sm:flex-row">
+      <form onSubmit={onSubmit} className="flex flex-col gap-2 sm:flex-row sm:items-stretch">
         <label className="flex-1">
           <span className="sr-only">Email</span>
           <input
@@ -70,10 +72,13 @@ export function EmailCaptureForm({ className, surface = "light" }: Props) {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@email.com"
             className={cn(
-              "w-full rounded-full border px-4 py-2.5 text-sm outline-none transition",
+              "h-full w-full px-4 py-2.5 text-sm outline-none transition",
+              buttonClassName
+                ? "rounded-md border"
+                : "rounded-full border",
               surface === "dark"
                 ? "border-white/25 bg-white/10 text-white placeholder:text-white/50 focus:border-white/50"
-                : "border-brand/25 bg-white px-4 text-ink placeholder:text-ink-subtle focus:border-brand/50",
+                : "border-brand/25 bg-white text-ink placeholder:text-ink-subtle focus:border-brand/50",
             )}
           />
         </label>
@@ -81,10 +86,15 @@ export function EmailCaptureForm({ className, surface = "light" }: Props) {
           type="submit"
           disabled={busy}
           className={cn(
-            "shrink-0 rounded-full px-5 py-2.5 font-display text-xs font-semibold uppercase tracking-[0.14em] transition disabled:opacity-60",
-            surface === "dark"
-              ? "bg-white text-brand hover:bg-brand-muted"
-              : "bg-brand text-white hover:bg-brand-dark",
+            "inline-flex shrink-0 items-center justify-center font-display font-semibold uppercase tracking-[0.14em] transition disabled:opacity-60",
+            buttonClassName
+              ? cn("px-5 py-2.5 text-xs", buttonClassName)
+              : cn(
+                  "rounded-full px-5 py-2.5 text-xs",
+                  surface === "dark"
+                    ? "bg-white text-brand hover:bg-brand-muted"
+                    : "bg-brand text-white hover:bg-brand-dark",
+                ),
           )}
         >
           {busy ? "Sending…" : "Notify Me →"}

@@ -59,12 +59,12 @@ export function ComingSoonHome() {
             <Button href="/signup/creator" variant="primary" size="md" className={KEYCAP_CTA}>
               Book Creator Appointment
             </Button>
-            <Button href="/signup/brand" variant="outline-light" size="md">
+            <Button href="/signup/brand" variant="primary" size="md" className={KEYCAP_CTA}>
               Book Brand Appointment
             </Button>
           </div>
           <div className="mx-auto mt-8 max-w-md">
-            <EmailCaptureForm surface="dark" />
+            <EmailCaptureForm surface="dark" buttonClassName={KEYCAP_CTA} />
             <p className="mt-2 text-[11px] text-white/50">
               No spam — just one email before launch.
             </p>
