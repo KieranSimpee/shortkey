@@ -4,6 +4,7 @@ import { POWERED_BY_AI_FAMILY } from "@/content/aiFamilyCredit";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { EmailCaptureForm } from "@/components/signup/EmailCaptureForm";
+import { HeroLanguageTaps } from "@/components/design/HeroLanguageTaps";
 
 const KEYCAP_CTA =
   "!rounded-md !normal-case !tracking-wide border border-white/90 bg-gradient-to-b from-white to-brand-muted !text-brand shadow-[0_2px_0_rgba(140,130,252,0.2),0_4px_12px_rgba(140,130,252,0.1)] hover:!bg-brand-muted hover:!text-brand";
@@ -57,6 +58,7 @@ export function ComingSoonHome() {
             expand or a creator ready to inspire, let&apos;s cultivate a supportive space for Asian
             beauty to thrive globally.
           </p>
+          <HeroLanguageTaps />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="/signup/creator" variant="primary" size="md" className={KEYCAP_CTA}>
               Book Creator Appointment
