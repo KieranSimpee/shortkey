@@ -3,16 +3,28 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
+type EmailCaptureCopy = {
+  placeholder?: string;
+  notifyMe?: string;
+  sending?: string;
+  invalid?: string;
+  fail?: string;
+  network?: string;
+  success?: string;
+};
+
 type Props = {
   className?: string;
   /** Match hero appointment CTAs when provided */
   buttonClassName?: string;
   /** Visual surface — light card or on-dark hero context */
   surface?: "light" | "dark";
+  /** Optional localized strings (Coming Soon page language switcher) */
+  copy?: EmailCaptureCopy;
 };
 
 /** Coming Soon — pre-register email capture (no product/pricing details exposed). */
-export function EmailCaptureForm({ className, buttonClassName, surface = "light" }: Props) {
+export function EmailCaptureForm({ className, buttonClassName, surface = "light", copy }: Props) {
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -22,7 +34,7 @@ export function EmailCaptureForm({ className, buttonClassName, surface = "light"
     e.preventDefault();
     setError("");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      setError("Enter a valid email.");
+      setError(copy?.invalid ?? "Enter a valid email.");
       return;
     }
     setBusy(true);
@@ -34,13 +46,13 @@ export function EmailCaptureForm({ className, buttonClassName, surface = "light"
       });
       const json = (await res.json()) as { ok?: boolean; error?: string; message?: string };
       if (!res.ok || !json.ok) {
-        setError(json.error || "Could not pre-register. Try again.");
+        setError(json.error || copy?.fail || "Could not pre-register. Try again.");
         return;
       }
-      setMessage(json.message || "You're on the list.");
+      setMessage(json.message || copy?.success || "You're on the list.");
       setEmail("");
     } catch {
-      setError("Network error. Please try again.");
+      setError(copy?.network ?? "Network error. Please try again.");
     } finally {
       setBusy(false);
     }
@@ -70,7 +82,7 @@ export function EmailCaptureForm({ className, buttonClassName, surface = "light"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@email.com"
+            placeholder={copy?.placeholder ?? "you@email.com"}
             className={cn(
               "h-full w-full px-4 py-2.5 text-sm outline-none transition",
               buttonClassName
@@ -97,7 +109,7 @@ export function EmailCaptureForm({ className, buttonClassName, surface = "light"
                 ),
           )}
         >
-          {busy ? "Sending…" : "Notify Me →"}
+          {busy ? (copy?.sending ?? "Sending…") : (copy?.notifyMe ?? "Notify Me →")}
         </button>
       </form>
       {error ? <p className="mt-2 text-[11px] text-red-500">{error}</p> : null}
