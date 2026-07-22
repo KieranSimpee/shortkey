@@ -27,6 +27,7 @@
 | Product / Shop surface | **LOCKED** — ratio/display not ready (`featureLocks.productSurface`) |
 | Signup tabs | **LOCKED** — appointment arrangement only (`featureLocks.signupAppointmentOnly`) |
 | Category header nav | **LOCKED** — K/J/C Beauty hidden + pages gated (`featureLocks.categorySurface`) |
+| Design DNA → Coming Soon link-up | **WAITING** on Simpee DNA guide upload → target link-up + test **~Jul 29, 2026** (see below) |
 
 ## Sonnet 5 build notes (2026-07-21)
 
@@ -49,3 +50,70 @@
 - Review Coming Soon copy/design and Studio manifest data for accuracy before any push.
 - Decide when/if to connect `RESEND_API_KEY` for real pre-register email delivery (falls back to FormSubmit.co otherwise; both target `info@shortkey.beauty`).
 - No deploy has been triggered — build is local/PR-ready only.
+
+---
+
+## Design Team — DNA guide → Coming Soon link-up (next week)
+
+**Creator ask (2026-07-22):** Once Simpee uploads the DNA guide, Design Team updates public Coming Soon / site pages accordingly. Target: **site link-up + test by end of next week (~Wed Jul 29, 2026)**.
+
+### Trigger (do not start freestyle)
+
+1. **Wait** for Simpee to upload / point the brand DNA guide.
+2. **Expected drop locations** (check in order; do not invent content):
+   - Prefer: `src/brand/` (e.g. new guide PDF/MD next to `ShortKey_Brand_Guidelines_V2026.pdf` / `BRAND_GUIDELINES_LOCKED.md`)
+   - Or Simpee-named path announced in chat / vault note
+3. **Already in repo (baseline, not a substitute for Simpee’s upload):**
+   - Share sheet: [`SHORTKEY_BRAND_DNA.md`](../SHORTKEY_BRAND_DNA.md)
+   - Locked: [`BRAND_GUIDELINES_LOCKED.md`](../BRAND_GUIDELINES_LOCKED.md) · tokens [`tokens.ts`](../tokens.ts)
+   - PDF: `src/brand/ShortKey_Brand_Guidelines_V2026.pdf`
+4. When Simpee’s guide lands: **map DNA → pages**. Match typography, color, logo lockup, and voice. **Do not freestyle** past the guide. If the new guide conflicts with locked docs, **flag for Gor Gor** — do not silently override locks.
+
+### Then (Design Team work)
+
+| Surface | Action |
+|---------|--------|
+| Coming Soon `/` | Update `ComingSoonHome` + `comingSoonMessages` to DNA (type · color · logo · voice) |
+| Related public | Signup CTAs / appointment + notify paths that remain public — DNA-aligned only |
+| Internal ref | `/design` may mirror for QC; keep `noindex` |
+
+**Explicit locks — no unlock this sprint:**
+
+- `featureLocks.productSurface` — shop / product stay closed  
+- `featureLocks.categorySurface` — K/J/C Beauty stay gated  
+- `featureLocks.signupAppointmentOnly` — appointment / notify only  
+- **No auto-publish** of unfinished surfaces. No Vercel production cutover until Gor Gor review.
+
+### Target date
+
+| Milestone | Date |
+|-----------|------|
+| Simpee DNA upload | ASAP (blocker for visual pass) |
+| Design map DNA → Coming Soon + related public | After upload |
+| **Link-up + test complete** | **By ~Wed Jul 29, 2026** |
+
+### Test checklist (link-up week)
+
+- [ ] Local: `http://localhost:3001/` (Coming Soon) loads clean  
+- [ ] Production: Vercel / shortkey.beauty URL loads same Coming Soon (after Gor Gor allows deploy)  
+- [ ] Language switcher: **EN / JA / KO / ZH**  
+- [ ] CTAs: appointment + notify / email capture work  
+- [ ] Footer: legal / contact only — **no** shop or category leaks  
+- [ ] Mobile viewport (≈390px) — one composition, no broken chrome  
+- [ ] Confirm **no broken locks** to category / shop (`featureLocks` still true)  
+- [ ] Gor Gor review before any public push  
+
+### Owner seats
+
+| Seat | Role |
+|------|------|
+| **Design Team** (Silk / Sonnet 5 consolidate; Senti · Vee · Lens · Frame · Sky as needed) | Map DNA → Coming Soon + related public; run checklist |
+| **Simpee** | Upload DNA guide (trigger) |
+| **Gor Gor (Simpee)** | Review gate before public link-up / deploy |
+| **Key** | Execution support only — no independent rewrite of Design Team files |
+
+### Protocol (locked)
+
+- No auto-publish.  
+- Respect `src/content/featureLocks.ts`.  
+- Sonnet 5 consolidates final implementation; other AIs support by role only.
