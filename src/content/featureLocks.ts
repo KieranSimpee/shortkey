@@ -8,6 +8,12 @@ export const featureLocks = {
    * Locked: product page aspect ratio / display not ready.
    */
   productSurface: true,
+  /**
+   * Creator / Brand signup pages — appointment booking only.
+   * Hide rates, founding fees, CTRL Twin pricing until launch unlock.
+   */
+  signupAppointmentOnly: true,
 } as const;
 
 export const PRODUCT_SURFACE_LOCKED = featureLocks.productSurface;
+export const SIGNUP_APPOINTMENT_ONLY = featureLocks.signupAppointmentOnly;

@@ -57,10 +57,10 @@ export function ComingSoonHome() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="/signup/creator" variant="primary" size="md" className={KEYCAP_CTA}>
-              Creator Signup
+              Book Creator Appointment
             </Button>
             <Button href="/signup/brand" variant="outline-light" size="md">
-              Brand Signup
+              Book Brand Appointment
             </Button>
           </div>
           <div className="mx-auto mt-8 max-w-md">
@@ -137,25 +137,25 @@ export function ComingSoonHome() {
         </div>
       </section>
 
-      {/* Creator Signup CTA */}
+      {/* Creator appointment CTA */}
       <section id="creator" className="border-b border-brand/10 bg-white px-4 py-12 sm:px-8">
         <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div className="max-w-lg">
             <p className="type-section-muted text-brand">For Creators</p>
             <h2 className="mt-2 font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
-              Bring your look. We bring the shop.
+              Book a meeting — appointment only for now.
             </h2>
             <p className="mt-2 text-sm text-ink-muted">
-              Pre-register to lock founding creator terms before public launch.
+              Arrange a 1-hour appointment. Rates and offers stay in the conversation.
             </p>
           </div>
           <Button href="/signup/creator" variant="primary" size="md">
-            Creator Signup
+            Book Creator Appointment
           </Button>
         </div>
       </section>
 
-      {/* Brand Signup CTA */}
+      {/* Brand appointment CTA */}
       <section id="brand" className="border-b border-brand/10 bg-surface-dark px-4 py-12 text-white sm:px-8">
         <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div className="max-w-lg">
@@ -163,14 +163,14 @@ export function ComingSoonHome() {
               For Brands
             </p>
             <h2 className="mt-2 font-display text-xl font-bold tracking-tight sm:text-2xl">
-              Launch with creators who already convert.
+              Book a meeting — appointment only for now.
             </h2>
             <p className="mt-2 text-sm text-white/65">
-              Pre-register to lock founding-partner terms before public launch.
+              Arrange a 1-hour appointment. Founding terms stay in the conversation.
             </p>
           </div>
           <Button href="/signup/brand" variant="outline-light" size="md">
-            Brand Signup
+            Book Brand Appointment
           </Button>
         </div>
       </section>

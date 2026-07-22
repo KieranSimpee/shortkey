@@ -25,6 +25,7 @@
 | Studio manifest | **Implemented / Review Ready — Not Published** (`/internal/platform-manifest`) |
 | Public auto-launch | **Blocked** by protocol — no Vercel deploy, no auto-publish |
 | Product / Shop surface | **LOCKED** — ratio/display not ready (`featureLocks.productSurface`) |
+| Signup tabs | **LOCKED** — appointment arrangement only (`featureLocks.signupAppointmentOnly`) |
 
 ## Sonnet 5 build notes (2026-07-21)
 
