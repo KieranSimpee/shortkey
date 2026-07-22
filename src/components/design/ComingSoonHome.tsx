@@ -28,13 +28,12 @@ export function ComingSoonHome() {
       <header className="relative z-20 border-b border-white/40 bg-white/70 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-8 sm:py-5">
           <Logo size="header" surface="light" />
-          <ShortcutChip shortcut="Coming Soon" />
         </div>
       </header>
 
       {/* Hero — one composition: eyebrow, headline, tagline, CTAs. No cards, no stacked focal points. */}
       <section
-        aria-label="Shortkey — AI Asian Beauty Platform, launching August 14"
+        aria-label="Shortkey — AI Asian Beauty Platform, Coming Soon"
         className="relative isolate overflow-hidden bg-surface-dark px-4 py-16 text-white sm:px-8 sm:py-24 lg:py-28"
       >
         <div
@@ -46,7 +45,7 @@ export function ComingSoonHome() {
           aria-hidden
         />
         <div className="relative mx-auto max-w-3xl text-center">
-          <ShortcutChip shortcut="Launching August 14" className="mx-auto" />
+          <ShortcutChip shortcut="Coming Soon" className="mx-auto" />
           <h1 className="type-display-hero mt-5 text-white">AI Asian Beauty Platform</h1>
           <p className="mt-3 font-display text-sm font-semibold uppercase tracking-[0.2em] text-brand-light sm:text-base">
             Your Style. Your CTRL.
