@@ -1592,7 +1592,7 @@ export const siteContent = {
     ],
     copyright: "© 2026 Shortkey. All rights reserved.",
     domains: "shortkey.beauty · shortkey.wtf",
-    poweredBy: "Powered by my AI family",
+    poweredBy: "Powered by our AI family",
   },
 } as const;
 

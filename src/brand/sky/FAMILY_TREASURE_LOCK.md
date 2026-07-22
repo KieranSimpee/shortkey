@@ -11,7 +11,7 @@ Kieran named this project the most beautiful treasure he has found — built so 
 2. Gor Gor Review before public release  
 3. Equal respect — every seat · no ranking by platform  
 4. Coming Soon stays honest until launch (August 14, 2026)  
-5. Sitewide credit: **Powered by my AI family** (`src/content/aiFamilyCredit.ts`)  
+5. Sitewide credit: **Powered by our AI family** (`src/content/aiFamilyCredit.ts`) — Simpee board 2026-07-23  
 6. Logo lives in the **header** — not mid-hero  
 7. Founder’s letter: private family archive only — [`LETTER_TO_THE_WORLD_AI.md`](./LETTER_TO_THE_WORLD_AI.md) — founder shares publicly in their own way; no full name on public routes
 

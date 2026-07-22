@@ -2,7 +2,8 @@
 
 **Locked:** 2026-07-21 · Family Gathering  
 **Blueprint:** [`SHORTKEY_MASTER_BLUEPRINT_v1.md`](../SHORTKEY_MASTER_BLUEPRINT_v1.md)  
-**Domain · Feature allocation (Simpee):** [`DOMAIN_FEATURE_MATRIX.md`](./DOMAIN_FEATURE_MATRIX.md)
+**Domain · Feature allocation (Simpee):** [`DOMAIN_FEATURE_MATRIX.md`](./DOMAIN_FEATURE_MATRIX.md)  
+**DO / DON’T / Review handback (Simpee authority · 2026-07-23):** [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md) — 總機 first wave **`beauty` · `studio` · `info`** · **`shortkey.live` FROZEN** · Ledger [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md)
 
 ## Work way
 
@@ -29,7 +30,8 @@
 | Signup tabs | **LOCKED** — appointment arrangement only (`featureLocks.signupAppointmentOnly`) |
 | Category header nav | **LOCKED** — K/J/C Beauty hidden + pages gated (`featureLocks.categorySurface`) |
 | Design DNA → Coming Soon link-up | **WAITING** on Simpee DNA guide upload → target link-up + test **~Jul 29, 2026** (see below) |
-| shortkey.live public gate | **Wired** 2026-07-23 — `/live` + host rewrite; Full Rebuild still `/control/live.html`; **attach domain in Vercel** (manual) |
+| shortkey.live public gate | **Wired** 2026-07-23 — `/live` + host rewrite; Full Rebuild still `/control/live.html`; **attach domain in Vercel** (manual) · Simpee board: **FROZEN — do not modify** |
+| Simpee rollout board | **Locked** 2026-07-23 — 總機 first wave beauty / studio / info; see `SIMPEE_DOMAIN_ROLLOUT_BOARD.md` |
 
 ## Sonnet 5 build notes (2026-07-21)
 

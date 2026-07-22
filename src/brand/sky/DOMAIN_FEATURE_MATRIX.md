@@ -3,6 +3,7 @@
 **For:** Simpee (Gor Gor) — Design / UI allocation  
 **Family ask:** Creator Kieran · help brother load DNA + features without overwhelm  
 **Status:** Operational inventory · suggestions only — **Simpee decides final seats**  
+**Allocation authority (DO / DON’T / Review handback):** [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md) — Simpee Bro 2026-07-23 · **first wave:** `beauty` · `studio` · `info` · **`shortkey.live` FROZEN** · Push Ledger: [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md)  
 **Sources (repo SSOT):**  
 [`SHORTKEY_MASTER_BLUEPRINT_v1.md`](../SHORTKEY_MASTER_BLUEPRINT_v1.md) ·  
 [`shortkey-platform-manifest.json`](../../data/shortkey-platform-manifest.json) ·  
@@ -12,7 +13,8 @@
 [`ARCHITECTURE.md`](../../../ARCHITECTURE.md) ·  
 [`ECOSYSTEM_MASTER_BLUEPRINT.md`](../ECOSYSTEM_MASTER_BLUEPRINT.md)
 
-**Do not** unlock `featureLocks` from this doc. **Do not** invent ship dates beyond docs.
+**Do not** unlock `featureLocks` from this doc. **Do not** invent ship dates beyond docs.  
+When this matrix and the Simpee rollout board disagree on *what to do now*, **follow the Simpee board**.
 
 ---
 
@@ -154,6 +156,7 @@ Canonical registry from Master Blueprint + platform manifest + `domains.ts` / `A
 
 ## Domain 5 — shortkey.live (Live Streaming)
 
+**Simpee board (2026-07-23):** **FROZEN** — do not modify; protect existing work; Studio = read-only manifest reference only. See [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md).  
 **Public status:** Coming Soon gate wired (`/live` · host `shortkey.live`) · Phase P2+  
 **Founder homework:** Ready 2026-07-23 — public gate + registry update; Full Rebuild stays at `/control/live.html` (not auto-published as full hub).  
 **Vercel:** Attach `shortkey.live` / `www.shortkey.live` to the same ShortKey project (see `CONNECTIONS.md`).
