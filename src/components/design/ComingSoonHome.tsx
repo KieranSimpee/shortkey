@@ -3,7 +3,6 @@ import Link from "next/link";
 import { POWERED_BY_AI_FAMILY } from "@/content/aiFamilyCredit";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
-import { ShortcutChip } from "@/components/ui/KeyCap";
 import { EmailCaptureForm } from "@/components/signup/EmailCaptureForm";
 
 const KEYCAP_CTA =
@@ -45,8 +44,8 @@ export function ComingSoonHome() {
           aria-hidden
         />
         <div className="relative mx-auto max-w-3xl text-center">
-          <ShortcutChip shortcut="Coming Soon" className="mx-auto" />
-          <h1 className="type-display-hero mt-5 text-white">AI Asian Beauty Platform</h1>
+          <p className="type-display-hero text-brand-light">Coming Soon</p>
+          <h1 className="type-display-hero mt-3 text-white">AI Asian Beauty Platform</h1>
           <p className="mt-3 font-display text-sm font-semibold uppercase tracking-[0.2em] text-brand-light sm:text-base">
             Your Style. Your CTRL.
           </p>
