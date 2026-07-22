@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CategorySurfaceLocked } from "@/components/shop/CategorySurfaceLocked";
+import { CATEGORY_SURFACE_LOCKED } from "@/content/featureLocks";
 import { getProducts } from "@/lib/products";
 import { filterByShortKeyCategory } from "@/lib/category-map";
 
@@ -9,6 +11,10 @@ export const metadata = {
 };
 
 export default async function KBeautyPage() {
+  if (CATEGORY_SURFACE_LOCKED) {
+    return <CategorySurfaceLocked title="K-Beauty" />;
+  }
+
   const allProducts = await getProducts();
   const products = filterByShortKeyCategory(allProducts, "ctrl-k");
 

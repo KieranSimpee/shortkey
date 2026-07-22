@@ -13,7 +13,13 @@ export const featureLocks = {
    * Hide rates, founding fees, CTRL Twin pricing until launch unlock.
    */
   signupAppointmentOnly: true,
+  /**
+   * Header category nav + /kbeauty · /jbeauty · /cbeauty
+   * Locked until category pages are display-ready.
+   */
+  categorySurface: true,
 } as const;
 
 export const PRODUCT_SURFACE_LOCKED = featureLocks.productSurface;
 export const SIGNUP_APPOINTMENT_ONLY = featureLocks.signupAppointmentOnly;
+export const CATEGORY_SURFACE_LOCKED = featureLocks.categorySurface;

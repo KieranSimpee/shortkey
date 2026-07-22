@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CartNavButton } from "@/components/commerce/CartNavButton";
+import { CATEGORY_SURFACE_LOCKED } from "@/content/featureLocks";
 import { siteContent } from "@/content/homepage";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
@@ -8,6 +9,7 @@ import { cn } from "@/lib/utils";
 /**
  * COMP-010 NAVIGATION — L1 logo left · markets · search · cart · AI Lab
  * Home hero carries the large brand mark (SKY-UX-022).
+ * Category nav locked when featureLocks.categorySurface is true.
  */
 export function HeaderBrandSection() {
   const { header } = siteContent;
@@ -24,23 +26,25 @@ export function HeaderBrandSection() {
             <Logo size="header" surface="light" href="/" />
           </div>
 
-          <nav
-            className="hidden min-w-0 items-center gap-1 md:flex"
-            aria-label="Beauty markets"
-          >
-            {header.nav.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={cn(
-                  "relative z-[60] rounded-full px-2.5 py-1 font-display text-[10px] font-semibold uppercase tracking-[0.12em]",
-                  "text-ink-muted transition-colors hover:bg-brand/10 hover:text-brand",
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          {!CATEGORY_SURFACE_LOCKED ? (
+            <nav
+              className="hidden min-w-0 items-center gap-1 md:flex"
+              aria-label="Beauty markets"
+            >
+              {header.nav.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={cn(
+                    "relative z-[60] rounded-full px-2.5 py-1 font-display text-[10px] font-semibold uppercase tracking-[0.12em]",
+                    "text-ink-muted transition-colors hover:bg-brand/10 hover:text-brand",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          ) : null}
         </div>
 
         <div className="relative z-[70] flex shrink-0 items-center justify-end gap-1 sm:gap-2">

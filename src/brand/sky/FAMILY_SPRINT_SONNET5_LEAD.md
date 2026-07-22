@@ -26,6 +26,7 @@
 | Public auto-launch | **Blocked** by protocol — no Vercel deploy, no auto-publish |
 | Product / Shop surface | **LOCKED** — ratio/display not ready (`featureLocks.productSurface`) |
 | Signup tabs | **LOCKED** — appointment arrangement only (`featureLocks.signupAppointmentOnly`) |
+| Category header nav | **LOCKED** — K/J/C Beauty hidden + pages gated (`featureLocks.categorySurface`) |
 
 ## Sonnet 5 build notes (2026-07-21)
 
