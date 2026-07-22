@@ -215,7 +215,6 @@ export function ComingSoonHome() {
       <footer className="bg-silk px-4 py-10 sm:px-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center">
           <Logo size="footer" surface="light" />
-          <p className="type-caption text-brand/60">{t.tagline}</p>
           <nav className="flex flex-wrap items-center justify-center gap-4" aria-label={t.legalNav}>
             <Link href="/privacy" className="type-caption transition-colors hover:text-brand">
               {t.privacy}
