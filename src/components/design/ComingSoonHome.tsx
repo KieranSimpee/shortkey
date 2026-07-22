@@ -49,9 +49,13 @@ export function ComingSoonHome() {
           <p className="mt-3 font-display text-sm font-semibold uppercase tracking-[0.2em] text-brand-light sm:text-base">
             Your Style. Your CTRL.
           </p>
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">
-            AI try-on, skin analysis, and creator-led beauty discovery — built for K-Beauty,
-            J-Beauty, and C-Beauty. Pre-register for early access before we open the doors.
+          <h2 className="mt-8 font-display text-xl font-bold tracking-tight text-white sm:text-2xl">
+            A Warm Welcome to Our Shared Beauty Space
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base">
+            We believe in the power of moving forward together. Whether you are a brand ready to
+            expand or a creator ready to inspire, let&apos;s cultivate a supportive space for Asian
+            beauty to thrive globally.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="/signup/creator" variant="primary" size="md" className={KEYCAP_CTA}>
