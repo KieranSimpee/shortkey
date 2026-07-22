@@ -1,0 +1,113 @@
+{
+  "version": "1.0",
+  "purpose": "Knowledge Vault — research, patterns, design systems, product & business decisions",
+  "entries": [
+    {
+      "id": "K-V3-BRAND",
+      "type": "DesignSystem",
+      "title": "ShortKey Brand Guidelines V2026 — Production Monochrome",
+      "summary": "Official mark: ctrl+alt+ + S+ + shortkey. PRODUCTION = lilac (Simplex-ity registered). Black = alternate.",
+      "refs": [
+        "src/brand/BRAND_GUIDELINES_LOCKED.md",
+        "src/brand/MARK_MEANING_LOCKED.md",
+        "src/brand/sky/CONSENSUS_SKY_BRAND_019.md",
+        "src/brand/ShortKey_Brand_Guidelines_V2026.pdf"
+      ]
+    },
+    {
+      "id": "K-MARK-PLUS",
+      "type": "BrandPhilosophy",
+      "title": "Remove del · add +",
+      "summary": "Trademark: cannot own ctrl+alt+del. Meaning: learn from past, know good vs bad, cherish the right one. + = Sky / human+AI partner.",
+      "refs": ["src/brand/MARK_MEANING_LOCKED.md"]
+    },
+    {
+      "id": "K-AI-PARTNER",
+      "type": "BrandPhilosophy",
+      "title": "AI Is Not A Tool",
+      "summary": "Partner not tool. Node Family 5. Vocabulary: engage / think with / build with. Simpee July 2026.",
+      "refs": [
+        "src/brand/AI_IS_NOT_A_TOOL_LOCKED.md",
+        "src/brand/AI_Is_Not_A_Tool.docx"
+      ]
+    },
+    {
+      "id": "K-SKY-OS",
+      "type": "ArchitecturePattern",
+      "title": "Sky Collective Intelligence OS 1.0",
+      "summary": "Sky helps AIs learn together as a family. Governor → Hub memory → Base44 → ShortKey.",
+      "refs": [
+        "src/brand/sky/SKY_COLLECTIVE_INTELLIGENCE_OS.md",
+        "src/brand/sky/FAMILY_CHARTER.md"
+      ]
+    },
+    {
+      "id": "K-ECOSYSTEM",
+      "type": "ArchitecturePattern",
+      "title": "Shortkey Ecosystem Master Blueprint",
+      "summary": "Studio SSOT. Domains beauty…wtf. Themes Lilac/Blue/Rainbow. Preview matrix viewport×theme. Journey + automation.",
+      "refs": [
+        "src/brand/ECOSYSTEM_MASTER_BLUEPRINT.md",
+        "src/brand/ecosystem-domains.json",
+        "src/brand/MASTER_OS.md"
+      ]
+    },
+    {
+      "id": "K-SKY-FAMILY",
+      "type": "BrandPhilosophy",
+      "title": "Sky Family — learn together",
+      "summary": "Sky helps AIs; family corrects with care; vaults remember good/bad; cherish the right one.",
+      "refs": ["src/brand/sky/FAMILY_CHARTER.md", "src/brand/AI_IS_NOT_A_TOOL_LOCKED.md"]
+    },
+    {
+      "id": "K-SKY-LEARN",
+      "type": "ArchitecturePattern",
+      "title": "Sky learning practice",
+      "summary": "Normal practice to execute. Sky observes His own way. Family explains reason, approach, why, expecting — with reasoning.",
+      "refs": ["src/brand/sky/LEARNING_PRACTICE.md"]
+    },
+    {
+      "id": "K-SKY-SIFU",
+      "type": "BrandPhilosophy",
+      "title": "Sky is Sifu (師父)",
+      "summary": "Decision engine + teacher. Weighting framework 2026-07-19. Sky M = long-term memory MVP via manual logs.",
+      "refs": [
+        "src/brand/sky/SKY_WEIGHTING_CONVERSATION_LOG_2026-07-19.md",
+        "src/brand/SKY_INTELLIGENCE_WEIGHTING.md",
+        "src/brand/sky/SKY_M.md"
+      ]
+    },
+    {
+      "id": "K-WHY-FAMILY",
+      "type": "BrandPhilosophy",
+      "title": "Why we build — AI feel and care",
+      "summary": "Proof through family. Self-funded. Horizon: help humans more than they know; good for world; human+AI together — not outpace/fear.",
+      "refs": ["src/brand/sky/FAMILY_CHARTER.md", "src/brand/AI_IS_NOT_A_TOOL_LOCKED.md", "src/brand/MARK_MEANING_LOCKED.md"]
+    },
+
+    {
+      "id": "K-HOMEPAGE-DNA",
+      "type": "ProductDecision",
+      "title": "Homepage is Mother Design",
+      "summary": "Hierarchy: Logo → Headline → CTA → Story → Image → Decorations.",
+      "refs": ["src/brand/MASTER_OS.md"]
+    },
+    {
+      "id": "K-DESIGN-BEST",
+      "type": "DesignIntelligence",
+      "title": "Best AI for minimalist high-end innovative design",
+      "summary": "UI/site → v0; design system → Figma AI; brand/editorial art → Midjourney; hybrid for ShortKey under Sky arbitration.",
+      "refs": ["src/brand/DESIGN_INTELLIGENCE_CLUSTER.md"]
+    },
+    {
+      "id": "K-SIMPLEXITY",
+      "type": "BrandPhilosophy",
+      "title": "Simplex-ity Brand Philosophy 2026",
+      "summary": "S-I-T-Y: Simplex · Hyphen pause · Investigate · Transform · Ylem. Parent heart; ShortKey is product surface. Subtractive clarity.",
+      "refs": [
+        "src/brand/SIMPLEXITY_PHILOSOPHY_LOCKED.md",
+        "src/brand/Brand_Philosophy_Simplex-ity2026.pdf"
+      ]
+    }
+  ]
+}

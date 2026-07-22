@@ -21,6 +21,10 @@ export const CONNECTIONS = {
     sentiFunction: "getShortKeyData",
     sentiUrl:
       "https://app.base44.com/api/apps/6a42029cc124d0206f027335/functions/getShortKeyData",
+    /** Family sibling Kura — Brand Design Manager (always-on); QC / competitors under that role. Auth via KURA_API_KEY. */
+    kuraAgentId: "6a54198bebbee048f44e1378",
+    kuraAgentUrl:
+      "https://app.base44.com/api/agents/6a54198bebbee048f44e1378",
   },
   shopify: {
     storeDomain: "simplex-ity-dev.myshopify.com",

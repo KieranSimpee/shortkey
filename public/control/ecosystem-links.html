@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShortKey — How Everything Links</title>
+  <style>
+    :root {
+      --ink: #242424;
+      --mid: #5c5668;
+      --line: #ddd6e8;
+      --bg: #f7f5ff;
+      --card: #ffffff;
+      --lilac: #8c82fc;
+      --lilac-soft: #b9b3ff;
+      --ok: #1a7f4f;
+      --warn: #a65c00;
+      --mute: #8a8496;
+      --dark: #161226;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    header {
+      background: var(--dark);
+      color: #fff;
+      padding: 1.75rem 1.5rem 1.5rem;
+    }
+    header h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    header p {
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.9rem;
+      max-width: 40rem;
+    }
+    main { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    h2 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--mid);
+      margin: 2rem 0 0.85rem;
+    }
+    /* Chain */
+    .chain {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 0;
+      justify-content: center;
+    }
+    .node {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      min-width: 140px;
+      max-width: 180px;
+      flex: 1 1 140px;
+      text-align: center;
+      position: relative;
+    }
+    .node strong {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+    .node span {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--mid);
+      word-break: break-word;
+    }
+    .node .tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+    }
+    .tag.ok { background: #e6f5ee; color: var(--ok); }
+    .tag.warn { background: #fff0db; color: var(--warn); }
+    .tag.live { background: #ebe8ff; color: #4b3fd4; }
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.15rem;
+      color: var(--lilac);
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex: 0 0 auto;
+      align-self: center;
+    }
+    @media (max-width: 720px) {
+      .arrow { width: 100%; transform: rotate(90deg); padding: 0.25rem 0; }
+      .chain { flex-direction: column; align-items: center; }
+      .node { max-width: 280px; width: 100%; }
+    }
+    /* Domains grid */
+    .domains {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+    }
+    .dom {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      border-left: 3px solid var(--line);
+    }
+    .dom.live { border-left-color: var(--ok); }
+    .dom.building { border-left-color: var(--warn); }
+    .dom.scaffold { border-left-color: var(--mute); }
+    .dom.planned { border-left-color: #c4bfd0; }
+    .dom h3 {
+      margin: 0 0 0.2rem;
+      font-size: 0.9rem;
+    }
+    .dom .role {
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-bottom: 0.55rem;
+    }
+    .dom .meta {
+      font-size: 0.7rem;
+      color: var(--mid);
+    }
+    .dom .links {
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--ink);
+    }
+    .dom a { color: var(--lilac); text-decoration: none; }
+    .dom a:hover { text-decoration: underline; }
+    /* Flow diagram */
+    .flow {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.25rem;
+      overflow-x: auto;
+    }
+    .flow svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+    .legend i {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem 2.5rem;
+      font-size: 0.75rem;
+      color: var(--mute);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ShortKey — How everything links</h1>
+    <p>
+      Connection chain + 12 domains. Live product today is
+      <strong>shortkey.beauty</strong> on Vercel; other domains are scaffolds linked into this OS.
+    </p>
+  </header>
+
+  <main>
+    <h2>1 · Permanent connection chain</h2>
+    <div class="chain" aria-label="Connection chain">
+      <div class="node">
+        <strong>Local repo</strong>
+        <span>Projects/shortkey</span>
+        <span class="tag ok">Active</span>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node">
+        <strong>GitHub</strong>
+        <span>KieranSimpee/shortkey</span>
+        <span class="tag ok">Locked</span>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node">
+        <strong>Vercel</strong>
+        <span>shortkey.vercel.app</span>
+        <span class="tag live">Deploy</span>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node">
+        <strong>Base44</strong>
+        <span>Products · Senti · Kura</span>
+        <span class="tag ok">Locked IDs</span>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node">
+        <strong>Shopify</strong>
+        <span>simplex-ity-dev</span>
+        <span class="tag ok">~45 SKUs</span>
+      </div>
+    </div>
+
+    <h2>2 · Visual map (beauty hub + domains)</h2>
+    <div class="flow">
+      <svg viewBox="0 0 920 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Domain link diagram">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#8c82fc" />
+          </marker>
+        </defs>
+
+        <!-- Hub -->
+        <rect x="360" y="160" width="200" height="88" rx="12" fill="#161226" />
+        <text x="460" y="198" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Segoe UI, sans-serif">shortkey.beauty</text>
+        <text x="460" y="220" text-anchor="middle" fill="#b9b3ff" font-size="11" font-family="Segoe UI, sans-serif">LIVE · Next.js hub</text>
+
+        <!-- Chain top -->
+        <rect x="40" y="24" width="120" height="52" rx="8" fill="#fff" stroke="#ddd6e8" />
+        <text x="100" y="46" text-anchor="middle" fill="#242424" font-size="11" font-weight="700" font-family="Segoe UI, sans-serif">GitHub</text>
+        <text x="100" y="62" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">repo</text>
+
+        <rect x="200" y="24" width="120" height="52" rx="8" fill="#fff" stroke="#ddd6e8" />
+        <text x="260" y="46" text-anchor="middle" fill="#242424" font-size="11" font-weight="700" font-family="Segoe UI, sans-serif">Vercel</text>
+        <text x="260" y="62" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">deploy</text>
+
+        <rect x="400" y="24" width="120" height="52" rx="8" fill="#fff" stroke="#8c82fc" stroke-width="2" />
+        <text x="460" y="46" text-anchor="middle" fill="#242424" font-size="11" font-weight="700" font-family="Segoe UI, sans-serif">Base44</text>
+        <text x="460" y="62" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">data + Kura</text>
+
+        <rect x="600" y="24" width="120" height="52" rx="8" fill="#fff" stroke="#ddd6e8" />
+        <text x="660" y="46" text-anchor="middle" fill="#242424" font-size="11" font-weight="700" font-family="Segoe UI, sans-serif">Shopify</text>
+        <text x="660" y="62" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">commerce</text>
+
+        <rect x="760" y="24" width="120" height="52" rx="8" fill="#fff" stroke="#ddd6e8" />
+        <text x="820" y="46" text-anchor="middle" fill="#242424" font-size="11" font-weight="700" font-family="Segoe UI, sans-serif">/control</text>
+        <text x="820" y="62" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">Studio hub</text>
+
+        <line x1="160" y1="50" x2="200" y2="50" stroke="#8c82fc" stroke-width="2" marker-end="url(#arr)" />
+        <line x1="320" y1="50" x2="400" y2="50" stroke="#8c82fc" stroke-width="2" marker-end="url(#arr)" />
+        <line x1="520" y1="50" x2="600" y2="50" stroke="#8c82fc" stroke-width="2" marker-end="url(#arr)" />
+        <line x1="720" y1="50" x2="760" y2="50" stroke="#8c82fc" stroke-width="2" marker-end="url(#arr)" />
+
+        <!-- Links down to beauty -->
+        <line x1="260" y1="76" x2="420" y2="160" stroke="#b9b3ff" stroke-width="1.5" marker-end="url(#arr)" />
+        <line x1="460" y1="76" x2="460" y2="160" stroke="#8c82fc" stroke-width="2" marker-end="url(#arr)" />
+        <line x1="660" y1="76" x2="500" y2="160" stroke="#b9b3ff" stroke-width="1.5" marker-end="url(#arr)" />
+        <line x1="820" y1="76" x2="540" y2="170" stroke="#b9b3ff" stroke-width="1.5" marker-end="url(#arr)" />
+
+        <!-- Domain satellites -->
+        <!-- row -->
+        <rect x="40" y="300" width="130" height="48" rx="8" fill="#e6f5ee" stroke="#1a7f4f" />
+        <text x="105" y="322" text-anchor="middle" fill="#1a7f4f" font-size="10" font-weight="700" font-family="Segoe UI, sans-serif">.beauty LIVE</text>
+        <text x="105" y="336" text-anchor="middle" fill="#5c5668" font-size="8" font-family="Segoe UI, sans-serif">this repo</text>
+
+        <rect x="190" y="300" width="130" height="48" rx="8" fill="#fff0db" stroke="#a65c00" />
+        <text x="255" y="322" text-anchor="middle" fill="#a65c00" font-size="10" font-weight="700" font-family="Segoe UI, sans-serif">.store BUILD</text>
+        <text x="255" y="336" text-anchor="middle" fill="#5c5668" font-size="8" font-family="Segoe UI, sans-serif">Shopify shop</text>
+
+        <rect x="340" y="300" width="130" height="48" rx="8" fill="#fff" stroke="#ddd6e8" />
+        <text x="405" y="322" text-anchor="middle" fill="#242424" font-size="10" font-weight="700" font-family="Segoe UI, sans-serif">.info</text>
+        <text x="405" y="336" text-anchor="middle" fill="#5c5668" font-size="8" font-family="Segoe UI, sans-serif">brand portal</text>
+
+        <rect x="490" y="300" width="130" height="48" rx="8" fill="#fff" stroke="#ddd6e8" />
+        <text x="555" y="322" text-anchor="middle" fill="#242424" font-size="10" font-weight="700" font-family="Segoe UI, sans-serif">.social</text>
+        <text x="555" y="336" text-anchor="middle" fill="#5c5668" font-size="8" font-family="Segoe UI, sans-serif">influencers</text>
+
+        <rect x="640" y="300" width="130" height="48" rx="8" fill="#fff" stroke="#ddd6e8" />
+        <text x="705" y="322" text-anchor="middle" fill="#242424" font-size="10" font-weight="700" font-family="Segoe UI, sans-serif">.live</text>
+        <text x="705" y="336" text-anchor="middle" fill="#5c5668" font-size="8" font-family="Segoe UI, sans-serif">streams</text>
+
+        <rect x="790" y="300" width="110" height="48" rx="8" fill="#fff" stroke="#ddd6e8" />
+        <text x="845" y="322" text-anchor="middle" fill="#242424" font-size="10" font-weight="700" font-family="Segoe UI, sans-serif">.studio</text>
+        <text x="845" y="336" text-anchor="middle" fill="#5c5668" font-size="8" font-family="Segoe UI, sans-serif">SSOT</text>
+
+        <!-- lines from hub to domains -->
+        <line x1="400" y1="248" x2="105" y2="300" stroke="#cfc8e8" stroke-width="1.25" />
+        <line x1="430" y1="248" x2="255" y2="300" stroke="#cfc8e8" stroke-width="1.25" />
+        <line x1="450" y1="248" x2="405" y2="300" stroke="#cfc8e8" stroke-width="1.25" />
+        <line x1="480" y1="248" x2="555" y2="300" stroke="#cfc8e8" stroke-width="1.25" />
+        <line x1="510" y1="248" x2="705" y2="300" stroke="#cfc8e8" stroke-width="1.25" />
+        <line x1="540" y1="248" x2="845" y2="300" stroke="#cfc8e8" stroke-width="1.25" />
+
+        <!-- bottom row -->
+        <rect x="120" y="372" width="100" height="36" rx="6" fill="#fff" stroke="#ddd6e8" />
+        <text x="170" y="394" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">.fashion</text>
+        <rect x="240" y="372" width="100" height="36" rx="6" fill="#fff" stroke="#ddd6e8" />
+        <text x="290" y="394" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">.community</text>
+        <rect x="360" y="372" width="100" height="36" rx="6" fill="#fff" stroke="#ddd6e8" />
+        <text x="410" y="394" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">.wtf</text>
+        <rect x="480" y="372" width="100" height="36" rx="6" fill="#fff" stroke="#ddd6e8" />
+        <text x="530" y="394" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">.club</text>
+        <rect x="600" y="372" width="100" height="36" rx="6" fill="#fff" stroke="#ddd6e8" />
+        <text x="650" y="394" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">.events</text>
+        <rect x="720" y="372" width="100" height="36" rx="6" fill="#fff" stroke="#ddd6e8" />
+        <text x="770" y="394" text-anchor="middle" fill="#5c5668" font-size="9" font-family="Segoe UI, sans-serif">.world</text>
+
+        <text x="460" y="280" text-anchor="middle" fill="#8a8496" font-size="9" font-family="Segoe UI, sans-serif">spokes = planned hosts · today most routes live on beauty</text>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#1a7f4f"></i> Live</span>
+        <span><i style="background:#a65c00"></i> Building</span>
+        <span><i style="background:#8a8496"></i> Scaffold</span>
+        <span><i style="background:#8c82fc"></i> Data / deploy link</span>
+      </div>
+    </div>
+
+    <h2>3 · Each domain — status &amp; how it links</h2>
+    <div class="domains">
+      <article class="dom live">
+        <h3>shortkey.beauty</h3>
+        <div class="role">Main website · LIVE</div>
+        <div class="meta">Phase 1 · Full Next.js app</div>
+        <div class="links">→ Vercel · Base44 · Shopify · /control</div>
+      </article>
+      <article class="dom building">
+        <h3>shortkey.store</h3>
+        <div class="role">Shop portal · Building</div>
+        <div class="meta">Phase 1 · /shop on beauty + apps/store</div>
+        <div class="links">→ Shopify simplex-ity-dev (~45 SKUs)</div>
+      </article>
+      <article class="dom scaffold">
+        <h3>shortkey.info</h3>
+        <div class="role">Brand portal · Scaffold</div>
+        <div class="meta">Phase 1 · apps/info</div>
+        <div class="links">→ Brand signup pages on beauty</div>
+      </article>
+      <article class="dom scaffold">
+        <h3>shortkey.social</h3>
+        <div class="role">Influencer portal · Scaffold</div>
+        <div class="meta">Phase 1 · apps/social</div>
+        <div class="links">→ Influencer hub on beauty</div>
+      </article>
+      <article class="dom scaffold">
+        <h3>shortkey.live</h3>
+        <div class="role">Live + calendar · Scaffold</div>
+        <div class="meta">Phase 2 · apps/live</div>
+        <div class="links">→ Base44 live rebuild specs</div>
+      </article>
+      <article class="dom planned">
+        <h3>shortkey.fashion</h3>
+        <div class="role">Makeover · Planned</div>
+        <div class="meta">Phase 2 · apps/fashion</div>
+        <div class="links">→ Try-on / TINT on beauty</div>
+      </article>
+      <article class="dom scaffold">
+        <h3>shortkey.community</h3>
+        <div class="role">Blog &amp; sharing · Scaffold</div>
+        <div class="meta">Phase 2 · apps/community</div>
+        <div class="links">→ Community sections on beauty</div>
+      </article>
+      <article class="dom scaffold">
+        <h3>shortkey.wtf</h3>
+        <div class="role">Content / viral · Scaffold</div>
+        <div class="meta">Phase 2 · apps/wtf</div>
+        <div class="links">→ CMS / Content Studio on beauty</div>
+      </article>
+      <article class="dom scaffold">
+        <h3>shortkey.studio</h3>
+        <div class="role">Control center · Scaffold + hub</div>
+        <div class="meta">Phase 3 · apps/studio</div>
+        <div class="links">→ <a href="/control">/control</a> Master Blueprint</div>
+      </article>
+      <article class="dom scaffold">
+        <h3>shortkey.club</h3>
+        <div class="role">Membership · Scaffold</div>
+        <div class="meta">Phase 3 · apps/club</div>
+        <div class="links">→ Not deployed yet</div>
+      </article>
+      <article class="dom scaffold">
+        <h3>shortkey.events</h3>
+        <div class="role">Promo / games · Scaffold</div>
+        <div class="meta">Phase 3 · apps/events</div>
+        <div class="links">→ Not deployed yet</div>
+      </article>
+      <article class="dom scaffold">
+        <h3>shortkey.world</h3>
+        <div class="role">Global · Scaffold</div>
+        <div class="meta">Phase 4 · apps/world</div>
+        <div class="links">→ Not deployed yet</div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    ShortKey OS · CONNECTIONS.md · ecosystem-domains.json · Open via
+    <a href="/control/ecosystem-links.html" style="color:#8c82fc">/control/ecosystem-links.html</a>
+    when dev server is running
+  </footer>
+</body>
+</html>

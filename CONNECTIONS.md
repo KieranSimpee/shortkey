@@ -78,12 +78,14 @@ These Base44 function URLs are hardcoded as defaults in the bridge layer. Changi
 |--------|---------------|----------|
 | Products API | `69ddc914cfcf229762ac123d` | `getShortKeyProducts` |
 | Senti data | `6a42029cc124d0206f027335` | `getShortKeyData` |
+| Kura Superagent | `6a54198bebbee048f44e1378` | Agent API (conversations/messages) |
 
 Canonical URLs:
 
 ```
 https://app.base44.com/api/apps/69ddc914cfcf229762ac123d/functions/getShortKeyProducts
 https://app.base44.com/api/apps/6a42029cc124d0206f027335/functions/getShortKeyData
+https://app.base44.com/api/agents/6a54198bebbee048f44e1378
 ```
 
 Code refs:
@@ -91,8 +93,11 @@ Code refs:
 - `src/lib/products.ts`
 - `src/lib/senti-bridge.ts`
 - `src/lib/bridges/hub.ts`
+- `src/lib/connections.ts` · `scripts/ask-kura.mjs` · `src/brand/sky/KURA.md`
 
-**Base44 one-time:** Keep these apps under the Shortkey / Kieran account. Make functions publicly callable from Vercel (or pass API key via `BASE44_API_KEY` if you lock them down). Do not recreate apps — reuse these IDs.
+**Base44 one-time:** Keep these apps under the Shortkey / Kieran account. Make functions publicly callable from Vercel (or pass API key via `BASE44_API_KEY` / `KURA_API_KEY` if you lock them down). Do not recreate apps — reuse these IDs.
+
+**Kura:** Key stays in `.env.local` only (`KURA_API_KEY`). Cursor rule/skill — not Custom API as a chat model.
 
 ---
 

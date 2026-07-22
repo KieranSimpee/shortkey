@@ -4,11 +4,12 @@ import { cn } from "@/lib/utils";
 type ButtonProps = {
   href: string;
   children: React.ReactNode;
-  variant?: "primary" | "outline" | "outline-light" | "on-dark" | "highlight";
+  variant?: "primary" | "outline" | "outline-light" | "on-dark" | "highlight" | "secondary";
   className?: string;
   size?: "sm" | "md" | "lg";
 };
 
+/** SHORTKEY V3.0 button system — Primary Lilac / Secondary outline */
 export function Button({
   href,
   children,
@@ -24,16 +25,18 @@ export function Button({
 
   const variants = {
     primary:
-      "bg-brand text-white hover:bg-brand-dark",
+      "bg-brand text-white shadow-soft hover:bg-brand-dark",
+    secondary:
+      "border border-brand bg-white text-brand hover:bg-brand-muted",
     outline:
-      "border border-brand/25 bg-white/90 text-brand hover:border-brand/45 hover:bg-white",
-    /** Solid white plate + dark lilac label — readable on dark hero panels */
+      "border border-brand bg-white text-brand hover:bg-brand-muted",
     "on-dark":
-      "border-2 border-white bg-white !text-brand-dark hover:bg-brand-muted",
+      "border-2 border-white bg-white !text-brand hover:bg-brand-muted",
     "outline-light":
-      "border border-white/70 bg-white/20 !text-white backdrop-blur-sm hover:bg-white/30",
+      "border border-white/80 bg-transparent !text-white hover:bg-white/10",
+    /** Alias → primary (no neon gradients in V3) */
     highlight:
-      "border border-brand/40 bg-gradient-to-r from-brand to-[#7b6fd4] text-white shadow-[0_0_0_1px_rgba(155,122,227,0.25),0_8px_24px_rgba(155,122,227,0.35)] ring-2 ring-brand/25 hover:brightness-105",
+      "bg-brand text-white shadow-soft hover:bg-brand-dark",
   };
 
   const external = href.startsWith("http");
@@ -43,7 +46,7 @@ export function Button({
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={cn(
-        "inline-flex items-center justify-center rounded-full font-medium uppercase tracking-[0.14em] transition-colors duration-300",
+        "inline-flex items-center justify-center rounded-full font-display font-semibold uppercase tracking-[0.14em] transition-colors duration-300",
         sizes[size],
         variants[variant],
         className,

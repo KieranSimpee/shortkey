@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-19",
+  "models": {
+    "GPT": {
+      "family": "GPT",
+      "confidence": 95,
+      "strengths": ["Strategic Thinking", "Research", "Business Analysis", "Reasoning", "Cross-Domain Synthesis", "Decision Support"],
+      "bestFor": ["Research", "Product Strategy", "Business Planning", "Problem Solving", "Root Cause Analysis", "Executive Summaries"],
+      "weakness": "Less specialized than coding-first models"
+    },
+    "Opus": {
+      "family": "Opus",
+      "confidence": 95,
+      "strengths": ["Complex Reasoning", "Systems Thinking", "Architecture Design", "Long Context Analysis", "Enterprise Planning"],
+      "bestFor": ["Infrastructure", "Architecture", "Large Platforms", "Scale Planning", "Technical Governance"],
+      "weakness": "Can over-engineer solutions"
+    },
+    "Sonnet": {
+      "family": "Sonnet",
+      "confidence": 90,
+      "strengths": ["UX Thinking", "Product Design", "User Journeys", "Human Behavior"],
+      "bestFor": ["UX", "UI", "Customer Experience", "Product Features", "Design Systems"],
+      "weakness": "Less technical depth"
+    },
+    "Fable": {
+      "family": "Fable",
+      "confidence": 80,
+      "strengths": ["Creativity", "Storytelling", "Innovation", "Branding", "Alternative Perspectives"],
+      "bestFor": ["Messaging", "Brand Strategy", "Naming", "Creative Research", "Brainstorming"],
+      "weakness": "Not ideal as sole decision maker"
+    },
+    "Cursor": {
+      "family": "Cursor",
+      "confidence": 95,
+      "strengths": ["Large Codebases", "Engineering", "Refactoring", "Feature Development", "Full Stack"],
+      "bestFor": ["Site Development", "Platform Development", "Production Features", "Large Project Coding"],
+      "weakness": "Less strategic reasoning"
+    },
+    "Composer": {
+      "family": "Composer",
+      "confidence": 85,
+      "strengths": ["Fast Development", "UI Generation", "Rapid Iteration", "Code Assistance"],
+      "bestFor": ["MVPs", "Components", "Rapid Builds", "Prototyping"],
+      "weakness": "Less architecture depth"
+    },
+    "Codex": {
+      "family": "Codex",
+      "confidence": 90,
+      "strengths": ["Code Quality", "APIs", "Backend Logic", "Testing", "Performance"],
+      "bestFor": ["Code Review", "Engineering Standards", "Backend Systems", "Quality Assurance"],
+      "weakness": null
+    },
+    "Grok": {
+      "family": "Grok",
+      "confidence": 85,
+      "strengths": ["Trend Analysis", "Competitive Intelligence", "Market Awareness", "Industry Signals"],
+      "bestFor": ["Competitor Research", "Market Trends", "New Technologies", "Industry Monitoring"],
+      "weakness": null
+    },
+    "Gemini": {
+      "family": "Gemini",
+      "confidence": 85,
+      "strengths": ["Large Research Coverage", "Information Aggregation", "Knowledge Discovery"],
+      "bestFor": ["Broad Research", "Data Collection", "Industry Mapping"],
+      "weakness": null
+    },
+    "Kimi": {
+      "family": "Kimi",
+      "confidence": 80,
+      "strengths": ["Fast Coding", "Technical Documentation", "Engineering Assistance"],
+      "bestFor": ["Utilities", "Documentation", "Fast Development Support"],
+      "weakness": null
+    },
+    "GLM": {
+      "family": "GLM",
+      "confidence": 75,
+      "strengths": ["Alternative Reasoning", "Localization", "Cross-Market Viewpoint"],
+      "bestFor": ["Secondary Validation", "International Analysis"],
+      "weakness": null
+    }
+  }
+}

@@ -9,7 +9,7 @@ import { HeroStatsStrip } from "@/components/sections/HeroStatsStrip";
 import { HeroLaunchPanel } from "@/components/sections/HeroLaunchPanel";
 import { HeroPartnersPanel } from "@/components/sections/HeroPartnersPanel";
 import { HeroLaunchFeeBar } from "@/components/sections/HeroLaunchFeeBar";
-import { ShortcutKeysLogo } from "@/components/ui/ShortcutKeysLogo";
+import { Logo } from "@/components/ui/Logo";
 import {
   HeroTryOnModelCutout,
   HeroTryOnPanel,
@@ -180,6 +180,11 @@ export function HeroPosterBoard() {
             <span className="type-eyebrow text-brand/90">{slide.badge}</span>
           </div>
 
+          {/* LOGO-001 hierarchy: Logo → Headline → CTA */}
+          <div className="mb-5 max-w-sm">
+            <Logo href={false} size="hero" surface="light" />
+          </div>
+
           <h1 className="type-display-hero">
             {slide.headline.before}
             <span className="text-brand">{slide.headline.highlight1}</span>
@@ -236,11 +241,6 @@ export function HeroPosterBoard() {
                 </Button>
               );
             })}
-          </div>
-
-          {/* Full mark below the 3 CTAs — Sky-cleared, wording included */}
-          <div className="mt-6 max-w-sm">
-            <ShortcutKeysLogo className="max-w-[180px] sm:max-w-[220px]" />
           </div>
 
           <HeroLaunchFeeBar />

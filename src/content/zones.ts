@@ -12,10 +12,11 @@ export const cmsZones: CmsZoneDefinition[] = [
   {
     id: "header",
     label: "Header & Navigation",
-    description: "Sticky welcome bar at the very top.",
+    description: "Slim sticky top bar (mobile menu).",
     contentPath: "src/content/homepage.ts → header",
-    fields: ["welcome"],
+    fields: [],
   },
+
   {
     id: "header-brand",
     label: "Brand Nav Section",

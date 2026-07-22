@@ -39,7 +39,8 @@ export function getCommerceConfig() {
   return {
     provider,
     publicMode: publicMode === "live" ? ("live" as const) : ("mock" as const),
-    siteUrl: env("NEXT_PUBLIC_SITE_URL") ?? "http://localhost:3000",
+    // ShortKey is 3001-only locally — never fall back to 3000.
+    siteUrl: env("NEXT_PUBLIC_SITE_URL") ?? "http://localhost:3001",
     foundingBrandFeeUsd: Number(env("FOUNDING_BRAND_FEE_USD") ?? "5000"),
     stripe: {
       configured: stripeConfigured,

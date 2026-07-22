@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MeetingSignupForm } from "@/components/signup/MeetingSignupForm";
+import { SignupPageHero } from "@/components/signup/SignupPageHero";
 
 export const metadata = {
   title: "Creator Signup | Shortkey",
@@ -8,20 +9,16 @@ export const metadata = {
 
 export default function CreatorSignupPage() {
   return (
-    <main className="page-shell px-4 py-12 sm:px-8">
+    <main className="page-shell px-4 py-10 sm:px-8 sm:py-12">
       <div className="mx-auto max-w-5xl">
-        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-subtle">
-          CTRL + CREATOR
-        </p>
-        <h1 className="text-3xl font-bold uppercase tracking-[0.1em] text-ink">
-          Creator Signup
-        </h1>
-        <p className="mt-2 max-w-xl text-sm text-ink-muted">
-          Book a 1-hour meeting to unlock CTRL Twin licensing, brand job rates, and platform
-          offers. Tell us who you are, pick a slot — we confirm by email.
-        </p>
+        <SignupPageHero
+          eyebrow="CTRL + CREATOR"
+          title="Creator Signup"
+          description="Book a 1-hour meeting to unlock CTRL Twin licensing, brand job rates, and platform offers. Tell us who you are, pick a slot — we confirm by email."
+        />
 
-        <div className="mt-6 rounded-xl border border-brand/25 bg-brand/8 px-4 py-4">
+        {/* L2 — supporting offer context */}
+        <div className="rounded-xl border border-brand/25 bg-brand/8 px-4 py-4">
           <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-brand">
             CTRL Twin
           </p>

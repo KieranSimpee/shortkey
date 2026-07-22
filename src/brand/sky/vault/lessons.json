@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "purpose": "Lessons Vault — what worked, what failed, why",
+  "entries": [
+    {
+      "id": "L-LOGO-DRIFT",
+      "outcome": "failed",
+      "lesson": "Multiple logo components and PNG paths caused design drift and cache confusion.",
+      "why": "No single authority path; assumed files were active without render-path verification.",
+      "fix": "LOGO governance + V3 /logo pack; verify Homepage → Component → Asset before changes."
+    },
+    {
+      "id": "L-HERO-AUTHORITY",
+      "outcome": "failed-then-fixed",
+      "lesson": "Hero photo outweighed brand mark; failed logo authority review.",
+      "why": "Decoration/Level-5 imagery competed with Level-1 logo.",
+      "fix": "Logo first at all widths; solid Dark Luxury pane; reduce L3 on mobile."
+    },
+    {
+      "id": "L-PORT-RACE",
+      "outcome": "failed",
+      "lesson": "Dev server restart loops on EADDRINUSE:3001.",
+      "why": "Multiple next/dev PIDs racing after kill.",
+      "fix": "Kill all next/shortkey node PIDs; wait; single scripts/dev.mjs start."
+    },
+    {
+      "id": "L-SKY-UX-001",
+      "outcome": "succeeded",
+      "lesson": "UX family consensus + Design Intelligence Cluster improved homepage score 32→44/50.",
+      "why": "Weighted Sonnet/Fable/GPT/Composer + hybrid Figma+Cursor execution.",
+      "fix": "Keep UX routing defaults; nudge Sonnet +1% on next UX task."
+    },
+    {
+      "id": "L-HEADER-LEGACY",
+      "outcome": "failed-then-fixed",
+      "lesson": "Hero used V3 logo but header still rendered legacy ctrl+BEAUTY KeyCap mark.",
+      "why": "HeaderBrandSection never wired to Logo /logo pack after V3 install.",
+      "fix": "COMP-010 must use Logo size=header surface=light; verify render path includes header."
+    }
+  ]
+}

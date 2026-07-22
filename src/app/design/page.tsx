@@ -1,11 +1,18 @@
-import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+import { HomeDesignPreview } from "@/components/design/HomeDesignPreview";
 
-export const metadata = {
-  title: "Homepage Design | Shortkey",
-  description: "Homepage redesign — now live on the main site.",
+export const metadata: Metadata = {
+  title: "Homepage Design Preview | Shortkey",
+  description: "Full homepage design reference — internal only, not the public Coming Soon gate.",
+  robots: { index: false, follow: false },
 };
 
-/** Redesign merged to `/` — keep this route as a convenience redirect */
+/**
+ * Internal-only full homepage design reference.
+ * The public `/` route is the Coming Soon gate (see src/app/page.tsx) —
+ * this route keeps the full HomeDesignPreview reachable for review without
+ * exposing Product Grid / Store / pricing / Creator Twin mechanics publicly.
+ */
 export default function DesignPreviewPage() {
-  redirect("/");
+  return <HomeDesignPreview preview />;
 }

@@ -9,8 +9,8 @@ type Props = {
 };
 
 /**
- * Brand play: Shortkey S+ turns around → +5 (pre-register rate).
- * Same seal language as “AI BEAUTY S+ POWERED”, signup-first.
+ * Sky AI signifier inside ShortKey = official mark’s S+ (Brand Guidelines V2026).
+ * UI seal: S+ turns around → +5 (pre-register). Never replaces the primary logo PNG.
  */
 export function SignupPlusFiveSeal({ className, size = "md" }: Props) {
   const dim =

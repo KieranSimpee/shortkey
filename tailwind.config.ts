@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 
+/** SHORTKEY V3.0 Lilac Edition — official tokens only */
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,37 +11,42 @@ const config: Config = {
     extend: {
       colors: {
         silk: {
-          DEFAULT: "#f7f5f2",
-          light: "#faf9f7",
-          dark: "#f3f0ec",
+          DEFAULT: "#F7F5FF",
+          light: "#FFFFFF",
+          dark: "#EDEAFF",
         },
         brand: {
-          DEFAULT: "#9B7AE3",
-          light: "#B8A4ED",
-          dark: "#7E5FD4",
-          muted: "#F3EEFB",
-          flare: "#EDE4FA",
-          silver: "#E8E6EE",
+          DEFAULT: "#8C82FC",
+          light: "#B9B3FF",
+          dark: "#6F66E0",
+          muted: "#F7F5FF",
+          flare: "#EDEAFF",
+          silver: "#E8E6F2",
         },
         ink: {
-          DEFAULT: "#111111",
-          muted: "#6B6B6B",
-          subtle: "#9A9A9A",
+          DEFAULT: "#242424",
+          muted: "#5A5A5A",
+          subtle: "#8A8A8A",
         },
         surface: {
-          dark: "#1A1520",
+          dark: "#161226",
         },
       },
       fontFamily: {
-        sans: ["var(--font-montserrat)", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-montserrat)", "system-ui", "sans-serif"],
+        mono: ["var(--font-space-grotesk)", "ui-monospace", "monospace"],
       },
       letterSpacing: {
         widest: "0.2em",
       },
       boxShadow: {
-        soft: "0 2px 16px rgba(155, 127, 212, 0.08)",
-        card: "0 4px 24px rgba(0, 0, 0, 0.04)",
-        float: "0 8px 32px rgba(155, 127, 212, 0.1)",
+        soft: "0 8px 24px rgba(140, 130, 252, 0.12)",
+        card: "0 10px 30px rgba(140, 130, 252, 0.12)",
+        float: "0 12px 36px rgba(140, 130, 252, 0.14)",
+      },
+      borderRadius: {
+        card: "24px",
       },
     },
   },

@@ -140,7 +140,7 @@ B2C viral / campaign entry. Base44 WTFSubmission. **Phase 2**.
 |--------|--------|
 | **Kieran (Cursor)** | shortkey.info, shortkey.social, shortkey.store frontends |
 | **Gor Gor (Simpee)** | Base44 API, domain data connections, backend entities, architecture |
-| **Kura** | Competitor analysis, QC, portal benchmarking |
+| **Kura** | Brand Design Manager (always-on with Sky) · brand design direction / taste · also QC, competitor & portal benchmarking · Base44 Superagent `6a54198bebbee048f44e1378` · Cursor: `.cursor/skills/kura` + `npm run ask:kura` (`src/brand/sky/KURA.md`) |
 | **Senti** | Brand docs, proposal verification, launch materials |
 
 ---

@@ -9,35 +9,26 @@
   }
 
   body {
-    @apply text-ink antialiased;
+    @apply bg-silk text-ink antialiased;
     font-feature-settings: "kern" 1, "liga" 1;
     min-width: 0;
     overflow-x: clip;
-    /* Purple silk / light-ribbon atmosphere — homepage design element */
-    background-color: #ebe4f6;
-    background-image:
-      linear-gradient(
-        165deg,
-        rgba(255, 255, 255, 0.42) 0%,
-        rgba(236, 230, 248, 0.28) 42%,
-        rgba(230, 220, 245, 0.35) 100%
-      ),
-      url("/images/home-purple-atmosphere.png");
-    background-size: cover, cover;
-    background-position: center, center;
-    background-repeat: no-repeat, no-repeat;
-    background-attachment: fixed, fixed;
-  }
-
-  @media (max-width: 1023px) {
-    body {
-      /* fixed backgrounds can jank on mobile browsers */
-      background-attachment: scroll, scroll;
-    }
+    /* V3 Soft Background #F7F5FF — luxury lilac wash */
+    background-color: #F7F5FF;
+    background-image: linear-gradient(
+      165deg,
+      #FFFFFF 0%,
+      #F7F5FF 45%,
+      #EDEAFF 100%
+    );
   }
 
   h1, h2, h3 {
-    @apply font-bold;
+    @apply font-display font-bold;
+  }
+
+  .font-numbers {
+    font-family: var(--font-space-grotesk), ui-monospace, monospace;
   }
 }
 
@@ -559,6 +550,203 @@
     .hero-tint-cta,
     .hero-seal-text {
       animation: none !important;
+    }
+  }
+
+  /* Dual-hero Ken Burns — video-like motion without text on model */
+  .hero-ken-burns {
+    animation: hero-ken-burns 18s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  /* Dual-hero bottom copy overlay — soft scrim so full-bleed model stays readable under text */
+  .hero-copy-scrim {
+    background-image: linear-gradient(
+      to top,
+      rgba(22, 18, 38, 0.95) 0%,
+      rgba(22, 18, 38, 0.86) 32%,
+      rgba(22, 18, 38, 0.5) 62%,
+      rgba(22, 18, 38, 0) 100%
+    );
+  }
+
+  @keyframes hero-ken-burns {
+    0% {
+      transform: scale(1) translate(0, 0);
+    }
+    100% {
+      transform: scale(1.08) translate(-1.5%, -1%);
+    }
+  }
+
+  .brand-demo-landmark {
+    box-shadow: 0 0 0 1px rgba(140, 130, 252, 0.35);
+  }
+
+  /* Creator dual-hero demo — LIVE → try-on → fan dashboard */
+  .creator-demo-panel {
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .creator-demo-panel-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .creator-demo-panel-idle {
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .creator-demo-live-pulse {
+    animation: creator-demo-live-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes creator-demo-live-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.82;
+    }
+  }
+
+  .creator-demo-chat-in {
+    animation: creator-demo-chat-in 0.45s ease-out;
+  }
+
+  @keyframes creator-demo-chat-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .creator-demo-shade-sweep {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    /* brand.DEFAULT #8C82FC wash */
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(140, 130, 252, 0.32) 48%,
+      transparent 66%
+    );
+    transform: translateX(-100%);
+    animation: creator-demo-shade-sweep 2.4s ease-in-out infinite;
+  }
+
+  @keyframes creator-demo-shade-sweep {
+    0%,
+    20% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    35%,
+    55% {
+      opacity: 1;
+    }
+    70%,
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  .creator-demo-fan-row {
+    animation: creator-demo-fan-row 0.5s ease-out both;
+  }
+
+  @keyframes creator-demo-fan-row {
+    from {
+      opacity: 0;
+      transform: translateX(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .brand-demo-scan-line {
+    pointer-events: none;
+    position: absolute;
+    inset-inline: 0;
+    height: 1px;
+    top: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(185, 179, 255, 0.65),
+      transparent
+    );
+    animation: brand-demo-scan-line 2.8s ease-in-out infinite;
+  }
+
+  @keyframes brand-demo-scan-line {
+    0%,
+    12% {
+      top: 8%;
+      opacity: 0;
+    }
+    20%,
+    70% {
+      opacity: 1;
+    }
+    88%,
+    100% {
+      top: 88%;
+      opacity: 0;
+    }
+  }
+
+  .brand-demo-bar-fill {
+    transform-origin: left center;
+    animation: brand-demo-bar-fill 0.7s ease-out both;
+  }
+
+  @keyframes brand-demo-bar-fill {
+    from {
+      transform: scaleX(0.15);
+      opacity: 0.5;
+    }
+    to {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-ken-burns,
+    .creator-demo-live-pulse,
+    .creator-demo-chat-in,
+    .creator-demo-shade-sweep,
+    .creator-demo-fan-row,
+    .creator-demo-panel,
+    .brand-demo-scan-line,
+    .brand-demo-bar-fill {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .creator-demo-panel-idle {
+      opacity: 0;
+      transform: none;
+    }
+
+    .creator-demo-panel-active {
+      opacity: 1;
+      transform: none;
     }
   }
 }

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShortKey Homepage — Standalone Export</title>
+  <!--
+    Export of current homepage structure (HomeDesignPreview + DualAudienceHero).
+    All CSS inlined. No Tailwind / CDN / framework.
+    Images: relative paths — open via http://localhost:3001/exports/homepage-standalone.html
+    or https://shortkey.vercel.app/exports/homepage-standalone.html
+  -->
+  <style>
+    :root {
+      --silk: #F7F5FF;
+      --silk-light: #FFFFFF;
+      --silk-dark: #EDEAFF;
+      --brand: #8C82FC;
+      --brand-light: #B9B3FF;
+      --brand-dark: #6F66E0;
+      --brand-muted: #F7F5FF;
+      --brand-flare: #EDEAFF;
+      --brand-silver: #E8E6F2;
+      --ink: #242424;
+      --ink-muted: #5A5A5A;
+      --ink-subtle: #8A8A8A;
+      --surface-dark: #161226;
+      --radius-card: 24px;
+      --shadow-card: 0 10px 30px rgba(140, 130, 252, 0.12);
+      --shadow-soft: 0 8px 24px rgba(140, 130, 252, 0.12);
+      --font-display: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 0;
+      color: var(--ink);
+      font-family: var(--font-body);
+      background-color: var(--silk);
+      background-image: linear-gradient(165deg, #FFFFFF 0%, #F7F5FF 45%, #EDEAFF 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0; }
+    p { margin: 0; }
+    .page { min-height: 100vh; position: relative; }
+
+    /* —— Signup strip —— */
+    .signup-strip {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      border-bottom: 1px solid rgba(140, 130, 252, 0.1);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 4px 16px;
+    }
+    .signup-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .seal {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+    }
+    .lockup {
+      font-size: 10px;
+      color: var(--ink-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(140, 130, 252, 0.35);
+      color: var(--brand);
+    }
+    .btn-keycap {
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.9);
+      background: linear-gradient(to bottom, #fff, var(--brand-muted));
+      color: var(--brand);
+      box-shadow: 0 2px 0 rgba(140,130,252,0.2), 0 4px 12px rgba(140,130,252,0.1);
+      text-transform: none;
+      letter-spacing: 0.04em;
+      font-size: 12px;
+      padding: 8px 14px;
+    }
+    .btn-ghost-light {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.8);
+      background: transparent;
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* —— Dual hero —— */
+    .hero {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: min(62vh, 560px);
+      background: var(--surface-dark);
+      overflow-x: clip;
+    }
+    .seam-veil {
+      pointer-events: none;
+      position: absolute;
+      inset: 0 auto 0 50%;
+      width: min(36vw, 220px);
+      transform: translateX(-50%);
+      z-index: 4;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 72%);
+    }
+    .seam-line {
+      pointer-events: none;
+      position: absolute;
+      inset: 0 auto 0 50%;
+      width: 1px;
+      transform: translateX(-50%);
+      z-index: 5;
+      background: rgba(140, 130, 252, 0.25);
+    }
+    .hero-logo {
+      position: absolute;
+      left: 50%;
+      top: 10%;
+      z-index: 50;
+      transform: translate(-50%, -50%);
+      width: min(38vw, 148px);
+      height: auto;
+      max-height: 112px;
+      object-fit: contain;
+      pointer-events: none;
+    }
+    .mode-switch {
+      position: absolute;
+      bottom: 6.5rem;
+      left: 50%;
+      z-index: 20;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2px;
+      padding: 2px;
+      border-radius: 6px;
+      border: 1px solid rgba(140, 130, 252, 0.3);
+      background: rgba(22, 18, 38, 0.95);
+      backdrop-filter: blur(8px);
+    }
+    .mode-switch button {
+      border: 0;
+      background: transparent;
+      color: var(--brand-silver);
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .mode-switch button.active {
+      background: var(--brand);
+      color: #fff;
+    }
+    .mode-switch button.active-both {
+      background: var(--brand-muted);
+      color: var(--brand);
+    }
+    .panel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .panel.left { border-right: 1px solid rgba(140, 130, 252, 0.15); }
+    .visual {
+      position: relative;
+      flex: 1;
+      min-height: 200px;
+      overflow: hidden;
+    }
+    .visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+    .visual-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(22,18,38,0.55), transparent 55%);
+      pointer-events: none;
+    }
+    .copy {
+      position: relative;
+      z-index: 10;
+      flex-shrink: 0;
+      border-top: 1px solid rgba(140, 130, 252, 0.2);
+      background: var(--surface-dark);
+      padding: 12px 20px 44px;
+      color: #fff;
+    }
+    .panel.left .copy { padding-right: 3.5rem; }
+    .panel.right .copy { padding-left: 3.5rem; }
+    .eyebrow {
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brand-light);
+    }
+    .copy h2 {
+      margin-top: 4px;
+      font-size: clamp(1rem, 2.2vw, 1.4rem);
+      letter-spacing: -0.02em;
+      max-width: 16rem;
+    }
+    .body-line {
+      margin-top: 6px;
+      font-size: 13px;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.7);
+      max-width: 18rem;
+    }
+    .cta-row {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* —— Sections —— */
+    .section {
+      padding: 3.5rem 1.5rem;
+      border-bottom: 1px solid rgba(140, 130, 252, 0.1);
+    }
+    .section-center { text-align: center; max-width: 48rem; margin: 0 auto; }
+    .label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+    .section h2 {
+      margin-top: 0.75rem;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .section .lead {
+      margin: 1rem auto 0;
+      max-width: 28rem;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--ink-muted);
+    }
+    .mt-8 { margin-top: 2rem; }
+    .wrap { max-width: 72rem; margin: 0 auto; }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 1.25rem;
+    }
+    @media (min-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    }
+    .tile {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: var(--radius-card);
+      background: #2a2438;
+    }
+    .tile.portrait { aspect-ratio: 4 / 5; }
+    .tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .tile-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(42,36,56,0.85), transparent 55%);
+    }
+    .tile-cap {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .tile-cap .title {
+      display: block;
+      margin-top: 4px;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+    }
+    .tile-cap .desc {
+      display: block;
+      margin-top: 2px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.75);
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+    }
+
+    .creator-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .creator-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .creator-card {
+      display: grid;
+      grid-template-columns: 0.4fr 0.6fr;
+      overflow: hidden;
+      border-radius: var(--radius-card);
+      border: 1px solid rgba(140, 130, 252, 0.1);
+      background: #fff;
+      box-shadow: var(--shadow-card);
+    }
+    .creator-card .pic {
+      position: relative;
+      min-height: 160px;
+      background: #ddd;
+    }
+    .creator-card .pic img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .creator-card .info { padding: 14px; display: flex; flex-direction: column; justify-content: space-between; }
+    .creator-card .name {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .story-card {
+      border-radius: var(--radius-card);
+      border: 1px solid rgba(140, 130, 252, 0.1);
+      background: #fff;
+      padding: 4px;
+      box-shadow: var(--shadow-card);
+    }
+    .story-card .shot {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #ece8f5;
+    }
+    .story-card .shot img { width: 100%; height: 100%; object-fit: cover; }
+    .story-card .pad { padding: 10px 10px 12px; }
+    .chip {
+      display: inline-block;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--brand-flare);
+      color: var(--brand-dark);
+    }
+
+    .brand-hub {
+      background: var(--surface-dark);
+      color: #fff;
+      padding: 3.5rem 1.5rem;
+    }
+    .brand-hub-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .brand-hub .label { color: var(--brand-light); }
+    .brand-hub h2 { color: #fff; margin-top: 0.5rem; font-size: 1.5rem; }
+    .brand-hub .lead { color: rgba(255,255,255,0.65); margin-top: 0.75rem; max-width: 36rem; font-size: 0.875rem; }
+
+    .export-note {
+      background: #161226;
+      color: rgba(255,255,255,0.7);
+      font-size: 11px;
+      text-align: center;
+      padding: 8px 12px;
+    }
+    .export-note strong { color: #fff; }
+
+    @media (max-width: 640px) {
+      .lockup, .btn-brand-desktop { display: none; }
+      .panel.left .copy, .panel.right .copy { padding-left: 12px; padding-right: 12px; }
+      .mode-switch { bottom: 5.5rem; }
+      .hero-logo { width: 112px; top: 12%; }
+    }
+  </style>
+</head>
+<body>
+  <p class="export-note">
+    <strong>Standalone homepage export</strong> · structure from live ShortKey ·
+    open via <code>/exports/homepage-standalone.html</code> on localhost or Vercel
+  </p>
+
+  <div class="page">
+    <!-- L2 signup strip -->
+    <div class="signup-strip">
+      <div class="signup-inner">
+        <div style="display:flex;align-items:center;gap:6px;min-width:0">
+          <span class="seal">+5</span>
+          <span class="lockup">Pre-register · S+ turns to +5</span>
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <a class="btn btn-primary" href="/signup/creator">Creator →</a>
+          <a class="btn btn-outline btn-brand-desktop" href="/signup/brand">Brand →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dual hero COMP-001 -->
+    <section class="hero" aria-label="Shortkey — Creator try-on and Brand skin analysis" data-comp="COMP-001">
+      <div class="seam-veil" aria-hidden="true"></div>
+      <div class="seam-line" aria-hidden="true"></div>
+      <img
+        class="hero-logo"
+        src="/logo/shortkey-primary-on-dark.png"
+        alt="Shortkey"
+        width="168"
+        height="112"
+      />
+
+      <div class="mode-switch" role="group" aria-label="Hero view mode">
+        <button type="button">Creator</button>
+        <button type="button" class="active-both">Both</button>
+        <button type="button">Brand</button>
+      </div>
+
+      <article class="panel left">
+        <div class="visual">
+          <img src="/images/posters/hero/hero-bloom-skin.png" alt="" style="object-position:72% center" />
+          <div class="visual-fade"></div>
+        </div>
+        <div class="copy">
+          <p class="eyebrow">Creator</p>
+          <h2>AI Try On</h2>
+          <p class="body-line">( Before they couldn’t try. Now they can.</p>
+          <div class="cta-row">
+            <a class="btn btn-keycap" href="/signup/creator">creator signup</a>
+            <button type="button" class="btn-ghost-light">Try On</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel right">
+        <div class="visual">
+          <img src="/images/posters/hero/hero-skin-analysis.png" alt="" style="object-position:75% center" />
+          <div class="visual-fade"></div>
+        </div>
+        <div class="copy">
+          <p class="eyebrow">Brand</p>
+          <h2>Skin Analysis</h2>
+          <p class="body-line">( AI analysis linked to your brand and SKUs.</p>
+          <div class="cta-row">
+            <a class="btn btn-keycap" href="/signup/brand">brand signup</a>
+            <button type="button" class="btn-ghost-light">Skin Analysis</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- AI Beauty Match -->
+    <section class="section" id="beauty-match" data-comp="COMP-008" style="background:#fff">
+      <div class="section-center">
+        <p class="label">AI Beauty Match</p>
+        <h2>Match. Recommend. Shop.</h2>
+        <p class="lead">
+          Create a profile → AI beauty analysis → match score → personalized recommendations → shop products.
+        </p>
+        <div class="mt-8">
+          <a class="btn btn-primary" style="font-size:12px;padding:10px 18px" href="/influencers">Match Me Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Poster themes -->
+    <section class="section" style="background:var(--silk);padding-top:2.5rem;padding-bottom:2.5rem">
+      <div class="wrap">
+        <div class="grid-4">
+          <a class="tile" href="/signup/creator">
+            <img src="/images/posters/signup/google-bloom-skin-ai-try-on-shortkey.png" alt="bloom skin" />
+            <div class="tile-fade"></div>
+            <p class="tile-cap">bloom skin</p>
+          </a>
+          <a class="tile" href="/signup/brand">
+            <img src="/images/posters/signup/google-cushion-foundation-lip-tint-virtual-try-on.png" alt="kbeauty skincare" />
+            <div class="tile-fade"></div>
+            <p class="tile-cap">kbeauty skincare</p>
+          </a>
+          <a class="tile" href="/signup/creator">
+            <img src="/images/posters/signup/google-ai-skin-analysis-barrier-repair-kbeauty.png" alt="ai skin analysis" />
+            <div class="tile-fade"></div>
+            <p class="tile-cap">ai skin analysis</p>
+          </a>
+          <a class="tile" href="/signup/brand">
+            <img src="/images/posters/signup/google-founding-brand-creator-signup-ctrl-twin.png" alt="founding brand" />
+            <div class="tile-fade"></div>
+            <p class="tile-cap">kbeauty brand partnership</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collections -->
+    <section class="section" style="background:rgba(255,255,255,0.3);border-color:rgba(255,255,255,0.6)">
+      <div class="wrap">
+        <p class="label">Collections</p>
+        <h2 style="text-transform:uppercase;letter-spacing:0.08em;font-size:1.25rem">Shop the CTRL lanes</h2>
+        <div class="grid-4">
+          <a class="tile portrait" href="/shop">
+            <img src="/images/posters/hero/hero-cushion-tint.png" alt="" />
+            <div class="tile-fade"></div>
+            <div class="tile-cap">
+              <span style="color:var(--brand-light)">CTRL + T</span>
+              <span class="title">Tint</span>
+              <span class="desc">Cushion · lip · cheek</span>
+            </div>
+          </a>
+          <a class="tile portrait" href="/shop">
+            <img src="/images/posters/hero/hero-bloom-skin.png" alt="" />
+            <div class="tile-fade"></div>
+            <div class="tile-cap">
+              <span style="color:var(--brand-light)">CTRL + H</span>
+              <span class="title">Hydration</span>
+              <span class="desc">Barrier · glow</span>
+            </div>
+          </a>
+          <a class="tile portrait" href="/shop">
+            <img src="/images/posters/hero/hero-skin-analysis.png" alt="" />
+            <div class="tile-fade"></div>
+            <div class="tile-cap">
+              <span style="color:var(--brand-light)">CTRL + S</span>
+              <span class="title">Sun</span>
+              <span class="desc">Protect · tone-up</span>
+            </div>
+          </a>
+          <a class="tile portrait" href="/shop">
+            <img src="/images/posters/hero/hero-founding-brand.png" alt="" />
+            <div class="tile-fade"></div>
+            <div class="tile-cap">
+              <span style="color:var(--brand-light)">CTRL + R</span>
+              <span class="title">Routine</span>
+              <span class="desc">Matched sets</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Creator Hub -->
+    <section class="section" id="creator-hub">
+      <div class="wrap">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:flex-end">
+          <div>
+            <p class="label">Creator Hub</p>
+            <h2>Build. Create. Earn. Grow.</h2>
+            <p class="lead" style="margin-left:0;text-align:left">
+              Creator storefront, affiliate program, dashboard, and analytics — short brand-promo clips that open shop.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="/signup/creator">Become A Creator</a>
+        </div>
+        <div class="creator-grid">
+          <article class="creator-card">
+            <div class="pic"><img src="/images/posters/hero/hero-bloom-skin.png" alt="Creator" /></div>
+            <div class="info">
+              <div>
+                <p class="label" style="font-size:8px">On platform · brand promo</p>
+                <p class="name" style="margin-top:4px">Featured Creator</p>
+                <p style="font-size:11px;color:var(--ink-muted)">@shortkey</p>
+                <p style="margin-top:8px;font-size:11px;color:rgba(36,36,36,0.8)">Short clips that open shop.</p>
+              </div>
+              <a href="/influencers" style="margin-top:8px;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase">Short clips + shop →</a>
+            </div>
+          </article>
+          <article class="creator-card">
+            <div class="pic"><img src="/images/posters/hero/hero-skin-analysis.png" alt="Creator" /></div>
+            <div class="info">
+              <div>
+                <p class="label" style="font-size:8px">On platform · brand promo</p>
+                <p class="name" style="margin-top:4px">Featured Creator</p>
+                <p style="font-size:11px;color:var(--ink-muted)">@shortkey</p>
+                <p style="margin-top:8px;font-size:11px;color:rgba(36,36,36,0.8)">AI try-on with your audience.</p>
+              </div>
+              <a href="/influencers" style="margin-top:8px;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase">Short clips + shop →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community -->
+    <section class="section" style="background:rgba(255,255,255,0.25)">
+      <div class="wrap">
+        <p class="label">Community</p>
+        <h2 style="text-transform:uppercase;letter-spacing:0.08em;font-size:1.25rem">Stories from the CTRL family</h2>
+        <div class="grid-4">
+          <a class="story-card" href="/community">
+            <div class="shot"><img src="/images/posters/hero/hero-bloom-skin.png" alt="" /></div>
+            <div class="pad">
+              <span class="chip">CTRL + SHARE</span>
+              <p class="name" style="margin-top:6px;font-size:12px">Gratitude mind</p>
+              <p style="margin-top:4px;font-size:11px;color:var(--ink-muted);line-height:1.35">Community notes from the family.</p>
+            </div>
+          </a>
+          <a class="story-card" href="/community">
+            <div class="shot"><img src="/images/posters/hero/hero-cushion-tint.png" alt="" /></div>
+            <div class="pad">
+              <span class="chip">CTRL + LOOK</span>
+              <p class="name" style="margin-top:6px;font-size:12px">Makeup share</p>
+              <p style="margin-top:4px;font-size:11px;color:var(--ink-muted);line-height:1.35">Tutorial energy, soft light.</p>
+            </div>
+          </a>
+          <a class="story-card" href="/community">
+            <div class="shot"><img src="/images/posters/hero/hero-skin-analysis.png" alt="" /></div>
+            <div class="pad">
+              <span class="chip">CTRL + SKIN</span>
+              <p class="name" style="margin-top:6px;font-size:12px">Barrier glow</p>
+              <p style="margin-top:4px;font-size:11px;color:var(--ink-muted);line-height:1.35">Routine notes from analysis.</p>
+            </div>
+          </a>
+          <a class="story-card" href="/community">
+            <div class="shot"><img src="/images/posters/hero/hero-founding-brand.png" alt="" /></div>
+            <div class="pad">
+              <span class="chip">CTRL + BRAND</span>
+              <p class="name" style="margin-top:6px;font-size:12px">Founding stories</p>
+              <p style="margin-top:4px;font-size:11px;color:var(--ink-muted);line-height:1.35">Brands joining the platform.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Hub -->
+    <section class="brand-hub" id="brand-hub">
+      <div class="brand-hub-inner">
+        <div>
+          <p class="label">Brand Hub</p>
+          <h2>Launch. Reach. Grow.</h2>
+          <p class="lead">
+            Launch products, access creators, track performance, and use AI growth tools.
+          </p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <a class="btn btn-primary" href="/signup/brand">Join As Brand</a>
+          <a class="btn btn-ghost-light" href="/signup/creator">Become A Creator</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

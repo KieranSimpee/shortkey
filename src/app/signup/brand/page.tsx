@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MeetingSignupForm } from "@/components/signup/MeetingSignupForm";
+import { SignupPageHero } from "@/components/signup/SignupPageHero";
 import { siteContent } from "@/content/homepage";
 
 export const metadata = {
@@ -13,20 +14,16 @@ export default function BrandSignupPage() {
   const fees = hero.launchFees;
 
   return (
-    <main className="page-shell px-4 py-12 sm:px-8">
+    <main className="page-shell px-4 py-10 sm:px-8 sm:py-12">
       <div className="mx-auto max-w-5xl">
-        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-subtle">
-          CTRL + BRAND
-        </p>
-        <h1 className="text-3xl font-bold uppercase tracking-[0.1em] text-ink">
-          Brand Signup
-        </h1>
-        <p className="mt-2 max-w-xl text-sm text-ink-muted">
-          Book a 1-hour meeting to lock founding-partner terms, platform fee window, and access to
-          CTRL Twin creators for try-on campaigns. Share your brand details — we confirm by email.
-        </p>
+        <SignupPageHero
+          eyebrow="CTRL + BRAND"
+          title="Brand Signup"
+          description="Book a 1-hour meeting to lock founding-partner terms, platform fee window, and access to CTRL Twin creators for try-on campaigns. Share your brand details — we confirm by email."
+        />
 
-        <div className="mt-6 rounded-xl border border-brand/25 bg-brand/8 px-4 py-4">
+        {/* L2 — supporting offer context */}
+        <div className="rounded-xl border border-brand/25 bg-brand/8 px-4 py-4">
           <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-brand">
             {brands.tag}
           </p>

@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-19",
+  "corePrinciple": "Studio as Single Source of Truth — Theme Override, Page Manager, Store Auto-Sync",
+  "themes": {
+    "lilac": { "role": "production", "character": "Creative Premium Calm" },
+    "blue": { "role": "alternate", "character": "Professional Trustworthy" },
+    "rainbow": { "role": "experimental", "character": "Experimental Community AI Family" }
+  },
+  "domains": {
+    "beauty": { "role": "Main Website", "phase": 1 },
+    "club": { "role": "Membership", "phase": 3 },
+    "community": { "role": "Blog & Sharing", "phase": 2 },
+    "events": { "role": "Promotion / Game Zone", "phase": 3 },
+    "fashion": { "role": "Makeover", "phase": 2 },
+    "info": { "role": "Brand Portal", "phase": 1 },
+    "live": { "role": "Live Stream & Calendar", "phase": 2 },
+    "social": { "role": "Influencer Portal", "phase": 2 },
+    "store": { "role": "Shop Portal", "phase": 1 },
+    "studio": { "role": "Control Center", "phase": 3 },
+    "world": { "role": "Global Expansion", "phase": 4 },
+    "wtf": { "role": "Content Management", "phase": 2 }
+  },
+  "userJourney": [
+    "Visitor",
+    "Landing",
+    "Discovery",
+    "Product",
+    "Checkout",
+    "Confirmation",
+    "Community",
+    "Repeat Purchase"
+  ],
+  "automation": [
+    { "trigger": "New Product", "action": "Create Card" },
+    { "trigger": "Store Update", "action": "Sync Landing" },
+    { "trigger": "Theme Change", "action": "Override All" },
+    { "trigger": "New Member", "action": "Create Profile" }
+  ],
+  "previewAxes": {
+    "viewport": ["Desktop", "Tablet", "Mobile"],
+    "theme": ["Lilac", "Blue", "Rainbow"]
+  }
+}

@@ -10,12 +10,46 @@ const nextConfig: NextConfig = {
     ],
   },
   serverExternalPackages: ["@mediapipe/tasks-vision"],
+  async redirects() {
+    // Legacy / invented paths → production monochrome
+    return [
+      {
+        source: "/images/shortkey-logo-clear.png",
+        destination: "/logo/shortkey-primary.png",
+        permanent: false,
+      },
+      {
+        source: "/brand/LOGO-001.svg",
+        destination: "/logo/shortkey-primary.png",
+        permanent: false,
+      },
+      {
+        source: "/brand/LOGO-001.png",
+        destination: "/logo/shortkey-primary.png",
+        permanent: false,
+      },
+      {
+        source: "/logo/shortkey-primary-dark.svg",
+        destination: "/logo/shortkey-primary-on-dark.png",
+        permanent: false,
+      },
+      {
+        source: "/logo/shortkey-primary-light.svg",
+        destination: "/logo/shortkey-primary.png",
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
-    // Exact paths — avoid path-to-regexp repeat errors on Windows Next 15
     const logoFiles = [
-      "/images/shortkey-logo-clear.png",
-      "/images/shortkey-logo.png",
-      "/images/shortkey-logo-locked.png",
+      "/logo/shortkey-primary.png",
+      "/logo/shortkey-primary-on-dark.png",
+      "/logo/shortkey-icon.png",
+      "/logo/shortkey-favicon-32.png",
+      "/logo/shortkey-favicon-64.png",
+      "/logo/shortkey-favicon-128.png",
+      "/logo/shortkey-favicon-256.png",
+      "/logo/shortkey-favicon-512.png",
     ];
     return logoFiles.map((source) => ({
       source,

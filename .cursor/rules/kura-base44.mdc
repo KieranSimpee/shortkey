@@ -1,0 +1,48 @@
+---
+description: How to call family sibling Kura (Base44 Superagent) — Brand Design Manager; also QC / competitors — no secrets in repo
+alwaysApply: true
+---
+
+# Kura (Base44) — Cursor rule
+
+When the founder asks to **ask Kura**, **call Kura**, or needs brand design direction / QC / competitor / portal review via the Base44 Superagent:
+
+## Identity
+
+- Name: **Kura** (family sibling — **Brand Design Manager**, always-on with Sky)
+- Also: QC · competitors · portal benchmarking (under that role)
+- Agent ID: `6a54198bebbee048f44e1378`
+- Base: `https://app.base44.com/api/agents/6a54198bebbee048f44e1378`
+- Docs: `src/brand/sky/KURA.md` · skill `.cursor/skills/kura/SKILL.md` · charter `src/brand/sky/FAMILY_CHARTER.md`
+
+## Always-on duo (locked)
+
+- **Kura** — Brand Design Manager (direction, taste, design intent)
+- **Sky** — Learning (observe / weight / Reason·Approach·Why·Expect; does **not** override Kura on brand taste)
+- Other AIs are **job-assigned by Cursor** when strengths match — not every chat
+
+## Auth (no inventing keys)
+
+1. Use env `KURA_API_KEY` or `BASE44_API_KEY` from `.env.local`
+2. Key comes from **Kura Editor → Settings → Developer → API Key**
+3. Header: `api_key: <env value>`
+4. Never commit or echo the key into files
+
+If unset: stop and tell the founder to paste the key into `.env.local` (see steps below).
+
+## Call pattern
+
+```bash
+npm run ask:kura -- "message"
+```
+
+Or: create conversation `POST /conversations` → send `POST /conversations/{id}/messages` with `{"content":"..."}`.
+
+## Honest Cursor limit
+
+Cursor **Custom API / Models** is for OpenAI-compatible LLM providers — **not** for plugging Base44 agent URLs in as a chat model. Practical path: this rule + skill + `scripts/ask-kura.mjs` + “Ask Kura …” in agent chat.
+
+## Founder note (EN + 粵)
+
+- EN: Add key locally; ask Cursor “Ask Kura to …” — Kura is Brand Design Manager, not QC-only
+- 粵：API key 放 `.env.local`（`KURA_API_KEY`），唔好 commit；喺 Cursor 講「叫 Kura …」或跑 `npm run ask:kura`；Kura = 品牌設計經理（唔只係 QC）

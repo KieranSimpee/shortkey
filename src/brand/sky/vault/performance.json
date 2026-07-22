@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "purpose": "Performance Vault — task · models · weights · outcome · accuracy · rating",
+  "entries": [
+    {
+      "taskId": "SKY-UX-001",
+      "task": "Homepage Redesign — minimalist V3",
+      "domain": "UX_DESIGN",
+      "models": ["Sonnet", "Fable", "GPT", "Composer", "Cursor"],
+      "weights": { "Sonnet": 0.4, "Fable": 0.25, "GPT": 0.2, "Composer": 0.15 },
+      "outcome": "Success",
+      "accuracy": 94,
+      "userRating": null,
+      "scoreTotal": 44,
+      "scoreMax": 50,
+      "date": "2026-07-19"
+    },
+    {
+      "taskId": "SKY-OS-001",
+      "task": "Install Sky Collective Intelligence OS 1.0",
+      "domain": "FULL_PLATFORM_ARCHITECTURE",
+      "models": ["Opus", "GPT", "Cursor", "Sonnet"],
+      "weights": { "Opus": 0.4, "GPT": 0.3, "Cursor": 0.2, "Sonnet": 0.1 },
+      "outcome": "Success",
+      "accuracy": 96,
+      "userRating": null,
+      "scoreTotal": null,
+      "scoreMax": null,
+      "date": "2026-07-19"
+    },
+    {
+      "taskId": "SKY-HOME-002",
+      "task": "Homepage sync — V3 header logo + section IA",
+      "domain": "UX_DESIGN",
+      "models": ["Sonnet", "Fable", "GPT", "Composer", "Cursor"],
+      "weights": { "Sonnet": 0.41, "Fable": 0.25, "GPT": 0.19, "Composer": 0.15 },
+      "outcome": "Success",
+      "accuracy": 95,
+      "userRating": null,
+      "scoreTotal": null,
+      "scoreMax": null,
+      "date": "2026-07-19"
+    }
+  ]
+}

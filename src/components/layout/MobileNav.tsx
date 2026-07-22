@@ -30,9 +30,6 @@ export function MobileNav() {
 
       {open && (
         <div className="absolute left-0 right-0 top-full border-b border-white/60 bg-white/95 px-4 py-6 shadow-card backdrop-blur-xl">
-          <p className="mb-4 text-[11px] font-medium leading-snug tracking-[0.04em] text-brand/80">
-            {header.welcome}
-          </p>
           <nav className="flex flex-col gap-2">
             {header.nav.map((item) => (
               <Link

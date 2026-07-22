@@ -11,6 +11,7 @@ import {
 import { AddToCartButton } from "@/components/commerce/AddToCartButton";
 import { MockNote } from "@/components/mock/MockPageShell";
 import { ShortcutChip } from "@/components/ui/KeyCap";
+import { PRODUCT_SURFACE_LOCKED } from "@/content/featureLocks";
 import { cn } from "@/lib/utils";
 
 function statusStyles(status: "LIVE" | "UP NEXT" | "REPLAY") {
@@ -125,6 +126,16 @@ export function InfluencerProfileClient({
         ) : null}
 
         {activeTab === "shop" ? (
+          PRODUCT_SURFACE_LOCKED ? (
+            <div className="rounded-xl border border-brand/15 bg-brand/5 px-4 py-8 text-center">
+              <ShortcutChip shortcut="Locked" className="mx-auto" />
+              <p className="mt-3 text-sm font-semibold text-ink">Shop tab locked</p>
+              <p className="mx-auto mt-2 max-w-sm text-[12px] leading-relaxed text-ink-muted">
+                Product display ratio is under design review. This tab opens when the product
+                surface is unlocked.
+              </p>
+            </div>
+          ) : (
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {host.shopProducts.map((product) => (
               <div
@@ -153,6 +164,7 @@ export function InfluencerProfileClient({
               </div>
             ))}
           </div>
+          )
         ) : null}
 
         {activeTab === "live" ? (

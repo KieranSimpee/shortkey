@@ -13,6 +13,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+// Kieran locked: ShortKey is 3001-only. Never bind 3000 — that port belongs to other apps.
 const port = 3001;
 const wasmDir = path.join(root, "node_modules", "@next", "swc-wasm-nodejs");
 const HEALTH_MS = 25_000;

@@ -1,0 +1,64 @@
+{
+  "version": "1.1",
+  "updated": "2026-07-20",
+  "authority": "SKY_WEIGHTING_CONVERSATION_LOG_2026-07-19.md — Sifu Sky",
+  "families": {
+    "RESEARCH": {
+      "purpose": ["Research", "Analysis", "Knowledge Discovery"],
+      "members": ["GPT", "Fable", "Composer"],
+      "weights": { "GPT": 0.6, "Fable": 0.2, "Composer": 0.2 },
+      "output": ["Research Consensus", "Confidence Score", "Key Findings", "Contradictions"]
+    },
+    "STRATEGY": {
+      "purpose": ["Business", "Growth", "Vision", "Product Direction"],
+      "members": ["GPT", "Opus", "Sonnet", "Fable"],
+      "weights": { "GPT": 0.35, "Opus": 0.35, "Sonnet": 0.2, "Fable": 0.1 },
+      "output": ["Strategic Recommendations", "Opportunities", "Risks"]
+    },
+    "ARCHITECTURE": {
+      "purpose": ["System Design", "Platform Design", "Infrastructure"],
+      "members": ["Opus", "GPT", "Cursor", "Sonnet"],
+      "weights": { "Opus": 0.4, "GPT": 0.3, "Cursor": 0.2, "Sonnet": 0.1 },
+      "output": ["Architecture Blueprint", "Scalability Plan", "Technical Risks"]
+    },
+    "DEVELOPMENT": {
+      "purpose": ["Software Development", "Coding"],
+      "members": ["Cursor", "Composer", "Codex", "GPT"],
+      "weights": { "Cursor": 0.4, "Composer": 0.25, "Codex": 0.2, "GPT": 0.15 },
+      "output": ["Code Plan", "Feature Build", "Testing Strategy"]
+    },
+    "UX": {
+      "purpose": ["User Experience"],
+      "members": ["Sonnet", "Fable", "GPT", "Composer"],
+      "weights": { "Sonnet": 0.4, "Fable": 0.25, "GPT": 0.2, "Composer": 0.15 },
+      "output": ["User Journeys", "UX Improvements", "Flow Design"]
+    },
+    "MARKET_INTELLIGENCE": {
+      "purpose": ["Market Analysis", "Competitors", "Trend Detection"],
+      "members": ["Grok", "GPT", "Gemini", "Fable", "Kura"],
+      "weights": { "Grok": 0.35, "GPT": 0.25, "Gemini": 0.15, "Fable": 0.1, "Kura": 0.15 },
+      "output": ["Market Insights", "Trend Reports", "Competitive Analysis", "Portal QC"]
+    }
+  },
+  "routing": {
+    "SITE_DEVELOPMENT": { "Cursor": 0.4, "Composer": 0.25, "Codex": 0.2, "GPT": 0.15 },
+    "CODING": { "Cursor": 0.4, "Composer": 0.25, "Codex": 0.2, "GPT": 0.15 },
+    "FULL_PLATFORM_ARCHITECTURE": { "Opus": 0.4, "GPT": 0.3, "Cursor": 0.2, "Sonnet": 0.1 },
+    "RESEARCH": { "GPT": 0.6, "Fable": 0.2, "Composer": 0.2 },
+    "DEEP_RESEARCH": { "GPT": 0.5, "Opus": 0.35, "Fable": 0.15 },
+    "UX_DESIGN": { "Sonnet": 0.4, "Fable": 0.25, "GPT": 0.2, "Composer": 0.15 },
+    "COMPETITOR_RESEARCH": { "Grok": 0.35, "GPT": 0.25, "Gemini": 0.15, "Fable": 0.1, "Kura": 0.15 },
+    "MARKET_INTELLIGENCE": { "Grok": 0.35, "GPT": 0.25, "Gemini": 0.15, "Fable": 0.1, "Kura": 0.15 },
+    "STARTUP_VALIDATION": { "GPT": 0.45, "Sonnet": 0.25, "Grok": 0.15, "Fable": 0.15 },
+    "ROADMAP_PLANNING": { "GPT": 0.35, "Opus": 0.35, "Sonnet": 0.2, "Grok": 0.1 },
+    "BRAND_POSITIONING": { "Fable": 0.4, "GPT": 0.35, "Sonnet": 0.25 },
+    "PRODUCT_STRATEGY": { "GPT": 0.35, "Opus": 0.35, "Sonnet": 0.2, "Fable": 0.1 }
+  },
+  "consensusFormula": "FinalScore = ModelWeight × HistoricalAccuracy × Confidence × TaskRelevance",
+  "sifuAdvice": {
+    "mvpFirst": true,
+    "skyM": "long-term memory — task logs + performance; manual log phase 1",
+    "noOverEngineering": true,
+    "tiers": "Fable/Opus = complexity · Flash/Sonnet = speed/daily"
+  }
+}

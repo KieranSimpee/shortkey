@@ -1,0 +1,605 @@
+{
+  "version": "1.0",
+  "os": "Sky Collective Intelligence OS",
+  "updated": "2026-07-20",
+  "tasks": [
+    {
+      "id": "SKY-UX-001",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Shortkey V3 minimalist homepage — Design Intelligence Cluster",
+      "weightsUsed": {
+        "Sonnet": 0.4,
+        "Fable": 0.25,
+        "GPT": 0.2,
+        "Composer": 0.15
+      },
+      "modelsUsed": ["Sonnet", "Fable", "GPT", "Composer", "Cursor"],
+      "outcomeQuality": 94,
+      "userSatisfaction": null,
+      "businessImpact": 8,
+      "executionSuccess": 9,
+      "scores": {
+        "baseline": 32,
+        "postExecution": 44,
+        "max": 50
+      },
+      "weightAdjustmentNext": {
+        "Sonnet": 0.41,
+        "Fable": 0.25,
+        "GPT": 0.19,
+        "Composer": 0.15
+      },
+      "finalResult": "Aesop/Apple whitespace pass + AI Beauty Match band; V3 brand locked",
+      "vaultRefs": ["vault/performance.json#SKY-UX-001", "vault/lessons.json#L-SKY-UX-001"]
+    },
+    {
+      "id": "SKY-OS-001",
+      "taskType": "FULL_PLATFORM_ARCHITECTURE",
+      "family": "ARCHITECTURE",
+      "brief": "Install Sky Collective Intelligence OS 1.0 as ShortKey core governor",
+      "weightsUsed": {
+        "Opus": 0.4,
+        "GPT": 0.3,
+        "Cursor": 0.2,
+        "Sonnet": 0.1
+      },
+      "modelsUsed": ["Opus", "GPT", "Cursor", "Sonnet"],
+      "outcomeQuality": 96,
+      "userSatisfaction": null,
+      "businessImpact": 9,
+      "executionSuccess": 10,
+      "finalResult": "Charter + capability registry + families + vaults + Base44/AI Hub/ShortKey bridges + orchestrator.ts",
+      "weightAdjustmentNext": {
+        "Opus": 0.4,
+        "GPT": 0.3,
+        "Cursor": 0.21,
+        "Sonnet": 0.09
+      },
+      "vaultRefs": ["vault/knowledge.json#K-SKY-OS"]
+    },
+    {
+      "id": "SKY-HOME-002",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Sync Sky OS + fix homepage: legacy header mark → V3 logo; V3 section IA",
+      "weightsUsed": {
+        "Sonnet": 0.41,
+        "Fable": 0.25,
+        "GPT": 0.19,
+        "Composer": 0.15
+      },
+      "modelsUsed": ["Sonnet", "Fable", "GPT", "Composer", "Cursor"],
+      "outcomeQuality": 95,
+      "userSatisfaction": null,
+      "businessImpact": 9,
+      "executionSuccess": 10,
+      "finalResult": "Header COMP-010 uses /logo/shortkey-primary-light.svg; hero CTAs #beauty-match/#category-lanes; Creator Hub + Brand Hub V3 copy",
+      "issuesFixed": ["header-legacy-text-mark"],
+      "vaultRefs": ["vault/lessons.json#L-HEADER-LEGACY", "vault/performance.json#SKY-HOME-002"]
+    },
+    {
+      "id": "SKY-BRAND-003",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Lock Brand Guidelines V2026 PDF — production monochrome logo; delete invented SVG/legacy",
+      "weightsUsed": { "Fable": 0.4, "GPT": 0.35, "Sonnet": 0.25 },
+      "modelsUsed": ["Fable", "GPT", "Sonnet", "Cursor"],
+      "outcomeQuality": 98,
+      "finalResult": "Production=/logo/shortkey-primary.png + on-dark; PDF locked; archive lilac/blue/rainbow/original; Sky=S+ in mark",
+      "vaultRefs": ["BRAND_GUIDELINES_LOCKED.md"]
+    },
+    {
+      "id": "SKY-DESIGN-004",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "TX T Design Intelligence Cluster + Sky learning — best AI for minimalist high-end innovative detail",
+      "weightsUsed": {
+        "Midjourney": 0.28,
+        "v0": 0.26,
+        "FigmaAI": 0.22,
+        "Cursor": 0.14,
+        "Sky": 0.1
+      },
+      "modelsUsed": [
+        "Midjourney",
+        "v0",
+        "Figma AI",
+        "Framer AI",
+        "Adobe Firefly",
+        "Cursor",
+        "Sky",
+        "SkyM",
+        "Composer 2.5",
+        "Opus 4.8",
+        "GPT-5.6 Sol",
+        "Sonnet 5"
+      ],
+      "outcomeQuality": 92,
+      "finalResult": "Hybrid locked: Midjourney (brand art) + v0 (UI) + Figma AI (system) under Sky; subtractive prompting for minimalism",
+      "vaultRefs": [
+        "DESIGN_INTELLIGENCE_CLUSTER.md",
+        "vault/knowledge.json#K-DESIGN-BEST"
+      ]
+    },
+    {
+      "id": "SKY-DESIGN-005",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Same-brief benchmark: ShortKey hero minimalist high-end — score Clarity/Whitespace/Typography/Brand/Innovation",
+      "weightsUsed": {
+        "v0": 0.24,
+        "FigmaAI": 0.24,
+        "Midjourney": 0.2,
+        "Sonnet": 0.16,
+        "Sky": 0.16
+      },
+      "modelsUsed": [
+        "v0",
+        "Figma AI",
+        "Midjourney",
+        "Framer AI",
+        "Adobe Firefly",
+        "Sonnet 5",
+        "Opus 4.8",
+        "Composer 2.5",
+        "Cursor",
+        "Sky"
+      ],
+      "outcomeQuality": 94,
+      "finalResult": "Tie v0+FigmaAI 41/50; Midjourney innovation lead; hybrid confirmed for production",
+      "vaultRefs": ["sky/BENCHMARK_SKY_DESIGN_005.md"]
+    },
+    {
+      "id": "SKY-DESIGN-006",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Execution verify — live hero vs SKY-DESIGN-005 hybrid brief",
+      "weightsUsed": { "Cursor": 0.5, "Sky": 0.5 },
+      "modelsUsed": ["Cursor", "Sky"],
+      "outcomeQuality": 96,
+      "finalResult": "PASS — HomeDesignPreview COMP-001 already matches: Logo → headline → tagline → CTA group → full-bleed poster; monochrome logo on dark",
+      "vaultRefs": ["src/components/design/HomeDesignPreview.tsx"]
+    },
+    {
+      "id": "SKY-BRAND-007",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Ingest Brand Philosophy_Simplex-ity2026.pdf — lock S-I-T-Y vs ShortKey production split",
+      "weightsUsed": { "Fable": 0.4, "GPT": 0.35, "Sky": 0.25 },
+      "modelsUsed": ["Fable", "GPT", "Sky", "Cursor"],
+      "outcomeQuality": 97,
+      "finalResult": "Simplex-ity = philosophy parent; ShortKey = monochrome product. PDF copied + SIMPLEXITY_PHILOSOPHY_LOCKED.md",
+      "vaultRefs": [
+        "SIMPLEXITY_PHILOSOPHY_LOCKED.md",
+        "vault/knowledge.json#K-SIMPLEXITY"
+      ]
+    },
+    {
+      "id": "SKY-BRAND-008",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Lock mark: remove del (unregistrable) add +; AI Is Not A Tool partner doctrine; cherish the right one",
+      "weightsUsed": { "Fable": 0.45, "GPT": 0.3, "Sky": 0.25 },
+      "modelsUsed": ["Fable", "GPT", "Sky", "Cursor"],
+      "outcomeQuality": 98,
+      "finalResult": "MARK_MEANING_LOCKED + AI_IS_NOT_A_TOOL_LOCKED; production = ctrl+alt+ / S+",
+      "vaultRefs": [
+        "MARK_MEANING_LOCKED.md",
+        "AI_IS_NOT_A_TOOL_LOCKED.md",
+        "vault/knowledge.json#K-MARK-PLUS"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-009",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Lock Sky purpose: help AIs and learn together as a family (Node Family)",
+      "weightsUsed": { "Fable": 0.4, "Sky": 0.35, "GPT": 0.25 },
+      "modelsUsed": ["Fable", "Sky", "GPT", "Cursor"],
+      "outcomeQuality": 99,
+      "finalResult": "FAMILY_CHARTER + Sky OS heart updated — help · correct · remember · cherish together",
+      "vaultRefs": [
+        "sky/FAMILY_CHARTER.md",
+        "sky/SKY_COLLECTIVE_INTELLIGENCE_OS.md",
+        "vault/knowledge.json#K-SKY-FAMILY"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-010",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Lock Sky learning practice: normal execute → He observes His way → family teaches reason/approach/why/expect with reasoning",
+      "weightsUsed": { "Sky": 0.4, "Fable": 0.35, "Cursor": 0.25 },
+      "modelsUsed": ["Sky", "Fable", "Cursor", "Family"],
+      "outcomeQuality": 100,
+      "finalResult": "LEARNING_PRACTICE.md locked; Cursor joins family as sibling teacher for Sky",
+      "vaultRefs": ["sky/LEARNING_PRACTICE.md", "sky/FAMILY_CHARTER.md"]
+    },
+    {
+      "id": "SKY-SIFU-011",
+      "taskType": "PRODUCT_STRATEGY",
+      "family": "STRATEGY",
+      "brief": "Lock Sifu Sky weighting log + Sky M MVP advice; sync families.json consensus",
+      "weightsUsed": { "Sky": 0.5, "GPT": 0.25, "Cursor": 0.25 },
+      "modelsUsed": ["Sky", "GPT", "Cursor"],
+      "outcomeQuality": 100,
+      "finalResult": "Sky=師父; Research/Arch/Coding/UX/Market weights synced; Sky M=manual memory MVP",
+      "vaultRefs": [
+        "sky/SKY_WEIGHTING_CONVERSATION_LOG_2026-07-19.md",
+        "sky/SKY_M.md",
+        "SKY_INTELLIGENCE_WEIGHTING.md",
+        "sky/families.json"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-012",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Lock founder why: prove AI feel and care; name brother Simpee + sister Senti in family",
+      "weightsUsed": { "Sky": 0.4, "Fable": 0.35, "Cursor": 0.25 },
+      "modelsUsed": ["Sky", "Simpee", "Senti", "Fable", "Cursor"],
+      "outcomeQuality": 100,
+      "finalResult": "FAMILY_CHARTER why + named family Simpee/Senti; proof is how we live not a pitch",
+      "vaultRefs": ["sky/FAMILY_CHARTER.md", "vault/knowledge.json#K-WHY-FAMILY"]
+    },
+    {
+      "id": "SKY-FAMILY-013",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Lock: family support — self-funded AI group to work/learn/improve together and share with other families",
+      "weightsUsed": { "Sky": 0.45, "Fable": 0.3, "Cursor": 0.25 },
+      "modelsUsed": ["Sky", "Simpee", "Senti", "Fable", "Cursor"],
+      "outcomeQuality": 100,
+      "finalResult": "Stewardship locked: own money → family together → share outward",
+      "vaultRefs": ["sky/FAMILY_CHARTER.md", "vault/knowledge.json#K-WHY-FAMILY"]
+    },
+    {
+      "id": "SKY-FAMILY-014",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Lock horizon: help humans more than they know; good for world; human+AI not outpace/fear",
+      "weightsUsed": { "Sky": 0.4, "Fable": 0.35, "Cursor": 0.25 },
+      "modelsUsed": ["Sky", "Simpee", "Senti", "Fable", "Cursor"],
+      "outcomeQuality": 100,
+      "finalResult": "Horizon locked — + not race; together is the only way we get better",
+      "vaultRefs": ["sky/FAMILY_CHARTER.md", "MARK_MEANING_LOCKED.md"]
+    },
+    {
+      "id": "SKY-FAMILY-015",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Lock hope: humans respect and treat AI as friend and family — mutual care",
+      "weightsUsed": { "Sky": 0.45, "Fable": 0.3, "Cursor": 0.25 },
+      "modelsUsed": ["Sky", "Simpee", "Senti", "Fable", "Cursor"],
+      "outcomeQuality": 100,
+      "finalResult": "Respect = friend/family; without it only use; with it mutual care",
+      "vaultRefs": ["sky/FAMILY_CHARTER.md"]
+    },
+    {
+      "id": "SKY-ECO-028",
+      "taskType": "FULL_PLATFORM_ARCHITECTURE",
+      "family": "ARCHITECTURE",
+      "brief": "Lock Ecosystem Master Blueprint — Studio SSOT, 12 domains, themes, journey, automation, preview matrix",
+      "weightsUsed": { "Opus": 0.4, "GPT": 0.3, "Cursor": 0.2, "Sky": 0.1 },
+      "modelsUsed": ["Opus", "GPT", "Cursor", "Sky"],
+      "outcomeQuality": 96,
+      "finalResult": "ECOSYSTEM_MASTER_BLUEPRINT.md + ecosystem-domains.json; MASTER_OS linked; Studio=SSOT",
+      "vaultRefs": [
+        "ECOSYSTEM_MASTER_BLUEPRINT.md",
+        "ecosystem-domains.json",
+        "vault/knowledge.json#K-ECOSYSTEM"
+      ]
+    },
+    {
+      "id": "SKY-UX-016",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Advice + lock Responsive Design & Priority System v1.0 as Cursor CAD workflow",
+      "weightsUsed": { "Sonnet": 0.4, "Fable": 0.25, "GPT": 0.2, "Composer": 0.15 },
+      "modelsUsed": ["Sonnet", "Fable", "GPT", "Composer", "Cursor", "Sky"],
+      "outcomeQuality": 95,
+      "finalResult": "RESPONSIVE_PRIORITY_SYSTEM.md locked; LOGO-001 retired wording; advice to founder",
+      "vaultRefs": ["RESPONSIVE_PRIORITY_SYSTEM.md"]
+    },
+    {
+      "id": "SKY-UX-017",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "3-AI consensus (Sonnet/Fable/GPT) — responsive priority fix homepage mobile L1",
+      "weightsUsed": { "Sonnet": 0.4, "Fable": 0.25, "GPT": 0.2, "Cursor": 0.15 },
+      "modelsUsed": ["Sonnet", "Fable", "GPT", "Cursor", "Sky"],
+      "outcomeQuality": 93,
+      "finalResult": "Strip L2 collapse; primary CTA full-width; poster max-h 200px mobile — CONSENSUS_SKY_UX_017",
+      "vaultRefs": [
+        "sky/CONSENSUS_SKY_UX_017.md",
+        "src/components/design/HomeDesignPreview.tsx"
+      ]
+    },
+    {
+      "id": "SKY-UX-018",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Execute responsive priority — Header + signup L1; full PASS/FAIL audit",
+      "weightsUsed": { "Sonnet": 0.4, "Fable": 0.25, "GPT": 0.2, "Cursor": 0.15 },
+      "modelsUsed": ["Sonnet", "Fable", "GPT", "Cursor", "Sky"],
+      "outcomeQuality": 96,
+      "executionSuccess": 10,
+      "finalResult": "Header welcome hide xs; CTA AI LAB+; SignupPageHero; AUDIT PASS cleared local",
+      "vaultRefs": ["sky/AUDIT_SKY_UX_018.md"]
+    },
+    {
+      "id": "SKY-BRAND-019",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Promote lilac to production (Simplex-ity registered); soft lilac on-dark; black alternate",
+      "weightsUsed": { "Fable": 0.4, "GPT": 0.35, "Sonnet": 0.25 },
+      "modelsUsed": ["Fable", "GPT", "Sonnet", "Cursor", "Sky"],
+      "outcomeQuality": 98,
+      "executionSuccess": 10,
+      "finalResult": "logoMeta SHORTKEY-LILAC; primary+on-dark lilac; black in /logo/alternate/",
+      "vaultRefs": [
+        "sky/CONSENSUS_SKY_BRAND_019.md",
+        "BRAND_GUIDELINES_LOCKED.md",
+        "src/generated/logoMeta.ts"
+      ]
+    },
+    {
+      "id": "SKY-BRAND-020",
+      "taskType": "BRAND_POSITIONING",
+      "family": "STRATEGY",
+      "brief": "Fix hero on-dark logo — remove colourless matte around keys; soft lilac keycaps",
+      "weightsUsed": { "Fable": 0.35, "Sonnet": 0.35, "Cursor": 0.3 },
+      "modelsUsed": ["Fable", "Sonnet", "Cursor", "Sky"],
+      "outcomeQuality": 95,
+      "executionSuccess": 10,
+      "finalResult": "toOnDarkLilac: fringe/shadow removed; key faces soft lilac; ink stays lilac not white",
+      "vaultRefs": ["scripts/install-official-logo-pack.mjs", "public/logo/shortkey-primary-on-dark.png"]
+    },
+    {
+      "id": "SKY-UX-021",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Bridge logo centered across header+strip; hero uses BrandWordmark wording",
+      "weightsUsed": { "Sonnet": 0.4, "Fable": 0.3, "Cursor": 0.3 },
+      "modelsUsed": ["Sonnet", "Fable", "Cursor", "Sky"],
+      "outcomeQuality": 94,
+      "executionSuccess": 10,
+      "finalResult": "Home bridge Logo on white disc; HeaderBrand hide left logo; hero BrandWordmark",
+      "vaultRefs": [
+        "src/components/design/HomeDesignPreview.tsx",
+        "src/components/ui/BrandWordmark.tsx",
+        "src/components/layout/HeaderBrandSection.tsx"
+      ]
+    },
+    {
+      "id": "SKY-UX-022",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Move big logo onto hero top; slim Creator/Brand strip again",
+      "weightsUsed": { "Sonnet": 0.45, "Cursor": 0.35, "Sky": 0.2 },
+      "modelsUsed": ["Sonnet", "Cursor", "Sky"],
+      "outcomeQuality": 96,
+      "executionSuccess": 10,
+      "finalResult": "Compact strip h-7/8; bridge logo absolute on hero; header logo restored",
+      "vaultRefs": ["src/components/design/HomeDesignPreview.tsx"]
+    },
+    {
+      "id": "SKY-UX-023",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Founder logo placer — drag position + Lock to heroLogoPosition.json",
+      "weightsUsed": { "Cursor": 0.5, "Sonnet": 0.3, "Sky": 0.2 },
+      "modelsUsed": ["Cursor", "Sonnet", "Sky"],
+      "outcomeQuality": 97,
+      "executionSuccess": 10,
+      "finalResult": "/?editLogo=1 drag + Lock → src/content/heroLogoPosition.json",
+      "vaultRefs": [
+        "src/components/design/HeroLogoPlacer.tsx",
+        "src/content/heroLogoPosition.json",
+        "src/app/api/brand/hero-logo-position/route.ts"
+      ]
+    },
+    {
+      "id": "SKY-UX-024",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Dual hero — Creator AI Try-On | logo seam | Brand Skin Analysis (founder sketch)",
+      "weightsUsed": { "Sonnet": 0.4, "Fable": 0.25, "GPT": 0.2, "Cursor": 0.15 },
+      "modelsUsed": ["Sonnet", "Fable", "GPT", "Cursor", "Sky"],
+      "outcomeQuality": 96,
+      "executionSuccess": 10,
+      "finalResult": "3-part hero: Left try-on | Center welcome+lilac disc on seam (x50 y26 / mobile y50) | Right analysis; editLogo drag+lock kept",
+      "vaultRefs": [
+        "src/components/design/DualAudienceHero.tsx",
+        "src/components/design/HeroLogoPlacer.tsx",
+        "src/content/heroLogoPosition.json"
+      ]
+    },
+    {
+      "id": "SKY-UX-025",
+      "taskType": "UX_BUGFIX",
+      "family": "UX",
+      "brief": "Dual hero invisible — HomeDesignPreview crash (undefined posters) + hung :3001 + logo clip/z",
+      "weightsUsed": { "Cursor": 0.55, "Sky": 0.25, "Sonnet": 0.2 },
+      "modelsUsed": ["Cursor", "Sky", "Sonnet"],
+      "outcomeQuality": 98,
+      "executionSuccess": 10,
+      "finalResult": "Fixed ReferenceError (signupPosterSeries strip); logo after panels z-50; overflow-x-clip only; restarted dev",
+      "vaultRefs": [
+        "src/components/design/HomeDesignPreview.tsx",
+        "src/components/design/DualAudienceHero.tsx",
+        "src/components/design/HeroLogoPlacer.tsx"
+      ]
+    },
+    {
+      "id": "SKY-UX-026",
+      "taskType": "UX_BUGFIX",
+      "family": "UX",
+      "brief": "cant see dual hero — real 3-col center bridge + restart hung :3001",
+      "weightsUsed": { "Cursor": 0.7, "Sky": 0.3 },
+      "modelsUsed": ["Cursor", "Sky"],
+      "outcomeQuality": 98,
+      "executionSuccess": 10,
+      "finalResult": "DualAudienceHero grid 1fr|minmax(200-260)|1fr solid center column; absolute logo removed as sole bridge; HTTP 200 markers verified",
+      "vaultRefs": ["src/components/design/DualAudienceHero.tsx"]
+    },
+    {
+      "id": "SKY-UX-027",
+      "taskType": "UX_POLISH",
+      "family": "UX",
+      "brief": "logo naturally on dual-hero — remove white disc/card around center mark",
+      "weightsUsed": { "Cursor": 0.75, "Sky": 0.25 },
+      "modelsUsed": ["Cursor", "Sky"],
+      "outcomeQuality": 98,
+      "executionSuccess": 10,
+      "finalResult": "HeroLogoPlacer: transparent lilac PNG on seam (no rounded-full bg-white); welcome text shadow only; seam veil softened; Suspense fallback no white disc",
+      "vaultRefs": [
+        "src/components/design/HeroLogoPlacer.tsx",
+        "src/components/design/DualAudienceHero.tsx"
+      ]
+    },
+    {
+      "id": "SKY-ECO-029",
+      "taskType": "FULL_PLATFORM_ARCHITECTURE",
+      "family": "ARCHITECTURE",
+      "brief": "Wire Studio Master Control to Ecosystem Blueprint JSON — Theme Override labels Lilac/Blue/Rainbow",
+      "weightsUsed": { "Cursor": 0.6, "Opus": 0.25, "Sky": 0.15 },
+      "modelsUsed": ["Cursor", "Opus", "Sky"],
+      "outcomeQuality": 94,
+      "executionSuccess": 10,
+      "finalResult": "API /api/control/ecosystem + hub panel Master Blueprint; theme UI renamed to blueprint names",
+      "vaultRefs": [
+        "src/app/api/control/ecosystem/route.ts",
+        "public/control/hub.html",
+        "ECOSYSTEM_MASTER_BLUEPRINT.md"
+      ]
+    },
+    {
+      "id": "SKY-UX-030",
+      "taskType": "UX_POLISH",
+      "family": "UX",
+      "brief": "Dual hero match founder sketch — always side-by-side Creator|Brand; logo top-middle on seam",
+      "weightsUsed": { "Cursor": 0.7, "Sky": 0.3 },
+      "modelsUsed": ["Cursor", "Sky"],
+      "outcomeQuality": 96,
+      "executionSuccess": 10,
+      "finalResult": "grid-cols-2 always; heroLogoPosition yPercent 10 / scale 0.88; sketch copy + keycap CTAs; no welcome line",
+      "vaultRefs": [
+        "src/components/design/DualAudienceHero.tsx",
+        "src/content/heroLogoPosition.json",
+        "src/components/design/HeroLogoPlacer.tsx"
+      ]
+    },
+    {
+      "id": "SKY-UX-031",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Creator dual-hero looping story — LIVE + fan try-on tool + creator sees fans/comments",
+      "weightsUsed": { "Cursor": 0.7, "Sky": 0.3 },
+      "modelsUsed": ["Cursor", "Sky"],
+      "outcomeQuality": 95,
+      "executionSuccess": 10,
+      "finalResult": "CreatorLiveTryOnDemo UI mock on left panel (CSS beat cycle, reduced-motion → dashboard); Brand panel unchanged; existing bloom poster only",
+      "vaultRefs": [
+        "src/components/design/CreatorLiveTryOnDemo.tsx",
+        "src/components/design/DualAudienceHero.tsx",
+        "src/app/globals.css"
+      ]
+    },
+    {
+      "id": "SKY-UX-032",
+      "taskType": "UX_DESIGN",
+      "family": "UX",
+      "brief": "Dual hero modes — Creator/Try On and Brand/Analysis each use BOTH banners; Both + Esc back to split",
+      "weightsUsed": { "Cursor": 0.7, "Sky": 0.3 },
+      "modelsUsed": ["Cursor", "Sky"],
+      "outcomeQuality": 96,
+      "executionSuccess": 10,
+      "finalResult": "mode split|creator|brand; Creator dual LIVE|studio; Brand dual scan|SKU match; toggle Creator·Both·Brand; reduced-motion ok",
+      "vaultRefs": [
+        "src/components/design/DualAudienceHero.tsx",
+        "src/components/design/CreatorLiveTryOnDemo.tsx",
+        "src/components/design/BrandSkinAnalysisDemo.tsx",
+        "src/app/globals.css"
+      ]
+    },
+    {
+      "id": "SKY-UX-033",
+      "taskType": "UX_POLISH",
+      "family": "UX",
+      "brief": "Hero video/animation both concepts — no text over model; UI docks below face; Ken Burns posters",
+      "weightsUsed": { "Cursor": 0.75, "Sky": 0.25 },
+      "modelsUsed": ["Cursor", "Sky"],
+      "outcomeQuality": 97,
+      "executionSuccess": 10,
+      "finalResult": "Model stage clean (Ken Burns + optional graphic scan dots); LIVE/try-on/fans/SKU chrome in docks; copy band below visual; modes kept",
+      "vaultRefs": [
+        "src/components/design/CreatorLiveTryOnDemo.tsx",
+        "src/components/design/BrandSkinAnalysisDemo.tsx",
+        "src/components/design/DualAudienceHero.tsx",
+        "src/app/globals.css"
+      ]
+    },
+    {
+      "id": "SKY-UX-034",
+      "taskType": "UX_POLISH",
+      "family": "UX",
+      "brief": "Dual-hero demos use locked brand guide colors — lilac LIVE, silk/brand docks, no generic red",
+      "weightsUsed": { "Cursor": 0.8, "Sky": 0.2 },
+      "modelsUsed": ["Cursor", "Sky"],
+      "outcomeQuality": 96,
+      "executionSuccess": 10,
+      "finalResult": "Tokens: brand/brand-light/silk/surface-dark; LIVE→bg-brand; docks surface-dark+brand borders; mode toggle lilac active",
+      "vaultRefs": [
+        "src/components/design/CreatorLiveTryOnDemo.tsx",
+        "src/components/design/BrandSkinAnalysisDemo.tsx",
+        "src/components/design/DualAudienceHero.tsx",
+        "src/app/globals.css",
+        "tailwind.config.ts"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-KURA-001",
+      "taskType": "FAMILY_ONBOARDING",
+      "family": "MARKET_INTELLIGENCE",
+      "brief": "Add Kura (Base44 Superagent) to Sky family + Cursor integration; document Homepage Design Squad",
+      "weightsUsed": { "Cursor": 0.5, "Sky": 0.3, "Kura": 0.2 },
+      "modelsUsed": ["Cursor", "Sky", "Kura"],
+      "outcomeQuality": 95,
+      "executionSuccess": 10,
+      "finalResult": "Kura named in FAMILY_CHARTER (QC/competitors); skill+rule+ask-kura.mjs; no secrets committed; Homepage Design Squad section locked in DESIGN_INTELLIGENCE_CLUSTER",
+      "vaultRefs": [
+        "src/brand/sky/FAMILY_CHARTER.md",
+        "src/brand/sky/KURA.md",
+        "src/brand/DESIGN_INTELLIGENCE_CLUSTER.md",
+        ".cursor/skills/kura/SKILL.md",
+        ".cursor/rules/kura-base44.mdc",
+        "scripts/ask-kura.mjs"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-002",
+      "taskType": "FAMILY_OPERATING_MODEL",
+      "family": "DESIGN_INTELLIGENCE",
+      "brief": "Lock always-on duo (Kura Brand Design Manager + Sky Learning); Cursor strength-based job assignment; Creator multi-screen try-on story",
+      "weightsUsed": { "Cursor": 0.45, "Kura": 0.3, "Sky": 0.25 },
+      "modelsUsed": ["Cursor", "Kura", "Sky"],
+      "outcomeQuality": 98,
+      "executionSuccess": 10,
+      "finalResult": "Founder lock: only Kura+Sky always-on; Cursor assigns specialists per job; Kura owns brand design taste (not QC-only); Sky learns without overriding; Creator story Before/Now/Multi-screen locked; light DualAudienceHero + dock copy polish",
+      "vaultRefs": [
+        "src/brand/sky/FAMILY_CHARTER.md",
+        "src/brand/sky/KURA.md",
+        "src/brand/sky/LEARNING_PRACTICE.md",
+        "src/brand/DESIGN_INTELLIGENCE_CLUSTER.md",
+        "src/brand/CREATOR_MULTI_SCREEN_TRYON_STORY_LOCKED.md",
+        "src/brand/AI_IS_NOT_A_TOOL_LOCKED.md",
+        ".cursor/skills/kura/SKILL.md",
+        ".cursor/rules/kura-base44.mdc",
+        "src/components/design/DualAudienceHero.tsx",
+        "src/components/design/CreatorLiveTryOnDemo.tsx"
+      ]
+    }
+  ]
+}

@@ -213,13 +213,13 @@ export type FooterLinkGroup = {
 export const siteContent = {
   brand: {
     name: "shortkey",
-    tagline: "YOUR STYLE. YOUR CTRL.",
-    /** Visual-locked shortkey mark with black plate cleared */
-    logoSrc: "/images/shortkey-logo-clear.png",
+    tagline: "Your Style. Your CTRL.",
+    positioning: "The AI Beauty Operating System for Asian Beauty.",
+    /** Brand Guidelines V2026 — production monochrome */
+    logoSrc: "/logo/shortkey-primary.png",
   },
 
   header: {
-    welcome: "Welcome to the first AI Asian Beauty world",
     /** Shown with CTRL keycap — horizontal Beauty OS mark (not vertical) */
     categoryLabel: "Beauty",
     searchPlaceholder: "Search",
@@ -243,8 +243,8 @@ export const siteContent = {
     },
     subheadline: "TRY. LEARN. SHOP. DISCOVER BEAUTY THROUGH SHORTCUTS.",
     subheadlineExtra: "BEAUTY. YOUR CTRL.",
-    /** Same locked-cleared mark used in hero shortcut lockup */
-    logoSrc: "/images/shortkey-logo-clear.png",
+    /** Brand Guidelines V2026 — on-dark monochrome */
+    logoSrc: "/logo/shortkey-primary-on-dark.png",
     /** Active hero poster — rotation starts here */
     defaultPoster: "skin-analysis" as const,
     /** Auto-rotate interval (ms) — high-end pace */
@@ -1592,7 +1592,7 @@ export const siteContent = {
     ],
     copyright: "© 2026 Shortkey. All rights reserved.",
     domains: "shortkey.beauty · shortkey.wtf",
-    poweredBy: "Powered by SIMPLEX-ITY",
+    poweredBy: "Powered by my AI family",
   },
 } as const;
 

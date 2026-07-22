@@ -259,6 +259,7 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
     <button class="ni" onclick="nav('changes',this)">Change Preview</button>
   </div>
   <div class="ss"><div class="sl">Ecosystem</div>
+    <button class="ni" onclick="nav('ecosystem',this)">Master Blueprint</button>
     <button class="ni" onclick="nav('livehub',this)">shortkey.live</button>
     <button class="ni" onclick="nav('blueprint',this)">Visual Blueprint</button>
     <button class="ni" onclick="nav('execution',this)">Homepage Execution</button>
@@ -284,11 +285,11 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
 <!-- GLOBAL THEME -->
 <div class="panel" id="panel-theme">
   <div class="page-hd"><div><div class="pt">Global Theme</div><div class="ps">Select once &rarr; all 12 domains sync instantly</div></div></div>
-  <div class="sec">3 Core Themes</div>
+  <div class="sec">3 Core Themes (Blueprint)</div>
   <div class="theme-row">
-    <div class="tp active" id="tp-main" onclick="setTheme('main',this)"><div class="td" style="background:#9B7AE3;"></div><div><div class="tn">Main</div><div class="tsb">Purple</div><div class="ta">Active</div></div></div>
-    <div class="tp" id="tp-skincare" onclick="setTheme('skincare',this)"><div class="td" style="background:#7AC4E3;"></div><div><div class="tn">Skincare</div><div class="tsb">Blue</div><div class="ta">Active</div></div></div>
-    <div class="tp" id="tp-makeup" onclick="setTheme('makeup',this)"><div class="td" style="background:linear-gradient(135deg,#E84855,#9B7AE3);"></div><div><div class="tn">Makeup</div><div class="tsb">Rainbow</div><div class="ta">Active</div></div></div>
+    <div class="tp active" id="tp-main" onclick="setTheme('main',this)"><div class="td" style="background:#9B7AE3;"></div><div><div class="tn">Lilac</div><div class="tsb">Creative Premium Calm</div><div class="ta">Production</div></div></div>
+    <div class="tp" id="tp-skincare" onclick="setTheme('skincare',this)"><div class="td" style="background:#7AC4E3;"></div><div><div class="tn">Blue</div><div class="tsb">Professional Trustworthy</div><div class="ta">Alternate</div></div></div>
+    <div class="tp" id="tp-makeup" onclick="setTheme('makeup',this)"><div class="td" style="background:linear-gradient(135deg,#E84855,#9B7AE3);"></div><div><div class="tn">Rainbow</div><div class="tsb">Experimental · AI Family</div><div class="ta">Experimental</div></div></div>
   </div>
   <div class="sec">Seasonal Themes</div>
   <div class="card">
@@ -1479,6 +1480,32 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
   <iframe class="embed-frame" title="shortkey.live Full Rebuild" src="/control/live.html" loading="lazy"></iframe>
 </div>
 
+<!-- ECOSYSTEM: Master Blueprint (SSOT from repo JSON) -->
+<div class="panel" id="panel-ecosystem">
+  <div class="page-hd">
+    <div>
+      <div class="pt">Ecosystem Master Blueprint</div>
+      <div class="ps">Studio = Single Source of Truth · Theme Override · Page Manager · Store Auto-Sync</div>
+    </div>
+    <div class="ha">
+      <a class="btn btn-s" href="/api/control/ecosystem" target="_blank" rel="noreferrer">Open JSON</a>
+      <button class="btn btn-p" type="button" onclick="loadEcosystemBlueprint()">Refresh</button>
+    </div>
+  </div>
+  <div class="sec">Core principle</div>
+  <div class="card" id="eco-principle" style="font-size:13px;color:var(--mid);line-height:1.7;">Loading…</div>
+  <div class="sec">Themes</div>
+  <div class="dg" id="eco-themes"></div>
+  <div class="sec">12 Domains</div>
+  <div class="dg" id="eco-domains"></div>
+  <div class="sec">User journey</div>
+  <div class="card"><div class="wf-row" id="eco-journey"></div></div>
+  <div class="sec">Automation</div>
+  <div class="dg" id="eco-automation"></div>
+  <div class="sec">Preview matrix</div>
+  <div class="card" id="eco-preview" style="font-size:13px;color:var(--mid);"></div>
+</div>
+
 <!-- ECOSYSTEM: Visual Blueprint -->
 <div class="panel embed-panel" id="panel-blueprint">
   <iframe class="embed-frame" title="Visual Ecosystem Blueprint" src="/control/blueprint.html" loading="lazy"></iframe>
@@ -1547,9 +1574,9 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
 <script>
 // THEME
 const THEMES={
-  main:{col:'#9B7AE3',bg:'rgba(155,122,227,0.08)',label:'Main Theme Active',ov:'Main'},
-  skincare:{col:'#7AC4E3',bg:'rgba(122,196,227,0.08)',label:'Skincare Theme Active',ov:'Skincare'},
-  makeup:{col:'#E84855',bg:'rgba(232,72,85,0.08)',label:'Makeup Theme Active',ov:'Makeup'}
+  main:{col:'#9B7AE3',bg:'rgba(155,122,227,0.08)',label:'Lilac Theme Active',ov:'Lilac'},
+  skincare:{col:'#7AC4E3',bg:'rgba(122,196,227,0.08)',label:'Blue Theme Active',ov:'Blue'},
+  makeup:{col:'#E84855',bg:'rgba(232,72,85,0.08)',label:'Rainbow Theme Active',ov:'Rainbow'}
 };
 function setTheme(t,el){
   const th=THEMES[t];
@@ -1571,6 +1598,43 @@ function nav(id,btn){
   if(id==='preview') initTP();
   if(id==='bridges') refreshBridges();
   if(id==='agents') loadBriefs();
+  if(id==='ecosystem') loadEcosystemBlueprint();
+}
+async function loadEcosystemBlueprint(){
+  var principle=document.getElementById('eco-principle');
+  var themesEl=document.getElementById('eco-themes');
+  var domainsEl=document.getElementById('eco-domains');
+  var journeyEl=document.getElementById('eco-journey');
+  var autoEl=document.getElementById('eco-automation');
+  var previewEl=document.getElementById('eco-preview');
+  if(!principle) return;
+  principle.textContent='Loading…';
+  try{
+    var res=await fetch('/api/control/ecosystem');
+    var j=await res.json();
+    if(!j.ok||!j.blueprint) throw new Error(j.error||'load failed');
+    var b=j.blueprint;
+    principle.textContent=b.corePrinciple||'Studio as Single Source of Truth';
+    themesEl.innerHTML=Object.keys(b.themes||{}).map(function(k){
+      var t=b.themes[k];
+      return '<div class="dc"><div class="dh"><span class="dn">'+k+'</span><span class="ds '+(t.role==='production'?'s-r':'s-b')+'">'+t.role+'</span></div><div style="font-size:12px;color:var(--mid);">'+t.character+'</div></div>';
+    }).join('');
+    domainsEl.innerHTML=Object.keys(b.domains||{}).map(function(k){
+      var d=b.domains[k];
+      return '<div class="dc"><div class="dh"><span class="dn">apps/'+k+'</span><span class="ds s-b">P'+d.phase+'</span></div><div style="font-size:12px;color:var(--mid);margin-bottom:4px;">'+d.role+'</div><div class="dp"><span class="dpp">shortkey.'+k+'</span></div></div>';
+    }).join('');
+    journeyEl.innerHTML=(b.userJourney||[]).map(function(step,i){
+      return '<div class="wf-step"><div class="wf-num">0'+(i+1)+'</div><div class="wf-title">'+step+'</div></div>';
+    }).join('');
+    autoEl.innerHTML=(b.automation||[]).map(function(a){
+      return '<div class="dc"><div class="dn" style="margin-bottom:6px;">'+a.trigger+'</div><div style="font-size:12px;color:var(--cat);font-weight:700;">→ '+a.action+'</div></div>';
+    }).join('');
+    var vp=(b.previewAxes&&b.previewAxes.viewport||[]).join(' · ');
+    var th=(b.previewAxes&&b.previewAxes.theme||[]).join(' · ');
+    previewEl.innerHTML='<strong style="color:var(--ink);">Viewport:</strong> '+vp+'<br><strong style="color:var(--ink);">Theme:</strong> '+th+'<br><span style="font-size:11px;margin-top:8px;display:inline-block;">Every component must preview all combinations (governance).</span>';
+  }catch(err){
+    principle.textContent=err.message||'Failed to load blueprint';
+  }
 }
 function showTP(t,btn){
   var panes = document.querySelectorAll('.tp-pane');
@@ -1799,18 +1863,18 @@ function saveCard(){
 
 // ALL DOMAINS
 const DOMS=[
-  {n:'shortkey.beauty',s:'Building',p:'Main Website',pgs:['/home','/shop'],ai:'Simpee'},
+  {n:'shortkey.beauty',s:'Building',p:'Main Website',pgs:['/','/shop'],ai:'Simpee'},
   {n:'shortkey.club',s:'Building',p:'Membership',pgs:['/join','/members'],ai:'TBC'},
-  {n:'shortkey.community',s:'Building',p:'Blog and Sharing',pgs:['/blog'],ai:'TBC'},
-  {n:'shortkey.events',s:'Building',p:'Promotion Zone',pgs:['/promos'],ai:'TBC'},
-  {n:'shortkey.fashion',s:'Building',p:'TINT Try-On',pgs:['/try-on'],ai:'TBC'},
+  {n:'shortkey.community',s:'Building',p:'Blog & Sharing',pgs:['/blog'],ai:'TBC'},
+  {n:'shortkey.events',s:'Building',p:'Promotion / Game Zone',pgs:['/promos'],ai:'TBC'},
+  {n:'shortkey.fashion',s:'Building',p:'Makeover',pgs:['/try-on'],ai:'TBC'},
   {n:'shortkey.info',s:'Building',p:'Brand Portal',pgs:['/apply','/dashboard'],ai:'Gor Gor'},
-  {n:'shortkey.live',s:'Building',p:'Live Stream Hub',pgs:['/schedule','/stream'],ai:'Kura'},
+  {n:'shortkey.live',s:'Building',p:'Live Stream & Calendar',pgs:['/schedule','/stream'],ai:'Kura'},
   {n:'shortkey.social',s:'Building',p:'Influencer Portal',pgs:['/apply','/calendar'],ai:'Brother'},
-  {n:'shortkey.store',s:'Building',p:'Shops Portal',pgs:['/all','/skincare','/makeup'],ai:'Agent R'},
-  {n:'shortkey.studio',s:'Live',p:'Master Control Panel',pgs:['/control'],ai:'Kura'},
-  {n:'shortkey.world',s:'Building',p:'Global Site',pgs:['/hk','/us','/uk'],ai:'TBC'},
-  {n:'shortkey.wtf',s:'TBC',p:'To Be Confirmed',pgs:['/?'],ai:'TBC'},
+  {n:'shortkey.store',s:'Building',p:'Shop Portal',pgs:['/all','/skincare','/makeup'],ai:'Agent R'},
+  {n:'shortkey.studio',s:'Live',p:'Control Center (SSOT)',pgs:['/control'],ai:'Kura'},
+  {n:'shortkey.world',s:'Building',p:'Global Expansion',pgs:['/hk','/us','/uk'],ai:'TBC'},
+  {n:'shortkey.wtf',s:'Building',p:'Content Management',pgs:['/cms'],ai:'TBC'},
 ];
 document.getElementById('all-doms').innerHTML=DOMS.map(d=>`<div class="dc"><div class="dh"><span class="dn">${d.n}</span><span class="ds ${d.s==='Live'?'s-r':'s-b'}">${d.s}</span></div><div style="font-size:11px;color:var(--mid);margin-bottom:6px;">${d.p}</div><div class="dp">${d.pgs.map(p=>`<span class="dpp">${p}</span>`).join('')}</div><div style="font-size:10px;font-family:var(--mono);color:var(--cat);margin-top:4px;">${d.ai}</div></div>`).join('');
 

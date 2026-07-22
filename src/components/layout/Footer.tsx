@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { POWERED_BY_AI_FAMILY } from "@/content/aiFamilyCredit";
 import { siteContent } from "@/content/homepage";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
@@ -11,7 +12,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 lg:px-8 lg:py-20">
         <div className="grid gap-16 lg:grid-cols-[1.2fr_repeat(4,1fr)_1.4fr] lg:gap-12">
           <div>
-            <Logo className="max-w-[160px]" />
+            <Logo size="footer" surface="light" />
             <p className="type-caption mt-2 text-brand/60">{siteContent.brand.tagline}</p>
           </div>
 
@@ -60,7 +61,7 @@ export function Footer() {
           <div className="text-center sm:text-left">
             <p className="type-caption">{footer.copyright}</p>
             <p className="type-caption mt-1 text-ink-muted">{footer.domains}</p>
-            <p className="mt-1 text-[10px] text-ink-muted/70">{footer.poweredBy}</p>
+            <p className="mt-1 text-[10px] text-ink-muted/70">{POWERED_BY_AI_FAMILY}</p>
           </div>
           <div className="flex gap-4">
             {footer.social.map((item) => (

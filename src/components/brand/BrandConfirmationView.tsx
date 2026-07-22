@@ -40,7 +40,7 @@ export function BrandConfirmationView({
     <section className="brand-confirmation">
       <div className="mx-auto max-w-3xl px-4 lg:px-8">
         <div className="mb-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-          <Logo className="max-w-[220px] sm:max-w-[260px]" showTagline />
+          <Logo size="hero" surface="light" />
           <SectionShortcutBar shortcut={content.shortcut} label={content.sectionLabel} />
         </div>
 

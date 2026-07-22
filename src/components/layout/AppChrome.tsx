@@ -6,12 +6,20 @@ import { HeaderBrandSection } from "@/components/layout/HeaderBrandSection";
 import { Footer } from "@/components/layout/Footer";
 import { CmsHeader, CmsHeaderBrand, CmsFooter } from "@/components/cms/CmsLayoutZones";
 
-/** Marketing chrome is skipped for the all-in-one Master Control hub. */
+/**
+ * Marketing chrome (shop nav/cart/full footer) is skipped for:
+ * - the all-in-one Master Control hub (`/control`)
+ * - internal-only Studio surfaces (`/internal/*`)
+ * - the public Coming Soon gate (`/`) — it owns its own minimal header + Premium Footer
+ *   so no shop/store links leak onto the public gate (SHORTKEY_MASTER_BLUEPRINT_v1.md).
+ */
 export function AppChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isControlHub = pathname === "/control" || pathname.startsWith("/control/");
+  const isInternal = pathname === "/internal" || pathname.startsWith("/internal/");
+  const isComingSoon = pathname === "/";
 
-  if (isControlHub) {
+  if (isControlHub || isInternal || isComingSoon) {
     return <main className="min-h-screen min-w-0">{children}</main>;
   }
 
