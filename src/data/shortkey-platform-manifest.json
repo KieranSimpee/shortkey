@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-07-21",
+  "lastUpdated": "2026-07-23",
   "reviewStatus": "Draft",
   "reviewWorkflow": [
     "Draft",
@@ -86,15 +86,24 @@
       "name": "ShortKey Live",
       "domain": "shortkey.live",
       "role": "Live Streaming",
-      "purpose": "Live shopping and creator livestream layer.",
+      "purpose": "Live shopping and creator livestream layer — calendar, watch hub, go-live.",
       "launchPhase": "P2+",
-      "publicStatus": "Hidden",
-      "features": ["Live Shopping", "Creator Livestream", "Fan Chat"],
-      "heroCopy": "Live Streaming — placeholder",
-      "ctaCopy": "Coming Later",
-      "reviewStatus": "Draft",
-      "version": "0.1.0",
-      "lastUpdated": "2026-07-21"
+      "publicStatus": "Coming Soon",
+      "features": [
+        "Public Coming Soon gate (/live)",
+        "Live Shopping (spec)",
+        "Creator Livestream / go-live",
+        "Fan Chat (spec)",
+        "Stream calendar / schedule",
+        "VIP slots + submit show (Full Rebuild)",
+        "TINT try-on sync on stream (spec)"
+      ],
+      "heroCopy": "ShortKey Live — Coming Soon",
+      "ctaCopy": "Book creator appointment · Visit shortkey.beauty",
+      "reviewStatus": "Review Ready",
+      "version": "0.2.0",
+      "lastUpdated": "2026-07-23",
+      "notes": "Founder homework ready. Public gate at /live + host rewrite for shortkey.live. Full Rebuild preview: /control/live.html. Attach domain in Vercel (see CONNECTIONS.md). No featureLocks unlock."
     },
     {
       "name": "ShortKey Fashion",

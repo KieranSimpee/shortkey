@@ -154,14 +154,19 @@ Canonical registry from Master Blueprint + platform manifest + `domains.ts` / `A
 
 ## Domain 5 — shortkey.live (Live Streaming)
 
-**Public status:** Hidden · Phase P2+
+**Public status:** Coming Soon gate wired (`/live` · host `shortkey.live`) · Phase P2+  
+**Founder homework:** Ready 2026-07-23 — public gate + registry update; Full Rebuild stays at `/control/live.html` (not auto-published as full hub).  
+**Vercel:** Attach `shortkey.live` / `www.shortkey.live` to the same ShortKey project (see `CONNECTIONS.md`).
 
 | Feature | What it does | Priority | Design/UI? | Suggested seat |
 |---------|--------------|----------|------------|----------------|
-| Live Shopping | Live commerce surface | P2 | **Y** light wireframe | Silk |
+| Public Coming Soon gate | Honest `/live` surface + host rewrite | P0 (wire) | **Y** — DNA-aligned | Key · Silk |
+| Live Shopping | Live commerce surface (spec) | P2 | **Y** light wireframe | Silk |
 | Creator Livestream | Go-live path | P2 | **Y** | Senti |
 | Fan Chat | Live chat | P2 | **Y** light | Agent R |
 | Stream calendar / schedule | CalendarEvent hub | P2 | **Y** | Senti · Sky |
+| VIP slots + submit show | Full Rebuild HTML flows | P2 | **Y** | Senti · Key |
+| TINT try-on on stream | Sync featured products during live | P2 | **Y** | Silk · Key |
 
 ---
 
@@ -298,7 +303,8 @@ Fill when ready. Suggestions above are **not** assignments.
 | shortkey.info | Brand Portal shell | ☐ | | |
 | shortkey.social | Creator OS shell | ☐ | | |
 | shortkey.store | Commerce grid / checkout | ☐ | | After ratio ready |
-| shortkey.live | Live hub wireframes | ☐ | | P2 |
+| shortkey.live | Public Coming Soon gate `/live` | ☑ | Key | Wired 2026-07-23 · Vercel domain attach still manual |
+| shortkey.live | Live hub Full Rebuild (wireframes) | ☐ | | P2 · preview `/control/live.html` |
 | shortkey.fashion | Makeover / lookbook | ☐ | | P2 |
 | shortkey.community | Community / blog | ☐ | | P2 |
 | shortkey.club | Membership | ☐ | | P2 |

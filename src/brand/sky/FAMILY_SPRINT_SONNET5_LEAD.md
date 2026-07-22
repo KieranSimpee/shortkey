@@ -29,6 +29,7 @@
 | Signup tabs | **LOCKED** — appointment arrangement only (`featureLocks.signupAppointmentOnly`) |
 | Category header nav | **LOCKED** — K/J/C Beauty hidden + pages gated (`featureLocks.categorySurface`) |
 | Design DNA → Coming Soon link-up | **WAITING** on Simpee DNA guide upload → target link-up + test **~Jul 29, 2026** (see below) |
+| shortkey.live public gate | **Wired** 2026-07-23 — `/live` + host rewrite; Full Rebuild still `/control/live.html`; **attach domain in Vercel** (manual) |
 
 ## Sonnet 5 build notes (2026-07-21)
 

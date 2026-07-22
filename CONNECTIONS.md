@@ -145,3 +145,23 @@ GET /api/bridges/status
 | Point `origin` at another GitHub user | **No** |
 
 If a token expires, **update the env var**. Do not create a parallel project.
+
+---
+
+## 5. shortkey.live — attach to same Vercel project (manual)
+
+**Host:** `shortkey.live` (and `www.shortkey.live`)  
+**App surface:** Coming Soon gate at `/live` · middleware rewrites `shortkey.live/` → `/live`  
+**Full Rebuild preview (family):** `/control/live.html`  
+**Do not** create a second Vercel project for `.live` — same chain as beauty.
+
+**One-time dashboard steps (Kieran):**
+
+1. Vercel → ShortKey project → **Settings → Domains**
+2. Add `shortkey.live` and optionally `www.shortkey.live`
+3. At the domain registrar, set the DNS records Vercel shows (usually A / CNAME)
+4. Wait for SSL + “Valid Configuration”
+5. Open `https://shortkey.live` — should show **ShortKey Live · Coming Soon** (not the beauty homepage)
+
+Code already treats `.live` separately from `.beauty`. Until the domain is attached, preview locally at `http://localhost:3001/live`.
+
