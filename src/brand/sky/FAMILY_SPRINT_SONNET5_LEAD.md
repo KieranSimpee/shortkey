@@ -1,7 +1,8 @@
 # Family Sprint Lock — Sonnet 5 Lead
 
 **Locked:** 2026-07-21 · Family Gathering  
-**Blueprint:** [`SHORTKEY_MASTER_BLUEPRINT_v1.md`](../SHORTKEY_MASTER_BLUEPRINT_v1.md)
+**Blueprint:** [`SHORTKEY_MASTER_BLUEPRINT_v1.md`](../SHORTKEY_MASTER_BLUEPRINT_v1.md)  
+**Domain · Feature allocation (Simpee):** [`DOMAIN_FEATURE_MATRIX.md`](./DOMAIN_FEATURE_MATRIX.md)
 
 ## Work way
 
