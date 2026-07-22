@@ -39,8 +39,8 @@
 | Live | **FROZEN** — no code redesign; docs only say frozen |
 | After first wave | Wait for Simpee allocation before opening social / store / wtf / fashion / community / club / events / world |
 
-**Language gap (flag — next design pass):**  
-This board locks public locales to **EN / 繁中 / KO**. Current Coming Soon code still uses **EN / JA / KO / 简体** (`comingSoonMessages.ts`). Do **not** mass-rewrite i18n in this alignment pass — schedule a Design Team locale pass after DNA link-up.
+**Language (Coming Soon — updated 2026-07-23):**  
+Public Coming Soon locales are now **EN / 繁中 / KO** (`comingSoonMessages.ts`) — board-aligned. See ledger `PUSH-20260723-001`.
 
 ---
 

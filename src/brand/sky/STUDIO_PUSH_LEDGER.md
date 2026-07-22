@@ -74,4 +74,29 @@
 
 ## Entries
 
-_No pushes recorded yet. First wave domains: `shortkey.beauty` · `shortkey.studio` · `shortkey.info`. `shortkey.live` is FROZEN — do not push live modifications._
+### PUSH-20260723-001
+
+| Field | Value |
+|-------|--------|
+| 1. Push ID | PUSH-20260723-001 |
+| 2. Domain | shortkey.beauty |
+| 3. Page / route | `/` (Coming Soon) |
+| 4. Feature name | Draft DNA Coming Soon pass — pearl / soft lilac / editorial |
+| 5. UI components used | `ComingSoonHome` · `HeroLanguageTaps` · `EmailCaptureForm` · `useLaunchCountdown` · `Logo` · `Button` |
+| 6. Design DNA version | Draft Design DNA via `SHORTKEY_BRAND_DNA.md` + `tokens.ts` silk/pearl (`#F7F5FF` / `#EDEAFF` / brand lilac `#8C82FC`) — Simpee board pearl direction 2026-07-23 |
+| 7. Copy version | `comingSoonMessages.ts` v2026-07-23 — discovery + Before I Meet The World + meeting CTAs |
+| 8. Language version | EN / 繁中 / KO |
+| 9. Asset package version | Existing hero posters `hero-bloom-skin` · `hero-skin-analysis` + production lilac logo pack |
+| 10. Preview URL | `http://localhost:3001/` (or `/` on preview deploy) — not production launch |
+| 11. Owner | Design Team (Sonnet 5 / Key) |
+| 12. Risk level | Medium (public face visual + locale set change; locks intact) |
+| 13. Gor Gor Review status | Pending |
+| 14. Kieran Review status | Pending |
+| 15. Launch approval status | Blocked |
+| 16. Rollback reference | Prior dark-tech hero + EN/JA/KO/简体 in git before this commit; revert `ComingSoonHome.tsx` · `comingSoonMessages.ts` · `HeroLanguageTaps.tsx` · remove `useLaunchCountdown.ts` |
+
+**Change notes:** Shifted Coming Soon hero from `bg-surface-dark` to pearl/silk atmosphere with soft beauty full-bleed wash; added “Before I Meet The World” countdown to Aug 14, 2026; Asian beauty discovery line; founder/brand invitation + meeting CTAs kept; language board-aligned EN/繁中/KO; footer `Powered by our AI family`. No shop unlock · no payment · `shortkey.live` untouched.
+
+---
+
+_First wave domains: `shortkey.beauty` · `shortkey.studio` · `shortkey.info`. `shortkey.live` is FROZEN — do not push live modifications._
