@@ -39,17 +39,27 @@ UI uses only `src/components/ui/Logo.tsx`.
 5. Verify homepage render: `page → HomeDesignPreview → Logo → /brand/LOGO-001.svg`.
 
 ## After every update — if localhost dies
-**Kieran locked: ShortKey is `3001`-only — never `3000`.**
+**Kieran locked: ShortKey public is `3001` · Family Table is `3002` — never `3000`.**
 If the browser shows **Can't connect to server** / `localhost:3001 refused to connect` / **error -101**:
 
-1. Free the port (kill whatever is on `:3001`).
-2. Restart Shortkey only (never from the locked `ms-ad` hub cwd by accident):
+1. Free the port (kill whatever is on `:3001` or `:3002` as needed).
+2. Restart from this repo only (never from the locked `ms-ad` hub cwd by accident):
 
 ```bat
+REM ShortKey Coming Soon (:3001)
 node C:\Users\Kieran\Projects\shortkey\scripts\dev.mjs
+
+REM Family Table workbench (:3002)
+node C:\Users\Kieran\Projects\shortkey\scripts\dev.mjs --family
 ```
 
-3. Wait until the terminal shows **Ready**, then hard-refresh `http://localhost:3001/`.
-4. Confirm with a quick request: `curl.exe -s -o NUL -w "%{http_code}" http://127.0.0.1:3001/` → expect **200**.
+Or: `npm run dev` / `npm run family:dev` from the ShortKey repo root.
+
+3. Wait until the terminal shows **Ready**, then hard-refresh:
+   - ShortKey → `http://localhost:3001/`
+   - Family Table → `http://localhost:3002/` (or `/internal/family-table`)
+4. Confirm with a quick request:
+   - `curl.exe -s -o NUL -w "%{http_code}" http://127.0.0.1:3001/` → expect **200**
+   - `curl.exe -s -o NUL -w "%{http_code}" http://127.0.0.1:3002/internal/family-table` → expect **200**
 
 Do this **immediately after any asset/code update** when the preview fails to connect — do not ask the user to restart manually.

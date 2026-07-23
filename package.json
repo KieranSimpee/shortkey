@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/dev.mjs",
+    "family:dev": "node scripts/dev.mjs --family",
     "build": "next build",
     "start": "next start -p 3001",
     "lint": "next lint",

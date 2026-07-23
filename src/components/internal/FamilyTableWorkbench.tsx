@@ -221,6 +221,11 @@ export function FamilyTableWorkbench() {
 
   const [memoryLabel, setMemoryLabel] = useState("");
   const [memoryBody, setMemoryBody] = useState("");
+  const [isFamilyPort, setIsFamilyPort] = useState(false);
+
+  useEffect(() => {
+    setIsFamilyPort(window.location.port === "3002");
+  }, []);
 
   if (!ready) {
     return (
@@ -265,6 +270,15 @@ export function FamilyTableWorkbench() {
           Storage key <code className="font-mono text-[11px]">{STORAGE_KEY}</code> · not production DB ·
           no login · no public brand content · Gor Gor Review still required before any domain push ·
           shop / payment locked · shortkey.live untouched.
+          {isFamilyPort ? (
+            <span className="mt-1 block text-ink-muted">
+              Family Table surface · port 3002 · ShortKey Coming Soon stays on{" "}
+              <a href="http://localhost:3001/" className="underline decoration-brand/40 underline-offset-2 hover:text-brand">
+                :3001
+              </a>
+              .
+            </span>
+          ) : null}
           {savedFlash ? (
             <span className="ml-2 font-semibold text-brand">Saved locally ✓</span>
           ) : null}

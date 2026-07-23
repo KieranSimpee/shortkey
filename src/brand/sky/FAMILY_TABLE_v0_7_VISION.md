@@ -4,7 +4,8 @@
 **Suggested product name:** **Kieran Vision + Brand Data Vault**  
 **Date locked:** 2026-07-23  
 **Authority:** Kieran + Simpee Bro (Gor Gor) · Family Vote  
-**Build home (tonight):** this repo — `C:\Users\Kieran\Projects\shortkey` · route `/internal/family-table`  
+**Build home (tonight):** this repo — `C:\Users\Kieran\Projects\shortkey` · route `/internal/family-table` · local **port 3002** (`npm run family:dev`)  
+
 **Later:** may move to a family domain; not required for v0.7  
 **Related:** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md) · [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md)
 
@@ -114,20 +115,47 @@ Clear banner on UI: *Internal preview · local persistence only · not Family Me
 
 ---
 
-## Preview URL (local)
+## How to open (local) — ports locked
 
-`http://localhost:3001/internal/family-table`  
-(or same path on internal preview deploy — still `noindex`)
+| Surface | Port | npm script | What you get |
+|---------|------|------------|--------------|
+| **ShortKey public** (Coming Soon / beauty) | **3001** | `npm run dev` | `/` = Coming Soon — **do not change** |
+| **Family Table** (internal workbench) | **3002** | `npm run family:dev` | `/` → redirects to Family Table |
+
+**3000** is reserved for other apps on this machine — never bind ShortKey or Family Table there.
+
+### Family Table (use this)
+
+```bash
+npm run family:dev
+```
+
+Then open either:
+
+- **http://localhost:3002** — lands on the workbench (`SHORTKEY_SURFACE=family` redirects `/` → `/internal/family-table`)
+- **http://localhost:3002/internal/family-table** — direct path
+
+Same Next app as ShortKey; same wasm / `NEXT_TEST_WASM_DIR` / chdir-to-repo pattern as `:3001`. No secret header required for local `/internal/*` — routes are `noindex` and not linked from public nav.
+
+### ShortKey public (unchanged)
+
+```bash
+npm run dev
+```
+
+→ **http://localhost:3001/** (Coming Soon)
+
+(Internal preview deploy may still use the same `/internal/family-table` path — still `noindex`.)
 
 ---
 
 ## Handback for Gor Gor
 
-1. Open `/internal/family-table`  
+1. Run `npm run family:dev` → open `http://localhost:3002` (or `/internal/family-table`)  
 2. Confirm seven sections visible and usable as concept forms/lists  
 3. Confirm persistence banner is honest  
-4. Confirm **not** linked from public `/`  
-5. Approve or block further depth toward 正式版  
+4. Confirm **not** linked from public Coming Soon on **:3001** `/`  
+5. Approve or block further depth toward 正式版 
 
 ---
 
