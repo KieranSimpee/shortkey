@@ -3,10 +3,16 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import {
+  clearFamilyChatStorage,
+  FAMILY_CHAT_STORAGE_KEY,
+  FamilyChatPanel,
+} from "@/components/internal/FamilyChatPanel";
 
 /**
  * Family Table v0.7 — Kieran Vision + Brand Data Vault (internal concept scaffold).
  * Persistence: browser localStorage only — NOT production DB / Family Memory Portal.
+ * Family Chat v0.1 uses separate key `shortkey-family-chat-v01` (migrate-safe).
  * Doc: src/brand/sky/FAMILY_TABLE_v0_7_VISION.md
  */
 
@@ -95,6 +101,7 @@ const EMPTY: FamilyTableState = {
 type SectionId =
   | "vision"
   | "vault"
+  | "chat"
   | "projects"
   | "tasks"
   | "assets"
@@ -104,6 +111,11 @@ type SectionId =
 const SECTIONS: { id: SectionId; label: string; hint: string }[] = [
   { id: "vision", label: "Kieran Vision Inbox", hint: "Capture intent · local persist" },
   { id: "vault", label: "Brand Data Vault", hint: "Internal brand keys · local persist" },
+  {
+    id: "chat",
+    label: "Family Chat",
+    hint: "Family Chat v0.1 · room picker · localStorage only (separate key)",
+  },
   { id: "projects", label: "Future Project Bank", hint: "Ideas & domain hints · local persist" },
   { id: "tasks", label: "AI Family Task Request", hint: "Assign by seat · local persist" },
   { id: "assets", label: "Asset Upload Library", hint: "Placeholder — filename + note only" },
@@ -178,6 +190,7 @@ export function FamilyTableWorkbench() {
   const [state, setState] = useState<FamilyTableState>(EMPTY);
   const [section, setSection] = useState<SectionId>("vision");
   const [savedFlash, setSavedFlash] = useState(false);
+  const [chatEpoch, setChatEpoch] = useState(0);
 
   useEffect(() => {
     setState(loadState());
@@ -192,8 +205,15 @@ export function FamilyTableWorkbench() {
   }, []);
 
   const clearAll = () => {
-    if (!window.confirm("Clear all local Family Table v0.7 preview data on this browser?")) return;
+    if (
+      !window.confirm(
+        "Clear all local Family Table v0.7 + Family Chat v0.1 preview data on this browser?",
+      )
+    )
+      return;
     persist(EMPTY);
+    clearFamilyChatStorage();
+    setChatEpoch((n) => n + 1);
   };
 
   /* ---- form drafts ---- */
@@ -280,9 +300,11 @@ export function FamilyTableWorkbench() {
             Internal staging · localStorage only
           </span>
           {" · "}
-          Storage key <code className="font-mono text-[11px]">{STORAGE_KEY}</code> · not shared DB ·
-          not 正式版 · soft password gate when env secret set · no public brand content · Gor Gor
-          Review still required · shop / payment locked · shortkey.live untouched.
+          Storage keys{" "}
+          <code className="font-mono text-[11px]">{STORAGE_KEY}</code> (table) ·{" "}
+          <code className="font-mono text-[11px]">{FAMILY_CHAT_STORAGE_KEY}</code> (chat v0.1) · not
+          shared DB · not 正式版 · soft password gate when env secret set · no public brand content ·
+          Gor Gor Review still required · shop / payment locked · shortkey.live untouched.
           {isFamilyPort ? (
             <span className="mt-1 block text-ink-muted">
               Family Table surface · port 3002 · ShortKey Coming Soon stays on{" "}
@@ -507,6 +529,16 @@ export function FamilyTableWorkbench() {
                 </ul>
               )
             }
+          />
+        ) : null}
+
+        {section === "chat" ? (
+          <FamilyChatPanel
+            key={chatEpoch}
+            onSaved={() => {
+              setSavedFlash(true);
+              window.setTimeout(() => setSavedFlash(false), 1200);
+            }}
           />
         ) : null}
 

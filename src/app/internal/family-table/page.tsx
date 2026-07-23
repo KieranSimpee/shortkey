@@ -4,7 +4,7 @@ import { FamilyTableWorkbench } from "@/components/internal/FamilyTableWorkbench
 export const metadata: Metadata = {
   title: "Family Table v0.7 | family.shortkey.world (Internal Staging)",
   description:
-    "INTERNAL STAGING ONLY — family home · Kieran Vision + Brand Data Vault. Not public world launch · localStorage only · Gor Gor Review pending.",
+    "INTERNAL STAGING ONLY — family home · Kieran Vision + Brand Data Vault + Family Chat v0.1. Not public world launch · localStorage only · Gor Gor Review pending.",
   robots: { index: false, follow: false },
   other: {
     googlebot: "noindex, nofollow",

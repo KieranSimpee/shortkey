@@ -71,17 +71,32 @@ Goal: family can **SEE** this is the future workbench — not only pretty UI. St
 
 ---
 
-## Seven sections (scaffold)
+## Seven sections (scaffold) + Family Chat v0.1
 
 | # | Section | v0.7 behaviour |
 |---|---------|----------------|
 | 1 | **Kieran Vision Inbox** | Form + list — title, note, priority; local persist |
 | 2 | **Brand Data Vault** | Key / value / notes entries; local persist |
+| — | **Family Chat** (v0.1) | Room picker + messages · **separate** localStorage key · beside Vision / Vault tabs |
 | 3 | **Future Project Bank** | Name, domain hint, status; local persist |
 | 4 | **AI Family Task Request** | Task → seat (Simpee / Sky / Kura / Agent R / Senti / Key); local persist |
 | 5 | **Asset Upload Library** | **Placeholder** — filename + note only (no real upload pipeline) |
 | 6 | **Gor Gor Review Queue** | Submit item → Pending / In Review / Approved / Blocked; local persist |
 | 7 | **Personal Memory Files** | **Placeholder / light** — short private notes list; local persist |
+
+### Family Chat v0.1 (local prototype)
+
+| Field | Value |
+|-------|--------|
+| **Surface** | Tab on `/internal/family-table` — **Family Chat** |
+| **Storage key** | **`shortkey-family-chat-v01`** (separate from table v0.7 — migrate-safe; does **not** nest under `shortkey-family-table-v07`) |
+| **Shared DB** | **No** — browser localStorage only |
+| **Rooms** | Family Table · Kieran Vision · Gor Gor Review · Sky Video Room · Senti Poster Room · Kura Structure Room · Agent R Evidence Room |
+| **Message fields** | `sender_name` · `sender_role` · `room` · `message` · `status` · `timestamp` · optional `evidence_url` |
+| **Status options** | DRAFT · SUBMITTED · WAITING FOR GOR GOR · GOR GOR REVIEWING · KIERAN REVIEW READY · APPROVED · BLOCKED |
+| **Roles** | Kieran · Simpee/Gor Gor · Sky · Kura · Agent R · Senti · Key |
+| **Warning (always on)** | *Internal staging only · localStorage only · not shared database · no private data yet.* |
+| **Component** | `FamilyChatPanel.tsx` |
 
 ---
 
@@ -89,7 +104,7 @@ Goal: family can **SEE** this is the future workbench — not only pretty UI. St
 
 | Layer | Status |
 |-------|--------|
-| **Browser localStorage** | **Yes** — key `shortkey-family-table-v07` — preview / staging only |
+| **Browser localStorage** | **Yes** — table key `shortkey-family-table-v07` · chat key `shortkey-family-chat-v01` (separate · migrate-safe) — preview / staging only |
 | **Shared / production database** | **No** — 正式版 (Family Memory Portal) |
 | **Login / roles / private cloud storage / version history** | **No** — 正式版 |
 | **Soft staging password** | **Yes when env set** — `FAMILY_TABLE_STAGING_PASSWORD` / `INTERNAL_STAGING_SECRET` + cookie; localhost / `family:dev` bypass |
