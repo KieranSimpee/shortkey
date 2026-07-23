@@ -2,7 +2,7 @@
 
 **Authority:** Simpee Bro · SHORTKEY DOMAIN FEATURE ROLLOUT BOARD · 2026-07-23  
 **Board:** [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md)  
-**Family Table (internal tooling):** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md)  
+**Family Table (internal tooling):** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · v0.7 vision [`FAMILY_TABLE_v0_7_VISION.md`](./FAMILY_TABLE_v0_7_VISION.md) · preview `/internal/family-table`  
 **Rule:** Every design or feature push to any domain **appends** one entry below. Do not overwrite history.  
 **Access:** Internal / family only — never expose this ledger on public pages.
 
@@ -106,7 +106,8 @@ These are family-only tooling previews. They are **not** Studio domain pushes an
 
 | Date | Tool | Version | Notes |
 |------|------|---------|--------|
-| 2026-07-23 | Family Table | v0.5 Internal Preview | Asset Downloads by Content Type (5 packs). Preview on Base44 private media — Simpee holds link; **no JWT/tokenized URL in repo**. Filename hint: `ShortKey_Family_Table_v0_5_Internal_Preview.html`. Doc: [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md). |
+| 2026-07-23 | Family Table | **v0.7** Writable concept scaffold | **Family Vote: AGREED** (Simpee · Sky · Kura · Agent R · Senti · Key). In-repo Next route `/internal/family-table` — Kieran Vision + Brand Data Vault · 7 sections · **localStorage preview only** (not production DB / Family Memory Portal). Soft pearl/lilac DNA. Not on public `/` · no shop/payment · shortkey.live untouched. Doc: [`FAMILY_TABLE_v0_7_VISION.md`](./FAMILY_TABLE_v0_7_VISION.md). Components: `FamilyTableWorkbench.tsx` · `app/internal/family-table/page.tsx`. Linked from Platform Manifest studio header. |
+| 2026-07-23 | Family Table | v0.5 Internal Preview | Asset Downloads by Content Type (5 packs). Preview on Base44 private media — Simpee holds link; **no JWT/tokenized URL in repo**. Filename hint: `ShortKey_Family_Table_v0_5_Internal_Preview.html`. Doc: [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md). **Cannot truly write/save** — writable next is v0.7. |
 
 ---
 

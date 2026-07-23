@@ -37,6 +37,7 @@ Use this matrix to:
 | Public `/` | **Coming Soon** | Hero · Try-On preview · Skin Analysis preview · Creator/Brand CTAs · Email capture · Social proof placeholder · Premium footer |
 | `/design` | **Internal ref** (`robots: noindex`) | Full `HomeDesignPreview` — not public gate |
 | `/internal/platform-manifest` | **Internal** (`noindex`) | Studio manifest map / feature registry / export |
+| `/internal/family-table` | **Internal** (`noindex`) | Family Table v0.7 — Kieran Vision + Brand Data Vault (writable concept · localStorage) |
 | `featureLocks.productSurface` | **LOCKED = true** | `/shop` · `/shop/[sku]` · product display |
 | `featureLocks.categorySurface` | **LOCKED = true** | Header K/J/C nav · `/kbeauty` · `/jbeauty` · `/cbeauty` |
 | `featureLocks.signupAppointmentOnly` | **LOCKED = true** | Creator/Brand signup = appointment + notify only (no public rates / founding fees / CTRL Twin pricing) |
@@ -204,7 +205,7 @@ Canonical registry from Master Blueprint + platform manifest + `domains.ts` / `A
 
 ## Domain 8 — shortkey.studio (Internal Control Center)
 
-**Public status:** Internal Only · **Phase:** P0 · Route today: `/internal/platform-manifest`
+**Public status:** Internal Only · **Phase:** P0 · Routes today: `/internal/platform-manifest` · `/internal/family-table`
 
 | Feature | What it does | Priority | Design/UI? | Suggested seat |
 |---------|--------------|----------|------------|----------------|
@@ -212,6 +213,7 @@ Canonical registry from Master Blueprint + platform manifest + `domains.ts` / `A
 | Feature Registry | Aggregated feature → platforms | P0 | **Y** | Key · Sky |
 | Manifest Preview / Export | JSON preview + download | P0 | **N/light** | Key |
 | Review Workflow | Draft → … → Published / Blocked | P0 | **Y** — status badges clear | Simpee · Key |
+| Family Table v0.7 | Kieran Vision + Brand Data Vault · 7 sections · local persist | P0 | **Y** — pearl/lilac · forms/lists | Key · Simpee |
 | Asset / Copy / Design References | Registries (manifest modules; some still thin) | P1 | **Y** as filled | Senti · Kura |
 | Studio control panel (v2 hub) | Spec’d Master Control (`domains.ts` briefs) | P1 | **Y** | Silk · Key |
 | Creative ops / AI image APIs | Brand-service studio (`domains.ts`) | P2 | Later | Senti · Key |
@@ -324,7 +326,7 @@ Fill when ready. Suggestions above are **not** assignments.
 From **repo reality** (not new product claims):
 
 1. **DNA trigger** — Simpee uploads / points brand DNA guide (`FAMILY_SPRINT_SONNET5_LEAD.md` · prefer `src/brand/`). Until then, Design Team does not freestyle past locked DNA docs.  
-2. **Internal see-first** — Family reviews on **`/design`** (`noindex` full homepage) + **`/internal/platform-manifest`** (12-domain SSOT). Local: `http://localhost:3001/` Coming Soon + those routes.  
+2. **Internal see-first** — Family reviews on **`/design`** (`noindex` full homepage) + **`/internal/platform-manifest`** (12-domain SSOT) + **`/internal/family-table`** (v0.7 writable concept). Local: `http://localhost:3001/` Coming Soon + those routes.  
 3. **Public Coming Soon parity** — After DNA map, update `ComingSoonHome` + `comingSoonMessages`; keep shop / category / signup offers **locked**.  
 4. **Gor Gor gate** — No Vercel production auto-publish. Simpee reviews before any public push. Target DNA → Coming Soon **link-up + test ~Wed Jul 29, 2026** (sprint doc).  
 5. **Allocate from this board** — Simpee fills Assigned to / Status; family executes by seat; Sonnet 5 / Silk consolidates implementation.

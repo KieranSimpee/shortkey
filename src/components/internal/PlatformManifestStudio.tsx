@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -108,13 +109,21 @@ export function PlatformManifestStudio({ manifest }: { manifest: PlatformManifes
               {manifest.lastUpdated}
             </p>
           </div>
-          <button
-            type="button"
-            onClick={() => downloadJson("shortkey-platform-manifest.json", manifest)}
-            className="shrink-0 rounded-full bg-brand px-5 py-2.5 font-display text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-brand-dark"
-          >
-            Export JSON ↓
-          </button>
+          <div className="flex shrink-0 flex-wrap gap-2">
+            <Link
+              href="/internal/family-table"
+              className="rounded-full border border-brand/30 bg-brand/5 px-4 py-2.5 font-display text-xs font-semibold uppercase tracking-[0.12em] text-brand transition hover:border-brand hover:bg-brand/10"
+            >
+              Family Table v0.7 →
+            </Link>
+            <button
+              type="button"
+              onClick={() => downloadJson("shortkey-platform-manifest.json", manifest)}
+              className="rounded-full bg-brand px-5 py-2.5 font-display text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-brand-dark"
+            >
+              Export JSON ↓
+            </button>
+          </div>
         </div>
 
         <div className="mt-4 rounded-xl border border-amber-400/25 bg-amber-400/10 px-4 py-3 text-xs leading-relaxed text-amber-800">

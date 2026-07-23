@@ -4,7 +4,7 @@
 **Blueprint:** [`SHORTKEY_MASTER_BLUEPRINT_v1.md`](../SHORTKEY_MASTER_BLUEPRINT_v1.md)  
 **Domain · Feature allocation (Simpee):** [`DOMAIN_FEATURE_MATRIX.md`](./DOMAIN_FEATURE_MATRIX.md)  
 **DO / DON’T / Review handback (Simpee authority · 2026-07-23):** [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md) — 總機 first wave **`beauty` · `studio` · `info`** · **`shortkey.live` FROZEN** · Ledger [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md)  
-**Family Table v0.5 (asset packs by content type · internal):** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md)
+**Family Table v0.5 (asset packs · cannot write):** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · **v0.7 writable concept (AGREED):** [`FAMILY_TABLE_v0_7_VISION.md`](./FAMILY_TABLE_v0_7_VISION.md) · preview `/internal/family-table`
 
 ## Work way
 
@@ -26,6 +26,7 @@
 | Blueprint v1.0 | Review Ready (saved in repo) |
 | Public Coming Soon build | **Implemented / Review Ready — Not Published** (`src/app/page.tsx` → `ComingSoonHome`) |
 | Studio manifest | **Implemented / Review Ready — Not Published** (`/internal/platform-manifest`) |
+| Family Table v0.7 | **Scaffolded / Internal Preview** (`/internal/family-table`) — localStorage only · Vote AGREED 2026-07-23 · not 正式版 |
 | Public auto-launch | **Blocked** by protocol — no Vercel deploy, no auto-publish |
 | Product / Shop surface | **LOCKED** — ratio/display not ready (`featureLocks.productSurface`) |
 | Signup tabs | **LOCKED** — appointment arrangement only (`featureLocks.signupAppointmentOnly`) |
