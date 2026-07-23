@@ -14,7 +14,7 @@
 - Status: **Internal Staging · Gor Gor Review pending**
 
 **Later:** 正式版 = Family Memory Portal (shared DB + login + roles) — not this staging  
-**Related:** [`FAMILY_TABLE_v0_7_VISION.md`](./FAMILY_TABLE_v0_7_VISION.md) · [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md)
+**Related:** [`FAMILY_TABLE_v0_7_VISION.md`](./FAMILY_TABLE_v0_7_VISION.md) · [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md) · [`GOR_GOR_CHAT_BRIDGE_v0_1.md`](./GOR_GOR_CHAT_BRIDGE_v0_1.md)
 
 ---
 
@@ -162,7 +162,7 @@ Living Room also has a shared board: announcements · priorities · approved sta
 - **Family Rooms** sidebar — Living Room first  
 - Selecting a room shows all 9 panels  
 - **Living Room only:** House Rule card + **Family Cabinet** (drawers → open → items)  
-- **Bottom floating** “Gor Gor / Family Chat” → Living Room chat overlay (or jump to Living Room)  
+- **Bottom floating** **“Gor Gor”** → Gor Gor Chat Bridge bottom sheet (live Base44 via `/api/gor-gor-chat` when env set; local transcript `shortkey-gor-gor-chat-bridge-v01`)  
 - Banners: **INTERNAL STAGING ONLY · FAMILY HOME** + localStorage warning  
 - Footer (layout): **Powered by our AI family**  
 - Soft lavender / pearl / premium beauty DNA  
@@ -208,7 +208,9 @@ npm run family:dev
 
 | File | Role |
 |------|------|
-| `FamilyTableWorkbench.tsx` | v0.8 house · rooms · 9 panels · floating chat · migration · Living Room Cabinet host |
+| `FamilyTableWorkbench.tsx` | v0.8 house · rooms · 9 panels · floating Gor Gor · migration · Living Room Cabinet host |
+| `GorGorChatDrawer.tsx` | Gor Gor Chat Bridge v0.1 bottom sheet · room selector · bridge transcript |
+| `app/api/gor-gor-chat/route.ts` | Server-side Base44 Superagent bridge |
 | `FamilyCabinet.tsx` | Family Cabinet · 6 drawers · item forms · status gate (Senti ≠ approve) |
 | `FamilyChatPanel.tsx` | `RoomChatThread` + legacy key helpers / chat→room map |
 | `app/internal/family-table/page.tsx` | Route · `noindex` |

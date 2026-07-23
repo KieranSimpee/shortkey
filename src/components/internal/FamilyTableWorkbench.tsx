@@ -20,6 +20,7 @@ import {
   type FamilyCabinetState,
   normalizeCabinet,
 } from "@/components/internal/FamilyCabinet";
+import { GorGorChatDrawer } from "@/components/internal/GorGorChatDrawer";
 
 /**
  * Family Table v0.8 — One Room Per Family Member (house architecture).
@@ -1050,54 +1051,20 @@ export function FamilyTableWorkbench() {
         </div>
       </div>
 
-      {/* Floating Gor Gor / Family Chat */}
+      {/* Floating Gor Gor Chat Bridge v0.1 */}
       <button
         type="button"
         onClick={() => setChatOpen(true)}
         className="fixed bottom-5 right-5 z-40 rounded-full border border-brand/30 bg-brand px-5 py-3 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_8px_28px_rgba(140,130,252,0.35)] transition hover:bg-brand-dark sm:bottom-8 sm:right-8"
       >
-        Gor Gor / Family Chat
+        Gor Gor
       </button>
 
-      {chatOpen ? (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-ink/30 p-4 sm:items-center">
-          <div
-            role="dialog"
-            aria-label="Family Chat — Living Room"
-            className="flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-xl"
-          >
-            <div className="flex items-center justify-between border-b border-ink/10 bg-brand/[0.06] px-4 py-3">
-              <div>
-                <p className="font-display text-sm font-semibold text-ink">Living Room chat</p>
-                <p className="text-[10px] text-ink-subtle">Quick family thread · localStorage only</p>
-              </div>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  className={btnGhost}
-                  onClick={() => {
-                    setRoomId("living");
-                    setChatOpen(false);
-                  }}
-                >
-                  Open Living Room
-                </button>
-                <button type="button" className={btnGhost} onClick={() => setChatOpen(false)}>
-                  Close
-                </button>
-              </div>
-            </div>
-            <div className="min-h-0 flex-1 overflow-y-auto">
-              <RoomChatThread
-                compact
-                roomLabel={ROOMS[0].name}
-                messages={state.rooms.living.chat}
-                onChange={(chat) => patchRoom("living", { chat })}
-              />
-            </div>
-          </div>
-        </div>
-      ) : null}
+      <GorGorChatDrawer
+        open={chatOpen}
+        onClose={() => setChatOpen(false)}
+        initialRoom={roomId}
+      />
     </div>
   );
 }
