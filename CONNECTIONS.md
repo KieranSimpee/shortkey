@@ -59,7 +59,7 @@ Never change `origin` to another account unless intentionally migrating.
 **Vercel env (keep forever on the project, not only local):**
 
 - `SITE_ACCESS_PASSWORD`
-- `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) — soft gate for shortkey.studio / Family Table
+- `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) — soft gate for family.shortkey.world / shortkey.studio / Family Table
 - `SHORTKEY_PRODUCTS_API_URL` (optional override)
 - `SHOPIFY_STORE_DOMAIN` = `simplex-ity-dev.myshopify.com`
 - `SHOPIFY_STOREFRONT_ACCESS_TOKEN`
@@ -190,4 +190,58 @@ Code already treats `.live` separately from `.beauty`. Until the domain is attac
 Until the domain is attached, use:
 - Local: `npm run family:dev` → `http://localhost:3002/` (or `/internal/family-table`)
 - Deployed path on beauty/vercel host: `https://shortkey.vercel.app/internal/family-table` (still `noindex`; soft gate if env set)
+
+---
+
+## 7. family.shortkey.world — Family Table home (preferred · INTERNAL STAGING ONLY)
+
+**Philosophy lock**
+
+| Host | Role |
+|------|------|
+| **shortkey.world** | Public facing world |
+| **family.shortkey.world** | Our home — internal family house |
+
+**Host:** `family.shortkey.world` (optional `www.family.shortkey.world`)  
+**App surface:** Family Table v0.7 at `/internal/family-table`  
+**Middleware:** `family.shortkey.world/` → redirect `/internal/family-table`  
+**Also kept:** `shortkey.studio` → same route (CONNECTIONS §6) — both may point here  
+**Status lock:** **INTERNAL STAGING ONLY · not public world launch**  
+**Do not** create a second Vercel project — same ShortKey project as beauty / live / studio.
+
+**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Applies to family/studio host `/` and `/internal/*`. Localhost + `npm run family:dev` bypass.
+
+### DNS record (shortkey.world zone) — copy for registrar
+
+| Type | Name / Host | Value / Target | TTL |
+|------|-------------|----------------|-----|
+| **CNAME** | `family` | `cname.vercel-dns.com` | Auto / 3600 |
+
+Notes:
+- If the registrar UI asks for FQDN, use `family.shortkey.world` as the name and still CNAME to `cname.vercel-dns.com`.
+- If Vercel Domains UI shows a **different** CNAME target after you add the domain, use **that** target instead (Vercel is source of truth).
+- Do **not** point `family` at the apex `shortkey.world` A record unless Vercel instructs otherwise.
+
+### Vercel — CLI (if logged in / linked)
+
+```bash
+# from repo root, after `npx vercel link` to the ShortKey project
+npx vercel domains add family.shortkey.world
+```
+
+If CLI is not authenticated (`vercel login` / `VERCEL_TOKEN` missing), use the dashboard steps below.
+
+### Vercel — manual dashboard (Kieran / Simpee)
+
+1. Vercel → **ShortKey** project → **Settings → Domains**
+2. Add **`family.shortkey.world`**
+3. Confirm the DNS instruction Vercel shows (usually CNAME `family` → `cname.vercel-dns.com`)
+4. At the **shortkey.world** DNS provider, add that CNAME
+5. Wait for SSL + **Valid Configuration**
+6. Confirm `FAMILY_TABLE_STAGING_PASSWORD` is set on the Vercel project (Production)
+7. Open **https://family.shortkey.world/** — should land on **Family Table** with **INTERNAL STAGING ONLY · FAMILY HOME** banner (`noindex`) — not beauty Coming Soon, not public world launch
+
+Until DNS / domain is valid, use:
+- Local: `npm run family:dev` → `http://localhost:3002/`
+- Deployed path: `https://shortkey.vercel.app/internal/family-table`
 

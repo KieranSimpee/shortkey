@@ -237,16 +237,16 @@ export function FamilyTableWorkbench() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
-      {/* INTERNAL STAGING ONLY — visible lock; not public launch */}
+      {/* INTERNAL STAGING ONLY — family home · not public world launch */}
       <div
         role="status"
         className="mb-4 rounded-xl border border-amber-700/25 bg-amber-50 px-4 py-3 text-center text-xs leading-relaxed text-amber-950 sm:text-sm"
       >
         <span className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-amber-900 sm:text-xs">
-          INTERNAL STAGING ONLY
+          INTERNAL STAGING ONLY · FAMILY HOME
         </span>
         <span className="mt-1 block text-amber-900/90">
-          可以上 domain · 只係 internal staging · 不是 public launch · Gor Gor Review pending
+          family.shortkey.world — our home · not shortkey.world public launch · Gor Gor Review pending
         </span>
       </div>
 
@@ -255,7 +255,7 @@ export function FamilyTableWorkbench() {
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand">
-              shortkey.studio — Internal Staging · Family Table v0.7
+              family.shortkey.world — Family Home · Internal Staging · Family Table v0.7
             </p>
             <h1 className="mt-1 font-display text-2xl font-bold tracking-tight text-ink">
               Kieran Vision + Brand Data Vault

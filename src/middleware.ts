@@ -8,22 +8,37 @@ import {
 /**
  * Host routing for ShortKey multi-domain on one Vercel project.
  * shortkey.live → public Live Coming Soon (`/live`).
- * shortkey.studio → INTERNAL STAGING Family Table (`/internal/family-table`) — not public launch.
+ * family.shortkey.world → INTERNAL STAGING Family Table home (preferred).
+ * shortkey.studio → same Family Table route (kept; both may point here).
  * shortkey.beauty (and vercel.app / localhost) keep the beauty app as-is.
+ *
+ * Philosophy lock:
+ * - shortkey.world = public facing world
+ * - family.shortkey.world = family home (internal house) — NOT public launch
  *
  * Local Family Table surface (`npm run family:dev` → :3002):
  * SHORTKEY_SURFACE=family → `/` redirects to `/internal/family-table`.
  * ShortKey `npm run dev` (:3001) does NOT set this — Coming Soon stays on `/`.
  *
  * Soft staging gate: when FAMILY_TABLE_STAGING_PASSWORD or INTERNAL_STAGING_SECRET
- * is set, `/internal/*` (except login) requires cookie — on studio host always,
- * and for Family Table path on all hosts. Localhost / family surface bypass.
+ * is set, family/studio host `/` and `/internal/*` (except login) require cookie.
+ * Family Table path gated on all hosts. Localhost / family surface bypass.
  *
  * Full Rebuild preview stays at `/control/live.html` (family / control hub only).
  * Do not auto-publish unfinished livestream commerce — featureLocks stay closed.
  */
 const LIVE_HOSTS = new Set(["shortkey.live", "www.shortkey.live"]);
+/** Preferred Family Table home host going forward */
+const FAMILY_HOME_HOSTS = new Set([
+  "family.shortkey.world",
+  "www.family.shortkey.world",
+]);
+/** Legacy / alternate internal host — same route as family home */
 const STUDIO_HOSTS = new Set(["shortkey.studio", "www.shortkey.studio"]);
+
+function isFamilyTableHomeHost(host: string): boolean {
+  return FAMILY_HOME_HOSTS.has(host) || STUDIO_HOSTS.has(host);
+}
 
 function isLocalHost(host: string): boolean {
   return host === "localhost" || host === "127.0.0.1" || host === "::1";
@@ -50,13 +65,17 @@ function hasStagingCookie(request: NextRequest): boolean {
 }
 
 function requiresStagingGate(host: string, pathname: string): boolean {
-  if (!pathname.startsWith("/internal")) return false;
   if (pathname === "/internal/login" || pathname.startsWith("/internal/login/")) return false;
   if (isLocalHost(host) || process.env.SHORTKEY_SURFACE === "family") return false;
   if (!stagingSecretConfigured()) return false;
 
-  // Studio host: all /internal/*
-  if (STUDIO_HOSTS.has(host)) return true;
+  // Family / studio home host: `/` and all `/internal/*`
+  if (isFamilyTableHomeHost(host)) {
+    if (pathname === "/" || pathname === "" || pathname.startsWith("/internal")) {
+      return true;
+    }
+    return false;
+  }
 
   // All hosts: Family Table path (soft protection on vercel.app / beauty host URLs)
   if (
@@ -75,6 +94,27 @@ function redirectToLogin(request: NextRequest): NextResponse {
   url.search = "";
   url.searchParams.set("next", request.nextUrl.pathname + request.nextUrl.search);
   return NextResponse.redirect(url);
+}
+
+/**
+ * family.shortkey.world (preferred) + shortkey.studio → Family Table home.
+ * Root and non-internal paths redirect to `/internal/family-table`.
+ */
+function handleFamilyTableHomeHost(
+  request: NextRequest,
+  pathname: string,
+): NextResponse | null {
+  if (isStaticOrSystem(pathname) || pathname.startsWith("/control")) {
+    return NextResponse.next();
+  }
+
+  if (pathname === "/" || pathname === "" || !pathname.startsWith("/internal")) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/internal/family-table";
+    return NextResponse.redirect(url);
+  }
+
+  return NextResponse.next();
 }
 
 export function middleware(request: NextRequest) {
@@ -96,20 +136,9 @@ export function middleware(request: NextRequest) {
     return redirectToLogin(request);
   }
 
-  // ── shortkey.studio — INTERNAL STAGING ONLY ──────────────────────────────
-  if (STUDIO_HOSTS.has(host)) {
-    if (isStaticOrSystem(pathname) || pathname.startsWith("/control")) {
-      return NextResponse.next();
-    }
-
-    // Keep studio surface on internal routes; root → Family Table
-    if (pathname === "/" || pathname === "" || !pathname.startsWith("/internal")) {
-      const url = request.nextUrl.clone();
-      url.pathname = "/internal/family-table";
-      return NextResponse.redirect(url);
-    }
-
-    return NextResponse.next();
+  // ── family.shortkey.world (preferred) + shortkey.studio — INTERNAL STAGING ─
+  if (isFamilyTableHomeHost(host)) {
+    return handleFamilyTableHomeHost(request, pathname) ?? NextResponse.next();
   }
 
   // ── shortkey.live — Coming Soon gate (frozen surface; do not redesign) ───

@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { InternalStagingLogin } from "@/components/internal/InternalStagingLogin";
 
 export const metadata: Metadata = {
-  title: "Internal Staging Unlock | shortkey.studio",
-  description: "Shared-secret unlock for ShortKey internal staging. Not public launch.",
+  title: "Internal Staging Unlock | family.shortkey.world",
+  description:
+    "Shared-secret unlock for ShortKey family home / internal staging. Not public world launch.",
   robots: { index: false, follow: false },
 };
 

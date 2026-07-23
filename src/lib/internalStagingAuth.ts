@@ -1,5 +1,5 @@
 /**
- * Soft staging gate for `/internal/*` (shortkey.studio + Family Table).
+ * Soft staging gate for family.shortkey.world / shortkey.studio + Family Table.
  * Shared secret via env — not production auth / roles.
  */
 

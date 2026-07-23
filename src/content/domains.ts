@@ -159,7 +159,7 @@ export const shortkeyDomains: ShortkeyDomain[] = [
   {
     id: "studio",
     host: "shortkey.studio",
-    purpose: "Internal Control Center — Family Table staging (not public launch)",
+    purpose: "Internal Control Center — Family Table staging (also family.shortkey.world)",
     audience: "Internal family only",
     phase: 1,
     status: "building",
@@ -169,6 +169,7 @@ export const shortkeyDomains: ShortkeyDomain[] = [
     href: "/internal/family-table",
     features: [
       "Family Table v0.7 (internal staging)",
+      "Preferred home: family.shortkey.world",
       "Platform Manifest",
       "Soft staging password gate",
       "Creative ops / AI image APIs (later)",

@@ -203,9 +203,13 @@ Canonical registry from Master Blueprint + platform manifest + `domains.ts` / `A
 
 ---
 
-## Domain 8 — shortkey.studio (Internal Control Center)
+## Domain 8 — shortkey.studio + family.shortkey.world (Internal Control Center / Family Home)
 
-**Public status:** **INTERNAL STAGING ONLY** (not public launch) · **Phase:** P0 · Host `/` → `/internal/family-table` · Routes: `/internal/platform-manifest` · `/internal/family-table` · soft gate via `FAMILY_TABLE_STAGING_PASSWORD`
+**Public status:** **INTERNAL STAGING ONLY** (not public world launch) · **Phase:** P0  
+**Preferred home host:** `family.shortkey.world` `/` → `/internal/family-table`  
+**Also kept:** `shortkey.studio` → same route  
+**Routes:** `/internal/platform-manifest` · `/internal/family-table` · soft gate via `FAMILY_TABLE_STAGING_PASSWORD`  
+**Philosophy:** `shortkey.world` = public world · `family.shortkey.world` = family home
 
 | Feature | What it does | Priority | Design/UI? | Suggested seat |
 |---------|--------------|----------|------------|----------------|
@@ -304,7 +308,8 @@ Fill when ready. Suggestions above are **not** assignments.
 | shortkey.beauty | `/design` QC mirror | ☐ | | |
 | shortkey.beauty | Shop / PDP (locked) | ☐ | | Design only — no unlock |
 | shortkey.beauty | K / J / C category (locked) | ☐ | | Design only — no unlock |
-| shortkey.studio | Family Table internal staging on domain | ☐ | Key | Wired middleware + gate 2026-07-23 · attach domain in Vercel · Gor Gor Review pending |
+| shortkey.studio | Family Table internal staging on domain | ☐ | Key | Wired middleware + gate · also **family.shortkey.world** preferred home · attach domains in Vercel (CONNECTIONS §6–7) · Gor Gor Review pending |
+| family.shortkey.world | Family Table home (internal staging) | ☐ | Key | Middleware wired 2026-07-23 · DNS CNAME `family` → `cname.vercel-dns.com` · Vercel domain pending Kieran · **not** public world launch |
 | shortkey.info | Brand Portal shell | ☐ | | |
 | shortkey.social | Creator OS shell | ☐ | | |
 | shortkey.store | Commerce grid / checkout | ☐ | | After ratio ready |

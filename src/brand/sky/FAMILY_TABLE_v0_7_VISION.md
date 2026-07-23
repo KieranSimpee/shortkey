@@ -6,11 +6,13 @@
 **Authority:** Kieran + Simpee Bro (Gor Gor) · Family Vote  
 **Build home:** this repo — `C:\Users\Kieran\Projects\shortkey` · route `/internal/family-table` · local **port 3002** (`npm run family:dev`)  
 
-**Domain lock (tonight):** `shortkey.studio` → **INTERNAL STAGING ONLY**  
-- 可以上 domain · 只係 internal staging · **不是 public launch**  
-- Host middleware: `shortkey.studio` / `www.shortkey.studio` `/` → redirect `/internal/family-table`  
-- Attach domain in Vercel (manual) — see [`CONNECTIONS.md`](../../../CONNECTIONS.md) §6  
-- Soft password gate: `FAMILY_TABLE_STAGING_PASSWORD` or `INTERNAL_STAGING_SECRET` + cookie (`/internal/login`)  
+**Domain lock (family home):** `family.shortkey.world` → **INTERNAL STAGING ONLY**  
+- **Philosophy:** `shortkey.world` = public facing world · **`family.shortkey.world` = our home** (internal family house)  
+- 可以上 domain · 只係 internal staging · **不是 public world launch**  
+- Preferred host middleware: `family.shortkey.world` (and `www.family.shortkey.world` if used) `/` → redirect `/internal/family-table`  
+- Also kept: `shortkey.studio` / `www.shortkey.studio` → same route (both may point here)  
+- Attach domain in Vercel — see [`CONNECTIONS.md`](../../../CONNECTIONS.md) §7  
+- Soft password gate: `FAMILY_TABLE_STAGING_PASSWORD` or `INTERNAL_STAGING_SECRET` + cookie (`/internal/login`) on family/studio host `/` and `/internal/*`  
 - Status: **Internal Staging · Gor Gor Review pending**
 
 **Later:** 正式版 = Family Memory Portal (shared DB + login + roles) — not this staging  
@@ -103,7 +105,8 @@ Clear banner on UI: *INTERNAL STAGING ONLY · localStorage only · not Family Me
 
 | Host / path | Gate |
 |-------------|------|
-| `shortkey.studio` `/internal/*` | Cookie required when env secret set → `/internal/login` |
+| `family.shortkey.world` `/` and `/internal/*` | Cookie required when env secret set → `/internal/login` |
+| `shortkey.studio` `/` and `/internal/*` | Same (kept wiring; same Family Table route) |
 | Any host `/internal/family-table` | Same soft gate when env secret set |
 | `localhost` / `npm run family:dev` | Bypass (local workbench) |
 | Env unset | **No password required** — routes still `noindex` / not in public nav (honest soft staging) |
@@ -115,8 +118,8 @@ Clear banner on UI: *INTERNAL STAGING ONLY · localStorage only · not Family Me
 ### DO
 
 - Keep this **internal staging** (`/internal/family-table` · `noindex` · not in public nav)
-- Allow **shortkey.studio** domain attach for family staging only
-- Treat as **family workbench** — organise → assign → Gor Gor Review
+- Prefer **`family.shortkey.world`** as Family Table home host; keep **shortkey.studio** if already wired
+- Treat as **family home / workbench** — organise → assign → Gor Gor Review — **not** public world
 - Persist lightly so family can try Write / Store / Upload **concept**
 - Document that 正式版 = login + DB + private storage + roles + history + status
 - Record pushes under Studio Push Ledger **Internal Tools** — status **Internal Staging · Gor Gor Review pending**
@@ -124,7 +127,8 @@ Clear banner on UI: *INTERNAL STAGING ONLY · localStorage only · not Family Me
 
 ### DON’T
 
-- Claim **public launch** when domain is attached
+- Claim **public launch** / public world when family domain is attached
+- Confuse **`shortkey.world`** (public) with **`family.shortkey.world`** (home)
 - Put Family Table / Memory Portal on **public** Coming Soon `shortkey.beauty` `/`
 - Expose **public brand content** from this vault
 - Expose **AI family architecture** on public sites
@@ -158,11 +162,17 @@ Then open either:
 
 Same Next app as ShortKey; same wasm / `NEXT_TEST_WASM_DIR` / chdir-to-repo pattern as `:3001`. Localhost bypasses staging password. Routes are `noindex` and not linked from public nav.
 
-### shortkey.studio (staging domain)
+### family.shortkey.world (preferred family home)
 
-- After Vercel Domains attach: **https://shortkey.studio** → `/internal/family-table`
+- After Vercel Domains + DNS: **https://family.shortkey.world/** → `/internal/family-table`
 - Unlock at `/internal/login` when `FAMILY_TABLE_STAGING_PASSWORD` is set
+- DNS (shortkey.world zone): **CNAME** `family` → `cname.vercel-dns.com` (or Vercel-shown target)
 - Fallback until DNS: **https://shortkey.vercel.app/internal/family-table**
+
+### shortkey.studio (kept · same route)
+
+- **https://shortkey.studio** → same `/internal/family-table` (optional alternate host)
+- Soft gate identical when env secret set
 
 ### ShortKey public (unchanged)
 
@@ -176,12 +186,14 @@ npm run dev
 
 ## Handback for Gor Gor
 
-1. Preview URL (studio domain or vercel `/internal/family-table`)  
+1. Preview URL: **https://family.shortkey.world/** (or `/internal/family-table`)  
 2. Final route: `/internal/family-table`  
-3. Confirm **INTERNAL STAGING ONLY** banner  
+3. Confirm **INTERNAL STAGING ONLY · FAMILY HOME** banner  
 4. Confirm storage = **localStorage** (not shared DB)  
 5. Confirm soft password gate (env + cookie) honesty  
-6. Approve or block further depth toward 正式版  
+6. Confirm DNS / Vercel domain status  
+7. Approve or block further depth toward 正式版  
+8. Lock: **INTERNAL STAGING — family home, not public world launch**  
 
 ---
 
