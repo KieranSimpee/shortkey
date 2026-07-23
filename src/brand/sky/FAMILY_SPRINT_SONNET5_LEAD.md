@@ -3,7 +3,8 @@
 **Locked:** 2026-07-21 · Family Gathering  
 **Blueprint:** [`SHORTKEY_MASTER_BLUEPRINT_v1.md`](../SHORTKEY_MASTER_BLUEPRINT_v1.md)  
 **Domain · Feature allocation (Simpee):** [`DOMAIN_FEATURE_MATRIX.md`](./DOMAIN_FEATURE_MATRIX.md)  
-**DO / DON’T / Review handback (Simpee authority · 2026-07-23):** [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md) — 總機 first wave **`beauty` · `studio` · `info`** · **`shortkey.live` FROZEN** · Ledger [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md)
+**DO / DON’T / Review handback (Simpee authority · 2026-07-23):** [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md) — 總機 first wave **`beauty` · `studio` · `info`** · **`shortkey.live` FROZEN** · Ledger [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md)  
+**Family Table v0.5 (asset packs by content type · internal):** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md)
 
 ## Work way
 

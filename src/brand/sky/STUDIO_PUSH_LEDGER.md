@@ -2,6 +2,7 @@
 
 **Authority:** Simpee Bro · SHORTKEY DOMAIN FEATURE ROLLOUT BOARD · 2026-07-23  
 **Board:** [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md)  
+**Family Table (internal tooling):** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md)  
 **Rule:** Every design or feature push to any domain **appends** one entry below. Do not overwrite history.  
 **Access:** Internal / family only — never expose this ledger on public pages.
 
@@ -96,6 +97,16 @@
 | 16. Rollback reference | Prior dark-tech hero + EN/JA/KO/简体 in git before this commit; revert `ComingSoonHome.tsx` · `comingSoonMessages.ts` · `HeroLanguageTaps.tsx` · remove `useLaunchCountdown.ts` |
 
 **Change notes:** Shifted Coming Soon hero from `bg-surface-dark` to pearl/silk atmosphere with soft beauty full-bleed wash; added “Before I Meet The World” countdown to Aug 14, 2026; Asian beauty discovery line; founder/brand invitation + meeting CTAs kept; language board-aligned EN/繁中/KO; footer `Powered by our AI family`. No shop unlock · no payment · `shortkey.live` untouched.
+
+---
+
+## Internal Tools (not domain public pushes)
+
+These are family-only tooling previews. They are **not** Studio domain pushes and do **not** use the 16-field public-push schema.
+
+| Date | Tool | Version | Notes |
+|------|------|---------|--------|
+| 2026-07-23 | Family Table | v0.5 Internal Preview | Asset Downloads by Content Type (5 packs). Preview on Base44 private media — Simpee holds link; **no JWT/tokenized URL in repo**. Filename hint: `ShortKey_Family_Table_v0_5_Internal_Preview.html`. Doc: [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md). |
 
 ---
 
