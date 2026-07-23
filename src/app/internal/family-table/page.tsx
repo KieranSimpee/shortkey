@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { FamilyTableWorkbench } from "@/components/internal/FamilyTableWorkbench";
 
 export const metadata: Metadata = {
-  title: "Family Table v0.7 | Shortkey Studio (Internal)",
+  title: "Family Table v0.7 | shortkey.studio (Internal Staging)",
   description:
-    "Kieran Vision + Brand Data Vault — writable Family Table concept scaffold. Internal only · local persistence · Gor Gor Review required.",
+    "INTERNAL STAGING ONLY — Kieran Vision + Brand Data Vault. Not public launch · localStorage only · Gor Gor Review pending.",
   robots: { index: false, follow: false },
 };
 

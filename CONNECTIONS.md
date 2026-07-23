@@ -59,6 +59,7 @@ Never change `origin` to another account unless intentionally migrating.
 **Vercel env (keep forever on the project, not only local):**
 
 - `SITE_ACCESS_PASSWORD`
+- `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) — soft gate for shortkey.studio / Family Table
 - `SHORTKEY_PRODUCTS_API_URL` (optional override)
 - `SHOPIFY_STORE_DOMAIN` = `simplex-ity-dev.myshopify.com`
 - `SHOPIFY_STOREFRONT_ACCESS_TOKEN`
@@ -164,4 +165,29 @@ If a token expires, **update the env var**. Do not create a parallel project.
 5. Open `https://shortkey.live` — should show **ShortKey Live · Coming Soon** (not the beauty homepage)
 
 Code already treats `.live` separately from `.beauty`. Until the domain is attached, preview locally at `http://localhost:3001/live`.
+
+---
+
+## 6. shortkey.studio — attach to same Vercel project (manual · INTERNAL STAGING ONLY)
+
+**Host:** `shortkey.studio` (and `www.shortkey.studio`)  
+**App surface:** Family Table internal staging at `/internal/family-table`  
+**Middleware:** `shortkey.studio/` → redirect `/internal/family-table`  
+**Status lock:** **可以上 domain · 只係 internal staging · 不是 public launch**  
+**Do not** create a second Vercel project for `.studio` — same chain as beauty / live.
+
+**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Localhost + `npm run family:dev` bypass. Soft shared-secret only — not 正式版 login/roles.
+
+**One-time dashboard steps (Kieran):**
+
+1. Vercel → ShortKey project → **Settings → Domains**
+2. Add `shortkey.studio` and optionally `www.shortkey.studio`
+3. At the domain registrar, set the DNS records Vercel shows (usually A / CNAME)
+4. Wait for SSL + “Valid Configuration”
+5. Set `FAMILY_TABLE_STAGING_PASSWORD` on the Vercel project (Production + Preview if needed)
+6. Open `https://shortkey.studio` — should land on **Family Table** with **INTERNAL STAGING ONLY** banner (not beauty Coming Soon, not public launch)
+
+Until the domain is attached, use:
+- Local: `npm run family:dev` → `http://localhost:3002/` (or `/internal/family-table`)
+- Deployed path on beauty/vercel host: `https://shortkey.vercel.app/internal/family-table` (still `noindex`; soft gate if env set)
 

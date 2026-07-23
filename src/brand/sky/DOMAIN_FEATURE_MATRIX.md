@@ -205,7 +205,7 @@ Canonical registry from Master Blueprint + platform manifest + `domains.ts` / `A
 
 ## Domain 8 — shortkey.studio (Internal Control Center)
 
-**Public status:** Internal Only · **Phase:** P0 · Routes today: `/internal/platform-manifest` · `/internal/family-table`
+**Public status:** **INTERNAL STAGING ONLY** (not public launch) · **Phase:** P0 · Host `/` → `/internal/family-table` · Routes: `/internal/platform-manifest` · `/internal/family-table` · soft gate via `FAMILY_TABLE_STAGING_PASSWORD`
 
 | Feature | What it does | Priority | Design/UI? | Suggested seat |
 |---------|--------------|----------|------------|----------------|
@@ -304,7 +304,7 @@ Fill when ready. Suggestions above are **not** assignments.
 | shortkey.beauty | `/design` QC mirror | ☐ | | |
 | shortkey.beauty | Shop / PDP (locked) | ☐ | | Design only — no unlock |
 | shortkey.beauty | K / J / C category (locked) | ☐ | | Design only — no unlock |
-| shortkey.studio | Platform Manifest polish | ☐ | | |
+| shortkey.studio | Family Table internal staging on domain | ☐ | Key | Wired middleware + gate 2026-07-23 · attach domain in Vercel · Gor Gor Review pending |
 | shortkey.info | Brand Portal shell | ☐ | | |
 | shortkey.social | Creator OS shell | ☐ | | |
 | shortkey.store | Commerce grid / checkout | ☐ | | After ratio ready |

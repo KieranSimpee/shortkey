@@ -1,12 +1,19 @@
 # Family Table v0.7 — Kieran Vision + Brand Data Vault
 
-**Version:** v0.7 (Writable concept scaffold · internal preview)  
+**Version:** v0.7 (Writable concept scaffold · **Internal Staging**)  
 **Suggested product name:** **Kieran Vision + Brand Data Vault**  
 **Date locked:** 2026-07-23  
 **Authority:** Kieran + Simpee Bro (Gor Gor) · Family Vote  
-**Build home (tonight):** this repo — `C:\Users\Kieran\Projects\shortkey` · route `/internal/family-table` · local **port 3002** (`npm run family:dev`)  
+**Build home:** this repo — `C:\Users\Kieran\Projects\shortkey` · route `/internal/family-table` · local **port 3002** (`npm run family:dev`)  
 
-**Later:** may move to a family domain; not required for v0.7  
+**Domain lock (tonight):** `shortkey.studio` → **INTERNAL STAGING ONLY**  
+- 可以上 domain · 只係 internal staging · **不是 public launch**  
+- Host middleware: `shortkey.studio` / `www.shortkey.studio` `/` → redirect `/internal/family-table`  
+- Attach domain in Vercel (manual) — see [`CONNECTIONS.md`](../../../CONNECTIONS.md) §6  
+- Soft password gate: `FAMILY_TABLE_STAGING_PASSWORD` or `INTERNAL_STAGING_SECRET` + cookie (`/internal/login`)  
+- Status: **Internal Staging · Gor Gor Review pending**
+
+**Later:** 正式版 = Family Memory Portal (shared DB + login + roles) — not this staging  
 **Related:** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md) · [`SIMPEE_DOMAIN_ROLLOUT_BOARD.md`](./SIMPEE_DOMAIN_ROLLOUT_BOARD.md)
 
 ---
@@ -58,7 +65,7 @@
 6. Queue items for **Gor Gor Review**  
 7. Keep light personal memory files (placeholder OK)
 
-Goal for tonight: family can **SEE** this is the future workbench — not only pretty UI.
+Goal: family can **SEE** this is the future workbench — not only pretty UI. Staging on domain ≠ public launch.
 
 ---
 
@@ -80,14 +87,26 @@ Goal for tonight: family can **SEE** this is the future workbench — not only p
 
 | Layer | Status |
 |-------|--------|
-| **Browser localStorage** | **Yes** — key `shortkey-family-table-v07` — preview only |
-| **Production database** | **No** — 正式版 (Family Memory Portal) |
+| **Browser localStorage** | **Yes** — key `shortkey-family-table-v07` — preview / staging only |
+| **Shared / production database** | **No** — 正式版 (Family Memory Portal) |
 | **Login / roles / private cloud storage / version history** | **No** — 正式版 |
-| **Public Coming Soon `/`** | **Not linked** |
+| **Soft staging password** | **Yes when env set** — `FAMILY_TABLE_STAGING_PASSWORD` / `INTERNAL_STAGING_SECRET` + cookie; localhost / `family:dev` bypass |
+| **Public Coming Soon `/` (beauty)** | **Not linked** · Family Table **not** on `shortkey.beauty` `/` |
 | **shortkey.live** | **Do not modify** |
 | **Shop / payment** | **Do not unlock** |
 
-Clear banner on UI: *Internal preview · local persistence only · not Family Memory Portal yet.*
+Clear banner on UI: *INTERNAL STAGING ONLY · localStorage only · not Family Memory Portal yet.*
+
+---
+
+## Access gate (soft staging)
+
+| Host / path | Gate |
+|-------------|------|
+| `shortkey.studio` `/internal/*` | Cookie required when env secret set → `/internal/login` |
+| Any host `/internal/family-table` | Same soft gate when env secret set |
+| `localhost` / `npm run family:dev` | Bypass (local workbench) |
+| Env unset | **No password required** — routes still `noindex` / not in public nav (honest soft staging) |
 
 ---
 
@@ -95,22 +114,24 @@ Clear banner on UI: *Internal preview · local persistence only · not Family Me
 
 ### DO
 
-- Keep this **internal only** (`/internal/family-table` · `noindex` · not in public nav)
+- Keep this **internal staging** (`/internal/family-table` · `noindex` · not in public nav)
+- Allow **shortkey.studio** domain attach for family staging only
 - Treat as **family workbench** — organise → assign → Gor Gor Review
 - Persist lightly so family can try Write / Store / Upload **concept**
 - Document that 正式版 = login + DB + private storage + roles + history + status
-- Record pushes under Studio Push Ledger **Internal Tools**
+- Record pushes under Studio Push Ledger **Internal Tools** — status **Internal Staging · Gor Gor Review pending**
 - Let **Simpee organise**; family **builds** in this repo
 
 ### DON’T
 
-- Put Family Table / Memory Portal on **public** Coming Soon `/`
+- Claim **public launch** when domain is attached
+- Put Family Table / Memory Portal on **public** Coming Soon `shortkey.beauty` `/`
 - Expose **public brand content** from this vault
 - Expose **AI family architecture** on public sites
 - Skip **Gor Gor Review** gate for public or domain pushes
 - Add **payment** / unlock shop from this surface
 - Modify **shortkey.live**
-- Pretend localStorage is production storage
+- Pretend localStorage is shared / production storage
 - Make Simpee both architect and sole builder for the same task
 
 ---
@@ -135,7 +156,13 @@ Then open either:
 - **http://localhost:3002** — lands on the workbench (`SHORTKEY_SURFACE=family` redirects `/` → `/internal/family-table`)
 - **http://localhost:3002/internal/family-table** — direct path
 
-Same Next app as ShortKey; same wasm / `NEXT_TEST_WASM_DIR` / chdir-to-repo pattern as `:3001`. No secret header required for local `/internal/*` — routes are `noindex` and not linked from public nav.
+Same Next app as ShortKey; same wasm / `NEXT_TEST_WASM_DIR` / chdir-to-repo pattern as `:3001`. Localhost bypasses staging password. Routes are `noindex` and not linked from public nav.
+
+### shortkey.studio (staging domain)
+
+- After Vercel Domains attach: **https://shortkey.studio** → `/internal/family-table`
+- Unlock at `/internal/login` when `FAMILY_TABLE_STAGING_PASSWORD` is set
+- Fallback until DNS: **https://shortkey.vercel.app/internal/family-table**
 
 ### ShortKey public (unchanged)
 
@@ -145,17 +172,16 @@ npm run dev
 
 → **http://localhost:3001/** (Coming Soon)
 
-(Internal preview deploy may still use the same `/internal/family-table` path — still `noindex`.)
-
 ---
 
 ## Handback for Gor Gor
 
-1. Run `npm run family:dev` → open `http://localhost:3002` (or `/internal/family-table`)  
-2. Confirm seven sections visible and usable as concept forms/lists  
-3. Confirm persistence banner is honest  
-4. Confirm **not** linked from public Coming Soon on **:3001** `/`  
-5. Approve or block further depth toward 正式版 
+1. Preview URL (studio domain or vercel `/internal/family-table`)  
+2. Final route: `/internal/family-table`  
+3. Confirm **INTERNAL STAGING ONLY** banner  
+4. Confirm storage = **localStorage** (not shared DB)  
+5. Confirm soft password gate (env + cookie) honesty  
+6. Approve or block further depth toward 正式版  
 
 ---
 

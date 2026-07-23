@@ -121,7 +121,7 @@ Ledger fields (exact):
 | **Audience** | Internal only |
 | **Main purpose** | ShortKey internal command center |
 | **Design direction** | Clean control center — not public-facing. Functional, calm, traceable |
-| **Status** | Internal only · Must be protected · No public brand content |
+| **Status** | **INTERNAL STAGING ONLY** (domain OK · not public launch) · Soft password gate · No public brand content · Gor Gor Review pending |
 
 **Required features (Simpee):**
 

@@ -237,12 +237,25 @@ export function FamilyTableWorkbench() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
+      {/* INTERNAL STAGING ONLY — visible lock; not public launch */}
+      <div
+        role="status"
+        className="mb-4 rounded-xl border border-amber-700/25 bg-amber-50 px-4 py-3 text-center text-xs leading-relaxed text-amber-950 sm:text-sm"
+      >
+        <span className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-amber-900 sm:text-xs">
+          INTERNAL STAGING ONLY
+        </span>
+        <span className="mt-1 block text-amber-900/90">
+          可以上 domain · 只係 internal staging · 不是 public launch · Gor Gor Review pending
+        </span>
+      </div>
+
       {/* Header */}
       <div className="rounded-2xl border border-ink/10 bg-white/90 px-5 py-5 shadow-[0_1px_0_rgba(140,130,252,0.08)] sm:px-6 sm:py-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand">
-              shortkey.studio — Internal · Family Table v0.7
+              shortkey.studio — Internal Staging · Family Table v0.7
             </p>
             <h1 className="mt-1 font-display text-2xl font-bold tracking-tight text-ink">
               Kieran Vision + Brand Data Vault
@@ -264,12 +277,12 @@ export function FamilyTableWorkbench() {
 
         <div className="mt-4 rounded-xl border border-brand/20 bg-brand/5 px-4 py-3 text-xs leading-relaxed text-ink">
           <span className="font-semibold uppercase tracking-[0.1em] text-brand">
-            Internal preview · local persistence only
+            Internal staging · localStorage only
           </span>
           {" · "}
-          Storage key <code className="font-mono text-[11px]">{STORAGE_KEY}</code> · not production DB ·
-          no login · no public brand content · Gor Gor Review still required before any domain push ·
-          shop / payment locked · shortkey.live untouched.
+          Storage key <code className="font-mono text-[11px]">{STORAGE_KEY}</code> · not shared DB ·
+          not 正式版 · soft password gate when env secret set · no public brand content · Gor Gor
+          Review still required · shop / payment locked · shortkey.live untouched.
           {isFamilyPort ? (
             <span className="mt-1 block text-ink-muted">
               Family Table surface · port 3002 · ShortKey Coming Soon stays on{" "}
