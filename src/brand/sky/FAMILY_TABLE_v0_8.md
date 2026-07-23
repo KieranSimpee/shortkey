@@ -72,7 +72,8 @@ Every room includes:
 8. **Kieran Review Ready**  
 9. **Room chat thread**
 
-Living Room also has a shared board: announcements · priorities · approved standards.
+Living Room also has a shared board: announcements · priorities · approved standards.  
+**House Rule card** (top of Living Room): `Family House Rule · 返屋企先執房` — tidy room before submit; cultural line soft-emphasized; mirrored into Living Room announcements default.
 
 ### Status labels (from Chat v0.1)
 

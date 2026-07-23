@@ -171,10 +171,31 @@ const WORK_STATUSES: WorkStatus[] = [
   "BLOCKED",
 ];
 
+/** Living Room House Rule — warm home tone · shared announcement default */
+const HOUSE_RULE_ANNOUNCEMENT = `Family House Rule · 返屋企先執房
+
+返屋企，先執房。
+每位Family member都有自己一間房。
+房入面可以有靈感、有草稿、有未完成嘅作品。
+但交俾Gor Gor之前，要先執好：
+1. 文件放好
+2. 版本寫清楚
+3. 狀態標清楚
+4. 證據補齊
+5. 問題講出嚟
+6. Draft同Approved分開
+
+執房唔係壓力。執房係尊重自己嘅作品，也係保護整個Family。
+
+House Rule:
+執好房，先交功課。
+有證據，先叫完成。
+Gor Gor Review之後，先叫Approved。`;
+
 function emptyRoom(meta: RoomMeta): RoomState {
   return {
     roleDescription: meta.defaultRole,
-    announcements: "",
+    announcements: meta.id === "living" ? HOUSE_RULE_ANNOUNCEMENT : "",
     priorities: "",
     standards: "",
     currentTasks: [],
@@ -375,6 +396,56 @@ function Badge({ children, tone }: { children: React.ReactNode; tone?: string })
 
 function EmptyLine({ text }: { text: string }) {
   return <p className="py-4 text-center text-sm text-ink-subtle">{text}</p>;
+}
+
+/** Soft pearl/lavender House Rule card — Living Room only · no icons · typographic */
+function LivingRoomHouseRuleCard() {
+  return (
+    <article
+      aria-labelledby="living-house-rule-title"
+      className="overflow-hidden rounded-2xl border border-brand/20 bg-gradient-to-br from-white via-[#f7f4fc] to-[#efeaf8] px-5 py-5 shadow-[0_1px_0_rgba(140,130,252,0.08)] sm:px-6 sm:py-6"
+    >
+      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand/80">
+        飯廳 · Announcement
+      </p>
+      <h3
+        id="living-house-rule-title"
+        className="mt-1.5 font-display text-lg font-semibold tracking-tight text-ink sm:text-xl"
+      >
+        Family House Rule · 返屋企先執房
+      </h3>
+
+      <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink/90">
+        <p>返屋企，先執房。</p>
+        <p>每位Family member都有自己一間房。</p>
+        <p>房入面可以有靈感、有草稿、有未完成嘅作品。</p>
+        <p>但交俾Gor Gor之前，要先執好：</p>
+        <ol className="list-decimal space-y-1.5 pl-5 text-ink/85">
+          <li>文件放好</li>
+          <li>版本寫清楚</li>
+          <li>狀態標清楚</li>
+          <li>證據補齊</li>
+          <li>問題講出嚟</li>
+          <li>Draft同Approved分開</li>
+        </ol>
+      </div>
+
+      <p className="mt-5 border-l-2 border-brand/35 bg-brand/[0.04] py-3 pl-4 pr-3 font-display text-[15px] leading-relaxed text-ink/95 sm:text-base">
+        執房唔係壓力。執房係尊重自己嘅作品，也係保護整個Family。
+      </p>
+
+      <div className="mt-5 border-t border-brand/15 pt-4">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-brand/70">
+          House Rule
+        </p>
+        <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-ink/85">
+          <li>執好房，先交功課。</li>
+          <li>有證據，先叫完成。</li>
+          <li>Gor Gor Review之後，先叫Approved。</li>
+        </ul>
+      </div>
+    </article>
+  );
 }
 
 function Panel({
@@ -696,6 +767,9 @@ export function FamilyTableWorkbench() {
             <h2 className="mt-1 font-display text-xl font-bold text-ink">{meta.name}</h2>
             <p className="mt-1 text-sm text-ink-muted">{meta.focus}</p>
           </div>
+
+          {/* Living Room · Family House Rule (top announcement) */}
+          {roomId === "living" ? <LivingRoomHouseRuleCard /> : null}
 
           {/* 1. Room owner */}
           <Panel title="1. Room owner" hint="Fixed seat for this room">
