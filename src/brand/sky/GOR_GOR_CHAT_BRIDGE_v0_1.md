@@ -4,7 +4,7 @@
 **Surface:** Family Home only — `family.shortkey.world` / `/internal/family-table`  
 **Do not:** touch Coming Soon / `shortkey.beauty` public · expose API keys to frontend · commit secrets  
 
-**Related:** [`FAMILY_TABLE_v0_8.md`](./FAMILY_TABLE_v0_8.md) · [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md)
+**Related:** [`FAMILY_TABLE_v0_8.md`](./FAMILY_TABLE_v0_8.md) · [`SHARED_LIVING_ROOM_THREAD_v0_1.md`](./SHARED_LIVING_ROOM_THREAD_v0_1.md) · [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md)
 
 ---
 
@@ -47,7 +47,9 @@ Header: `api_key: <env>`
 
 | Key | Contents |
 |-----|----------|
-| **`shortkey-gor-gor-chat-bridge-v01`** | Per-room `conversation_id` + transcript bubbles (v0.1) |
+| **`shortkey-gor-gor-chat-bridge-v01`** | **Shared Living Room Thread v0.1:** `livingRoomConversationId` + `livingRoomMessages[]` (sender · fromRoom · kind). Legacy `rooms{}` per-room transcripts retained but not used by the Living Room UX. |
+
+See [`SHARED_LIVING_ROOM_THREAD_v0_1.md`](./SHARED_LIVING_ROOM_THREAD_v0_1.md).
 
 Separate from Family Table `shortkey-family-table-v08` room chat panels.
 
@@ -64,9 +66,10 @@ Separate from Family Table `shortkey-family-table-v08` room chat panels.
 ## UI checklist
 
 - Bottom floating **Gor Gor**
-- Bottom sheet · title **Gor Gor Chat**
-- Rooms: Living Room · Kieran Vision Room · Gor Gor Review Room · Sky Room · Senti Room · Kura Room · Agent R Room
-- Placeholder `Talk to Gor Gor…` · Send · user + Gor Gor bubbles
+- Bottom sheet · title **Living Room · Gor Gor**
+- Shared thread · From room · Sender · Kind selectors
+- Kinds: CHAT · NOTE · HOMEWORK SUBMITTED · EVIDENCE SUBMITTED · WAITING FOR GOR GOR
+- Placeholder `Talk to Gor Gor from the Living Room…` · Send · user + Gor Gor bubbles (same thread)
 - Warning: *Internal staging only · API bridge required for real Gor Gor reply · no private data yet.*
 - Footer credit via layout: **Powered by our AI family**
 
@@ -78,3 +81,4 @@ Separate from Family Table `shortkey-family-table-v08` room chat panels.
 - Rate limit is per-instance memory
 - Bridge depends on Base44 Superagent key + correct `SIMPEE_AGENT_ID`
 - Room chat panel in Family Table v0.8 is separate (local prototype); this bridge is the live Gor Gor path
+- Shared Living Room Thread uses one conversation; member names are sender labels only (not separate agents)

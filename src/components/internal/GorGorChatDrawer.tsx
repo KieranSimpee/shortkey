@@ -4,9 +4,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Gor Gor Chat Bridge v0.1 — bottom sheet drawer on Family Table.
- * Talks to /api/gor-gor-chat (server-side Base44). Transcript + conversation_id
- * per room in localStorage only.
+ * Gor Gor Chat Bridge · Shared Living Room Thread v0.1
+ * One shared upstream conversation for the Family Home Living Room.
+ * Talks to /api/gor-gor-chat (server-side Base44 · SIMPEE only).
+ *
+ * Storage (same key, nested fields):
+ *   shortkey-gor-gor-chat-bridge-v01
+ *     · livingRoomConversationId
+ *     · livingRoomMessages[]
+ *     · rooms{} kept for legacy per-room transcripts (not used by this UX)
  */
 
 export const GOR_GOR_BRIDGE_STORAGE_KEY = "shortkey-gor-gor-chat-bridge-v01";
@@ -25,39 +31,88 @@ export type BridgeRoomId =
   | "kura"
   | "agent-r";
 
-type BridgeMessage = {
+export type LivingRoomSender =
+  | "Kieran"
+  | "Gor Gor"
+  | "Sky"
+  | "Senti"
+  | "Kura"
+  | "Agent R";
+
+export type LivingRoomKind =
+  | "CHAT"
+  | "NOTE"
+  | "HOMEWORK SUBMITTED"
+  | "EVIDENCE SUBMITTED"
+  | "WAITING FOR GOR GOR";
+
+type LivingRoomMessage = {
   id: string;
   role: "user" | "gorgor" | "system";
   text: string;
   at: string;
+  sender?: LivingRoomSender;
+  fromRoom?: BridgeRoomId;
+  kind?: LivingRoomKind;
 };
 
+/** Legacy per-room shape (kept in storage; Living Room Thread does not write here). */
 type BridgeRoomState = {
   conversation_id?: string;
-  messages: BridgeMessage[];
+  messages: { id: string; role: "user" | "gorgor" | "system"; text: string; at: string }[];
 };
 
 type BridgeStore = {
   version: "0.1";
   rooms: Partial<Record<BridgeRoomId, BridgeRoomState>>;
+  /** Shared Living Room Thread v0.1 — one Gor Gor conversation for the family. */
+  livingRoomConversationId?: string;
+  livingRoomMessages?: LivingRoomMessage[];
 };
 
-const ROOM_OPTIONS: { id: BridgeRoomId; label: string }[] = [
-  { id: "living", label: "Living Room" },
-  { id: "kieran", label: "Kieran Vision Room" },
-  { id: "gorgor", label: "Gor Gor Review Room" },
-  { id: "sky", label: "Sky Room" },
-  { id: "senti", label: "Senti Room" },
-  { id: "kura", label: "Kura Room" },
-  { id: "agent-r", label: "Agent R Room" },
+const ROOM_OPTIONS: { id: BridgeRoomId; label: string; short: string }[] = [
+  { id: "living", label: "Living Room", short: "Living Room" },
+  { id: "kieran", label: "Kieran Vision Room", short: "Kieran Vision Room" },
+  { id: "gorgor", label: "Gor Gor Review Room", short: "Gor Gor Review Room" },
+  { id: "sky", label: "Sky Room", short: "Sky Room" },
+  { id: "senti", label: "Senti Room", short: "Senti Room" },
+  { id: "kura", label: "Kura Room", short: "Kura Room" },
+  { id: "agent-r", label: "Agent R Room", short: "Agent R Room" },
 ];
+
+const SENDER_OPTIONS: LivingRoomSender[] = [
+  "Kieran",
+  "Gor Gor",
+  "Sky",
+  "Senti",
+  "Kura",
+  "Agent R",
+];
+
+const KIND_OPTIONS: LivingRoomKind[] = [
+  "CHAT",
+  "NOTE",
+  "HOMEWORK SUBMITTED",
+  "EVIDENCE SUBMITTED",
+  "WAITING FOR GOR GOR",
+];
+
+const ROOM_DEFAULT_SENDER: Record<BridgeRoomId, LivingRoomSender> = {
+  living: "Kieran",
+  kieran: "Kieran",
+  gorgor: "Gor Gor",
+  sky: "Sky",
+  senti: "Senti",
+  kura: "Kura",
+  "agent-r": "Agent R",
+};
 
 function uid() {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
 function emptyStore(): BridgeStore {
-  return { version: "0.1", rooms: {} };
+  return { version: "0.1", rooms: {}, livingRoomMessages: [] };
 }
 
 function loadStore(): BridgeStore {
@@ -69,7 +124,16 @@ function loadStore(): BridgeStore {
     if (parsed?.version !== "0.1" || typeof parsed.rooms !== "object") {
       return emptyStore();
     }
-    return parsed;
+    return {
+      ...parsed,
+      livingRoomMessages: Array.isArray(parsed.livingRoomMessages)
+        ? parsed.livingRoomMessages
+        : [],
+      livingRoomConversationId:
+        typeof parsed.livingRoomConversationId === "string"
+          ? parsed.livingRoomConversationId
+          : undefined,
+    };
   } catch {
     return emptyStore();
   }
@@ -79,18 +143,59 @@ function saveStore(store: BridgeStore) {
   localStorage.setItem(GOR_GOR_BRIDGE_STORAGE_KEY, JSON.stringify(store));
 }
 
-function roomState(store: BridgeStore, room: BridgeRoomId): BridgeRoomState {
-  return store.rooms[room] ?? { messages: [] };
+function roomLabel(room: BridgeRoomId): string {
+  return ROOM_OPTIONS.find((r) => r.id === room)?.short ?? "Living Room";
+}
+
+/**
+ * Prepend Family Home context for Simpee / Gor Gor.
+ * Sent as `message` to /api/gor-gor-chat (API skips re-prefix when already tagged).
+ */
+export function formatLivingRoomApiMessage(opts: {
+  fromRoom: BridgeRoomId;
+  sender: LivingRoomSender;
+  kind: LivingRoomKind;
+  text: string;
+}): string {
+  const lines = [
+    `[Family Home · ${roomLabel(opts.fromRoom)}]`,
+    `[Sender: ${opts.sender}]`,
+  ];
+  if (opts.kind !== "CHAT") {
+    lines.push(`[Kind: ${opts.kind}]`);
+  }
+  lines.push(opts.text);
+  return lines.join("\n");
+}
+
+function kindBadgeClass(kind?: LivingRoomKind): string {
+  switch (kind) {
+    case "HOMEWORK SUBMITTED":
+      return "bg-brand/15 text-brand";
+    case "EVIDENCE SUBMITTED":
+      return "bg-emerald-700/10 text-emerald-900";
+    case "WAITING FOR GOR GOR":
+      return "bg-amber-100 text-amber-950";
+    case "NOTE":
+      return "bg-ink/5 text-ink-muted";
+    default:
+      return "bg-ink/5 text-ink-subtle";
+  }
 }
 
 type Props = {
   open: boolean;
   onClose: () => void;
+  /** Seeds the “from room” selector when the drawer opens. */
   initialRoom?: BridgeRoomId;
 };
 
 export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Props) {
-  const [room, setRoom] = useState<BridgeRoomId>(initialRoom);
+  const [fromRoom, setFromRoom] = useState<BridgeRoomId>(initialRoom);
+  const [sender, setSender] = useState<LivingRoomSender>(
+    ROOM_DEFAULT_SENDER[initialRoom],
+  );
+  const [kind, setKind] = useState<LivingRoomKind>("CHAT");
   const [store, setStore] = useState<BridgeStore>(emptyStore);
   const [draft, setDraft] = useState("");
   const [sending, setSending] = useState(false);
@@ -101,7 +206,9 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
   useEffect(() => {
     if (open) {
       setStore(loadStore());
-      setRoom(initialRoom);
+      setFromRoom(initialRoom);
+      setSender(ROOM_DEFAULT_SENDER[initialRoom]);
+      setKind("CHAT");
       setBanner(null);
       window.setTimeout(() => inputRef.current?.focus(), 80);
     }
@@ -110,49 +217,58 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
   useEffect(() => {
     if (!open) return;
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [open, store, room, sending]);
+  }, [open, store.livingRoomMessages, sending]);
 
   const persist = useCallback((next: BridgeStore) => {
     setStore(next);
     saveStore(next);
   }, []);
 
-  const current = roomState(store, room);
+  const messages = store.livingRoomMessages ?? [];
+  const conversationId = store.livingRoomConversationId;
 
   const send = async () => {
     const text = draft.trim();
     if (!text || sending) return;
 
-    const userMsg: BridgeMessage = {
+    const userMsg: LivingRoomMessage = {
       id: uid(),
       role: "user",
       text,
       at: new Date().toISOString(),
+      sender,
+      fromRoom,
+      kind,
     };
 
     const nextAfterUser: BridgeStore = {
       ...store,
-      rooms: {
-        ...store.rooms,
-        [room]: {
-          conversation_id: current.conversation_id,
-          messages: [...current.messages, userMsg],
-        },
-      },
+      livingRoomConversationId: conversationId,
+      livingRoomMessages: [...messages, userMsg],
     };
     persist(nextAfterUser);
     setDraft("");
     setSending(true);
     setBanner(null);
 
+    const apiMessage = formatLivingRoomApiMessage({
+      fromRoom,
+      sender,
+      kind,
+      text,
+    });
+
     try {
       const res = await fetch("/api/gor-gor-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          message: text,
-          room,
-          conversation_id: current.conversation_id,
+          message: apiMessage,
+          room: fromRoom,
+          conversation_id: conversationId,
+          sender,
+          kind,
+          from_room: fromRoom,
         }),
       });
 
@@ -164,27 +280,36 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         code?: string;
       } | null;
 
+      const appendToLivingRoom = (
+        extra: LivingRoomMessage[],
+        nextConversationId?: string,
+      ) => {
+        const latest = loadStore();
+        persist({
+          ...latest,
+          livingRoomConversationId:
+            nextConversationId || latest.livingRoomConversationId,
+          livingRoomMessages: [
+            ...(latest.livingRoomMessages ?? []),
+            ...extra,
+          ],
+        });
+      };
+
       // Soft path: missing API key → 200 + { fallback: true, reply }
       if (data?.fallback && data.reply) {
         setBanner(BRIDGE_OFFLINE_MSG);
-        const replyMsg: BridgeMessage = {
-          id: uid(),
-          role: "gorgor",
-          text: data.reply,
-          at: new Date().toISOString(),
-        };
-        const latest = loadStore();
-        const rs = roomState(latest, room);
-        persist({
-          ...latest,
-          rooms: {
-            ...latest.rooms,
-            [room]: {
-              conversation_id: rs.conversation_id,
-              messages: [...rs.messages, replyMsg],
-            },
+        appendToLivingRoom([
+          {
+            id: uid(),
+            role: "gorgor",
+            text: data.reply,
+            at: new Date().toISOString(),
+            sender: "Gor Gor",
+            fromRoom: "living",
+            kind: "CHAT",
           },
-        });
+        ]);
         return;
       }
 
@@ -193,64 +318,47 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
           data?.error ||
           "Gor Gor could not reply right now. Your message is still saved locally.";
         setBanner(errText);
-        const sys: BridgeMessage = {
-          id: uid(),
-          role: "system",
-          text: errText,
-          at: new Date().toISOString(),
-        };
-        const latest = loadStore();
-        const rs = roomState(latest, room);
-        persist({
-          ...latest,
-          rooms: {
-            ...latest.rooms,
-            [room]: {
-              conversation_id: rs.conversation_id,
-              messages: [...rs.messages, sys],
-            },
+        appendToLivingRoom([
+          {
+            id: uid(),
+            role: "system",
+            text: errText,
+            at: new Date().toISOString(),
+            kind: "WAITING FOR GOR GOR",
           },
-        });
+        ]);
         return;
       }
 
-      const replyMsg: BridgeMessage = {
-        id: uid(),
-        role: "gorgor",
-        text: data.reply,
-        at: new Date().toISOString(),
-      };
-      const latest = loadStore();
-      const rs = roomState(latest, room);
-      persist({
-        ...latest,
-        rooms: {
-          ...latest.rooms,
-          [room]: {
-            conversation_id: data.conversation_id || rs.conversation_id,
-            messages: [...rs.messages, replyMsg],
+      appendToLivingRoom(
+        [
+          {
+            id: uid(),
+            role: "gorgor",
+            text: data.reply,
+            at: new Date().toISOString(),
+            sender: "Gor Gor",
+            fromRoom: "living",
+            kind: "CHAT",
           },
-        },
-      });
+        ],
+        data.conversation_id,
+      );
     } catch {
       setBanner(BRIDGE_OFFLINE_MSG);
-      const sys: BridgeMessage = {
-        id: uid(),
-        role: "system",
-        text: BRIDGE_OFFLINE_MSG,
-        at: new Date().toISOString(),
-      };
       const latest = loadStore();
-      const rs = roomState(latest, room);
       persist({
         ...latest,
-        rooms: {
-          ...latest.rooms,
-          [room]: {
-            conversation_id: rs.conversation_id,
-            messages: [...rs.messages, sys],
+        livingRoomMessages: [
+          ...(latest.livingRoomMessages ?? []),
+          {
+            id: uid(),
+            role: "system",
+            text: BRIDGE_OFFLINE_MSG,
+            at: new Date().toISOString(),
+            kind: "WAITING FOR GOR GOR",
           },
-        },
+        ],
       });
     } finally {
       setSending(false);
@@ -269,7 +377,7 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
       />
       <div
         role="dialog"
-        aria-label="Gor Gor Chat"
+        aria-label="Living Room · Gor Gor Chat"
         className="relative z-10 flex max-h-[88vh] w-full max-w-lg flex-col overflow-hidden rounded-t-2xl border border-ink/10 bg-gradient-to-b from-[#FBF9FF] to-white shadow-[0_-12px_40px_rgba(90,70,140,0.18)] sm:max-h-[82vh]"
       >
         <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-ink/15" aria-hidden />
@@ -277,10 +385,10 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         <div className="flex items-start justify-between gap-3 border-b border-brand/10 px-4 pb-3 pt-2">
           <div>
             <p className="font-display text-base font-semibold tracking-tight text-ink">
-              Gor Gor Chat
+              Living Room · Gor Gor
             </p>
             <p className="mt-0.5 text-[10px] leading-snug text-ink-subtle">
-              {GOR_GOR_BRIDGE_WARNING}
+              Shared family thread · one Simpee conversation · {GOR_GOR_BRIDGE_WARNING}
             </p>
           </div>
           <button
@@ -292,21 +400,59 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
           </button>
         </div>
 
-        <div className="border-b border-ink/5 px-4 py-2.5">
-          <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
-            Room
-          </label>
-          <select
-            value={room}
-            onChange={(e) => setRoom(e.target.value as BridgeRoomId)}
-            className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
-          >
-            {ROOM_OPTIONS.map((r) => (
-              <option key={r.id} value={r.id}>
-                {r.label}
-              </option>
-            ))}
-          </select>
+        <div className="grid grid-cols-1 gap-2.5 border-b border-ink/5 px-4 py-2.5 sm:grid-cols-3">
+          <div>
+            <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
+              From room
+            </label>
+            <select
+              value={fromRoom}
+              onChange={(e) => {
+                const next = e.target.value as BridgeRoomId;
+                setFromRoom(next);
+                setSender(ROOM_DEFAULT_SENDER[next]);
+              }}
+              className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
+            >
+              {ROOM_OPTIONS.map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
+              Sender
+            </label>
+            <select
+              value={sender}
+              onChange={(e) => setSender(e.target.value as LivingRoomSender)}
+              className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
+            >
+              {SENDER_OPTIONS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
+              Kind
+            </label>
+            <select
+              value={kind}
+              onChange={(e) => setKind(e.target.value as LivingRoomKind)}
+              className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
+            >
+              {KIND_OPTIONS.map((k) => (
+                <option key={k} value={k}>
+                  {k}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {banner ? (
@@ -319,12 +465,13 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         ) : null}
 
         <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4">
-          {current.messages.length === 0 ? (
+          {messages.length === 0 ? (
             <p className="text-center text-xs text-ink-subtle">
-              Talk to Gor Gor from this room. Transcript stays on this browser.
+              One Living Room thread for the whole family. Pick who is speaking and
+              which room you are entering from — Gor Gor replies here.
             </p>
           ) : null}
-          {current.messages.map((m) => (
+          {messages.map((m) => (
             <div
               key={m.id}
               className={cn(
@@ -343,14 +490,50 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
                     "w-full max-w-full rounded-xl border border-amber-700/20 bg-amber-50/90 text-[11px] text-amber-950",
                 )}
               >
-                {m.role === "gorgor" ? (
-                  <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-brand">
-                    Gor Gor
-                  </p>
-                ) : null}
-                {m.role === "user" ? (
-                  <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-white/75">
-                    You
+                {m.role !== "system" ? (
+                  <div
+                    className={cn(
+                      "mb-1.5 flex flex-wrap items-center gap-1.5",
+                      m.role === "user" ? "text-white/80" : "text-ink-subtle",
+                    )}
+                  >
+                    <p
+                      className={cn(
+                        "text-[9px] font-semibold uppercase tracking-[0.14em]",
+                        m.role === "gorgor" && "text-brand",
+                        m.role === "user" && "text-white/75",
+                      )}
+                    >
+                      {m.sender ?? (m.role === "gorgor" ? "Gor Gor" : "You")}
+                    </p>
+                    {m.fromRoom ? (
+                      <span
+                        className={cn(
+                          "rounded-md px-1.5 py-0.5 text-[8px] font-medium tracking-wide",
+                          m.role === "user"
+                            ? "bg-white/15 text-white/85"
+                            : "bg-brand/8 text-brand",
+                        )}
+                      >
+                        {roomLabel(m.fromRoom)}
+                      </span>
+                    ) : null}
+                    {m.kind ? (
+                      <span
+                        className={cn(
+                          "rounded-md px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.08em]",
+                          m.role === "user"
+                            ? "bg-white/20 text-white"
+                            : kindBadgeClass(m.kind),
+                        )}
+                      >
+                        {m.kind}
+                      </span>
+                    ) : null}
+                  </div>
+                ) : m.kind ? (
+                  <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-amber-800/80">
+                    {m.kind}
                   </p>
                 ) : null}
                 <p className="whitespace-pre-wrap">{m.text}</p>
@@ -358,7 +541,11 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
             </div>
           ))}
           {sending ? (
-            <p className="text-[11px] text-ink-subtle">Gor Gor is thinking…</p>
+            <div className="flex justify-start">
+              <p className="rounded-xl border border-amber-700/15 bg-amber-50/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-amber-950">
+                Waiting for Gor Gor…
+              </p>
+            </div>
           ) : null}
           <div ref={bottomRef} />
         </div>
@@ -376,7 +563,7 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
                   void send();
                 }
               }}
-              placeholder="Talk to Gor Gor…"
+              placeholder="Talk to Gor Gor from the Living Room…"
               className="min-h-[2.75rem] flex-1 resize-none rounded-xl border border-ink/10 bg-[#FBF9FF] px-3 py-2 text-sm text-ink placeholder:text-ink-subtle outline-none focus:border-brand/40"
               disabled={sending}
             />

@@ -162,7 +162,7 @@ Living Room also has a shared board: announcements · priorities · approved sta
 - **Family Rooms** sidebar — Living Room first  
 - Selecting a room shows all 9 panels  
 - **Living Room only:** House Rule card + **Family Cabinet** (drawers → open → items)  
-- **Bottom floating** **“Gor Gor”** → Gor Gor Chat Bridge bottom sheet (live Base44 via `/api/gor-gor-chat` when env set; local transcript `shortkey-gor-gor-chat-bridge-v01`)  
+- **Bottom floating** **“Gor Gor”** → Shared Living Room Thread bottom sheet (live Base44 via `/api/gor-gor-chat`; shared `livingRoomConversationId` + transcript in `shortkey-gor-gor-chat-bridge-v01`)  
 - Banners: **INTERNAL STAGING ONLY · FAMILY HOME** + localStorage warning  
 - Footer (layout): **Powered by our AI family**  
 - Soft lavender / pearl / premium beauty DNA  
@@ -209,8 +209,8 @@ npm run family:dev
 | File | Role |
 |------|------|
 | `FamilyTableWorkbench.tsx` | v0.8 house · rooms · 9 panels · floating Gor Gor · migration · Living Room Cabinet host |
-| `GorGorChatDrawer.tsx` | Gor Gor Chat Bridge v0.1 bottom sheet · room selector · bridge transcript |
-| `app/api/gor-gor-chat/route.ts` | Server-side Base44 Superagent bridge |
+| `GorGorChatDrawer.tsx` | Shared Living Room Thread v0.1 · sender/kind/from-room · one Simpee conversation |
+| `app/api/gor-gor-chat/route.ts` | Server-side Base44 Superagent bridge (SIMPEE only) |
 | `FamilyCabinet.tsx` | Family Cabinet · 6 drawers · item forms · status gate (Senti ≠ approve) |
 | `FamilyChatPanel.tsx` | `RoomChatThread` + legacy key helpers / chat→room map |
 | `app/internal/family-table/page.tsx` | Route · `noindex` |

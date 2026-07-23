@@ -18,8 +18,12 @@ export const dynamic = "force-dynamic";
 
 /**
  * POST /api/gor-gor-chat
- * Body: { message: string, room: string, conversation_id?: string }
- * Returns: { reply, conversation_id } · soft { fallback: true, reply } when key missing · or clear error (no secrets / stacks).
+ * Body: {
+ *   message, room, conversation_id?,
+ *   sender?, kind?, from_room?  — optional Living Room Thread fields (ignored upstream)
+ * }
+ * Returns: { reply, conversation_id } · soft { fallback: true, reply } when key missing.
+ * Still talks to SIMPEE_AGENT_ID only. Shared Living Room Thread reuses one conversation_id.
  *
  * Env (server only):
  * - BASE44_AGENT_API_KEY (preferred) · BASE44_API_KEY · KURA_API_KEY
@@ -60,6 +64,9 @@ export async function POST(request: Request) {
     message?: unknown;
     room?: unknown;
     conversation_id?: unknown;
+    sender?: unknown;
+    kind?: unknown;
+    from_room?: unknown;
   };
 
   const message = typeof raw.message === "string" ? raw.message.trim() : "";
@@ -70,7 +77,13 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!isGorGorChatRoomId(raw.room)) {
+  // Prefer from_room when Living Room Thread sends both; fall back to room.
+  const roomCandidate =
+    typeof raw.from_room === "string" && raw.from_room.trim()
+      ? raw.from_room.trim()
+      : raw.room;
+
+  if (!isGorGorChatRoomId(roomCandidate)) {
     return NextResponse.json(
       { error: "Invalid room. Use a Family Home room id." },
       { status: 400 },
@@ -93,7 +106,11 @@ export async function POST(request: Request) {
 
   const agentBase = getSimpeeAgentBaseUrl();
   const headers = base44Headers(apiKey);
-  const content = formatRoomAwareMessage(raw.room, message);
+  // Living Room Thread frontend already prepends [Family Home · …][Sender:…][Kind:…] —
+  // do not double-prefix. Legacy clients still get formatRoomAwareMessage.
+  const content = message.startsWith("[Family Home")
+    ? message
+    : formatRoomAwareMessage(roomCandidate, message);
 
   try {
     let conversationId = existingConversationId;
