@@ -159,16 +159,18 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
       const data = (await res.json().catch(() => null)) as {
         reply?: string;
         conversation_id?: string;
+        fallback?: boolean;
         error?: string;
         code?: string;
       } | null;
 
-      if (res.status === 503 || data?.code === "bridge_not_configured") {
+      // Soft path: missing API key → 200 + { fallback: true, reply }
+      if (data?.fallback && data.reply) {
         setBanner(BRIDGE_OFFLINE_MSG);
-        const sys: BridgeMessage = {
+        const replyMsg: BridgeMessage = {
           id: uid(),
-          role: "system",
-          text: BRIDGE_OFFLINE_MSG,
+          role: "gorgor",
+          text: data.reply,
           at: new Date().toISOString(),
         };
         const latest = loadStore();
@@ -179,7 +181,7 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
             ...latest.rooms,
             [room]: {
               conversation_id: rs.conversation_id,
-              messages: [...rs.messages, sys],
+              messages: [...rs.messages, replyMsg],
             },
           },
         });

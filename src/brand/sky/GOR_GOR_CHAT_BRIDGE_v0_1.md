@@ -57,7 +57,7 @@ Separate from Family Table `shortkey-family-table-v08` room chat panels.
 
 - Soft staging cookie gate on API when `FAMILY_TABLE_STAGING_PASSWORD` / `INTERNAL_STAGING_SECRET` is set (localhost + `SHORTKEY_SURFACE=family` soft allow — match middleware)
 - In-memory rate limit: **20 req / 10 min / IP** (resets on serverless cold start / multi-instance — honest limitation)
-- Missing env → **503** + UI: *Gor Gor Chat Bridge is not connected yet. Message saved locally only.* (user message still saved)
+- Missing env / API key → **200** + `{ fallback: true, reply: "Gor Gor Chat Bridge is not connected yet. Message saved locally only." }` (user message still saved; UI shows soft Gor Gor bubble + banner)
 
 ---
 

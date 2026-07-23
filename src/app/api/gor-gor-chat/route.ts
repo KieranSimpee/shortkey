@@ -19,7 +19,7 @@ export const dynamic = "force-dynamic";
 /**
  * POST /api/gor-gor-chat
  * Body: { message: string, room: string, conversation_id?: string }
- * Returns: { reply, conversation_id } or clear error (no secrets / stacks).
+ * Returns: { reply, conversation_id } · soft { fallback: true, reply } when key missing · or clear error (no secrets / stacks).
  *
  * Env (server only):
  * - BASE44_AGENT_API_KEY (preferred) · BASE44_API_KEY · KURA_API_KEY
@@ -46,17 +46,6 @@ export async function POST(request: Request) {
           ? { "Retry-After": String(limit.retryAfterSec) }
           : undefined,
       },
-    );
-  }
-
-  if (!isGorGorBridgeConfigured()) {
-    return NextResponse.json(
-      {
-        error:
-          "Gor Gor Chat Bridge is not connected yet. Message saved locally only.",
-        code: "bridge_not_configured",
-      },
-      { status: 503 },
     );
   }
 
@@ -94,15 +83,12 @@ export async function POST(request: Request) {
       : undefined;
 
   const apiKey = getBase44AgentApiKey();
-  if (!apiKey) {
-    return NextResponse.json(
-      {
-        error:
-          "Gor Gor Chat Bridge is not connected yet. Message saved locally only.",
-        code: "bridge_not_configured",
-      },
-      { status: 503 },
-    );
+  if (!apiKey || !isGorGorBridgeConfigured()) {
+    return NextResponse.json({
+      fallback: true,
+      reply:
+        "Gor Gor Chat Bridge is not connected yet. Message saved locally only.",
+    });
   }
 
   const agentBase = getSimpeeAgentBaseUrl();
