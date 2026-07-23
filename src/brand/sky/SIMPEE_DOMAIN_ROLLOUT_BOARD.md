@@ -8,7 +8,7 @@
 **Related inventory (feature detail, seats):** [`DOMAIN_FEATURE_MATRIX.md`](./DOMAIN_FEATURE_MATRIX.md)  
 **Push record:** [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md)  
 **Sprint protocol:** [`FAMILY_SPRINT_SONNET5_LEAD.md`](./FAMILY_SPRINT_SONNET5_LEAD.md)  
-**Family Table (internal · v0.5 library + v0.7 writable concept):** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · [`FAMILY_TABLE_v0_7_VISION.md`](./FAMILY_TABLE_v0_7_VISION.md) · `/internal/family-table`
+**Family Table (internal · v0.5 library + v0.7 vote + v0.8 house):** [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · [`FAMILY_TABLE_v0_7_VISION.md`](./FAMILY_TABLE_v0_7_VISION.md) · [`FAMILY_TABLE_v0_8.md`](./FAMILY_TABLE_v0_8.md) · `/internal/family-table`
 
 > **Allocation authority:** This Simpee board is the **DO / DON’T / Review handback** authority.  
 > `DOMAIN_FEATURE_MATRIX.md` remains the feature inventory + seat suggestions. When they differ on *what to do now*, **this board wins**.

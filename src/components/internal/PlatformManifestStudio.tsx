@@ -114,7 +114,7 @@ export function PlatformManifestStudio({ manifest }: { manifest: PlatformManifes
               href="/internal/family-table"
               className="rounded-full border border-brand/30 bg-brand/5 px-4 py-2.5 font-display text-xs font-semibold uppercase tracking-[0.12em] text-brand transition hover:border-brand hover:bg-brand/10"
             >
-              Family Table v0.7 →
+              Family Table v0.8 →
             </Link>
             <button
               type="button"

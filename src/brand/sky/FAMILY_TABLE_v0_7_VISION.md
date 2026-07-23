@@ -1,5 +1,7 @@
 # Family Table v0.7 — Kieran Vision + Brand Data Vault
 
+> **Superseded for house UI by [`FAMILY_TABLE_v0_8.md`](./FAMILY_TABLE_v0_8.md)** — One Room Per Family Member (localStorage key `shortkey-family-table-v08`). This v0.7 doc remains the **Family Vote AGREED** + writable-concept authority; v0.8 builds on it.
+
 **Version:** v0.7 (Writable concept scaffold · **Internal Staging**)  
 **Suggested product name:** **Kieran Vision + Brand Data Vault**  
 **Date locked:** 2026-07-23  

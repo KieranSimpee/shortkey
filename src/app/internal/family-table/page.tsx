@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { FamilyTableWorkbench } from "@/components/internal/FamilyTableWorkbench";
 
 export const metadata: Metadata = {
-  title: "Family Table v0.7 | family.shortkey.world (Internal Staging)",
+  title: "Family Table v0.8 | family.shortkey.world (Internal Staging)",
   description:
-    "INTERNAL STAGING ONLY — family home · Kieran Vision + Brand Data Vault + Family Chat v0.1. Not public world launch · localStorage only · Gor Gor Review pending.",
+    "INTERNAL STAGING ONLY — family home · One Room Per Family Member · localStorage house. Not public world launch · Gor Gor Review pending.",
   robots: { index: false, follow: false },
   other: {
     googlebot: "noindex, nofollow",
@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 /**
- * Internal Family Table v0.7 — Kieran Vision + Brand Data Vault.
+ * Internal Family Table v0.8 — One Room Per Family Member (house architecture).
  * Preferred host: family.shortkey.world (also shortkey.studio).
  * NOT linked from public nav/footer or Coming Soon `/`.
- * Doc: src/brand/sky/FAMILY_TABLE_v0_7_VISION.md
+ * Doc: src/brand/sky/FAMILY_TABLE_v0_8.md
  */
 export default function FamilyTablePage() {
   return (

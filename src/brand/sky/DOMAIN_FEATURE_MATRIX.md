@@ -37,7 +37,7 @@ Use this matrix to:
 | Public `/` | **Coming Soon** | Hero · Try-On preview · Skin Analysis preview · Creator/Brand CTAs · Email capture · Social proof placeholder · Premium footer |
 | `/design` | **Internal ref** (`robots: noindex`) | Full `HomeDesignPreview` — not public gate |
 | `/internal/platform-manifest` | **Internal** (`noindex`) | Studio manifest map / feature registry / export |
-| `/internal/family-table` | **Internal** (`noindex`) | Family Table v0.7 — Kieran Vision + Brand Data Vault (writable concept · localStorage) |
+| `/internal/family-table` | **Internal** (`noindex`) | Family Table v0.8 — One Room Per Family Member (localStorage house) |
 | `featureLocks.productSurface` | **LOCKED = true** | `/shop` · `/shop/[sku]` · product display |
 | `featureLocks.categorySurface` | **LOCKED = true** | Header K/J/C nav · `/kbeauty` · `/jbeauty` · `/cbeauty` |
 | `featureLocks.signupAppointmentOnly` | **LOCKED = true** | Creator/Brand signup = appointment + notify only (no public rates / founding fees / CTRL Twin pricing) |
@@ -217,7 +217,7 @@ Canonical registry from Master Blueprint + platform manifest + `domains.ts` / `A
 | Feature Registry | Aggregated feature → platforms | P0 | **Y** | Key · Sky |
 | Manifest Preview / Export | JSON preview + download | P0 | **N/light** | Key |
 | Review Workflow | Draft → … → Published / Blocked | P0 | **Y** — status badges clear | Simpee · Key |
-| Family Table v0.7 | Kieran Vision + Brand Data Vault · 7 sections · local persist | P0 | **Y** — pearl/lilac · forms/lists | Key · Simpee |
+| Family Table v0.8 | One Room Per Family Member · 7 rooms · 9 panels · local persist | P0 | **Y** — pearl/lilac · house rooms | Key · Simpee |
 | Asset / Copy / Design References | Registries (manifest modules; some still thin) | P1 | **Y** as filled | Senti · Kura |
 | Studio control panel (v2 hub) | Spec’d Master Control (`domains.ts` briefs) | P1 | **Y** | Silk · Key |
 | Creative ops / AI image APIs | Brand-service studio (`domains.ts`) | P2 | Later | Senti · Key |
