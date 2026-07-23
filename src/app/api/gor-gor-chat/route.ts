@@ -110,7 +110,11 @@ export async function POST(request: Request) {
   } catch (err) {
     if (err instanceof GorGorBridgeError) {
       return NextResponse.json(
-        { error: err.message, code: err.code },
+        {
+          error: err.message,
+          code: err.code,
+          ...(err.diagnostic ? { diagnostic: err.diagnostic } : {}),
+        },
         { status: err.status >= 400 && err.status < 600 ? err.status : 502 },
       );
     }

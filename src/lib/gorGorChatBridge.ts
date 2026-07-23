@@ -6,11 +6,17 @@
  * Fallbacks: BASE44_API_KEY · KURA_API_KEY (shared Base44 key patterns in this repo)
  *
  * Agent: SIMPEE_AGENT_ID (default 69ddc914cfcf229762ac123d — override via env)
- * Base: BASE44_AGENT_API_BASE_URL (default https://app.base44.com/api/agents)
+ * Base: BASE44_AGENT_API_BASE_URL
+ *   - `https://app.base44.com/api/agents` → append `/{agentId}`
+ *   - full agent URL ending with agent id → use as-is (do not double-append)
  */
 
 export const DEFAULT_SIMPEE_AGENT_ID = "69ddc914cfcf229762ac123d";
 export const DEFAULT_AGENT_API_BASE = "https://app.base44.com/api/agents";
+
+/** Known typo suffix — never use; force correct default when env matches this pattern. */
+const FORBIDDEN_AGENT_ID_SUFFIX = "123f";
+const CANONICAL_AGENT_ID_SUFFIX = "123d";
 
 export function getBase44AgentApiKey(): string | undefined {
   const key =
@@ -21,16 +27,116 @@ export function getBase44AgentApiKey(): string | undefined {
   return key.length > 0 ? key : undefined;
 }
 
+/**
+ * Simpee / Gor Gor Superagent id.
+ * Hard default ends in 123d. Rejects env values ending in 123f (common typo).
+ */
 export function getSimpeeAgentId(): string {
-  return process.env.SIMPEE_AGENT_ID?.trim() || DEFAULT_SIMPEE_AGENT_ID;
+  const fromEnv = process.env.SIMPEE_AGENT_ID?.trim();
+  if (!fromEnv) return DEFAULT_SIMPEE_AGENT_ID;
+  if (fromEnv.toLowerCase().endsWith(FORBIDDEN_AGENT_ID_SUFFIX)) {
+    return DEFAULT_SIMPEE_AGENT_ID;
+  }
+  return fromEnv;
 }
 
-/** Full agent base: `{BASE}/{agentId}` */
+/** Last 4 chars of agent id for safe diagnostics (verify 123d vs 123f). */
+export function agentIdSuffix(agentId: string = getSimpeeAgentId()): string {
+  return agentId.slice(-4);
+}
+
+function stripTrailingSlashes(url: string): string {
+  return url.replace(/\/+$/, "");
+}
+
+/**
+ * Join base + path without double slashes (preserves `https://`).
+ */
+export function joinUrl(base: string, ...parts: string[]): string {
+  let out = stripTrailingSlashes(base.trim());
+  for (const part of parts) {
+    const segment = part.replace(/^\/+|\/+$/g, "");
+    if (!segment) continue;
+    out = `${out}/${segment}`;
+  }
+  return out;
+}
+
+/**
+ * Resolve full agent API base: `https://app.base44.com/api/agents/{agentId}`
+ *
+ * Handles:
+ * - root `.../api/agents` → append agent id
+ * - full URL already ending with agent id → use as-is (no double-append)
+ * - full URL ending with a different 24-hex id → replace with SIMPEE id
+ * - mistaken `/api/apps/...` (products app path) → rewrite to `/api/agents/...`
+ * - accidental double `/api/api` → collapse once
+ */
 export function getSimpeeAgentBaseUrl(): string {
-  const root =
-    process.env.BASE44_AGENT_API_BASE_URL?.trim().replace(/\/$/, "") ||
-    DEFAULT_AGENT_API_BASE;
-  return `${root}/${getSimpeeAgentId()}`;
+  const agentId = getSimpeeAgentId();
+  let root =
+    process.env.BASE44_AGENT_API_BASE_URL?.trim() || DEFAULT_AGENT_API_BASE;
+  root = stripTrailingSlashes(root);
+  // Guard common misconfig: .../api/api/agents
+  root = root.replace(/\/api\/api(\/|$)/gi, "/api$1");
+  // Products app URL must not be used for Superagent conversations
+  root = root.replace(/\/api\/apps(\/|$)/gi, "/api/agents$1");
+
+  const rootLower = root.toLowerCase();
+  const idLower = agentId.toLowerCase();
+
+  // Full agent URL already includes this agent id → do not append again
+  if (rootLower.endsWith(`/${idLower}`)) {
+    return root;
+  }
+
+  // .../api/agents/{otherId} → swap to canonical Simpee id
+  if (/\/api\/agents\/[a-f0-9]{24}$/i.test(root)) {
+    return root.replace(/\/[a-f0-9]{24}$/i, `/${agentId}`);
+  }
+
+  // .../api/agents → append id
+  if (/\/api\/agents$/i.test(root)) {
+    return joinUrl(root, agentId);
+  }
+
+  // Fallback: append agent id
+  return joinUrl(root, agentId);
+}
+
+/** Safe fields for upstream failure responses (never includes api_key). */
+export type GorGorUpstreamDiagnostic = {
+  upstream_status: number;
+  agent_id_suffix: string;
+  create_path: string;
+  message_path_template: string;
+  base_host: string;
+  base_path_tail: string;
+};
+
+export function buildUpstreamDiagnostic(
+  agentBase: string,
+  upstreamStatus: number,
+): GorGorUpstreamDiagnostic {
+  let host = "";
+  let pathTail = "";
+  try {
+    const u = new URL(agentBase);
+    host = u.host;
+    const segments = u.pathname.split("/").filter(Boolean);
+    pathTail = segments.slice(-2).join("/");
+  } catch {
+    host = "invalid_base_url";
+    pathTail = agentBase.replace(/\/+$/, "").split("/").slice(-2).join("/");
+  }
+  return {
+    upstream_status: upstreamStatus,
+    agent_id_suffix: agentIdSuffix(),
+    create_path: "/conversations",
+    message_path_template: "/conversations/{id}/messages",
+    base_host: host,
+    base_path_tail: pathTail,
+  };
 }
 
 export function isGorGorBridgeConfigured(): boolean {
@@ -89,7 +195,8 @@ export async function createBase44Conversation(
   agentBase: string,
   headers: Base44Headers,
 ): Promise<string> {
-  const res = await fetch(`${agentBase}/conversations`, {
+  const url = joinUrl(agentBase, "conversations");
+  const res = await fetch(url, {
     method: "POST",
     headers,
     body: "{}",
@@ -99,7 +206,8 @@ export async function createBase44Conversation(
     throw new GorGorBridgeError(
       "upstream_create_failed",
       `Could not start Gor Gor conversation (${res.status}).`,
-      res.status,
+      res.status >= 400 && res.status < 600 ? res.status : 502,
+      buildUpstreamDiagnostic(agentBase, res.status),
     );
   }
   let conv: Record<string, unknown>;
@@ -110,6 +218,7 @@ export async function createBase44Conversation(
       "upstream_invalid",
       "Gor Gor conversation response was invalid.",
       502,
+      buildUpstreamDiagnostic(agentBase, res.status),
     );
   }
   const id = (conv.id ?? conv.conversation_id) as string | undefined;
@@ -118,6 +227,7 @@ export async function createBase44Conversation(
       "upstream_invalid",
       "Gor Gor conversation id missing.",
       502,
+      buildUpstreamDiagnostic(agentBase, res.status),
     );
   }
   return id;
@@ -129,7 +239,8 @@ export async function sendBase44Message(
   conversationId: string,
   content: string,
 ): Promise<string> {
-  const res = await fetch(`${agentBase}/conversations/${conversationId}/messages`, {
+  const url = joinUrl(agentBase, "conversations", conversationId, "messages");
+  const res = await fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify({ content }),
@@ -140,6 +251,7 @@ export async function sendBase44Message(
       "upstream_message_failed",
       `Gor Gor did not accept the message (${res.status}).`,
       res.status >= 500 ? 502 : 400,
+      buildUpstreamDiagnostic(agentBase, res.status),
     );
   }
   let payload: unknown;
@@ -151,11 +263,12 @@ export async function sendBase44Message(
       "upstream_invalid",
       "Gor Gor reply was empty or invalid.",
       502,
+      buildUpstreamDiagnostic(agentBase, res.status),
     );
   }
   const reply = extractAssistantReply(payload);
   if (reply) return reply;
-  // Last resort: stringify safely without leaking headers/keys
+  // Last resort without leaking headers/keys
   return typeof payload === "object" && payload !== null
     ? "Gor Gor replied, but the message format was unexpected. Check Base44 agent logs."
     : String(payload);
@@ -164,12 +277,19 @@ export async function sendBase44Message(
 export class GorGorBridgeError extends Error {
   code: string;
   status: number;
+  diagnostic?: GorGorUpstreamDiagnostic;
 
-  constructor(code: string, message: string, status = 500) {
+  constructor(
+    code: string,
+    message: string,
+    status = 500,
+    diagnostic?: GorGorUpstreamDiagnostic,
+  ) {
     super(message);
     this.name = "GorGorBridgeError";
     this.code = code;
     this.status = status;
+    this.diagnostic = diagnostic;
   }
 }
 
@@ -202,4 +322,12 @@ export function formatRoomAwareMessage(room: GorGorChatRoomId, message: string):
     "agent-r": "Agent R Room",
   };
   return `[Family Home · ${labels[room]}]\n\n${message}`;
+}
+
+/** Dev / test helper: assert suffix is canonical (never 123f). */
+export function assertCanonicalSimpeeAgentId(agentId: string = getSimpeeAgentId()): boolean {
+  return (
+    agentId === DEFAULT_SIMPEE_AGENT_ID ||
+    agentId.toLowerCase().endsWith(CANONICAL_AGENT_ID_SUFFIX)
+  );
 }
