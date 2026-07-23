@@ -14,10 +14,17 @@ import {
   RoomChatThread,
   uid,
 } from "@/components/internal/FamilyChatPanel";
+import {
+  emptyCabinet,
+  FamilyCabinet,
+  type FamilyCabinetState,
+  normalizeCabinet,
+} from "@/components/internal/FamilyCabinet";
 
 /**
  * Family Table v0.8 — One Room Per Family Member (house architecture).
- * Persistence: browser localStorage key `shortkey-family-table-v08` only.
+ * Persistence: browser localStorage key `shortkey-family-table-v08` only
+ * (includes Living Room `cabinet` — Family Cabinet drawers).
  * Migrates lightly once from v0.7 + Family Chat v0.1.
  * Doc: src/brand/sky/FAMILY_TABLE_v0_8.md
  */
@@ -83,6 +90,8 @@ export type FamilyTableV08 = {
   version: "0.8";
   migratedFrom?: string[];
   rooms: Record<RoomId, RoomState>;
+  /** Living Room Family Cabinet — materials + homework handoff (一人一格櫃桶) */
+  cabinet: FamilyCabinetState;
 };
 
 type RoomMeta = {
@@ -211,7 +220,7 @@ function emptyRoom(meta: RoomMeta): RoomState {
 function defaultState(): FamilyTableV08 {
   const rooms = {} as Record<RoomId, RoomState>;
   for (const r of ROOMS) rooms[r.id] = emptyRoom(r);
-  return { version: "0.8", rooms };
+  return { version: "0.8", rooms, cabinet: emptyCabinet() };
 }
 
 function item(title: string, detail = "", status: WorkStatus = "DRAFT"): ListItem {
@@ -358,6 +367,7 @@ function loadState(): FamilyTableV08 {
           base.rooms[r.id] = { ...emptyRoom(r), ...parsed.rooms[r.id] };
         }
       }
+      base.cabinet = normalizeCabinet(parsed.cabinet);
       base.migratedFrom = parsed.migratedFrom;
       return base;
     }
@@ -658,8 +668,8 @@ export function FamilyTableWorkbench() {
               One Room Per Family Member
             </h1>
             <p className="mt-1 max-w-2xl text-sm text-ink-muted">
-              House architecture — Living Room first, then each member&apos;s place. localStorage only ·
-              not Family Memory Portal yet.
+              House architecture — Living Room first (飯廳 + Family Cabinet), then each
+              member&apos;s place. localStorage only · not Family Memory Portal yet.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -770,6 +780,14 @@ export function FamilyTableWorkbench() {
 
           {/* Living Room · Family House Rule (top announcement) */}
           {roomId === "living" ? <LivingRoomHouseRuleCard /> : null}
+
+          {/* Living Room · Family Cabinet (一人一格櫃桶) */}
+          {roomId === "living" ? (
+            <FamilyCabinet
+              cabinet={state.cabinet}
+              onChange={(cabinet) => persist({ ...state, cabinet })}
+            />
+          ) : null}
 
           {/* 1. Room owner */}
           <Panel title="1. Room owner" hint="Fixed seat for this room">

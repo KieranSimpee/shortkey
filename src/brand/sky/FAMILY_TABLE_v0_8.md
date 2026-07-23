@@ -58,6 +58,57 @@ Living Room feels like **飯廳** (shared). Personal rooms feel like that member
 
 ---
 
+## House metaphor lock (房間 · 櫃桶 · 客廳)
+
+| Metaphor | Meaning | Where |
+|----------|---------|--------|
+| **房間 (Room)** | Identity + work space | Existing v0.8 rooms — **keep** (7 rooms · 9 panels) |
+| **櫃桶 (Drawer / Cabinet)** | Materials + homework handoff | **NEW** — Living Room **Family Cabinet** (一人一格櫃桶) |
+| **客廳 (Living Room)** | Shared family coordination | Living Room board + House Rule + Cabinet + shared chat |
+
+Rooms stay the seat’s place to work. The Cabinet is the shared staging shelf for links and homework — not a second room system.
+
+---
+
+## Family Cabinet (Living Room · 一人一格櫃桶)
+
+**Surface:** Living Room only · after House Rule card  
+**Storage:** nested under **`shortkey-family-table-v08`.cabinet** (same canonical key · localStorage only)  
+**Warning (always-on):** *Internal staging only · localStorage only · link index only · no sensitive file upload yet.*
+
+### Six drawers
+
+| Drawer | Owner | Materials |
+|--------|--------|-----------|
+| **Kieran Vision Drawer** | Kieran | Vision notes, future projects, brand direction, personal instructions |
+| **Gor Gor Review Drawer** | Simpee (Gor Gor) | Waiting review, approval notes, memory refs, review decisions |
+| **Sky Video Drawer** | Sky | Clips, scripts, storyboards, video standards, intro refs |
+| **Senti Creative Drawer** | Senti | Posters, decks, visual assets, document drafts, creative standards |
+| **Kura Structure Drawer** | Kura | Logic maps, frameworks, problem-solving, decision structures |
+| **Agent R Evidence Drawer** | Agent R | Admin tasks, proof of completion, blocked reports, email/setup evidence |
+
+### Item fields
+
+`item_title` · `file_or_reference_link` · `item_type` · `placed_by` · `assigned_to` · `related_room` · `status` · `version_date` · `sensitivity_level` · `usage_note` · `evidence_link` · `gor_gor_review_state`
+
+### Cabinet status options
+
+`KIERAN DROPPED` · `ASSIGNED TO ROOM` · `IN PROGRESS` · `SUBMITTED IN CABINET` · `WAITING FOR GOR GOR` · `GOR GOR REVIEWING` · `KIERAN REVIEW READY` · `APPROVED` · `ARCHIVED` · `DO NOT USE` · `BLOCKED`
+
+### Family Cabinet Rule
+
+- Kieran may place materials into the drawer of the member who can use them.
+- Each family member must return completed homework to their own drawer.
+- Senti may help organise creative/document drawers, but nothing becomes Approved or Production-ready without Gor Gor Review.
+
+**Enforcement:** Acting-as gate in UI — statuses Waiting / Reviewing / Kieran Review Ready / Approved require **Kieran** or **Simpee/Gor Gor**. Senti organise ≠ approve.
+
+### UX flow
+
+List drawers → open drawer → add/edit items (forms) · filter by status · soft lavender/pearl drawer cards · mobile-first · no cartoon icons.
+
+---
+
 ## Nine panels per room (required)
 
 Every room includes:
@@ -85,7 +136,7 @@ Living Room also has a shared board: announcements · priorities · approved sta
 
 | Key | Role |
 |-----|------|
-| **`shortkey-family-table-v08`** | **Canonical** — all rooms + panels + per-room chat |
+| **`shortkey-family-table-v08`** | **Canonical** — all rooms + panels + per-room chat + **`cabinet`** (Family Cabinet drawers) |
 | `shortkey-family-table-v07` | Legacy table — **read once** on first v0.8 load (visions → Kieran, vault → Living standards, tasks by seat, assets → Senti, reviews → Gor Gor, memories → Gor Gor) |
 | `shortkey-family-chat-v01` | Legacy chat — **read once**; messages mapped into room `chat` by room name |
 
@@ -110,6 +161,7 @@ Living Room also has a shared board: announcements · priorities · approved sta
 
 - **Family Rooms** sidebar — Living Room first  
 - Selecting a room shows all 9 panels  
+- **Living Room only:** House Rule card + **Family Cabinet** (drawers → open → items)  
 - **Bottom floating** “Gor Gor / Family Chat” → Living Room chat overlay (or jump to Living Room)  
 - Banners: **INTERNAL STAGING ONLY · FAMILY HOME** + localStorage warning  
 - Footer (layout): **Powered by our AI family**  
@@ -156,7 +208,8 @@ npm run family:dev
 
 | File | Role |
 |------|------|
-| `FamilyTableWorkbench.tsx` | v0.8 house · rooms · 9 panels · floating chat · migration |
+| `FamilyTableWorkbench.tsx` | v0.8 house · rooms · 9 panels · floating chat · migration · Living Room Cabinet host |
+| `FamilyCabinet.tsx` | Family Cabinet · 6 drawers · item forms · status gate (Senti ≠ approve) |
 | `FamilyChatPanel.tsx` | `RoomChatThread` + legacy key helpers / chat→room map |
 | `app/internal/family-table/page.tsx` | Route · `noindex` |
 
@@ -167,8 +220,8 @@ npm run family:dev
 1. Preview URL: **https://family.shortkey.world/** (or `/internal/family-table`)  
 2. Final route: `/internal/family-table`  
 3. Confirm **INTERNAL STAGING ONLY · FAMILY HOME** banner  
-4. Confirm storage = **`shortkey-family-table-v08`** (localStorage only)  
-5. Confirm 7 rooms + 9 panels + floating Family Chat  
+4. Confirm storage = **`shortkey-family-table-v08`** (localStorage only · includes `.cabinet`)  
+5. Confirm 7 rooms + 9 panels + floating Family Chat + **Living Room Family Cabinet (6 drawers)**  
 6. Confirm Coming Soon **untouched**  
 7. Approve or block further depth toward 正式版  
 
