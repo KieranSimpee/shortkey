@@ -7,6 +7,7 @@ import {
   createSeedHallyuFormula,
   HALLYU_SEED_CAMPAIGN_ID,
 } from "@/lib/studio/hallyuFormula";
+import { createSeedIdentityBenchmark } from "@/lib/studio/brandIdentityLanes";
 import type { StudioState } from "@/lib/studio/types";
 
 const now = "2026-07-24T00:00:00.000Z";
@@ -281,7 +282,19 @@ export function createStudioSeed(): StudioState {
         toStatus: "APPROVED",
         note: "Seed: carried from Studio P0 DNA Control Room into Studio v0.1",
       },
+      {
+        id: "log_seed_identity",
+        entityType: "identityBenchmark",
+        entityId: "identity_benchmark_v01",
+        entityLabel: "Brand Identity Benchmark Map",
+        who: "Gor Gor",
+        when: hallyuNow,
+        fromStatus: "DRAFT",
+        toStatus: "GOR_GOR_REVIEW",
+        note: "Seed: J/K/C identity lanes + Preview archetypes — no brand scrapes",
+      },
     ],
+    identityBenchmark: createSeedIdentityBenchmark(),
     versionSnapshots: [],
   };
 }

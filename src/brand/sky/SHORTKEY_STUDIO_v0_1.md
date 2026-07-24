@@ -52,14 +52,16 @@ Types: `src/lib/studio/types.ts` · seed: `src/lib/studio/seed.ts` · Hallyu for
 
 1. Studio Dashboard  
 2. Brand DNA Center  
-3. Asset Library  
-4. Campaign Manager  
-5. Domain Manager (domains + countries)  
-6. Deployment Plans (plans + rollback refs)  
-7. Version History  
-8. Preview Mode  
+3. **Identity Benchmark Map** (J/K/C lanes · Preview archetypes · GOR_GOR_REVIEW)  
+4. Asset Library  
+5. Campaign Manager  
+6. Domain Manager (domains + countries)  
+7. Deployment Plans (plans + rollback refs)  
+8. Version History  
+9. Preview Mode  
 
-Shell: `src/components/internal/studio/StudioShell.tsx`
+Shell: `src/components/internal/studio/StudioShell.tsx`  
+Identity doc: [`SHORTKEY_BRAND_IDENTITY_LANES.md`](./SHORTKEY_BRAND_IDENTITY_LANES.md)
 
 ## Storage (honest)
 

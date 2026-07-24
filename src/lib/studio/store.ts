@@ -12,6 +12,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { createStudioSeed } from "@/lib/studio/seed";
+import { createSeedIdentityBenchmark } from "@/lib/studio/brandIdentityLanes";
 import {
   createSeedHallyuFormula,
   HALLYU_SEED_CAMPAIGN_ID,
@@ -96,6 +97,10 @@ function normalizeState(raw: unknown): StudioState {
     deploymentPlans: Array.isArray(o.deploymentPlans) ? o.deploymentPlans : seed.deploymentPlans,
     rollbackRefs: Array.isArray(o.rollbackRefs) ? o.rollbackRefs : seed.rollbackRefs,
     approvalLogs: Array.isArray(o.approvalLogs) ? o.approvalLogs : seed.approvalLogs,
+    identityBenchmark:
+      o.identityBenchmark && typeof o.identityBenchmark === "object"
+        ? { ...createSeedIdentityBenchmark(), ...o.identityBenchmark }
+        : seed.identityBenchmark ?? createSeedIdentityBenchmark(),
     versionSnapshots: Array.isArray(o.versionSnapshots) ? o.versionSnapshots : [],
   };
 }

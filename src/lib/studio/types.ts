@@ -4,6 +4,7 @@
  * Not production-ready · no real publish / deploy.
  */
 
+import type { BrandIdentityBenchmarkMap } from "@/lib/studio/brandIdentityLanes";
 import type { CampaignHallyuFormula } from "@/lib/studio/hallyuFormula";
 
 export const STUDIO_VERSION = "0.1" as const;
@@ -35,11 +36,13 @@ export type StudioEntityType =
   | "country"
   | "deploymentPlan"
   | "rollbackRef"
-  | "versionSnapshot";
+  | "versionSnapshot"
+  | "identityBenchmark";
 
 export type StudioPageId =
   | "dashboard"
   | "brand-dna"
+  | "identity"
   | "assets"
   | "campaigns"
   | "domains"
@@ -50,6 +53,7 @@ export type StudioPageId =
 export const STUDIO_PAGES: { id: StudioPageId; label: string }[] = [
   { id: "dashboard", label: "Studio Dashboard" },
   { id: "brand-dna", label: "Brand DNA Center" },
+  { id: "identity", label: "Identity Benchmark Map" },
   { id: "assets", label: "Asset Library" },
   { id: "campaigns", label: "Campaign Manager" },
   { id: "domains", label: "Domain Manager" },
@@ -171,6 +175,11 @@ export interface StudioStatePayload {
   deploymentPlans: StudioDeploymentPlan[];
   rollbackRefs: StudioRollbackRef[];
   approvalLogs: StudioApprovalLog[];
+  /**
+   * Brand Identity Benchmark Map (J/K/C lanes).
+   * Optional on older persisted state — migrate fills from seed.
+   */
+  identityBenchmark?: BrandIdentityBenchmarkMap;
 }
 
 export interface StudioState extends StudioStatePayload {

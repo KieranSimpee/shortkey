@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { HallyuFormulaStudioPanel } from "@/components/studio/HallyuFormulaStudioPanel";
+import { IdentityBenchmarkMap } from "@/components/studio/IdentityBenchmarkMap";
+import { createSeedIdentityBenchmark } from "@/lib/studio/brandIdentityLanes";
 import { createStudioSeed } from "@/lib/studio/seed";
 import {
   STUDIO_ACTORS,
@@ -242,6 +244,15 @@ export function StudioShell() {
         status: toStatus,
         updatedAt: new Date().toISOString(),
       };
+    } else if (entityType === "identityBenchmark") {
+      const map = next.identityBenchmark ?? createSeedIdentityBenchmark();
+      fromStatus = map.status;
+      entityLabel = map.label;
+      next.identityBenchmark = {
+        ...map,
+        status: toStatus,
+        updatedAt: new Date().toISOString(),
+      };
     } else if (entityType === "asset") next.assets = apply(next.assets);
     else if (entityType === "campaign") next.campaigns = apply(next.campaigns);
     else if (entityType === "domain") next.domains = apply(next.domains);
@@ -472,6 +483,21 @@ export function StudioShell() {
               }
             />
           ) : null}
+          {page === "identity" ? (
+            <IdentityPage
+              state={state}
+              noteDraft={noteDraft}
+              setNoteDraft={setNoteDraft}
+              onStatus={(s, note) =>
+                changeEntityStatus(
+                  "identityBenchmark",
+                  state.identityBenchmark?.id ?? "identity_benchmark_v01",
+                  s,
+                  note,
+                )
+              }
+            />
+          ) : null}
           {page === "assets" ? (
             <RegistryPage
               title="Asset Library"
@@ -690,6 +716,27 @@ function DashboardPage({
 
       <div className="mt-8">
         <h2 className="font-display text-base font-semibold text-ink">
+          Identity Benchmark Map
+        </h2>
+        <p className="mt-1 text-sm text-ink-muted">
+          Asian beauty identity system — J / K / C lanes · Preview only · GOR_GOR_REVIEW
+        </p>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <StatusPill
+            status={state.identityBenchmark?.status ?? "GOR_GOR_REVIEW"}
+          />
+          <button
+            type="button"
+            onClick={() => onGo("identity")}
+            className="text-[12px] text-brand-dark underline-offset-2 hover:underline"
+          >
+            Open Identity Benchmark Map
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="font-display text-base font-semibold text-ink">
           Ready for review (preview)
         </h2>
         <ul className="mt-3 space-y-2">
@@ -723,6 +770,40 @@ function DashboardPage({
             </li>
           ))}
         </ul>
+      </div>
+    </Panel>
+  );
+}
+
+function IdentityPage({
+  state,
+  noteDraft,
+  setNoteDraft,
+  onStatus,
+}: {
+  state: StudioState;
+  noteDraft: string;
+  setNoteDraft: (v: string) => void;
+  onStatus: (s: StudioStatus, note: string) => void;
+}) {
+  const map = state.identityBenchmark ?? createSeedIdentityBenchmark();
+  return (
+    <Panel
+      title="Identity Benchmark Map"
+      subtitle="Asian beauty identity system — not decoration. Flexible J / K / C / Pan-Asian / Hybrid lanes. Preview samples only."
+    >
+      <StatusControls
+        current={map.status}
+        onChange={onStatus}
+        noteDraft={noteDraft}
+        setNoteDraft={setNoteDraft}
+      />
+      <div className="mt-8">
+        <IdentityBenchmarkMap
+          map={map}
+          campaigns={state.campaigns}
+          statusPill={(s) => <StatusPill status={s} />}
+        />
       </div>
     </Panel>
   );
@@ -1321,6 +1402,31 @@ function PreviewPage({ state }: { state: StudioState }) {
               <p className="text-sm text-ink-subtle">No campaigns in review ladder yet.</p>
             ) : null}
           </div>
+        </article>
+
+        <article className="rounded-2xl border border-brand/20 bg-white p-5 lg:col-span-2">
+          <p className="font-display text-[11px] font-semibold uppercase tracking-[0.2em] text-brand">
+            Identity Benchmark Map · preview
+          </p>
+          <p className="mt-2 text-sm text-ink-muted">
+            J / K / C lanes + Preview Brand A–E archetypes — no trademarked logos, no fake
+            reviews.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {(state.identityBenchmark ?? createSeedIdentityBenchmark()).laneProfiles.map(
+              (p) => (
+                <span
+                  key={p.id}
+                  className="rounded-lg border border-brand/15 bg-silk/60 px-3 py-1.5 text-[12px]"
+                >
+                  {p.lane} · {p.visualVibe}
+                </span>
+              ),
+            )}
+          </div>
+          <p className="mt-3 text-[11px] text-ink-subtle">
+            Full map → Identity Benchmark Map page · formula cards below
+          </p>
         </article>
 
         <article className="rounded-2xl border border-brand/20 bg-white p-5 lg:col-span-2">
