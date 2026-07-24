@@ -8,6 +8,7 @@ import {
 /**
  * Host routing for ShortKey multi-domain on one Vercel project.
  * shortkey.live → public Live Coming Soon (`/live`).
+ * shortkey.social → Creator Early Access (`/social`) — staging / Gor Gor Review.
  * family.shortkey.world → INTERNAL STAGING Family Table home (preferred).
  * shortkey.studio → DNA Control Room (`/internal/studio`) — Studio P0.
  * shortkey.beauty (and vercel.app / localhost) keep the beauty app as-is.
@@ -16,10 +17,12 @@ import {
  * - shortkey.world = public facing world
  * - family.shortkey.world = family home (internal house) — NOT public launch
  * - shortkey.studio = DNA Control Room (internal) — not Family Table
+ * - shortkey.social = creator early access (public preview staging) — not production
  *
  * Local surfaces:
  * - `npm run family:dev` (:3002) SHORTKEY_SURFACE=family → `/` → Family Table
  * - `npm run studio:dev` (:3003) SHORTKEY_SURFACE=studio → `/` → DNA Control Room
+ * - `npm run social:dev` (:3004) SHORTKEY_SURFACE=social → `/` → Creator Early Access
  * - `npm run dev` (:3001) Coming Soon stays on `/`
  *
  * Soft staging gate: when FAMILY_TABLE_STAGING_PASSWORD or INTERNAL_STAGING_SECRET
@@ -30,6 +33,7 @@ import {
  * Do not auto-publish unfinished livestream commerce — featureLocks stay closed.
  */
 const LIVE_HOSTS = new Set(["shortkey.live", "www.shortkey.live"]);
+const SOCIAL_HOSTS = new Set(["shortkey.social", "www.shortkey.social"]);
 /** Preferred Family Table home host going forward */
 const FAMILY_HOME_HOSTS = new Set([
   "family.shortkey.world",
@@ -64,7 +68,7 @@ function hasStagingCookie(request: NextRequest): boolean {
 
 function isSurfaceBypass(): boolean {
   const s = process.env.SHORTKEY_SURFACE;
-  return s === "family" || s === "studio";
+  return s === "family" || s === "studio" || s === "social";
 }
 
 function requiresStagingGate(host: string, pathname: string): boolean {
@@ -143,11 +147,40 @@ function handleStudioHost(
   return NextResponse.next();
 }
 
+/**
+ * shortkey.social → Creator Early Access (staging).
+ * Root rewrites to `/social` (like live → `/live`). Other paths pass through.
+ */
+function handleSocialHost(
+  request: NextRequest,
+  pathname: string,
+): NextResponse | null {
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/control") ||
+    pathname.startsWith("/internal") ||
+    pathname.startsWith("/logo") ||
+    pathname.startsWith("/images") ||
+    pathname.includes(".")
+  ) {
+    return NextResponse.next();
+  }
+
+  if (pathname === "/" || pathname === "") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/social";
+    return NextResponse.rewrite(url);
+  }
+
+  return NextResponse.next();
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const host = (request.headers.get("host") ?? "").split(":")[0]?.toLowerCase() ?? "";
 
-  // Family Table local workbench only (family:dev / PORT 3002). Never on 3001/3003.
+  // Family Table local workbench only (family:dev / PORT 3002). Never on 3001/3003/3004.
   if (
     process.env.SHORTKEY_SURFACE === "family" &&
     (pathname === "/" || pathname === "")
@@ -167,6 +200,16 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Creator Early Access local surface (social:dev / PORT 3004).
+  if (
+    process.env.SHORTKEY_SURFACE === "social" &&
+    (pathname === "/" || pathname === "")
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/social";
+    return NextResponse.redirect(url);
+  }
+
   // Soft staging password gate (env secret + cookie)
   if (requiresStagingGate(host, pathname) && !hasStagingCookie(request)) {
     return redirectToLogin(request);
@@ -180,6 +223,11 @@ export function middleware(request: NextRequest) {
   // ── family.shortkey.world — Family Table home ────────────────────────────
   if (FAMILY_HOME_HOSTS.has(host)) {
     return handleFamilyTableHomeHost(request, pathname) ?? NextResponse.next();
+  }
+
+  // ── shortkey.social — Creator Early Access (staging) ─────────────────────
+  if (SOCIAL_HOSTS.has(host)) {
+    return handleSocialHost(request, pathname) ?? NextResponse.next();
   }
 
   // ── shortkey.live — Coming Soon gate (frozen surface; do not redesign) ───

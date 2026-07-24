@@ -13,6 +13,7 @@ import { CmsHeader, CmsHeaderBrand, CmsFooter } from "@/components/cms/CmsLayout
  * - the public Coming Soon gate (`/`) — it owns its own minimal header + Premium Footer
  *   so no shop/store links leak onto the public gate (SHORTKEY_MASTER_BLUEPRINT_v1.md).
  * - shortkey.live Coming Soon (`/live`) — same rule; no shop leaks on the live host gate.
+ * - shortkey.social Creator Early Access (`/social`) — own chrome; no shop leaks.
  */
 export function AppChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -20,8 +21,15 @@ export function AppChrome({ children }: { children: React.ReactNode }) {
   const isInternal = pathname === "/internal" || pathname.startsWith("/internal/");
   const isComingSoon = pathname === "/";
   const isLiveComingSoon = pathname === "/live" || pathname.startsWith("/live/");
+  const isSocialEarlyAccess = pathname === "/social" || pathname.startsWith("/social/");
 
-  if (isControlHub || isInternal || isComingSoon || isLiveComingSoon) {
+  if (
+    isControlHub ||
+    isInternal ||
+    isComingSoon ||
+    isLiveComingSoon ||
+    isSocialEarlyAccess
+  ) {
     return <main className="min-h-screen min-w-0">{children}</main>;
   }
 

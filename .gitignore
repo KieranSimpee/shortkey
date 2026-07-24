@@ -18,6 +18,9 @@ data/family-doorbell.json
 # Studio v0.1 local file store (dev)
 data/studio-v01.json
 
+# Social Creator Early Access local file store (dev)
+data/social-early-access.json
+
 # Local screenshot scratch
 tmp-doorbell-shots/
 

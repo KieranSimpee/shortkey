@@ -21,7 +21,7 @@ No actual publish to production domains · no real scheduler · no production de
 | 3001 | Beauty (`npm run dev`) — **do not touch Coming Soon** |
 | 3002 | Family Table (`npm run family:dev`) — **do not touch doorbell** |
 | **3003** | **Studio** (`npm run studio:dev`) |
-| 3004 | Social |
+| **3004** | **Social** (`npm run social:dev`) — Creator Early Access |
 
 ## P0 scope (shipped in v0.1)
 

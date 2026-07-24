@@ -251,3 +251,23 @@ Until DNS / domain is valid, use:
 - Local: `npm run family:dev` → `http://localhost:3002/`
 - Deployed path: `https://shortkey.vercel.app/internal/family-table`
 
+---
+
+## 8. shortkey.social — Creator Early Access (staging · GOR_GOR_REVIEW · attach later)
+
+**Host:** `shortkey.social` (and `www.shortkey.social`) — **domain attach later**; do not treat local preview as production launch.  
+**App surface:** Creator Early Access at `/social`  
+**Local port:** **3004** (`npm run social:dev` · `SHORTKEY_SURFACE=social`)  
+**Middleware:** `shortkey.social/` → rewrite `/social` (same pattern as live → `/live`)  
+**Store:** `POST /api/social/early-access` → `data/social-early-access.json` (dev) · localStorage `shortkey-social-early-access-v01` fallback · no Upstash required  
+**Status lock:** **GOR_GOR_REVIEW · staging / public-preview polish · not production-ready**  
+**Do not** use Studio Deploy Center as one-click publisher for this surface.  
+**Do not** add secrets for this portal.  
+**Coming Soon (:3001) / Family (:3002) / Studio (:3003) untouched.**
+
+Until the domain is attached, use:
+- Local Social: `npm run social:dev` → `http://localhost:3004/` (or `/social`)
+- Path on other local surfaces: `http://localhost:3001/social` (same Next app)
+
+Doc: `src/brand/sky/SHORTKEY_SOCIAL_CREATOR_EARLY_ACCESS_v0_1.md`
+

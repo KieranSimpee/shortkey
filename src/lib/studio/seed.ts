@@ -66,8 +66,8 @@ export function createStudioSeed(): StudioState {
         id: "dom_social",
         hostname: "shortkey.social",
         purpose: "Creator Early Access and waitlist",
-        status: "DRAFT",
-        notes: "",
+        status: "GOR_GOR_REVIEW",
+        notes: "Staging portal at /social · port 3004 · not production · no Deploy Center publish",
         updatedAt: now,
       },
       {
