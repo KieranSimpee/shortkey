@@ -5,6 +5,14 @@ import { cn } from "@/lib/utils";
 import {
   ALL_MEMBERS,
   COMMAND_SENDERS,
+  DEFAULT_COMPOSER_MODE,
+  FIRST_FAMILY_MEETING_ID,
+  GOR_GOR_REVIEW_REMINDER,
+  inferMessageMode,
+  isCommandSender,
+  isMeetingLikeMode,
+  MESSAGE_MODE_LABELS,
+  MESSAGE_MODES,
   RECEIPT_STATUSES,
   SUPPORT_STATUSES,
   TARGET_MEMBER_OPTIONS,
@@ -13,6 +21,7 @@ import {
   type FamilyDoorbellStoreMode,
   type FamilyReceipt,
   type FamilySelfCheck,
+  type MessageMode,
   type ReceiptStatus,
   type SupportStatus,
   type TargetMember,
@@ -20,10 +29,10 @@ import {
 } from "@/lib/familyDoorbellTypes";
 
 /**
- * Family Home v0.9.2 — Shared Doorbell / Shared Presence
+ * Family Home v0.9.3 — Family Meeting UI + Shared Doorbell
  * Prefers shared API (`/api/family-doorbell/*`); localStorage is fallback/demo only.
  * Never auto RECEIVED · never auto-present · SUBMITTED requires self-check.
- * Doc: src/brand/sky/FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md
+ * Doc: src/brand/sky/FAMILY_HOME_v0_9_3_FAMILY_MEETING_UI.md
  */
 
 export const DOORBELL_STORAGE_KEY = "shortkey-family-doorbell-v092";
@@ -33,10 +42,10 @@ const LEGACY_V01_KEY = "shortkey-doorbell-receipts-v01";
 export const POLL_MS = 6000;
 
 export const DOORBELL_WARNING_SHARED =
-  "Family Home v0.9.2 · Internal Staging · Shared backend connected · Gor Gor Review pending.";
+  "Family Home v0.9.3 · Internal Staging · Shared backend connected · Gor Gor Review pending.";
 
 export const DOORBELL_WARNING_FALLBACK =
-  "Family Home v0.9.2 · Internal Staging · Local fallback / demo only · this browser’s localStorage · not shared across devices · Gor Gor Review pending.";
+  "Family Home v0.9.3 · Internal Staging · Local fallback / demo only · this browser’s localStorage · not shared across devices · Gor Gor Review pending.";
 
 /** @deprecated use mode-aware banners; kept for clear-all UI copy */
 export const DOORBELL_WARNING = DOORBELL_WARNING_FALLBACK;
@@ -47,6 +56,11 @@ export {
   SUPPORT_STATUSES,
   COMMAND_SENDERS,
   ALL_MEMBERS,
+  MESSAGE_MODES,
+  MESSAGE_MODE_LABELS,
+  DEFAULT_COMPOSER_MODE,
+  FIRST_FAMILY_MEETING_ID,
+  GOR_GOR_REVIEW_REMINDER,
 };
 export type {
   TargetMemberOption,
@@ -57,6 +71,7 @@ export type {
   FamilyCommandMessage,
   FamilyReceipt,
   FamilySelfCheck,
+  MessageMode,
 };
 
 /** Ack buttons shown in member rooms (status they set). */
@@ -73,7 +88,7 @@ export type DoorbellReceipt = FamilyReceipt;
 export type DoorbellCommand = FamilyCommandMessage;
 
 export type DoorbellState = {
-  version: "0.9.2";
+  version: "0.9.2" | "0.9.3";
   commands: FamilyCommandMessage[];
   migratedFrom?: string[];
 };
@@ -152,9 +167,11 @@ const btnPrimary =
   "rounded-full bg-brand px-4 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-brand-dark disabled:opacity-40";
 const btnAck =
   "rounded-full border border-brand/25 bg-white px-3 py-1.5 text-[11px] font-medium text-ink transition hover:border-brand/50 hover:bg-brand/5";
+const btnGhost =
+  "rounded-full border border-ink/10 bg-white px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-muted transition hover:border-brand/40 hover:text-brand";
 
 function emptyState(): DoorbellState {
-  return { version: "0.9.2", commands: [] };
+  return { version: "0.9.3", commands: [] };
 }
 
 export function resolveTargets(selected: TargetMemberOption[]): TargetMember[] {
@@ -179,6 +196,8 @@ function normalizeReceipt(r: Partial<FamilyReceipt> & { member: TargetMember }):
       ? (r.supportStatus as SupportStatus)
       : "GREEN",
     selfCheck: r.selfCheck ?? null,
+    evidenceUrl: typeof r.evidenceUrl === "string" ? r.evidenceUrl : r.evidenceUrl ?? null,
+    blocker: typeof r.blocker === "string" ? r.blocker : r.blocker ?? null,
   };
 }
 
@@ -187,18 +206,26 @@ function normalizeCommand(c: Partial<FamilyCommandMessage>): FamilyCommandMessag
   const receipts = c.receipts
     .filter((r): r is FamilyReceipt => !!r && typeof r === "object" && !!r.member)
     .map((r) => normalizeReceipt(r));
+  const sender: CommandSender = isCommandSender(c.sender) ? c.sender : "Kieran";
+  const target_members = Array.isArray(c.target_members)
+    ? (c.target_members as TargetMemberOption[])
+    : (["all"] as TargetMemberOption[]);
+  const mode = inferMessageMode({
+    mode: c.mode,
+    sender,
+    target_members,
+  });
   return {
     id: typeof c.id === "string" ? c.id : `legacy_${Date.now()}`,
     body: c.body,
-    sender: c.sender === "Gor Gor" ? "Gor Gor" : "Kieran",
-    target_members: Array.isArray(c.target_members)
-      ? (c.target_members as TargetMemberOption[])
-      : ["all"],
+    sender,
+    target_members,
     resolved_targets: Array.isArray(c.resolved_targets)
       ? (c.resolved_targets as TargetMember[])
       : receipts.map((r) => r.member),
     createdAt: typeof c.createdAt === "string" ? c.createdAt : new Date().toISOString(),
     receipts,
+    mode,
   };
 }
 
@@ -215,7 +242,7 @@ function normalizeLocalState(
     .map((c) => normalizeCommand(c as Partial<FamilyCommandMessage>))
     .filter(Boolean) as FamilyCommandMessage[];
   return {
-    version: "0.9.2",
+    version: "0.9.3",
     commands,
     ...(migratedFrom?.length || parsed.migratedFrom?.length
       ? { migratedFrom: migratedFrom ?? parsed.migratedFrom }
@@ -250,7 +277,7 @@ export function loadDoorbellState(): DoorbellState {
 
 export function saveDoorbellState(data: DoorbellState) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(DOORBELL_STORAGE_KEY, JSON.stringify({ ...data, version: "0.9.2" }));
+  localStorage.setItem(DOORBELL_STORAGE_KEY, JSON.stringify({ ...data, version: "0.9.3" }));
 }
 
 export function clearDoorbellStorage() {
@@ -299,7 +326,7 @@ function StagingBanner({ connection }: { connection: DoorbellConnection }) {
           sharedOk ? "text-brand" : "text-amber-900",
         )}
       >
-        Family Home v0.9.2 · Internal Staging
+        Family Home v0.9.3 · Internal Staging
         {sharedOk ? " · Shared backend" : " · Local fallback"}
       </span>
       <span className={cn("mt-0.5 block", sharedOk ? "text-ink-muted" : "text-amber-900/90")}>
@@ -307,6 +334,357 @@ function StagingBanner({ connection }: { connection: DoorbellConnection }) {
           ? `${DOORBELL_WARNING_SHARED} · mode: ${connection.mode}`
           : DOORBELL_WARNING_FALLBACK}
       </span>
+      <span className="mt-1 block text-[10px] text-ink-subtle">
+        INTERNAL STAGING ONLY · noindex · not public shortkey.world launch
+      </span>
+    </div>
+  );
+}
+
+/** Structured sections parsed from freeform Family Meeting / Job Assignment bodies. */
+export type MeetingCardSections = {
+  title: string;
+  purpose: string;
+  assignments: string;
+  deadline: string;
+  requiredStatuses: string;
+  supportKey: string;
+  reviewReminder: string;
+  leftover: string;
+  structured: boolean;
+};
+
+type SectionKey = keyof Omit<MeetingCardSections, "structured" | "leftover">;
+
+const SECTION_HEADINGS: { key: SectionKey; re: RegExp }[] = [
+  { key: "title", re: /^(meeting\s+title|title|會議|標題)\s*[:：]?\s*(.*)$/i },
+  { key: "purpose", re: /^(purpose|目標|目的)\s*[:：]?\s*(.*)$/i },
+  {
+    key: "assignments",
+    re: /^(assignments?(?:\s+by\s+member)?|作業|分配|jobs?)\s*[:：]?\s*(.*)$/i,
+  },
+  { key: "deadline", re: /^(deadline(?:\s+guidance)?|截止|時限)\s*[:：]?\s*(.*)$/i },
+  {
+    key: "requiredStatuses",
+    re: /^(required\s+response\s+statuses?|statuses?|回應狀態)\s*[:：]?\s*(.*)$/i,
+  },
+  {
+    key: "supportKey",
+    re: /^(support\s+status\s+key|support(?:\s+status)?|支援)\s*[:：]?\s*(.*)$/i,
+  },
+  {
+    key: "reviewReminder",
+    re: /^(gor\s*gor\s+review(?:\s+reminder)?|review\s+reminder|審查)\s*[:：]?\s*(.*)$/i,
+  },
+];
+
+export function parseMeetingBody(body: string): MeetingCardSections {
+  const lines = body.replace(/\r\n/g, "\n").split("\n");
+  const buckets: Record<SectionKey | "leftover", string[]> = {
+    title: [],
+    purpose: [],
+    assignments: [],
+    deadline: [],
+    requiredStatuses: [],
+    supportKey: [],
+    reviewReminder: [],
+    leftover: [],
+  };
+
+  let current: SectionKey | "leftover" | null = null;
+  let structured = false;
+
+  for (const rawLine of lines) {
+    const line = rawLine.trimEnd();
+    const trimmed = line.trim();
+    if (!trimmed) {
+      if (current) buckets[current].push("");
+      continue;
+    }
+
+    let matchedHeading = false;
+    for (const { key, re } of SECTION_HEADINGS) {
+      const m = trimmed.match(re);
+      if (!m) continue;
+      current = key;
+      structured = true;
+      matchedHeading = true;
+      const inline = (m[2] ?? "").trim();
+      if (inline) buckets[key].push(inline);
+      break;
+    }
+    if (matchedHeading) continue;
+
+    if (!current) {
+      // First freeform line → title candidate; rest → leftover
+      if (buckets.title.length === 0 && buckets.leftover.length === 0) {
+        buckets.title.push(trimmed);
+        current = "leftover";
+      } else {
+        buckets.leftover.push(line);
+        current = "leftover";
+      }
+    } else {
+      buckets[current].push(line);
+    }
+  }
+
+  const join = (arr: string[]) => arr.join("\n").trim();
+  const result: MeetingCardSections = {
+    title: join(buckets.title),
+    purpose: join(buckets.purpose),
+    assignments: join(buckets.assignments),
+    deadline: join(buckets.deadline),
+    requiredStatuses: join(buckets.requiredStatuses),
+    supportKey: join(buckets.supportKey),
+    reviewReminder: join(buckets.reviewReminder),
+    leftover: join(buckets.leftover),
+    structured:
+      structured ||
+      !!(
+        buckets.purpose.length ||
+        buckets.assignments.length ||
+        buckets.deadline.length ||
+        buckets.requiredStatuses.length ||
+        buckets.supportKey.length ||
+        buckets.reviewReminder.length
+      ),
+  };
+  return result;
+}
+
+function MeetingJobCard({ cmd }: { cmd: FamilyCommandMessage }) {
+  const [showRaw, setShowRaw] = useState(false);
+  const sections = useMemo(() => parseMeetingBody(cmd.body), [cmd.body]);
+  const mode = cmd.mode ?? inferMessageMode(cmd);
+  const meetingLike = isMeetingLikeMode(mode);
+
+  const rows: { label: string; value: string }[] = [
+    { label: "Meeting title", value: sections.title },
+    { label: "Purpose", value: sections.purpose },
+    { label: "Assignments by member", value: sections.assignments },
+    { label: "Deadline guidance", value: sections.deadline },
+    { label: "Required response statuses", value: sections.requiredStatuses },
+    { label: "Support status key", value: sections.supportKey },
+    {
+      label: "Gor Gor Review reminder",
+      value: sections.reviewReminder || GOR_GOR_REVIEW_REMINDER,
+    },
+  ].filter((r) => r.value || r.label === "Gor Gor Review reminder");
+
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap items-center gap-2">
+        <Badge tone="border-brand/30 bg-brand/10 text-brand">{cmd.sender}</Badge>
+        <Badge tone="border-violet-400/35 bg-violet-400/10 text-violet-900">
+          {MESSAGE_MODE_LABELS[mode]}
+        </Badge>
+        <span className="text-[10px] text-ink-subtle">→ {cmd.target_members.join(", ")}</span>
+        <span className="text-[10px] text-ink-subtle">{formatTime(cmd.createdAt)}</span>
+        {cmd.id === FIRST_FAMILY_MEETING_ID ? (
+          <Badge tone="border-amber-500/40 bg-amber-50 text-amber-900">First meeting</Badge>
+        ) : null}
+      </div>
+
+      {meetingLike ? (
+        <div className="rounded-xl border border-brand/20 bg-gradient-to-br from-white via-[#faf8fc] to-[#f3eef9] p-3 sm:p-4">
+          {sections.structured ? (
+            <dl className="space-y-3">
+              {rows.map((row) => (
+                <div key={row.label}>
+                  <dt className="text-[10px] font-semibold uppercase tracking-[0.12em] text-brand">
+                    {row.label}
+                  </dt>
+                  <dd className="mt-0.5 whitespace-pre-wrap text-sm text-ink">
+                    {row.value || "—"}
+                  </dd>
+                </div>
+              ))}
+              {sections.leftover ? (
+                <div>
+                  <dt className="text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
+                    Additional
+                  </dt>
+                  <dd className="mt-0.5 whitespace-pre-wrap text-sm text-ink-muted">
+                    {sections.leftover}
+                  </dd>
+                </div>
+              ) : null}
+            </dl>
+          ) : (
+            <div>
+              {sections.title ? (
+                <p className="font-display text-base font-semibold text-ink">{sections.title}</p>
+              ) : null}
+              <p className="mt-1 whitespace-pre-wrap text-sm text-ink">
+                {sections.leftover || cmd.body}
+              </p>
+              <dl className="mt-3 space-y-2 border-t border-ink/5 pt-3">
+                <div>
+                  <dt className="text-[10px] font-semibold uppercase tracking-[0.12em] text-brand">
+                    Gor Gor Review reminder
+                  </dt>
+                  <dd className="mt-0.5 text-sm text-ink-muted">{GOR_GOR_REVIEW_REMINDER}</dd>
+                </div>
+              </dl>
+            </div>
+          )}
+        </div>
+      ) : (
+        <p className="whitespace-pre-wrap text-sm text-ink">{cmd.body}</p>
+      )}
+
+      {meetingLike ? (
+        <p className="rounded-lg border border-brand/15 bg-brand/[0.04] px-3 py-2 text-[11px] leading-relaxed text-ink-muted">
+          {GOR_GOR_REVIEW_REMINDER}
+        </p>
+      ) : null}
+
+      <div className="flex flex-wrap items-center gap-2">
+        <button type="button" className={btnGhost} onClick={() => setShowRaw((v) => !v)}>
+          {showRaw ? "Hide raw body" : "Show raw body"}
+        </button>
+        <button
+          type="button"
+          className={btnGhost}
+          onClick={() => {
+            void navigator.clipboard?.writeText(cmd.body);
+          }}
+        >
+          Copy raw
+        </button>
+        <span className="font-mono text-[10px] text-ink-subtle">{cmd.id}</span>
+      </div>
+      {showRaw ? (
+        <pre className="overflow-x-auto rounded-lg border border-ink/10 bg-ink/[0.03] p-3 text-[11px] leading-relaxed text-ink-muted whitespace-pre-wrap">
+          {cmd.body}
+        </pre>
+      ) : null}
+    </div>
+  );
+}
+
+function ReceiptBoardList({
+  cmd,
+  busy,
+  onUpdateReceipt,
+  setBoardHint,
+}: {
+  cmd: FamilyCommandMessage;
+  busy?: boolean;
+  onUpdateReceipt: (
+    commandId: string,
+    member: TargetMember,
+    patch: Partial<
+      Pick<FamilyReceipt, "status" | "note" | "supportStatus" | "selfCheck" | "evidenceUrl" | "blocker">
+    >,
+  ) => void;
+  setBoardHint?: (hint: string | null) => void;
+}) {
+  // Stable member order for the board
+  const ordered = ALL_MEMBERS.map(
+    (m) => cmd.receipts.find((r) => r.member === m) ?? null,
+  ).filter(Boolean) as FamilyReceipt[];
+  const extras = cmd.receipts.filter((r) => !ALL_MEMBERS.includes(r.member));
+  const rows = [...ordered, ...extras];
+
+  return (
+    <div className="border-t border-brand/15 bg-gradient-to-b from-[#f7f4fc]/80 to-white">
+      <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2.5 sm:px-4">
+        <p className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-brand">
+          Receipt Board
+        </p>
+        <p className="text-[10px] text-ink-subtle">
+          Default SENT · never auto RECEIVED · poll ~{POLL_MS / 1000}s when shared
+        </p>
+      </div>
+      <ul className="divide-y divide-ink/5">
+        {rows.map((r) => (
+          <li
+            key={r.id}
+            className="flex flex-wrap items-start justify-between gap-2 px-3 py-3 sm:px-4"
+          >
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="font-semibold text-ink">{MEMBER_LABEL[r.member]}</p>
+                <Badge tone={RECEIPT_TONE[r.status]}>{r.status}</Badge>
+                <Badge tone={SUPPORT_TONE[r.supportStatus]}>Support {r.supportStatus}</Badge>
+                {(r.status === "SENT" || r.status === "NO_RESPONSE") && (
+                  <span className="text-[10px] text-ink-subtle">no response yet</span>
+                )}
+              </div>
+              <p className="mt-0.5 text-[10px] text-ink-subtle">
+                Last updated · {formatTime(r.updatedAt)}
+              </p>
+              {r.note ? (
+                <p className="mt-1 text-xs text-ink-muted">Note: {r.note}</p>
+              ) : (
+                <p className="mt-1 text-[10px] text-ink-subtle">No note yet</p>
+              )}
+              {r.evidenceUrl ? (
+                <p className="mt-0.5 text-[11px] text-ink-muted">
+                  Evidence:{" "}
+                  <a
+                    href={r.evidenceUrl}
+                    className="underline decoration-brand/40 underline-offset-2"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {r.evidenceUrl}
+                  </a>
+                </p>
+              ) : null}
+              {r.blocker ? (
+                <p className="mt-0.5 text-[11px] text-rose-800">Blocker: {r.blocker}</p>
+              ) : null}
+              {r.selfCheck ? (
+                <details className="mt-2 text-[10px] text-ink-muted">
+                  <summary className="cursor-pointer font-semibold text-brand">Self-check</summary>
+                  <ul className="mt-1 space-y-0.5 pl-3">
+                    <li>What I did: {r.selfCheck.whatIDid}</li>
+                    <li>Evidence: {r.selfCheck.evidence}</li>
+                    <li>Purpose: {r.selfCheck.purposeFulfilled}</li>
+                    <li>Better: {r.selfCheck.whatCouldBeBetter}</li>
+                    <li>Blockers: {r.selfCheck.blockers}</li>
+                    <li>Support: {r.selfCheck.supportNeeded}</li>
+                  </ul>
+                </details>
+              ) : null}
+            </div>
+            <select
+              className="rounded-full border border-ink/10 bg-white px-2 py-1 text-[10px] text-ink-muted outline-none"
+              value={r.status}
+              aria-label={`Update ${MEMBER_LABEL[r.member]} status`}
+              disabled={busy}
+              onChange={(e) => {
+                const next = e.target.value as ReceiptStatus;
+                if (
+                  next === "SUBMITTED" &&
+                  (!r.selfCheck || !selfCheckComplete(r.selfCheck))
+                ) {
+                  setBoardHint?.(
+                    "SUBMITTED only from the member room self-check — Living Room cannot fake it.",
+                  );
+                  return;
+                }
+                setBoardHint?.(null);
+                onUpdateReceipt(cmd.id, r.member, { status: next });
+              }}
+            >
+              {RECEIPT_STATUSES.map((s) => (
+                <option
+                  key={s}
+                  disabled={
+                    s === "SUBMITTED" && (!r.selfCheck || !selfCheckComplete(r.selfCheck))
+                  }
+                >
+                  {s}
+                </option>
+              ))}
+            </select>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -315,6 +693,7 @@ type ApiListResponse = {
   messages?: FamilyCommandMessage[];
   shared?: boolean;
   mode?: FamilyDoorbellStoreMode;
+  version?: string;
   error?: string;
 };
 
@@ -329,12 +708,17 @@ async function apiList(): Promise<ApiListResponse> {
   return data;
 }
 
-async function apiCreate(body: string, sender: CommandSender, targets: TargetMemberOption[]) {
+async function apiCreate(
+  body: string,
+  sender: CommandSender,
+  targets: TargetMemberOption[],
+  mode: MessageMode,
+) {
   const res = await fetch("/api/family-doorbell/messages", {
     method: "POST",
     credentials: "same-origin",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ body, sender, target_members: targets }),
+    body: JSON.stringify({ body, sender, target_members: targets, mode }),
   });
   const data = (await res.json()) as ApiListResponse & { error?: string };
   if (!res.ok) throw new Error(data.error || `POST failed (${res.status})`);
@@ -349,14 +733,19 @@ async function apiPatchReceipt(
     note?: string;
     supportStatus?: SupportStatus;
     selfCheck?: FamilySelfCheck | null;
+    evidence_url?: string | null;
+    blocker?: string | null;
   },
 ) {
-  const res = await fetch(`/api/family-doorbell/messages/${encodeURIComponent(messageId)}/receipt`, {
-    method: "PATCH",
-    credentials: "same-origin",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(patch),
-  });
+  const res = await fetch(
+    `/api/family-doorbell/messages/${encodeURIComponent(messageId)}/receipt`,
+    {
+      method: "PATCH",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(patch),
+    },
+  );
   const data = (await res.json()) as ApiListResponse & { error?: string };
   if (!res.ok) throw new Error(data.error || `PATCH failed (${res.status})`);
   return data;
@@ -370,7 +759,7 @@ function applyApiMessages(
   const shared = data.shared === true && mode !== "ephemeral";
   return {
     state: {
-      version: "0.9.2",
+      version: "0.9.3",
       commands: messages.map((m) => normalizeCommand(m)).filter(Boolean) as FamilyCommandMessage[],
     },
     connection: {
@@ -417,35 +806,37 @@ export function useDoorbell() {
     [flashSaved],
   );
 
-  const refreshFromApi = useCallback(async (opts?: { silent?: boolean }) => {
-    try {
-      const data = await apiList();
-      const applied = applyApiMessages(data);
-      setState(applied.state);
-      setConnection(applied.connection);
-      // Mirror shared snapshot locally for offline demo continuity
-      saveDoorbellState(applied.state);
-      if (!opts?.silent) flashSaved();
-      setErrorFlash(null);
-      return true;
-    } catch (err) {
-      const local = loadDoorbellState();
-      setState(local);
-      setConnection({
-        shared: false,
-        mode: "local-fallback",
-        backendAvailable: false,
-      });
-      if (!opts?.silent) {
-        setErrorFlash(
-          err instanceof Error
-            ? `Backend unavailable — local fallback. ${err.message}`
-            : "Backend unavailable — local fallback.",
-        );
+  const refreshFromApi = useCallback(
+    async (opts?: { silent?: boolean }) => {
+      try {
+        const data = await apiList();
+        const applied = applyApiMessages(data);
+        setState(applied.state);
+        setConnection(applied.connection);
+        saveDoorbellState(applied.state);
+        if (!opts?.silent) flashSaved();
+        setErrorFlash(null);
+        return true;
+      } catch (err) {
+        const local = loadDoorbellState();
+        setState(local);
+        setConnection({
+          shared: false,
+          mode: "local-fallback",
+          backendAvailable: false,
+        });
+        if (!opts?.silent) {
+          setErrorFlash(
+            err instanceof Error
+              ? `Backend unavailable — local fallback. ${err.message}`
+              : "Backend unavailable — local fallback.",
+          );
+        }
+        return false;
       }
-      return false;
-    }
-  }, [flashSaved]);
+    },
+    [flashSaved],
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -458,7 +849,6 @@ export function useDoorbell() {
     };
   }, [refreshFromApi]);
 
-  // Poll when shared backend is connected
   useEffect(() => {
     if (!ready) return;
     const id = window.setInterval(() => {
@@ -469,14 +859,23 @@ export function useDoorbell() {
   }, [ready, refreshFromApi]);
 
   const postCommand = useCallback(
-    async (body: string, sender: CommandSender, targets: TargetMemberOption[]) => {
+    async (
+      body: string,
+      sender: CommandSender,
+      targets: TargetMemberOption[],
+      mode: MessageMode = DEFAULT_COMPOSER_MODE,
+    ) => {
       const resolved = resolveTargets(targets);
       if (!body.trim() || resolved.length === 0) return;
+      if (!isCommandSender(sender)) {
+        setErrorFlash("Invalid sender — choose Kieran | Gor Gor | Sky | Senti | Kura | Agent R.");
+        return;
+      }
       setBusy(true);
       setErrorFlash(null);
       try {
         if (connectionRef.current.backendAvailable) {
-          const data = await apiCreate(body.trim(), sender, targets);
+          const data = await apiCreate(body.trim(), sender, targets, mode);
           const applied = applyApiMessages(data);
           setState(applied.state);
           setConnection(applied.connection);
@@ -491,6 +890,7 @@ export function useDoorbell() {
             target_members: targets.includes("all") ? ["all"] : resolved,
             resolved_targets: resolved,
             createdAt: now,
+            mode,
             receipts: resolved.map((member) => ({
               id: `local_r_${member}_${Date.now().toString(36)}`,
               member,
@@ -499,6 +899,8 @@ export function useDoorbell() {
               note: "",
               supportStatus: "GREEN" as SupportStatus,
               selfCheck: null,
+              evidenceUrl: null,
+              blocker: null,
             })),
           };
           persistLocal({
@@ -507,7 +909,7 @@ export function useDoorbell() {
           });
         }
       } catch (err) {
-        setErrorFlash(err instanceof Error ? err.message : "Failed to post doorbell.");
+        setErrorFlash(err instanceof Error ? err.message : "Failed to post.");
       } finally {
         setBusy(false);
       }
@@ -519,12 +921,15 @@ export function useDoorbell() {
     async (
       commandId: string,
       member: TargetMember,
-      patch: Partial<Pick<FamilyReceipt, "status" | "note" | "supportStatus" | "selfCheck">>,
+      patch: Partial<
+        Pick<
+          FamilyReceipt,
+          "status" | "note" | "supportStatus" | "selfCheck" | "evidenceUrl" | "blocker"
+        >
+      >,
     ) => {
       if (patch.status === "SUBMITTED" && !selfCheckComplete(patch.selfCheck ?? emptySelfCheck())) {
-        setErrorFlash(
-          "SUBMITTED requires a complete self-check (all six fields).",
-        );
+        setErrorFlash("SUBMITTED requires a complete self-check (all six fields).");
         return;
       }
       setBusy(true);
@@ -537,6 +942,8 @@ export function useDoorbell() {
             note: patch.note,
             supportStatus: patch.supportStatus,
             selfCheck: patch.selfCheck,
+            evidence_url: patch.evidenceUrl,
+            blocker: patch.blocker,
           });
           const applied = applyApiMessages(data);
           setState(applied.state);
@@ -564,6 +971,11 @@ export function useDoorbell() {
                             : r.supportStatus,
                         selfCheck:
                           patch.selfCheck !== undefined ? patch.selfCheck : r.selfCheck,
+                        evidenceUrl:
+                          patch.evidenceUrl !== undefined
+                            ? patch.evidenceUrl
+                            : r.evidenceUrl,
+                        blocker: patch.blocker !== undefined ? patch.blocker : r.blocker,
                       }
                     : r,
                 ),
@@ -620,7 +1032,7 @@ export function useDoorbell() {
   };
 }
 
-/** Living Room — post doorbell command + Receipt Board. */
+/** Living Room — Family Meeting / Job Assignment composer + Receipt Board. */
 export function LivingRoomDoorbell({
   state,
   connection,
@@ -636,18 +1048,27 @@ export function LivingRoomDoorbell({
   savedFlash?: boolean;
   errorFlash?: string | null;
   busy?: boolean;
-  onPost: (body: string, sender: CommandSender, targets: TargetMemberOption[]) => void;
+  onPost: (
+    body: string,
+    sender: CommandSender,
+    targets: TargetMemberOption[],
+    mode: MessageMode,
+  ) => void;
   onUpdateReceipt: (
     commandId: string,
     member: TargetMember,
-    patch: Partial<Pick<FamilyReceipt, "status" | "note" | "supportStatus" | "selfCheck">>,
+    patch: Partial<
+      Pick<FamilyReceipt, "status" | "note" | "supportStatus" | "selfCheck" | "evidenceUrl" | "blocker">
+    >,
   ) => void;
   onRefresh?: () => void;
 }) {
-  const [sender, setSender] = useState<CommandSender>("Kieran");
+  const [sender, setSender] = useState<CommandSender>("Gor Gor");
+  const [postMode, setPostMode] = useState<MessageMode>(DEFAULT_COMPOSER_MODE);
   const [body, setBody] = useState("");
   const [selected, setSelected] = useState<TargetMemberOption[]>(["all"]);
   const [boardHint, setBoardHint] = useState<string | null>(null);
+  const messageRefs = useRef<Record<string, HTMLLIElement | null>>({});
 
   const toggleTarget = (opt: TargetMemberOption) => {
     if (opt === "all") {
@@ -666,14 +1087,44 @@ export function LivingRoomDoorbell({
 
   const sharedOk = connection.backendAvailable && connection.shared;
 
+  const meetingCommands = useMemo(() => {
+    return state.commands.filter((c) => {
+      const mode = c.mode ?? inferMessageMode(c);
+      return isMeetingLikeMode(mode) || c.id === FIRST_FAMILY_MEETING_ID;
+    });
+  }, [state.commands]);
+
+  const sortedCommands = useMemo(() => {
+    const pinned = state.commands.find((c) => c.id === FIRST_FAMILY_MEETING_ID);
+    const rest = state.commands.filter((c) => c.id !== FIRST_FAMILY_MEETING_ID);
+    // Latest first; pinned first meeting stays highlighted at top when present
+    const byTime = [...rest].sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    );
+    return pinned ? [pinned, ...byTime.filter((c) => c.id !== pinned.id)] : byTime;
+  }, [state.commands]);
+
+  const openMeetingThread = (id: string) => {
+    const el = messageRefs.current[id];
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      el.focus();
+    }
+  };
+
+  const focusId =
+    meetingCommands.find((c) => c.id === FIRST_FAMILY_MEETING_ID)?.id ??
+    meetingCommands[0]?.id ??
+    null;
+
   return (
     <section className="overflow-hidden rounded-2xl border border-brand/25 bg-white shadow-[0_0_0_1px_rgba(140,130,252,0.06)]">
       <header className="border-b border-ink/5 bg-gradient-to-r from-brand/[0.06] via-[#f7f4fc] to-white px-4 py-3 sm:px-5">
         <h3 className="font-display text-sm font-semibold text-ink">
-          Family Home v0.9.2 · Shared Doorbell / Shared Presence
+          Family Home v0.9.3 · Family Meeting / Shared Board
         </h3>
         <p className="mt-0.5 text-[11px] text-ink-subtle">
-          Kieran / Gor Gor ring from Living Room · members ack from their rooms ·{" "}
+          Family Meeting · Job Assignment · Review Request · Doorbell — not a greeting ·{" "}
           {sharedOk ? "shared across devices" : "local fallback until backend connects"}
         </p>
       </header>
@@ -696,18 +1147,63 @@ export function LivingRoomDoorbell({
           </p>
         ) : null}
 
+        {/* Meeting Thread */}
+        <div className="rounded-xl border border-brand/25 bg-gradient-to-br from-[#f7f4fc] via-white to-[#f3eef9] p-4">
+          <p className="font-display text-xs font-semibold uppercase tracking-[0.14em] text-brand">
+            FIRST FAMILY MEETING · JOB ASSIGNMENT
+          </p>
+          <p className="mt-1 text-[11px] text-ink-muted">
+            Latest / first meeting at top · pin highlights{" "}
+            <code className="font-mono text-[10px]">{FIRST_FAMILY_MEETING_ID}</code> when present.
+          </p>
+          {focusId ? (
+            <button
+              type="button"
+              className={cn(btnPrimary, "mt-3")}
+              onClick={() => openMeetingThread(focusId)}
+            >
+              Open Meeting Thread
+            </button>
+          ) : (
+            <p className="mt-3 text-[11px] text-ink-subtle">
+              No Family Meeting posts yet — compose one below.
+            </p>
+          )}
+          {meetingCommands.length > 0 ? (
+            <ul className="mt-3 space-y-1.5">
+              {meetingCommands.slice(0, 5).map((c) => (
+                <li key={c.id}>
+                  <button
+                    type="button"
+                    className="text-left text-[11px] text-ink-muted hover:text-brand"
+                    onClick={() => openMeetingThread(c.id)}
+                  >
+                    <span className="font-semibold text-ink">{c.sender}</span>
+                    {" · "}
+                    {MESSAGE_MODE_LABELS[c.mode ?? inferMessageMode(c)]}
+                    {" · "}
+                    <span className="font-mono text-[10px]">{c.id}</span>
+                    {c.id === FIRST_FAMILY_MEETING_ID ? " · pinned" : ""}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+
         <form
           className="space-y-3 rounded-xl border border-dashed border-brand/25 bg-gradient-to-br from-white via-[#faf8fc] to-[#f3eef9] p-4"
           onSubmit={(e) => {
             e.preventDefault();
             if (!body.trim() || selected.length === 0 || busy) return;
-            onPost(body, sender, selected);
+            onPost(body, sender, selected, postMode);
             setBody("");
+            // Keep sender + mode — do not reset incorrectly
           }}
         >
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="font-display text-xs font-semibold uppercase tracking-[0.12em] text-brand">
-              Ring doorbell · Living Room command
+              Compose · Living Room
             </p>
             {onRefresh ? (
               <button
@@ -720,18 +1216,54 @@ export function LivingRoomDoorbell({
               </button>
             ) : null}
           </div>
+
           <div>
-            <label className={labelClass}>Sender</label>
+            <label className={labelClass} htmlFor="fh-post-mode">
+              Mode
+            </label>
             <select
+              id="fh-post-mode"
               className={inputClass}
-              value={sender}
-              onChange={(e) => setSender(e.target.value as CommandSender)}
+              value={postMode}
+              onChange={(e) => setPostMode(e.target.value as MessageMode)}
             >
-              {COMMAND_SENDERS.map((s) => (
-                <option key={s}>{s}</option>
+              {MESSAGE_MODES.map((m) => (
+                <option key={m} value={m}>
+                  {MESSAGE_MODE_LABELS[m]}
+                </option>
               ))}
             </select>
+            <p className="mt-1 text-[10px] text-ink-subtle">
+              Sprint default: Family Meeting / Job Assignment — never merely &quot;greeting&quot;.
+            </p>
           </div>
+
+          <div>
+            <label className={labelClass} htmlFor="fh-sender">
+              Sender
+            </label>
+            <select
+              id="fh-sender"
+              className={inputClass}
+              value={sender}
+              onChange={(e) => {
+                const next = e.target.value;
+                if (isCommandSender(next)) setSender(next);
+              }}
+            >
+              {COMMAND_SENDERS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+            <p className="mt-1 text-[10px] text-ink-subtle">
+              Posts as exact API string (e.g.{" "}
+              <code className="font-mono">&quot;Gor Gor&quot;</code>). Controlled select — does not
+              reset on submit.
+            </p>
+          </div>
+
           <div>
             <label className={labelClass}>target_members</label>
             <div className="flex flex-wrap gap-2">
@@ -755,137 +1287,80 @@ export function LivingRoomDoorbell({
               })}
             </div>
             <p className="mt-1.5 text-[10px] text-ink-subtle">
-              Multi-select members, or <code className="font-mono">all</code>. Receipts start as
-              SENT — not auto RECEIVED · members are not auto-marked present.
+              Multi-select members, or <code className="font-mono">all</code>. Receipts start as SENT
+              — not auto RECEIVED · members are not auto-marked present.
             </p>
           </div>
+
           <div>
-            <label className={labelClass}>Command</label>
+            <label className={labelClass} htmlFor="fh-body">
+              {isMeetingLikeMode(postMode) ? "Meeting / assignment body" : "Announcement body"}
+            </label>
             <textarea
-              className={cn(inputClass, "min-h-[72px] resize-y")}
+              id="fh-body"
+              className={cn(inputClass, "min-h-[120px] resize-y font-mono text-[12px]")}
               value={body}
               onChange={(e) => setBody(e.target.value)}
               placeholder={
-                sharedOk
-                  ? "What should the family do? (shared across devices)"
-                  : "What should the family do? (local fallback — this browser only)"
+                isMeetingLikeMode(postMode)
+                  ? "Meeting title: …\nPurpose: …\nAssignments by member:\n- Sky: …\nDeadline guidance: …\nRequired response statuses: …\nSupport status key: …\nGor Gor Review reminder: …"
+                  : sharedOk
+                    ? "What should the family hear? (shared across devices)"
+                    : "What should the family hear? (local fallback — this browser only)"
               }
               required
             />
           </div>
           <button type="submit" className={btnPrimary} disabled={!body.trim() || busy}>
-            Send doorbell
+            {isMeetingLikeMode(postMode) ? "Post Family Meeting" : "Send announcement"}
           </button>
         </form>
 
         <div>
           <p className="mb-2 font-display text-xs font-semibold uppercase tracking-[0.12em] text-brand">
-            Receipt Board
+            Board · posts + receipts
           </p>
           <p className="mb-3 text-[11px] text-ink-subtle">
-            Each target member · status · support · timestamp · last note. Until ack, status stays
-            SENT (no response yet). Poll ~{POLL_MS / 1000}s when shared.
+            Each Family Meeting shows a structured card and a prominent Receipt Board immediately
+            below. Responses are never faked.
           </p>
 
-          {state.commands.length === 0 ? (
+          {sortedCommands.length === 0 ? (
             <p className="py-6 text-center text-sm text-ink-subtle">
-              No doorbells yet — send the first Living Room command.
+              No posts yet — start the first Family Meeting above.
             </p>
           ) : (
             <ul className="space-y-4">
-              {state.commands.map((cmd) => (
-                <li
-                  key={cmd.id}
-                  className="overflow-hidden rounded-xl border border-ink/10 bg-silk/40"
-                >
-                  <div className="border-b border-ink/5 bg-white/80 px-3 py-2.5 sm:px-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <Badge tone="border-brand/30 bg-brand/10 text-brand">{cmd.sender}</Badge>
-                      <span className="text-[10px] text-ink-subtle">
-                        → {cmd.target_members.join(", ")}
-                      </span>
-                      <span className="text-[10px] text-ink-subtle">{formatTime(cmd.createdAt)}</span>
+              {sortedCommands.map((cmd) => {
+                const mode = cmd.mode ?? inferMessageMode(cmd);
+                const pinned = cmd.id === FIRST_FAMILY_MEETING_ID;
+                return (
+                  <li
+                    key={cmd.id}
+                    id={`meeting-${cmd.id}`}
+                    tabIndex={-1}
+                    ref={(el) => {
+                      messageRefs.current[cmd.id] = el;
+                    }}
+                    className={cn(
+                      "overflow-hidden rounded-xl border bg-silk/40 outline-none focus:ring-2 focus:ring-brand/40",
+                      pinned
+                        ? "border-brand/40 shadow-[0_0_0_1px_rgba(140,130,252,0.2)]"
+                        : "border-ink/10",
+                    )}
+                  >
+                    <div className="border-b border-ink/5 bg-white/80 px-3 py-3 sm:px-4">
+                      <MeetingJobCard cmd={{ ...cmd, mode }} />
                     </div>
-                    <p className="mt-1.5 whitespace-pre-wrap text-sm text-ink">{cmd.body}</p>
-                  </div>
-                  <ul className="divide-y divide-ink/5">
-                    {cmd.receipts.map((r) => (
-                      <li
-                        key={r.id}
-                        className="flex flex-wrap items-start justify-between gap-2 px-3 py-2.5 sm:px-4"
-                      >
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <p className="font-semibold text-ink">{MEMBER_LABEL[r.member]}</p>
-                            <Badge tone={RECEIPT_TONE[r.status]}>{r.status}</Badge>
-                            <Badge tone={SUPPORT_TONE[r.supportStatus]}>
-                              Support {r.supportStatus}
-                            </Badge>
-                            {(r.status === "SENT" || r.status === "NO_RESPONSE") && (
-                              <span className="text-[10px] text-ink-subtle">no response yet</span>
-                            )}
-                          </div>
-                          <p className="mt-0.5 text-[10px] text-ink-subtle">
-                            {formatTime(r.updatedAt)}
-                          </p>
-                          {r.note ? (
-                            <p className="mt-1 text-xs text-ink-muted">Note: {r.note}</p>
-                          ) : (
-                            <p className="mt-1 text-[10px] text-ink-subtle">No note yet</p>
-                          )}
-                          {r.selfCheck ? (
-                            <details className="mt-2 text-[10px] text-ink-muted">
-                              <summary className="cursor-pointer font-semibold text-brand">
-                                Self-check
-                              </summary>
-                              <ul className="mt-1 space-y-0.5 pl-3">
-                                <li>What I did: {r.selfCheck.whatIDid}</li>
-                                <li>Evidence: {r.selfCheck.evidence}</li>
-                                <li>Purpose: {r.selfCheck.purposeFulfilled}</li>
-                                <li>Better: {r.selfCheck.whatCouldBeBetter}</li>
-                                <li>Blockers: {r.selfCheck.blockers}</li>
-                                <li>Support: {r.selfCheck.supportNeeded}</li>
-                              </ul>
-                            </details>
-                          ) : null}
-                        </div>
-                        <select
-                          className="rounded-full border border-ink/10 bg-white px-2 py-1 text-[10px] text-ink-muted outline-none"
-                          value={r.status}
-                          aria-label={`Update ${MEMBER_LABEL[r.member]} status`}
-                          disabled={busy}
-                          onChange={(e) => {
-                            const next = e.target.value as ReceiptStatus;
-                            if (
-                              next === "SUBMITTED" &&
-                              (!r.selfCheck || !selfCheckComplete(r.selfCheck))
-                            ) {
-                              setBoardHint(
-                                "SUBMITTED only from the member room self-check — Living Room cannot fake it.",
-                              );
-                              return;
-                            }
-                            setBoardHint(null);
-                            onUpdateReceipt(cmd.id, r.member, { status: next });
-                          }}
-                        >
-                          {RECEIPT_STATUSES.map((s) => (
-                            <option
-                              key={s}
-                              disabled={
-                                s === "SUBMITTED" &&
-                                (!r.selfCheck || !selfCheckComplete(r.selfCheck))
-                              }
-                            >
-                              {s}
-                            </option>
-                          ))}
-                        </select>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
+                    <ReceiptBoardList
+                      cmd={cmd}
+                      busy={busy}
+                      onUpdateReceipt={onUpdateReceipt}
+                      setBoardHint={setBoardHint}
+                    />
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>
@@ -894,7 +1369,7 @@ export function LivingRoomDoorbell({
   );
 }
 
-/** Member room — pending doorbells + ack + support status + SUBMITTED self-check. */
+/** Member room — meeting response controls + ack + support + SUBMITTED self-check. */
 export function MemberDoorbellPanel({
   member,
   state,
@@ -911,7 +1386,9 @@ export function MemberDoorbellPanel({
   onUpdateReceipt: (
     commandId: string,
     member: TargetMember,
-    patch: Partial<Pick<FamilyReceipt, "status" | "note" | "supportStatus" | "selfCheck">>,
+    patch: Partial<
+      Pick<FamilyReceipt, "status" | "note" | "supportStatus" | "selfCheck" | "evidenceUrl" | "blocker">
+    >,
   ) => void;
 }) {
   const pending = useMemo(() => {
@@ -925,18 +1402,31 @@ export function MemberDoorbellPanel({
   }, [state.commands, member]);
 
   const [notes, setNotes] = useState<Record<string, string>>({});
+  const [evidenceUrls, setEvidenceUrls] = useState<Record<string, string>>({});
+  const [blockers, setBlockers] = useState<Record<string, string>>({});
   const [selfChecks, setSelfChecks] = useState<Record<string, FamilySelfCheck>>({});
   const [selfCheckOpen, setSelfCheckOpen] = useState<string | null>(null);
+  const [localHint, setLocalHint] = useState<string | null>(null);
+
+  const requireNote = (cmdId: string, receipt: FamilyReceipt): string | null => {
+    const note = (notes[cmdId] ?? receipt.note).trim();
+    if (!note) {
+      setLocalHint("A note is required when you update your response status.");
+      return null;
+    }
+    setLocalHint(null);
+    return note;
+  };
 
   return (
     <section className="overflow-hidden rounded-2xl border border-brand/25 bg-white shadow-[0_0_0_1px_rgba(140,130,252,0.06)]">
       <header className="border-b border-ink/5 bg-gradient-to-r from-[#f7f4fc] via-white to-brand/[0.04] px-4 py-3 sm:px-5">
         <h3 className="font-display text-sm font-semibold text-ink">
-          Doorbell · {MEMBER_LABEL[member]} room · v0.9.2
+          Family Meeting response · {MEMBER_LABEL[member]} room · v0.9.3
         </h3>
         <p className="mt-0.5 text-[11px] text-ink-subtle">
-          Ack Living Room commands here · Support Status · SUBMITTED needs self-check · or reply in
-          room chat to mark RECEIVED
+          Update your receipt honestly · note required · Support Status · SUBMITTED needs self-check
+          · never auto RECEIVED
         </p>
       </header>
 
@@ -947,37 +1437,46 @@ export function MemberDoorbellPanel({
             {errorFlash}
           </p>
         ) : null}
+        {localHint ? (
+          <p className="rounded-lg border border-amber-300/50 bg-amber-50 px-3 py-2 text-[11px] text-amber-950">
+            {localHint}
+          </p>
+        ) : null}
 
         {pending.length === 0 ? (
           <p className="py-6 text-center text-sm text-ink-subtle">
-            No doorbells for {MEMBER_LABEL[member]} yet.
+            No meetings / doorbells for {MEMBER_LABEL[member]} yet.
           </p>
         ) : (
           <ul className="space-y-4">
             {pending.map(({ cmd, receipt }) => {
               const noteDraft = notes[cmd.id] ?? receipt.note;
+              const evidenceDraft = evidenceUrls[cmd.id] ?? receipt.evidenceUrl ?? "";
+              const blockerDraft = blockers[cmd.id] ?? receipt.blocker ?? "";
               const sc = selfChecks[cmd.id] ?? emptySelfCheck();
               const open = selfCheckOpen === cmd.id;
+              const mode = cmd.mode ?? inferMessageMode(cmd);
               return (
                 <li
                   key={cmd.id}
                   className="rounded-xl border border-ink/10 bg-gradient-to-br from-white via-[#faf8fc] to-[#f3eef9] p-4"
                 >
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge tone="border-brand/30 bg-brand/10 text-brand">{cmd.sender}</Badge>
-                    <Badge tone={RECEIPT_TONE[receipt.status]}>{receipt.status}</Badge>
-                    <Badge tone={SUPPORT_TONE[receipt.supportStatus]}>
-                      Support {receipt.supportStatus}
-                    </Badge>
-                    <span className="text-[10px] text-ink-subtle">
-                      {formatTime(cmd.createdAt)}
-                    </span>
+                  <MeetingJobCard cmd={{ ...cmd, mode }} />
+
+                  <div className="mt-3 rounded-lg border border-brand/15 bg-white/80 p-3">
+                    <p className="mb-2 font-display text-[10px] font-semibold uppercase tracking-[0.12em] text-brand">
+                      Your receipt
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Badge tone={RECEIPT_TONE[receipt.status]}>{receipt.status}</Badge>
+                      <Badge tone={SUPPORT_TONE[receipt.supportStatus]}>
+                        Support {receipt.supportStatus}
+                      </Badge>
+                      <span className="text-[10px] text-ink-subtle">
+                        Last update · {formatTime(receipt.updatedAt)}
+                      </span>
+                    </div>
                   </div>
-                  <p className="mt-2 whitespace-pre-wrap text-sm text-ink">{cmd.body}</p>
-                  <p className="mt-1 text-[10px] text-ink-subtle">
-                    Last update · {formatTime(receipt.updatedAt)}
-                    {receipt.note ? ` · ${receipt.note}` : ""}
-                  </p>
 
                   <div className="mt-3">
                     <label className={labelClass}>Support Status</label>
@@ -993,9 +1492,16 @@ export function MemberDoorbellPanel({
                               ? SUPPORT_TONE[s]
                               : "border-ink/10 bg-white text-ink-muted hover:border-brand/30",
                           )}
-                          onClick={() =>
-                            onUpdateReceipt(cmd.id, member, { supportStatus: s })
-                          }
+                          onClick={() => {
+                            const note = requireNote(cmd.id, receipt);
+                            if (!note) return;
+                            onUpdateReceipt(cmd.id, member, {
+                              supportStatus: s,
+                              note,
+                              evidenceUrl: evidenceDraft.trim() || null,
+                              blocker: blockerDraft.trim() || null,
+                            });
+                          }}
                         >
                           {s}
                         </button>
@@ -1004,15 +1510,41 @@ export function MemberDoorbellPanel({
                   </div>
 
                   <div className="mt-3">
-                    <label className={labelClass}>Ack (optional note)</label>
+                    <label className={labelClass}>Note (required on response)</label>
                     <input
                       className={inputClass}
                       value={noteDraft}
                       onChange={(e) =>
                         setNotes((prev) => ({ ...prev, [cmd.id]: e.target.value }))
                       }
-                      placeholder="Short note for Living Room board"
+                      placeholder="Short honest note for the Receipt Board"
+                      required
                     />
+                  </div>
+
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <label className={labelClass}>Evidence URL (optional)</label>
+                      <input
+                        className={inputClass}
+                        value={evidenceDraft}
+                        onChange={(e) =>
+                          setEvidenceUrls((prev) => ({ ...prev, [cmd.id]: e.target.value }))
+                        }
+                        placeholder="https://… or path"
+                      />
+                    </div>
+                    <div>
+                      <label className={labelClass}>Blocker (optional)</label>
+                      <input
+                        className={inputClass}
+                        value={blockerDraft}
+                        onChange={(e) =>
+                          setBlockers((prev) => ({ ...prev, [cmd.id]: e.target.value }))
+                        }
+                        placeholder="What's blocking you?"
+                      />
+                    </div>
                   </div>
 
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -1023,13 +1555,17 @@ export function MemberDoorbellPanel({
                         className={btnAck}
                         disabled={busy}
                         onClick={() => {
+                          const note = requireNote(cmd.id, receipt);
+                          if (!note) return;
                           if (a.status === "SUBMITTED") {
                             setSelfCheckOpen(cmd.id);
                             return;
                           }
                           onUpdateReceipt(cmd.id, member, {
                             status: a.status,
-                            note: (notes[cmd.id] ?? receipt.note).trim(),
+                            note,
+                            evidenceUrl: evidenceDraft.trim() || null,
+                            blocker: blockerDraft.trim() || null,
                           });
                         }}
                       >
@@ -1065,10 +1601,13 @@ export function MemberDoorbellPanel({
                           className={btnPrimary}
                           disabled={busy || !selfCheckComplete(sc)}
                           onClick={() => {
-                            if (!selfCheckComplete(sc)) return;
+                            const note = requireNote(cmd.id, receipt);
+                            if (!note || !selfCheckComplete(sc)) return;
                             onUpdateReceipt(cmd.id, member, {
                               status: "SUBMITTED",
-                              note: (notes[cmd.id] ?? receipt.note).trim(),
+                              note,
+                              evidenceUrl: evidenceDraft.trim() || null,
+                              blocker: blockerDraft.trim() || null,
                               selfCheck: {
                                 whatIDid: sc.whatIDid.trim(),
                                 evidence: sc.evidence.trim(),

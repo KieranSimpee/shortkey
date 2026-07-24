@@ -1,5 +1,5 @@
 /**
- * Family Home v0.9.2 — Shared Doorbell store
+ * Family Home v0.9.3 — Shared Doorbell / Family Meeting store
  *
  * Backends (first match wins):
  * 1. Upstash Redis REST — UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN
@@ -8,6 +8,7 @@
  *    → data/family-doorbell.json
  * 4. In-memory ephemeral — shared:false · mode:"ephemeral" (do not pretend durable)
  *
+ * Redis key stays v092 so existing shared messages (incl. first meeting) are preserved.
  * Interface: listMessages · createMessage · updateReceipt
  */
 
@@ -15,7 +16,9 @@ import { promises as fs } from "fs";
 import path from "path";
 import {
   emptyDocument,
+  inferMessageMode,
   isCompleteSelfCheck,
+  isMessageMode,
   isReceiptStatus,
   isSupportStatus,
   isTargetMember,
@@ -27,14 +30,17 @@ import {
   type FamilyDoorbellStoreMode,
   type FamilyReceipt,
   type FamilySelfCheck,
+  type MessageMode,
   type ReceiptStatus,
   type SupportStatus,
   type TargetMember,
   type TargetMemberOption,
 } from "@/lib/familyDoorbellTypes";
 
+/** Keep v092 key — do not migrate Redis namespace (preserves fd_mryrchhg_gdlx7zrl). */
 const REDIS_KEY = "shortkey:family-doorbell:v092";
 const FILE_REL = path.join("data", "family-doorbell.json");
+const API_VERSION = "0.9.3" as const;
 
 /** Process-local fallback — lost on cold start / multi-instance. */
 let memoryDoc: FamilyDoorbellDocument = emptyDocument();
@@ -72,7 +78,18 @@ function metaFor(mode: FamilyDoorbellStoreMode): FamilyDoorbellStoreMeta {
   return {
     shared: mode !== "ephemeral",
     mode,
-    version: "0.9.2",
+    version: API_VERSION,
+  };
+}
+
+function normalizeStoredMessage(raw: unknown): FamilyCommandMessage | null {
+  if (!raw || typeof raw !== "object") return null;
+  const m = raw as FamilyCommandMessage & { messageType?: unknown };
+  if (typeof m.body !== "string" || !Array.isArray(m.receipts)) return null;
+  const mode = inferMessageMode(m);
+  return {
+    ...m,
+    mode,
   };
 }
 
@@ -80,7 +97,10 @@ function parseDocument(raw: unknown): FamilyDoorbellDocument {
   if (!raw || typeof raw !== "object") return emptyDocument();
   const o = raw as { version?: unknown; messages?: unknown };
   if (!Array.isArray(o.messages)) return emptyDocument();
-  return { version: "0.9.2", messages: o.messages as FamilyCommandMessage[] };
+  const messages = o.messages
+    .map((m) => normalizeStoredMessage(m))
+    .filter(Boolean) as FamilyCommandMessage[];
+  return { version: API_VERSION, messages };
 }
 
 async function redisCommand(
@@ -186,6 +206,7 @@ export type CreateMessageInput = {
   body: string;
   sender: CommandSender;
   target_members: TargetMemberOption[];
+  mode?: MessageMode;
 };
 
 export type UpdateReceiptInput = {
@@ -194,6 +215,8 @@ export type UpdateReceiptInput = {
   note?: string;
   supportStatus?: SupportStatus;
   selfCheck?: FamilySelfCheck | null;
+  evidenceUrl?: string | null;
+  blocker?: string | null;
 };
 
 export async function listMessages(): Promise<ListMessagesResult> {
@@ -216,6 +239,9 @@ export async function createMessage(
   }
 
   const now = new Date().toISOString();
+  const mode: MessageMode = isMessageMode(input.mode)
+    ? input.mode
+    : "family-meeting";
   const message: FamilyCommandMessage = {
     id: newId(),
     body,
@@ -225,6 +251,7 @@ export async function createMessage(
       : resolved,
     resolved_targets: resolved,
     createdAt: now,
+    mode,
     receipts: resolved.map(
       (member): FamilyReceipt => ({
         id: newId(),
@@ -234,6 +261,8 @@ export async function createMessage(
         note: "",
         supportStatus: "GREEN",
         selfCheck: null,
+        evidenceUrl: null,
+        blocker: null,
       }),
     ),
   };
@@ -241,7 +270,7 @@ export async function createMessage(
   const backend = resolveBackend();
   const doc = await backend.read();
   const next: FamilyDoorbellDocument = {
-    version: "0.9.2",
+    version: API_VERSION,
     messages: [message, ...doc.messages],
   };
   await backend.write(next);
@@ -308,15 +337,19 @@ export async function updateReceipt(
     note: input.note !== undefined ? input.note : prev.note,
     supportStatus: input.supportStatus ?? prev.supportStatus,
     selfCheck,
+    evidenceUrl:
+      input.evidenceUrl !== undefined ? input.evidenceUrl : (prev.evidenceUrl ?? null),
+    blocker: input.blocker !== undefined ? input.blocker : (prev.blocker ?? null),
   };
 
   const nextMessage: FamilyCommandMessage = {
     ...message,
+    mode: message.mode ?? inferMessageMode(message),
     receipts: message.receipts.map((r, i) => (i === rIdx ? receipt : r)),
   };
   const nextMessages = doc.messages.map((m, i) => (i === idx ? nextMessage : m));
   const nextDoc: FamilyDoorbellDocument = {
-    version: "0.9.2",
+    version: API_VERSION,
     messages: nextMessages,
   };
   await backend.write(nextDoc);

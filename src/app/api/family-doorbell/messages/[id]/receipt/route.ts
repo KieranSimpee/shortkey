@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
 
 /**
  * PATCH /api/family-doorbell/messages/:id/receipt
- * Body: { member, status?, note?, supportStatus?, selfCheck? }
+ * Body: { member, status?, note?, supportStatus?, selfCheck?, evidence_url?, blocker? }
  * SUBMITTED requires complete selfCheck (6 fields).
  * Never auto-marks RECEIVED — client must send explicit status.
  */
@@ -49,6 +49,10 @@ export async function PATCH(request: Request, context: RouteContext) {
     note?: unknown;
     supportStatus?: unknown;
     selfCheck?: unknown;
+    self_check?: unknown;
+    evidenceUrl?: unknown;
+    evidence_url?: unknown;
+    blocker?: unknown;
   };
 
   if (!isTargetMember(raw.member)) {
@@ -67,18 +71,28 @@ export async function PATCH(request: Request, context: RouteContext) {
     return NextResponse.json({ error: "note must be a string." }, { status: 400 });
   }
 
+  const evidenceRaw = raw.evidenceUrl ?? raw.evidence_url;
+  if (evidenceRaw !== undefined && evidenceRaw !== null && typeof evidenceRaw !== "string") {
+    return NextResponse.json({ error: "evidence_url must be a string." }, { status: 400 });
+  }
+
+  if (raw.blocker !== undefined && raw.blocker !== null && typeof raw.blocker !== "string") {
+    return NextResponse.json({ error: "blocker must be a string." }, { status: 400 });
+  }
+
+  const selfCheckRaw = raw.selfCheck ?? raw.self_check;
   let selfCheck: FamilySelfCheck | null | undefined;
-  if (raw.selfCheck !== undefined) {
-    if (raw.selfCheck === null) {
+  if (selfCheckRaw !== undefined) {
+    if (selfCheckRaw === null) {
       selfCheck = null;
-    } else if (isCompleteSelfCheck(raw.selfCheck)) {
+    } else if (isCompleteSelfCheck(selfCheckRaw)) {
       selfCheck = {
-        whatIDid: raw.selfCheck.whatIDid.trim(),
-        evidence: raw.selfCheck.evidence.trim(),
-        purposeFulfilled: raw.selfCheck.purposeFulfilled.trim(),
-        whatCouldBeBetter: raw.selfCheck.whatCouldBeBetter.trim(),
-        blockers: raw.selfCheck.blockers.trim(),
-        supportNeeded: raw.selfCheck.supportNeeded.trim(),
+        whatIDid: selfCheckRaw.whatIDid.trim(),
+        evidence: selfCheckRaw.evidence.trim(),
+        purposeFulfilled: selfCheckRaw.purposeFulfilled.trim(),
+        whatCouldBeBetter: selfCheckRaw.whatCouldBeBetter.trim(),
+        blockers: selfCheckRaw.blockers.trim(),
+        supportNeeded: selfCheckRaw.supportNeeded.trim(),
       };
     } else {
       return NextResponse.json(
@@ -108,6 +122,18 @@ export async function PATCH(request: Request, context: RouteContext) {
       note: raw.note,
       supportStatus: raw.supportStatus,
       selfCheck,
+      evidenceUrl:
+        evidenceRaw === undefined
+          ? undefined
+          : evidenceRaw === null
+            ? null
+            : String(evidenceRaw).trim(),
+      blocker:
+        raw.blocker === undefined
+          ? undefined
+          : raw.blocker === null
+            ? null
+            : String(raw.blocker).trim(),
     });
     return NextResponse.json(result);
   } catch (err) {

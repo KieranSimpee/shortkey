@@ -1,6 +1,7 @@
 /**
- * Family Home v0.9.2 — Shared Doorbell types
- * Canonical: src/brand/sky/FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md
+ * Family Home v0.9.3 — Family Meeting UI + Shared Doorbell types
+ * Canonical: src/brand/sky/FAMILY_HOME_v0_9_3_FAMILY_MEETING_UI.md
+ * Predecessor: FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md (shared store preserved)
  */
 
 export const TARGET_MEMBER_OPTIONS = [
@@ -39,8 +40,44 @@ export type ReceiptStatus = (typeof RECEIPT_STATUSES)[number];
 export const SUPPORT_STATUSES = ["GREEN", "YELLOW", "ORANGE", "RED"] as const;
 export type SupportStatus = (typeof SUPPORT_STATUSES)[number];
 
-export const COMMAND_SENDERS = ["Kieran", "Gor Gor"] as const;
+/** Living Room / Meeting composers may post as any of these. */
+export const COMMAND_SENDERS = [
+  "Kieran",
+  "Gor Gor",
+  "Sky",
+  "Senti",
+  "Kura",
+  "Agent R",
+] as const;
 export type CommandSender = (typeof COMMAND_SENDERS)[number];
+
+/**
+ * Post mode / message type.
+ * Stored on message as `mode` (also accepts POST alias `messageType`).
+ */
+export const MESSAGE_MODES = [
+  "doorbell",
+  "family-meeting",
+  "job-assignment",
+  "review-request",
+] as const;
+export type MessageMode = (typeof MESSAGE_MODES)[number];
+
+export const MESSAGE_MODE_LABELS: Record<MessageMode, string> = {
+  doorbell: "Doorbell / Announcement",
+  "family-meeting": "Family Meeting",
+  "job-assignment": "Job Assignment",
+  "review-request": "Review Request",
+};
+
+/** Default composer mode for the current sprint. */
+export const DEFAULT_COMPOSER_MODE: MessageMode = "family-meeting";
+
+/** First real Family Meeting — pin / highlight when present. */
+export const FIRST_FAMILY_MEETING_ID = "fd_mryrchhg_gdlx7zrl";
+
+export const GOR_GOR_REVIEW_REMINDER =
+  "Outputs are candidates only until Gor Gor Review. Kieran only reviews KIERAN REVIEW READY work.";
 
 /** Required before status can become SUBMITTED. */
 export type FamilySelfCheck = {
@@ -61,9 +98,13 @@ export type FamilyReceipt = {
   /** Member-set support signal — never auto-inferred from presence. */
   supportStatus: SupportStatus;
   selfCheck?: FamilySelfCheck | null;
+  /** Optional evidence link (member response). */
+  evidenceUrl?: string | null;
+  /** Optional blocker note (member response). */
+  blocker?: string | null;
 };
 
-/** Shared command message (Living Room doorbell). */
+/** Shared command message (Living Room doorbell / Family Meeting). */
 export type FamilyCommandMessage = {
   id: string;
   body: string;
@@ -72,6 +113,10 @@ export type FamilyCommandMessage = {
   resolved_targets: TargetMember[];
   createdAt: string;
   receipts: FamilyReceipt[];
+  /**
+   * Post mode. Absent on v0.9.2 messages — inferred by `inferMessageMode`.
+   */
+  mode?: MessageMode;
 };
 
 export type FamilyDoorbellStoreMode =
@@ -83,11 +128,12 @@ export type FamilyDoorbellStoreMode =
 export type FamilyDoorbellStoreMeta = {
   shared: boolean;
   mode: FamilyDoorbellStoreMode;
-  version: "0.9.2";
+  /** API/schema version — clients should tolerate 0.9.2 and 0.9.3. */
+  version: "0.9.2" | "0.9.3";
 };
 
 export type FamilyDoorbellDocument = {
-  version: "0.9.2";
+  version: "0.9.2" | "0.9.3";
   messages: FamilyCommandMessage[];
 };
 
@@ -116,6 +162,34 @@ export function isCommandSender(v: unknown): v is CommandSender {
   return typeof v === "string" && (COMMAND_SENDERS as readonly string[]).includes(v);
 }
 
+export function isMessageMode(v: unknown): v is MessageMode {
+  return typeof v === "string" && (MESSAGE_MODES as readonly string[]).includes(v);
+}
+
+/**
+ * Infer mode for legacy messages (no `mode` field).
+ * Existing Gor Gor → all posts are treated as Family Meeting.
+ */
+export function inferMessageMode(msg: {
+  mode?: unknown;
+  messageType?: unknown;
+  sender?: unknown;
+  target_members?: unknown;
+}): MessageMode {
+  if (isMessageMode(msg.mode)) return msg.mode;
+  if (isMessageMode(msg.messageType)) return msg.messageType;
+  const targets = Array.isArray(msg.target_members) ? msg.target_members : [];
+  const isAll =
+    targets.includes("all") ||
+    (ALL_MEMBERS.every((m) => targets.includes(m)) && targets.length >= ALL_MEMBERS.length);
+  if (msg.sender === "Gor Gor" && isAll) return "family-meeting";
+  return "doorbell";
+}
+
+export function isMeetingLikeMode(mode: MessageMode): boolean {
+  return mode === "family-meeting" || mode === "job-assignment";
+}
+
 export function isCompleteSelfCheck(v: unknown): v is FamilySelfCheck {
   if (!v || typeof v !== "object") return false;
   const o = v as Record<string, unknown>;
@@ -131,5 +205,5 @@ export function isCompleteSelfCheck(v: unknown): v is FamilySelfCheck {
 }
 
 export function emptyDocument(): FamilyDoorbellDocument {
-  return { version: "0.9.2", messages: [] };
+  return { version: "0.9.3", messages: [] };
 }

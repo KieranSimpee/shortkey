@@ -34,8 +34,8 @@ import {
  * Family Table v0.8 — One Room Per Family Member (house architecture).
  * Persistence: browser localStorage key `shortkey-family-table-v08` only
  * (includes Living Room `cabinet` — Family Cabinet drawers).
- * Doorbell: Family Home v0.9.2 Shared Doorbell via `/api/family-doorbell/*`
- * (localStorage `shortkey-family-doorbell-v092` = fallback/demo only).
+ * Doorbell: Family Home v0.9.3 Family Meeting UI via `/api/family-doorbell/*`
+ * (localStorage `shortkey-family-doorbell-v092` = fallback/demo only; Redis key unchanged).
  * Migrates lightly once from v0.7 + Family Chat v0.1.
  * Doc: src/brand/sky/FAMILY_TABLE_v0_8.md · FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md
  */
@@ -800,7 +800,7 @@ export function FamilyTableWorkbench() {
           {/* Living Room · Family House Rule (top announcement) */}
           {roomId === "living" ? <LivingRoomHouseRuleCard /> : null}
 
-          {/* Living Room · Family Home v0.9.2 Shared Doorbell / Receipt Board */}
+          {/* Living Room · Family Home v0.9.3 Family Meeting / Shared Board */}
           {roomId === "living" ? (
             <LivingRoomDoorbell
               state={doorbell.state}

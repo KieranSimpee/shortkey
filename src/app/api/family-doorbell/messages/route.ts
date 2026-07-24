@@ -6,8 +6,12 @@ import {
   StoreValidationError,
 } from "@/lib/familyDoorbellStore";
 import {
+  COMMAND_SENDERS,
+  DEFAULT_COMPOSER_MODE,
   isCommandSender,
+  isMessageMode,
   TARGET_MEMBER_OPTIONS,
+  type MessageMode,
   type TargetMemberOption,
 } from "@/lib/familyDoorbellTypes";
 
@@ -17,7 +21,7 @@ export const dynamic = "force-dynamic";
 /**
  * GET /api/family-doorbell/messages
  * POST /api/family-doorbell/messages
- * Soft staging gate · Internal Staging only.
+ * Soft staging gate · Internal Staging only · Family Home v0.9.3
  */
 
 export async function GET(request: Request) {
@@ -55,6 +59,8 @@ export async function POST(request: Request) {
     body?: unknown;
     sender?: unknown;
     target_members?: unknown;
+    mode?: unknown;
+    messageType?: unknown;
   };
 
   const messageBody = typeof raw.body === "string" ? raw.body.trim() : "";
@@ -67,7 +73,9 @@ export async function POST(request: Request) {
 
   if (!isCommandSender(raw.sender)) {
     return NextResponse.json(
-      { error: "sender must be Kieran or Gor Gor." },
+      {
+        error: `sender must be one of: ${COMMAND_SENDERS.join(" | ")}.`,
+      },
       { status: 400 },
     );
   }
@@ -91,11 +99,27 @@ export async function POST(request: Request) {
     targets.push(t as TargetMemberOption);
   }
 
+  let mode: MessageMode = DEFAULT_COMPOSER_MODE;
+  if (raw.mode !== undefined || raw.messageType !== undefined) {
+    const candidate = raw.mode ?? raw.messageType;
+    if (!isMessageMode(candidate)) {
+      return NextResponse.json(
+        {
+          error:
+            "mode / messageType must be doorbell | family-meeting | job-assignment | review-request.",
+        },
+        { status: 400 },
+      );
+    }
+    mode = candidate;
+  }
+
   try {
     const result = await createMessage({
       body: messageBody,
       sender: raw.sender,
       target_members: targets,
+      mode,
     });
     return NextResponse.json(result, { status: 201 });
   } catch (err) {

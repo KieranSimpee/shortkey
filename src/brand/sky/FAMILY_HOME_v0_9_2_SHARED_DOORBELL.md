@@ -1,12 +1,13 @@
 # Family Home v0.9.2 — Shared Doorbell / Shared Presence
 
 **Version:** Family Home **v0.9.2**  
-**Status:** **Internal Staging · Shared backend when configured · Gor Gor Review pending**  
+**Status:** **Predecessor of v0.9.3** — shared backend still authoritative; UI superseded by Family Meeting workflow.  
 **Date:** 2026-07-24  
 **Surface:** Family Table `/internal/family-table` · Living Room + member rooms  
 **Authority:** Kieran + Simpee Bro (Gor Gor)
 
-> **Canonical** for Doorbell / Receipt Board. Predecessor: [`FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md`](./FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md) (localStorage-only prototype).
+> **Predecessor.** Canonical Family Meeting UI: [`FAMILY_HOME_v0_9_3_FAMILY_MEETING_UI.md`](./FAMILY_HOME_v0_9_3_FAMILY_MEETING_UI.md).  
+> This doc remains the authority for the **shared store** contract introduced in v0.9.2 (Upstash key `shortkey:family-doorbell:v092`). Local prototype predecessor: [`FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md`](./FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md).
 
 ---
 
