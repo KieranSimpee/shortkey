@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Logo } from "@/components/ui/Logo";
+import { CreatorFormulaEducationStrip } from "@/components/social/CreatorFormulaEducationStrip";
 import { POWERED_BY_AI_FAMILY } from "@/content/aiFamilyCredit";
 import {
   SOCIAL_CATEGORIES,
@@ -400,6 +401,8 @@ export function CreatorEarlyAccessPortal() {
             ))}
           </div>
         </section>
+
+        <CreatorFormulaEducationStrip />
 
         {/* 1. Why ShortKey */}
         <section className="mt-12" aria-labelledby="why-shortkey">

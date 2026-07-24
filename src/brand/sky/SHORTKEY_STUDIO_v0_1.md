@@ -44,9 +44,9 @@ Review ladder (assets / campaigns / deployment plans): **Gor Gor Review** (`GOR_
 
 ## Entities
 
-`BrandDNA` · `StudioAsset` · `StudioCampaign` · `StudioDomain` · `StudioCountry` · `StudioDeploymentPlan` · `StudioVersionSnapshot` · `StudioApprovalLog` (+ `StudioRollbackRef` records)
+`BrandDNA` · `StudioAsset` · `StudioCampaign` (+ optional `hallyuFormula`) · `StudioDomain` · `StudioCountry` · `StudioDeploymentPlan` · `StudioVersionSnapshot` · `StudioApprovalLog` (+ `StudioRollbackRef` records)
 
-Types: `src/lib/studio/types.ts` · seed: `src/lib/studio/seed.ts`
+Types: `src/lib/studio/types.ts` · seed: `src/lib/studio/seed.ts` · Hallyu formula: `src/lib/studio/hallyuFormula.ts` · doc: [`SHORTKEY_HALLYU_CREATOR_FORMULA.md`](./SHORTKEY_HALLYU_CREATOR_FORMULA.md)
 
 ## UI pages (nav)
 

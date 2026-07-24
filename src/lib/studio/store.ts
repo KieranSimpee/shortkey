@@ -12,7 +12,12 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { createStudioSeed } from "@/lib/studio/seed";
+import {
+  createSeedHallyuFormula,
+  HALLYU_SEED_CAMPAIGN_ID,
+} from "@/lib/studio/hallyuFormula";
 import type {
+  StudioCampaign,
   StudioState,
   StudioStatePayload,
   StudioStoreMeta,
@@ -53,6 +58,30 @@ function stripSnapshots(state: StudioState): StudioStatePayload {
   return payload;
 }
 
+/** Ensure Hallyu seed campaign exists; preserve user edits when present. */
+function migrateCampaigns(campaigns: StudioCampaign[]): StudioCampaign[] {
+  const seed = createStudioSeed();
+  const hallyuSeed = seed.campaigns.find((c) => c.id === HALLYU_SEED_CAMPAIGN_ID);
+  if (!hallyuSeed) return campaigns;
+
+  const idx = campaigns.findIndex((c) => c.id === HALLYU_SEED_CAMPAIGN_ID);
+  if (idx < 0) {
+    return [...campaigns, hallyuSeed];
+  }
+
+  const existing = campaigns[idx];
+  if (!existing.hallyuFormula) {
+    const next = [...campaigns];
+    next[idx] = {
+      ...existing,
+      hallyuFormula: existing.hallyuFormula ?? createSeedHallyuFormula(),
+      status: existing.status === "DRAFT" ? "GOR_GOR_REVIEW" : existing.status,
+    };
+    return next;
+  }
+  return campaigns;
+}
+
 function normalizeState(raw: unknown): StudioState {
   if (!raw || typeof raw !== "object") return createStudioSeed();
   const o = raw as Partial<StudioState>;
@@ -61,7 +90,7 @@ function normalizeState(raw: unknown): StudioState {
     version: STUDIO_VERSION,
     brandDna: o.brandDna && typeof o.brandDna === "object" ? { ...seed.brandDna, ...o.brandDna } : seed.brandDna,
     assets: Array.isArray(o.assets) ? o.assets : seed.assets,
-    campaigns: Array.isArray(o.campaigns) ? o.campaigns : seed.campaigns,
+    campaigns: migrateCampaigns(Array.isArray(o.campaigns) ? o.campaigns : seed.campaigns),
     domains: Array.isArray(o.domains) ? o.domains : seed.domains,
     countries: Array.isArray(o.countries) ? o.countries : seed.countries,
     deploymentPlans: Array.isArray(o.deploymentPlans) ? o.deploymentPlans : seed.deploymentPlans,

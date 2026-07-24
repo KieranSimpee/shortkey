@@ -4,6 +4,8 @@
  * Not production-ready · no real publish / deploy.
  */
 
+import type { CampaignHallyuFormula } from "@/lib/studio/hallyuFormula";
+
 export const STUDIO_VERSION = "0.1" as const;
 export const STUDIO_LOCAL_STORAGE_KEY = "shortkey-studio-v01";
 
@@ -86,6 +88,11 @@ export interface StudioCampaign {
   status: StudioStatus;
   notes: string;
   updatedAt: string;
+  /**
+   * Optional Hallyu → Creator formula + Product Story Readiness.
+   * Absent on older persisted state — migrate gracefully.
+   */
+  hallyuFormula?: CampaignHallyuFormula;
 }
 
 export interface StudioDomain {

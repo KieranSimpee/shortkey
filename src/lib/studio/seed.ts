@@ -3,9 +3,14 @@
  * Domain map carried from Studio P0 DNA Control Room.
  */
 
+import {
+  createSeedHallyuFormula,
+  HALLYU_SEED_CAMPAIGN_ID,
+} from "@/lib/studio/hallyuFormula";
 import type { StudioState } from "@/lib/studio/types";
 
 const now = "2026-07-24T00:00:00.000Z";
+const hallyuNow = "2026-07-25T00:00:00.000Z";
 
 export function createStudioSeed(): StudioState {
   return {
@@ -215,6 +220,18 @@ export function createStudioSeed(): StudioState {
         status: "KIERAN_REVIEW_READY",
         notes: "",
         updatedAt: now,
+      },
+      {
+        id: HALLYU_SEED_CAMPAIGN_ID,
+        name: "Hallyu → Creator Formula (Product Story Readiness)",
+        domainIds: ["dom_studio", "dom_social"],
+        countryIds: ["cty_global", "cty_jp", "cty_kr", "cty_twhk"],
+        assetIds: ["ast_brand_line", "ast_creator_line", "ast_safety_line"],
+        status: "GOR_GOR_REVIEW",
+        notes:
+          "Educational campaign card · Historical K-beauty pattern vs ShortKey Creator formula · no celeb/brand scrapes · staging only",
+        updatedAt: hallyuNow,
+        hallyuFormula: createSeedHallyuFormula(),
       },
     ],
     deploymentPlans: [

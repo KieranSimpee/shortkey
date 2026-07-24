@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { HallyuFormulaStudioPanel } from "@/components/studio/HallyuFormulaStudioPanel";
 import { createStudioSeed } from "@/lib/studio/seed";
 import {
   STUDIO_ACTORS,
@@ -462,6 +463,7 @@ export function StudioShell() {
           {page === "brand-dna" ? (
             <BrandDnaPage
               dna={state.brandDna}
+              campaigns={state.campaigns}
               actor={actor}
               noteDraft={noteDraft}
               setNoteDraft={setNoteDraft}
@@ -487,19 +489,11 @@ export function StudioShell() {
             />
           ) : null}
           {page === "campaigns" ? (
-            <RegistryPage
-              title="Campaign Manager"
-              subtitle="Campaign registry + approval status. No scheduler automation."
-              rows={state.campaigns.map((c) => ({
-                id: c.id,
-                title: c.name,
-                meta: `domains ${c.domainIds.length} · countries ${c.countryIds.length} · assets ${c.assetIds.length}`,
-                status: c.status,
-                notes: c.notes,
-              }))}
-              onStatus={(id, s, note) => changeEntityStatus("campaign", id, s, note)}
+            <CampaignsPage
+              state={state}
               noteDraft={noteDraft}
               setNoteDraft={setNoteDraft}
+              onStatus={(id, s, note) => changeEntityStatus("campaign", id, s, note)}
             />
           ) : null}
           {page === "domains" ? (
@@ -736,12 +730,14 @@ function DashboardPage({
 
 function BrandDnaPage({
   dna,
+  campaigns,
   actor,
   noteDraft,
   setNoteDraft,
   onStatus,
 }: {
   dna: BrandDNA;
+  campaigns: StudioCampaign[];
   actor: StudioActor;
   noteDraft: string;
   setNoteDraft: (v: string) => void;
@@ -811,6 +807,117 @@ function BrandDnaPage({
           </li>
         ))}
       </ol>
+
+      <div className="mt-12 border-t border-brand/10 pt-8">
+        <h2 className="font-display text-base font-semibold text-ink">
+          Campaign formula · Product Story Readiness
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm text-ink-muted">
+          Seed concept for Gor Gor Review — historical K-beauty pattern vs ShortKey Creator
+          formula. Full registry lives in Campaign Manager.
+        </p>
+        <div className="mt-5">
+          <HallyuFormulaStudioPanel
+            campaigns={campaigns}
+            statusPill={(s) => <StatusPill status={s} />}
+            compact
+          />
+        </div>
+      </div>
+    </Panel>
+  );
+}
+
+function CampaignsPage({
+  state,
+  noteDraft,
+  setNoteDraft,
+  onStatus,
+}: {
+  state: StudioState;
+  noteDraft: string;
+  setNoteDraft: (v: string) => void;
+  onStatus: (id: string, s: StudioStatus, note: string) => void;
+}) {
+  const rows = state.campaigns.map((c) => ({
+    id: c.id,
+    title: c.name,
+    meta: `domains ${c.domainIds.length} · countries ${c.countryIds.length} · assets ${c.assetIds.length}${c.hallyuFormula ? " · Hallyu formula" : ""}`,
+    status: c.status,
+    notes: c.notes,
+  }));
+  const [activeId, setActiveId] = useState(rows[0]?.id ?? "");
+  const active = rows.find((r) => r.id === activeId) ?? rows[0];
+  const activeCampaign = state.campaigns.find((c) => c.id === active?.id);
+
+  return (
+    <Panel
+      title="Campaign Manager"
+      subtitle="Campaign registry + approval status. Includes Hallyu → Creator formula seed (GOR_GOR_REVIEW). No scheduler automation."
+    >
+      <ul className="space-y-3">
+        {rows.map((row) => (
+          <li
+            key={row.id}
+            className={`rounded-xl border px-4 py-4 ${
+              active?.id === row.id
+                ? "border-brand/40 bg-brand/5"
+                : "border-brand/15 bg-white"
+            }`}
+          >
+            <button
+              type="button"
+              className="w-full text-left"
+              onClick={() => setActiveId(row.id)}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="font-display text-sm font-semibold text-ink">
+                  {row.title}
+                </span>
+                <StatusPill status={row.status} />
+              </div>
+              <p className="mt-1 font-mono text-[11px] text-ink-subtle">{row.meta}</p>
+              {row.notes ? (
+                <p className="mt-2 text-[12px] text-ink-muted">{row.notes}</p>
+              ) : null}
+            </button>
+            {active?.id === row.id ? (
+              <StatusControls
+                current={row.status}
+                onChange={(s, note) => onStatus(row.id, s, note)}
+                noteDraft={noteDraft}
+                setNoteDraft={setNoteDraft}
+              />
+            ) : null}
+          </li>
+        ))}
+      </ul>
+
+      {activeCampaign?.hallyuFormula ? (
+        <div className="mt-10 border-t border-brand/10 pt-8">
+          <HallyuFormulaStudioPanel
+            campaigns={[activeCampaign]}
+            statusPill={(s) => <StatusPill status={s} />}
+          />
+        </div>
+      ) : (
+        <div className="mt-10 border-t border-brand/10 pt-8">
+          <p className="font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">
+            Formula seed
+          </p>
+          <p className="mt-2 text-sm text-ink-muted">
+            Select the Hallyu → Creator Formula campaign to open CampaignFormulaCard and
+            Product Story Readiness, or review the seed panel below.
+          </p>
+          <div className="mt-5">
+            <HallyuFormulaStudioPanel
+              campaigns={state.campaigns}
+              statusPill={(s) => <StatusPill status={s} />}
+              compact
+            />
+          </div>
+        </div>
+      )}
     </Panel>
   );
 }
@@ -1213,6 +1320,22 @@ function PreviewPage({ state }: { state: StudioState }) {
             {reviewCampaigns.length === 0 ? (
               <p className="text-sm text-ink-subtle">No campaigns in review ladder yet.</p>
             ) : null}
+          </div>
+        </article>
+
+        <article className="rounded-2xl border border-brand/20 bg-white p-5 lg:col-span-2">
+          <p className="font-display text-[11px] font-semibold uppercase tracking-[0.2em] text-brand">
+            Hallyu → Creator formula · preview
+          </p>
+          <p className="mt-2 text-sm text-ink-muted">
+            Educational staging cards — GOR_GOR_REVIEW · no celeb/brand scrapes.
+          </p>
+          <div className="mt-4">
+            <HallyuFormulaStudioPanel
+              campaigns={state.campaigns}
+              statusPill={(s) => <StatusPill status={s} />}
+              compact
+            />
           </div>
         </article>
 
