@@ -52,11 +52,11 @@ message text
 
 ## UI
 
-- Floating **Gor Gor** → bottom sheet (unchanged entry)
-- Title: **Living Room · Gor Gor**
-- Selectors: **From room** · **Sender** (Kieran · Gor Gor · Sky · Senti · Kura · Agent R) · **Kind**
-- Kind labels: **CHAT | NOTE | HOMEWORK SUBMITTED | EVIDENCE SUBMITTED | WAITING FOR GOR GOR**
-- Bubbles show who entered, which room, and kind; Gor Gor replies stay in the **same** thread
+- Floating **Gor Gor** → bottom sheet (unchanged entry) — upgraded to **Family Chat**
+- Title: **Family Chat** (selected recipients · internal staging)
+- **Sender** (Kieran · Little Brother · Gor Gor) separate from **Send to** checkboxes (Gor Gor · Sky · Senti · Kura · Agent R · All Family)
+- One message card per send: recipients + statuses; Gor Gor path shows real Simpee reply; other members SENT / WAITING (doorbell · no fake replies)
+- Legacy bubbles from earlier Living Room Thread still render if present in storage
 
 ---
 

@@ -46,7 +46,7 @@ Redis key unchanged: `shortkey:family-doorbell:v092`.
 - Component: `src/components/internal/LivingRoomSharedChat.tsx`
 - Wired in Family Table Living Room (`FamilyTableWorkbench`)
 - Replaces the complex Family Meeting / Thread router composer on that surface
-- Gor Gor floating drawer is optional AI bridge only — points people back to Shared Chat for family messages
+- Floating **Gor Gor** button opens the same drawer upgraded to **Family Chat** (`GorGorChatDrawer.tsx`): Sender dropdown + Send-to checkboxes · Gor Gor → `/api/gor-gor-chat` · others → doorbell SENT/WAITING (no fake replies)
 - Meeting v0.9.3 store + member ack panels remain available; Living Room compose UX is the simple chat
 
 ## Limits

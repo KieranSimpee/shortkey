@@ -1101,7 +1101,7 @@ export function FamilyTableWorkbench() {
         </div>
       </div>
 
-      {/* Floating Gor Gor Chat Bridge v0.1 */}
+      {/* Floating Gor Gor → Family Chat drawer (recipient pick · same button) */}
       <button
         type="button"
         onClick={() => setChatOpen(true)}

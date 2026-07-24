@@ -2,11 +2,23 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import {
+  MEMBER_LABEL,
+  RECEIPT_TONE,
+  resolveTargets,
+  type CommandSender,
+  type FamilyCommandMessage,
+  type FamilyReceipt,
+  type TargetMember,
+  type TargetMemberOption,
+} from "@/components/internal/FamilyDoorbell";
+import { P0_CHAT_SENDERS } from "@/lib/familyDoorbellTypes";
 
 /**
- * Gor Gor Chat Bridge · optional private AI drawer
- * Family shared chat (manual recipients) lives in Living Room Shared Chat.
- * This drawer talks to /api/gor-gor-chat only — not the shared family board.
+ * Family Chat drawer (same floating Gor Gor button).
+ * Sender = who is speaking · Send to = who should receive.
+ * Gor Gor among recipients → real `/api/gor-gor-chat` (Simpee bridge).
+ * Sky / Senti / Kura / Agent R → shared doorbell (SENT / WAITING · no fake replies).
  *
  * Storage (same key, nested fields):
  *   shortkey-gor-gor-chat-bridge-v01
@@ -17,7 +29,7 @@ import { cn } from "@/lib/utils";
 
 export const GOR_GOR_BRIDGE_STORAGE_KEY = "shortkey-gor-gor-chat-bridge-v01";
 export const GOR_GOR_BRIDGE_WARNING =
-  "Internal staging only · API bridge required for real Gor Gor reply · no private data yet.";
+  "Internal staging only · Family Chat · selected recipients · no private data yet.";
 
 const BRIDGE_OFFLINE_MSG =
   "Gor Gor Chat Bridge is not connected yet. Message saved locally only.";
@@ -33,6 +45,7 @@ export type BridgeRoomId =
 
 export type LivingRoomSender =
   | "Kieran"
+  | "Little Brother"
   | "Gor Gor"
   | "Sky"
   | "Senti"
@@ -46,17 +59,27 @@ export type LivingRoomKind =
   | "EVIDENCE SUBMITTED"
   | "WAITING FOR GOR GOR";
 
+type RecipientStatusLine = {
+  member: TargetMember;
+  status: string;
+  reply?: string;
+};
+
 type LivingRoomMessage = {
   id: string;
-  role: "user" | "gorgor" | "system";
+  role: "user" | "gorgor" | "system" | "card";
   text: string;
   at: string;
   sender?: LivingRoomSender;
   fromRoom?: BridgeRoomId;
   kind?: LivingRoomKind;
+  /** Family Chat card — selected recipients + per-member status. */
+  recipients?: TargetMemberOption[];
+  recipientStatuses?: RecipientStatusLine[];
+  doorbellId?: string;
 };
 
-/** Legacy per-room shape (kept in storage; Living Room Thread does not write here). */
+/** Legacy per-room shape (kept in storage; Family Chat does not write here). */
 type BridgeRoomState = {
   conversation_id?: string;
   messages: { id: string; role: "user" | "gorgor" | "system"; text: string; at: string }[];
@@ -65,10 +88,18 @@ type BridgeRoomState = {
 type BridgeStore = {
   version: "0.1";
   rooms: Partial<Record<BridgeRoomId, BridgeRoomState>>;
-  /** Shared Living Room Thread v0.1 — one Gor Gor conversation for the family. */
   livingRoomConversationId?: string;
   livingRoomMessages?: LivingRoomMessage[];
 };
+
+const RECIPIENT_OPTIONS: { id: TargetMemberOption; label: string }[] = [
+  { id: "gor-gor", label: "Gor Gor" },
+  { id: "sky", label: "Sky" },
+  { id: "senti", label: "Senti" },
+  { id: "kura", label: "Kura" },
+  { id: "agent-r", label: "Agent R" },
+  { id: "all", label: "All Family" },
+];
 
 const ROOM_OPTIONS: { id: BridgeRoomId; label: string; short: string }[] = [
   { id: "living", label: "Living Room", short: "Living Room" },
@@ -79,25 +110,6 @@ const ROOM_OPTIONS: { id: BridgeRoomId; label: string; short: string }[] = [
   { id: "kura", label: "Kura Room", short: "Kura Room" },
   { id: "agent-r", label: "Agent R Room", short: "Agent R Room" },
 ];
-
-const SENDER_OPTIONS: LivingRoomSender[] = [
-  "Kieran",
-  "Gor Gor",
-  "Sky",
-  "Senti",
-  "Kura",
-  "Agent R",
-];
-
-const ROOM_DEFAULT_SENDER: Record<BridgeRoomId, LivingRoomSender> = {
-  living: "Kieran",
-  kieran: "Kieran",
-  gorgor: "Gor Gor",
-  sky: "Sky",
-  senti: "Senti",
-  kura: "Kura",
-  "agent-r": "Agent R",
-};
 
 function uid() {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
@@ -139,6 +151,11 @@ function roomLabel(room: BridgeRoomId): string {
   return ROOM_OPTIONS.find((r) => r.id === room)?.short ?? "Living Room";
 }
 
+function recipientLabel(opt: TargetMemberOption): string {
+  if (opt === "all") return "All Family";
+  return MEMBER_LABEL[opt] ?? opt;
+}
+
 /**
  * Prepend Family Home context for Simpee / Gor Gor.
  * Sent as `message` to /api/gor-gor-chat (API skips re-prefix when already tagged).
@@ -175,19 +192,28 @@ function kindBadgeClass(kind?: LivingRoomKind): string {
   }
 }
 
+function statusTone(status: string): string {
+  if (status === "REPLIED" || status === "WAITING") {
+    return status === "REPLIED"
+      ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-800"
+      : "border-amber-400/40 bg-amber-400/10 text-amber-900";
+  }
+  if (status in RECEIPT_TONE) {
+    return RECEIPT_TONE[status as keyof typeof RECEIPT_TONE];
+  }
+  return "border-ink/15 bg-ink/5 text-ink-muted";
+}
+
 type Props = {
   open: boolean;
   onClose: () => void;
-  /** Seeds the “from room” selector when the drawer opens. */
+  /** Seeds Living Room context when the drawer opens. */
   initialRoom?: BridgeRoomId;
 };
 
 export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Props) {
-  const [fromRoom, setFromRoom] = useState<BridgeRoomId>(initialRoom);
-  const [sender, setSender] = useState<LivingRoomSender>(
-    ROOM_DEFAULT_SENDER[initialRoom],
-  );
-  const [kind, setKind] = useState<LivingRoomKind>("CHAT");
+  const [sender, setSender] = useState<CommandSender>("Kieran");
+  const [selected, setSelected] = useState<TargetMemberOption[]>([]);
   const [store, setStore] = useState<BridgeStore>(emptyStore);
   const [draft, setDraft] = useState("");
   const [sending, setSending] = useState(false);
@@ -198,9 +224,6 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
   useEffect(() => {
     if (open) {
       setStore(loadStore());
-      setFromRoom(initialRoom);
-      setSender(ROOM_DEFAULT_SENDER[initialRoom]);
-      setKind("CHAT");
       setBanner(null);
       window.setTimeout(() => inputRef.current?.focus(), 80);
     }
@@ -219,157 +242,253 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
   const messages = store.livingRoomMessages ?? [];
   const conversationId = store.livingRoomConversationId;
 
+  const toggleRecipient = (opt: TargetMemberOption) => {
+    if (opt === "all") {
+      setSelected((prev) => (prev.includes("all") ? [] : ["all"]));
+      return;
+    }
+    setSelected((prev) => {
+      const withoutAll = prev.filter((x) => x !== "all");
+      if (withoutAll.includes(opt)) {
+        return withoutAll.filter((x) => x !== opt);
+      }
+      return [...withoutAll, opt];
+    });
+  };
+
+  const patchCard = (cardId: string, patch: Partial<LivingRoomMessage>) => {
+    const latest = loadStore();
+    persist({
+      ...latest,
+      livingRoomMessages: (latest.livingRoomMessages ?? []).map((m) =>
+        m.id === cardId ? { ...m, ...patch } : m,
+      ),
+    });
+  };
+
   const send = async () => {
     const text = draft.trim();
-    if (!text || sending) return;
+    if (!text || sending || selected.length === 0) return;
 
-    const userMsg: LivingRoomMessage = {
-      id: uid(),
-      role: "user",
+    const resolved = resolveTargets(selected);
+    const wantsGorGor = resolved.includes("gor-gor");
+    const otherMembers = resolved.filter((m) => m !== "gor-gor");
+    const wantsDoorbell = selected.includes("all") || otherMembers.length > 0;
+
+    const initialStatuses: RecipientStatusLine[] = resolved.map((member) => ({
+      member,
+      status: member === "gor-gor" && wantsGorGor ? "WAITING" : "SENT",
+    }));
+
+    const cardId = uid();
+    const card: LivingRoomMessage = {
+      id: cardId,
+      role: "card",
       text,
       at: new Date().toISOString(),
-      sender,
-      fromRoom,
-      kind,
+      sender: sender as LivingRoomSender,
+      fromRoom: "living",
+      kind: "CHAT",
+      recipients: selected.includes("all") ? ["all"] : selected,
+      recipientStatuses: initialStatuses,
     };
 
-    const nextAfterUser: BridgeStore = {
+    const nextAfterCard: BridgeStore = {
       ...store,
       livingRoomConversationId: conversationId,
-      livingRoomMessages: [...messages, userMsg],
+      livingRoomMessages: [...messages, card],
     };
-    persist(nextAfterUser);
+    persist(nextAfterCard);
     setDraft("");
     setSending(true);
     setBanner(null);
 
-    const apiMessage = formatLivingRoomApiMessage({
-      fromRoom,
-      sender,
-      kind,
-      text,
-    });
+    let nextConversationId = conversationId;
 
-    try {
-      const res = await fetch("/api/gor-gor-chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: apiMessage,
-          room: fromRoom,
-          conversation_id: conversationId,
-          sender,
-          kind,
-          from_room: fromRoom,
-        }),
+    // 1) Gor Gor real bridge when selected
+    if (wantsGorGor) {
+      const apiMessage = formatLivingRoomApiMessage({
+        fromRoom: "living",
+        sender: sender as LivingRoomSender,
+        kind: "CHAT",
+        text,
       });
 
-      const data = (await res.json().catch(() => null)) as {
-        reply?: string;
-        conversation_id?: string;
-        fallback?: boolean;
-        error?: string;
-        code?: string;
-      } | null;
-
-      const appendToLivingRoom = (
-        extra: LivingRoomMessage[],
-        nextConversationId?: string,
-      ) => {
-        const latest = loadStore();
-        persist({
-          ...latest,
-          livingRoomConversationId:
-            nextConversationId || latest.livingRoomConversationId,
-          livingRoomMessages: [
-            ...(latest.livingRoomMessages ?? []),
-            ...extra,
-          ],
+      try {
+        const res = await fetch("/api/gor-gor-chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: apiMessage,
+            room: "living",
+            conversation_id: conversationId,
+            sender,
+            kind: "CHAT",
+            from_room: "living",
+          }),
         });
-      };
 
-      // Soft path: missing API key → 200 + { fallback: true, reply }
-      if (data?.fallback && data.reply) {
+        const data = (await res.json().catch(() => null)) as {
+          reply?: string;
+          conversation_id?: string;
+          fallback?: boolean;
+          error?: string;
+        } | null;
+
+        if (data?.conversation_id) {
+          nextConversationId = data.conversation_id;
+        }
+
+        const latest = loadStore();
+        const statuses =
+          latest.livingRoomMessages?.find((m) => m.id === cardId)?.recipientStatuses ??
+          initialStatuses;
+
+        if (data?.fallback && data.reply) {
+          setBanner(BRIDGE_OFFLINE_MSG);
+          patchCard(cardId, {
+            recipientStatuses: statuses.map((s) =>
+              s.member === "gor-gor"
+                ? { ...s, status: "REPLIED", reply: data.reply }
+                : s,
+            ),
+          });
+        } else if (!res.ok || !data?.reply) {
+          const errText =
+            data?.error ||
+            "Gor Gor could not reply right now. Your message is still saved locally.";
+          setBanner(errText);
+          patchCard(cardId, {
+            recipientStatuses: statuses.map((s) =>
+              s.member === "gor-gor"
+                ? { ...s, status: "WAITING", reply: errText }
+                : s,
+            ),
+          });
+        } else {
+          patchCard(cardId, {
+            recipientStatuses: statuses.map((s) =>
+              s.member === "gor-gor"
+                ? { ...s, status: "REPLIED", reply: data.reply }
+                : s,
+            ),
+          });
+        }
+
+        if (nextConversationId) {
+          const after = loadStore();
+          persist({ ...after, livingRoomConversationId: nextConversationId });
+        }
+      } catch {
         setBanner(BRIDGE_OFFLINE_MSG);
-        appendToLivingRoom([
-          {
-            id: uid(),
-            role: "gorgor",
-            text: data.reply,
-            at: new Date().toISOString(),
-            sender: "Gor Gor",
-            fromRoom: "living",
-            kind: "CHAT",
-          },
-        ]);
-        return;
+        const latest = loadStore();
+        const statuses =
+          latest.livingRoomMessages?.find((m) => m.id === cardId)?.recipientStatuses ??
+          initialStatuses;
+        patchCard(cardId, {
+          recipientStatuses: statuses.map((s) =>
+            s.member === "gor-gor"
+              ? { ...s, status: "WAITING", reply: BRIDGE_OFFLINE_MSG }
+              : s,
+          ),
+        });
       }
-
-      if (!res.ok || !data?.reply) {
-        const errText =
-          data?.error ||
-          "Gor Gor could not reply right now. Your message is still saved locally.";
-        setBanner(errText);
-        appendToLivingRoom([
-          {
-            id: uid(),
-            role: "system",
-            text: errText,
-            at: new Date().toISOString(),
-            kind: "WAITING FOR GOR GOR",
-          },
-        ]);
-        return;
-      }
-
-      appendToLivingRoom(
-        [
-          {
-            id: uid(),
-            role: "gorgor",
-            text: data.reply,
-            at: new Date().toISOString(),
-            sender: "Gor Gor",
-            fromRoom: "living",
-            kind: "CHAT",
-          },
-        ],
-        data.conversation_id,
-      );
-    } catch {
-      setBanner(BRIDGE_OFFLINE_MSG);
-      const latest = loadStore();
-      persist({
-        ...latest,
-        livingRoomMessages: [
-          ...(latest.livingRoomMessages ?? []),
-          {
-            id: uid(),
-            role: "system",
-            text: BRIDGE_OFFLINE_MSG,
-            at: new Date().toISOString(),
-            kind: "WAITING FOR GOR GOR",
-          },
-        ],
-      });
-    } finally {
-      setSending(false);
     }
+
+    // 2) Doorbell for Sky / Senti / Kura / Agent R (and optionally All / mixed)
+    if (wantsDoorbell) {
+      const doorbellTargets: TargetMemberOption[] = selected.includes("all")
+        ? ["all"]
+        : selected;
+
+      try {
+        const res = await fetch("/api/family-doorbell/messages", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            body: text,
+            sender,
+            target_members: doorbellTargets,
+            selected_recipients: doorbellTargets,
+            mode: "doorbell",
+            urgency: "NORMAL",
+          }),
+        });
+
+        const data = (await res.json().catch(() => null)) as {
+          message?: FamilyCommandMessage;
+          messages?: FamilyCommandMessage[];
+          error?: string;
+        } | null;
+
+        if (!res.ok) {
+          setBanner(
+            (prev) =>
+              prev ||
+              data?.error ||
+              "Doorbell could not save. Family recipients may be local-only.",
+          );
+        } else {
+          const created =
+            data?.message ??
+            (Array.isArray(data?.messages) ? data!.messages[0] : undefined);
+
+          if (created) {
+            const latest = loadStore();
+            const statuses =
+              latest.livingRoomMessages?.find((m) => m.id === cardId)
+                ?.recipientStatuses ?? initialStatuses;
+
+            const byMember = new Map<TargetMember, FamilyReceipt>();
+            for (const r of created.receipts ?? []) {
+              byMember.set(r.member, r);
+            }
+
+            patchCard(cardId, {
+              doorbellId: created.id,
+              recipientStatuses: statuses.map((s) => {
+                if (s.member === "gor-gor" && wantsGorGor && s.status === "REPLIED") {
+                  return s;
+                }
+                const receipt = byMember.get(s.member);
+                if (!receipt) return s;
+                // No fake replies — doorbell starts SENT; WAITING until they respond
+                return {
+                  ...s,
+                  status: receipt.status === "SENT" ? "SENT" : receipt.status,
+                };
+              }),
+            });
+          }
+        }
+      } catch {
+        setBanner(
+          (prev) =>
+            prev ||
+            "Doorbell unreachable — family recipients marked SENT locally until shared board syncs.",
+        );
+      }
+    }
+
+    setSending(false);
   };
 
   if (!open) return null;
+
+  const canSend = draft.trim().length > 0 && selected.length > 0 && !sending;
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-end">
       <button
         type="button"
-        aria-label="Close Gor Gor Chat"
+        aria-label="Close Family Chat"
         className="absolute inset-0 bg-ink/35 backdrop-blur-[1px]"
         onClick={onClose}
       />
       <div
         role="dialog"
-        aria-label="Living Room · Gor Gor Chat"
+        aria-label="Family Chat"
         className="relative z-10 flex max-h-[88vh] w-full max-w-lg flex-col overflow-hidden rounded-t-2xl border border-ink/10 bg-gradient-to-b from-[#FBF9FF] to-white shadow-[0_-12px_40px_rgba(90,70,140,0.18)] sm:max-h-[82vh]"
       >
         <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-ink/15" aria-hidden />
@@ -377,11 +496,10 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         <div className="flex items-start justify-between gap-3 border-b border-brand/10 px-4 pb-3 pt-2">
           <div>
             <p className="font-display text-base font-semibold tracking-tight text-ink">
-              Gor Gor · private bridge
+              Family Chat
             </p>
             <p className="mt-0.5 text-[10px] leading-snug text-ink-subtle">
-              Optional AI bridge only · family shared chat lives in Living Room (manual
-              recipients) · {GOR_GOR_BRIDGE_WARNING}
+              Selected recipients · internal staging · {GOR_GOR_BRIDGE_WARNING}
             </p>
           </div>
           <button
@@ -395,27 +513,25 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
 
         <div className="border-b border-ink/5 bg-[#f7f4fc]/70 px-4 py-2.5">
           <p className="text-[11px] leading-relaxed text-ink-muted">
-            For family messages with recipient checkboxes and receipt status, use{" "}
-            <span className="font-medium text-ink">Living Room · Shared Chat</span> on the
-            Family Table. This drawer talks to Gor Gor only — not the shared family board.
+            Family Chat — pick who should receive. Gor Gor uses the live Simpee bridge;
+            other members stay on the shared Living Room board as SENT / WAITING until they
+            respond. No fake replies.
           </p>
-          <div className="mt-2 flex flex-wrap gap-2">
-            <div className="min-w-[8rem] flex-1">
-              <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
-                Sender
-              </label>
-              <select
-                value={sender}
-                onChange={(e) => setSender(e.target.value as LivingRoomSender)}
-                className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
-              >
-                {SENDER_OPTIONS.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="mt-2 min-w-[8rem]">
+            <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
+              Sender
+            </label>
+            <select
+              value={sender}
+              onChange={(e) => setSender(e.target.value as CommandSender)}
+              className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
+            >
+              {P0_CHAT_SENDERS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -431,83 +547,132 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4">
           {messages.length === 0 ? (
             <p className="text-center text-xs text-ink-subtle">
-              Private Gor Gor bridge. Family shared chat with recipients is on the Living
-              Room board.
+              Family Chat — choose recipients below, then send. Soft pearl staging only.
             </p>
           ) : null}
-          {messages.map((m) => (
-            <div
-              key={m.id}
-              className={cn(
-                "flex",
-                m.role === "user" ? "justify-end" : "justify-start",
-              )}
-            >
+          {messages.map((m) => {
+            if (m.role === "card") {
+              const toLine = (m.recipients ?? [])
+                .map(recipientLabel)
+                .join(", ");
+              return (
+                <div
+                  key={m.id}
+                  className="rounded-xl border border-brand/15 bg-white/95 px-3.5 py-3 text-sm text-ink shadow-sm"
+                >
+                  <p className="font-medium text-ink">
+                    {m.sender ?? "You"} → {toLine || "—"}
+                  </p>
+                  <p className="mt-1.5 whitespace-pre-wrap text-[13px] text-ink">
+                    {m.text}
+                  </p>
+                  <div className="mt-3 border-t border-ink/5 pt-2.5">
+                    <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+                      Status
+                    </p>
+                    <ul className="space-y-2">
+                      {(m.recipientStatuses ?? []).map((line) => (
+                        <li key={line.member} className="text-[13px]">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-ink">
+                              {MEMBER_LABEL[line.member]}:
+                            </span>
+                            <span
+                              className={cn(
+                                "inline-flex rounded-md border px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.06em]",
+                                statusTone(line.status),
+                              )}
+                            >
+                              {line.status === "SENT" ? "SENT / WAITING" : line.status}
+                            </span>
+                          </div>
+                          {line.reply ? (
+                            <p className="mt-1 whitespace-pre-wrap rounded-lg border border-brand/10 bg-[#f7f4fc]/80 px-2.5 py-2 text-[12px] leading-relaxed text-ink-muted">
+                              {line.reply}
+                            </p>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            }
+
+            return (
               <div
+                key={m.id}
                 className={cn(
-                  "max-w-[88%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
-                  m.role === "user" &&
-                    "rounded-br-md bg-brand text-white shadow-sm",
-                  m.role === "gorgor" &&
-                    "rounded-bl-md border border-brand/15 bg-white text-ink shadow-sm",
-                  m.role === "system" &&
-                    "w-full max-w-full rounded-xl border border-amber-700/20 bg-amber-50/90 text-[11px] text-amber-950",
+                  "flex",
+                  m.role === "user" ? "justify-end" : "justify-start",
                 )}
               >
-                {m.role !== "system" ? (
-                  <div
-                    className={cn(
-                      "mb-1.5 flex flex-wrap items-center gap-1.5",
-                      m.role === "user" ? "text-white/80" : "text-ink-subtle",
-                    )}
-                  >
-                    <p
+                <div
+                  className={cn(
+                    "max-w-[88%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
+                    m.role === "user" &&
+                      "rounded-br-md bg-brand text-white shadow-sm",
+                    m.role === "gorgor" &&
+                      "rounded-bl-md border border-brand/15 bg-white text-ink shadow-sm",
+                    m.role === "system" &&
+                      "w-full max-w-full rounded-xl border border-amber-700/20 bg-amber-50/90 text-[11px] text-amber-950",
+                  )}
+                >
+                  {m.role !== "system" ? (
+                    <div
                       className={cn(
-                        "text-[9px] font-semibold uppercase tracking-[0.14em]",
-                        m.role === "gorgor" && "text-brand",
-                        m.role === "user" && "text-white/75",
+                        "mb-1.5 flex flex-wrap items-center gap-1.5",
+                        m.role === "user" ? "text-white/80" : "text-ink-subtle",
                       )}
                     >
-                      {m.sender ?? (m.role === "gorgor" ? "Gor Gor" : "You")}
+                      <p
+                        className={cn(
+                          "text-[9px] font-semibold uppercase tracking-[0.14em]",
+                          m.role === "gorgor" && "text-brand",
+                          m.role === "user" && "text-white/75",
+                        )}
+                      >
+                        {m.sender ?? (m.role === "gorgor" ? "Gor Gor" : "You")}
+                      </p>
+                      {m.fromRoom ? (
+                        <span
+                          className={cn(
+                            "rounded-md px-1.5 py-0.5 text-[8px] font-medium tracking-wide",
+                            m.role === "user"
+                              ? "bg-white/15 text-white/85"
+                              : "bg-brand/8 text-brand",
+                          )}
+                        >
+                          {roomLabel(m.fromRoom)}
+                        </span>
+                      ) : null}
+                      {m.kind ? (
+                        <span
+                          className={cn(
+                            "rounded-md px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.08em]",
+                            m.role === "user"
+                              ? "bg-white/20 text-white"
+                              : kindBadgeClass(m.kind),
+                          )}
+                        >
+                          {m.kind}
+                        </span>
+                      ) : null}
+                    </div>
+                  ) : m.kind ? (
+                    <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-amber-800/80">
+                      {m.kind}
                     </p>
-                    {m.fromRoom ? (
-                      <span
-                        className={cn(
-                          "rounded-md px-1.5 py-0.5 text-[8px] font-medium tracking-wide",
-                          m.role === "user"
-                            ? "bg-white/15 text-white/85"
-                            : "bg-brand/8 text-brand",
-                        )}
-                      >
-                        {roomLabel(m.fromRoom)}
-                      </span>
-                    ) : null}
-                    {m.kind ? (
-                      <span
-                        className={cn(
-                          "rounded-md px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.08em]",
-                          m.role === "user"
-                            ? "bg-white/20 text-white"
-                            : kindBadgeClass(m.kind),
-                        )}
-                      >
-                        {m.kind}
-                      </span>
-                    ) : null}
-                  </div>
-                ) : m.kind ? (
-                  <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-amber-800/80">
-                    {m.kind}
-                  </p>
-                ) : null}
-                <p className="whitespace-pre-wrap">{m.text}</p>
+                  ) : null}
+                  <p className="whitespace-pre-wrap">{m.text}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
           {sending ? (
             <div className="flex justify-start">
               <p className="rounded-xl border border-amber-700/15 bg-amber-50/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-amber-950">
-                Waiting for Gor Gor…
+                Sending…
               </p>
             </div>
           ) : null}
@@ -515,6 +680,36 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         </div>
 
         <div className="border-t border-ink/10 bg-white/95 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <div className="mb-2.5">
+            <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
+              Send to
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {RECIPIENT_OPTIONS.map((opt) => {
+                const active = selected.includes(opt.id);
+                return (
+                  <label
+                    key={opt.id}
+                    className={cn(
+                      "inline-flex cursor-pointer items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] font-medium transition",
+                      active
+                        ? "border-brand/40 bg-brand/10 text-brand"
+                        : "border-ink/10 bg-[#FBF9FF] text-ink-muted hover:border-brand/25",
+                    )}
+                  >
+                    <input
+                      type="checkbox"
+                      className="h-3.5 w-3.5 accent-[var(--brand,#8c82fc)]"
+                      checked={active}
+                      onChange={() => toggleRecipient(opt.id)}
+                      disabled={sending}
+                    />
+                    {opt.label}
+                  </label>
+                );
+              })}
+            </div>
+          </div>
           <div className="flex gap-2">
             <textarea
               ref={inputRef}
@@ -527,14 +722,14 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
                   void send();
                 }
               }}
-              placeholder="Talk to Gor Gor from the Living Room…"
+              placeholder="Message the family…"
               className="min-h-[2.75rem] flex-1 resize-none rounded-xl border border-ink/10 bg-[#FBF9FF] px-3 py-2 text-sm text-ink placeholder:text-ink-subtle outline-none focus:border-brand/40"
               disabled={sending}
             />
             <button
               type="button"
               onClick={() => void send()}
-              disabled={sending || !draft.trim()}
+              disabled={!canSend}
               className="self-end rounded-full bg-brand px-4 py-2.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-brand-dark disabled:opacity-40"
             >
               Send

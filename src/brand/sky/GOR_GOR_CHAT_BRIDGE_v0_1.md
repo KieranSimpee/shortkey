@@ -65,12 +65,11 @@ Separate from Family Table `shortkey-family-table-v08` room chat panels.
 
 ## UI checklist
 
-- Bottom floating **Gor Gor**
-- Bottom sheet · title **Living Room · Gor Gor**
-- Shared thread · From room · Sender · Kind selectors
-- Kinds: CHAT · NOTE · HOMEWORK SUBMITTED · EVIDENCE SUBMITTED · WAITING FOR GOR GOR
-- Placeholder `Talk to Gor Gor from the Living Room…` · Send · user + Gor Gor bubbles (same thread)
-- Warning: *Internal staging only · API bridge required for real Gor Gor reply · no private data yet.*
+- Bottom floating **Gor Gor** (unchanged entry)
+- Bottom sheet · title **Family Chat** (upgraded from private bridge)
+- **Sender** dropdown + **Send to** checkboxes · one status card per send
+- Gor Gor among recipients → live Simpee reply; others → doorbell SENT / WAITING (no fake replies)
+- Warning: *Internal staging only · Family Chat · selected recipients · no private data yet.*
 - Footer credit via layout: **Powered by our AI family**
 
 ---

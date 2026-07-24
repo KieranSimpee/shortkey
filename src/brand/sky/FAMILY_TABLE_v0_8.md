@@ -165,7 +165,7 @@ Living Room also has a shared board: announcements · priorities · approved sta
 - Selecting a room shows all 9 panels  
 - **Living Room only:** House Rule card + **Family Home v0.9.3 Family Meeting / Shared Board** + **Family Cabinet** (drawers → open → items)  
 - **Member rooms (Sky · Senti · Kura · Agent R · Gor Gor):** Family Meeting response panel when addressed (Support Status + note + SUBMITTED self-check)  
-- **Bottom floating** **“Gor Gor”** → Shared Living Room Thread bottom sheet (live Base44 via `/api/gor-gor-chat`; shared `livingRoomConversationId` + transcript in `shortkey-gor-gor-chat-bridge-v01`)  
+- **Bottom floating** **“Gor Gor”** → **Family Chat** bottom sheet (same button): recipient pick · Gor Gor via `/api/gor-gor-chat` · others via doorbell SENT/WAITING · transcript in `shortkey-gor-gor-chat-bridge-v01`  
 - Banners: **INTERNAL STAGING ONLY · FAMILY HOME** + localStorage warning  
 - Footer (layout): **Powered by our AI family**  
 - Soft lavender / pearl / premium beauty DNA  
@@ -215,7 +215,7 @@ npm run family:dev
 | `FamilyDoorbell.tsx` | Family Home **v0.9.3** Family Meeting UI · API + local fallback `shortkey-family-doorbell-v092` |
 | `app/api/family-doorbell/messages/route.ts` | Shared doorbell GET · POST |
 | `app/api/family-doorbell/messages/[id]/receipt/route.ts` | Shared doorbell PATCH receipt |
-| `GorGorChatDrawer.tsx` | Shared Living Room Thread v0.1 · sender/kind/from-room · one Simpee conversation |
+| `GorGorChatDrawer.tsx` | Family Chat · Sender + Send-to · Gor Gor Simpee bridge + doorbell for others |
 | `app/api/gor-gor-chat/route.ts` | Server-side Base44 Superagent bridge (SIMPEE only) |
 | `FamilyCabinet.tsx` | Family Cabinet · 6 drawers · item forms · status gate (Senti ≠ approve) |
 | `FamilyChatPanel.tsx` | `RoomChatThread` + legacy key helpers / chat→room map |
