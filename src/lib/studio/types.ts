@@ -10,6 +10,8 @@ export const STUDIO_LOCAL_STORAGE_KEY = "shortkey-studio-v01";
 export const STUDIO_STATUSES = [
   "DRAFT",
   "IN_REVIEW",
+  "GOR_GOR_REVIEW",
+  "KIERAN_REVIEW_READY",
   "APPROVED",
   "SCHEDULED",
   "PUBLISHED",

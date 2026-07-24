@@ -58,6 +58,10 @@ function statusTone(status: StudioStatus): string {
       return "bg-brand/15 text-brand-dark border-brand/25";
     case "IN_REVIEW":
       return "bg-amber-50 text-amber-800 border-amber-200";
+    case "GOR_GOR_REVIEW":
+      return "bg-violet-50 text-violet-800 border-violet-200";
+    case "KIERAN_REVIEW_READY":
+      return "bg-indigo-50 text-indigo-800 border-indigo-200";
     case "SCHEDULED":
       return "bg-sky-50 text-sky-800 border-sky-200";
     case "PUBLISHED":
@@ -92,6 +96,8 @@ export function StudioShell() {
   const [flash, setFlash] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [noteDraft, setNoteDraft] = useState("");
+  const [dangerOpen, setDangerOpen] = useState(false);
+  const [resetConfirm, setResetConfirm] = useState("");
 
   const persist = useCallback(
     async (next: StudioState, opts?: { silent?: boolean }) => {
@@ -199,6 +205,11 @@ export function StudioShell() {
     toStatus: StudioStatus,
     note: string,
   ) => {
+    if (entityType === "rollbackRef") {
+      setFlash("Rollback refs are read-only");
+      window.setTimeout(() => setFlash(null), 2200);
+      return;
+    }
     const next: StudioState = structuredClone(state);
     let fromStatus: StudioStatus = "DRAFT";
     let entityLabel = entityId;
@@ -234,8 +245,6 @@ export function StudioShell() {
     else if (entityType === "country") next.countries = apply(next.countries);
     else if (entityType === "deploymentPlan")
       next.deploymentPlans = apply(next.deploymentPlans);
-    else if (entityType === "rollbackRef")
-      next.rollbackRefs = apply(next.rollbackRefs);
 
     next.approvalLogs = [
       logApproval(next, {
@@ -284,14 +293,15 @@ export function StudioShell() {
   };
 
   const resetToSeed = () => {
-    if (
-      !window.confirm(
-        "Reset Studio v0.1 to seed defaults? This clears local edits (and will overwrite the file store if API is up).",
-      )
-    ) {
+    if (resetConfirm !== "RESET") {
+      setFlash('Type RESET to confirm');
+      window.setTimeout(() => setFlash(null), 2200);
       return;
     }
     void persist(createStudioSeed());
+    setResetConfirm("");
+    setDangerOpen(false);
+    setFlash("Studio reset to seed");
   };
 
   const counts = useMemo(
@@ -329,9 +339,14 @@ export function StudioShell() {
 
       <div className="relative border-b border-brand/15 bg-white/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p className="text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-dark sm:text-left">
-            INTERNAL STAGING ONLY · Studio v0.1 · not production ready · no publish
-          </p>
+          <div className="text-center sm:text-left">
+            <p className="text-[11px] font-semibold tracking-tight text-ink">
+              Internal Control Center — No Production Publish
+            </p>
+            <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-dark">
+              INTERNAL STAGING ONLY · Studio v0.1 · not production ready
+            </p>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-end">
             <label className="flex items-center gap-2 text-[11px] text-ink-muted">
               Acting as
@@ -400,13 +415,41 @@ export function StudioShell() {
                 </>
               ) : null}
             </p>
-            <button
-              type="button"
-              onClick={resetToSeed}
-              className="mt-3 text-[10px] text-ink-subtle underline-offset-2 hover:text-ink hover:underline"
-            >
-              Reset to seed
-            </button>
+            <div className="mt-3 border-t border-rose-100 pt-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setDangerOpen((o) => !o);
+                  setResetConfirm("");
+                }}
+                className="text-[10px] font-medium uppercase tracking-[0.14em] text-rose-700/80 underline-offset-2 hover:underline"
+              >
+                {dangerOpen ? "Hide danger zone" : "Danger zone"}
+              </button>
+              {dangerOpen ? (
+                <div className="mt-2 rounded-lg border border-rose-200 bg-rose-50/80 p-3">
+                  <p className="text-[10px] leading-relaxed text-rose-900/80">
+                    Reset Studio to seed defaults. Clears local edits and overwrites the file store if API is up. Type{" "}
+                    <code className="font-mono font-semibold">RESET</code> to enable.
+                  </p>
+                  <input
+                    value={resetConfirm}
+                    onChange={(e) => setResetConfirm(e.target.value)}
+                    placeholder="Type RESET"
+                    className="mt-2 w-full rounded-md border border-rose-200 bg-white px-2 py-1.5 font-mono text-[11px] text-ink"
+                    autoComplete="off"
+                  />
+                  <button
+                    type="button"
+                    onClick={resetToSeed}
+                    disabled={resetConfirm !== "RESET"}
+                    className="mt-2 w-full rounded-md border border-rose-300 bg-white px-2 py-1.5 text-[11px] font-medium text-rose-800 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Reset to seed
+                  </button>
+                </div>
+              ) : null}
+            </div>
           </div>
         </aside>
 
@@ -477,9 +520,6 @@ export function StudioShell() {
               setNoteDraft={setNoteDraft}
               onPlanStatus={(id, s, note) =>
                 changeEntityStatus("deploymentPlan", id, s, note)
-              }
-              onRollbackStatus={(id, s, note) =>
-                changeEntityStatus("rollbackRef", id, s, note)
               }
             />
           ) : null}
@@ -588,7 +628,13 @@ function DashboardPage({
   onGo: (id: StudioPageId) => void;
 }) {
   const reviewReady = [
-    ...state.campaigns.filter((c) => c.status === "IN_REVIEW" || c.status === "APPROVED"),
+    ...state.campaigns.filter(
+      (c) =>
+        c.status === "IN_REVIEW" ||
+        c.status === "GOR_GOR_REVIEW" ||
+        c.status === "KIERAN_REVIEW_READY" ||
+        c.status === "APPROVED",
+    ),
     ...state.domains.filter((d) => d.status === "APPROVED"),
   ];
   return (
@@ -912,13 +958,11 @@ function DeploymentsPage({
   noteDraft,
   setNoteDraft,
   onPlanStatus,
-  onRollbackStatus,
 }: {
   state: StudioState;
   noteDraft: string;
   setNoteDraft: (v: string) => void;
   onPlanStatus: (id: string, s: StudioStatus, note: string) => void;
-  onRollbackStatus: (id: string, s: StudioStatus, note: string) => void;
 }) {
   return (
     <div className="space-y-6">
@@ -963,8 +1007,11 @@ function DeploymentsPage({
 
       <Panel
         title="Rollback references"
-        subtitle="Reference records only — no automated rollback."
+        subtitle="View only — no edit / create / delete in v0.1. Reference records only; no automated rollback."
       >
+        <p className="mb-3 rounded-lg border border-brand/15 bg-silk/50 px-3 py-2 text-[11px] text-ink-muted">
+          Read-only. Status mutations are disabled for rollback refs.
+        </p>
         <ul className="space-y-3">
           {state.rollbackRefs.map((r) => (
             <li
@@ -983,12 +1030,6 @@ function DeploymentsPage({
               {r.notes ? (
                 <p className="mt-2 text-[12px] text-ink-muted">{r.notes}</p>
               ) : null}
-              <StatusControls
-                current={r.status}
-                onChange={(s, note) => onRollbackStatus(r.id, s, note)}
-                noteDraft={noteDraft}
-                setNoteDraft={setNoteDraft}
-              />
             </li>
           ))}
         </ul>
@@ -1028,7 +1069,7 @@ function VersionsPage({
           onClick={onSnapshot}
           className="mt-3 rounded-lg bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-brand-dark"
         >
-          Snapshot current Studio state
+          Create Snapshot
         </button>
       </div>
 
@@ -1094,6 +1135,8 @@ function PreviewPage({ state }: { state: StudioState }) {
   const reviewCampaigns = state.campaigns.filter(
     (c) =>
       c.status === "IN_REVIEW" ||
+      c.status === "GOR_GOR_REVIEW" ||
+      c.status === "KIERAN_REVIEW_READY" ||
       c.status === "APPROVED" ||
       c.status === "SCHEDULED",
   );

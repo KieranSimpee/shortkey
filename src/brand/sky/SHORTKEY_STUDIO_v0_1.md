@@ -38,7 +38,9 @@ No actual publish to production domains · no real scheduler · no production de
 
 ## Required statuses
 
-`DRAFT` · `IN_REVIEW` · `APPROVED` · `SCHEDULED` · `PUBLISHED` · `ARCHIVED` · `ROLLBACK_READY` · `DO_NOT_USE`
+`DRAFT` · `IN_REVIEW` · `GOR_GOR_REVIEW` · `KIERAN_REVIEW_READY` · `APPROVED` · `SCHEDULED` · `PUBLISHED` · `ARCHIVED` · `ROLLBACK_READY` · `DO_NOT_USE`
+
+Review ladder (assets / campaigns / deployment plans): **Gor Gor Review** (`GOR_GOR_REVIEW`) → **Kieran Review Ready** (`KIERAN_REVIEW_READY`) → `APPROVED` (etc.). Rollback refs are **view-only** in v0.1.
 
 ## Entities
 
