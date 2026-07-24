@@ -96,6 +96,7 @@ Also: Pan-Asian · Western-Asian Hybrid as lane options when needed.
 - Studio safety checklist
 - Brand Identity Benchmark Map (Studio #identity)
 - Creator Circle early access form (staging)
+- StickerEmoji Tray (built-in packs · preview decorate · UNDER_REVIEW)
 Do NOT overbuild a full social network in P0.
 
 ────────────────────────────────────────
@@ -111,6 +112,7 @@ See §4. Document / candidate only until Gor Gor approves motion standards.
 - src/brand/sky/SHORTKEY_HALLYU_CREATOR_FORMULA.md (if present)
 - src/brand/sky/SHORTKEY_STUDIO_v0_1.md
 - src/brand/sky/SHORTKEY_SOCIAL_CREATOR_EARLY_ACCESS_v0_1.md
+- src/brand/sky/SHORTKEY_STICKER_EMOJI_TRAY_P0.md  ← Influencer Portal StickerEmoji (GOR_GOR_REVIEW)
 - src/brand/sky/FAMILY_TABLE_v0_8.md / FAMILY_HOME_* docs
 - src/brand/sky/STUDIO_PUSH_LEDGER.md
 External addenda named by Gor Gor may live outside repo; if missing, follow THIS pack + Gor Gor Review docs above — do not invent missing files.

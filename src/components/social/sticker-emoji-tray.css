@@ -1,0 +1,393 @@
+/* StickerEmoji Tray — pearl / lilac ShortKey DNA · lightweight chips */
+
+.sk-sticker {
+  margin-top: 3rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(140, 130, 252, 0.18);
+  background:
+    radial-gradient(ellipse 70% 50% at 10% 0%, rgba(237, 234, 255, 0.9), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 20%, rgba(247, 245, 255, 0.85), transparent 50%),
+    rgba(255, 255, 255, 0.82);
+  padding: 1.25rem 1.1rem 1.4rem;
+  backdrop-filter: blur(8px);
+}
+
+@media (min-width: 640px) {
+  .sk-sticker {
+    padding: 1.75rem 1.75rem 1.85rem;
+  }
+}
+
+.sk-sticker__eyebrow {
+  font-family: var(--font-display, ui-serif, Georgia, serif);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8c82fc;
+}
+
+.sk-sticker__title {
+  margin-top: 0.4rem;
+  font-family: var(--font-display, ui-serif, Georgia, serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1a1523;
+}
+
+@media (min-width: 640px) {
+  .sk-sticker__title {
+    font-size: 1.35rem;
+  }
+}
+
+.sk-sticker__lede {
+  margin-top: 0.5rem;
+  max-width: 38rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #6b6578;
+}
+
+.sk-sticker__status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.sk-sticker__badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(140, 130, 252, 0.35);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.2rem 0.65rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5b4fcf;
+}
+
+.sk-sticker__badge--dna {
+  border-color: rgba(232, 160, 184, 0.45);
+  color: #9a4d6e;
+}
+
+.sk-sticker__rules {
+  margin-top: 0.85rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(140, 130, 252, 0.14);
+  background: rgba(255, 255, 255, 0.65);
+  padding: 0.55rem 0.75rem;
+  font-size: 0.75rem;
+  color: #6b6578;
+}
+
+.sk-sticker__rules summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #3d3648;
+}
+
+.sk-sticker__rules ul {
+  margin: 0.5rem 0 0.15rem;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.sk-sticker__tray {
+  margin-top: 1.1rem;
+}
+
+.sk-sticker__packs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.sk-sticker__pack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(140, 130, 252, 0.16);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.sk-sticker__pack:hover {
+  border-color: rgba(140, 130, 252, 0.4);
+}
+
+.sk-sticker__pack.is-active {
+  border-color: rgba(140, 130, 252, 0.55);
+  background: linear-gradient(135deg, rgba(237, 234, 255, 0.95), rgba(255, 255, 255, 0.95));
+  transform: translateY(-1px);
+}
+
+.sk-sticker__pack-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #1a1523;
+}
+
+.sk-sticker__pack-lane {
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  color: #8c82fc;
+}
+
+.sk-sticker__howto {
+  margin-top: 0.75rem;
+  font-size: 0.6875rem;
+  color: #8a8496;
+}
+
+.sk-sticker__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+}
+
+.sk-sticker__chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 4.6rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(140, 130, 252, 0.18);
+  background: rgba(255, 255, 255, 0.88);
+  padding: 0.45rem 0.3rem 0.4rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.sk-sticker__chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(140, 130, 252, 0.12);
+}
+
+.sk-sticker__chip.is-selected {
+  border-color: #8c82fc;
+  box-shadow: 0 0 0 2px rgba(140, 130, 252, 0.25);
+}
+
+.sk-sticker__chip--lilac {
+  background: linear-gradient(160deg, #edeaff, #fff);
+}
+.sk-sticker__chip--pearl {
+  background: linear-gradient(160deg, #f7f5ff, #fff);
+}
+.sk-sticker__chip--mint {
+  background: linear-gradient(160deg, #f0faf5, #fff);
+}
+.sk-sticker__chip--rose {
+  background: linear-gradient(160deg, #fff5f8, #fff);
+}
+.sk-sticker__chip--amber {
+  background: linear-gradient(160deg, #fff9f0, #fff);
+}
+.sk-sticker__chip--sky {
+  background: linear-gradient(160deg, #f2f7fc, #fff);
+}
+
+.sk-sticker__chip-label {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  color: #4a4458;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 0.15rem;
+}
+
+.sk-sticker__tray-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.sk-sticker__ghost {
+  border: none;
+  background: transparent;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #5b4fcf;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sk-sticker__ghost--sm {
+  font-size: 0.625rem;
+}
+
+.sk-sticker__storage {
+  font-size: 0.625rem;
+  color: #9a94a8;
+}
+
+.sk-sticker__hint {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #9a4d6e;
+}
+
+.sk-sticker__targets {
+  margin-top: 1.35rem;
+}
+
+.sk-sticker__targets-title {
+  font-family: var(--font-display, ui-serif, Georgia, serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1523;
+}
+
+.sk-sticker__targets-lede {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #8a8496;
+}
+
+.sk-sticker__target-grid {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .sk-sticker__target-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.sk-sticker__target-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.sk-sticker__target-kicker {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8c82fc;
+}
+
+.sk-sticker__target-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.sk-sticker__mini-badge {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9a4d6e;
+}
+
+.sk-sticker__canvas {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 8.5rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px dashed rgba(140, 130, 252, 0.35);
+  background:
+    linear-gradient(145deg, rgba(247, 245, 255, 0.9), rgba(255, 255, 255, 0.95)),
+    radial-gradient(circle at 80% 20%, rgba(185, 179, 255, 0.22), transparent 45%);
+  padding: 1rem 1rem 1.15rem;
+  text-align: left;
+  cursor: crosshair;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sk-sticker__canvas.is-ready {
+  border-style: solid;
+  border-color: rgba(140, 130, 252, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(140, 130, 252, 0.08);
+}
+
+.sk-sticker__canvas-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #1a1523;
+}
+
+.sk-sticker__canvas-blurb {
+  display: block;
+  margin-top: 0.3rem;
+  max-width: 85%;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: #7a7488;
+}
+
+.sk-sticker__placed {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 2px 6px rgba(90, 70, 140, 0.18));
+  cursor: pointer;
+  animation: sk-sticker-pop 0.28s ease-out;
+}
+
+.sk-sticker__placed:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.sk-sticker__footer-note {
+  margin-top: 1rem;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: #9a94a8;
+  text-align: center;
+}
+
+@keyframes sk-sticker-pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sk-sticker__placed {
+    animation: none;
+  }
+  .sk-sticker__chip:hover,
+  .sk-sticker__pack.is-active {
+    transform: none;
+  }
+}

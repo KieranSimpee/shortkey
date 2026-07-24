@@ -51,6 +51,7 @@ Payout bands are **placeholders only** — no payment system in this surface.
 - Footer: **Powered by our AI family**
 - Component: `src/components/social/CreatorEarlyAccessPortal.tsx`
 - Motion CSS: `src/components/social/creator-circle-signal.css`
+- **StickerEmoji Tray (P0):** `StickerEmojiTray.tsx` · packs in `src/lib/social/stickerPacks.ts` · doc [`SHORTKEY_STICKER_EMOJI_TRAY_P0.md`](./SHORTKEY_STICKER_EMOJI_TRAY_P0.md) — built-in SVG chips · decorate preview cards · **UNDER_REVIEW** · no uploads
 - Page: `src/app/social/page.tsx`
 
 ### AI Beauty Signal / Creator Wave (v0.3 motion)
