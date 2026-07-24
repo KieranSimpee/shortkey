@@ -1,12 +1,13 @@
 # Family Home v0.9.1 — Doorbell & Receipt Board
 
 **Version:** Family Home **v0.9.1**  
-**Status:** **Internal Staging · local prototype only · Gor Gor Review pending**  
+**Status:** **Predecessor · superseded by v0.9.2 Shared Doorbell**  
 **Date:** 2026-07-24  
 **Surface:** Family Table `/internal/family-table` · Living Room + member rooms  
 **Authority:** Kieran + Simpee Bro (Gor Gor)
 
-> Replaces prior framing **Family Home Doorbell + Receipt Board v0.1**. Same coordination feature; version lock is **v0.9.1**. Legacy doc: [`FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md`](./FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md) (superseded).
+> **Superseded.** Canonical: [`FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md`](./FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md).  
+> Replaces prior framing **Family Home Doorbell + Receipt Board v0.1**. Legacy: [`FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md`](./FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md).
 
 ---
 
@@ -93,9 +94,9 @@ Kieran Vision is not a doorbell target seat.
 
 ---
 
-## Future upgrade
+## Future upgrade → v0.9.2
 
-Shared DB / API so receipt status is live in **any browser**. Until then: **local prototype only** — do not pretend sync.
+Shipped as [`FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md`](./FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md) — shared API so receipt status is live across devices.
 
 ---
 

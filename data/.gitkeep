@@ -1,0 +1,3 @@
+# Family doorbell local file store directory.
+# Runtime writes data/family-doorbell.json (gitignored).
+# Enable with NODE_ENV=development or FAMILY_DOORBELL_FILE_STORE=1.

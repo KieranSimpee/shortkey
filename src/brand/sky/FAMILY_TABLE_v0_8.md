@@ -137,7 +137,8 @@ Living Room also has a shared board: announcements · priorities · approved sta
 | Key | Role |
 |-----|------|
 | **`shortkey-family-table-v08`** | **Canonical** — all rooms + panels + per-room chat + **`cabinet`** (Family Cabinet drawers) |
-| **`shortkey-family-doorbell-v091`** | Family Home **v0.9.1** Doorbell & Receipt Board — Living Room commands + per-member receipts (**local prototype only** · see [`FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md`](./FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md)); migrates once from `shortkey-doorbell-receipts-v01` |
+| **`shortkey-family-doorbell-v092`** | Family Home **v0.9.2** Shared Doorbell — localStorage **fallback/demo only**; canonical shared store via `/api/family-doorbell/*` (see [`FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md`](./FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md)); migrates once from v091 / v01 keys |
+| `shortkey-family-doorbell-v091` | Predecessor v0.9.1 local prototype — migrated into v092 |
 | `shortkey-family-table-v07` | Legacy table — **read once** on first v0.8 load (visions → Kieran, vault → Living standards, tasks by seat, assets → Senti, reviews → Gor Gor, memories → Gor Gor) |
 | `shortkey-family-chat-v01` | Legacy chat — **read once**; messages mapped into room `chat` by room name |
 
@@ -153,7 +154,7 @@ Living Room also has a shared board: announcements · priorities · approved sta
 | Kura Structure Room | `kura` |
 | Agent R Evidence Room | `agent-r` |
 
-**Shared DB:** **No** — browser localStorage only.  
+**Shared DB:** Family Table house panels = localStorage only. **Doorbell v0.9.2** = shared API when store configured (file/Upstash/KV); otherwise local fallback.  
 **Private data:** Do not store production secrets / private family data for public exposure.
 
 ---
@@ -162,8 +163,8 @@ Living Room also has a shared board: announcements · priorities · approved sta
 
 - **Family Rooms** sidebar — Living Room first  
 - Selecting a room shows all 9 panels  
-- **Living Room only:** House Rule card + **Family Home Doorbell / Receipt Board** + **Family Cabinet** (drawers → open → items)  
-- **Member rooms (Sky · Senti · Kura · Agent R · Gor Gor):** Doorbell ack panel when addressed  
+- **Living Room only:** House Rule card + **Family Home v0.9.2 Shared Doorbell / Receipt Board** + **Family Cabinet** (drawers → open → items)  
+- **Member rooms (Sky · Senti · Kura · Agent R · Gor Gor):** Doorbell ack panel when addressed (Support Status + SUBMITTED self-check)  
 - **Bottom floating** **“Gor Gor”** → Shared Living Room Thread bottom sheet (live Base44 via `/api/gor-gor-chat`; shared `livingRoomConversationId` + transcript in `shortkey-gor-gor-chat-bridge-v01`)  
 - Banners: **INTERNAL STAGING ONLY · FAMILY HOME** + localStorage warning  
 - Footer (layout): **Powered by our AI family**  
@@ -211,7 +212,9 @@ npm run family:dev
 | File | Role |
 |------|------|
 | `FamilyTableWorkbench.tsx` | v0.8 house · rooms · 9 panels · floating Gor Gor · migration · Living Room Cabinet + Doorbell host |
-| `FamilyDoorbell.tsx` | Family Home **v0.9.1** Doorbell & Receipt Board · `shortkey-family-doorbell-v091` |
+| `FamilyDoorbell.tsx` | Family Home **v0.9.2** Shared Doorbell · API + local fallback `shortkey-family-doorbell-v092` |
+| `app/api/family-doorbell/messages/route.ts` | Shared doorbell GET · POST |
+| `app/api/family-doorbell/messages/[id]/receipt/route.ts` | Shared doorbell PATCH receipt |
 | `GorGorChatDrawer.tsx` | Shared Living Room Thread v0.1 · sender/kind/from-room · one Simpee conversation |
 | `app/api/gor-gor-chat/route.ts` | Server-side Base44 Superagent bridge (SIMPEE only) |
 | `FamilyCabinet.tsx` | Family Cabinet · 6 drawers · item forms · status gate (Senti ≠ approve) |

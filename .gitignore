@@ -12,3 +12,9 @@ revision.txt
 .env.local
 scripts/shopify-sync-payload.json
 
+# Family doorbell local file store (dev) — keep empty scaffold if needed
+data/family-doorbell.json
+
+# Local screenshot scratch
+tmp-doorbell-shots/
+

@@ -34,9 +34,10 @@ import {
  * Family Table v0.8 — One Room Per Family Member (house architecture).
  * Persistence: browser localStorage key `shortkey-family-table-v08` only
  * (includes Living Room `cabinet` — Family Cabinet drawers).
- * Doorbell receipts: `shortkey-family-doorbell-v091` (Family Home v0.9.1 · local prototype).
+ * Doorbell: Family Home v0.9.2 Shared Doorbell via `/api/family-doorbell/*`
+ * (localStorage `shortkey-family-doorbell-v092` = fallback/demo only).
  * Migrates lightly once from v0.7 + Family Chat v0.1.
- * Doc: src/brand/sky/FAMILY_TABLE_v0_8.md · FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md
+ * Doc: src/brand/sky/FAMILY_TABLE_v0_8.md · FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md
  */
 
 export const STORAGE_KEY = "shortkey-family-table-v08";
@@ -704,6 +705,8 @@ export function FamilyTableWorkbench() {
           Storage key <code className="font-mono text-[11px]">{STORAGE_KEY}</code>
           {" · "}
           doorbell <code className="font-mono text-[11px]">{DOORBELL_STORAGE_KEY}</code>
+          {" "}
+          (fallback) · API <code className="font-mono text-[11px]">/api/family-doorbell</code>
           {state.migratedFrom?.length ? (
             <>
               {" "}
@@ -797,13 +800,17 @@ export function FamilyTableWorkbench() {
           {/* Living Room · Family House Rule (top announcement) */}
           {roomId === "living" ? <LivingRoomHouseRuleCard /> : null}
 
-          {/* Living Room · Family Home v0.9.1 Doorbell & Receipt Board */}
+          {/* Living Room · Family Home v0.9.2 Shared Doorbell / Receipt Board */}
           {roomId === "living" ? (
             <LivingRoomDoorbell
               state={doorbell.state}
+              connection={doorbell.connection}
               savedFlash={doorbell.savedFlash}
+              errorFlash={doorbell.errorFlash}
+              busy={doorbell.busy}
               onPost={doorbell.postCommand}
               onUpdateReceipt={doorbell.updateReceipt}
+              onRefresh={doorbell.refresh}
             />
           ) : null}
 
@@ -812,6 +819,9 @@ export function FamilyTableWorkbench() {
             <MemberDoorbellPanel
               member={doorbellMember}
               state={doorbell.state}
+              connection={doorbell.connection}
+              busy={doorbell.busy}
+              errorFlash={doorbell.errorFlash}
               onUpdateReceipt={doorbell.updateReceipt}
             />
           ) : null}
