@@ -34,7 +34,7 @@ import { LivingRoomSharedChat } from "@/components/internal/LivingRoomSharedChat
  * Family Table v0.8 — One Room Per Family Member (house architecture).
  * Persistence: browser localStorage key `shortkey-family-table-v08` only
  * (includes Living Room `cabinet` — Family Cabinet drawers).
- * Living Room Shared Chat: simple manual recipients via `/api/family-doorbell/*`
+ * Living Room Shared Chat P0: recipient pick only (no smart routing) via `/api/family-doorbell/*`
  * (localStorage `shortkey-family-doorbell-v092` = fallback/demo only; Redis key unchanged).
  * Migrates lightly once from v0.7 + Family Chat v0.1.
  * Doc: src/brand/sky/FAMILY_HOME_SHARED_CHAT_SIMPLE.md

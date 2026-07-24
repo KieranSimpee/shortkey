@@ -48,6 +48,7 @@ export type SupportStatus = (typeof SUPPORT_STATUSES)[number];
 /** Living Room / Meeting composers may post as any of these. */
 export const COMMAND_SENDERS = [
   "Kieran",
+  "Little Brother",
   "Gor Gor",
   "Sky",
   "Senti",
@@ -55,6 +56,13 @@ export const COMMAND_SENDERS = [
   "Agent R",
 ] as const;
 export type CommandSender = (typeof COMMAND_SENDERS)[number];
+
+/** P0 Living Room Shared Chat — who is speaking (recipient pick only). */
+export const P0_CHAT_SENDERS = [
+  "Kieran",
+  "Little Brother",
+  "Gor Gor",
+] as const satisfies readonly CommandSender[];
 
 /**
  * Post mode / message type.

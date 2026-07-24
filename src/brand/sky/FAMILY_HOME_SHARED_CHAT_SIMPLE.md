@@ -2,27 +2,32 @@
 
 Internal Staging only. Soft pearl / lavender Living Room surface.
 
+**P0 = recipient pick only** (no smart routing · no auto replies).
+
 ## Intent
 
 One **shared chat box** with **manual recipient selection**. No complex auto-router. No autonomous fake replies. Not production-ready. Not a public launch.
 
-## UX
+## UX (P0 wireframe)
 
 Before send:
 
-- Recipient checkboxes: Gor Gor · Sky · Senti · Kura · Agent R · All Family
-- Urgency: `NORMAL` | `TODAY` | `URGENT` | `RED`
-- Button: **Send to selected family**
+- **Sender:** Kieran · Little Brother · Gor Gor
+- **Send to:** checkboxes Gor Gor · Sky · Senti · Kura · Agent R · All Family
+- **Urgency:** Normal · Today · Urgent · Red
+- **Message** + **Send**
 
-Each message shows:
+After send card:
 
-- Message · Sender · Selected recipients · Urgency · Receipt status per recipient · Timestamp
+```
+{Sender} → {recipients}
+Urgency: {level}
+Message: {text}
+Status:
+{Member}: {STATUS}
+```
 
-Receipt statuses (per selected member):
-
-`SENT` | `RECEIVED` | `READING` | `IN_PROGRESS` | `NEEDS_GOR_GOR` | `BLOCKED` | `PLACED_IN_CABINET`
-
-Only selected members need to respond.
+Only selected members need to respond. Receipt statuses per member: `SENT` | `RECEIVED` | `READING` | `IN_PROGRESS` | `NEEDS_GOR_GOR` | `BLOCKED` | `PLACED_IN_CABINET`
 
 ## Storage / API
 

@@ -892,7 +892,9 @@ export function useDoorbell() {
       const resolved = resolveTargets(targets);
       if (!body.trim() || resolved.length === 0) return;
       if (!isCommandSender(sender)) {
-        setErrorFlash("Invalid sender — choose Kieran | Gor Gor | Sky | Senti | Kura | Agent R.");
+        setErrorFlash(
+          "Invalid sender — choose Kieran | Little Brother | Gor Gor | Sky | Senti | Kura | Agent R.",
+        );
         return;
       }
       setBusy(true);
