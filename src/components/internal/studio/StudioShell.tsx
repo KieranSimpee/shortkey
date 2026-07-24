@@ -10,6 +10,8 @@ import {
   type BrandDNA,
   type StudioActor,
   type StudioApprovalLog,
+  type StudioCampaign,
+  type StudioDomain,
   type StudioEntityType,
   type StudioPageId,
   type StudioState,
@@ -618,6 +620,14 @@ function StatusControls({
   );
 }
 
+type ReviewReadyItem =
+  | Pick<StudioCampaign, "id" | "name" | "status">
+  | Pick<StudioDomain, "id" | "hostname" | "status">;
+
+function reviewReadyLabel(item: ReviewReadyItem): string {
+  return "name" in item ? item.name : item.hostname;
+}
+
 function DashboardPage({
   state,
   counts,
@@ -627,7 +637,7 @@ function DashboardPage({
   counts: Record<string, number>;
   onGo: (id: StudioPageId) => void;
 }) {
-  const reviewReady = [
+  const reviewReady: ReviewReadyItem[] = [
     ...state.campaigns.filter(
       (c) =>
         c.status === "IN_REVIEW" ||
@@ -694,9 +704,7 @@ function DashboardPage({
               key={item.id}
               className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-brand/10 bg-white px-3 py-2 text-sm"
             >
-              <span>
-                {"name" in item ? item.name : "hostname" in item ? item.hostname : item.id}
-              </span>
+              <span>{reviewReadyLabel(item)}</span>
               <StatusPill status={item.status} />
             </li>
           ))}
