@@ -1,0 +1,139 @@
+ShortKey Cursor Continuity Pack — 2026-07-25
+Status: GOR_GOR_REVIEW · Internal working memory · NOT production DNA lock
+Owner: Gor Gor translate/protect · Kieran feel · Builder/Sky execute only after Gor Gor
+
+IMPORTANT
+- Cursor = short-term working memory. NOT long-term family memory.
+- Cursor can help build. Cursor should NOT decide the DNA.
+- Do not override this pack with assumptions.
+- If unclear, ask before changing direction.
+- Everything remains GOR_GOR_REVIEW until Gor Gor approves.
+
+PIPELINE LOCK
+Google research → Kieran feel → Gor Gor translate/protect → Builder / Sky execute
+Never hand raw Google radar straight to Builder.
+
+────────────────────────────────────────
+1. ShortKey 核心方向
+────────────────────────────────────────
+- ShortKey is an AI Asian beauty identity map moving through creators.
+- Not one generic “Asian beauty style.”
+- Studio = source of truth. Domains = future consumers.
+- Motto: ShortKey 不模仿畫面。ShortKey 捕捉生命力。
+  EN: ShortKey does not imitate the frame. ShortKey captures the life force.
+- Intelligence: J / K / C lanes stay SEPARATE.
+- Culture: Asian Beauty Mix OK in public lifestyle energy; each brand keeps its DNA.
+  → separate in intelligence · mixed in culture
+
+Flow (modern):
+  Brand → Creator Circle → Community → Consumer
+Not:
+  Brand → Celebrity → Consumer
+
+ShortKey formula (not old Hallyu star formula):
+  visual product story + clear product signal + creator trust + AI matching + localized commerce
+
+────────────────────────────────────────
+2. J / K / C Beauty lanes (Gor Gor calibrated)
+────────────────────────────────────────
+J-Beauty · Fresh Texture
+  = natural refinement + first-discovery warmth
+  soft daylight · macro texture · first makeup · creator recommendation · LIPS-style community · seishun freshness
+  NOT only craft / 職人 / minimal
+
+K-Beauty · Signal Sprint
+  = content sharing rhythm · routine storytelling · texture demo · creator review · Hallyu / Olive Young-style discovery · beauty tech awareness · fast beauty signal
+  Safe: visible texture demo · usage moment · creator first impression · routine-friendly signal
+  AVOID: 即時效果 · 用完即刻變靚 · miracle · exaggerated before-after · skin-insecurity hooks
+
+C-Beauty · Color Persona
+  = packaging story · color wave · fantasy product world · swatch culture · viral discovery · Xiaohongshu/Douyin energy · brand personality
+  Also cute / fantasy / playful / affordable / viral — NOT only 大女主 / boss
+
+Also: Pan-Asian · Western-Asian Hybrid as lane options when needed.
+
+────────────────────────────────────────
+3. Logo locked rule
+────────────────────────────────────────
+- Use locked ShortKey lilac logo assets only (src/brand/logo-locked / public/logo).
+- Do not invent alternate wordmarks or steal other brand logos.
+- No third-party logos/images in public surfaces without rights.
+
+────────────────────────────────────────
+4. Video rule
+────────────────────────────────────────
+- CSS / motion skeleton first when possible.
+- No autoplay audio.
+- No random copyrighted video.
+- AI creates motion skeleton only; logos, text, claims, creators, stats = manually controlled.
+- Sky Video Standard Candidates (GOR_GOR_REVIEW only):
+  1) K-Beauty Signal Sprint
+  2) J-Beauty Fresh Texture
+  3) C-Beauty Color Persona
+
+────────────────────────────────────────
+5. Safety rules
+────────────────────────────────────────
+- No guaranteed income / selection / sales / brand deals.
+- No fake creators · fake reviews · fake partnerships · fake endorsements.
+- No celebrity names/images without rights.
+- Do not copy YesStyle / BeautyChannel / Etude / Holika / reference site layouts, photos, or trademarks.
+- Avoid “拒絕濾鏡” / “unfiltered” absolute claims.
+  Use: transparent beauty discovery · creator context clearly shown · no fake results · honest product story · real usage moment.
+- Avoid early “真 / guaranteed true” product badge.
+  Use: Verified Info · Brand-Provided Data · Evidence Available · Under Review · Creator Tested (only if real).
+- No secrets in frontend · no production deploy automation as one-click publish yet.
+- Do not mark production-ready without Gor Gor + Kieran approval.
+
+────────────────────────────────────────
+6. Builder should do (UI components — lightweight)
+────────────────────────────────────────
+- Beauty Identity Lane cards
+- Creator Discovery Preview
+- Product Story Readiness cards
+- Beauty Signal content cards
+- Campaign Formula cards
+- Studio safety checklist
+- Brand Identity Benchmark Map (Studio #identity)
+- Creator Circle early access form (staging)
+Do NOT overbuild a full social network in P0.
+
+────────────────────────────────────────
+7. Sky video candidate lanes
+────────────────────────────────────────
+See §4. Document / candidate only until Gor Gor approves motion standards.
+
+────────────────────────────────────────
+8. Reference addendum / doc list (repo)
+────────────────────────────────────────
+- src/brand/sky/SHORTKEY_JKC_VIBE_RADAR_GORGOR_REVIEW.md  ← canonical Gor Gor vibe translation
+- src/brand/sky/SHORTKEY_BRAND_IDENTITY_LANES.md
+- src/brand/sky/SHORTKEY_HALLYU_CREATOR_FORMULA.md (if present)
+- src/brand/sky/SHORTKEY_STUDIO_v0_1.md
+- src/brand/sky/SHORTKEY_SOCIAL_CREATOR_EARLY_ACCESS_v0_1.md
+- src/brand/sky/FAMILY_TABLE_v0_8.md / FAMILY_HOME_* docs
+- src/brand/sky/STUDIO_PUSH_LEDGER.md
+External addenda named by Gor Gor may live outside repo; if missing, follow THIS pack + Gor Gor Review docs above — do not invent missing files.
+
+────────────────────────────────────────
+9. Gor Gor Review status rule
+────────────────────────────────────────
+- Default status for new DNA / identity / social / video standards work: GOR_GOR_REVIEW
+- Not production DNA lock until Gor Gor approves (then Kieran as needed)
+- Builder executes Gor Gor-translated packs only
+
+────────────────────────────────────────
+Ports (local)
+────────────────────────────────────────
+3001 Beauty · 3002 Family · 3003 Studio · 3004 Social
+
+────────────────────────────────────────
+How to start a new Cursor session
+────────────────────────────────────────
+Paste:
+  Before continuing, read and follow:
+  src/brand/sky/ShortKey_Cursor_Continuity_Pack_2026-07-25.txt
+  Treat this as the current working memory for ShortKey.
+  Do not override it with assumptions.
+  If unclear, ask before changing direction.
+  Everything remains GOR_GOR_REVIEW until Gor Gor approves.
