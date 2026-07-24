@@ -10,9 +10,11 @@ import {
   DEFAULT_COMPOSER_MODE,
   isCommandSender,
   isMessageMode,
+  isUrgencyLevel,
   TARGET_MEMBER_OPTIONS,
   type MessageMode,
   type TargetMemberOption,
+  type UrgencyLevel,
 } from "@/lib/familyDoorbellTypes";
 
 export const runtime = "nodejs";
@@ -59,8 +61,10 @@ export async function POST(request: Request) {
     body?: unknown;
     sender?: unknown;
     target_members?: unknown;
+    selected_recipients?: unknown;
     mode?: unknown;
     messageType?: unknown;
+    urgency?: unknown;
   };
 
   const messageBody = typeof raw.body === "string" ? raw.body.trim() : "";
@@ -80,16 +84,22 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!Array.isArray(raw.target_members) || raw.target_members.length === 0) {
+  const rawTargets = Array.isArray(raw.target_members)
+    ? raw.target_members
+    : Array.isArray(raw.selected_recipients)
+      ? raw.selected_recipients
+      : null;
+
+  if (!rawTargets || rawTargets.length === 0) {
     return NextResponse.json(
-      { error: "target_members is required." },
+      { error: "target_members / selected_recipients is required." },
       { status: 400 },
     );
   }
 
   const allowed = new Set<string>(TARGET_MEMBER_OPTIONS);
   const targets: TargetMemberOption[] = [];
-  for (const t of raw.target_members) {
+  for (const t of rawTargets) {
     if (typeof t !== "string" || !allowed.has(t)) {
       return NextResponse.json(
         { error: `Invalid target_member: ${String(t)}` },
@@ -114,12 +124,24 @@ export async function POST(request: Request) {
     mode = candidate;
   }
 
+  let urgency: UrgencyLevel | undefined;
+  if (raw.urgency !== undefined) {
+    if (!isUrgencyLevel(raw.urgency)) {
+      return NextResponse.json(
+        { error: "urgency must be NORMAL | TODAY | URGENT | RED." },
+        { status: 400 },
+      );
+    }
+    urgency = raw.urgency;
+  }
+
   try {
     const result = await createMessage({
       body: messageBody,
       sender: raw.sender,
       target_members: targets,
       mode,
+      urgency,
     });
     return NextResponse.json(result, { status: 201 });
   } catch (err) {

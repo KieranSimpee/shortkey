@@ -16,6 +16,7 @@ import {
   RECEIPT_STATUSES,
   SUPPORT_STATUSES,
   TARGET_MEMBER_OPTIONS,
+  URGENCY_LEVELS,
   type CommandSender,
   type FamilyCommandMessage,
   type FamilyDoorbellStoreMode,
@@ -26,6 +27,7 @@ import {
   type SupportStatus,
   type TargetMember,
   type TargetMemberOption,
+  type UrgencyLevel,
 } from "@/lib/familyDoorbellTypes";
 
 /**
@@ -61,6 +63,7 @@ export {
   DEFAULT_COMPOSER_MODE,
   FIRST_FAMILY_MEETING_ID,
   GOR_GOR_REVIEW_REMINDER,
+  URGENCY_LEVELS,
 };
 export type {
   TargetMemberOption,
@@ -72,6 +75,7 @@ export type {
   FamilyReceipt,
   FamilySelfCheck,
   MessageMode,
+  UrgencyLevel,
 };
 
 /** Ack buttons shown in member rooms (status they set). */
@@ -81,6 +85,7 @@ export const ACK_ACTIONS: { label: string; status: ReceiptStatus }[] = [
   { label: "處理中", status: "IN_PROGRESS" },
   { label: "需要Gor Gor", status: "NEEDS_GOR_GOR" },
   { label: "Blocked", status: "BLOCKED" },
+  { label: "Placed in cabinet", status: "PLACED_IN_CABINET" },
   { label: "已提交", status: "SUBMITTED" },
 ];
 
@@ -123,6 +128,7 @@ export const RECEIPT_TONE: Record<ReceiptStatus, string> = {
   IN_PROGRESS: "border-amber-400/40 bg-amber-400/10 text-amber-800",
   NEEDS_GOR_GOR: "border-brand/40 bg-brand/10 text-brand",
   BLOCKED: "border-rose-400/40 bg-rose-400/10 text-rose-800",
+  PLACED_IN_CABINET: "border-violet-500/30 bg-[#f3eef9] text-violet-900",
   SUBMITTED: "border-emerald-500/30 bg-emerald-500/10 text-emerald-800",
   NO_RESPONSE: "border-ink/20 bg-ink/[0.03] text-ink-subtle",
 };
@@ -215,17 +221,26 @@ function normalizeCommand(c: Partial<FamilyCommandMessage>): FamilyCommandMessag
     sender,
     target_members,
   });
+  const urgency =
+    typeof c.urgency === "string" &&
+    (URGENCY_LEVELS as readonly string[]).includes(c.urgency)
+      ? (c.urgency as UrgencyLevel)
+      : undefined;
   return {
     id: typeof c.id === "string" ? c.id : `legacy_${Date.now()}`,
     body: c.body,
     sender,
     target_members,
+    selected_recipients: Array.isArray(c.selected_recipients)
+      ? (c.selected_recipients as TargetMemberOption[])
+      : target_members,
     resolved_targets: Array.isArray(c.resolved_targets)
       ? (c.resolved_targets as TargetMember[])
       : receipts.map((r) => r.member),
     createdAt: typeof c.createdAt === "string" ? c.createdAt : new Date().toISOString(),
     receipts,
     mode,
+    ...(urgency ? { urgency } : {}),
   };
 }
 
@@ -713,12 +728,20 @@ async function apiCreate(
   sender: CommandSender,
   targets: TargetMemberOption[],
   mode: MessageMode,
+  urgency?: UrgencyLevel,
 ) {
   const res = await fetch("/api/family-doorbell/messages", {
     method: "POST",
     credentials: "same-origin",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ body, sender, target_members: targets, mode }),
+    body: JSON.stringify({
+      body,
+      sender,
+      target_members: targets,
+      selected_recipients: targets,
+      mode,
+      ...(urgency ? { urgency } : {}),
+    }),
   });
   const data = (await res.json()) as ApiListResponse & { error?: string };
   if (!res.ok) throw new Error(data.error || `POST failed (${res.status})`);
@@ -864,6 +887,7 @@ export function useDoorbell() {
       sender: CommandSender,
       targets: TargetMemberOption[],
       mode: MessageMode = DEFAULT_COMPOSER_MODE,
+      urgency: UrgencyLevel = "NORMAL",
     ) => {
       const resolved = resolveTargets(targets);
       if (!body.trim() || resolved.length === 0) return;
@@ -873,9 +897,12 @@ export function useDoorbell() {
       }
       setBusy(true);
       setErrorFlash(null);
+      const selected = targets.includes("all")
+        ? (["all"] as TargetMemberOption[])
+        : resolved;
       try {
         if (connectionRef.current.backendAvailable) {
-          const data = await apiCreate(body.trim(), sender, targets, mode);
+          const data = await apiCreate(body.trim(), sender, targets, mode, urgency);
           const applied = applyApiMessages(data);
           setState(applied.state);
           setConnection(applied.connection);
@@ -887,10 +914,12 @@ export function useDoorbell() {
             id: `local_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`,
             body: body.trim(),
             sender,
-            target_members: targets.includes("all") ? ["all"] : resolved,
+            target_members: selected,
+            selected_recipients: selected,
             resolved_targets: resolved,
             createdAt: now,
             mode,
+            urgency,
             receipts: resolved.map((member) => ({
               id: `local_r_${member}_${Date.now().toString(36)}`,
               member,
@@ -1053,6 +1082,7 @@ export function LivingRoomDoorbell({
     sender: CommandSender,
     targets: TargetMemberOption[],
     mode: MessageMode,
+    urgency?: UrgencyLevel,
   ) => void;
   onUpdateReceipt: (
     commandId: string,

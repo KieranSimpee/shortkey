@@ -4,9 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Gor Gor Chat Bridge · Shared Living Room Thread v0.1
- * One shared upstream conversation for the Family Home Living Room.
- * Talks to /api/gor-gor-chat (server-side Base44 · SIMPEE only).
+ * Gor Gor Chat Bridge · optional private AI drawer
+ * Family shared chat (manual recipients) lives in Living Room Shared Chat.
+ * This drawer talks to /api/gor-gor-chat only — not the shared family board.
  *
  * Storage (same key, nested fields):
  *   shortkey-gor-gor-chat-bridge-v01
@@ -87,14 +87,6 @@ const SENDER_OPTIONS: LivingRoomSender[] = [
   "Senti",
   "Kura",
   "Agent R",
-];
-
-const KIND_OPTIONS: LivingRoomKind[] = [
-  "CHAT",
-  "NOTE",
-  "HOMEWORK SUBMITTED",
-  "EVIDENCE SUBMITTED",
-  "WAITING FOR GOR GOR",
 ];
 
 const ROOM_DEFAULT_SENDER: Record<BridgeRoomId, LivingRoomSender> = {
@@ -385,10 +377,11 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         <div className="flex items-start justify-between gap-3 border-b border-brand/10 px-4 pb-3 pt-2">
           <div>
             <p className="font-display text-base font-semibold tracking-tight text-ink">
-              Living Room · Gor Gor
+              Gor Gor · private bridge
             </p>
             <p className="mt-0.5 text-[10px] leading-snug text-ink-subtle">
-              Shared family thread · one Simpee conversation · {GOR_GOR_BRIDGE_WARNING}
+              Optional AI bridge only · family shared chat lives in Living Room (manual
+              recipients) · {GOR_GOR_BRIDGE_WARNING}
             </p>
           </div>
           <button
@@ -400,58 +393,29 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
           </button>
         </div>
 
-        <div className="grid grid-cols-1 gap-2.5 border-b border-ink/5 px-4 py-2.5 sm:grid-cols-3">
-          <div>
-            <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
-              From room
-            </label>
-            <select
-              value={fromRoom}
-              onChange={(e) => {
-                const next = e.target.value as BridgeRoomId;
-                setFromRoom(next);
-                setSender(ROOM_DEFAULT_SENDER[next]);
-              }}
-              className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
-            >
-              {ROOM_OPTIONS.map((r) => (
-                <option key={r.id} value={r.id}>
-                  {r.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
-              Sender
-            </label>
-            <select
-              value={sender}
-              onChange={(e) => setSender(e.target.value as LivingRoomSender)}
-              className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
-            >
-              {SENDER_OPTIONS.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
-              Kind
-            </label>
-            <select
-              value={kind}
-              onChange={(e) => setKind(e.target.value as LivingRoomKind)}
-              className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
-            >
-              {KIND_OPTIONS.map((k) => (
-                <option key={k} value={k}>
-                  {k}
-                </option>
-              ))}
-            </select>
+        <div className="border-b border-ink/5 bg-[#f7f4fc]/70 px-4 py-2.5">
+          <p className="text-[11px] leading-relaxed text-ink-muted">
+            For family messages with recipient checkboxes and receipt status, use{" "}
+            <span className="font-medium text-ink">Living Room · Shared Chat</span> on the
+            Family Table. This drawer talks to Gor Gor only — not the shared family board.
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            <div className="min-w-[8rem] flex-1">
+              <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
+                Sender
+              </label>
+              <select
+                value={sender}
+                onChange={(e) => setSender(e.target.value as LivingRoomSender)}
+                className="w-full rounded-xl border border-ink/10 bg-white px-3 py-2 text-sm text-ink outline-none focus:border-brand/40"
+              >
+                {SENDER_OPTIONS.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
@@ -467,8 +431,8 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4">
           {messages.length === 0 ? (
             <p className="text-center text-xs text-ink-subtle">
-              One Living Room thread for the whole family. Pick who is speaking and
-              which room you are entering from — Gor Gor replies here.
+              Private Gor Gor bridge. Family shared chat with recipients is on the Living
+              Room board.
             </p>
           ) : null}
           {messages.map((m) => (

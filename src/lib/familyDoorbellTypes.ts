@@ -31,11 +31,16 @@ export const RECEIPT_STATUSES = [
   "IN_PROGRESS",
   "NEEDS_GOR_GOR",
   "BLOCKED",
+  "PLACED_IN_CABINET",
   "SUBMITTED",
   "NO_RESPONSE",
 ] as const;
 
 export type ReceiptStatus = (typeof RECEIPT_STATUSES)[number];
+
+/** Simple Living Room shared-chat urgency (manual selector). */
+export const URGENCY_LEVELS = ["NORMAL", "TODAY", "URGENT", "RED"] as const;
+export type UrgencyLevel = (typeof URGENCY_LEVELS)[number];
 
 export const SUPPORT_STATUSES = ["GREEN", "YELLOW", "ORANGE", "RED"] as const;
 export type SupportStatus = (typeof SUPPORT_STATUSES)[number];
@@ -117,6 +122,10 @@ export type FamilyCommandMessage = {
    * Post mode. Absent on v0.9.2 messages — inferred by `inferMessageMode`.
    */
   mode?: MessageMode;
+  /** Manual urgency from Living Room Shared Chat. Absent on legacy messages. */
+  urgency?: UrgencyLevel;
+  /** Alias used by simple shared chat docs — same as target_members. */
+  selected_recipients?: TargetMemberOption[];
 };
 
 export type FamilyDoorbellStoreMode =
@@ -152,6 +161,10 @@ export function isTargetMember(v: unknown): v is TargetMember {
 
 export function isReceiptStatus(v: unknown): v is ReceiptStatus {
   return typeof v === "string" && (RECEIPT_STATUSES as readonly string[]).includes(v);
+}
+
+export function isUrgencyLevel(v: unknown): v is UrgencyLevel {
+  return typeof v === "string" && (URGENCY_LEVELS as readonly string[]).includes(v);
 }
 
 export function isSupportStatus(v: unknown): v is SupportStatus {

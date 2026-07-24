@@ -22,6 +22,7 @@ import {
   isReceiptStatus,
   isSupportStatus,
   isTargetMember,
+  isUrgencyLevel,
   resolveTargets,
   type CommandSender,
   type FamilyCommandMessage,
@@ -35,6 +36,7 @@ import {
   type SupportStatus,
   type TargetMember,
   type TargetMemberOption,
+  type UrgencyLevel,
 } from "@/lib/familyDoorbellTypes";
 
 /** Keep v092 key — do not migrate Redis namespace (preserves fd_mryrchhg_gdlx7zrl). */
@@ -87,9 +89,20 @@ function normalizeStoredMessage(raw: unknown): FamilyCommandMessage | null {
   const m = raw as FamilyCommandMessage & { messageType?: unknown };
   if (typeof m.body !== "string" || !Array.isArray(m.receipts)) return null;
   const mode = inferMessageMode(m);
+  const urgency = isUrgencyLevel(m.urgency) ? m.urgency : undefined;
+  const target_members = Array.isArray(m.target_members)
+    ? m.target_members
+    : Array.isArray(m.selected_recipients)
+      ? m.selected_recipients
+      : m.target_members;
   return {
     ...m,
     mode,
+    urgency,
+    target_members,
+    selected_recipients: Array.isArray(m.selected_recipients)
+      ? m.selected_recipients
+      : target_members,
   };
 }
 
@@ -207,6 +220,7 @@ export type CreateMessageInput = {
   sender: CommandSender;
   target_members: TargetMemberOption[];
   mode?: MessageMode;
+  urgency?: UrgencyLevel;
 };
 
 export type UpdateReceiptInput = {
@@ -242,16 +256,22 @@ export async function createMessage(
   const mode: MessageMode = isMessageMode(input.mode)
     ? input.mode
     : "family-meeting";
+  const urgency: UrgencyLevel | undefined = isUrgencyLevel(input.urgency)
+    ? input.urgency
+    : undefined;
+  const selected = input.target_members.includes("all")
+    ? (["all"] as TargetMemberOption[])
+    : resolved;
   const message: FamilyCommandMessage = {
     id: newId(),
     body,
     sender: input.sender,
-    target_members: input.target_members.includes("all")
-      ? ["all"]
-      : resolved,
+    target_members: selected,
+    selected_recipients: selected,
     resolved_targets: resolved,
     createdAt: now,
     mode,
+    ...(urgency ? { urgency } : {}),
     receipts: resolved.map(
       (member): FamilyReceipt => ({
         id: newId(),

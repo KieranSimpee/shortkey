@@ -24,20 +24,20 @@ import { GorGorChatDrawer } from "@/components/internal/GorGorChatDrawer";
 import {
   clearDoorbellStorage,
   DOORBELL_STORAGE_KEY,
-  LivingRoomDoorbell,
   MemberDoorbellPanel,
   ROOM_TO_MEMBER,
   useDoorbell,
 } from "@/components/internal/FamilyDoorbell";
+import { LivingRoomSharedChat } from "@/components/internal/LivingRoomSharedChat";
 
 /**
  * Family Table v0.8 — One Room Per Family Member (house architecture).
  * Persistence: browser localStorage key `shortkey-family-table-v08` only
  * (includes Living Room `cabinet` — Family Cabinet drawers).
- * Doorbell: Family Home v0.9.3 Family Meeting UI via `/api/family-doorbell/*`
+ * Living Room Shared Chat: simple manual recipients via `/api/family-doorbell/*`
  * (localStorage `shortkey-family-doorbell-v092` = fallback/demo only; Redis key unchanged).
  * Migrates lightly once from v0.7 + Family Chat v0.1.
- * Doc: src/brand/sky/FAMILY_TABLE_v0_8.md · FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md
+ * Doc: src/brand/sky/FAMILY_HOME_SHARED_CHAT_SIMPLE.md
  */
 
 export const STORAGE_KEY = "shortkey-family-table-v08";
@@ -706,7 +706,8 @@ export function FamilyTableWorkbench() {
           {" · "}
           doorbell <code className="font-mono text-[11px]">{DOORBELL_STORAGE_KEY}</code>
           {" "}
-          (fallback) · API <code className="font-mono text-[11px]">/api/family-doorbell</code>
+          (fallback) · Living Room Shared Chat · API{" "}
+          <code className="font-mono text-[11px]">/api/family-doorbell</code>
           {state.migratedFrom?.length ? (
             <>
               {" "}
@@ -800,9 +801,9 @@ export function FamilyTableWorkbench() {
           {/* Living Room · Family House Rule (top announcement) */}
           {roomId === "living" ? <LivingRoomHouseRuleCard /> : null}
 
-          {/* Living Room · Family Home v0.9.3 Family Meeting / Shared Board */}
+          {/* Living Room · Shared Chat (manual recipients · no complex router) */}
           {roomId === "living" ? (
-            <LivingRoomDoorbell
+            <LivingRoomSharedChat
               state={doorbell.state}
               connection={doorbell.connection}
               savedFlash={doorbell.savedFlash}
