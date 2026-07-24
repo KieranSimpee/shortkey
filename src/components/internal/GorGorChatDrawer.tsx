@@ -225,6 +225,7 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
     if (open) {
       setStore(loadStore());
       setBanner(null);
+      setSender("Kieran");
       window.setTimeout(() => inputRef.current?.focus(), 80);
     }
   }, [open, initialRoom]);
@@ -499,7 +500,7 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
               Family Chat
             </p>
             <p className="mt-0.5 text-[10px] leading-snug text-ink-subtle">
-              Selected recipients · internal staging · {GOR_GOR_BRIDGE_WARNING}
+              {GOR_GOR_BRIDGE_WARNING}
             </p>
           </div>
           <button
@@ -513,9 +514,7 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
 
         <div className="border-b border-ink/5 bg-[#f7f4fc]/70 px-4 py-2.5">
           <p className="text-[11px] leading-relaxed text-ink-muted">
-            Family Chat — pick who should receive. Gor Gor uses the live Simpee bridge;
-            other members stay on the shared Living Room board as SENT / WAITING until they
-            respond. No fake replies.
+            Pick Sender, then Send to — manual recipients only. No fake replies.
           </p>
           <div className="mt-2 min-w-[8rem]">
             <label className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
