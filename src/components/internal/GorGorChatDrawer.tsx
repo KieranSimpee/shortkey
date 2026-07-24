@@ -226,6 +226,7 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
       setStore(loadStore());
       setBanner(null);
       setSender("Kieran");
+      setSelected([]);
       window.setTimeout(() => inputRef.current?.focus(), 80);
     }
   }, [open, initialRoom]);
@@ -489,7 +490,7 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
       />
       <div
         role="dialog"
-        aria-label="Family Chat"
+        aria-label="Family Chat · Living Room"
         className="relative z-10 flex max-h-[88vh] w-full max-w-lg flex-col overflow-hidden rounded-t-2xl border border-ink/10 bg-gradient-to-b from-[#FBF9FF] to-white shadow-[0_-12px_40px_rgba(90,70,140,0.18)] sm:max-h-[82vh]"
       >
         <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-ink/15" aria-hidden />
@@ -497,7 +498,7 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         <div className="flex items-start justify-between gap-3 border-b border-brand/10 px-4 pb-3 pt-2">
           <div>
             <p className="font-display text-base font-semibold tracking-tight text-ink">
-              Family Chat
+              Family Chat · Living Room
             </p>
             <p className="mt-0.5 text-[10px] leading-snug text-ink-subtle">
               {GOR_GOR_BRIDGE_WARNING}
