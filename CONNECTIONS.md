@@ -263,8 +263,10 @@ Until DNS / domain is valid, use:
 **Store:** `POST /api/social/early-access` → `data/social-early-access.json` (dev) · localStorage `shortkey-social-early-access-v02` fallback · no Upstash required  
 **Submission statuses:** Submitted (default) · Under Review · Invited  
 **Status lock:** **GOR_GOR_REVIEW · staging / public-preview polish · not production-ready**  
+**Motion (v0.3):** AI Beauty Signal / Creator Wave — CSS-only hero sweep, preview panel, marquee, logo flash · no copyrighted video · no autoplay audio · `prefers-reduced-motion`  
 **Do not** use Studio Deploy Center as one-click publisher for this surface.  
 **Do not** add secrets for this portal.  
+**Do not** copy third-party TV channel identity (beautychannel.net = motion inspiration only).  
 **Coming Soon (:3001) / Family (:3002) / Studio (:3003) untouched.**
 
 Until the domain is attached, use:

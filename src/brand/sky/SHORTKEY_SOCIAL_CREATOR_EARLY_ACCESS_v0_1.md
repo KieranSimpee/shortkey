@@ -1,4 +1,4 @@
-# ShortKey Social — Creator Circle Early Access v0.2
+# ShortKey Social — Creator Circle Early Access v0.3
 
 **Status:** **GOR_GOR_REVIEW** · Internal staging / public-preview polish · **not production-ready**  
 **Host:** `shortkey.social` (attach later — see CONNECTIONS.md)  
@@ -10,11 +10,12 @@
 
 Creators can:
 
-1. Understand **Why ShortKey**
-2. See **How creators get discovered**
-3. Review **Collaboration types**
-4. See **Preferred payout bands** (placeholders)
-5. Submit the **Early access form** to join the Creator Circle interest list
+1. Feel the **AI Beauty Signal / Creator Wave** atmosphere (CSS motion)
+2. Understand **Why ShortKey**
+3. See **How creators get discovered**
+4. Review **Collaboration types**
+5. See **Preferred payout bands** (placeholders)
+6. Submit the **Early access form** to join the Creator Circle interest list
 
 ## Hero
 
@@ -49,7 +50,23 @@ Payout bands are **placeholders only** — no payment system in this surface.
 - Banner: **Internal staging / Gor Gor Review — not production-ready**
 - Footer: **Powered by our AI family**
 - Component: `src/components/social/CreatorEarlyAccessPortal.tsx`
+- Motion CSS: `src/components/social/creator-circle-signal.css`
 - Page: `src/app/social/page.tsx`
+
+### AI Beauty Signal / Creator Wave (v0.3 motion)
+
+Motion energy only — **not** a copy of any third-party TV channel (layout, logo, red/black identity, photos, videos, or slogans).
+
+| Element | Notes |
+|---------|--------|
+| **ShortKey Signal Hero** | Pearl / soft lilac gradients + soft sweep · elevates “Join the ShortKey Creator Circle” |
+| **Creator Wave preview panel** | CSS animated poster + abstract signal bars · **no video embed · no autoplay audio** |
+| **Beauty Signal marquee** | ShortKey DNA phrases (creator-first, Asian beauty bridge, etc.) |
+| **Logo soft flash** | CSS glow sweep · tasteful · not seizure-inducing |
+| **Creator story blocks** | 2–3 original ShortKey story cards |
+| **Promo banner stack** | Early access · discovery · collaboration preferences — **no income / selection / deal guarantees** |
+
+**Performance:** CSS `@keyframes` / transform / opacity first. `@media (prefers-reduced-motion: reduce)` disables decorative motion.
 
 ## Form fields
 
@@ -86,6 +103,8 @@ New API submissions always store `status: "Submitted"`.
 - Marketplace matching / campaign assignment
 - Payment processing or income guarantees
 - Selection guarantees
+- Third-party TV channel identity / assets / slogans (motion energy inspiration only)
+- Copyrighted video embeds or autoplay audio
 
 ## Middleware
 

@@ -19,10 +19,12 @@ import {
   type SocialPlatform,
   type SocialSubmissionStatus,
 } from "@/lib/social/types";
+import "./creator-circle-signal.css";
 
 /**
  * shortkey.social — Creator Circle Early Access portal (staging).
  * Soft pearl / light lilac · Studio Brand DNA voice · GOR_GOR_REVIEW.
+ * AI Beauty Signal / Creator Wave motion (CSS-only) — not a TV-channel clone.
  * Prefer POST /api/social/early-access (file store in dev); localStorage fallback.
  */
 
@@ -45,6 +47,56 @@ const WHY_POINTS = [
   {
     title: "Trust and protection",
     body: "Transparent packages and clear expectations. No income promises. No forced deals.",
+  },
+] as const;
+
+/** ShortKey-owned signal phrases (Studio DNA) — not competitor slogans. */
+const SIGNAL_PHRASES = [
+  "Creator-first",
+  "Asian beauty bridge",
+  "AI Beauty Signal",
+  "Creator Wave",
+  "Authentic product storytelling",
+  "Link-based promotion",
+  "Discoverable to brands",
+  "One DNA · Many doors",
+  "Trust before hype",
+  "ShortKey Creator Circle",
+] as const;
+
+const CREATOR_STORIES = [
+  {
+    kicker: "Signal",
+    title: "Show up clearly",
+    body: "Your handle, category, and story in one place — so brands see the creator, not a spreadsheet row.",
+  },
+  {
+    kicker: "Bridge",
+    title: "Speak Asian beauty",
+    body: "K-Beauty and Asian beauty storytelling already live in your voice. ShortKey helps that signal travel.",
+  },
+  {
+    kicker: "Wave",
+    title: "Stay light, stay real",
+    body: "Start with links and honest interest — no marketplace maze, no income promises, no forced deals.",
+  },
+] as const;
+
+const PROMO_BANNERS = [
+  {
+    tone: "soft-a" as const,
+    title: "Early access interest list",
+    body: "Join the Creator Circle staging list. Review is manual — interest is not selection.",
+  },
+  {
+    tone: "soft-b" as const,
+    title: "Discovery, not a guarantee",
+    body: "Share how you create so ShortKey can learn fit. Discovery does not promise campaigns or deals.",
+  },
+  {
+    tone: "soft-c" as const,
+    title: "Collaboration preferences",
+    body: "Tell us gifted, paid, affiliate, or hybrid preferences. Preferences are not offers.",
   },
 ] as const;
 
@@ -245,18 +297,108 @@ export function CreatorEarlyAccessPortal() {
       </header>
 
       <main className="relative z-10 mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
-        {/* Hero */}
-        <section className="text-center">
-          <p className="font-display text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
-            Creator Early Access
+        {/* ShortKey Signal Hero */}
+        <section className="cc-signal-hero text-center" aria-labelledby="creator-circle-hero">
+          <div className="cc-signal-hero__sweep" aria-hidden />
+          <div className="cc-signal-hero__wave" aria-hidden />
+          <div className="cc-signal-hero__content">
+            <div className="cc-logo-flash">
+              <span className="cc-logo-flash__glow" aria-hidden />
+              <Logo size="icon" surface="light" href={false} className="!h-10 !w-10" />
+            </div>
+            <p className="font-display text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
+              Creator Early Access · AI Beauty Signal
+            </p>
+            <h1
+              id="creator-circle-hero"
+              className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
+            >
+              Join the ShortKey Creator Circle
+            </h1>
+            <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-ink-muted sm:text-base">
+              ShortKey helps beauty creators become discoverable to brands looking
+              for authentic product storytelling.
+            </p>
+          </div>
+
+          {/* Creator Circle video-preview panel — CSS poster only */}
+          <div
+            className="cc-preview"
+            role="img"
+            aria-label="ShortKey Creator Wave signal preview — abstract motion poster, no video"
+          >
+            <div className="cc-preview__chrome">
+              <div className="cc-preview__bar">
+                <span className="cc-preview__dot" aria-hidden />
+                <span className="cc-preview__dot" aria-hidden />
+                <span className="cc-preview__dot cc-preview__dot--live" aria-hidden />
+                <span className="cc-preview__label">Creator Wave · preview</span>
+              </div>
+              <div className="cc-preview__stage">
+                <div className="cc-preview__poster" aria-hidden />
+                <div className="cc-signal-bars" aria-hidden>
+                  <span /><span /><span /><span /><span />
+                  <span /><span /><span /><span />
+                </div>
+              </div>
+              <p className="cc-preview__caption">
+                Signal frame · CSS motion only · no autoplay media
+              </p>
+            </div>
+          </div>
+
+          {/* Beauty Signal marquee */}
+          <div className="cc-marquee" aria-label="ShortKey Beauty Signal phrases">
+            <div className="cc-marquee__track">
+              {[0, 1].map((copy) => (
+                <div key={copy} className="cc-marquee__group" aria-hidden={copy === 1}>
+                  {SIGNAL_PHRASES.map((phrase) => (
+                    <span key={`${copy}-${phrase}`} className="contents">
+                      <span className="cc-marquee__item">{phrase}</span>
+                      <span className="cc-marquee__sep" />
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Promotional banner stack */}
+        <section className="mt-8" aria-labelledby="promo-banners">
+          <h2 id="promo-banners" className="sr-only">
+            Creator Circle highlights
+          </h2>
+          <div className="cc-banners">
+            {PROMO_BANNERS.map((banner) => (
+              <div
+                key={banner.title}
+                className={`cc-banner cc-banner--${banner.tone}`}
+              >
+                <p className="cc-banner__title">{banner.title}</p>
+                <p className="cc-banner__body">{banner.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Creator story blocks */}
+        <section className="mt-10" aria-labelledby="creator-stories">
+          <h2 id="creator-stories" className={sectionTitleClass}>
+            Creator stories
+          </h2>
+          <p className="mt-2 text-sm text-ink-subtle">
+            Short notes from the ShortKey Creator Wave — original wording, staging voice.
           </p>
-          <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Join the ShortKey Creator Circle
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-ink-muted sm:text-base">
-            ShortKey helps beauty creators become discoverable to brands looking
-            for authentic product storytelling.
-          </p>
+          <div className="cc-stories mt-5">
+            {CREATOR_STORIES.map((story) => (
+              <article key={story.title} className="cc-story">
+                <p className="cc-story__kicker">{story.kicker}</p>
+                <h3 className="cc-story__title">{story.title}</h3>
+                <p className="cc-story__body">{story.body}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         {/* 1. Why ShortKey */}
