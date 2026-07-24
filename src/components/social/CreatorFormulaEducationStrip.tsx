@@ -42,21 +42,21 @@ export function CreatorFormulaEducationStrip() {
           Brand Identity Lanes
         </h2>
         <p className="mt-2 text-sm text-ink-subtle">
-          Asian beauty identity system — J / K / C focus differs. Preview archetypes only ·
-          not partnerships.
+          Calibrated vibes — J Fresh Texture · K Signal Sprint · C Color Persona. Preview
+          archetypes only · not partnerships · not production DNA lock.
         </p>
         <ul className="mt-3 space-y-1.5 text-[12px] text-ink-muted">
           <li>
-            <span className="font-semibold text-ink">J-Beauty</span> — mood / fashion /
-            personal creator identity
+            <span className="font-semibold text-ink">J-Beauty · Fresh Texture</span> —
+            natural refinement + first-discovery warmth
           </li>
           <li>
-            <span className="font-semibold text-ink">K-Beauty</span> — content sharing /
-            routine / product education / Hallyu rhythm
+            <span className="font-semibold text-ink">K-Beauty · Signal Sprint</span> —
+            content sharing rhythm · routine · texture demo · Hallyu discovery
           </li>
           <li>
-            <span className="font-semibold text-ink">C-Beauty</span> — packaging / color /
-            brand personality / discovery energy
+            <span className="font-semibold text-ink">C-Beauty · Color Persona</span> —
+            packaging · color wave · fantasy / viral discovery
           </li>
         </ul>
         <div className="mt-5 grid gap-3 sm:grid-cols-3">

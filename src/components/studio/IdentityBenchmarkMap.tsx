@@ -31,13 +31,18 @@ export function IdentityBenchmarkMap({
           </span>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-ink-muted">{map.framing}</p>
-        <ul className="max-w-2xl space-y-1">
-          {map.guardrails.slice(0, 4).map((g) => (
-            <li key={g} className="text-[11px] leading-relaxed text-ink-subtle">
-              · {g}
-            </li>
-          ))}
-        </ul>
+        <div className="max-w-2xl space-y-2">
+          <p className="font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-subtle">
+            Studio safety checklist
+          </p>
+          <ul className="space-y-1">
+            {map.guardrails.map((g) => (
+              <li key={g} className="text-[11px] leading-relaxed text-ink-subtle">
+                · {g}
+              </li>
+            ))}
+          </ul>
+        </div>
       </header>
 
       {/* 1. Brand Identity Lanes */}
@@ -49,8 +54,8 @@ export function IdentityBenchmarkMap({
           1 · Brand Identity Lanes
         </h2>
         <p className="mt-1 text-sm text-ink-muted">
-          Lane · Visual vibe · Product story · Creator fit — flexible map, not one generic
-          Asian style.
+          Fresh Texture · Signal Sprint · Color Persona — flexible map, not one generic
+          Asian style. Studio keeps J / K / C separate.
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {map.laneProfiles.map((p) => (
@@ -98,8 +103,8 @@ export function IdentityBenchmarkMap({
             4–5 · Beauty Signal cards · J / K / C benchmarks
           </h2>
           <p className="mt-1 text-sm text-ink-muted">
-            K-Beauty content-sharing rhythm · C-Beauty concept cards · J-Beauty mood lane —
-            no brand scrapes.
+            K Signal Sprint · C Color Persona · J Fresh Texture — no brand scrapes · no fake
+            「真」 badge.
           </p>
         </div>
         {map.laneBenchmarks.map((section) => (

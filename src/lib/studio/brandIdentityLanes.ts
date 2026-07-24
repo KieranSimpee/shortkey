@@ -1,7 +1,9 @@
 /**
  * ShortKey — Brand Identity Benchmark Map (staging / GOR_GOR_REVIEW).
  * Asian beauty identity system — not decoration, not one generic “Asian style.”
+ * Calibrated vibes: J Fresh Texture · K Signal Sprint · C Color Persona.
  * Preview archetypes only · no trademarked logos · no fake partnerships.
+ * Canonical Gor Gor translate: src/brand/sky/SHORTKEY_JKC_VIBE_RADAR_GORGOR_REVIEW.md
  */
 
 import type { StudioStatus } from "@/lib/studio/types";
@@ -15,6 +17,16 @@ export const IDENTITY_LANES = [
 ] as const;
 
 export type IdentityLane = (typeof IDENTITY_LANES)[number];
+
+/** Calibrated vibe names for J/K/C — GOR_GOR_REVIEW, not production DNA lock. */
+export const CALIBRATED_VIBES = {
+  "J-Beauty": "Fresh Texture",
+  "K-Beauty": "Signal Sprint",
+  "C-Beauty": "Color Persona",
+} as const;
+
+export type CalibratedVibe =
+  (typeof CALIBRATED_VIBES)[keyof typeof CALIBRATED_VIBES];
 
 export const VISUAL_VIBES = [
   "soft",
@@ -51,23 +63,32 @@ export type CreatorFitRole = (typeof CREATOR_FIT_ROLES)[number];
 
 export const LANE_FOCUS: Record<
   IdentityLane,
-  { focus: string; rhythm: string }
+  { focus: string; rhythm: string; vibe?: CalibratedVibe }
 > = {
   "J-Beauty": {
-    focus: "mood / fashion / personal creator identity",
-    rhythm: "Atmosphere · personal style · soft editorial presence",
+    vibe: "Fresh Texture",
+    focus:
+      "Fresh Texture — natural refinement + first-discovery warmth (soft daylight · macro texture · first makeup · creator rec · seishun freshness)",
+    rhythm:
+      "Soft daylight · macro texture · first discovery · creator recommendation · community warmth — not only craft / 職人",
   },
   "K-Beauty": {
-    focus: "content sharing / routine / product education / Hallyu rhythm",
-    rhythm: "Beauty Signal · routine story · creator demos · ingredient/finish · trend notes",
+    vibe: "Signal Sprint",
+    focus:
+      "Signal Sprint — content sharing rhythm · routine storytelling · texture demo · creator review · Hallyu discovery · beauty tech awareness",
+    rhythm:
+      "Beauty Signal · routine story · texture demo · usage moment · creator first impression — no miracle / 即時效果 claims",
   },
   "C-Beauty": {
-    focus: "packaging / color / brand personality / viral marketplace energy",
-    rhythm: "Shade · pack story · color test · viral makeup notes · discovery energy",
+    vibe: "Color Persona",
+    focus:
+      "Color Persona — packaging story · color wave · fantasy product world · swatch culture · viral discovery · brand personality",
+    rhythm:
+      "Shade · pack story · color test · viral discovery · cute / fantasy / playful / affordable — not only 大女主 / boss",
   },
   "Pan-Asian": {
     focus: "bridge across J / K / C signals without forcing one look",
-    rhythm: "Shared product story + local market fit",
+    rhythm: "Asian Beauty Mix OK as lifestyle energy — each brand keeps lane DNA",
   },
   "Western-Asian Hybrid": {
     focus: "cross-market storytelling for diaspora and hybrid audiences",
@@ -143,40 +164,40 @@ export interface BrandIdentityBenchmarkMap {
 }
 
 export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
-  const updatedAt = "2026-07-25T02:00:00.000Z";
+  const updatedAt = "2026-07-25T04:00:00.000Z";
 
   const laneProfiles: BrandIdentityLaneProfile[] = [
     {
       id: "preview_brand_a",
-      label: "Preview Brand A · soft mood lane",
+      label: "Preview Brand A · Fresh Texture",
       previewOnly: true,
       lane: "J-Beauty",
       visualVibe: "soft",
       productStory: ["texture", "routine"],
       creatorFit: ["fashion creator", "routine educator"],
-      note: "Preview archetype — mood / fashion / personal identity. Not a real brand partnership.",
+      note: "Preview archetype — Fresh Texture (natural refinement + first-discovery warmth). Not a real brand partnership.",
       status: "GOR_GOR_REVIEW",
     },
     {
       id: "preview_brand_b",
-      label: "Preview Brand B · routine education lane",
+      label: "Preview Brand B · Signal Sprint",
       previewOnly: true,
       lane: "K-Beauty",
       visualVibe: "clean",
       productStory: ["routine", "ingredient", "texture"],
       creatorFit: ["routine educator", "reviewer"],
-      note: "Preview archetype — content sharing / routine / product education rhythm. Not a real brand.",
+      note: "Preview archetype — Signal Sprint (routine story · texture demo · fast beauty signal). Not a real brand.",
       status: "GOR_GOR_REVIEW",
     },
     {
       id: "preview_brand_c",
-      label: "Preview Brand C · color & pack personality",
+      label: "Preview Brand C · Color Persona",
       previewOnly: true,
       lane: "C-Beauty",
       visualVibe: "playful",
       productStory: ["packaging", "shade", "creator shop"],
       creatorFit: ["swatcher", "shop host"],
-      note: "Preview archetype — packaging / color / viral discovery energy. Not a real brand or marketplace listing.",
+      note: "Preview archetype — Color Persona (packaging · color wave · fantasy / viral discovery). Not a real brand or marketplace listing.",
       status: "GOR_GOR_REVIEW",
     },
     {
@@ -187,7 +208,7 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
       visualVibe: "editorial",
       productStory: ["routine", "shade", "packaging"],
       creatorFit: ["reviewer", "swatcher", "routine educator"],
-      note: "Preview archetype — flexible bridge across lanes. No single forced aesthetic.",
+      note: "Preview archetype — flexible bridge across lanes. Asian Beauty Mix lifestyle OK; each brand keeps DNA.",
       status: "GOR_GOR_REVIEW",
     },
     {
@@ -209,7 +230,7 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
       kind: "beauty-signal",
       lane: "K-Beauty",
       title: "Beauty Signal card",
-      body: "Clear product signal for sharing — glow, finish, or step — without idol packaging drops.",
+      body: "Fast, shareable product signal — finish, step, or texture — without miracle or 即時效果 claims.",
       previewOnly: true,
     },
     {
@@ -217,15 +238,15 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
       kind: "routine-story",
       lane: "K-Beauty",
       title: "Routine story",
-      body: "Morning / night / layering as education — creators teach the product story.",
+      body: "Morning / night / layering as education — creators teach the product story, not insecurity hooks.",
       previewOnly: true,
     },
     {
       id: "sig_k_demo",
       kind: "creator-demo",
       lane: "K-Beauty",
-      title: "Creator demo",
-      body: "Texture, application, and finish demos — trust through showing, not celebrity claim.",
+      title: "Texture demo · usage moment",
+      body: "Visible texture demo and real usage moment — creator first impression, not exaggerated before–after.",
       previewOnly: true,
     },
     {
@@ -233,15 +254,15 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
       kind: "ingredient-finish",
       lane: "K-Beauty",
       title: "Ingredient / finish",
-      body: "Honest finish language (sheer, blur, glow) — no exaggerated clinical results.",
+      body: "Honest finish language (sheer, blur, glow) — no miracle results. Prefer Verified Info / Brand-Provided Data labels.",
       previewOnly: true,
     },
     {
       id: "sig_k_trend",
       kind: "trend-note",
       lane: "K-Beauty",
-      title: "Trend note",
-      body: "Seasonal rhythm notes for content planning — educational, not scraped from ads.",
+      title: "Trend note · Hallyu discovery",
+      body: "Hallyu / Olive Young–style discovery + beauty tech awareness — educational rhythm, not scraped ads.",
       previewOnly: true,
     },
     {
@@ -256,8 +277,8 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
       id: "sig_c_shade",
       kind: "shade-swatch",
       lane: "C-Beauty",
-      title: "Shade swatch",
-      body: "Color story as a matching signal — concept card only, no fake reviews.",
+      title: "Shade swatch · color wave",
+      body: "Swatch culture as matching signal — concept card only, no fake reviews.",
       previewOnly: true,
     },
     {
@@ -265,7 +286,7 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
       kind: "packaging-story",
       lane: "C-Beauty",
       title: "Packaging story",
-      body: "C-beauty often leans playful packaging personality — learn the lane, do not copy logos or SKUs.",
+      body: "Color Persona often leans packaging personality + fantasy product world — learn the lane, do not copy logos or SKUs.",
       previewOnly: true,
     },
     {
@@ -273,15 +294,15 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
       kind: "creator-color-test",
       lane: "C-Beauty",
       title: "Creator color test",
-      body: "Swatch / wear test as creator fit — Preview concept, not a YesStyle-style listing.",
+      body: "Swatch / wear test as creator fit — cute · fantasy · playful · affordable · viral range, not only boss energy.",
       previewOnly: true,
     },
     {
       id: "sig_c_viral",
       kind: "viral-makeup-note",
       lane: "C-Beauty",
-      title: "Viral makeup trend note",
-      body: "Discovery energy as a content angle — no scraped reviews, no brand asset lifts.",
+      title: "Viral makeup · XHS / Douyin energy",
+      body: "Viral discovery as a content angle — no scraped reviews, no brand asset lifts.",
       previewOnly: true,
     },
     {
@@ -296,8 +317,8 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
       id: "sig_j_mood",
       kind: "beauty-signal",
       lane: "J-Beauty",
-      title: "Mood / fashion signal",
-      body: "Personal creator identity and soft editorial mood — not a forced cute-pack template.",
+      title: "Fresh Texture signal",
+      body: "Soft daylight · macro texture · first discovery warmth — seishun freshness, not only craft / 職人 subtraction.",
       previewOnly: true,
     },
   ];
@@ -305,26 +326,26 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
   const creatorDiscovery: CreatorDiscoveryPreviewSlot[] = [
     {
       id: "disc_routine_educator",
-      roleLabel: "Preview · Routine educator slot",
+      roleLabel: "Preview · Routine educator · Signal Sprint fit",
       laneFit: ["K-Beauty", "Pan-Asian"],
       fitRoles: ["routine educator", "reviewer"],
-      note: "Role slot for matching education — not a fake named creator.",
+      note: "Role slot for Signal Sprint education — not a fake named creator.",
       previewOnly: true,
     },
     {
       id: "disc_swatcher",
-      roleLabel: "Preview · Swatcher / color host",
+      roleLabel: "Preview · Swatcher · Color Persona fit",
       laneFit: ["C-Beauty", "Pan-Asian"],
       fitRoles: ["swatcher", "shop host"],
-      note: "Color and shade storytelling fit — Preview only.",
+      note: "Color wave and shade storytelling fit — Preview only.",
       previewOnly: true,
     },
     {
       id: "disc_fashion",
-      roleLabel: "Preview · Fashion / mood creator",
+      roleLabel: "Preview · First-discovery · Fresh Texture fit",
       laneFit: ["J-Beauty", "Western-Asian Hybrid"],
       fitRoles: ["fashion creator"],
-      note: "Mood and personal identity fit — Preview only.",
+      note: "First makeup / first discovery + soft texture fit — Preview only.",
       previewOnly: true,
     },
   ];
@@ -332,16 +353,16 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
   const laneBenchmarks: LaneBenchmarkSection[] = [
     {
       lane: "J-Beauty",
-      headline: "J-Beauty benchmark",
+      headline: "J-Beauty · Fresh Texture",
       education:
-        "Often mood, fashion, and personal creator identity — soft or editorial vibes without forcing one look.",
+        "Natural refinement + first-discovery warmth: soft daylight, macro texture, first makeup, creator recommendation, LIPS-style community, seishun freshness — not only craft / 職人 / minimal subtraction.",
       signalCardIds: ["sig_j_mood"],
     },
     {
       lane: "K-Beauty",
-      headline: "K-Beauty benchmark",
+      headline: "K-Beauty · Signal Sprint",
       education:
-        "Content-sharing rhythm: Beauty Signal, routine story, creator demos, ingredient/finish, trend notes — not only cute packaging + idol.",
+        "Content-sharing rhythm: Beauty Signal, routine story, texture demo, creator review, Hallyu / Olive Young–style discovery, beauty tech awareness. Safe: usage moment + first impression. Avoid: 即時效果, miracle, exaggerated before–after, skin insecurity.",
       signalCardIds: [
         "sig_k_beauty_signal",
         "sig_k_routine",
@@ -353,9 +374,9 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
     },
     {
       lane: "C-Beauty",
-      headline: "C-Beauty benchmark",
+      headline: "C-Beauty · Color Persona",
       education:
-        "Packaging, color, brand personality, and discovery energy — concept cards only. No fake reviews, no marketplace clone, no logos without rights.",
+        "Packaging story, color wave, fantasy product world, swatch culture, viral discovery, Xiaohongshu / Douyin energy — cute / fantasy / playful / affordable / viral, not only 大女主 / boss. Concept cards only; no fake reviews or logos without rights.",
       signalCardIds: [
         "sig_c_shade",
         "sig_c_pack",
@@ -366,9 +387,9 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
     },
     {
       lane: "Pan-Asian",
-      headline: "Pan-Asian option",
+      headline: "Pan-Asian option · Asian Beauty Mix",
       education:
-        "Bridge across J / K / C without imposing one generic Asian style. Match by product story + creator trust + local market.",
+        "Bridge across J / K / C without imposing one generic Asian style. Public Mix OK as lifestyle energy — each brand keeps Fresh Texture / Signal Sprint / Color Persona DNA.",
       signalCardIds: [],
     },
     {
@@ -386,14 +407,14 @@ export function createSeedIdentityBenchmark(): BrandIdentityBenchmarkMap {
     status: "GOR_GOR_REVIEW",
     updatedAt,
     framing:
-      "ShortKey was missing an Asian beauty identity system — not decoration. This map is flexible lane education for matching. All demo brands are Preview-only archetypes.",
+      "ShortKey 不模仿畫面。ShortKey 捕捉生命力. Calibrated lanes: J Fresh Texture · K Signal Sprint · C Color Persona. Identity system, not decoration. All demo brands are Preview-only · GOR_GOR_REVIEW · not production DNA lock.",
     guardrails: [
+      "Studio: keep J / K / C lanes separate (intelligence). Public: Asian Beauty Mix OK — each brand keeps DNA.",
       "Do not copy any reference website, app, logo, product image, celebrity, review, or brand asset.",
-      "References = internal benchmark learning only until relationships are real.",
-      "Sample data must stay clearly marked Preview.",
-      "No fake creators · no fake reviews · no fake partnerships.",
-      "No production-ready claim · GOR_GOR_REVIEW first.",
-      "No celebrity names/images without rights.",
+      "Prefer transparent beauty discovery · creator context shown · no fake results · honest product story · real usage moment. Avoid 「拒絕濾鏡」/ unfiltered.",
+      "Evidence labels: Verified Info · Brand-Provided Data · Evidence Available · Under Review · Creator Tested (only if real). No early 「真」/ guaranteed-true badge.",
+      "Sample data must stay clearly marked Preview. No fake creators · reviews · partnerships.",
+      "No production DNA claim · GOR_GOR_REVIEW first. No celebrity names/images without rights.",
     ],
     laneProfiles,
     beautySignalCards,

@@ -17,8 +17,8 @@ export function CreatorDiscoveryPreview({
         Fit slots — not a social network
       </h3>
       <p className="mt-2 text-sm text-ink-muted">
-        Lightweight matching roles for Brand Identity Lanes. No fake creators, reviews, or
-        partnerships.
+        Lightweight matching roles for Fresh Texture / Signal Sprint / Color Persona. No
+        fake creators, reviews, or partnerships.
       </p>
       <ul className="mt-4 grid gap-3 sm:grid-cols-3">
         {slots.map((slot) => (

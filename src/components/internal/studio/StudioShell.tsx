@@ -719,7 +719,8 @@ function DashboardPage({
           Identity Benchmark Map
         </h2>
         <p className="mt-1 text-sm text-ink-muted">
-          Asian beauty identity system — J / K / C lanes · Preview only · GOR_GOR_REVIEW
+          Asian beauty identity — Fresh Texture · Signal Sprint · Color Persona · Preview ·
+          GOR_GOR_REVIEW
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <StatusPill
@@ -790,7 +791,7 @@ function IdentityPage({
   return (
     <Panel
       title="Identity Benchmark Map"
-      subtitle="Asian beauty identity system — not decoration. Flexible J / K / C / Pan-Asian / Hybrid lanes. Preview samples only."
+      subtitle="Fresh Texture · Signal Sprint · Color Persona — not decoration. J / K / C stay separate in Studio. Preview · GOR_GOR_REVIEW · not DNA lock."
     >
       <StatusControls
         current={map.status}

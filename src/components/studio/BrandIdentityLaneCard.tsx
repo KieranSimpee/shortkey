@@ -21,6 +21,11 @@ export function BrandIdentityLaneCard({
         <span className="rounded-md border border-brand/20 bg-silk/60 px-2 py-0.5 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-brand">
           {profile.lane}
         </span>
+        {focus.vibe ? (
+          <span className="rounded-md border border-brand/12 bg-white px-2 py-0.5 font-display text-[10px] font-medium tracking-wide text-ink-muted">
+            {focus.vibe}
+          </span>
+        ) : null}
       </div>
       <h3 className="mt-2.5 font-display text-sm font-semibold text-ink">
         {profile.label}
