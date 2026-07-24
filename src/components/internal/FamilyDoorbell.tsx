@@ -5,16 +5,18 @@ import { cn } from "@/lib/utils";
 import { uid } from "@/components/internal/FamilyChatPanel";
 
 /**
- * Family Home Doorbell + Receipt Board v0.1
- * Storage: browser localStorage key `shortkey-doorbell-receipts-v01` only.
+ * Family Home v0.9.1 — Doorbell & Receipt Board
+ * Storage: browser localStorage key `shortkey-family-doorbell-v091` only.
+ * Migrates once from legacy `shortkey-doorbell-receipts-v01` if present.
  * Local prototype — no cross-device sync · not production · Gor Gor Review pending.
- * Doc: src/brand/sky/FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md
+ * Doc: src/brand/sky/FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md
  */
 
-export const DOORBELL_STORAGE_KEY = "shortkey-doorbell-receipts-v01";
+export const DOORBELL_STORAGE_KEY = "shortkey-family-doorbell-v091";
+const LEGACY_DOORBELL_KEY = "shortkey-doorbell-receipts-v01";
 
 export const DOORBELL_WARNING =
-  "Internal Staging · local prototype only · this browser’s localStorage · not shared DB · no cross-device sync · Gor Gor Review pending.";
+  "Family Home v0.9.1 · Internal Staging · local prototype only · this browser’s localStorage · not shared across devices · not shared DB · Gor Gor Review pending.";
 
 export const TARGET_MEMBER_OPTIONS = [
   "sky",
@@ -75,8 +77,9 @@ export type DoorbellCommand = {
 };
 
 export type DoorbellState = {
-  version: "0.1";
+  version: "0.9.1";
   commands: DoorbellCommand[];
+  migratedFrom?: string[];
 };
 
 const ALL_MEMBERS: TargetMember[] = ["sky", "senti", "kura", "agent-r", "gor-gor"];
@@ -118,7 +121,7 @@ const btnAck =
   "rounded-full border border-brand/25 bg-white px-3 py-1.5 text-[11px] font-medium text-ink transition hover:border-brand/50 hover:bg-brand/5";
 
 function emptyState(): DoorbellState {
-  return { version: "0.1", commands: [] };
+  return { version: "0.9.1", commands: [] };
 }
 
 export function resolveTargets(selected: TargetMemberOption[]): TargetMember[] {
@@ -130,14 +133,42 @@ export function resolveTargets(selected: TargetMemberOption[]): TargetMember[] {
   return ALL_MEMBERS.filter((m) => set.has(m));
 }
 
+function normalizeState(
+  parsed: Partial<DoorbellState> & { version?: string },
+  migratedFrom?: string[],
+): DoorbellState {
+  if (!Array.isArray(parsed.commands)) {
+    return migratedFrom?.length
+      ? { version: "0.9.1", commands: [], migratedFrom }
+      : emptyState();
+  }
+  return {
+    version: "0.9.1",
+    commands: parsed.commands,
+    ...(migratedFrom?.length || parsed.migratedFrom?.length
+      ? { migratedFrom: migratedFrom ?? parsed.migratedFrom }
+      : {}),
+  };
+}
+
 export function loadDoorbellState(): DoorbellState {
   if (typeof window === "undefined") return emptyState();
   try {
     const raw = localStorage.getItem(DOORBELL_STORAGE_KEY);
-    if (!raw) return emptyState();
-    const parsed = JSON.parse(raw) as Partial<DoorbellState>;
-    if (!Array.isArray(parsed.commands)) return emptyState();
-    return { version: "0.1", commands: parsed.commands };
+    if (raw) {
+      const parsed = JSON.parse(raw) as Partial<DoorbellState>;
+      return normalizeState(parsed);
+    }
+    // One-time migrate from prior v0.1 key
+    const legacy = localStorage.getItem(LEGACY_DOORBELL_KEY);
+    if (legacy) {
+      const parsed = JSON.parse(legacy) as Partial<DoorbellState>;
+      const migrated = normalizeState(parsed, [LEGACY_DOORBELL_KEY]);
+      localStorage.setItem(DOORBELL_STORAGE_KEY, JSON.stringify(migrated));
+      localStorage.removeItem(LEGACY_DOORBELL_KEY);
+      return migrated;
+    }
+    return emptyState();
   } catch {
     return emptyState();
   }
@@ -145,12 +176,13 @@ export function loadDoorbellState(): DoorbellState {
 
 export function saveDoorbellState(data: DoorbellState) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(DOORBELL_STORAGE_KEY, JSON.stringify(data));
+  localStorage.setItem(DOORBELL_STORAGE_KEY, JSON.stringify({ ...data, version: "0.9.1" }));
 }
 
 export function clearDoorbellStorage() {
   if (typeof window === "undefined") return;
   localStorage.removeItem(DOORBELL_STORAGE_KEY);
+  localStorage.removeItem(LEGACY_DOORBELL_KEY);
 }
 
 function formatTime(iso: string) {
@@ -181,7 +213,7 @@ function StagingBanner() {
       className="rounded-xl border border-amber-700/25 bg-amber-50 px-3 py-2 text-[11px] leading-relaxed text-amber-950"
     >
       <span className="font-display text-[10px] font-bold uppercase tracking-[0.14em] text-amber-900">
-        Internal Staging · local prototype only
+        Family Home v0.9.1 · Internal Staging · local prototype only
       </span>
       <span className="mt-0.5 block text-amber-900/90">{DOORBELL_WARNING}</span>
     </div>
@@ -343,10 +375,11 @@ export function LivingRoomDoorbell({
     <section className="overflow-hidden rounded-2xl border border-brand/25 bg-white shadow-[0_0_0_1px_rgba(140,130,252,0.06)]">
       <header className="border-b border-ink/5 bg-gradient-to-r from-brand/[0.06] via-[#f7f4fc] to-white px-4 py-3 sm:px-5">
         <h3 className="font-display text-sm font-semibold text-ink">
-          Family Home Doorbell · Receipt Board
+          Family Home v0.9.1 · Doorbell &amp; Receipt Board
         </h3>
         <p className="mt-0.5 text-[11px] text-ink-subtle">
-          Kieran / Gor Gor ring from Living Room · members ack from their rooms · v0.1
+          Kieran / Gor Gor ring from Living Room · members ack from their rooms · not shared across
+          devices
         </p>
       </header>
 
@@ -533,7 +566,7 @@ export function MemberDoorbellPanel({
     <section className="overflow-hidden rounded-2xl border border-brand/25 bg-white shadow-[0_0_0_1px_rgba(140,130,252,0.06)]">
       <header className="border-b border-ink/5 bg-gradient-to-r from-[#f7f4fc] via-white to-brand/[0.04] px-4 py-3 sm:px-5">
         <h3 className="font-display text-sm font-semibold text-ink">
-          Doorbell · {MEMBER_LABEL[member]} room
+          Doorbell · {MEMBER_LABEL[member]} room · v0.9.1
         </h3>
         <p className="mt-0.5 text-[11px] text-ink-subtle">
           Ack Living Room commands here · or reply in room chat to mark RECEIVED

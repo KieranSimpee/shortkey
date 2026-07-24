@@ -34,9 +34,9 @@ import {
  * Family Table v0.8 — One Room Per Family Member (house architecture).
  * Persistence: browser localStorage key `shortkey-family-table-v08` only
  * (includes Living Room `cabinet` — Family Cabinet drawers).
- * Doorbell receipts: separate key `shortkey-doorbell-receipts-v01` (local prototype).
+ * Doorbell receipts: `shortkey-family-doorbell-v091` (Family Home v0.9.1 · local prototype).
  * Migrates lightly once from v0.7 + Family Chat v0.1.
- * Doc: src/brand/sky/FAMILY_TABLE_v0_8.md
+ * Doc: src/brand/sky/FAMILY_TABLE_v0_8.md · FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md
  */
 
 export const STORAGE_KEY = "shortkey-family-table-v08";
@@ -797,7 +797,7 @@ export function FamilyTableWorkbench() {
           {/* Living Room · Family House Rule (top announcement) */}
           {roomId === "living" ? <LivingRoomHouseRuleCard /> : null}
 
-          {/* Living Room · Family Home Doorbell + Receipt Board v0.1 */}
+          {/* Living Room · Family Home v0.9.1 Doorbell & Receipt Board */}
           {roomId === "living" ? (
             <LivingRoomDoorbell
               state={doorbell.state}

@@ -14,7 +14,7 @@
 - Status: **Internal Staging · Gor Gor Review pending**
 
 **Later:** 正式版 = Family Memory Portal (shared DB + login + roles) — not this staging  
-**Related:** [`FAMILY_TABLE_v0_7_VISION.md`](./FAMILY_TABLE_v0_7_VISION.md) · [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md) · [`GOR_GOR_CHAT_BRIDGE_v0_1.md`](./GOR_GOR_CHAT_BRIDGE_v0_1.md) · [`FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md`](./FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md)
+**Related:** [`FAMILY_TABLE_v0_7_VISION.md`](./FAMILY_TABLE_v0_7_VISION.md) · [`FAMILY_TABLE_v0_5.md`](./FAMILY_TABLE_v0_5.md) · [`STUDIO_PUSH_LEDGER.md`](./STUDIO_PUSH_LEDGER.md) · [`GOR_GOR_CHAT_BRIDGE_v0_1.md`](./GOR_GOR_CHAT_BRIDGE_v0_1.md) · [`FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md`](./FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md)
 
 ---
 
@@ -137,7 +137,7 @@ Living Room also has a shared board: announcements · priorities · approved sta
 | Key | Role |
 |-----|------|
 | **`shortkey-family-table-v08`** | **Canonical** — all rooms + panels + per-room chat + **`cabinet`** (Family Cabinet drawers) |
-| **`shortkey-doorbell-receipts-v01`** | Family Home Doorbell + Receipt Board v0.1 — Living Room commands + per-member receipts (**local prototype only** · see [`FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md`](./FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md)) |
+| **`shortkey-family-doorbell-v091`** | Family Home **v0.9.1** Doorbell & Receipt Board — Living Room commands + per-member receipts (**local prototype only** · see [`FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md`](./FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md)); migrates once from `shortkey-doorbell-receipts-v01` |
 | `shortkey-family-table-v07` | Legacy table — **read once** on first v0.8 load (visions → Kieran, vault → Living standards, tasks by seat, assets → Senti, reviews → Gor Gor, memories → Gor Gor) |
 | `shortkey-family-chat-v01` | Legacy chat — **read once**; messages mapped into room `chat` by room name |
 
@@ -211,7 +211,7 @@ npm run family:dev
 | File | Role |
 |------|------|
 | `FamilyTableWorkbench.tsx` | v0.8 house · rooms · 9 panels · floating Gor Gor · migration · Living Room Cabinet + Doorbell host |
-| `FamilyDoorbell.tsx` | Family Home Doorbell + Receipt Board v0.1 · `shortkey-doorbell-receipts-v01` |
+| `FamilyDoorbell.tsx` | Family Home **v0.9.1** Doorbell & Receipt Board · `shortkey-family-doorbell-v091` |
 | `GorGorChatDrawer.tsx` | Shared Living Room Thread v0.1 · sender/kind/from-room · one Simpee conversation |
 | `app/api/gor-gor-chat/route.ts` | Server-side Base44 Superagent bridge (SIMPEE only) |
 | `FamilyCabinet.tsx` | Family Cabinet · 6 drawers · item forms · status gate (Senti ≠ approve) |
