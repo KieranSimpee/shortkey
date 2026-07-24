@@ -171,12 +171,14 @@ Code already treats `.live` separately from `.beauty`. Until the domain is attac
 ## 6. shortkey.studio — attach to same Vercel project (manual · INTERNAL STAGING ONLY)
 
 **Host:** `shortkey.studio` (and `www.shortkey.studio`)  
-**App surface:** Family Table internal staging at `/internal/family-table`  
-**Middleware:** `shortkey.studio/` → redirect `/internal/family-table`  
+**App surface:** Studio P0 DNA Control Room at `/internal/studio`  
+**Local port:** **3003** (`npm run studio:dev` · `SHORTKEY_SURFACE=studio`)  
+**Middleware:** `shortkey.studio/` → redirect `/internal/studio`  
 **Status lock:** **可以上 domain · 只係 internal staging · 不是 public launch**  
-**Do not** create a second Vercel project for `.studio` — same chain as beauty / live.
+**Do not** create a second Vercel project for `.studio` — same chain as beauty / live.  
+**Family Table** stays on `family.shortkey.world` / `npm run family:dev` (:3002) — not on `.studio`.
 
-**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Localhost + `npm run family:dev` bypass. Soft shared-secret only — not 正式版 login/roles.
+**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Localhost + `npm run studio:dev` / `family:dev` bypass. Soft shared-secret only — not 正式版 login/roles.
 
 **One-time dashboard steps (Kieran):**
 
@@ -185,11 +187,14 @@ Code already treats `.live` separately from `.beauty`. Until the domain is attac
 3. At the domain registrar, set the DNS records Vercel shows (usually A / CNAME)
 4. Wait for SSL + “Valid Configuration”
 5. Set `FAMILY_TABLE_STAGING_PASSWORD` on the Vercel project (Production + Preview if needed)
-6. Open `https://shortkey.studio` — should land on **Family Table** with **INTERNAL STAGING ONLY** banner (not beauty Coming Soon, not public launch)
+6. Open `https://shortkey.studio` — should land on **DNA Control Room** (`/internal/studio`) · INTERNAL STAGING ONLY (not beauty Coming Soon, not Family Table, not public launch)
 
 Until the domain is attached, use:
-- Local: `npm run family:dev` → `http://localhost:3002/` (or `/internal/family-table`)
-- Deployed path on beauty/vercel host: `https://shortkey.vercel.app/internal/family-table` (still `noindex`; soft gate if env set)
+- Local Studio: `npm run studio:dev` → `http://localhost:3003/` (or `/internal/studio`)
+- Local Family Table: `npm run family:dev` → `http://localhost:3002/` (or `/internal/family-table`)
+- Deployed path on beauty/vercel host: `https://shortkey.vercel.app/internal/studio` (still `noindex`; soft gate if env set)
+
+Doc: `src/brand/sky/SHORTKEY_STUDIO_P0_DNA_CONTROL.md`
 
 ---
 
@@ -205,11 +210,11 @@ Until the domain is attached, use:
 **Host:** `family.shortkey.world` (optional `www.family.shortkey.world`)  
 **App surface:** Family Table v0.7 at `/internal/family-table`  
 **Middleware:** `family.shortkey.world/` → redirect `/internal/family-table`  
-**Also kept:** `shortkey.studio` → same route (CONNECTIONS §6) — both may point here  
+**Studio separate:** `shortkey.studio` → DNA Control Room (CONNECTIONS §6 · port 3003) — not Family Table  
 **Status lock:** **INTERNAL STAGING ONLY · not public world launch**  
 **Do not** create a second Vercel project — same ShortKey project as beauty / live / studio.
 
-**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Applies to family/studio host `/` and `/internal/*`. Localhost + `npm run family:dev` bypass.
+**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Applies to family/studio host `/` and `/internal/*`. Localhost + `npm run family:dev` / `studio:dev` bypass.
 
 ### DNS record (shortkey.world zone) — copy for registrar
 
