@@ -253,13 +253,15 @@ Until DNS / domain is valid, use:
 
 ---
 
-## 8. shortkey.social — Creator Early Access (staging · GOR_GOR_REVIEW · attach later)
+## 8. shortkey.social — Creator Circle Early Access (staging · GOR_GOR_REVIEW · attach later)
 
 **Host:** `shortkey.social` (and `www.shortkey.social`) — **domain attach later**; do not treat local preview as production launch.  
-**App surface:** Creator Early Access at `/social`  
+**App surface:** Creator Circle Early Access at `/social`  
+**Hero:** Join the ShortKey Creator Circle  
 **Local port:** **3004** (`npm run social:dev` · `SHORTKEY_SURFACE=social`)  
 **Middleware:** `shortkey.social/` → rewrite `/social` (same pattern as live → `/live`)  
-**Store:** `POST /api/social/early-access` → `data/social-early-access.json` (dev) · localStorage `shortkey-social-early-access-v01` fallback · no Upstash required  
+**Store:** `POST /api/social/early-access` → `data/social-early-access.json` (dev) · localStorage `shortkey-social-early-access-v02` fallback · no Upstash required  
+**Submission statuses:** Submitted (default) · Under Review · Invited  
 **Status lock:** **GOR_GOR_REVIEW · staging / public-preview polish · not production-ready**  
 **Do not** use Studio Deploy Center as one-click publisher for this surface.  
 **Do not** add secrets for this portal.  

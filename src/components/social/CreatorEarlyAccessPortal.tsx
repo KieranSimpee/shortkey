@@ -6,6 +6,7 @@ import { POWERED_BY_AI_FAMILY } from "@/content/aiFamilyCredit";
 import {
   SOCIAL_CATEGORIES,
   SOCIAL_COLLAB_TYPES,
+  SOCIAL_DEFAULT_STATUS,
   SOCIAL_FOLLOWER_RANGES,
   SOCIAL_LOCAL_STORAGE_KEY,
   SOCIAL_PAYOUT_BANDS,
@@ -16,57 +17,88 @@ import {
   type SocialFollowerRange,
   type SocialPayoutBand,
   type SocialPlatform,
+  type SocialSubmissionStatus,
 } from "@/lib/social/types";
 
 /**
- * shortkey.social — Creator Early Access portal (staging).
+ * shortkey.social — Creator Circle Early Access portal (staging).
  * Soft pearl / light lilac · Studio Brand DNA voice · GOR_GOR_REVIEW.
  * Prefer POST /api/social/early-access (file store in dev); localStorage fallback.
  */
 
 const SAFETY_LINE =
-  "Registration does not guarantee selection, paid campaigns, income, or sales results.";
+  "Registration does not guarantee selection, paid campaigns, income, or sales results. There is no payment system on this surface.";
 
-const CREATOR_LINE =
-  "ShortKey helps beauty creators become discoverable to brands looking for authentic product storytelling.";
-
-const DNA_POINTS = [
-  "Creator-first, brand-ready",
-  "Asian beauty bridge",
-  "Link-based promotion first",
-  "ROI reporting is the value",
-  "Simple transparent packages",
-  "Trust and protection",
+const WHY_POINTS = [
+  {
+    title: "Creator-first, brand-ready",
+    body: "Built so beauty creators can show up clearly to brands — without a marketplace maze.",
+  },
+  {
+    title: "Asian beauty bridge",
+    body: "ShortKey connects K-Beauty and Asian beauty storytelling with creators who already speak that language.",
+  },
+  {
+    title: "Link-based promotion first",
+    body: "Simple, trackable links before heavy tooling — keep the work light and the signal strong.",
+  },
+  {
+    title: "Trust and protection",
+    body: "Transparent packages and clear expectations. No income promises. No forced deals.",
+  },
 ] as const;
 
-const HONESTY_LOCAL =
-  "Browser localStorage fallback (`shortkey-social-early-access-v01`) · this device only · staging · not a shared production database.";
+const DISCOVERY_POINTS = [
+  "Share your platform, handle, and beauty category so brands can find the right fit.",
+  "Interest lists stay in staging review — ShortKey looks for authentic product storytelling, not vanity metrics alone.",
+  "If invited, you move from Submitted → Under Review → Invited. Selection is never automatic.",
+] as const;
+
+const COLLAB_BLURBS: Record<(typeof SOCIAL_COLLAB_TYPES)[number], string> = {
+  Gifted: "Product-led seeding — try, create, share.",
+  Paid: "Fixed-fee or package work when both sides agree.",
+  Affiliate: "Performance links with clear tracking.",
+  Hybrid: "Mix of gifted, paid, and affiliate — case by case.",
+};
 
 const fieldClass =
   "mt-1.5 w-full rounded-xl border border-brand/20 bg-white/90 px-3.5 py-2.5 text-sm text-ink shadow-sm outline-none transition focus:border-brand/45 focus:ring-2 focus:ring-brand/15";
 
-const labelClass = "block text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted";
+const labelClass =
+  "block text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted";
+
+const sectionTitleClass =
+  "font-display text-lg font-semibold tracking-tight text-ink sm:text-xl";
+
+const HONESTY_LOCAL =
+  "Browser localStorage fallback (`shortkey-social-early-access-v02`) · this device only · staging · not a shared production database.";
 
 type FormState = {
   name: string;
-  handleOrEmail: string;
+  email: string;
+  country: string;
   platform: SocialPlatform | "";
-  category: SocialCategory | "";
+  handle: string;
   followerRange: SocialFollowerRange | "";
-  location: string;
-  collabType: SocialCollabType | "";
-  payoutBand: SocialPayoutBand | "";
+  beautyCategory: SocialCategory | "";
+  preferredCollabType: SocialCollabType | "";
+  preferredPayoutBand: SocialPayoutBand | "";
+  portfolioLink: string;
+  notes: string;
 };
 
 const emptyForm: FormState = {
   name: "",
-  handleOrEmail: "",
+  email: "",
+  country: "",
   platform: "",
-  category: "",
+  handle: "",
   followerRange: "",
-  location: "",
-  collabType: "",
-  payoutBand: "",
+  beautyCategory: "",
+  preferredCollabType: "",
+  preferredPayoutBand: "",
+  portfolioLink: "",
+  notes: "",
 };
 
 function saveLocalFallback(entry: SocialEarlyAccessEntry) {
@@ -84,6 +116,8 @@ export function CreatorEarlyAccessPortal() {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
+  const [submissionStatus, setSubmissionStatus] =
+    useState<SocialSubmissionStatus | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [storageLabel, setStorageLabel] = useState<string | null>(null);
 
@@ -94,26 +128,36 @@ export function CreatorEarlyAccessPortal() {
 
     const payload = {
       name: form.name.trim(),
-      handleOrEmail: form.handleOrEmail.trim(),
+      email: form.email.trim(),
+      country: form.country.trim(),
       platform: form.platform,
-      category: form.category,
+      handle: form.handle.trim(),
       followerRange: form.followerRange,
-      location: form.location.trim(),
-      collabType: form.collabType,
-      payoutBand: form.payoutBand,
+      beautyCategory: form.beautyCategory,
+      preferredCollabType: form.preferredCollabType,
+      preferredPayoutBand: form.preferredPayoutBand,
+      portfolioLink: form.portfolioLink.trim(),
+      notes: form.notes.trim(),
     };
 
     if (
       !payload.name ||
-      !payload.handleOrEmail ||
+      !payload.email ||
+      !payload.country ||
       !payload.platform ||
-      !payload.category ||
+      !payload.handle ||
       !payload.followerRange ||
-      !payload.location ||
-      !payload.collabType ||
-      !payload.payoutBand
+      !payload.beautyCategory ||
+      !payload.preferredCollabType ||
+      !payload.preferredPayoutBand
     ) {
       setError("Please complete every required field.");
+      setBusy(false);
+      return;
+    }
+
+    if (!payload.email.includes("@")) {
+      setError("Please enter a valid email.");
       setBusy(false);
       return;
     }
@@ -121,14 +165,18 @@ export function CreatorEarlyAccessPortal() {
     const localEntry: SocialEarlyAccessEntry = {
       id: `sea_local_${Date.now().toString(36)}`,
       createdAt: new Date().toISOString(),
+      status: SOCIAL_DEFAULT_STATUS,
       name: payload.name,
-      handleOrEmail: payload.handleOrEmail,
+      email: payload.email,
+      country: payload.country,
       platform: payload.platform,
-      category: payload.category,
+      handle: payload.handle,
       followerRange: payload.followerRange,
-      location: payload.location,
-      collabType: payload.collabType,
-      payoutBand: payload.payoutBand,
+      beautyCategory: payload.beautyCategory,
+      preferredCollabType: payload.preferredCollabType,
+      preferredPayoutBand: payload.preferredPayoutBand,
+      portfolioLink: payload.portfolioLink,
+      notes: payload.notes,
     };
 
     try {
@@ -139,19 +187,23 @@ export function CreatorEarlyAccessPortal() {
       });
       if (res.ok) {
         const data = (await res.json()) as {
+          status?: SocialSubmissionStatus;
           meta?: { honesty?: string };
         };
+        setSubmissionStatus(data.status ?? SOCIAL_DEFAULT_STATUS);
         setStorageLabel(data.meta?.honesty ?? "Saved to staging store");
         setDone(true);
         setForm(emptyForm);
       } else {
         saveLocalFallback(localEntry);
+        setSubmissionStatus(SOCIAL_DEFAULT_STATUS);
         setStorageLabel(HONESTY_LOCAL);
         setDone(true);
         setForm(emptyForm);
       }
     } catch {
       saveLocalFallback(localEntry);
+      setSubmissionStatus(SOCIAL_DEFAULT_STATUS);
       setStorageLabel(HONESTY_LOCAL);
       setDone(true);
       setForm(emptyForm);
@@ -193,40 +245,123 @@ export function CreatorEarlyAccessPortal() {
       </header>
 
       <main className="relative z-10 mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+        {/* Hero */}
         <section className="text-center">
           <p className="font-display text-[11px] font-semibold uppercase tracking-[0.22em] text-brand">
             Creator Early Access
           </p>
           <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            ShortKey
+            Join the ShortKey Creator Circle
           </h1>
-          <p className="mt-2 font-display text-lg font-medium text-brand-dark sm:text-xl">
-            One DNA. Many doors.
-          </p>
           <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-ink-muted sm:text-base">
-            {CREATOR_LINE}
+            ShortKey helps beauty creators become discoverable to brands looking
+            for authentic product storytelling.
           </p>
         </section>
 
-        <section className="mt-10" aria-label="What ShortKey stands for">
-          <ul className="grid gap-2 sm:grid-cols-2">
-            {DNA_POINTS.map((point) => (
+        {/* 1. Why ShortKey */}
+        <section className="mt-12" aria-labelledby="why-shortkey">
+          <h2 id="why-shortkey" className={sectionTitleClass}>
+            Why ShortKey
+          </h2>
+          <p className="mt-2 text-sm text-ink-subtle">
+            One DNA. Many doors. Creator-ready without marketplace noise.
+          </p>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+            {WHY_POINTS.map((point) => (
               <li
-                key={point}
-                className="rounded-xl border border-brand/12 bg-white/70 px-3.5 py-2.5 text-left text-[13px] text-ink-muted backdrop-blur-sm"
+                key={point.title}
+                className="rounded-xl border border-brand/12 bg-white/70 px-4 py-3.5 text-left backdrop-blur-sm"
               >
-                {point}
+                <p className="text-[13px] font-semibold text-ink">{point.title}</p>
+                <p className="mt-1 text-[12px] leading-relaxed text-ink-muted">
+                  {point.body}
+                </p>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="mt-10 rounded-2xl border border-brand/15 bg-white/80 p-5 shadow-soft backdrop-blur-sm sm:p-8">
-          <h2 className="font-display text-lg font-semibold tracking-tight text-ink">
-            Register your interest
+        {/* 2. How creators get discovered */}
+        <section className="mt-12" aria-labelledby="discovery">
+          <h2 id="discovery" className={sectionTitleClass}>
+            How creators get discovered
+          </h2>
+          <p className="mt-2 text-sm text-ink-subtle">
+            Early access is an interest list — not a live matching engine.
+          </p>
+          <ol className="mt-5 space-y-3">
+            {DISCOVERY_POINTS.map((line, i) => (
+              <li
+                key={line}
+                className="flex gap-3 rounded-xl border border-brand/12 bg-white/70 px-4 py-3 text-left backdrop-blur-sm"
+              >
+                <span className="font-display text-sm font-semibold text-brand">
+                  {i + 1}
+                </span>
+                <p className="text-[13px] leading-relaxed text-ink-muted">{line}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-4 text-[11px] text-ink-subtle">
+            Status path: Submitted · Under Review · Invited
+          </p>
+        </section>
+
+        {/* 3. Collaboration types */}
+        <section className="mt-12" aria-labelledby="collab-types">
+          <h2 id="collab-types" className={sectionTitleClass}>
+            Collaboration types
+          </h2>
+          <p className="mt-2 text-sm text-ink-subtle">
+            Tell us what you prefer — nothing here is a contract or offer.
+          </p>
+          <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+            {SOCIAL_COLLAB_TYPES.map((type) => (
+              <li
+                key={type}
+                className="rounded-xl border border-brand/12 bg-white/70 px-4 py-3 backdrop-blur-sm"
+              >
+                <p className="text-[13px] font-semibold text-ink">{type}</p>
+                <p className="mt-0.5 text-[12px] text-ink-muted">{COLLAB_BLURBS[type]}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* 4. Preferred payout bands */}
+        <section className="mt-12" aria-labelledby="payout-bands">
+          <h2 id="payout-bands" className={sectionTitleClass}>
+            Preferred payout bands
+          </h2>
+          <p className="mt-2 text-sm text-ink-subtle">
+            Placeholder ranges only — no payment processing on this preview.
+          </p>
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {SOCIAL_PAYOUT_BANDS.map((band) => (
+              <li
+                key={band}
+                className="rounded-full border border-brand/15 bg-white/80 px-3.5 py-1.5 text-[12px] text-ink-muted"
+              >
+                {band}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-[12px] leading-relaxed text-ink-subtle">
+            {SAFETY_LINE}
+          </p>
+        </section>
+
+        {/* 5. Early access form */}
+        <section
+          className="mt-12 rounded-2xl border border-brand/15 bg-white/80 p-5 shadow-soft backdrop-blur-sm sm:p-8"
+          aria-labelledby="early-access-form"
+        >
+          <h2 id="early-access-form" className={sectionTitleClass}>
+            Early access form
           </h2>
           <p className="mt-1.5 text-sm text-ink-subtle">
-            Tell us where you create — we will review interest lists in staging only.
+            Join the Creator Circle interest list. Staging review only.
           </p>
 
           {done ? (
@@ -234,7 +369,10 @@ export function CreatorEarlyAccessPortal() {
               <p className="font-display text-base font-semibold text-ink">
                 Interest received
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+              <p className="mt-2 inline-flex items-center rounded-full border border-brand/25 bg-white/90 px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-brand-dark">
+                Status: {submissionStatus ?? SOCIAL_DEFAULT_STATUS}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
                 Thank you — your details are on the staging interest list. This is
                 not a campaign offer or selection.
               </p>
@@ -247,6 +385,7 @@ export function CreatorEarlyAccessPortal() {
                 type="button"
                 onClick={() => {
                   setDone(false);
+                  setSubmissionStatus(null);
                   setStorageLabel(null);
                 }}
                 className="mt-4 text-[12px] font-semibold text-brand-dark underline-offset-2 hover:underline"
@@ -257,7 +396,7 @@ export function CreatorEarlyAccessPortal() {
           ) : (
             <form onSubmit={onSubmit} className="mt-6 space-y-4" noValidate>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="sm:col-span-2">
+                <div>
                   <label htmlFor="sea-name" className={labelClass}>
                     Name <span className="text-brand">*</span>
                   </label>
@@ -273,20 +412,36 @@ export function CreatorEarlyAccessPortal() {
                   />
                 </div>
 
-                <div className="sm:col-span-2">
-                  <label htmlFor="sea-contact" className={labelClass}>
-                    Handle or email <span className="text-brand">*</span>
+                <div>
+                  <label htmlFor="sea-email" className={labelClass}>
+                    Email <span className="text-brand">*</span>
                   </label>
                   <input
-                    id="sea-contact"
-                    name="handleOrEmail"
+                    id="sea-email"
+                    name="email"
+                    type="email"
                     required
-                    value={form.handleOrEmail}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, handleOrEmail: e.target.value }))
-                    }
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                     className={fieldClass}
-                    placeholder="@handle or you@email.com"
+                    placeholder="you@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="sea-country" className={labelClass}>
+                    Country <span className="text-brand">*</span>
+                  </label>
+                  <input
+                    id="sea-country"
+                    name="country"
+                    required
+                    autoComplete="country-name"
+                    value={form.country}
+                    onChange={(e) => setForm((f) => ({ ...f, country: e.target.value }))}
+                    className={fieldClass}
+                    placeholder="Country"
                   />
                 </div>
 
@@ -317,29 +472,18 @@ export function CreatorEarlyAccessPortal() {
                 </div>
 
                 <div>
-                  <label htmlFor="sea-category" className={labelClass}>
-                    Category <span className="text-brand">*</span>
+                  <label htmlFor="sea-handle" className={labelClass}>
+                    Handle <span className="text-brand">*</span>
                   </label>
-                  <select
-                    id="sea-category"
-                    name="category"
+                  <input
+                    id="sea-handle"
+                    name="handle"
                     required
-                    value={form.category}
-                    onChange={(e) =>
-                      setForm((f) => ({
-                        ...f,
-                        category: e.target.value as SocialCategory | "",
-                      }))
-                    }
+                    value={form.handle}
+                    onChange={(e) => setForm((f) => ({ ...f, handle: e.target.value }))}
                     className={fieldClass}
-                  >
-                    <option value="">Select…</option>
-                    {SOCIAL_CATEGORIES.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
+                    placeholder="@handle"
+                  />
                 </div>
 
                 <div>
@@ -369,33 +513,44 @@ export function CreatorEarlyAccessPortal() {
                 </div>
 
                 <div>
-                  <label htmlFor="sea-location" className={labelClass}>
-                    Location <span className="text-brand">*</span>
+                  <label htmlFor="sea-category" className={labelClass}>
+                    Beauty category <span className="text-brand">*</span>
                   </label>
-                  <input
-                    id="sea-location"
-                    name="location"
+                  <select
+                    id="sea-category"
+                    name="beautyCategory"
                     required
-                    value={form.location}
-                    onChange={(e) => setForm((f) => ({ ...f, location: e.target.value }))}
+                    value={form.beautyCategory}
+                    onChange={(e) =>
+                      setForm((f) => ({
+                        ...f,
+                        beautyCategory: e.target.value as SocialCategory | "",
+                      }))
+                    }
                     className={fieldClass}
-                    placeholder="City / country"
-                  />
+                  >
+                    <option value="">Select…</option>
+                    {SOCIAL_CATEGORIES.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>
                   <label htmlFor="sea-collab" className={labelClass}>
-                    Preferred collaboration <span className="text-brand">*</span>
+                    Preferred collaboration type <span className="text-brand">*</span>
                   </label>
                   <select
                     id="sea-collab"
-                    name="collabType"
+                    name="preferredCollabType"
                     required
-                    value={form.collabType}
+                    value={form.preferredCollabType}
                     onChange={(e) =>
                       setForm((f) => ({
                         ...f,
-                        collabType: e.target.value as SocialCollabType | "",
+                        preferredCollabType: e.target.value as SocialCollabType | "",
                       }))
                     }
                     className={fieldClass}
@@ -409,19 +564,19 @@ export function CreatorEarlyAccessPortal() {
                   </select>
                 </div>
 
-                <div>
+                <div className="sm:col-span-2">
                   <label htmlFor="sea-payout" className={labelClass}>
                     Preferred payout band <span className="text-brand">*</span>
                   </label>
                   <select
                     id="sea-payout"
-                    name="payoutBand"
+                    name="preferredPayoutBand"
                     required
-                    value={form.payoutBand}
+                    value={form.preferredPayoutBand}
                     onChange={(e) =>
                       setForm((f) => ({
                         ...f,
-                        payoutBand: e.target.value as SocialPayoutBand | "",
+                        preferredPayoutBand: e.target.value as SocialPayoutBand | "",
                       }))
                     }
                     className={fieldClass}
@@ -436,6 +591,38 @@ export function CreatorEarlyAccessPortal() {
                   <p className="mt-1.5 text-[11px] text-ink-subtle">
                     Placeholder ranges only — no payment system in this preview.
                   </p>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label htmlFor="sea-portfolio" className={labelClass}>
+                    Portfolio / media kit link
+                  </label>
+                  <input
+                    id="sea-portfolio"
+                    name="portfolioLink"
+                    type="url"
+                    value={form.portfolioLink}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, portfolioLink: e.target.value }))
+                    }
+                    className={fieldClass}
+                    placeholder="https://"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label htmlFor="sea-notes" className={labelClass}>
+                    Notes
+                  </label>
+                  <textarea
+                    id="sea-notes"
+                    name="notes"
+                    rows={3}
+                    value={form.notes}
+                    onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
+                    className={fieldClass}
+                    placeholder="Anything else we should know?"
+                  />
                 </div>
               </div>
 
@@ -454,14 +641,15 @@ export function CreatorEarlyAccessPortal() {
                 disabled={busy}
                 className="inline-flex w-full items-center justify-center rounded-full bg-brand px-6 py-3 font-display text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-soft transition hover:bg-brand-dark disabled:opacity-60 sm:w-auto"
               >
-                {busy ? "Saving…" : "Join early access"}
+                {busy ? "Saving…" : "Join the Creator Circle"}
               </button>
             </form>
           )}
         </section>
 
         <p className="mt-6 text-center text-[11px] leading-relaxed text-ink-subtle">
-          Staging interest store only · no marketplace · no production publish from this surface.
+          Staging interest store only · no marketplace · no production publish from
+          this surface.
         </p>
       </main>
 

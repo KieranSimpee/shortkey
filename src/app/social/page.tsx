@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { CreatorEarlyAccessPortal } from "@/components/social/CreatorEarlyAccessPortal";
 
 export const metadata: Metadata = {
-  title: "ShortKey Social — Creator Early Access",
+  title: "ShortKey Social — Creator Circle",
   description:
-    "shortkey.social — Creator Early Access staging preview. Register interest. Not production ready. Registration does not guarantee selection, paid campaigns, income, or sales results.",
+    "Join the ShortKey Creator Circle. Staging early access for beauty creators. Not production ready. Registration does not guarantee selection, paid campaigns, income, or sales results.",
   robots: { index: false, follow: false },
   other: {
     googlebot: "noindex, nofollow",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * shortkey.social — Creator Early Access (staging / Gor Gor Review).
+ * shortkey.social — Creator Circle Early Access (staging / Gor Gor Review).
  * Local: npm run social:dev → :3004
  * Doc: src/brand/sky/SHORTKEY_SOCIAL_CREATOR_EARLY_ACCESS_v0_1.md
  */

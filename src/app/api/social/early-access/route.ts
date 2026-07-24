@@ -6,6 +6,7 @@ import {
 import {
   SOCIAL_CATEGORIES,
   SOCIAL_COLLAB_TYPES,
+  SOCIAL_DEFAULT_STATUS,
   SOCIAL_FOLLOWER_RANGES,
   SOCIAL_PAYOUT_BANDS,
   SOCIAL_PLATFORMS,
@@ -21,7 +22,8 @@ export const dynamic = "force-dynamic";
 
 /**
  * GET/POST /api/social/early-access
- * Creator interest list — local/dev file store or ephemeral memory.
+ * Creator Circle interest list — local/dev file store or ephemeral memory.
+ * New submissions default to status Submitted.
  * No Upstash · no payment · not production publish.
  */
 
@@ -61,15 +63,25 @@ export async function POST(request: Request) {
 
   const raw = body as Record<string, unknown>;
   const name = trimStr(raw.name, 120);
-  const handleOrEmail = trimStr(raw.handleOrEmail, 160);
-  const location = trimStr(raw.location, 120);
+  const email = trimStr(raw.email, 160);
+  const country = trimStr(raw.country, 120);
+  const handle = trimStr(raw.handle, 120);
+  const portfolioLink = trimStr(raw.portfolioLink, 500);
+  const notes = trimStr(raw.notes, 1000);
 
-  if (!name || !handleOrEmail || !location) {
+  if (!name || !email || !country || !handle) {
     return NextResponse.json(
       {
-        error: "name, handleOrEmail, and location are required.",
+        error: "name, email, country, and handle are required.",
         code: "validation",
       },
+      { status: 400 },
+    );
+  }
+
+  if (!email.includes("@")) {
+    return NextResponse.json(
+      { error: "A valid email is required.", code: "validation" },
       { status: 400 },
     );
   }
@@ -77,8 +89,11 @@ export async function POST(request: Request) {
   if (!isOneOf(raw.platform, SOCIAL_PLATFORMS)) {
     return NextResponse.json({ error: "Invalid platform.", code: "validation" }, { status: 400 });
   }
-  if (!isOneOf(raw.category, SOCIAL_CATEGORIES)) {
-    return NextResponse.json({ error: "Invalid category.", code: "validation" }, { status: 400 });
+  if (!isOneOf(raw.beautyCategory, SOCIAL_CATEGORIES)) {
+    return NextResponse.json(
+      { error: "Invalid beautyCategory.", code: "validation" },
+      { status: 400 },
+    );
   }
   if (!isOneOf(raw.followerRange, SOCIAL_FOLLOWER_RANGES)) {
     return NextResponse.json(
@@ -86,27 +101,38 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  if (!isOneOf(raw.collabType, SOCIAL_COLLAB_TYPES)) {
-    return NextResponse.json({ error: "Invalid collabType.", code: "validation" }, { status: 400 });
+  if (!isOneOf(raw.preferredCollabType, SOCIAL_COLLAB_TYPES)) {
+    return NextResponse.json(
+      { error: "Invalid preferredCollabType.", code: "validation" },
+      { status: 400 },
+    );
   }
-  if (!isOneOf(raw.payoutBand, SOCIAL_PAYOUT_BANDS)) {
-    return NextResponse.json({ error: "Invalid payoutBand.", code: "validation" }, { status: 400 });
+  if (!isOneOf(raw.preferredPayoutBand, SOCIAL_PAYOUT_BANDS)) {
+    return NextResponse.json(
+      { error: "Invalid preferredPayoutBand.", code: "validation" },
+      { status: 400 },
+    );
   }
 
   try {
     const result = await appendSocialEarlyAccess({
       name,
-      handleOrEmail,
+      email,
+      country,
       platform: raw.platform as SocialPlatform,
-      category: raw.category as SocialCategory,
+      handle,
       followerRange: raw.followerRange as SocialFollowerRange,
-      location,
-      collabType: raw.collabType as SocialCollabType,
-      payoutBand: raw.payoutBand as SocialPayoutBand,
+      beautyCategory: raw.beautyCategory as SocialCategory,
+      preferredCollabType: raw.preferredCollabType as SocialCollabType,
+      preferredPayoutBand: raw.preferredPayoutBand as SocialPayoutBand,
+      portfolioLink,
+      notes,
+      status: SOCIAL_DEFAULT_STATUS,
     });
     return NextResponse.json({
       ok: true,
       id: result.entry.id,
+      status: result.entry.status,
       meta: result.meta,
     });
   } catch (err) {

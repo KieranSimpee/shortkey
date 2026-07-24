@@ -1,10 +1,18 @@
 /**
- * Creator Early Access — interest form types (shortkey.social staging).
+ * Creator Circle — Early Access form types (shortkey.social staging).
  * No payment system · no marketplace · no selection guarantees.
  */
 
-export const SOCIAL_EARLY_ACCESS_VERSION = "0.1" as const;
-export const SOCIAL_LOCAL_STORAGE_KEY = "shortkey-social-early-access-v01";
+export const SOCIAL_EARLY_ACCESS_VERSION = "0.2" as const;
+export const SOCIAL_LOCAL_STORAGE_KEY = "shortkey-social-early-access-v02";
+
+export const SOCIAL_SUBMISSION_STATUSES = [
+  "Submitted",
+  "Under Review",
+  "Invited",
+] as const;
+
+export const SOCIAL_DEFAULT_STATUS = "Submitted" as const;
 
 export const SOCIAL_PLATFORMS = [
   "Instagram",
@@ -46,6 +54,7 @@ export const SOCIAL_PAYOUT_BANDS = [
   "$1,500+",
 ] as const;
 
+export type SocialSubmissionStatus = (typeof SOCIAL_SUBMISSION_STATUSES)[number];
 export type SocialPlatform = (typeof SOCIAL_PLATFORMS)[number];
 export type SocialCategory = (typeof SOCIAL_CATEGORIES)[number];
 export type SocialFollowerRange = (typeof SOCIAL_FOLLOWER_RANGES)[number];
@@ -55,15 +64,20 @@ export type SocialPayoutBand = (typeof SOCIAL_PAYOUT_BANDS)[number];
 export interface SocialEarlyAccessEntry {
   id: string;
   createdAt: string;
+  /** Pipeline status — new submissions default to Submitted */
+  status: SocialSubmissionStatus;
   name: string;
-  /** Handle or email — required contact identity */
-  handleOrEmail: string;
+  email: string;
+  country: string;
   platform: SocialPlatform;
-  category: SocialCategory;
+  handle: string;
   followerRange: SocialFollowerRange;
-  location: string;
-  collabType: SocialCollabType;
-  payoutBand: SocialPayoutBand;
+  beautyCategory: SocialCategory;
+  preferredCollabType: SocialCollabType;
+  preferredPayoutBand: SocialPayoutBand;
+  /** Optional portfolio / media kit URL */
+  portfolioLink: string;
+  notes: string;
 }
 
 export type SocialStoreMode = "file" | "ephemeral";
