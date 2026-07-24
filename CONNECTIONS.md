@@ -171,9 +171,10 @@ Code already treats `.live` separately from `.beauty`. Until the domain is attac
 ## 6. shortkey.studio — attach to same Vercel project (manual · INTERNAL STAGING ONLY)
 
 **Host:** `shortkey.studio` (and `www.shortkey.studio`)  
-**App surface:** Studio P0 DNA Control Room at `/internal/studio`  
-**Local port:** **3003** (`npm run studio:dev` · `SHORTKEY_SURFACE=studio`)  
-**Middleware:** `shortkey.studio/` → redirect `/internal/studio`  
+**App surface:** Studio v0.1 Internal Control Center at `/internal/studio` (P0 DNA Control Room predecessor → Brand DNA Center)
+**Local port:** **3003** (`npm run studio:dev` · `SHORTKEY_SURFACE=studio`)
+**Middleware:** `shortkey.studio/` → redirect `/internal/studio`
+**Store:** `GET/POST /api/studio/state` → `data/studio-v01.json` (dev) · localStorage `shortkey-studio-v01` fallback · no Upstash required
 **Status lock:** **可以上 domain · 只係 internal staging · 不是 public launch**  
 **Do not** create a second Vercel project for `.studio` — same chain as beauty / live.  
 **Family Table** stays on `family.shortkey.world` / `npm run family:dev` (:3002) — not on `.studio`.
@@ -187,7 +188,7 @@ Code already treats `.live` separately from `.beauty`. Until the domain is attac
 3. At the domain registrar, set the DNS records Vercel shows (usually A / CNAME)
 4. Wait for SSL + “Valid Configuration”
 5. Set `FAMILY_TABLE_STAGING_PASSWORD` on the Vercel project (Production + Preview if needed)
-6. Open `https://shortkey.studio` — should land on **DNA Control Room** (`/internal/studio`) · INTERNAL STAGING ONLY (not beauty Coming Soon, not Family Table, not public launch)
+6. Open `https://shortkey.studio` — should land on **Studio v0.1 Control Center** (`/internal/studio`) · INTERNAL STAGING ONLY (not beauty Coming Soon, not Family Table, not public launch)
 
 Until the domain is attached, use:
 - Local Studio: `npm run studio:dev` → `http://localhost:3003/` (or `/internal/studio`)

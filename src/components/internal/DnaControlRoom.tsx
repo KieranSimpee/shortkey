@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
 
 /**
- * shortkey.studio P0 — DNA Control Room (internal preview only).
+ * shortkey.studio P0 — DNA Control Room (legacy static preview).
  * Concept: One DNA. Many doors.
- * No backend · no login · no secrets · not production ready.
+ * Superseded by Studio v0.1 shell (`StudioShell`) at `/internal/studio`
+ * — Brand DNA Center carries this content. Kept for reference / reuse.
+ * No secrets · not production ready.
  */
 
 const DNA_POINTS = [

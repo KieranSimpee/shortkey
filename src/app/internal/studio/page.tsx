@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { DnaControlRoom } from "@/components/internal/DnaControlRoom";
+import { StudioShell } from "@/components/internal/studio/StudioShell";
 
 export const metadata: Metadata = {
-  title: "DNA Control Room | shortkey.studio (Internal)",
+  title: "ShortKey Studio v0.1 | Internal Control Center",
   description:
-    "INTERNAL STAGING ONLY — One DNA. Many doors. Lock brand DNA, domain purpose, approved copy, and build order before pushing domains outward. Not production ready.",
+    "INTERNAL STAGING ONLY — ShortKey Studio v0.1 control center. Source of truth for Brand DNA, domains, assets, campaigns, deployment plan records, and version history. Not production ready. No publish.",
   robots: { index: false, follow: false },
   other: {
     googlebot: "noindex, nofollow",
@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 };
 
 /**
- * shortkey.studio P0 — DNA Control Room.
+ * shortkey.studio — Studio v0.1 internal control center.
  * Local: npm run studio:dev → :3003
- * Host: shortkey.studio → this route (not Family Table).
- * Doc: src/brand/sky/SHORTKEY_STUDIO_P0_DNA_CONTROL.md
+ * Predecessor: Studio P0 DNA Control Room (content folded into Brand DNA Center).
+ * Doc: src/brand/sky/SHORTKEY_STUDIO_v0_1.md
  */
-export default function StudioDnaControlPage() {
-  return <DnaControlRoom />;
+export default function StudioPage() {
+  return <StudioShell />;
 }

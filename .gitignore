@@ -15,6 +15,9 @@ scripts/shopify-sync-payload.json
 # Family doorbell local file store (dev) — keep empty scaffold if needed
 data/family-doorbell.json
 
+# Studio v0.1 local file store (dev)
+data/studio-v01.json
+
 # Local screenshot scratch
 tmp-doorbell-shots/
 
