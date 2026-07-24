@@ -155,6 +155,47 @@ const emptyForm: FormState = {
   notes: "",
 };
 
+/** Required early-access fields — portfolio / notes stay optional. */
+type RequiredField =
+  | "name"
+  | "email"
+  | "country"
+  | "platform"
+  | "handle"
+  | "followerRange"
+  | "beautyCategory"
+  | "preferredCollabType"
+  | "preferredPayoutBand";
+
+type FieldErrors = Partial<Record<RequiredField, string>>;
+
+const REQUIRED_LABELS: Record<RequiredField, string> = {
+  name: "Name",
+  email: "Email",
+  country: "Country",
+  platform: "Platform",
+  handle: "Handle",
+  followerRange: "Follower range",
+  beautyCategory: "Beauty category",
+  preferredCollabType: "Preferred collaboration type",
+  preferredPayoutBand: "Preferred payout band",
+};
+
+const fieldErrorClass =
+  "mt-1.5 text-[12px] leading-snug text-violet-800/90";
+
+const fieldInvalidClass =
+  "border-brand/45 ring-2 ring-brand/20 focus:border-brand/55 focus:ring-brand/25";
+
+function FieldError({ id, message }: { id: string; message?: string }) {
+  if (!message) return null;
+  return (
+    <p id={id} className={fieldErrorClass} role="alert">
+      {message}
+    </p>
+  );
+}
+
 function saveLocalFallback(entry: SocialEarlyAccessEntry) {
   try {
     const raw = localStorage.getItem(SOCIAL_LOCAL_STORAGE_KEY);
@@ -173,11 +214,29 @@ export function CreatorEarlyAccessPortal() {
   const [submissionStatus, setSubmissionStatus] =
     useState<SocialSubmissionStatus | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [storageLabel, setStorageLabel] = useState<string | null>(null);
+
+  const clearFieldError = (key: RequiredField) => {
+    setFieldErrors((prev) => {
+      if (!prev[key]) return prev;
+      const next = { ...prev };
+      delete next[key];
+      return next;
+    });
+  };
+
+  const patchForm = <K extends keyof FormState>(key: K, value: FormState[K]) => {
+    setForm((f) => ({ ...f, [key]: value }));
+    if (key in REQUIRED_LABELS) {
+      clearFieldError(key as RequiredField);
+    }
+  };
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
+    setFieldErrors({});
     setBusy(true);
 
     const payload = {
@@ -194,50 +253,58 @@ export function CreatorEarlyAccessPortal() {
       notes: form.notes.trim(),
     };
 
-    if (
-      !payload.name ||
-      !payload.email ||
-      !payload.country ||
-      !payload.platform ||
-      !payload.handle ||
-      !payload.followerRange ||
-      !payload.beautyCategory ||
-      !payload.preferredCollabType ||
-      !payload.preferredPayoutBand
-    ) {
-      setError("Please complete every required field.");
+    const nextErrors: FieldErrors = {};
+    (Object.keys(REQUIRED_LABELS) as RequiredField[]).forEach((key) => {
+      const value = payload[key];
+      if (!value) {
+        nextErrors[key] = `${REQUIRED_LABELS[key]} is required.`;
+      }
+    });
+
+    if (payload.email && !payload.email.includes("@")) {
+      nextErrors.email = "Please enter a valid email.";
+    }
+
+    if (Object.keys(nextErrors).length > 0) {
+      setFieldErrors(nextErrors);
+      const onlyInvalidEmail =
+        Object.keys(nextErrors).length === 1 && Boolean(nextErrors.email) && Boolean(payload.email);
+      setError(
+        onlyInvalidEmail
+          ? "Please enter a valid email."
+          : "Please complete every required field.",
+      );
       setBusy(false);
       return;
     }
 
-    if (!payload.email.includes("@")) {
-      setError("Please enter a valid email.");
-      setBusy(false);
-      return;
-    }
+    // Validated above — empty-string unions are gone.
+    const validated = {
+      name: payload.name,
+      email: payload.email,
+      country: payload.country,
+      platform: payload.platform as SocialPlatform,
+      handle: payload.handle,
+      followerRange: payload.followerRange as SocialFollowerRange,
+      beautyCategory: payload.beautyCategory as SocialCategory,
+      preferredCollabType: payload.preferredCollabType as SocialCollabType,
+      preferredPayoutBand: payload.preferredPayoutBand as SocialPayoutBand,
+      portfolioLink: payload.portfolioLink,
+      notes: payload.notes,
+    };
 
     const localEntry: SocialEarlyAccessEntry = {
       id: `sea_local_${Date.now().toString(36)}`,
       createdAt: new Date().toISOString(),
       status: SOCIAL_DEFAULT_STATUS,
-      name: payload.name,
-      email: payload.email,
-      country: payload.country,
-      platform: payload.platform,
-      handle: payload.handle,
-      followerRange: payload.followerRange,
-      beautyCategory: payload.beautyCategory,
-      preferredCollabType: payload.preferredCollabType,
-      preferredPayoutBand: payload.preferredPayoutBand,
-      portfolioLink: payload.portfolioLink,
-      notes: payload.notes,
+      ...validated,
     };
 
     try {
       const res = await fetch("/api/social/early-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(validated),
       });
       if (res.ok) {
         const data = (await res.json()) as {
@@ -535,6 +602,8 @@ export function CreatorEarlyAccessPortal() {
                   setDone(false);
                   setSubmissionStatus(null);
                   setStorageLabel(null);
+                  setError(null);
+                  setFieldErrors({});
                 }}
                 className="mt-4 text-[12px] font-semibold text-brand-dark underline-offset-2 hover:underline"
               >
@@ -543,6 +612,15 @@ export function CreatorEarlyAccessPortal() {
             </div>
           ) : (
             <form onSubmit={onSubmit} className="mt-6 space-y-4" noValidate>
+              {error ? (
+                <p
+                  className="rounded-xl border border-brand/25 bg-brand/5 px-3.5 py-2.5 text-sm text-violet-900"
+                  role="alert"
+                >
+                  {error}
+                </p>
+              ) : null}
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label htmlFor="sea-name" className={labelClass}>
@@ -554,10 +632,15 @@ export function CreatorEarlyAccessPortal() {
                     required
                     autoComplete="name"
                     value={form.name}
-                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                    className={fieldClass}
+                    onChange={(e) => patchForm("name", e.target.value)}
+                    aria-invalid={Boolean(fieldErrors.name)}
+                    aria-describedby={
+                      fieldErrors.name ? "sea-name-error" : undefined
+                    }
+                    className={`${fieldClass}${fieldErrors.name ? ` ${fieldInvalidClass}` : ""}`}
                     placeholder="Your name"
                   />
+                  <FieldError id="sea-name-error" message={fieldErrors.name} />
                 </div>
 
                 <div>
@@ -571,10 +654,15 @@ export function CreatorEarlyAccessPortal() {
                     required
                     autoComplete="email"
                     value={form.email}
-                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                    className={fieldClass}
+                    onChange={(e) => patchForm("email", e.target.value)}
+                    aria-invalid={Boolean(fieldErrors.email)}
+                    aria-describedby={
+                      fieldErrors.email ? "sea-email-error" : undefined
+                    }
+                    className={`${fieldClass}${fieldErrors.email ? ` ${fieldInvalidClass}` : ""}`}
                     placeholder="you@email.com"
                   />
+                  <FieldError id="sea-email-error" message={fieldErrors.email} />
                 </div>
 
                 <div>
@@ -587,9 +675,17 @@ export function CreatorEarlyAccessPortal() {
                     required
                     autoComplete="country-name"
                     value={form.country}
-                    onChange={(e) => setForm((f) => ({ ...f, country: e.target.value }))}
-                    className={fieldClass}
+                    onChange={(e) => patchForm("country", e.target.value)}
+                    aria-invalid={Boolean(fieldErrors.country)}
+                    aria-describedby={
+                      fieldErrors.country ? "sea-country-error" : undefined
+                    }
+                    className={`${fieldClass}${fieldErrors.country ? ` ${fieldInvalidClass}` : ""}`}
                     placeholder="Country"
+                  />
+                  <FieldError
+                    id="sea-country-error"
+                    message={fieldErrors.country}
                   />
                 </div>
 
@@ -603,12 +699,16 @@ export function CreatorEarlyAccessPortal() {
                     required
                     value={form.platform}
                     onChange={(e) =>
-                      setForm((f) => ({
-                        ...f,
-                        platform: e.target.value as SocialPlatform | "",
-                      }))
+                      patchForm(
+                        "platform",
+                        e.target.value as SocialPlatform | "",
+                      )
                     }
-                    className={fieldClass}
+                    aria-invalid={Boolean(fieldErrors.platform)}
+                    aria-describedby={
+                      fieldErrors.platform ? "sea-platform-error" : undefined
+                    }
+                    className={`${fieldClass}${fieldErrors.platform ? ` ${fieldInvalidClass}` : ""}`}
                   >
                     <option value="">Select…</option>
                     {SOCIAL_PLATFORMS.map((p) => (
@@ -617,6 +717,10 @@ export function CreatorEarlyAccessPortal() {
                       </option>
                     ))}
                   </select>
+                  <FieldError
+                    id="sea-platform-error"
+                    message={fieldErrors.platform}
+                  />
                 </div>
 
                 <div>
@@ -628,9 +732,17 @@ export function CreatorEarlyAccessPortal() {
                     name="handle"
                     required
                     value={form.handle}
-                    onChange={(e) => setForm((f) => ({ ...f, handle: e.target.value }))}
-                    className={fieldClass}
+                    onChange={(e) => patchForm("handle", e.target.value)}
+                    aria-invalid={Boolean(fieldErrors.handle)}
+                    aria-describedby={
+                      fieldErrors.handle ? "sea-handle-error" : undefined
+                    }
+                    className={`${fieldClass}${fieldErrors.handle ? ` ${fieldInvalidClass}` : ""}`}
                     placeholder="@handle"
+                  />
+                  <FieldError
+                    id="sea-handle-error"
+                    message={fieldErrors.handle}
                   />
                 </div>
 
@@ -644,12 +756,18 @@ export function CreatorEarlyAccessPortal() {
                     required
                     value={form.followerRange}
                     onChange={(e) =>
-                      setForm((f) => ({
-                        ...f,
-                        followerRange: e.target.value as SocialFollowerRange | "",
-                      }))
+                      patchForm(
+                        "followerRange",
+                        e.target.value as SocialFollowerRange | "",
+                      )
                     }
-                    className={fieldClass}
+                    aria-invalid={Boolean(fieldErrors.followerRange)}
+                    aria-describedby={
+                      fieldErrors.followerRange
+                        ? "sea-followers-error"
+                        : undefined
+                    }
+                    className={`${fieldClass}${fieldErrors.followerRange ? ` ${fieldInvalidClass}` : ""}`}
                   >
                     <option value="">Select…</option>
                     {SOCIAL_FOLLOWER_RANGES.map((r) => (
@@ -658,6 +776,10 @@ export function CreatorEarlyAccessPortal() {
                       </option>
                     ))}
                   </select>
+                  <FieldError
+                    id="sea-followers-error"
+                    message={fieldErrors.followerRange}
+                  />
                 </div>
 
                 <div>
@@ -670,12 +792,18 @@ export function CreatorEarlyAccessPortal() {
                     required
                     value={form.beautyCategory}
                     onChange={(e) =>
-                      setForm((f) => ({
-                        ...f,
-                        beautyCategory: e.target.value as SocialCategory | "",
-                      }))
+                      patchForm(
+                        "beautyCategory",
+                        e.target.value as SocialCategory | "",
+                      )
                     }
-                    className={fieldClass}
+                    aria-invalid={Boolean(fieldErrors.beautyCategory)}
+                    aria-describedby={
+                      fieldErrors.beautyCategory
+                        ? "sea-category-error"
+                        : undefined
+                    }
+                    className={`${fieldClass}${fieldErrors.beautyCategory ? ` ${fieldInvalidClass}` : ""}`}
                   >
                     <option value="">Select…</option>
                     {SOCIAL_CATEGORIES.map((c) => (
@@ -684,11 +812,16 @@ export function CreatorEarlyAccessPortal() {
                       </option>
                     ))}
                   </select>
+                  <FieldError
+                    id="sea-category-error"
+                    message={fieldErrors.beautyCategory}
+                  />
                 </div>
 
                 <div>
                   <label htmlFor="sea-collab" className={labelClass}>
-                    Preferred collaboration type <span className="text-brand">*</span>
+                    Preferred collaboration type{" "}
+                    <span className="text-brand">*</span>
                   </label>
                   <select
                     id="sea-collab"
@@ -696,12 +829,18 @@ export function CreatorEarlyAccessPortal() {
                     required
                     value={form.preferredCollabType}
                     onChange={(e) =>
-                      setForm((f) => ({
-                        ...f,
-                        preferredCollabType: e.target.value as SocialCollabType | "",
-                      }))
+                      patchForm(
+                        "preferredCollabType",
+                        e.target.value as SocialCollabType | "",
+                      )
                     }
-                    className={fieldClass}
+                    aria-invalid={Boolean(fieldErrors.preferredCollabType)}
+                    aria-describedby={
+                      fieldErrors.preferredCollabType
+                        ? "sea-collab-error"
+                        : undefined
+                    }
+                    className={`${fieldClass}${fieldErrors.preferredCollabType ? ` ${fieldInvalidClass}` : ""}`}
                   >
                     <option value="">Select…</option>
                     {SOCIAL_COLLAB_TYPES.map((c) => (
@@ -710,6 +849,10 @@ export function CreatorEarlyAccessPortal() {
                       </option>
                     ))}
                   </select>
+                  <FieldError
+                    id="sea-collab-error"
+                    message={fieldErrors.preferredCollabType}
+                  />
                 </div>
 
                 <div className="sm:col-span-2">
@@ -722,12 +865,18 @@ export function CreatorEarlyAccessPortal() {
                     required
                     value={form.preferredPayoutBand}
                     onChange={(e) =>
-                      setForm((f) => ({
-                        ...f,
-                        preferredPayoutBand: e.target.value as SocialPayoutBand | "",
-                      }))
+                      patchForm(
+                        "preferredPayoutBand",
+                        e.target.value as SocialPayoutBand | "",
+                      )
                     }
-                    className={fieldClass}
+                    aria-invalid={Boolean(fieldErrors.preferredPayoutBand)}
+                    aria-describedby={
+                      fieldErrors.preferredPayoutBand
+                        ? "sea-payout-error"
+                        : undefined
+                    }
+                    className={`${fieldClass}${fieldErrors.preferredPayoutBand ? ` ${fieldInvalidClass}` : ""}`}
                   >
                     <option value="">Select…</option>
                     {SOCIAL_PAYOUT_BANDS.map((b) => (
@@ -736,6 +885,10 @@ export function CreatorEarlyAccessPortal() {
                       </option>
                     ))}
                   </select>
+                  <FieldError
+                    id="sea-payout-error"
+                    message={fieldErrors.preferredPayoutBand}
+                  />
                   <p className="mt-1.5 text-[11px] text-ink-subtle">
                     Placeholder ranges only — no payment system in this preview.
                   </p>
@@ -750,9 +903,7 @@ export function CreatorEarlyAccessPortal() {
                     name="portfolioLink"
                     type="url"
                     value={form.portfolioLink}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, portfolioLink: e.target.value }))
-                    }
+                    onChange={(e) => patchForm("portfolioLink", e.target.value)}
                     className={fieldClass}
                     placeholder="https://"
                   />
@@ -767,7 +918,7 @@ export function CreatorEarlyAccessPortal() {
                     name="notes"
                     rows={3}
                     value={form.notes}
-                    onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
+                    onChange={(e) => patchForm("notes", e.target.value)}
                     className={fieldClass}
                     placeholder="Anything else we should know?"
                   />
@@ -777,12 +928,6 @@ export function CreatorEarlyAccessPortal() {
               <p className="rounded-lg border border-amber-200/80 bg-amber-50/80 px-3 py-2.5 text-[12px] leading-relaxed text-amber-950/80">
                 {SAFETY_LINE}
               </p>
-
-              {error ? (
-                <p className="text-sm text-rose-700" role="alert">
-                  {error}
-                </p>
-              ) : null}
 
               <button
                 type="submit"
