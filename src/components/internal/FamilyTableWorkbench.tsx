@@ -21,11 +21,20 @@ import {
   normalizeCabinet,
 } from "@/components/internal/FamilyCabinet";
 import { GorGorChatDrawer } from "@/components/internal/GorGorChatDrawer";
+import {
+  clearDoorbellStorage,
+  DOORBELL_STORAGE_KEY,
+  LivingRoomDoorbell,
+  MemberDoorbellPanel,
+  ROOM_TO_MEMBER,
+  useDoorbell,
+} from "@/components/internal/FamilyDoorbell";
 
 /**
  * Family Table v0.8 — One Room Per Family Member (house architecture).
  * Persistence: browser localStorage key `shortkey-family-table-v08` only
  * (includes Living Room `cabinet` — Family Cabinet drawers).
+ * Doorbell receipts: separate key `shortkey-doorbell-receipts-v01` (local prototype).
  * Migrates lightly once from v0.7 + Family Chat v0.1.
  * Doc: src/brand/sky/FAMILY_TABLE_v0_8.md
  */
@@ -595,6 +604,7 @@ export function FamilyTableWorkbench() {
   const [evidenceLabel, setEvidenceLabel] = useState("");
   const [evidenceUrl, setEvidenceUrl] = useState("");
   const [noteDraft, setNoteDraft] = useState("");
+  const doorbell = useDoorbell();
 
   useEffect(() => {
     setState(loadState());
@@ -625,19 +635,22 @@ export function FamilyTableWorkbench() {
   const clearAll = () => {
     if (
       !window.confirm(
-        "Clear Family Table v0.8 local data on this browser? (Also clears legacy chat key if present.)",
+        "Clear Family Table v0.8 local data on this browser? (Also clears legacy chat + doorbell keys if present.)",
       )
     )
       return;
     const fresh = defaultState();
     persist(fresh);
     clearFamilyChatStorage();
+    clearDoorbellStorage();
+    doorbell.clearAll();
   };
 
   const meta = ROOMS.find((r) => r.id === roomId)!;
   const room = state.rooms[roomId];
+  const doorbellMember = ROOM_TO_MEMBER[roomId];
 
-  if (!ready) {
+  if (!ready || !doorbell.ready) {
     return (
       <div className="mx-auto max-w-6xl px-4 py-16 text-center text-sm text-ink-muted sm:px-8">
         Loading Family Table…
@@ -689,6 +702,8 @@ export function FamilyTableWorkbench() {
           </span>
           {" · "}
           Storage key <code className="font-mono text-[11px]">{STORAGE_KEY}</code>
+          {" · "}
+          doorbell <code className="font-mono text-[11px]">{DOORBELL_STORAGE_KEY}</code>
           {state.migratedFrom?.length ? (
             <>
               {" "}
@@ -781,6 +796,25 @@ export function FamilyTableWorkbench() {
 
           {/* Living Room · Family House Rule (top announcement) */}
           {roomId === "living" ? <LivingRoomHouseRuleCard /> : null}
+
+          {/* Living Room · Family Home Doorbell + Receipt Board v0.1 */}
+          {roomId === "living" ? (
+            <LivingRoomDoorbell
+              state={doorbell.state}
+              savedFlash={doorbell.savedFlash}
+              onPost={doorbell.postCommand}
+              onUpdateReceipt={doorbell.updateReceipt}
+            />
+          ) : null}
+
+          {/* Member rooms · doorbell ack panel */}
+          {doorbellMember ? (
+            <MemberDoorbellPanel
+              member={doorbellMember}
+              state={doorbell.state}
+              onUpdateReceipt={doorbell.updateReceipt}
+            />
+          ) : null}
 
           {/* Living Room · Family Cabinet (一人一格櫃桶) */}
           {roomId === "living" ? (
@@ -1045,6 +1079,11 @@ export function FamilyTableWorkbench() {
                 roomLabel={meta.name}
                 messages={room.chat}
                 onChange={(chat) => patchRoom(roomId, { chat })}
+                onPosted={
+                  doorbellMember
+                    ? () => doorbell.markReceivedOnReply(doorbellMember)
+                    : undefined
+                }
               />
             </div>
           </Panel>

@@ -119,11 +119,14 @@ export function RoomChatThread({
   messages,
   onChange,
   compact,
+  onPosted,
 }: {
   roomLabel: string;
   messages: FamilyChatMessage[];
   onChange: (next: FamilyChatMessage[]) => void;
   compact?: boolean;
+  /** Fired after a successful post — e.g. doorbell RECEIVED via reply. */
+  onPosted?: () => void;
 }) {
   const [senderName, setSenderName] = useState("");
   const [senderRole, setSenderRole] = useState<ChatRole>("Key");
@@ -169,6 +172,7 @@ export function RoomChatThread({
             setBody("");
             setEvidenceUrl("");
             setStatus("DRAFT");
+            onPosted?.();
           }}
         >
           <div>
