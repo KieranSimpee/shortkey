@@ -9,27 +9,28 @@ type LogoProps = {
   /** When false, mark-only. Default `/` wraps a home link. */
   href?: string | false;
   /**
-   * header · bridge (centered across chrome) · hero · footer · icon
+   * header \u00b7 bridge (centered across chrome) \u00b7 hero \u00b7 footer \u00b7 icon
    */
   size?: "header" | "bridge" | "hero" | "footer" | "icon";
-  /** light = lilac on light · dark = soft lilac on Dark Luxury */
+  /** light = lilac on light \u00b7 dark = soft lilac on Dark Luxury */
   surface?: "dark" | "light";
 };
 
 const sizeClass: Record<NonNullable<LogoProps["size"]>, string> = {
-  /** Header / Coming Soon / Signup — founder lock: 1.5in display height */
-  header: "h-[1.5in] w-auto max-w-none",
-  /** Dual-hero seam — small top brand bridge, clear of headline copy below */
+  /** Header \u2014 responsive: small on phone, full size on desktop */
+  header: "h-9 w-auto max-w-none sm:h-12 md:h-14 lg:h-[1.5in]",
+  /** Dual-hero seam \u2014 small top brand bridge, clear of headline copy below */
   bridge:
     "h-auto w-[min(30vw,112px)] max-h-[68px] sm:w-[min(20vw,128px)] sm:max-h-[80px] lg:w-[140px] lg:max-h-[88px]",
-  hero: "h-[1.5in] w-auto max-w-none",
-  /** Footer mark — same 1.5in height as header (Coming Soon dual logos) */
-  footer: "h-[1.5in] w-auto max-w-none",
+  /** Hero \u2014 responsive: smaller on phone, full on desktop */
+  hero: "h-12 w-auto max-w-none sm:h-16 md:h-20 lg:h-[1.5in]",
+  /** Footer mark \u2014 responsive */
+  footer: "h-9 w-auto max-w-none sm:h-12 md:h-14 lg:h-[1.5in]",
   icon: "h-8 w-8",
 };
 
 /**
- * SHORTKEY production logo — lilac (Simplex-ity registered).
+ * SHORTKEY production logo \u2014 lilac (Simplex-ity registered).
  * Never redraw. No filters / shadows / opacity / blend.
  */
 export function Logo({
@@ -50,7 +51,7 @@ export function Logo({
   const mark = (
     <Image
       src={src}
-      alt={`${brand.name} — ${brand.tagline}`}
+      alt={`${brand.name} \u2014 ${brand.tagline}`}
       width={size === "icon" ? 512 : logoMeta.width}
       height={size === "icon" ? 512 : logoMeta.height}
       className={cn(
