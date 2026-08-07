@@ -1,12 +1,14 @@
 import type { NextConfig } from "next";
 
-/** Isolate caches when family/studio/social/maya/beauty run in parallel locally. */
+/** Isolate caches when family/studio/social/maya/beauty run in parallel locally.
+ *  Vercel production must keep default `.next` (custom distDir breaks that deploy). */
 const surface = process.env.SHORTKEY_SURFACE?.trim();
-const distDir =
-  surface === "family" ||
-  surface === "studio" ||
-  surface === "social" ||
-  surface === "maya"
+const distDir = process.env.VERCEL
+  ? ".next"
+  : surface === "family" ||
+      surface === "studio" ||
+      surface === "social" ||
+      surface === "maya"
     ? `.next-${surface}`
     : ".next-beauty";
 

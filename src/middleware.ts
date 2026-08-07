@@ -37,9 +37,8 @@ import {
  * Soft staging gate: when FAMILY_TABLE_STAGING_PASSWORD or INTERNAL_STAGING_SECRET
  * is set, family/studio host `/` and `/internal/*` (except login) require cookie.
  * Family Table + Studio paths gated on all hosts. Localhost / family|studio surface bypass.
- * Private magazine/showcase preview (all hosts when secret set):
- * `/showcase`, `/showcase/*`, `/magazine-demo`, `/magazine-demo/*`,
- * `/control-center/magazine-demo` (+ trailing paths).
+ * Public outward demos (same pattern as `/control` — NOT staging-gated):
+ * `/showcase`, `/magazine-demo`, `/control-center/magazine-demo`.
  *
  * Full Rebuild preview stays at `/control/live.html` (family / control hub only).
  * Do not auto-publish unfinished livestream commerce — featureLocks stay closed.
@@ -108,18 +107,6 @@ function requiresStagingGate(host: string, pathname: string): boolean {
     pathname.startsWith("/internal/family-table/") ||
     pathname === "/internal/studio" ||
     pathname.startsWith("/internal/studio/")
-  ) {
-    return true;
-  }
-
-  // All hosts: private magazine / showcase preview
-  if (
-    pathname === "/showcase" ||
-    pathname.startsWith("/showcase/") ||
-    pathname === "/magazine-demo" ||
-    pathname.startsWith("/magazine-demo/") ||
-    pathname === "/control-center/magazine-demo" ||
-    pathname.startsWith("/control-center/magazine-demo/")
   ) {
     return true;
   }
