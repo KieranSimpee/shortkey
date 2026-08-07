@@ -44,13 +44,14 @@ export function InternalStagingLogin() {
     <div className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-4 py-16">
       <div className="rounded-2xl border border-ink/10 bg-white/95 px-6 py-8 shadow-[0_1px_0_rgba(140,130,252,0.08)]">
         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand">
-          shortkey.studio · Internal staging
+          ShortKey · Internal staging
         </p>
         <h1 className="mt-2 font-display text-2xl font-bold tracking-tight text-ink">
-          Unlock Family Table
+          Unlock staging
         </h1>
         <p className="mt-2 text-sm text-ink-muted">
-          Soft shared-secret gate for internal staging only — not public launch, not 正式版 login.
+          Soft shared-secret gate for Family Table, Studio, and private magazine/showcase —
+          not public launch, not 正式版 login.
         </p>
 
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
@@ -92,11 +93,26 @@ export function InternalStagingLogin() {
   );
 }
 
+function isAllowedStagingNext(path: string): boolean {
+  if (path.startsWith("/internal")) return true;
+  if (path === "/showcase" || path.startsWith("/showcase/")) return true;
+  if (path === "/magazine-demo" || path.startsWith("/magazine-demo/")) return true;
+  if (
+    path === "/control-center/magazine-demo" ||
+    path.startsWith("/control-center/magazine-demo/")
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function sanitizeNext(raw: string | null): string {
   if (!raw || !raw.startsWith("/") || raw.startsWith("//")) {
     return "/internal/family-table";
   }
-  if (!raw.startsWith("/internal")) {
+  // Strip hash/query for allow-check; preserve full path+search for redirect.
+  const pathOnly = raw.split("?")[0] ?? raw;
+  if (!isAllowedStagingNext(pathOnly)) {
     return "/internal/family-table";
   }
   return raw;

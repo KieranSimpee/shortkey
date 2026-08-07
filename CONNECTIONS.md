@@ -164,7 +164,7 @@ If a token expires, **update the env var**. Do not create a parallel project.
 4. Wait for SSL + “Valid Configuration”
 5. Open `https://shortkey.live` — should show **ShortKey Live · Coming Soon** (not the beauty homepage)
 
-Code already treats `.live` separately from `.beauty`. Until the domain is attached, preview locally at `http://localhost:3001/live`.
+Code already treats `.live` separately from `.beauty`. Until the domain is attached, preview locally at `http://127.0.0.1:3005/live`.
 
 ---
 
@@ -179,7 +179,7 @@ Code already treats `.live` separately from `.beauty`. Until the domain is attac
 **Do not** create a second Vercel project for `.studio` — same chain as beauty / live.  
 **Family Table** stays on `family.shortkey.world` / `npm run family:dev` (:3002) — not on `.studio`.
 
-**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Localhost + `npm run studio:dev` / `family:dev` bypass. Soft shared-secret only — not 正式版 login/roles.
+**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Also gates private magazine/showcase (`/showcase`, `/magazine-demo`, `/control-center/magazine-demo`). Localhost + `npm run studio:dev` / `family:dev` bypass. Soft shared-secret only — not 正式版 login/roles.
 
 **One-time dashboard steps (Kieran):**
 
@@ -192,10 +192,31 @@ Code already treats `.live` separately from `.beauty`. Until the domain is attac
 
 Until the domain is attached, use:
 - Local Studio: `npm run studio:dev` → `http://localhost:3003/` (or `/internal/studio`)
+- Local magazine flip (same Studio process): `http://localhost:3003/magazine-demo/#/cover`
+- Local Lovart copies gallery: `http://localhost:3003/shortkey-assets/`
 - Local Family Table: `npm run family:dev` → `http://localhost:3002/` (or `/internal/family-table`)
 - Deployed path on beauty/vercel host: `https://shortkey.vercel.app/internal/studio` (still `noindex`; soft gate if env set)
+- **Honest (2026-08-06):** `shortkey.studio` is still Squarespace parking — **not** Vercel. `…/magazine-demo` and `…/shortkey-assets` are **404** on beauty + vercel.app until those `public/` folders are in the deployed build.
 
 Doc: `src/brand/sky/SHORTKEY_STUDIO_P0_DNA_CONTROL.md`
+
+---
+
+## 7b. Founder Desk + Minion Chat (INTERNAL)
+
+| Field | Value |
+|-------|--------|
+| **Phone bookmark (INTERNAL)** | `https://shortkey.beauty/desk/#family` |
+| Soft PIN | `SITE_ACCESS_PASSWORD` or `DESK_ACCESS_PASSWORD` |
+| Minion env | `K_MINION_API_KEY` |
+| Vercel fallback | `https://shortkey.vercel.app/desk/#family` |
+| Local | `http://localhost:3005/desk/#family` |
+| Optional host (later) | `desk.shortkey.world` → rewrite `/` → `/desk` (DNS CNAME pending) |
+| **Not yet** | `shortkey.world/desk` — apex still Squarespace parking |
+
+**Env for remote Desk / Minion:** `SITE_ACCESS_PASSWORD` + `K_MINION_API_KEY` + `KURA_API_KEY`  
+**Constant:** `src/lib/minionChatBookmark.ts`  
+Docs: `src/brand/sky/command-center/FOUNDER_DESK_REMOTE.md`
 
 ---
 
@@ -215,7 +236,7 @@ Doc: `src/brand/sky/SHORTKEY_STUDIO_P0_DNA_CONTROL.md`
 **Status lock:** **INTERNAL STAGING ONLY · not public world launch**  
 **Do not** create a second Vercel project — same ShortKey project as beauty / live / studio.
 
-**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Applies to family/studio host `/` and `/internal/*`. Localhost + `npm run family:dev` / `studio:dev` bypass.
+**Soft access gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel env. Cookie unlock via `/internal/login`. Applies to family/studio host `/` and `/internal/*`, plus private magazine/showcase paths. Localhost + `npm run family:dev` / `studio:dev` bypass.
 
 ### DNS record (shortkey.world zone) — copy for registrar
 
@@ -267,11 +288,12 @@ Until DNS / domain is valid, use:
 **Do not** use Studio Deploy Center as one-click publisher for this surface.  
 **Do not** add secrets for this portal.  
 **Do not** copy third-party TV channel identity (beautychannel.net = motion inspiration only).  
-**Coming Soon (:3001) / Family (:3002) / Studio (:3003) untouched.**
+**Beauty (:3005) / Family (:3002) / Studio (:3003) untouched when working Social.**
 
 Until the domain is attached, use:
-- Local Social: `npm run social:dev` → `http://localhost:3004/` (or `/social`)
-- Path on other local surfaces: `http://localhost:3001/social` (same Next app)
+- Local Social: `npm run social:dev` → `http://127.0.0.1:3004/` (or `/social`)
+- Boot all four: `npm run locals:dev`
+- Beauty path (separate surface): `http://127.0.0.1:3005/` — not 3001
 
 Doc: `src/brand/sky/SHORTKEY_SOCIAL_CREATOR_EARLY_ACCESS_v0_1.md`
 

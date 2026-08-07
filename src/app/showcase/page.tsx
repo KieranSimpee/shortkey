@@ -4,12 +4,12 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "ShortKey Showcase | Control + Magazine",
   description:
-    "Public showcase links — Master Control Panel and Magazine Demo (Nihon Sakura Issue 01). Staging · GOR_GOR_REVIEW · not Beauty V1 home.",
+    "Private staging showcase — Master Control Panel and Magazine Demo (Nihon Sakura Issue 01). Soft gate · GOR_GOR_REVIEW · not Beauty V1 home.",
   robots: { index: false, follow: false },
 };
 
 /**
- * Outward showcase hub — same pattern as /control + magazine flipper.
+ * Private showcase hub — soft staging cookie gate (FAMILY_TABLE_STAGING_PASSWORD).
  * Beauty Coming Soon `/` stays locked; these paths are separate demos.
  */
 export default function ShowcasePage() {
@@ -22,7 +22,7 @@ export default function ShowcasePage() {
       }}
     >
       <p className="mb-8 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[#C4787A]">
-        ShortKey · Public Showcase · GOR_GOR_REVIEW
+        ShortKey · Private Showcase · GOR_GOR_REVIEW
       </p>
       <h1
         className="text-center text-4xl font-bold text-[#C9A962] sm:text-5xl"
@@ -31,8 +31,8 @@ export default function ShowcasePage() {
         Showcase
       </h1>
       <p className="mx-auto mt-3 max-w-md text-center text-sm opacity-80">
-        Outward links for Control Panel and Magazine — same surfaces as local demos.
-        Not the locked Beauty V1 home.
+        Staging links for Control Panel and Magazine — unlock via{" "}
+        <code className="font-mono text-xs">/internal/login</code>. Not the locked Beauty V1 home.
       </p>
       <div className="mx-auto mt-10 flex max-w-md flex-col gap-3">
         <Link

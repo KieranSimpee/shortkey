@@ -21,21 +21,22 @@ Binds `0.0.0.0:3005` → `public/` when using the static script.
 |---------|------------------------------|
 | Local disk `public/magazine-demo/` + `issue-01/` | **YES** — 12 flip pages + 4 blueprints on disk |
 | Localhost flip / gallery | **YES** when :3005 / :3003 / :3008 is running |
-| Public showcase hub | `/showcase` · magazine iframe `/showcase/magazine` |
+| Private showcase hub (soft gate) | `/showcase` · magazine iframe `/showcase/magazine` |
 | `https://www.shortkey.beauty/control` | **YES** — Control Panel live |
-| `https://www.shortkey.beauty/magazine-demo/` | **PENDING deploy** — was 404 because folder was never pushed |
-| `https://www.shortkey.beauty/showcase` | **PENDING deploy** — hub after push |
-| `https://shortkey.vercel.app/magazine-demo/` | **PENDING deploy** |
+| `https://www.shortkey.beauty/magazine-demo/` | Soft gate when `FAMILY_TABLE_STAGING_PASSWORD` set |
+| `https://www.shortkey.beauty/showcase` | Soft gate when staging password set |
+| `https://shortkey.vercel.app/magazine-demo/` | Soft gate when staging password set |
 
 **Disk ≠ domain.** Magazine assets must be committed + pushed to the Vercel `main` build.
 
-### Outward links (after deploy)
+### Private links (after deploy + staging password in Vercel)
 
 | Entry | URL |
 |-------|-----|
 | Showcase hub | https://www.shortkey.beauty/showcase |
 | Magazine showcase | https://www.shortkey.beauty/showcase/magazine |
 | Magazine direct | https://www.shortkey.beauty/magazine-demo/#/cover |
+| Unlock | https://www.shortkey.beauty/internal/login |
 | Control Panel | https://www.shortkey.beauty/control |
 
 ### Founder deploy steps (Studio internal host)
@@ -45,10 +46,10 @@ Binds `0.0.0.0:3005` → `public/` when using the static script.
 3. Confirm `https://<vercel-host>/magazine-demo/#/cover` and `/shortkey-assets/` return 200.
 4. Vercel → Domains → add `shortkey.studio` (+ www) — see `CONNECTIONS.md` §6.
 5. At registrar: replace Squarespace parking with Vercel A/CNAME records.
-6. Soft gate: `FAMILY_TABLE_STAGING_PASSWORD` / `INTERNAL_STAGING_SECRET`.
-7. Open `https://shortkey.studio/magazine-demo/#/cover` (middleware now passes `/magazine-demo` + `/shortkey-assets` through).
+6. Soft gate (required for private preview): set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel / `.env.local` — unlock at `/internal/login`. Do not put the password in git or docs.
+7. Open private URLs after unlock: `/showcase`, `/showcase/magazine`, `/magazine-demo/#/cover`, `/control-center/magazine-demo/`.
 
-Beauty V1 Coming Soon `/` stays locked — magazine is a separate path.
+Beauty V1 Coming Soon `/` stays locked — magazine is a separate **private** path when the staging env is set.
 
 ## Local bookmarks (Beauty :3005)
 

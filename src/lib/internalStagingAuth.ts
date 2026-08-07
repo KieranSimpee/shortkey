@@ -1,5 +1,6 @@
 /**
- * Soft staging gate for family.shortkey.world / shortkey.studio + Family Table.
+ * Soft staging gate for family.shortkey.world / shortkey.studio + Family Table
+ * + private magazine/showcase (`/showcase`, `/magazine-demo`, `/control-center/magazine-demo`).
  * Shared secret via env — not production auth / roles.
  */
 

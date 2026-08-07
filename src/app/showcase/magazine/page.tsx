@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Magazine Showcase · Nihon Sakura Issue 01 | ShortKey",
   description:
-    "Public magazine flipper showcase — Control Panel example. GOR_GOR_REVIEW · not live Beauty V1.",
+    "Private magazine flipper showcase — soft staging gate. GOR_GOR_REVIEW · not live Beauty V1.",
   robots: { index: false, follow: false },
 };
 
