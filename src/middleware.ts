@@ -37,7 +37,7 @@ import {
  * Soft staging gate: when FAMILY_TABLE_STAGING_PASSWORD or INTERNAL_STAGING_SECRET
  * is set, family/studio host `/` and `/internal/*` (except login) require cookie.
  * Family Table + Studio paths gated on all hosts. Localhost / family|studio surface bypass.
- * Private magazine/showcase preview (all hosts when secret set) — published on domain BUT PRIVATE:
+ * Private magazine/showcase — published on domain BUT PRIVATE (fail-closed cookie gate):
  * `/showcase`, `/showcase/*`, `/magazine-demo`, `/magazine-demo/*`,
  * `/control-center/magazine-demo` (+ trailing paths). `/control` stays public (founder prefer).
  *
@@ -89,9 +89,28 @@ function isSurfaceBypass(): boolean {
   return s === "family" || s === "studio" || s === "social" || s === "maya";
 }
 
+function isPrivateMagazinePath(pathname: string): boolean {
+  return (
+    pathname === "/showcase" ||
+    pathname.startsWith("/showcase/") ||
+    pathname === "/magazine-demo" ||
+    pathname.startsWith("/magazine-demo/") ||
+    pathname === "/control-center/magazine-demo" ||
+    pathname.startsWith("/control-center/magazine-demo/")
+  );
+}
+
 function requiresStagingGate(host: string, pathname: string): boolean {
   if (pathname === "/internal/login" || pathname.startsWith("/internal/login/")) return false;
   if (isLocalHost(host) || isSurfaceBypass()) return false;
+
+  // Magazine / showcase: fail-closed on production (NOT /control).
+  // Always require cookie so paths are never open browse when env is unset.
+  // Unlock still needs FAMILY_TABLE_STAGING_PASSWORD / INTERNAL_STAGING_SECRET.
+  if (isPrivateMagazinePath(pathname)) {
+    return true;
+  }
+
   if (!stagingSecretConfigured()) return false;
 
   // Family home or studio host: `/` and all `/internal/*`
@@ -108,18 +127,6 @@ function requiresStagingGate(host: string, pathname: string): boolean {
     pathname.startsWith("/internal/family-table/") ||
     pathname === "/internal/studio" ||
     pathname.startsWith("/internal/studio/")
-  ) {
-    return true;
-  }
-
-  // All hosts: private magazine / showcase preview (NOT /control)
-  if (
-    pathname === "/showcase" ||
-    pathname.startsWith("/showcase/") ||
-    pathname === "/magazine-demo" ||
-    pathname.startsWith("/magazine-demo/") ||
-    pathname === "/control-center/magazine-demo" ||
-    pathname.startsWith("/control-center/magazine-demo/")
   ) {
     return true;
   }

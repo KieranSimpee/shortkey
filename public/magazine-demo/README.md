@@ -19,17 +19,17 @@ Binds `0.0.0.0:3005` → `public/` when using the static script.
 
 | Surface | Status (checked 2026-08-07) |
 |---------|------------------------------|
-| Local disk `public/magazine-demo/` + `issue-01/` | **YES** — 12 flip pages + 4 blueprints on disk |
-| Localhost flip / gallery | **YES** when :3005 / :3003 / :3008 is running (localhost bypasses soft gate) |
-| Private showcase hub | `/showcase` · magazine iframe `/showcase/magazine` — soft staging cookie |
-| `https://www.shortkey.beauty/control` | **YES** — Control Panel stays public (founder prefer) |
-| `https://www.shortkey.beauty/magazine-demo/` | On domain · **PRIVATE** (staging password + cookie) |
-| `https://www.shortkey.beauty/showcase` | On domain · **PRIVATE** (staging password + cookie) |
-| `https://shortkey.vercel.app/magazine-demo/` | Same private gate after deploy + Vercel env set |
+| Local disk `public/magazine-demo/` + `issue-01/` | **YES** — 12 flip pages + 4 blueprints on disk (web-compressed ~10MB) |
+| Localhost flip / gallery | **YES** when :3005 / :3003 / :3008 is running (localhost bypasses gate) |
+| Private showcase hub | `/showcase` · `/showcase/magazine` — production cookie gate (fail-closed) |
+| `https://www.shortkey.beauty/control` | **YES** — Control Panel stays public (usable founder bookmark) |
+| `https://www.shortkey.beauty/magazine-demo/` | On domain · **PRIVATE** (redirect → `/internal/login` without cookie) |
+| `https://www.shortkey.beauty/showcase` | On domain · **PRIVATE** (same gate) |
+| `https://shortkey.vercel.app/magazine-demo/` | Same private gate |
 
-**Disk ≠ domain.** Magazine assets must be on the Vercel production build. On Vercel, `distDir` must stay default `.next`.
+**Disk ≠ domain.** Early pushes failed Vercel until `distDir` used `.next` on `VERCEL` (see `next.config.ts`). Magazine PNGs were also compressed so Hobby deploy stays under size pressure.
 
-**Soft gate:** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel + `.env.local`. Unlock at `/internal/login`. Never commit the password.
+**Unlock (required on Vercel):** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel → Settings → Environment Variables (Production + Preview), then open `/internal/login`. Cookie: `sk_internal_staging`. Never commit the password. Without the env, magazine paths stay blocked (cannot unlock).
 
 ### Private share links (password required · not public browse)
 
@@ -42,14 +42,13 @@ Binds `0.0.0.0:3005` → `public/` when using the static script.
 | Control Center magazine | https://www.shortkey.beauty/control-center/magazine-demo |
 | Control Panel (public) | https://www.shortkey.beauty/control |
 
-### Founder deploy steps
+### Founder unlock steps
 
-1. Ensure magazine + assets are in the git remote that Vercel builds.
-2. Push / redeploy ShortKey Vercel project.
-3. Set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel → Settings → Environment Variables (Production + Preview).
-4. Confirm without cookie: `/showcase`, `/magazine-demo`, `/control-center/magazine-demo` → redirect to `/internal/login` (3xx).
-5. Confirm `/control` still returns 200 without cookie.
-6. Beauty Coming Soon `/` stays locked — do not unlock.
+1. Vercel → Project **shortkey** → Settings → Environment Variables → set `FAMILY_TABLE_STAGING_PASSWORD` (Production + Preview). Redeploy if the var was just added.
+2. Open https://www.shortkey.beauty/internal/login — enter the same password → cookie set for 14 days.
+3. Then open private URLs above (or login `?next=/showcase/magazine`).
+4. Confirm without cookie: `/showcase`, `/magazine-demo`, `/control-center/magazine-demo` → **3xx** to `/internal/login`.
+5. Confirm `/control` and Beauty Coming Soon `/` still **200** without cookie — do not unlock `/`.
 
 ## Local bookmarks (Beauty :3005)
 
