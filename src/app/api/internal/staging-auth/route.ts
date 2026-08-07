@@ -3,24 +3,35 @@ import {
   INTERNAL_STAGING_COOKIE,
   INTERNAL_STAGING_COOKIE_VALUE,
   getInternalStagingSecret,
+  isInternalStagingGateConfigured,
   passwordMatchesStagingSecret,
 } from "@/lib/internalStagingAuth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const GATE_NOT_CONFIGURED_ERROR =
+  "Staging gate not configured on this deploy. In Vercel → Project shortkey → Settings → Environment Variables, set FAMILY_TABLE_STAGING_PASSWORD (Production + Preview) to the unlock password, then Redeploy. Typing the password on this page alone does nothing until that env exists.";
+
 /**
  * Soft staging unlock — sets httpOnly cookie when password matches env secret.
  * Soft gate only (shared password). Not login / roles / 正式版 auth.
  */
+export async function GET() {
+  return NextResponse.json({
+    ok: true,
+    configured: isInternalStagingGateConfigured(),
+  });
+}
+
 export async function POST(request: Request) {
   const secret = getInternalStagingSecret();
   if (!secret) {
     return NextResponse.json(
       {
         ok: false,
-        error:
-          "Staging gate not configured. Set FAMILY_TABLE_STAGING_PASSWORD or INTERNAL_STAGING_SECRET in env.",
+        configured: false,
+        error: GATE_NOT_CONFIGURED_ERROR,
       },
       { status: 503 },
     );
