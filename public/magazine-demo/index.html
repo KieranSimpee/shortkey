@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Magazine Demo · Nihon Sakura Issue 01 · shortkey</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Merriweather:wght@400&family=Montserrat:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <!-- Absolute paths: /magazine-demo (no trailing slash) must not break CSS/JS resolution -->
+  <link rel="stylesheet" href="/magazine-demo/magazine-demo.css" />
+</head>
+<body data-issue="nihon-sakura">
+  <div class="demo-banner" role="status">
+    DEMO · CONTROL PANEL EXAMPLE · GOR_GOR_REVIEW · NOT LIVE BEAUTY V1
+  </div>
+
+  <!-- FixedHeader -->
+  <header class="fixed-header" id="fixed-header">
+    <a class="header-brand" href="#/cover" aria-label="shortkey cover">
+      <img class="header-keypad" src="/logo/shortkey-icon.png" alt="" width="28" height="28" />
+      <span class="header-wordmark">shortkey</span>
+    </a>
+    <div class="header-issue">
+      <span class="issue-dot" aria-hidden="true"></span>
+      <span class="issue-label">Nihon Sakura · Issue 01</span>
+    </div>
+    <div class="header-actions">
+      <button type="button" class="strip-chip" data-open="blueprints" title="Blueprints">Blueprints</button>
+      <button type="button" class="personal-space-icon" id="personal-space-icon" aria-label="Personal Space" title="Personal Space">
+        <span class="psi-ring"></span>
+        <span class="psi-label">PS</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- InteractiveStrip -->
+  <nav class="interactive-strip" id="interactive-strip" aria-label="Issue pages">
+    <div class="strip-track" id="strip-track"></div>
+  </nav>
+
+  <main class="magazine-stage" id="magazine-stage">
+    <div class="page-plane" id="page-plane">
+      <div class="page-art" id="page-art">
+        <img class="page-bg" id="page-bg" alt="" />
+        <div class="hotspot-layer" id="hotspot-layer"></div>
+        <div class="page-veil" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- ProductCard (lightweight demo) -->
+    <aside class="product-card" id="product-card" hidden>
+      <p class="pc-eyebrow">Editorial demo</p>
+      <h2 class="pc-title" id="pc-title">—</h2>
+      <p class="pc-body" id="pc-body">—</p>
+      <div class="pc-actions">
+        <button type="button" class="btn-gold" data-open="tryon">Try-On · SIMULATOR</button>
+        <button type="button" class="btn-ghost" data-open="skin">Skin Analysis · SIMULATOR</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- PageNavigation -->
+  <nav class="page-navigation" id="page-navigation" aria-label="Page navigation">
+    <button type="button" class="nav-btn" id="nav-prev" aria-label="Previous page">← Prev</button>
+    <div class="nav-meta">
+      <span id="nav-index">01</span>
+      <span class="nav-sep">/</span>
+      <span id="nav-title">Cover</span>
+    </div>
+    <button type="button" class="nav-btn" id="nav-next" aria-label="Next page">Next →</button>
+  </nav>
+
+  <!-- TryOnModal · SIMULATOR · makeup selectable -->
+  <div class="modal-root" id="tryon-modal" hidden>
+    <div class="modal-backdrop" data-close="tryon"></div>
+    <div class="modal-panel modal-panel--tryon" role="dialog" aria-labelledby="tryon-title">
+      <p class="modal-sim-tag">SIMULATOR · NOT LIVE BANUBA / TINT</p>
+      <h2 id="tryon-title" class="modal-title">Makeup Try-On</h2>
+      <p class="modal-copy">Issue 01 Nihon Sakura · select lip, blush, eye, or base. Local overlay only — no live AR vendor session.</p>
+
+      <div class="tryon-slots" id="tryon-slots" role="tablist" aria-label="Makeup category"></div>
+
+      <div class="sim-face" id="sim-face" aria-hidden="true">
+        <div class="sim-base" id="sim-base"></div>
+        <div class="sim-eye left" id="sim-eye-l"></div>
+        <div class="sim-eye right" id="sim-eye-r"></div>
+        <div class="sim-cheek left" id="sim-cheek-l"></div>
+        <div class="sim-cheek right" id="sim-cheek-r"></div>
+        <div class="sim-lip" id="sim-lip"></div>
+      </div>
+
+      <p class="tryon-selected" id="tryon-selected">—</p>
+      <ul class="tryon-swatches" id="tryon-swatches"></ul>
+
+      <div class="modal-links">
+        <a href="#/ingredient">→ Ingredient</a>
+        <a href="#/brand">→ Brand Spotlight</a>
+        <a href="#/discovery">→ Discovery Edit</a>
+        <a href="/try-on">→ Full try-on page</a>
+      </div>
+      <button type="button" class="btn-gold" data-close="tryon">Close</button>
+    </div>
+  </div>
+
+  <!-- SkinAnalysisModal · SIMULATOR -->
+  <div class="modal-root" id="skin-modal" hidden>
+    <div class="modal-backdrop" data-close="skin"></div>
+    <div class="modal-panel" role="dialog" aria-labelledby="skin-title">
+      <p class="modal-sim-tag">SIMULATOR · NOT CLINICAL</p>
+      <h2 id="skin-title" class="modal-title">Skin Analysis</h2>
+      <p class="modal-copy">Placeholder scores for Control Panel demo only. Not diagnosis. Motto: ShortKey 不模仿畫面。ShortKey 捕捉生命力。</p>
+      <ul class="sim-scores">
+        <li><span>Texture</span><b>72</b></li>
+        <li><span>Evenness</span><b>68</b></li>
+        <li><span>Hydration cue</span><b>81</b></li>
+      </ul>
+      <div class="modal-links">
+        <a href="#/try-on">→ Try-On</a>
+        <a href="#/whats-next">→ What’s Next</a>
+        <a href="#/ingredient">→ Ingredient</a>
+      </div>
+      <button type="button" class="btn-gold" data-close="skin">Close</button>
+    </div>
+  </div>
+
+  <!-- PersonalSpaceSheet -->
+  <div class="sheet-root" id="space-sheet" hidden>
+    <div class="sheet-backdrop" data-close="space"></div>
+    <aside class="space-sheet" role="dialog" aria-labelledby="space-title">
+      <p class="modal-sim-tag">PERSONAL SPACE · STUB</p>
+      <h2 id="space-title" class="modal-title">Your Space</h2>
+      <p class="modal-copy">Saved looks, skin notes, and discovery pins will live here. Demo stub only — GOR_GOR_REVIEW.</p>
+      <ul class="space-list">
+        <li>Pinned · Sakura Blush editorial cue</li>
+        <li>Saved · Ingredient ↔ Brand correlation</li>
+        <li>Queue · Creator · Discovery</li>
+      </ul>
+      <button type="button" class="btn-ghost" data-close="space">Close</button>
+    </aside>
+  </div>
+
+  <!-- Blueprints panel -->
+  <div class="modal-root" id="blueprints-modal" hidden>
+    <div class="modal-backdrop" data-close="blueprints"></div>
+    <div class="modal-panel modal-wide" role="dialog" aria-labelledby="bp-title">
+      <h2 id="bp-title" class="modal-title">Interactive Blueprints</h2>
+      <p class="modal-copy">Lovart canvas <code>pnMAt6CTYc</code> · locked artifacts</p>
+      <div class="bp-grid" id="bp-grid"></div>
+      <button type="button" class="btn-gold" data-close="blueprints">Close</button>
+    </div>
+  </div>
+
+  <script src="/magazine-demo/magazine-demo.js"></script>
+</body>
+</html>

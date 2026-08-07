@@ -1,6 +1,17 @@
 import type { NextConfig } from "next";
 
+/** Isolate caches when family/studio/social/maya/beauty run in parallel locally. */
+const surface = process.env.SHORTKEY_SURFACE?.trim();
+const distDir =
+  surface === "family" ||
+  surface === "studio" ||
+  surface === "social" ||
+  surface === "maya"
+    ? `.next-${surface}`
+    : ".next-beauty";
+
 const nextConfig: NextConfig = {
+  distDir,
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -10,9 +21,28 @@ const nextConfig: NextConfig = {
     ],
   },
   serverExternalPackages: ["@mediapipe/tasks-vision"],
-  async redirects() {
-    // Legacy / invented paths → production monochrome
+  async rewrites() {
+    // Static HTML at clean URLs (public/ folders)
     return [
+      { source: "/desk", destination: "/desk/index.html" },
+      { source: "/desk/", destination: "/desk/index.html" },
+      { source: "/app", destination: "/app/index.html" },
+      { source: "/app/", destination: "/app/index.html" },
+      // Magazine flip + Lovart galleries — trailing-slash safe for Next
+      { source: "/magazine-demo", destination: "/magazine-demo/index.html" },
+      { source: "/magazine-demo/", destination: "/magazine-demo/index.html" },
+      { source: "/shortkey-assets", destination: "/shortkey-assets/index.html" },
+      { source: "/shortkey-assets/", destination: "/shortkey-assets/index.html" },
+    ];
+  },
+  async redirects() {
+    // Legacy / invented paths — production monochrome
+    return [
+      {
+        source: "/shortkey-app.html",
+        destination: "/desk/",
+        permanent: false,
+      },
       {
         source: "/images/shortkey-logo-clear.png",
         destination: "/logo/shortkey-primary.png",
@@ -51,7 +81,7 @@ const nextConfig: NextConfig = {
       "/logo/shortkey-favicon-256.png",
       "/logo/shortkey-favicon-512.png",
     ];
-    return logoFiles.map((source) => ({
+    const logoHeaders = logoFiles.map((source) => ({
       source,
       headers: [
         {
@@ -60,6 +90,12 @@ const nextConfig: NextConfig = {
         },
       ],
     }));
+    // Founder Desk + Minion Chat — INTERNAL only (not public product)
+    const deskHeaders = {
+      source: "/desk/:path*",
+      headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    };
+    return [...logoHeaders, deskHeaders];
   },
 };
 
