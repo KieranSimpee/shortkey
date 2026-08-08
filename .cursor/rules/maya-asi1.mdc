@@ -1,0 +1,33 @@
+---
+description: Reach Maya via ASI:One API (one Maya · one key) — Base44 Maya portal DELETED
+alwaysApply: false
+---
+
+# Maya — ASI:One (Cursor rule)
+
+When the founder asks to **ask Maya**, **call Maya**, or needs editorial sync:
+
+## Identity
+
+- **Maya** — Editorial Heart · live via **ASI:One** API
+- Docs: https://docs.asi1.ai/documentation/getting-started/overview
+- Lab: `npm run maya:dev` → http://127.0.0.1:3008/internal/maya
+
+## Auth
+
+- `ASI_ONE_API_KEY` (or `ASI1_API_KEY`) in `.env.local` only
+- **Deleted:** Base44 Maya portal · `MAYA_PORTAL_URL` · `MAYA_API_KEY` · `MAYA_AGENT_ID` · `BASE44_MAYA_API_KEY`
+
+## Call
+
+```bash
+npm run ask:maya -- "message"
+```
+
+Or Lab chat → `POST /api/ai/asi1/chat`.
+
+## Locks
+
+- Not Banuba TINT · does not override Kura · does not bypass Simpee
+- ALWAYS TO TRUE — no invented translations / DNA
+- **Art gate:** Do NOT generate pictures until content is reviewed and confirmed (founder / Gor Gor). Briefs OK; no Lovart/MJ handoff before that.
