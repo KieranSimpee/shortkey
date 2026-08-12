@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "perplexity-research": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-server-fetch"],
+      "env": {
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}",
+        "RESEARCH_MODE": "beauty_trends_asian_culture"
+      },
+      "description": "Real-time beauty trend research. Asian Gen Z trends, gua sha, rice water, TikTok beauty, barrier repair."
+    },
+    "trend-monitor": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-server-fetch"],
+      "env": {
+        "SOURCES": "cosmeticsbusiness.com,jingdaily.com,blog.weareprovital.com",
+        "SCAN_FREQUENCY": "daily",
+        "CATEGORIES": "korean_beauty,japanese_beauty,chinese_beauty,tiktok_trends"
+      },
+      "description": "Automated trend scanning across Asian beauty publications."
+    }
+  }
+}
