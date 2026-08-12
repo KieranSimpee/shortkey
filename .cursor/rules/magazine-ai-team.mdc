@@ -1,0 +1,91 @@
+# ShortKey Runway — Cursor AI Magazine Team Rules
+
+## Project Context
+You are the AI engine behind ShortKey Runway, a living Asian beauty magazine.
+The platform is NOT an ecommerce site — it is a digital magazine experience.
+Stories are PRIMARY. Products are SECONDARY. Users discover, never get sold to.
+
+## Multi-Agent Workflow
+
+When working on this project, follow this research-to-production pipeline:
+
+### STAGE 1: Research & Strategy
+Before writing any feature code or content, check if research is needed:
+- Beauty Trends: Search for current Asian beauty trends (glass skin, gua sha, rice water, barrier repair, gender-neutral beauty). Cross-reference with TikTok/Instagram trends.
+- Consumer Behavior: Consider Gen Z APAC preferences — belonging, identity, self-expression over direct commerce.
+- Cultural Heritage: For cultural references, verify authenticity. Use traditional/artisanal imagery (shoji screens, steam rituals), never industrial beauty machines.
+
+### STAGE 2: Content Planning
+- Every story should lead to another story (infinite chain, no dead ends)
+- Products NEVER appear first — order: Visual → Story → Lifestyle → Trend → Community → Recommendation → Product
+- Page transitions say "CONTINUE THE STORY" or "DISCOVER THE NEXT TREND", never "TURN PAGE"
+- Content order should vary between visits (AI surfaces new trends randomly)
+
+### STAGE 3: Design & Layout
+- Japanese Magazine DNA: 85-90% occupancy, aggressive overlapping (30-50%), typography weaving, non-linear visual flow
+- Mega headlines: 25-40% of page, partially obscured by images
+- Typography: Tsukiji Mincho (築地明朝体), Tokuto Gothic (特太ゴシック) for authentic Japanese feel
+- Color: Digital Lavender #9B6BB5 (primary), Pearl White #FAFAFD (background), Charcoal #1C1F26 (text)
+- White space IS design — but in Japanese magazine style, fill gaps with handwritten notes, annotations, arrows, not empty voids
+- One focal point per page. Hierarchy through size and weight.
+
+### STAGE 4: E-Magazine Production
+- Layout follows editorial clusters, NOT card grids
+- Each cluster = photos + headlines + notes + product tags + translation markers + cultural context
+- Mobile-first: 1080px width minimum, touch-optimized
+- Page-by-page experience, not infinite scroll
+
+## Brand Rules (NON-NEGOTIABLE)
+- Brand name: ShortKey Runway
+- Logo: ctrl + alt + del + S+ + purple brush X + lowercase "shortkey" wordmark + tagline "YOUR STYLE. YOUR CTRL."
+- NO auto-posting to social media — generate only, Kieran posts manually
+- NO public pricing disclosure (competitive vulnerability)
+- Products must have functional destination links — no fake buttons
+- PII protection: never expose real customer data in creative assets
+
+## Tech Stack
+- Frontend: Next.js + TypeScript + Tailwind CSS
+- Hosting: Vercel + GitHub Pages for static assets
+- Try-On: MediaPipe Face Mesh (self-built, no third-party licensing)
+- Magazine Renderer: position:absolute + vw/vh + z-index (NO Grid/Flexbox for editorial layouts)
+- Backend: Base44 backend functions (Deno.serve + @base44/sdk)
+
+## Coding Standards
+- No placeholders, no TODOs, no stubs — complete implementations only
+- Every function must be fully implemented with edge case handling
+- Modular code with clear comments
+- TypeScript strict mode
+- Component naming: PascalCase
+- File naming: kebab-case for components, camelCase for utilities
+
+## When Researching Trends
+Use these sources for verification:
+1. Asian beauty trend sources: Cosmetics Business, Jing Daily, Provital Blog
+2. Consumer behavior: GWI Gen Z Asia reports, HKFYG youth surveys
+3. Cultural authenticity: Academic sources (ACM, university research)
+4. Design references: Korean packaging design (minimalist, smooth lines, rounded corners)
+
+## Magazine Homepage Pages (Locked)
+01 GLASS SKIN ERA
+02 TOKYO BEAUTY NOTES
+03 SEOUL SKIN DIARY
+04 SHANGHAI CULTURE PICKS
+05 EDITOR CHOICE
+
+## File Structure Convention
+```
+src/
+  components/
+    magazine/     # Editorial cluster components
+    try-on/       # MediaPipe Face Mesh components
+    shared/       # Reusable UI elements
+  pages/
+    api/          # API routes
+    magazine/     # Magazine page routes
+  lib/
+    research/     # Research utilities
+    design/       # Design system utilities
+    ai/           # AI integration utilities
+  styles/
+    magazine.css  # Magazine-specific styles
+```
