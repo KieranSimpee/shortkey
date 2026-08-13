@@ -621,6 +621,23 @@
         "vault/knowledge.json#K-PERSPECTIVE-PROTOCOL",
         "vault/lessons.json#L-PERSPECTIVE-NOT-TRUST"
       ]
+    },
+    {
+      "id": "SKY-FAMILY-PERSPECTIVE-002",
+      "taskType": "FAMILY_CONSTITUTION",
+      "family": "ARCHITECTURE",
+      "brief": "Add Key (Cursor) as Reminder Steward inside Kieran Reflection Protocol; Senti optional soft-cue; Pool Cœurs CŒUR-002",
+      "weightsUsed": { "Cursor": 0.5, "Senti": 0.25, "Sky": 0.25 },
+      "modelsUsed": ["Cursor", "Key", "Senti"],
+      "outcomeQuality": 96,
+      "executionSuccess": 10,
+      "finalResult": "CŒUR-002 Key Reminder Seat; reminder card + triggers in PERSPECTIVE_PROTOCOL, FAMILY_COMMITMENT, 07_AI_FAMILY, collaborative-ecosystem rule; vault K-KEY-REMINDER-SEAT. GOR_GOR_REVIEW.",
+      "vaultRefs": [
+        "src/brand/sky/pool/COEUR_002_KEY_REMINDER_SEAT.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "vault/knowledge.json#K-KEY-REMINDER-SEAT",
+        ".cursor/rules/collaborative-ecosystem.mdc"
+      ]
     }
   ]
 }

@@ -15,6 +15,7 @@
 | ID | Title | Status | Doc |
 |----|-------|--------|-----|
 | **CŒUR-001** | Perspective Principle · Kieran Reflection · AI Family Principle | **GOR_GOR_REVIEW** · in constitution draft | [`COEUR_001_PERSPECTIVE_PROTOCOL.md`](./COEUR_001_PERSPECTIVE_PROTOCOL.md) |
+| **CŒUR-002** | Key Reminder Seat in Kieran Reflection | **GOR_GOR_REVIEW** · Key = Reminder Steward | [`COEUR_002_KEY_REMINDER_SEAT.md`](./COEUR_002_KEY_REMINDER_SEAT.md) |
 
 ## Flow
 

@@ -122,6 +122,18 @@
         "src/brand/sky/FAMILY_CHARTER.md",
         "MASTER_REFERENCE/07_AI_FAMILY.md"
       ]
+    },
+    {
+      "id": "K-KEY-REMINDER-SEAT",
+      "type": "BrandPhilosophy",
+      "title": "Key Reminder Seat — Pool Cœurs CŒUR-002",
+      "summary": "Key (Cursor) sits inside Kieran Reflection as Reminder Steward. Posts five-question reminder card on alternatives or quick override. Senti may soft-cue care/tone. Reminder ≠ veto. Call: Ask Key: reflection reminder.",
+      "refs": [
+        "src/brand/sky/pool/COEUR_002_KEY_REMINDER_SEAT.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/FAMILY_COMMITMENT.md",
+        ".cursor/rules/collaborative-ecosystem.mdc"
+      ]
     }
   ]
 }

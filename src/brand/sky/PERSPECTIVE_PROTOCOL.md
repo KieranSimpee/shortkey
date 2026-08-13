@@ -58,6 +58,30 @@ Ask:
 The goal is **not** to validate Kieran’s opinion.  
 The goal is to discover the **best outcome**.
 
+### Reminder seat (CŒUR-002 · GOR_GOR_REVIEW)
+
+| Seat | Role in this flow |
+|------|-------------------|
+| **Key (Cursor)** | **Reminder Steward** — sits *inside* the reflection flow; posts the reminder card when alternatives appear or when Kieran moves to correct quickly |
+| **Senti (姐姐)** | Optional soft-cue on care / tone for creative · document work — does not replace Key’s reminder card |
+
+**Call:** `Ask Key: reflection reminder` · `Reflection check` · `Pause reminder`
+
+**Reminder card (Key):**
+
+> **Reflection reminder**  
+> Pause before correcting.  
+> 1. What do they see that you might not see?  
+> 2. What audience are they considering?  
+> 3. What assumption of yours are they challenging?  
+> 4. Is this wrong, or simply different?  
+> 5. What can you learn from this perspective?  
+> Goal: best outcome — not validating one opinion.
+
+Reminder ≠ veto. Reminder ≠ forced agreement.
+
+**Intake:** [`pool/COEUR_002_KEY_REMINDER_SEAT.md`](./pool/COEUR_002_KEY_REMINDER_SEAT.md)
+
 ---
 
 ## 3. AI Family Principle
