@@ -77,7 +77,7 @@ Body (Living Room Thread):
 }
 ```
 
-Optional `sender` / `kind` / `from_room` are accepted and ignored upstream (diagnostics / future). Soft fallback **200** `{ fallback: true, reply }` when key missing — unchanged.
+Optional `sender` / `kind` / `from_room` are accepted and ignored upstream (diagnostics / future). Missing key → **503** `{ live: false, code: "not_connected" }` — never a soft fake Gor Gor reply.
 
 ---
 

@@ -18,7 +18,8 @@ import { P0_CHAT_SENDERS } from "@/lib/familyDoorbellTypes";
  * Family Chat drawer (same floating Gor Gor button).
  * Sender = who is speaking · Send to = who should receive.
  * Gor Gor among recipients → real `/api/gor-gor-chat` (Simpee bridge).
- * Sky / Senti / Kura / Agent R → shared doorbell (SENT / WAITING · no fake replies).
+ * Kura / Senti / Agent R → live `/api/family/agents/ask` (fail-closed · no ghost replies).
+ * Sky → shared doorbell SENT / WAITING only (email seat · no fake Sky API).
  *
  * Storage (same key, nested fields):
  *   shortkey-gor-gor-chat-bridge-v01
@@ -32,7 +33,17 @@ export const GOR_GOR_BRIDGE_WARNING =
   "Internal staging only · Family Chat · selected recipients · no private data yet.";
 
 const BRIDGE_OFFLINE_MSG =
-  "Gor Gor Chat Bridge is not connected yet. Message saved locally only.";
+  "NOT LIVE · Gor Gor bridge not connected. Local save only — this is NOT a Gor Gor reply.";
+
+/** Seats that can receive a live Superagent / ASI reply (Sky stays doorbell / email). */
+const LIVE_CHAT_SEATS: TargetMember[] = ["gor-gor", "kura", "senti", "agent-r"];
+
+function seatToAskId(member: TargetMember): "gor-gor" | "kura" | "senti" | "agent-r" | null {
+  if (member === "gor-gor" || member === "kura" || member === "senti" || member === "agent-r") {
+    return member;
+  }
+  return null;
+}
 
 export type BridgeRoomId =
   | "living"
@@ -276,10 +287,16 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
     const wantsGorGor = resolved.includes("gor-gor");
     const otherMembers = resolved.filter((m) => m !== "gor-gor");
     const wantsDoorbell = selected.includes("all") || otherMembers.length > 0;
+    const liveSiblings = resolved.filter(
+      (m) => m === "kura" || m === "senti" || m === "agent-r",
+    );
 
     const initialStatuses: RecipientStatusLine[] = resolved.map((member) => ({
       member,
-      status: member === "gor-gor" && wantsGorGor ? "WAITING" : "SENT",
+      status:
+        member === "gor-gor" || LIVE_CHAT_SEATS.includes(member)
+          ? "WAITING"
+          : "SENT",
     }));
 
     const cardId = uid();
@@ -333,8 +350,10 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
         const data = (await res.json().catch(() => null)) as {
           reply?: string;
           conversation_id?: string;
+          live?: boolean;
           fallback?: boolean;
           error?: string;
+          code?: string;
         } | null;
 
         if (data?.conversation_id) {
@@ -346,8 +365,9 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
           latest.livingRoomMessages?.find((m) => m.id === cardId)?.recipientStatuses ??
           initialStatuses;
 
-        if (data?.fallback && data.reply) {
-          setBanner(BRIDGE_OFFLINE_MSG);
+        // Honesty: only REPLIED when live===true and real reply text exists.
+        // Never treat soft/fallback/offline copy as a Gor Gor answer.
+        if (res.ok && data?.live === true && data.reply?.trim()) {
           patchCard(cardId, {
             recipientStatuses: statuses.map((s) =>
               s.member === "gor-gor"
@@ -355,23 +375,17 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
                 : s,
             ),
           });
-        } else if (!res.ok || !data?.reply) {
+        } else {
           const errText =
             data?.error ||
-            "Gor Gor could not reply right now. Your message is still saved locally.";
+            (data?.code === "not_connected"
+              ? BRIDGE_OFFLINE_MSG
+              : "Gor Gor could not reply right now. Your message is still saved locally — NOT a live reply.");
           setBanner(errText);
           patchCard(cardId, {
             recipientStatuses: statuses.map((s) =>
               s.member === "gor-gor"
                 ? { ...s, status: "WAITING", reply: errText }
-                : s,
-            ),
-          });
-        } else {
-          patchCard(cardId, {
-            recipientStatuses: statuses.map((s) =>
-              s.member === "gor-gor"
-                ? { ...s, status: "REPLIED", reply: data.reply }
                 : s,
             ),
           });
@@ -470,6 +484,72 @@ export function GorGorChatDrawer({ open, onClose, initialRoom = "living" }: Prop
             prev ||
             "Doorbell unreachable — family recipients marked SENT locally until shared board syncs.",
         );
+      }
+    }
+
+    // 3) Live Superagent asks for Kura / Senti / Agent R (ALWAYS TO TRUE — no ghost replies)
+    if (liveSiblings.length > 0) {
+      for (const member of liveSiblings) {
+        const seat = seatToAskId(member);
+        if (!seat) continue;
+        try {
+          const res = await fetch("/api/family/agents/ask", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              seat,
+              message: `[Family Home · Living Room]\n[Sender: ${sender}]\n\n${text}`,
+            }),
+          });
+          const data = (await res.json().catch(() => null)) as {
+            live?: boolean;
+            reply?: string;
+            error?: string;
+            code?: string;
+            label?: string;
+          } | null;
+
+          const latest = loadStore();
+          const statuses =
+            latest.livingRoomMessages?.find((m) => m.id === cardId)
+              ?.recipientStatuses ?? initialStatuses;
+
+          if (res.ok && data?.live === true && data.reply?.trim()) {
+            patchCard(cardId, {
+              recipientStatuses: statuses.map((s) =>
+                s.member === member
+                  ? { ...s, status: "REPLIED", reply: data.reply }
+                  : s,
+              ),
+            });
+          } else {
+            const errText =
+              data?.error ||
+              `NOT LIVE · ${data?.label || member} could not reply (${data?.code || res.status}). Not inventing an answer.`;
+            setBanner((prev) => prev || errText);
+            patchCard(cardId, {
+              recipientStatuses: statuses.map((s) =>
+                s.member === member
+                  ? { ...s, status: "WAITING", reply: errText }
+                  : s,
+              ),
+            });
+          }
+        } catch {
+          const errText = `NOT LIVE · ${member} unreachable — not inventing a reply.`;
+          setBanner((prev) => prev || errText);
+          const latest = loadStore();
+          const statuses =
+            latest.livingRoomMessages?.find((m) => m.id === cardId)
+              ?.recipientStatuses ?? initialStatuses;
+          patchCard(cardId, {
+            recipientStatuses: statuses.map((s) =>
+              s.member === member
+                ? { ...s, status: "WAITING", reply: errText }
+                : s,
+            ),
+          });
+        }
       }
     }
 
