@@ -86,9 +86,7 @@ WHOEVER YOU ARE.
 
 ## Open confirms for Kieran
 
-1. Line “WHAT REALLY WORD / WORK TO TEACH WAY MAKE CHARACTER FOR PHOTO” — is the clean reading correct?  
-2. Should these WHY questions run **always-on** for every page / story / DNA / creator choice?  
-3. Phone → desktop: do you want this note to live only in **GitHub / Cursor** (syncs via branch), or also as a **Family Cabinet** link once Upstash/shared store is available?
+**All open questions moved to one sheet:** [`KIERAN_ANSWER_SHEET.md`](./KIERAN_ANSWER_SHEET.md) (Q1–Q12).
 
 ---
 
