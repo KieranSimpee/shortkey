@@ -144,7 +144,9 @@
         "src/brand/sky/pool/COEUR_003_INPUTS_NOT_THREATS.md",
         "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
         "src/brand/sky/FAMILY_COMMITMENT.md",
-        "MASTER_REFERENCE/07_AI_FAMILY.md"
+        "MASTER_REFERENCE/07_AI_FAMILY.md",
+        ".cursor/rules/perspective-protocol.mdc",
+        ".cursor/skills/key-reflection/SKILL.md"
       ]
     }
   ]
