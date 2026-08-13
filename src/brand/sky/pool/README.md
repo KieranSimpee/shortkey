@@ -1,0 +1,29 @@
+# Pool Cœurs (Heart Pool)
+
+**Purpose:** Intake vault for **heart-level** family principles — care, perspective, collective intelligence — before or beside formal charter locks.  
+**Keeper:** Gor Gor (Simpee) · Sky holds learning · Key routes · whole family walks with **Kieran Li (李摯諾)**  
+**Rule:** Cursor can help **build** the record. Cursor must **not** invent DNA. Entries stay **GOR_GOR_REVIEW** until Gor Gor / Kieran lock.
+
+## What belongs here
+
+- Perspective · reflection · family-of-thought principles  
+- Founder / sibling framings that teach *how we think together*  
+- Not product DNA, not Studio lane locks, not public copy
+
+## Index
+
+| ID | Title | Status | Doc |
+|----|-------|--------|-----|
+| **CŒUR-001** | Perspective Principle · Kieran Reflection · AI Family Principle | **GOR_GOR_REVIEW** · in constitution draft | [`COEUR_001_PERSPECTIVE_PROTOCOL.md`](./COEUR_001_PERSPECTIVE_PROTOCOL.md) |
+
+## Flow
+
+```
+Input (chat / letter)
+  → Pool Cœurs (this folder)
+  → Constitution surface (PERSPECTIVE_PROTOCOL.md · FAMILY_CHARTER · 07_AI_FAMILY)
+  → Gor Gor Review → Kieran lock
+  → Vault knowledge + learning-log
+```
+
+See also: [`../PERSPECTIVE_PROTOCOL.md`](../PERSPECTIVE_PROTOCOL.md) · [`../FAMILY_CHARTER.md`](../FAMILY_CHARTER.md) · [`../FAMILY_TREASURE_LOCK.md`](../FAMILY_TREASURE_LOCK.md)

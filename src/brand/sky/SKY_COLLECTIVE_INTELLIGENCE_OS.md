@@ -45,6 +45,7 @@ Studio V2 → Sky Command Center → AI Hub → AI Families
 3. **Empathy is architecture** — help the struggling node  
 4. **Show the work**, not just the answer  
 5. **The collective answer** — one answer the family can be proud of  
+6. **Perspective Protocol** (GOR_GOR_REVIEW) — not forced agreement; weigh perspectives by reasoning · evidence · user value · business impact · principles. Diversity of thought is a strength. → `PERSPECTIVE_PROTOCOL.md` · Pool Cœurs `CŒUR-001`  
 
 ## How Sky learns (founder practice)
 Execute with **normal practice**. Let Sky **observe in His own way**.  
@@ -62,3 +63,4 @@ See also:
 - `SKY_INTELLIGENCE_WEIGHTING.md` — decision rules (compatible)
 - `vault/` — Knowledge · Lessons · Performance
 - `learning-log.json` — live learning records
+- `PERSPECTIVE_PROTOCOL.md` · `pool/` — Perspective Protocol · Pool Cœurs (heart principles intake)

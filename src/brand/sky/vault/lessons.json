@@ -36,6 +36,13 @@
       "lesson": "Hero used V3 logo but header still rendered legacy ctrl+BEAUTY KeyCap mark.",
       "why": "HeaderBrandSection never wired to Logo /logo pack after V3 install.",
       "fix": "COMP-010 must use Logo size=header surface=light; verify render path includes header."
+    },
+    {
+      "id": "L-PERSPECTIVE-NOT-TRUST",
+      "outcome": "succeeded",
+      "lesson": "Framing multi-seat disagreement as a trust protocol pressures agreement; framing as perspective protocol protects independent thought and collective intelligence.",
+      "why": "Trust language can imply seats must align with each other or with Kieran; the goal is learning and best outcome, not identical opinions.",
+      "fix": "Use Perspective Principle · Kieran Reflection · AI Family Principle; evaluate by reasoning/evidence/user value/business impact/principles; archive heart inputs in Pool Cœurs."
     }
   ]
 }

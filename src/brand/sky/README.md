@@ -4,6 +4,7 @@
 |-------|------|------|
 | **Sky** | Intelligence governor | `SKY_COLLECTIVE_INTELLIGENCE_OS.md` |
 | **AI Hub** | Collective memory | `bridges/AI_HUB.md` + `vault/` |
+| **Pool Cœurs** | Heart principles intake | `pool/` · `PERSPECTIVE_PROTOCOL.md` |
 | **Base44** | Execution platform | `bridges/BASE44.md` |
 | **ShortKey** | UX layer | `bridges/SHORTKEY.md` |
 

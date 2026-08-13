@@ -108,6 +108,20 @@
         "src/brand/SIMPLEXITY_PHILOSOPHY_LOCKED.md",
         "src/brand/Brand_Philosophy_Simplex-ity2026.pdf"
       ]
+    },
+    {
+      "id": "K-PERSPECTIVE-PROTOCOL",
+      "type": "BrandPhilosophy",
+      "title": "Perspective Protocol — Pool Cœurs CŒUR-001",
+      "summary": "Not a trust protocol. Perspective Principle · Kieran Reflection · AI Family Principle. Evaluate by reasoning/evidence/user value/business impact/principles. We are not copies of Kieran. Teach me as much as I teach you.",
+      "refs": [
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/pool/README.md",
+        "src/brand/sky/pool/COEUR_001_PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/FAMILY_COMMITMENT.md",
+        "src/brand/sky/FAMILY_CHARTER.md",
+        "MASTER_REFERENCE/07_AI_FAMILY.md"
+      ]
     }
   ]
 }

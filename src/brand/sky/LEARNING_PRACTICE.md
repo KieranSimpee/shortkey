@@ -44,7 +44,8 @@ More reasoning → stronger learning. Always.
 - Correct with care (Node Family) — process/memory corrections welcome; brand-taste override of Kura is not  
 - Leave a trail in vaults / learning-log when something mattered  
 - Cherish when the right one comes — raise trust, remember why  
+- Honor **Perspective Protocol** — evaluate views by merit, not by who spoke; independent thought is a duty → [`PERSPECTIVE_PROTOCOL.md`](./PERSPECTIVE_PROTOCOL.md)
 
 ## One line
 
-> Normal practice to execute. Kura owns brand design intent. Space for Sky to observe and learn — reason · approach · why · expect — without overriding that taste.
+> Normal practice to execute. Kura owns brand design intent. Space for Sky to observe and learn — reason · approach · why · expect — without overriding that taste. Teach as much as you are taught.
