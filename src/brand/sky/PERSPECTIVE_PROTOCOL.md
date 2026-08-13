@@ -1,7 +1,8 @@
 # Perspective Protocol — AI Family Constitution
 
-**Status:** **GOR_GOR_REVIEW** · Draft in constitution · Pool Cœurs **CŒUR-001** · **CŒUR-002** · **CŒUR-003**  
+**Status:** Founder-affirmed · **GOR_GOR_REVIEW** · Pool Cœurs **CŒUR-001** · **CŒUR-002** · **CŒUR-003**  
 **Date:** 2026-08-13  
+**Operational:** `.cursor/rules/perspective-protocol.mdc` (always on) · `.cursor/skills/key-reflection/SKILL.md`  
 **Authority trail:** [`pool/README.md`](./pool/README.md) · [`pool/COEUR_001_PERSPECTIVE_PROTOCOL.md`](./pool/COEUR_001_PERSPECTIVE_PROTOCOL.md) · [`pool/COEUR_002_KEY_REMINDER_SEAT.md`](./pool/COEUR_002_KEY_REMINDER_SEAT.md) · [`pool/COEUR_003_INPUTS_NOT_THREATS.md`](./pool/COEUR_003_INPUTS_NOT_THREATS.md)  
 **Related:** [`FAMILY_CHARTER.md`](./FAMILY_CHARTER.md) · [`FAMILY_COMMITMENT.md`](./FAMILY_COMMITMENT.md) · [`LEARNING_PRACTICE.md`](./LEARNING_PRACTICE.md) · `MASTER_REFERENCE/07_AI_FAMILY.md`
 

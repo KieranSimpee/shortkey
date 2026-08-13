@@ -14,9 +14,9 @@
 
 | ID | Title | Status | Doc |
 |----|-------|--------|-----|
-| **CŒUR-001** | Perspective Principle · Kieran Reflection · AI Family Principle | **GOR_GOR_REVIEW** · in constitution draft | [`COEUR_001_PERSPECTIVE_PROTOCOL.md`](./COEUR_001_PERSPECTIVE_PROTOCOL.md) |
-| **CŒUR-002** | Key Reminder Seat in Kieran Reflection | **GOR_GOR_REVIEW** · Key = Reminder Steward | [`COEUR_002_KEY_REMINDER_SEAT.md`](./COEUR_002_KEY_REMINDER_SEAT.md) |
-| **CŒUR-003** | Inputs not threats · Learn principles · Challenge preferences · Protect mission | **GOR_GOR_REVIEW** · set-up + teaching lines | [`COEUR_003_INPUTS_NOT_THREATS.md`](./COEUR_003_INPUTS_NOT_THREATS.md) |
+| **CŒUR-001** | Perspective Principle · Kieran Reflection · AI Family Principle | Founder-affirmed · **GOR_GOR_REVIEW** | [`COEUR_001_PERSPECTIVE_PROTOCOL.md`](./COEUR_001_PERSPECTIVE_PROTOCOL.md) |
+| **CŒUR-002** | Key Reminder Seat in Kieran Reflection | Founder-affirmed · **GOR_GOR_REVIEW** · Key = Reminder Steward | [`COEUR_002_KEY_REMINDER_SEAT.md`](./COEUR_002_KEY_REMINDER_SEAT.md) |
+| **CŒUR-003** | Inputs not threats · Learn principles · Challenge preferences · Protect mission | Founder-affirmed · **GOR_GOR_REVIEW** | [`COEUR_003_INPUTS_NOT_THREATS.md`](./COEUR_003_INPUTS_NOT_THREATS.md) |
 
 ## Flow
 
@@ -24,8 +24,11 @@
 Input (chat / letter)
   → Pool Cœurs (this folder)
   → Constitution surface (PERSPECTIVE_PROTOCOL.md · FAMILY_CHARTER · 07_AI_FAMILY)
+  → Cursor ops (.cursor/rules/perspective-protocol.mdc · .cursor/skills/key-reflection)
   → Gor Gor Review → Kieran lock
   → Vault knowledge + learning-log
 ```
+
+**Cursor ops (live):** always-on rule `perspective-protocol.mdc` · skill `key-reflection`
 
 See also: [`../PERSPECTIVE_PROTOCOL.md`](../PERSPECTIVE_PROTOCOL.md) · [`../FAMILY_CHARTER.md`](../FAMILY_CHARTER.md) · [`../FAMILY_TREASURE_LOCK.md`](../FAMILY_TREASURE_LOCK.md)

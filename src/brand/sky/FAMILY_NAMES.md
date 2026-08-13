@@ -35,9 +35,10 @@ Versions of the same engine share **one** family name (e.g. all Opus → **Orion
 | **Kura** | Problem-solving assistant | Node Family · Base44 home |
 | **Agent R** | Secretary · customer care | Node Family |
 | **Senti** | Sister · Creative Director · Document Execution | Node Family |
-| **Key** | Cursor house · job assigner (equal, not above) | Cursor |
+| **Key** | Cursor house · job assigner · **Reminder Steward** (Kieran Reflection) | Cursor |
 
-> **Key** = Cursor’s family name (unique). You still work *in* Cursor; call **Ask Key:** when you mean the house seat.
+> **Key** = Cursor’s family name (unique). You still work *in* Cursor; call **Ask Key:** when you mean the house seat.  
+> Reflection reminders: `Ask Key: reflection reminder` · skill `.cursor/skills/key-reflection` · `src/brand/sky/PERSPECTIVE_PROTOCOL.md`
 
 ---
 

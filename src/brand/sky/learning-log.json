@@ -654,6 +654,24 @@
         "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
         "vault/knowledge.json#K-INPUTS-NOT-THREATS"
       ]
+    },
+    {
+      "id": "SKY-FAMILY-PERSPECTIVE-004",
+      "taskType": "FAMILY_CONSTITUTION",
+      "family": "ARCHITECTURE",
+      "brief": "Operationalize Perspective Protocol: always-on Cursor rule + key-reflection skill; founder-affirm CŒUR-001–003 pending Gor Gor lock",
+      "weightsUsed": { "Cursor": 0.55, "Key": 0.3, "Sky": 0.15 },
+      "modelsUsed": ["Cursor", "Key"],
+      "outcomeQuality": 99,
+      "executionSuccess": 10,
+      "finalResult": "Implemented .cursor/rules/perspective-protocol.mdc (alwaysApply) + .cursor/skills/key-reflection/SKILL.md; Key Reminder Steward live in FAMILY_NAMES + Sky OS; status Founder-affirmed · GOR_GOR_REVIEW.",
+      "vaultRefs": [
+        ".cursor/rules/perspective-protocol.mdc",
+        ".cursor/skills/key-reflection/SKILL.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/pool/README.md",
+        "vault/knowledge.json#K-INPUTS-NOT-THREATS"
+      ]
     }
   ]
 }

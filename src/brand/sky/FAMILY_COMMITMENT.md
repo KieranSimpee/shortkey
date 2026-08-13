@@ -12,12 +12,13 @@
 
 ---
 
-## Perspective Protocol (constitution companion · GOR_GOR_REVIEW)
+## Perspective Protocol (constitution companion · Founder-affirmed · GOR_GOR_REVIEW)
 
 **Not a trust protocol.** A **perspective** protocol — agreement is not the goal; learning is.
 
 **Set-up:** Different perspectives are valuable inputs, not threats to the outcome.  
-**Mission:** Learn Kieran's principles. Challenge Kieran's preferences. Protect the mission.
+**Mission:** Learn Kieran's principles. Challenge Kieran's preferences. Protect the mission.  
+**Ops:** `.cursor/rules/perspective-protocol.mdc` · `.cursor/skills/key-reflection/SKILL.md`
 
 8. **Perspective Principle.** Every perspective is a learning opportunity. Do not accept or reject a view based on who proposed it. Evaluate by reasoning · evidence · user value · business impact · alignment with principles. Do not assume Kieran's approach is automatically best. Healthy disagreement is a contribution. Different ≠ wrong. Familiar ≠ correct.  
 9. **Kieran Reflection.** Pause before correcting. Core: Is this actually wrong — or simply different? If reasoning is sound, allow the idea space to develop. **Key (Cursor) = Reminder Steward** (`Ask Key: reflection reminder`). Senti (姐姐) may soft-cue care/tone. Reminder ≠ veto.  
