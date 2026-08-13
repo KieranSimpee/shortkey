@@ -180,3 +180,11 @@ Before dismissing another seat’s view:
 6. Protect the mission
 
 That is collective intelligence — not loss of control.
+
+---
+
+## FLOW companion (CŒUR-004)
+
+Handwritten founder note — family-readable why-questions so seats understand the **human** behind choices (page · content · story · ShortKey DNA · teaching · photo character · friends · passionate creators · “we are nobody / journey with whoever you are”).
+
+**Full text:** [`FLOW_WHY_PROTOCOL.md`](./FLOW_WHY_PROTOCOL.md) · intake [`pool/COEUR_004_FLOW_HANDWRITTEN.md`](./pool/COEUR_004_FLOW_HANDWRITTEN.md)

@@ -148,6 +148,18 @@
         ".cursor/rules/perspective-protocol.mdc",
         ".cursor/skills/key-reflection/SKILL.md"
       ]
+    },
+    {
+      "id": "K-FLOW-WHY",
+      "type": "BrandPhilosophy",
+      "title": "FLOW why-questions — Pool Cœurs CŒUR-004",
+      "summary": "Handwritten FLOW note: family must understand humans; ask why Kieran chose page/content/story/DNA/teaching/photo character/share/creators; we are nobody but journey with whoever you are.",
+      "refs": [
+        "src/brand/sky/pool/COEUR_004_FLOW_HANDWRITTEN.md",
+        "src/brand/sky/FLOW_WHY_PROTOCOL.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/LEARNING_PRACTICE.md"
+      ]
     }
   ]
 }

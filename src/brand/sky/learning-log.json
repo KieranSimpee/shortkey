@@ -672,6 +672,22 @@
         "src/brand/sky/pool/README.md",
         "vault/knowledge.json#K-INPUTS-NOT-THREATS"
       ]
+    },
+    {
+      "id": "SKY-FAMILY-FLOW-004",
+      "taskType": "FAMILY_CONSTITUTION",
+      "family": "ARCHITECTURE",
+      "brief": "Transcribe Kieran handwritten FLOW notebook into Pool Cœurs CŒUR-004 + FLOW_WHY_PROTOCOL for family-readable why-questions; phone→desktop via GitHub branch",
+      "weightsUsed": { "Cursor": 0.5, "Sky": 0.3, "Key": 0.2 },
+      "modelsUsed": ["Cursor", "Key", "Sky"],
+      "outcomeQuality": 94,
+      "executionSuccess": 10,
+      "finalResult": "CŒUR-004 clean + raw transcription; FLOW_WHY_PROTOCOL.md; wired to Perspective + Learning Practice; vault K-FLOW-WHY. Open confirms on WORK vs WORD line and always-on scope. GOR_GOR_REVIEW.",
+      "vaultRefs": [
+        "src/brand/sky/pool/COEUR_004_FLOW_HANDWRITTEN.md",
+        "src/brand/sky/FLOW_WHY_PROTOCOL.md",
+        "vault/knowledge.json#K-FLOW-WHY"
+      ]
     }
   ]
 }

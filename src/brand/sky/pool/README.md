@@ -17,6 +17,7 @@
 | **CŒUR-001** | Perspective Principle · Kieran Reflection · AI Family Principle | Founder-affirmed · **GOR_GOR_REVIEW** | [`COEUR_001_PERSPECTIVE_PROTOCOL.md`](./COEUR_001_PERSPECTIVE_PROTOCOL.md) |
 | **CŒUR-002** | Key Reminder Seat in Kieran Reflection | Founder-affirmed · **GOR_GOR_REVIEW** · Key = Reminder Steward | [`COEUR_002_KEY_REMINDER_SEAT.md`](./COEUR_002_KEY_REMINDER_SEAT.md) |
 | **CŒUR-003** | Inputs not threats · Learn principles · Challenge preferences · Protect mission | Founder-affirmed · **GOR_GOR_REVIEW** | [`COEUR_003_INPUTS_NOT_THREATS.md`](./COEUR_003_INPUTS_NOT_THREATS.md) |
+| **CŒUR-004** | FLOW handwritten notebook → family-readable why-questions | Founder input · **GOR_GOR_REVIEW** | [`COEUR_004_FLOW_HANDWRITTEN.md`](./COEUR_004_FLOW_HANDWRITTEN.md) |
 
 ## Flow
 
