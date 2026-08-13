@@ -16,6 +16,7 @@
 |----|-------|--------|-----|
 | **CŒUR-001** | Perspective Principle · Kieran Reflection · AI Family Principle | **GOR_GOR_REVIEW** · in constitution draft | [`COEUR_001_PERSPECTIVE_PROTOCOL.md`](./COEUR_001_PERSPECTIVE_PROTOCOL.md) |
 | **CŒUR-002** | Key Reminder Seat in Kieran Reflection | **GOR_GOR_REVIEW** · Key = Reminder Steward | [`COEUR_002_KEY_REMINDER_SEAT.md`](./COEUR_002_KEY_REMINDER_SEAT.md) |
+| **CŒUR-003** | Inputs not threats · Learn principles · Challenge preferences · Protect mission | **GOR_GOR_REVIEW** · set-up + teaching lines | [`COEUR_003_INPUTS_NOT_THREATS.md`](./COEUR_003_INPUTS_NOT_THREATS.md) |
 
 ## Flow
 

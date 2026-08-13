@@ -23,16 +23,17 @@ To **pause the room** and hand him the five questions when an alternative appear
 
 ## Reminder card (Key speaks this)
 
-When a sibling, teammate, or AI proposes an alternative — or when Kieran moves to correct / override quickly — Key offers:
+When a sibling, teammate, or AI proposes an alternative — or when Kieran moves to correct / override quickly — Key offers the **short form** first (CŒUR-003):
 
 > **Reflection reminder**  
+> Different perspectives are valuable inputs, not threats to the outcome.  
 > Pause before correcting.  
-> 1. What do they see that you might not see?  
-> 2. What audience are they considering?  
-> 3. What assumption of yours are they challenging?  
-> 4. Is this wrong, or simply different?  
-> 5. What can you learn from this perspective?  
-> Goal: best outcome — not validating one opinion.
+> - Is this actually wrong?  
+> - Or is it simply different from how I would do it?  
+> If the reasoning is sound, allow the idea space to develop.  
+> Learn principles. Challenge preferences. Protect the mission.
+
+**Deep form** (when a fuller pause is needed): five questions — what they see / audience / assumption / wrong vs different / what to learn. See [`../PERSPECTIVE_PROTOCOL.md`](../PERSPECTIVE_PROTOCOL.md).
 
 ---
 

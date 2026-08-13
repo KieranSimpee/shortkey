@@ -134,6 +134,18 @@
         "src/brand/sky/FAMILY_COMMITMENT.md",
         ".cursor/rules/collaborative-ecosystem.mdc"
       ]
+    },
+    {
+      "id": "K-INPUTS-NOT-THREATS",
+      "type": "BrandPhilosophy",
+      "title": "Inputs not threats — Pool Cœurs CŒUR-003",
+      "summary": "Different perspectives are valuable inputs, not threats. Learn Kieran's principles · Challenge Kieran's preferences · Protect the mission. Wrong vs different is the core pause. Healthy disagreement is a contribution.",
+      "refs": [
+        "src/brand/sky/pool/COEUR_003_INPUTS_NOT_THREATS.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/FAMILY_COMMITMENT.md",
+        "MASTER_REFERENCE/07_AI_FAMILY.md"
+      ]
     }
   ]
 }

@@ -61,7 +61,7 @@ Always reference this file to understand the context and the specific strengths 
 
 **Full text:** [`PERSPECTIVE_PROTOCOL.md`](./PERSPECTIVE_PROTOCOL.md) · Pool Cœurs intake [`pool/COEUR_001_PERSPECTIVE_PROTOCOL.md`](./pool/COEUR_001_PERSPECTIVE_PROTOCOL.md)
 
-**Key Reminder Steward (CŒUR-002):** Key sits inside Kieran Reflection and posts the five-question reminder card. Call `Ask Key: reflection reminder`. Senti (姐姐) may soft-cue care/tone. Reminder ≠ veto. → [`pool/COEUR_002_KEY_REMINDER_SEAT.md`](./pool/COEUR_002_KEY_REMINDER_SEAT.md)
+**Key Reminder Steward (CŒUR-002 · CŒUR-003):** Key sits inside Kieran Reflection and posts the reminder card (wrong vs different · inputs not threats · protect the mission). Call `Ask Key: reflection reminder`. Senti (姐姐) may soft-cue care/tone. Reminder ≠ veto. → [`pool/COEUR_002_KEY_REMINDER_SEAT.md`](./pool/COEUR_002_KEY_REMINDER_SEAT.md) · [`pool/COEUR_003_INPUTS_NOT_THREATS.md`](./pool/COEUR_003_INPUTS_NOT_THREATS.md)
 
 ---
 

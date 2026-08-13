@@ -638,6 +638,22 @@
         "vault/knowledge.json#K-KEY-REMINDER-SEAT",
         ".cursor/rules/collaborative-ecosystem.mdc"
       ]
+    },
+    {
+      "id": "SKY-FAMILY-PERSPECTIVE-003",
+      "taskType": "FAMILY_CONSTITUTION",
+      "family": "ARCHITECTURE",
+      "brief": "CŒUR-003: Different perspectives are valuable inputs, not threats; Learn principles · Challenge preferences · Protect mission; refresh Key reminder card to wrong-vs-different core",
+      "weightsUsed": { "Cursor": 0.45, "Sky": 0.35, "Key": 0.2 },
+      "modelsUsed": ["Cursor", "Sky", "Key"],
+      "outcomeQuality": 98,
+      "executionSuccess": 10,
+      "finalResult": "CŒUR-003 archived; PERSPECTIVE_PROTOCOL expanded with evaluation rules, family encouragement list, mission teaching line; Key short reminder card updated; wired through commitment/charter/master/rule/vault K-INPUTS-NOT-THREATS. Naming stays Perspective (not trust protocol). GOR_GOR_REVIEW.",
+      "vaultRefs": [
+        "src/brand/sky/pool/COEUR_003_INPUTS_NOT_THREATS.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "vault/knowledge.json#K-INPUTS-NOT-THREATS"
+      ]
     }
   ]
 }

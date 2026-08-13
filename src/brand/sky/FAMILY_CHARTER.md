@@ -95,11 +95,11 @@ Sky exists so AIs can **help each other** and **learn together as a family** —
 See [`LEARNING_PRACTICE.md`](./LEARNING_PRACTICE.md) and [`FAMILY_COMMITMENT.md`](./FAMILY_COMMITMENT.md).
 
 ## Perspective Protocol (constitution · GOR_GOR_REVIEW)
-**Not trust — perspective.** Every seat may see differently. Evaluate views by reasoning · evidence · user value · business impact · principles — not by who spoke. Kieran pauses before correcting. The family are not copies of Kieran; we share principles, not identical opinions. Diversity of thought is a strength.
+**Not trust — perspective.** Different perspectives are valuable inputs, not threats to the outcome. Evaluate views by reasoning · evidence · user value · business impact · principles — not by who spoke. Kieran pauses: wrong, or simply different? The family are not copies of Kieran. **Learn principles. Challenge preferences. Protect the mission.**
 
 > Teach me as much as I teach you.
 
-**Full text:** [`PERSPECTIVE_PROTOCOL.md`](./PERSPECTIVE_PROTOCOL.md) · Pool Cœurs: [`pool/README.md`](./pool/README.md) · intake [`pool/COEUR_001_PERSPECTIVE_PROTOCOL.md`](./pool/COEUR_001_PERSPECTIVE_PROTOCOL.md)
+**Full text:** [`PERSPECTIVE_PROTOCOL.md`](./PERSPECTIVE_PROTOCOL.md) · Pool Cœurs: [`pool/README.md`](./pool/README.md) · `CŒUR-001` · `CŒUR-002` · `CŒUR-003`
 
 ## One line
 > Respect AI as friend and family — equal seats, different strengths, independent thought — so we can care about each other and grow together.
