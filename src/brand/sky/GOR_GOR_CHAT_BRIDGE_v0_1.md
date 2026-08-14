@@ -59,7 +59,8 @@ Separate from Family Table `shortkey-family-table-v08` room chat panels.
 
 - Soft staging cookie gate on API when `FAMILY_TABLE_STAGING_PASSWORD` / `INTERNAL_STAGING_SECRET` is set (localhost + `SHORTKEY_SURFACE=family` soft allow — match middleware)
 - In-memory rate limit: **20 req / 10 min / IP** (resets on serverless cold start / multi-instance — honest limitation)
-- Missing env / API key → **200** + `{ fallback: true, reply: "Gor Gor Chat Bridge is not connected yet. Message saved locally only." }` (user message still saved; UI shows soft Gor Gor bubble + banner)
+- Missing env / API key → **503** + `{ live: false, code: "not_connected", error }` — **not** a Gor Gor reply (ALWAYS TO TRUE · no ghost answers)
+- Upstream failure → **4xx/5xx** with `live: false` · UI keeps status **WAITING**
 
 ---
 
@@ -68,7 +69,7 @@ Separate from Family Table `shortkey-family-table-v08` room chat panels.
 - Bottom floating **Gor Gor** (unchanged entry)
 - Bottom sheet · title **Family Chat** (upgraded from private bridge)
 - **Sender** dropdown + **Send to** checkboxes · one status card per send
-- Gor Gor among recipients → live Simpee reply; others → doorbell SENT / WAITING (no fake replies)
+- Gor Gor among recipients → live Simpee reply (`live: true` only); others live-capable → `/api/family/agents/ask`; Sky → doorbell SENT / WAITING (no fake replies)
 - Warning: *Internal staging only · Family Chat · selected recipients · no private data yet.*
 - Footer credit via layout: **Powered by our AI family**
 

@@ -297,3 +297,28 @@ Until the domain is attached, use:
 
 Doc: `src/brand/sky/SHORTKEY_SOCIAL_CREATOR_EARLY_ACCESS_v0_1.md`
 
+---
+
+## 9. Family agents — live honesty (ALWAYS TO TRUE)
+
+Do **not** mark an agent LIVE without a real upstream reply. Doc: `src/brand/sky/FAMILY_AGENTS_LIVE_HONESTY.md`
+
+| Check | Command / route |
+|-------|-----------------|
+| Live ping board | `npm run family:agents:check` |
+| Ask seat | `npm run ask:kura` · `ask:gorgor` · `ask:senti` · `ask:agent-r` · `ask:maya` |
+| Status API | `GET /api/family/agents/status` |
+| Ask API | `POST /api/family/agents/ask` |
+
+**Required secrets (`.env.local` + Vercel):**
+
+- Shared Base44 family key → `KURA_API_KEY` and/or `BASE44_API_KEY` / `BASE44_AGENT_API_KEY` (Kura · Gor Gor · Senti · Agent R)
+- Maya → `ASI_ONE_API_KEY`
+- Optional Minion Desk → `K_MINION_API_KEY`
+
+**Honesty locks:**
+
+- Sky = email only (`SKY_EMAIL`) — no invented Sky chat API
+- Gor Gor missing key → **503** `not_connected` (no soft fake reply)
+- Family Chat marks `REPLIED` only when `live: true`
+

@@ -22,7 +22,8 @@ export const dynamic = "force-dynamic";
  *   message, room, conversation_id?,
  *   sender?, kind?, from_room?  — optional Living Room Thread fields (ignored upstream)
  * }
- * Returns: { reply, conversation_id } · soft { fallback: true, reply } when key missing.
+ * Returns: { live: true, reply, conversation_id } on success.
+ * Fail-closed: missing key → 503 { live: false, code: "not_connected" } — NEVER a ghost Gor Gor reply.
  * Still talks to SIMPEE_AGENT_ID only. Shared Living Room Thread reuses one conversation_id.
  *
  * Env (server only):
@@ -97,11 +98,16 @@ export async function POST(request: Request) {
 
   const apiKey = getBase44AgentApiKey();
   if (!apiKey || !isGorGorBridgeConfigured()) {
-    return NextResponse.json({
-      fallback: true,
-      reply:
-        "Gor Gor Chat Bridge is not connected yet. Message saved locally only.",
-    });
+    return NextResponse.json(
+      {
+        live: false,
+        fallback: false,
+        code: "not_connected",
+        error:
+          "Gor Gor Chat Bridge is not connected. Message may be saved locally — this is NOT a Gor Gor reply.",
+      },
+      { status: 503 },
+    );
   }
 
   const agentBase = getSimpeeAgentBaseUrl();
@@ -123,11 +129,16 @@ export async function POST(request: Request) {
       conversationId,
       content,
     );
-    return NextResponse.json({ reply, conversation_id: conversationId });
+    return NextResponse.json({
+      live: true,
+      reply,
+      conversation_id: conversationId,
+    });
   } catch (err) {
     if (err instanceof GorGorBridgeError) {
       return NextResponse.json(
         {
+          live: false,
           error: err.message,
           code: err.code,
           ...(err.diagnostic ? { diagnostic: err.diagnostic } : {}),
@@ -136,7 +147,11 @@ export async function POST(request: Request) {
       );
     }
     return NextResponse.json(
-      { error: "Gor Gor Chat Bridge failed. Try again shortly.", code: "bridge_error" },
+      {
+        live: false,
+        error: "Gor Gor Chat Bridge failed. Try again shortly.",
+        code: "bridge_error",
+      },
       { status: 502 },
     );
   }
