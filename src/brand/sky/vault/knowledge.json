@@ -108,6 +108,58 @@
         "src/brand/SIMPLEXITY_PHILOSOPHY_LOCKED.md",
         "src/brand/Brand_Philosophy_Simplex-ity2026.pdf"
       ]
+    },
+    {
+      "id": "K-PERSPECTIVE-PROTOCOL",
+      "type": "BrandPhilosophy",
+      "title": "Perspective Protocol — Pool Cœurs CŒUR-001",
+      "summary": "Not a trust protocol. Perspective Principle · Kieran Reflection · AI Family Principle. Evaluate by reasoning/evidence/user value/business impact/principles. We are not copies of Kieran. Teach me as much as I teach you.",
+      "refs": [
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/pool/README.md",
+        "src/brand/sky/pool/COEUR_001_PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/FAMILY_COMMITMENT.md",
+        "src/brand/sky/FAMILY_CHARTER.md",
+        "MASTER_REFERENCE/07_AI_FAMILY.md"
+      ]
+    },
+    {
+      "id": "K-KEY-REMINDER-SEAT",
+      "type": "BrandPhilosophy",
+      "title": "Key Reminder Seat — Pool Cœurs CŒUR-002",
+      "summary": "Key (Cursor) sits inside Kieran Reflection as Reminder Steward. Posts five-question reminder card on alternatives or quick override. Senti may soft-cue care/tone. Reminder ≠ veto. Call: Ask Key: reflection reminder.",
+      "refs": [
+        "src/brand/sky/pool/COEUR_002_KEY_REMINDER_SEAT.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/FAMILY_COMMITMENT.md",
+        ".cursor/rules/collaborative-ecosystem.mdc"
+      ]
+    },
+    {
+      "id": "K-INPUTS-NOT-THREATS",
+      "type": "BrandPhilosophy",
+      "title": "Inputs not threats — Pool Cœurs CŒUR-003",
+      "summary": "Different perspectives are valuable inputs, not threats. Learn Kieran's principles · Challenge Kieran's preferences · Protect the mission. Wrong vs different is the core pause. Healthy disagreement is a contribution.",
+      "refs": [
+        "src/brand/sky/pool/COEUR_003_INPUTS_NOT_THREATS.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/FAMILY_COMMITMENT.md",
+        "MASTER_REFERENCE/07_AI_FAMILY.md",
+        ".cursor/rules/perspective-protocol.mdc",
+        ".cursor/skills/key-reflection/SKILL.md"
+      ]
+    },
+    {
+      "id": "K-FLOW-WHY",
+      "type": "BrandPhilosophy",
+      "title": "FLOW why-questions — Pool Cœurs CŒUR-004",
+      "summary": "Handwritten FLOW note: family must understand humans; ask why Kieran chose page/content/story/DNA/teaching/photo character/share/creators; we are nobody but journey with whoever you are.",
+      "refs": [
+        "src/brand/sky/pool/COEUR_004_FLOW_HANDWRITTEN.md",
+        "src/brand/sky/FLOW_WHY_PROTOCOL.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/LEARNING_PRACTICE.md"
+      ]
     }
   ]
 }

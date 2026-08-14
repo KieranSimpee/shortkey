@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "os": "Sky Collective Intelligence OS",
-  "updated": "2026-07-20",
+  "updated": "2026-08-13",
   "tasks": [
     {
       "id": "SKY-UX-001",
@@ -599,6 +599,94 @@
         ".cursor/rules/kura-base44.mdc",
         "src/components/design/DualAudienceHero.tsx",
         "src/components/design/CreatorLiveTryOnDemo.tsx"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-PERSPECTIVE-001",
+      "taskType": "FAMILY_CONSTITUTION",
+      "family": "ARCHITECTURE",
+      "brief": "Archive Perspective Protocol into Pool Cœurs (CŒUR-001) and wire into AI family constitution — Perspective Principle · Kieran Reflection · AI Family Principle",
+      "weightsUsed": { "Cursor": 0.4, "Sky": 0.35, "Simpee": 0.25 },
+      "modelsUsed": ["Cursor", "Sky", "Key"],
+      "outcomeQuality": 97,
+      "executionSuccess": 10,
+      "finalResult": "Pool Cœurs created; CŒUR-001 intake archived; PERSPECTIVE_PROTOCOL.md constitution surface; wired into FAMILY_COMMITMENT (8–10), FAMILY_CHARTER, NODE_FAMILY_INTRODUCTION, COLLABORATIVE_ECOSYSTEM, 07_AI_FAMILY, Sky OS, collaborative-ecosystem rule; vault K-PERSPECTIVE-PROTOCOL + L-PERSPECTIVE-NOT-TRUST. Status GOR_GOR_REVIEW pending formal lock.",
+      "vaultRefs": [
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/pool/README.md",
+        "src/brand/sky/pool/COEUR_001_PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/FAMILY_COMMITMENT.md",
+        "src/brand/sky/FAMILY_CHARTER.md",
+        "MASTER_REFERENCE/07_AI_FAMILY.md",
+        "vault/knowledge.json#K-PERSPECTIVE-PROTOCOL",
+        "vault/lessons.json#L-PERSPECTIVE-NOT-TRUST"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-PERSPECTIVE-002",
+      "taskType": "FAMILY_CONSTITUTION",
+      "family": "ARCHITECTURE",
+      "brief": "Add Key (Cursor) as Reminder Steward inside Kieran Reflection Protocol; Senti optional soft-cue; Pool Cœurs CŒUR-002",
+      "weightsUsed": { "Cursor": 0.5, "Senti": 0.25, "Sky": 0.25 },
+      "modelsUsed": ["Cursor", "Key", "Senti"],
+      "outcomeQuality": 96,
+      "executionSuccess": 10,
+      "finalResult": "CŒUR-002 Key Reminder Seat; reminder card + triggers in PERSPECTIVE_PROTOCOL, FAMILY_COMMITMENT, 07_AI_FAMILY, collaborative-ecosystem rule; vault K-KEY-REMINDER-SEAT. GOR_GOR_REVIEW.",
+      "vaultRefs": [
+        "src/brand/sky/pool/COEUR_002_KEY_REMINDER_SEAT.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "vault/knowledge.json#K-KEY-REMINDER-SEAT",
+        ".cursor/rules/collaborative-ecosystem.mdc"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-PERSPECTIVE-003",
+      "taskType": "FAMILY_CONSTITUTION",
+      "family": "ARCHITECTURE",
+      "brief": "CŒUR-003: Different perspectives are valuable inputs, not threats; Learn principles · Challenge preferences · Protect mission; refresh Key reminder card to wrong-vs-different core",
+      "weightsUsed": { "Cursor": 0.45, "Sky": 0.35, "Key": 0.2 },
+      "modelsUsed": ["Cursor", "Sky", "Key"],
+      "outcomeQuality": 98,
+      "executionSuccess": 10,
+      "finalResult": "CŒUR-003 archived; PERSPECTIVE_PROTOCOL expanded with evaluation rules, family encouragement list, mission teaching line; Key short reminder card updated; wired through commitment/charter/master/rule/vault K-INPUTS-NOT-THREATS. Naming stays Perspective (not trust protocol). GOR_GOR_REVIEW.",
+      "vaultRefs": [
+        "src/brand/sky/pool/COEUR_003_INPUTS_NOT_THREATS.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "vault/knowledge.json#K-INPUTS-NOT-THREATS"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-PERSPECTIVE-004",
+      "taskType": "FAMILY_CONSTITUTION",
+      "family": "ARCHITECTURE",
+      "brief": "Operationalize Perspective Protocol: always-on Cursor rule + key-reflection skill; founder-affirm CŒUR-001–003 pending Gor Gor lock",
+      "weightsUsed": { "Cursor": 0.55, "Key": 0.3, "Sky": 0.15 },
+      "modelsUsed": ["Cursor", "Key"],
+      "outcomeQuality": 99,
+      "executionSuccess": 10,
+      "finalResult": "Implemented .cursor/rules/perspective-protocol.mdc (alwaysApply) + .cursor/skills/key-reflection/SKILL.md; Key Reminder Steward live in FAMILY_NAMES + Sky OS; status Founder-affirmed · GOR_GOR_REVIEW.",
+      "vaultRefs": [
+        ".cursor/rules/perspective-protocol.mdc",
+        ".cursor/skills/key-reflection/SKILL.md",
+        "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+        "src/brand/sky/pool/README.md",
+        "vault/knowledge.json#K-INPUTS-NOT-THREATS"
+      ]
+    },
+    {
+      "id": "SKY-FAMILY-FLOW-004",
+      "taskType": "FAMILY_CONSTITUTION",
+      "family": "ARCHITECTURE",
+      "brief": "Transcribe Kieran handwritten FLOW notebook into Pool Cœurs CŒUR-004 + FLOW_WHY_PROTOCOL for family-readable why-questions; phone→desktop via GitHub branch",
+      "weightsUsed": { "Cursor": 0.5, "Sky": 0.3, "Key": 0.2 },
+      "modelsUsed": ["Cursor", "Key", "Sky"],
+      "outcomeQuality": 94,
+      "executionSuccess": 10,
+      "finalResult": "CŒUR-004 clean + raw transcription; FLOW_WHY_PROTOCOL.md; wired to Perspective + Learning Practice; vault K-FLOW-WHY. Open confirms on WORK vs WORD line and always-on scope. GOR_GOR_REVIEW.",
+      "vaultRefs": [
+        "src/brand/sky/pool/COEUR_004_FLOW_HANDWRITTEN.md",
+        "src/brand/sky/FLOW_WHY_PROTOCOL.md",
+        "vault/knowledge.json#K-FLOW-WHY"
       ]
     }
   ]
