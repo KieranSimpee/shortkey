@@ -29,7 +29,7 @@ Culture amplifiers and research-adjacent creators/shops (Sticky Rice Sisters, Pi
 **Followers:** all `null` — no invented exact counts.
 
 ### Brands (10)
-mt · Mind Wave · Cozyca · Loidesign · OURS · Pion · Some Sort of Fern · Kakao Friends · LINE Friends · ARTBOX
+mt · Mind Wave (`mindwave.co.jp`) · Cozyca · Loidesign · OURS · Pion · Some Sort of Fern · Kakao Friends · LINE Friends · ARTBOX
 
 ### Culture topics (10)
 Techo · washi/mt origin · Kamoi story · Dakku · Polco · Kakao sticker→IP · Taiwan PET/kiss-cut · collage export · Pinkoi · HK character IP (HOKO)
