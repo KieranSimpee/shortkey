@@ -30,9 +30,10 @@ All research rows: **CURSOR_RESEARCH · pending KURA_QC** (see BATCH_001 + BATCH
 
 ## Operating cadence (LOCKED)
 
-**Overview SSOT:** [`../SKY_ASIA_MASTER_BLUEPRINT.md`](../SKY_ASIA_MASTER_BLUEPRINT.md) — Master Blueprint  
+**Follow Master Workflow SOP phases** → [`../03_Workflow/SKY_ASIA_MASTER_WORKFLOW_SOP.md`](../03_Workflow/SKY_ASIA_MASTER_WORKFLOW_SOP.md) (15-phase Operating SOP · tools are plug-ins).  
+**Overview SSOT:** [`../SKY_ASIA_MASTER_BLUEPRINT.md`](../SKY_ASIA_MASTER_BLUEPRINT.md) — Master Blueprint (what / why)  
 **Cadence detail:** [`../03_Workflow/SKY_ASIA_WORKFLOW_V1.md`](../03_Workflow/SKY_ASIA_WORKFLOW_V1.md) — SKY ASIA WORKFLOW v1.0  
-Publisher Mode follows this cadence. Levels: Kieran Vision → Sky 總指揮 → Depts → Cursor HQ.
+Publisher Mode follows Master Workflow SOP. Levels: Kieran Vision → Sky 總指揮 → Depts → Cursor HQ.
 
 **Sky = Manager cadence** — Think → Decide → Assign → Review only (no content / design / research). SSOT: [`../03_Workflow/SKY_WORKFLOW.md`](../03_Workflow/SKY_WORKFLOW.md)
 
@@ -47,11 +48,12 @@ Publisher Mode follows this cadence. Levels: Kieran Vision → Sky 總指揮 →
 1. **Gor Gor** review Cover Story → then **Kieran** publish approval
 2. Paste `KURA_API_KEY` → QC Batch 001 + 002
 3. KPI stubs: Sky coordination · Simpee 10 partners · Kura 100 research · Maya templates · Senti identity
-4. No architecture redesign · no new agents · no auto-social · follow Workflow v1.0
+4. No architecture redesign · no new agents · no auto-social · follow Master Workflow SOP phases
 
 ## Quick links
 
-- [**Master Blueprint (SSOT overview)**](../SKY_ASIA_MASTER_BLUEPRINT.md)
+- [**Master Blueprint (what / why)**](../SKY_ASIA_MASTER_BLUEPRINT.md)
+- [**Master Workflow SOP (how · 15 phases)**](../03_Workflow/SKY_ASIA_MASTER_WORKFLOW_SOP.md)
 - [Workflow v1.0 (cadence detail)](../03_Workflow/SKY_ASIA_WORKFLOW_V1.md)
 - [Sky Workflow (Manager loop)](../03_Workflow/SKY_WORKFLOW.md)
 - [Season Center](./Season_Center.md)

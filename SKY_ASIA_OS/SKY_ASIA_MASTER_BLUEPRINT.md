@@ -77,7 +77,8 @@ Detail appendix: `02_Team/TEAM.md` · seat conflicts: `02_Team/CONFLICTS.md`
 | **Cursor** | HQ runtime | File OS · integrate packs · Task / Dashboard / Hub hygiene · assigned builds | Decide DNA · add tools/roles · auto-social |
 
 Sky loop (detail): `03_Workflow/SKY_WORKFLOW.md`  
-Shared cadence (detail): `03_Workflow/SKY_ASIA_WORKFLOW_V1.md`
+Shared cadence (detail): `03_Workflow/SKY_ASIA_WORKFLOW_V1.md`  
+**Operating SOP (how · phase-by-phase):** [`03_Workflow/SKY_ASIA_MASTER_WORKFLOW_SOP.md`](./03_Workflow/SKY_ASIA_MASTER_WORKFLOW_SOP.md) — Blueprint = what/why; SOP = how
 
 ---
 
@@ -200,8 +201,9 @@ Run **SKY ASIA OS** as a living discovery platform: seasons that find Asia’s c
 |-----|------|
 | `01_Vision/MISSION.md` | Mission detail |
 | `02_Team/TEAM.md` · `CONFLICTS.md` | Seat map + ShortKey conflict note |
-| `03_Workflow/SKY_ASIA_WORKFLOW_V1.md` | Shared daily / weekly / monthly cadence |
-| `03_Workflow/SKY_WORKFLOW.md` | Sky manager loop |
+| `03_Workflow/SKY_ASIA_MASTER_WORKFLOW_SOP.md` | **Operating SOP · phase SSOT (how)** |
+| `03_Workflow/SKY_ASIA_WORKFLOW_V1.md` | Shared daily / weekly / monthly cadence (appendix) |
+| `03_Workflow/SKY_WORKFLOW.md` | Sky manager loop (appendix) |
 | `03_Workflow/WORKFLOW.md` | Stub pointer |
 | `00_Headquarters/*` | Dashboard · Tasks · Season · Knowledge · Database centers |
 | `04_Season01/*` | Active season content |

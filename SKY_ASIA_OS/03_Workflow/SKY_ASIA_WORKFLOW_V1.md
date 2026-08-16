@@ -3,7 +3,8 @@
 **Status:** LOCKED · GOR_GOR_REVIEW  
 **Lock date:** 2026-08-16  
 **Detail appendix;** Master Blueprint is SSOT overview → [`../SKY_ASIA_MASTER_BLUEPRINT.md`](../SKY_ASIA_MASTER_BLUEPRINT.md)  
-**Cadence SSOT:** This file is the shared daily operating way for SKY ASIA OS (detail under the Master Blueprint).  
+**Phase SSOT (Operating SOP):** [`SKY_ASIA_MASTER_WORKFLOW_SOP.md`](./SKY_ASIA_MASTER_WORKFLOW_SOP.md) — 15-phase Owner / Input / Process / Output / Deliverable / Next Step  
+**Cadence SSOT:** This file is the shared daily / weekly / monthly operating way for SKY ASIA OS (detail under the Master Blueprint + Master Workflow SOP).  
 **Scope:** Operating cadence only — **no new tools · no new roles · no architecture / MVP redesign**.
 
 > Publisher Mode follows this cadence from now.
@@ -205,6 +206,7 @@ Publisher Mode: Season 01 uses this monthly rhythm without inventing new pipelin
 | Doc | Role |
 |-----|------|
 | [`../SKY_ASIA_MASTER_BLUEPRINT.md`](../SKY_ASIA_MASTER_BLUEPRINT.md) | **Master Blueprint · SSOT overview** |
+| [`SKY_ASIA_MASTER_WORKFLOW_SOP.md`](./SKY_ASIA_MASTER_WORKFLOW_SOP.md) | **Master Workflow SOP · phase SSOT (how)** |
 | `03_Workflow/WORKFLOW.md` | Stub → points here (cadence detail) |
 | `03_Workflow/SKY_WORKFLOW.md` | **Sky-specific** manager loop (Level 2 detail) |
 | `02_Team/TEAM.md` | Seat map — Sky = Manager only |
