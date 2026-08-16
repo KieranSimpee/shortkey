@@ -168,7 +168,7 @@ Publish without Knowledge Hub write-back is incomplete.
 | Research assistants (when keyed) | Kura / Sky brief | Source discovery — write results into Hub/DB |
 | Spreadsheets / ledger (later) | Simpee | Budget notes — not a parallel HQ |
 
-Do not add tools “to improve the workflow.” Improve by following this Blueprint + locked workflow appendices.
+Do not add tools “to improve the workflow.” Improve by following this Blueprint + **Master Workflow SOP** + locked workflow appendices.
 
 ---
 
