@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "Brand": "mt (Kamoi Kakoshi)",
+    "Country": "Japan",
+    "Category": "Washi / masking tape",
+    "Website": "https://www.mt-maskingtape.com/",
+    "Notes": "Origin brand of consumer decorative masking tape (Kurashiki, consumer line from mid-2000s craft discovery). CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Brand": "Mind Wave",
+    "Country": "Japan",
+    "Category": "Stickers · washi · kawaii stationery",
+    "Website": "https://www.mindwave-inc.co.jp/",
+    "Notes": "Japanese stationery maker known for character stickers, flakes, and decorative tapes widely used in journaling. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Brand": "Cozyca Products (Hyogensha)",
+    "Country": "Japan",
+    "Category": "Artist collaboration stationery",
+    "Website": "https://cozycaproducts.net/",
+    "Notes": "Kyoto-linked line promoting independent illustrators (Aiko Fukawa, Midori Asano, etc.) via washi and seals. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Brand": "Loidesign (樂意)",
+    "Country": "Taiwan",
+    "Category": "Floral · retro collage stationery",
+    "Website": "https://loidesign.store/",
+    "Notes": "Taiwanese PET tape / collage stationery brand; Instagram @loi_design. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Brand": "OURS (森林好朋友)",
+    "Country": "Taiwan",
+    "Category": "Watercolor washi · stickers",
+    "Website": "https://www.ours.tw/",
+    "Notes": "Est. 2013; floral/dessert/forest watercolor stationery including tapes and stickers. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Brand": "Pion",
+    "Country": "Taiwan",
+    "Category": "Illustration stationery · stickers",
+    "Website": "https://pion2015.com/",
+    "Notes": "Illustration-to-stationery brand; known among journaling communities for memo stickers and tapes. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Brand": "Some Sort of Fern (羊君)",
+    "Country": "Taiwan",
+    "Category": "Collage PET tape · stamps · stickers",
+    "Website": "https://www.somesortoffern.com/",
+    "Notes": "International retail footprint; collage-forward Taiwanese design stationery. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Brand": "Kakao Friends",
+    "Country": "Korea",
+    "Category": "Character IP · stickers · lifestyle",
+    "Website": "https://www.kakaofriends.com/",
+    "Notes": "Born from KakaoTalk emoticons/stickers; expanded into stores and stationery — core Korea sticker→IP case. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Brand": "LINE Friends",
+    "Country": "Korea / Japan",
+    "Category": "Character IP · stickers · lifestyle",
+    "Website": "https://www.linefriends.com/",
+    "Notes": "Messaging-sticker characters (Brown, Cony, etc.) plus BT21 collab line; major Asia sticker culture brand. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Brand": "ARTBOX",
+    "Country": "Korea",
+    "Category": "Design stationery retail",
+    "Website": "https://www.artbox.co.kr/",
+    "Notes": "Korean design-lifestyle chain; key physical discovery surface for stickers/planners and dakku supplies. CURSOR_RESEARCH · pending KURA_QC"
+  }
+]

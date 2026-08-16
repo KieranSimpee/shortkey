@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "Festival": "Taiwan Creative Expo (臺灣文博會)",
+    "Country": "Taiwan",
+    "Month": "varies (annual)",
+    "Description": "National creative-industries expo where stationery/illustration brands (e.g. somesortof.fern) exhibit — useful Festival Corner + Brand Discovery crossover. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Festival": "Design Festa (デザインフェスタ)",
+    "Country": "Japan",
+    "Month": "typically spring & autumn",
+    "Description": "Large Tokyo independent creators fair; frequent venue for illustrators selling stickers, zines, and character goods. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Festival": "Comic World (코믹월드)",
+    "Country": "Korea",
+    "Month": "multiple dates / year",
+    "Description": "Major doujin / fan-culture fair circuit where sticker and character merch circulate among youth creators. CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Festival": "Hong Kong Book Fair (香港書展) — creative/illustration side",
+    "Country": "Hong Kong",
+    "Month": "typically July",
+    "Description": "Large public fair where local illustrators and character goods (including stickers) gain mainstream youth visibility. CURSOR_RESEARCH · pending KURA_QC"
+  }
+]

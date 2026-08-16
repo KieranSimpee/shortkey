@@ -1,0 +1,57 @@
+[
+  {
+    "id": "TASK-001",
+    "owner": "Kura",
+    "title": "QC Batch 001 — Artists, Creators, Brands, Culture",
+    "detail": "Review CURSOR_RESEARCH rows in 05_Database/*.json. Verify Instagram handles (no fakes), Categories, References/URLs. Mark Status after QC. Flag anything for removal.",
+    "status": "todo",
+    "phase": 1,
+    "blockedBy": "KURA_API_KEY missing until founder pastes key",
+    "refs": [
+      "SKY_ASIA_OS/05_Database/BATCH_001.md",
+      "SKY_ASIA_OS/05_Database/artists.json",
+      "SKY_ASIA_OS/05_Database/creators.json",
+      "SKY_ASIA_OS/05_Database/brands.json",
+      "SKY_ASIA_OS/05_Database/culture.json"
+    ]
+  },
+  {
+    "id": "TASK-002",
+    "owner": "Maya",
+    "title": "Phase 2 stub — editorial frame Cover + Culture Story",
+    "detail": "Do not draft production copy until founder unlocks Phase 2. Hold seat for editorial framing of Season 01 Sticker Culture.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": "Phase 2 not started",
+    "refs": [
+      "SKY_ASIA_OS/04_Season01/slots/COVER_STORY.md",
+      "SKY_ASIA_OS/04_Season01/slots/CULTURE_STORY.md"
+    ]
+  },
+  {
+    "id": "TASK-003",
+    "owner": "Senti",
+    "title": "Phase 2 stub — creative direction Artist/Brand Discovery",
+    "detail": "Do not produce assets yet. Seat reserved for creative packaging of Artist Discovery and Brand Discovery slots.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": "Phase 2 not started",
+    "refs": [
+      "SKY_ASIA_OS/04_Season01/slots/ARTIST_DISCOVERY.md",
+      "SKY_ASIA_OS/04_Season01/slots/BRAND_DISCOVERY.md"
+    ]
+  },
+  {
+    "id": "TASK-004",
+    "owner": "Simpee",
+    "title": "Phase 2 stub — Gor Gor gate checklist research→publish",
+    "detail": "Do not run production gate yet. Prepare checklist when Batch 001 clears Kura QC and founder opens Phase 2.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": "Phase 2 not started",
+    "refs": [
+      "SKY_ASIA_OS/03_Workflow/WORKFLOW.md",
+      "SKY_ASIA_OS/ROADMAP.md"
+    ]
+  }
+]

@@ -1,16 +1,24 @@
 # SKY ASIA OS — Databases
 
-Five structured databases live here as **empty JSON arrays on purpose**.
+Structured JSON databases for Season 01 research storage.
 
-Kura fills them in **Phase 2** (founder go: Ask Kura research). Do not invent artists, creators, brands, festivals, or culture rows today.
+**V1 rule (founder):** 先開始儲資料 — store first, beautify later.
 
-| File | Purpose |
-|------|---------|
-| `artists.json` | Artist Database |
-| `creators.json` | Creator Database |
-| `brands.json` | Brand Database |
-| `festivals.json` | Festival Database |
-| `culture.json` | Culture Database |
-| `SCHEMA.md` | Field definitions |
+| File | Purpose | Batch 001 count |
+|------|---------|----------------:|
+| `artists.json` | Artist Database | 10 |
+| `creators.json` | Creator Database | 10 |
+| `brands.json` | Brand Database | 10 |
+| `festivals.json` | Festival Database | 4 |
+| `culture.json` | Culture Database | 10 |
+| `SCHEMA.md` | Field definitions | — |
+| `BATCH_001.md` | First fill log + pending Kura QC | — |
 
-See `SCHEMA.md` for exact fields.
+## Status
+
+- Filled via **CURSOR_RESEARCH** (Kura API key not available in this run)
+- Artists `Status` / brand Notes: `CURSOR_RESEARCH · pending KURA_QC`
+- HQ index: [`../00_Headquarters/Database_Center.md`](../00_Headquarters/Database_Center.md)
+- Task: **TASK-001** Kura QC Batch 001
+
+See `SCHEMA.md` for exact fields. Gate: GOR_GOR_REVIEW.
