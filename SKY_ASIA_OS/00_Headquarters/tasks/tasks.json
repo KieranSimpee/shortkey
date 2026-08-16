@@ -2,7 +2,7 @@
   {
     "id": "TASK-001",
     "owner": "Kura",
-    "title": "QC Batch 001 — Artists, Creators, Brands, Culture",
+    "title": "QC Batch 001 — Artists, Creators, Brands, Culture, Festivals",
     "detail": "Review CURSOR_RESEARCH rows in 05_Database/*.json. Verify Instagram handles (no fakes), Categories, References/URLs. Mark Status after QC. Flag anything for removal.",
     "status": "todo",
     "phase": 1,
@@ -12,46 +12,178 @@
       "SKY_ASIA_OS/05_Database/artists.json",
       "SKY_ASIA_OS/05_Database/creators.json",
       "SKY_ASIA_OS/05_Database/brands.json",
-      "SKY_ASIA_OS/05_Database/culture.json"
+      "SKY_ASIA_OS/05_Database/culture.json",
+      "SKY_ASIA_OS/05_Database/festivals.json"
     ]
   },
   {
-    "id": "TASK-002",
+    "id": "TASK-KURA-01",
+    "owner": "Kura",
+    "title": "Research 20 Topics",
+    "detail": "Build 20 Asia sticker-culture research topics for Knowledge Hub. Prefer primary sources. Status pending KURA_QC after draft.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/00_Headquarters/knowledge/", "SKY_ASIA_OS/KNOWLEDGE_HUB/INDEX.md"]
+  },
+  {
+    "id": "TASK-KURA-02",
+    "owner": "Kura",
+    "title": "Research 10 Artists",
+    "detail": "Expand Artist DB beyond Batch 001 toward 10 additional verified artists (or deepen QC on existing 10). No fake IG.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/05_Database/artists.json"]
+  },
+  {
+    "id": "TASK-KURA-03",
+    "owner": "Kura",
+    "title": "Research 10 Creators",
+    "detail": "Expand Creator DB with verified platforms. Followers null unless verified.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/05_Database/creators.json"]
+  },
+  {
+    "id": "TASK-KURA-04",
+    "owner": "Kura",
+    "title": "Research 10 Brands",
+    "detail": "Expand Brand DB; fill Beauty/Fashion/Lifestyle + Potential Collaboration honestly.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/05_Database/brands.json"]
+  },
+  {
+    "id": "TASK-KURA-05",
+    "owner": "Kura",
+    "title": "Research 10 Asian Cultural Trends",
+    "detail": "Ten cultural-trend notes for Season 01+ (sticker/stationery/character/youth). File into Knowledge Hub.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/05_Database/culture.json", "SKY_ASIA_OS/00_Headquarters/knowledge/"]
+  },
+  {
+    "id": "TASK-MAYA-01",
     "owner": "Maya",
-    "title": "Phase 2 stub — editorial frame Cover + Culture Story",
-    "detail": "Do not draft production copy until founder unlocks Phase 2. Hold seat for editorial framing of Season 01 Sticker Culture.",
+    "title": "Article template",
+    "detail": "Create reusable Article template for Season 01 magazine slots (structure only — not production copy).",
     "status": "todo",
     "phase": 2,
-    "blockedBy": "Phase 2 not started",
-    "refs": [
-      "SKY_ASIA_OS/04_Season01/slots/COVER_STORY.md",
-      "SKY_ASIA_OS/04_Season01/slots/CULTURE_STORY.md"
-    ]
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/04_Season01/"]
   },
   {
-    "id": "TASK-003",
+    "id": "TASK-MAYA-02",
+    "owner": "Maya",
+    "title": "Interview template",
+    "detail": "Create Interview template for artist/creator/brand conversations.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/04_Season01/"]
+  },
+  {
+    "id": "TASK-MAYA-03",
+    "owner": "Maya",
+    "title": "Artist Feature template",
+    "detail": "Template for Artist Discovery features aligned to Pop Mart / Sanrio / emerging illustrator ladder.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/04_Season01/slots/ARTIST_DISCOVERY.md"]
+  },
+  {
+    "id": "TASK-MAYA-04",
+    "owner": "Maya",
+    "title": "Brand Feature template",
+    "detail": "Template for Brand Discovery features (no public pricing).",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/04_Season01/slots/BRAND_DISCOVERY.md"]
+  },
+  {
+    "id": "TASK-SENTI-01",
     "owner": "Senti",
-    "title": "Phase 2 stub — creative direction Artist/Brand Discovery",
-    "detail": "Do not produce assets yet. Seat reserved for creative packaging of Artist Discovery and Brand Discovery slots.",
+    "title": "Visual Identity",
+    "detail": "Season 01 visual identity direction for SKY ASIA magazine (not ShortKey core rebrand).",
     "status": "todo",
     "phase": 2,
-    "blockedBy": "Phase 2 not started",
-    "refs": [
-      "SKY_ASIA_OS/04_Season01/slots/ARTIST_DISCOVERY.md",
-      "SKY_ASIA_OS/04_Season01/slots/BRAND_DISCOVERY.md"
-    ]
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/04_Season01/"]
   },
   {
-    "id": "TASK-004",
-    "owner": "Simpee",
-    "title": "Phase 2 stub — Gor Gor gate checklist research→publish",
-    "detail": "Do not run production gate yet. Prepare checklist when Batch 001 clears Kura QC and founder opens Phase 2.",
+    "id": "TASK-SENTI-02",
+    "owner": "Senti",
+    "title": "Logo System",
+    "detail": "Logo system options for Season 01 / SKY ASIA discovery mark.",
     "status": "todo",
     "phase": 2,
-    "blockedBy": "Phase 2 not started",
-    "refs": [
-      "SKY_ASIA_OS/03_Workflow/WORKFLOW.md",
-      "SKY_ASIA_OS/ROADMAP.md"
-    ]
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/04_Season01/"]
+  },
+  {
+    "id": "TASK-SENTI-03",
+    "owner": "Senti",
+    "title": "Colour Palette",
+    "detail": "Season 01 colour palette (lilac tokens OK). Document usage rules.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/04_Season01/"]
+  },
+  {
+    "id": "TASK-SENTI-04",
+    "owner": "Senti",
+    "title": "Cover Style Guide",
+    "detail": "Cover style guide for Season 01 Cover Story visual treatment.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/04_Season01/slots/COVER_STORY.md"]
+  },
+  {
+    "id": "TASK-SIMPEE-01",
+    "owner": "Simpee",
+    "title": "Revenue Plan",
+    "detail": "Season 01 revenue plan outline (internal). No public pricing disclosure.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/02_Team/TEAM.md"]
+  },
+  {
+    "id": "TASK-SIMPEE-02",
+    "owner": "Simpee",
+    "title": "Sponsor List",
+    "detail": "Draft sponsor target list structure from Brand DB + festivals.",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/05_Database/brands.json"]
+  },
+  {
+    "id": "TASK-SIMPEE-03",
+    "owner": "Simpee",
+    "title": "Beauty Brand List",
+    "detail": "Beauty-brand shortlist for Sticker Inspired Makeup / partnerships (internal).",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/05_Database/brands.json", "SKY_ASIA_OS/04_Season01/slots/BEAUTY_STORY.md"]
+  },
+  {
+    "id": "TASK-SIMPEE-04",
+    "owner": "Simpee",
+    "title": "Media Kit Structure",
+    "detail": "Media kit structure outline for SKY ASIA Season 01 (no public pricing).",
+    "status": "todo",
+    "phase": 2,
+    "blockedBy": null,
+    "refs": ["SKY_ASIA_OS/03_Workflow/WORKFLOW.md"]
   }
 ]

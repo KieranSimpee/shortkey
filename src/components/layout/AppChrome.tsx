@@ -16,6 +16,7 @@ import { CmsHeader, CmsHeaderBrand, CmsFooter } from "@/components/cms/CmsLayout
  * - shortkey.social Creator Early Access (`/social`) — own chrome; no shop leaks.
  * - ShortKey Runway phone frame (`/runway`) — own magazine chrome; no site header/footer.
  * - Direction compare boards (`/compare`) — founder comment boards; own chrome.
+ * - SKY ASIA OS MVP (`/sky-asia`) — internal ops; own chrome.
  */
 export function AppChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -28,6 +29,7 @@ export function AppChrome({ children }: { children: React.ReactNode }) {
   const isSocialEarlyAccess = pathname === "/social" || pathname.startsWith("/social/");
   const isRunwayFrame = pathname === "/runway" || pathname.startsWith("/runway/");
   const isCompareBoard = pathname === "/compare" || pathname.startsWith("/compare/");
+  const isSkyAsiaOs = pathname === "/sky-asia" || pathname.startsWith("/sky-asia/");
 
   if (
     isControlHub ||
@@ -38,7 +40,8 @@ export function AppChrome({ children }: { children: React.ReactNode }) {
     isLiveComingSoon ||
     isSocialEarlyAccess ||
     isRunwayFrame ||
-    isCompareBoard
+    isCompareBoard ||
+    isSkyAsiaOs
   ) {
     return <main className="min-h-screen min-w-0">{children}</main>;
   }

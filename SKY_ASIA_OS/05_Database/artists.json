@@ -4,7 +4,8 @@
     "Country": "Japan",
     "Instagram": "aikofukawa",
     "Category": "Illustrator · washi / stationery collab",
-    "Story": "Tokyo University of the Arts graduate; illustrator and picture-book maker whose work appears on Cozyca Products washi, seals, and lifestyle goods. Official Cozyca artist page lists Instagram @aikofukawa.",
+    "Website": "https://cozycaproducts.net/",
+    "Story Potential": "Tokyo University of the Arts graduate; illustrator and picture-book maker whose work appears on Cozyca Products washi, seals, and lifestyle goods. Official Cozyca artist page lists Instagram @aikofukawa.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
   },
   {
@@ -12,7 +13,8 @@
     "Country": "Japan",
     "Instagram": "unknown",
     "Category": "Illustrator · washi / lifestyle",
-    "Story": "Former graphic designer turned illustrator; warm everyday / European-charm motifs appear on Cozyca foil washi (e.g. My Favorite Mugs). Instagram not confirmed in this batch — left unknown.",
+    "Website": "unknown",
+    "Story Potential": "Former graphic designer turned illustrator; warm everyday / European-charm motifs appear on Cozyca foil washi (e.g. My Favorite Mugs). Instagram not confirmed in this batch — left unknown.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
   },
   {
@@ -20,7 +22,8 @@
     "Country": "Taiwan",
     "Instagram": "loi_design",
     "Category": "Illustrator · floral collage stationery",
-    "Story": "Co-founder of Loidesign with Mr. Wang; floral, retro, and collage stationery (PET tape, stickers). Handle confirmed via loidesign.store and Pinky Elephant interview.",
+    "Website": "https://loidesign.store/",
+    "Story Potential": "Co-founder of Loidesign with Mr. Wang; floral, retro, and collage stationery (PET tape, stickers). Handle confirmed via loidesign.store and Pinky Elephant interview.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
   },
   {
@@ -28,7 +31,8 @@
     "Country": "Taiwan",
     "Instagram": "unknown",
     "Category": "Stationery illustrator · memo / stickers",
-    "Story": "Taiwanese illustrator turning drawings into stationery (vellum-style memo stickers, tapes). Site: pion2015.com. Instagram handle not verified this batch.",
+    "Website": "https://pion2015.com/",
+    "Story Potential": "Taiwanese illustrator turning drawings into stationery (vellum-style memo stickers, tapes). Site: pion2015.com. Instagram handle not verified this batch.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
   },
   {
@@ -36,7 +40,8 @@
     "Country": "Taiwan",
     "Instagram": "unknown",
     "Category": "Illustration brand · PET tape / collage",
-    "Story": "Illustration brand for masking/PET tapes, stamps, print-on stickers; sold in JP/HK/SG/US/EU shops; featured at Taiwan Creative Expo. Site: somesortoffern.com. IG pending Kura verify.",
+    "Website": "https://www.somesortoffern.com/",
+    "Story Potential": "Illustration brand for masking/PET tapes, stamps, print-on stickers; sold in JP/HK/SG/US/EU shops; featured at Taiwan Creative Expo. Site: somesortoffern.com. IG pending Kura verify.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
   },
   {
@@ -44,7 +49,8 @@
     "Country": "Taiwan",
     "Instagram": "unknown",
     "Category": "Stamp / washi designer",
-    "Story": "Rubber-stamp and washi designer under 小徑文化 (Masking-Tape.tw); Round Top (Japan) designer page documents Taiwan base and handmade eraser-stamp practice. IG pending verify.",
+    "Website": "https://masking-tape.tw/",
+    "Story Potential": "Rubber-stamp and washi designer under 小徑文化 (Masking-Tape.tw); Round Top (Japan) designer page documents Taiwan base and handmade eraser-stamp practice. IG pending verify.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
   },
   {
@@ -52,7 +58,8 @@
     "Country": "Hong Kong",
     "Instagram": "oh.mankee",
     "Category": "Illustrator · character IP · stickers",
-    "Story": "PolyU design alum; founded Oh Mankee Studio (2021); LIMITS Asian Championship 2022 winner; IP HOKO the Flying Cat with sticker/merch. Instagram linked from ohmankee.com.",
+    "Website": "https://www.ohmankee.com/",
+    "Story Potential": "PolyU design alum; founded Oh Mankee Studio (2021); LIMITS Asian Championship 2022 winner; IP HOKO the Flying Cat with sticker/merch. Instagram linked from ohmankee.com.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
   },
   {
@@ -60,7 +67,8 @@
     "Country": "Hong Kong",
     "Instagram": "missquai",
     "Category": "Illustrator · local community characters",
-    "Story": "HK-based illustrator/designer; PolyU + HKBU design training; Hong Kong Young Design Talent; local community and cat motifs; Pinkoi shop. Handle listed on missquai.studio about page.",
+    "Website": "https://missquai.studio/",
+    "Story Potential": "HK-based illustrator/designer; PolyU + HKBU design training; Hong Kong Young Design Talent; local community and cat motifs; Pinkoi shop. Handle listed on missquai.studio about page.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
   },
   {
@@ -68,7 +76,8 @@
     "Country": "Taiwan",
     "Instagram": "unknown",
     "Category": "Kawaii illustrator · vinyl stickers",
-    "Story": "Illustrator behind GENBOKU (est. 2022); anime-influenced kawaii characters on clothing and artisan goods including vinyl stickers. Site lists IG presence but handle not confirmed this batch.",
+    "Website": "unknown",
+    "Story Potential": "Illustrator behind GENBOKU (est. 2022); anime-influenced kawaii characters on clothing and artisan goods including vinyl stickers. Site lists IG presence but handle not confirmed this batch.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
   },
   {
@@ -76,7 +85,98 @@
     "Country": "Taiwan",
     "Instagram": "unknown",
     "Category": "Watercolor illustration collective · washi / stickers",
-    "Story": "Founded 2013; watercolor floral, dessert, and forest-animal illustrations across masking/PET tapes, stickers, pins. Official shop ours.tw. Brand Instagram pending Kura verify.",
+    "Website": "https://www.ours.tw/",
+    "Story Potential": "Founded 2013; watercolor floral, dessert, and forest-animal illustrations across masking/PET tapes, stickers, pins. Official shop ours.tw. Brand Instagram pending Kura verify.",
     "Status": "CURSOR_RESEARCH · pending KURA_QC"
+  },
+  {
+    "Name": "dodolulu (Gigi)",
+    "Country": "Hong Kong",
+    "Instagram": "dodolulu.design",
+    "Category": "Illustrator · watercolor stickers · journaling",
+    "Website": "https://www.dodolulu.com/",
+    "Story Potential": "HK illustrator Gigi; whimsical watercolor/colored-pencil figures on sticker sheets, matchbox flakes, PET/washi. Official site links Instagram @dodolulu.design. Stocked internationally (Papersmiths, Sumthings of Mine, Pinkoi).",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
+  },
+  {
+    "Name": "Necktie (Norio & Asami)",
+    "Country": "Japan",
+    "Instagram": "unknown",
+    "Category": "Illustrator duo · Cozyca collab stickers",
+    "Website": "https://cozycaproducts.net/",
+    "Story Potential": "Listed on Cozyca collaboration artist roster (ネクタイ); PET sticker sheets such as For An Ordinary Day / For Your Birthday sold via Cozyca stockists. Individual Instagram handles not verified this batch.",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
+  },
+  {
+    "Name": "Nishi Shuku",
+    "Country": "Japan",
+    "Instagram": "unknown",
+    "Category": "Illustrator · Cozyca letter / paper goods",
+    "Website": "https://cozycaproducts.net/",
+    "Story Potential": "Cozyca collaboration illustrator (ニシワキタダシ / Nishi Shuku line on English stockist pages); letter pads and paper goods. Instagram not verified — left unknown.",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
+  },
+  {
+    "Name": "Masao Takahata",
+    "Country": "Japan",
+    "Instagram": "unknown",
+    "Category": "Illustrator · Cozyca seals / stickers",
+    "Website": "https://cozycaproducts.net/",
+    "Story Potential": "Listed on Cozyca collaboration artist page (高旗将雄); temple and scenic seal/sticker motifs appear in Cozyca catalogs. Instagram pending verify.",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
+  },
+  {
+    "Name": "Mariko Fukuoka",
+    "Country": "Japan",
+    "Instagram": "unknown",
+    "Category": "Illustrator · Cozyca collab",
+    "Website": "https://cozycaproducts.net/",
+    "Story Potential": "Listed on Cozyca collaboration artist roster as 福岡麻利子. Product-facing story potential via Cozyca stationery; personal IG not verified this batch.",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
+  },
+  {
+    "Name": "Kuroneko Isho (黒ねこ意匠)",
+    "Country": "Japan",
+    "Instagram": "unknown",
+    "Category": "Illustration design unit · Cozyca collab",
+    "Website": "https://cozycaproducts.net/",
+    "Story Potential": "Cozyca collaboration artist listing 黒ねこ意匠; cat/motif stationery potential for Season 01 Japan collecting angle. IG pending Kura verify.",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
+  },
+  {
+    "Name": "Violet & Claire / Toya Sumire (多屋澄礼)",
+    "Country": "Japan",
+    "Instagram": "unknown",
+    "Category": "Illustrator · Cozyca collab",
+    "Website": "https://cozycaproducts.net/",
+    "Story Potential": "Named on Cozyca English catalog collaboration artist list (Violet & Claire / 多屋澄礼). Stationery collab path clear; personal handle unknown until QC.",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
+  },
+  {
+    "Name": "Mstandforc",
+    "Country": "Hong Kong",
+    "Instagram": "unknown",
+    "Category": "Illustrator · watercolor travel stickers",
+    "Website": "https://en.pinkoi.com/",
+    "Story Potential": "HK Pinkoi seller known for watercolor landscape sticker sets (e.g. Taiwan journey motifs). Shop presence verified via Pinkoi product listings; Instagram handle not confirmed — left unknown.",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
+  },
+  {
+    "Name": "Chiya (via RomoDolDolStudio)",
+    "Country": "Hong Kong",
+    "Instagram": "unknown",
+    "Category": "Illustrator · washi stickers",
+    "Website": "https://en.pinkoi.com/",
+    "Story Potential": "Hong Kong illustrator Chiya; TWINS / OUR LIFE A6 washi sticker series sold via RomoDolDolStudio on Pinkoi. Personal Instagram not verified this batch.",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
+  },
+  {
+    "Name": "Sayuri Fujimaki",
+    "Country": "Japan",
+    "Instagram": "unknown",
+    "Category": "Illustrator · Cozyca collab",
+    "Website": "https://cozycaproducts.net/",
+    "Story Potential": "Listed on Cozyca collaboration artist roster as 藤巻佐有梨. Strong Japan artist-discovery ladder candidate once IG/site verified by Kura.",
+    "Status": "CURSOR_RESEARCH · pending KURA_QC · BATCH_002"
   }
 ]

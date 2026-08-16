@@ -9,9 +9,10 @@ export function ContentStudioShell({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
   const isControlHub = pathname === "/control" || pathname.startsWith("/control/");
   const isInternal = pathname === "/internal" || pathname.startsWith("/internal/");
+  const isSkyAsiaOs = pathname === "/sky-asia" || pathname.startsWith("/sky-asia/");
   /** Public Coming Soon gate must ship with zero admin/debug surfaces (blueprint § Hide from public). */
   const isComingSoon = pathname === "/";
-  const hideStudioTooling = isControlHub || isInternal || isComingSoon;
+  const hideStudioTooling = isControlHub || isInternal || isSkyAsiaOs || isComingSoon;
 
   return (
     <ContentStudioProvider>

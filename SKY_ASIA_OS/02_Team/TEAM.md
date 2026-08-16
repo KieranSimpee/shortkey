@@ -86,6 +86,12 @@ KIERAN (Founder)
 
 ---
 
+## Kieran weekly rhythm (ops)
+
+See `03_Workflow/WORKFLOW.md` for the Mon–Fri founder flow:
+
+- **Mon** priorities · **Tue** research · **Wed** content · **Thu** creative · **Fri** finance + gate
+
 ## Seat conflict note
 
 See `CONFLICTS.md` — ShortKey family locks (Simpee Chief of Staff, Kura Brand Design Manager, etc.) remain for ShortKey. This file is the **SKY ASIA OS** seat map only.

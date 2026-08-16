@@ -1,57 +1,50 @@
-# BATCH_001 — Database V1 first fill
+# BATCH_001 — Database V1 first fill (+ expansion)
 
 **Date:** 2026-08-16  
 **Source:** CURSOR_RESEARCH (live web verification)  
 **Gate:** GOR_GOR_REVIEW  
-**Kura:** pending QC — live `npm run ask:kura` **Needs key** (`KURA_API_KEY` / `BASE44_API_KEY` not set in this environment)
+**Kura:** pending QC — live `npm run ask:kura` **Needs key** (`KURA_API_KEY` / `BASE44_API_KEY` not set in this environment)  
+**Schema:** Founder fields (see `SCHEMA.md`)
 
-## Counts
+## Counts (live JSON)
 
-| DB | Added | Target |
-|----|------:|-------:|
-| Artists | 10 | 10 |
-| Creators | 10 | 10 |
-| Brands | 10 | 10 |
-| Culture | 10 | 10 |
-| Festivals | 4 | optional |
+| DB | Rows | Notes |
+|----|------:|-------|
+| Artists | 20 | Batch 001 (10) + expansion (10) · pending KURA_QC |
+| Creators | 20 | Batch 001 (10) + expansion (10) |
+| Brands | 20 | Batch 001 (10) + expansion (10) |
+| Culture | 20 | Batch 001 (10) + expansion (10) |
+| Festivals | 20 | Seed (4) + expansion |
 
-## What was added
+## Founder field map
 
-### Artists (10)
-Japan: Aiko Fukawa (@aikofukawa verified via Cozyca), Midori Asano (IG unknown)  
-Taiwan: Chin/Loidesign (@loi_design), Pion, Some Sort of Fern, Chamil Garden, Hsinyi/GENBOKU, OURS Studio  
-Hong Kong: Oh Mankee (@oh.mankee), Missquai (@missquai)
-
-Unverified Instagram → `unknown` (never invented).
-
-### Creators (10)
-Culture amplifiers and research-adjacent creators/shops (Sticky Rice Sisters, Pinky Elephant, Yoseka, Zenpop, Konbini, Daebak, Meowashi, Japan Stationery, Sumthings of Mine, TaiwaneseAmerican Next 100 profile).  
-**Followers:** all `null` — no invented exact counts.
-
-### Brands (10)
-mt · Mind Wave (`mindwave.co.jp`) · Cozyca · Loidesign · OURS · Pion · Some Sort of Fern · Kakao Friends · LINE Friends · ARTBOX
-
-### Culture topics (10)
-Techo · washi/mt origin · Kamoi story · Dakku · Polco · Kakao sticker→IP · Taiwan PET/kiss-cut · collage export · Pinkoi · HK character IP (HOKO)
-
-### Festivals (4)
-Taiwan Creative Expo · Design Festa · Comic World · HK Book Fair (creative side)
+| DB | Keys |
+|----|------|
+| Artists | Name, Country, Instagram, Category, Website, Story Potential, Status |
+| Creators | Name, Country, Platform, Followers, Niche, Contact |
+| Brands | Brand, Country, Beauty/Fashion/Lifestyle, Website, Potential Collaboration |
+| Festivals | Festival, Country, Date, Story Angle, Content Ready |
 
 ## Status marking
 
-- Artists: `Status` = `CURSOR_RESEARCH · pending KURA_QC`
-- Brands: `Notes` include same tag
-- Festivals: `Description` includes same tag
-- Creators / Culture: covered by this batch log + Task Center TASK-001
+- Artists: `Status` includes `CURSOR_RESEARCH · pending KURA_QC` (some tagged BATCH_002)
+- Brands: `Potential Collaboration` includes QC tag
+- Festivals: `Content Ready` = `no` until slots assigned
+- Unverified Instagram → `unknown` (never invented)
+- Followers → `null` unless verified
+
+## Knowledge Hub
+
+Research notes under `00_Headquarters/knowledge/` · index `KNOWLEDGE_HUB/INDEX.md`
 
 ## Pending Kura QC checklist
 
-1. Confirm or correct every Instagram (especially those marked `unknown`)
-2. Drop or rename any row that fails brand-taste / accuracy QC
-3. Add better References where Culture URLs are secondary/summary sources
-4. Decide whether retailers-as-Creators should stay or be split into a Shop index later
-5. After QC → Simpee Gor Gor gate (Phase 2)
+1. Confirm or correct every Instagram (especially `unknown`)
+2. Drop or rename rows that fail accuracy / brand-taste QC
+3. Improve Culture References where secondary
+4. After QC → Simpee Gor Gor gate
 
-## Task
+## MVP
 
-→ HQ Task Center **TASK-001** — Kura QC Batch 001
+→ `/sky-asia` displays live counts from these JSON files  
+→ Task Center **TASK-001** — Kura QC Batch 001 (+ expansion)

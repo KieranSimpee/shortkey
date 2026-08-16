@@ -1,54 +1,69 @@
-# Database schemas (empty tables)
+# Database schemas (MVP — founder fields)
 
-All data files are JSON arrays starting as `[]`. Field names below are exact.
+All Batch 001 rows live as JSON arrays. Field names below are exact keys.
 
 ## Artist Database (`artists.json`)
 
-| Field | Type (intended) |
-|-------|-----------------|
+| Field | Type |
+|-------|------|
 | Name | string |
 | Country | string |
-| Instagram | string |
+| Instagram | string (`unknown` if not verified — never invent) |
 | Category | string |
-| Story | string |
-| Status | string |
+| Website | string (`unknown` if not verified) |
+| Story Potential | string |
+| Status | string (keep `CURSOR_RESEARCH · pending KURA_QC` until Kura QC) |
 
 ## Creator Database (`creators.json`)
 
-| Field | Type (intended) |
-|-------|-----------------|
+| Field | Type |
+|-------|------|
 | Name | string |
-| Platform | string |
-| Followers | number or string |
 | Country | string |
-| Reason Selected | string |
+| Platform | string |
+| Followers | number \| null (`null` if not verified — never invent) |
+| Niche | string |
+| Contact | string (`unknown` until verified) |
 
 ## Brand Database (`brands.json`)
 
-| Field | Type (intended) |
-|-------|-----------------|
+| Field | Type |
+|-------|------|
 | Brand | string |
 | Country | string |
-| Category | string |
+| Beauty/Fashion/Lifestyle | string (bucket + short descriptor) |
 | Website | string |
-| Notes | string |
+| Potential Collaboration | string (includes QC status tags until cleared) |
 
 ## Festival Database (`festivals.json`)
 
-| Field | Type (intended) |
-|-------|-----------------|
+| Field | Type |
+|-------|------|
 | Festival | string |
 | Country | string |
-| Month | string |
-| Description | string |
+| Date | string |
+| Story Angle | string |
+| Content Ready | string (`no` / `draft` / `ready`) |
 
 ## Culture Database (`culture.json`)
 
-| Field | Type (intended) |
-|-------|-----------------|
+| Field | Type |
+|-------|------|
 | Topic | string |
 | Country | string |
 | Category | string |
-| Reference | string |
+| Reference | string (URL) |
 
-**Note:** JSON keys may use camelCase or exact labels when filled in Phase 2; prefer the field labels above as the source of truth until a loader is defined.
+## Migration notes (Batch 001 → founder fields)
+
+| Old key | New key |
+|---------|---------|
+| Artists.`Story` | `Story Potential` |
+| Artists — (new) | `Website` |
+| Creators.`Reason Selected` | `Niche` |
+| Creators — (new) | `Contact` |
+| Brands.`Category` | `Beauty/Fashion/Lifestyle` |
+| Brands.`Notes` | `Potential Collaboration` |
+| Festivals.`Month` | `Date` |
+| Festivals.`Description` | `Story Angle` |
+| Festivals — (new) | `Content Ready` |
