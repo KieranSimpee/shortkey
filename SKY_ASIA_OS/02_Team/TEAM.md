@@ -88,9 +88,9 @@ KIERAN (Founder)
 
 ## Kieran weekly rhythm (ops)
 
-See `03_Workflow/WORKFLOW.md` for the Mon–Fri founder flow:
+See **`03_Workflow/SKY_ASIA_WORKFLOW_V1.md`** (Workflow v1.0 SSOT · LOCKED):
 
-- **Mon** priorities · **Tue** research · **Wed** content · **Thu** creative · **Fri** finance + gate
+- **Mon** priorities · **Tue** research · **Wed** content · **Thu** creative · **Fri** finance + gate · **Weekend** tidy only
 
 ## Seat conflict note
 

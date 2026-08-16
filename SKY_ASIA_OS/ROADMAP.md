@@ -27,6 +27,11 @@
 - Task Center KPI stubs: Sky · Simpee 10 · Kura 100 · Maya templates · Senti identity
 - MVP route wiring: **not present** — content files alone = success for Publisher Mode
 
+## Learning note (2026-08-16)
+
+**Workflow v1.0 locked** — Publisher Mode follows this cadence (`03_Workflow/SKY_ASIA_WORKFLOW_V1.md`).  
+Levels: Kieran Vision → Sky 總指揮 → Depts → Cursor HQ. Weekly Mon–Weekend · Monthly W1–W4 · After Publishing loop · Golden Rule. No new tools/roles from this lock.
+
 ## Rules (locked)
 
 - No fake Instagram handles
@@ -34,3 +39,4 @@
 - No public pricing disclosure
 - Research batches stay GOR_GOR_REVIEW until Gor Gor approves
 - No architecture redesign · no new agents · no new tools in Publisher Mode
+- **Operating cadence:** SKY ASIA WORKFLOW v1.0 (SSOT)

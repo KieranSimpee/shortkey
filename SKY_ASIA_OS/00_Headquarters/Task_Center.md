@@ -3,7 +3,21 @@
 Family task board for SKY ASIA OS. Machine-readable: [`tasks/tasks.json`](./tasks/tasks.json).
 
 **Statuses:** `todo` · `doing` · `done`  
-**Mode:** Publisher Mode · Phase 9 Launch Season 01
+**Mode:** Publisher Mode · Phase 9 Launch Season 01  
+**Cadence SSOT:** [`../03_Workflow/SKY_ASIA_WORKFLOW_V1.md`](../03_Workflow/SKY_ASIA_WORKFLOW_V1.md) (Workflow v1.0 LOCKED · GOR_GOR_REVIEW)
+
+### Weekly cadence (assign against this)
+
+| Day | Focus | Typical owners |
+|-----|--------|----------------|
+| Mon | Priorities lock | Kieran · Sky |
+| Tue | Research | Kura |
+| Wed | Editorial | Maya |
+| Thu | Creative | Senti |
+| Fri | Business + gate | Simpee · Sky · Kieran |
+| Weekend | Tidy only — no ungated publish | Cursor HQ |
+
+Monthly: **W1** plan/research · **W2** produce · **W3** gate/publish · **W4** learn/reset.
 
 ## AI Team KPI stubs (status fields only — no new agents)
 
