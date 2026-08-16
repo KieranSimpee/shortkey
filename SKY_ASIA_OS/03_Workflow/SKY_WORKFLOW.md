@@ -2,7 +2,8 @@
 
 **Status:** LOCKED · GOR_GOR_REVIEW  
 **Lock date:** 2026-08-16  
-**SSOT:** This file is **Sky-specific** operating law for SKY ASIA OS.  
+**Detail appendix;** Master Blueprint is SSOT overview → [`../SKY_ASIA_MASTER_BLUEPRINT.md`](../SKY_ASIA_MASTER_BLUEPRINT.md)  
+**Sky-loop SSOT:** This file is **Sky-specific** operating law for SKY ASIA OS (detail under the Master Blueprint).  
 **Scope:** Manager cadence only — **no content · no design · no research · no new tools · no new roles · no Season / MVP rewrite**.
 
 > Sky does **not** do content, design, or research.  
@@ -107,7 +108,8 @@ Hard line: if Sky is writing copy, designing visuals, or doing primary research 
 
 | Doc | Role |
 |-----|------|
-| [`SKY_ASIA_WORKFLOW_V1.md`](./SKY_ASIA_WORKFLOW_V1.md) | Shared four-level cadence (SSOT for whole OS) |
+| [`../SKY_ASIA_MASTER_BLUEPRINT.md`](../SKY_ASIA_MASTER_BLUEPRINT.md) | **Master Blueprint · SSOT overview** |
+| [`SKY_ASIA_WORKFLOW_V1.md`](./SKY_ASIA_WORKFLOW_V1.md) | Shared four-level cadence (detail appendix) |
 | [`../02_Team/TEAM.md`](../02_Team/TEAM.md) | Seat map — Sky = manager loop |
 | [`../00_Headquarters/Dashboard.md`](../00_Headquarters/Dashboard.md) | Ops board — Sky = Manager cadence |
 | [`../00_Headquarters/Task_Center.md`](../00_Headquarters/Task_Center.md) | Task board Sky monitors |

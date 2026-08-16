@@ -1,9 +1,10 @@
 # SKY ASIA OS — Workflow
 
 **Status:** GOR_GOR_REVIEW  
-**SSOT:** **[`SKY_ASIA_WORKFLOW_V1.md`](./SKY_ASIA_WORKFLOW_V1.md)** — **SKY ASIA WORKFLOW v1.0 LOCKED**
+**Detail appendix;** Master Blueprint is SSOT overview → [`../SKY_ASIA_MASTER_BLUEPRINT.md`](../SKY_ASIA_MASTER_BLUEPRINT.md)  
+**Cadence SSOT (this folder):** **[`SKY_ASIA_WORKFLOW_V1.md`](./SKY_ASIA_WORKFLOW_V1.md)** — **SKY ASIA WORKFLOW v1.0 LOCKED**
 
-This stub exists so older links keep resolving. The shared daily operating way is **Workflow v1.0** only.
+This stub exists so older links keep resolving. The shared daily operating way is **Workflow v1.0** only (detail appendix under the Master Blueprint).
 
 ## Quick pointer
 

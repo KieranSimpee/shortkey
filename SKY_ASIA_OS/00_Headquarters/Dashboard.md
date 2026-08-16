@@ -30,7 +30,8 @@ All research rows: **CURSOR_RESEARCH · pending KURA_QC** (see BATCH_001 + BATCH
 
 ## Operating cadence (LOCKED)
 
-**SSOT:** [`../03_Workflow/SKY_ASIA_WORKFLOW_V1.md`](../03_Workflow/SKY_ASIA_WORKFLOW_V1.md) — SKY ASIA WORKFLOW v1.0  
+**Overview SSOT:** [`../SKY_ASIA_MASTER_BLUEPRINT.md`](../SKY_ASIA_MASTER_BLUEPRINT.md) — Master Blueprint  
+**Cadence detail:** [`../03_Workflow/SKY_ASIA_WORKFLOW_V1.md`](../03_Workflow/SKY_ASIA_WORKFLOW_V1.md) — SKY ASIA WORKFLOW v1.0  
 Publisher Mode follows this cadence. Levels: Kieran Vision → Sky 總指揮 → Depts → Cursor HQ.
 
 **Sky = Manager cadence** — Think → Decide → Assign → Review only (no content / design / research). SSOT: [`../03_Workflow/SKY_WORKFLOW.md`](../03_Workflow/SKY_WORKFLOW.md)
@@ -50,7 +51,8 @@ Publisher Mode follows this cadence. Levels: Kieran Vision → Sky 總指揮 →
 
 ## Quick links
 
-- [Workflow v1.0 (SSOT)](../03_Workflow/SKY_ASIA_WORKFLOW_V1.md)
+- [**Master Blueprint (SSOT overview)**](../SKY_ASIA_MASTER_BLUEPRINT.md)
+- [Workflow v1.0 (cadence detail)](../03_Workflow/SKY_ASIA_WORKFLOW_V1.md)
 - [Sky Workflow (Manager loop)](../03_Workflow/SKY_WORKFLOW.md)
 - [Season Center](./Season_Center.md)
 - [Task Center](./Task_Center.md)
