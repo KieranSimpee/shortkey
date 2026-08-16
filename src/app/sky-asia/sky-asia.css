@@ -223,3 +223,34 @@
   color: #4a3f8c;
   margin-right: 0.35rem;
 }
+
+.sao-cover {
+  border-color: #c9c0f5;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f5ff 100%);
+}
+
+.sao-prose {
+  margin-top: 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.sao-prose h3 {
+  margin: 1rem 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.sao-prose h4 {
+  margin: 0.85rem 0 0.3rem;
+  font-size: 0.95rem;
+}
+
+.sao-prose p {
+  margin: 0 0 0.75rem;
+}
+
+.sao-prose ul,
+.sao-prose ol {
+  margin: 0 0 0.75rem;
+  padding-left: 1.2rem;
+}

@@ -15,6 +15,18 @@ export const SEASON_01_PATH = path.join(
   "04_Season01",
   "season-01.json",
 );
+export const COVER_STORY_PATH = path.join(
+  SKY_ASIA_OS_ROOT,
+  "04_Season01",
+  "content",
+  "COVER_STORY.md",
+);
+export const COVER_READY_PATH = path.join(
+  SKY_ASIA_OS_ROOT,
+  "04_Season01",
+  "content",
+  "READY_TO_PUBLISH.md",
+);
 export const KNOWLEDGE_DIR = path.join(
   SKY_ASIA_OS_ROOT,
   "00_Headquarters",

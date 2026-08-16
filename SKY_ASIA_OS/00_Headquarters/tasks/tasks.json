@@ -1,14 +1,76 @@
 [
   {
+    "id": "TASK-SKY-01",
+    "owner": "Sky",
+    "title": "Season 01 coordination (Publisher Mode)",
+    "detail": "Coordinate Season 01 publish path: Cover Story gates, HQ sync, DB Month 1 progress. Status field only — no new agents/tools.",
+    "status": "doing",
+    "phase": 9,
+    "blockedBy": null,
+    "kpi": "Sky coordination",
+    "refs": [
+      "SKY_ASIA_OS/04_Season01/content/COVER_STORY.md",
+      "SKY_ASIA_OS/00_Headquarters/Dashboard.md"
+    ]
+  },
+  {
+    "id": "TASK-SIMPEE-10",
+    "owner": "Simpee",
+    "title": "10 partners pipeline (status stub)",
+    "detail": "Internal shortlist toward 10 partners from Brand DB + festivals. No public pricing. No outreach automation in this phase.",
+    "status": "todo",
+    "phase": 9,
+    "blockedBy": null,
+    "kpi": "Simpee 10 partners",
+    "refs": ["SKY_ASIA_OS/05_Database/brands.json"]
+  },
+  {
+    "id": "TASK-KURA-100",
+    "owner": "Kura",
+    "title": "100 research units (status stub)",
+    "detail": "Accumulate toward 100 research units across Knowledge Hub notes + DB QC. Batch 001+002 marked pending KURA_QC.",
+    "status": "doing",
+    "phase": 9,
+    "blockedBy": "KURA_API_KEY missing until founder pastes key",
+    "kpi": "Kura 100 research",
+    "refs": [
+      "SKY_ASIA_OS/00_Headquarters/knowledge/",
+      "SKY_ASIA_OS/05_Database/"
+    ]
+  },
+  {
+    "id": "TASK-MAYA-TPL",
+    "owner": "Maya",
+    "title": "Templates pack (status stub)",
+    "detail": "Article · Interview · Artist Feature · Brand Feature templates. Structure only until founder go for production polish.",
+    "status": "todo",
+    "phase": 9,
+    "blockedBy": null,
+    "kpi": "Maya templates",
+    "refs": ["SKY_ASIA_OS/04_Season01/"]
+  },
+  {
+    "id": "TASK-SENTI-ID",
+    "owner": "Senti",
+    "title": "Season 01 identity (status stub)",
+    "detail": "Visual identity · logo system · colour palette · cover style guide — status tracking only this phase.",
+    "status": "todo",
+    "phase": 9,
+    "blockedBy": null,
+    "kpi": "Senti identity",
+    "refs": ["SKY_ASIA_OS/04_Season01/"]
+  },
+  {
     "id": "TASK-001",
     "owner": "Kura",
-    "title": "QC Batch 001 — Artists, Creators, Brands, Culture, Festivals",
+    "title": "QC Batch 001 + Batch 002 — Artists, Creators, Brands, Culture, Festivals",
     "detail": "Review CURSOR_RESEARCH rows in 05_Database/*.json. Verify Instagram handles (no fakes), Categories, References/URLs. Mark Status after QC. Flag anything for removal.",
     "status": "todo",
-    "phase": 1,
+    "phase": 9,
     "blockedBy": "KURA_API_KEY missing until founder pastes key",
     "refs": [
       "SKY_ASIA_OS/05_Database/BATCH_001.md",
+      "SKY_ASIA_OS/05_Database/BATCH_002.md",
       "SKY_ASIA_OS/05_Database/artists.json",
       "SKY_ASIA_OS/05_Database/creators.json",
       "SKY_ASIA_OS/05_Database/brands.json",
@@ -17,12 +79,25 @@
     ]
   },
   {
+    "id": "TASK-004",
+    "owner": "Simpee",
+    "title": "Gor Gor gate — Cover Story READY_TO_PUBLISH",
+    "detail": "Review 04_Season01/content/COVER_STORY.md and flip READY_TO_PUBLISH.md gates when cleared.",
+    "status": "doing",
+    "phase": 9,
+    "blockedBy": null,
+    "refs": [
+      "SKY_ASIA_OS/04_Season01/content/COVER_STORY.md",
+      "SKY_ASIA_OS/04_Season01/content/READY_TO_PUBLISH.md"
+    ]
+  },
+  {
     "id": "TASK-KURA-01",
     "owner": "Kura",
     "title": "Research 20 Topics",
     "detail": "Build 20 Asia sticker-culture research topics for Knowledge Hub. Prefer primary sources. Status pending KURA_QC after draft.",
-    "status": "todo",
-    "phase": 2,
+    "status": "doing",
+    "phase": 9,
     "blockedBy": null,
     "refs": ["SKY_ASIA_OS/00_Headquarters/knowledge/", "SKY_ASIA_OS/KNOWLEDGE_HUB/INDEX.md"]
   },
@@ -30,9 +105,9 @@
     "id": "TASK-KURA-02",
     "owner": "Kura",
     "title": "Research 10 Artists",
-    "detail": "Expand Artist DB beyond Batch 001 toward 10 additional verified artists (or deepen QC on existing 10). No fake IG.",
-    "status": "todo",
-    "phase": 2,
+    "detail": "Expand Artist DB toward Month 1 target of 20. Batch 002 added; QC remaining.",
+    "status": "doing",
+    "phase": 9,
     "blockedBy": null,
     "refs": ["SKY_ASIA_OS/05_Database/artists.json"]
   },
@@ -41,8 +116,8 @@
     "owner": "Kura",
     "title": "Research 10 Creators",
     "detail": "Expand Creator DB with verified platforms. Followers null unless verified.",
-    "status": "todo",
-    "phase": 2,
+    "status": "doing",
+    "phase": 9,
     "blockedBy": null,
     "refs": ["SKY_ASIA_OS/05_Database/creators.json"]
   },
@@ -51,8 +126,8 @@
     "owner": "Kura",
     "title": "Research 10 Brands",
     "detail": "Expand Brand DB; fill Beauty/Fashion/Lifestyle + Potential Collaboration honestly.",
-    "status": "todo",
-    "phase": 2,
+    "status": "doing",
+    "phase": 9,
     "blockedBy": null,
     "refs": ["SKY_ASIA_OS/05_Database/brands.json"]
   },
@@ -61,8 +136,8 @@
     "owner": "Kura",
     "title": "Research 10 Asian Cultural Trends",
     "detail": "Ten cultural-trend notes for Season 01+ (sticker/stationery/character/youth). File into Knowledge Hub.",
-    "status": "todo",
-    "phase": 2,
+    "status": "doing",
+    "phase": 9,
     "blockedBy": null,
     "refs": ["SKY_ASIA_OS/05_Database/culture.json", "SKY_ASIA_OS/00_Headquarters/knowledge/"]
   },

@@ -2,7 +2,7 @@
 
 **Status gate:** GOR_GOR_REVIEW  
 **Season 01 theme (LOCKED):** Sticker Culture in Asia  
-**MVP UI:** `/sky-asia`
+**Active mode:** **Publisher Mode · Phase 9 Launch Season 01**
 
 ## Phase overview
 
@@ -10,22 +10,22 @@
 |-------|------|--------|
 | **0** | OS foundation (Vision · Team · Workflow · Season 01 stubs · empty DBs) | ✅ Done |
 | **1** | Headquarters modules + Database V1 first storage | ✅ Done |
-| **MVP** | Next.js ops UI — seasons · tasks · knowledge · DBs | ✅ Done (this branch) |
-| **2** | Family production seats (Kura QC · Maya editorial · Senti creative · Simpee gate) | Tasks created (`todo`) — needs API keys |
-| **3** | Content production for Season 01 slots | Not started |
-| **4** | Discovery layer (Artist / Brand / Culture packaging) | Not started |
-| **5** | Challenge + Games + Festival corner activation | Not started |
-| **6** | Publish pipeline (Gor Gor gate · no auto-social) | Not started |
-| **7** | Automation | **LOCKED OFF** |
+| **2** | Family production seats (Kura QC · Maya editorial · Senti creative · Simpee gate) | Stubs only (Task Center KPIs) |
+| **3** | Content production for Season 01 slots | ✅ **In progress — first drafts live** |
+| **4** | Discovery layer (Artist / Brand / Culture packaging) | ✅ Shortlists drafted |
+| **5** | Challenge + Games + Festival corner activation | ✅ Games + Challenge drafted · Festival DB grown |
+| **6** | Publish pipeline (Gor Gor gate · no auto-social) | 🔄 Cover Story awaiting GOR_GOR_REVIEW |
+| **7** | Review · archive · Season 02 prep | Not started |
+| **9** | **Launch Season 01 (Publisher Mode)** | 🔄 This branch |
 
-## MVP deliverables (now)
+## Phase 9 deliverables (now)
 
-- Working `/sky-asia` nav to all modules
-- Databases migrated to founder fields + Batch 001 displayed
-- Season 01 content framework angles filled
-- Task Center: Kura / Maya / Senti / Simpee todos
-- Knowledge Hub notes + INDEX
-- Kieran Mon–Fri flow documented
+- Real Cover Story draft: `04_Season01/content/COVER_STORY.md`
+- Ready checklist: `04_Season01/content/READY_TO_PUBLISH.md`
+- Culture / Beauty / Games / Challenge / Discovery drafts under `04_Season01/content/`
+- Master Database Month 1: ~20 Artists · Creators · Brands · Culture · Festivals (`BATCH_002.md`)
+- Task Center KPI stubs: Sky · Simpee 10 · Kura 100 · Maya templates · Senti identity
+- MVP route wiring: **not present** — content files alone = success for Publisher Mode
 
 ## Rules (locked)
 
@@ -33,5 +33,4 @@
 - No auto-posting to social
 - No public pricing disclosure
 - Research batches stay GOR_GOR_REVIEW until Gor Gor approves
-- Do not build Phase 7 automation
-- Do not redesign Sky core
+- No architecture redesign · no new agents · no new tools in Publisher Mode

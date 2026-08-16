@@ -6,6 +6,7 @@
 
 | Note | Path |
 |------|------|
+| Batch 002 — Month 1 growth (20 each) | `SKY_ASIA_OS/00_Headquarters/knowledge/2026-08-16_batch002-month1-growth.md` |
 | Batch 001 — Artists summary (10) | `SKY_ASIA_OS/00_Headquarters/knowledge/2026-08-16_batch001-artists-summary.md` |
 | Batch 001 — Brands summary (10) | `SKY_ASIA_OS/00_Headquarters/knowledge/2026-08-16_batch001-brands-summary.md` |
 | Batch 001 — Creators summary (10) | `SKY_ASIA_OS/00_Headquarters/knowledge/2026-08-16_batch001-creators-summary.md` |
@@ -26,3 +27,5 @@
 - `00_Headquarters/Knowledge_Hub.md` — HQ overview
 - `05_Database/` — structured rows
 - `05_Database/BATCH_001.md` — batch log
+- `05_Database/BATCH_002.md` — Month 1 growth log
+- Cover Story draft: `04_Season01/content/COVER_STORY.md`

@@ -1,6 +1,8 @@
 import { promises as fs } from "fs";
 import path from "path";
 import {
+  COVER_READY_PATH,
+  COVER_STORY_PATH,
   dbPath,
   KNOWLEDGE_DIR,
   KNOWLEDGE_INDEX,
@@ -59,18 +61,100 @@ export type Season01 = {
   status: string;
   countries: string[];
   deadline: string;
+  mode?: string;
+  coverStory?: {
+    title: string;
+    path: string;
+    checklist: string;
+    status: string;
+    gates: {
+      gor_gor_review: string;
+      kieran_approval: string;
+    };
+  };
   framework: Array<{
     slot: string;
     title: string;
     angle: string;
     status: string;
+    path?: string;
   }>;
-  slots: Array<{ id: string; file: string; status: string }>;
+  slots: Array<{
+    id: string;
+    file: string;
+    status: string;
+    content?: string;
+  }>;
 };
 
 export async function readSeason01(): Promise<Season01> {
   const raw = await fs.readFile(SEASON_01_PATH, "utf8");
   return JSON.parse(raw) as Season01;
+}
+
+export type CoverStoryDoc = {
+  title: string;
+  status: string;
+  relativePath: string;
+  body: string;
+  gates: {
+    gorGorReview: string;
+    kieranApproval: string;
+  };
+};
+
+/** Load Season 01 Cover Story markdown for HOME/CONTENT surfaces. */
+export async function readCoverStory(): Promise<CoverStoryDoc | null> {
+  try {
+    const [season, raw] = await Promise.all([
+      readSeason01(),
+      fs.readFile(COVER_STORY_PATH, "utf8"),
+    ]);
+    const titleMatch = raw.match(/^#\s+(.+)$/m);
+    const statusMatch = raw.match(/\*\*Status:\*\*\s*(.+)$/m);
+    const parts = raw.split(/\n---\n/);
+    const body = (parts.length > 1 ? parts.slice(1).join("\n---\n") : raw)
+      .split(/\n### Editorial notes[\s\S]*$/)[0]
+      .trim();
+
+    let checklistHint = "";
+    try {
+      checklistHint = await fs.readFile(COVER_READY_PATH, "utf8");
+    } catch {
+      checklistHint = "";
+    }
+    const gor =
+      season.coverStory?.gates.gor_gor_review ??
+      (checklistHint.includes("GOR_GOR_REVIEW") &&
+      checklistHint.includes("`PENDING`")
+        ? "PENDING"
+        : "UNKNOWN");
+    const kieran =
+      season.coverStory?.gates.kieran_approval ??
+      (checklistHint.includes("Kieran approval") &&
+      checklistHint.includes("`PENDING`")
+        ? "PENDING"
+        : "UNKNOWN");
+
+    return {
+      title:
+        season.coverStory?.title ??
+        titleMatch?.[1]?.trim() ??
+        "Cover Story",
+      status:
+        season.coverStory?.status ??
+        statusMatch?.[1]?.trim() ??
+        "draft",
+      relativePath: "SKY_ASIA_OS/04_Season01/content/COVER_STORY.md",
+      body,
+      gates: {
+        gorGorReview: gor,
+        kieranApproval: kieran,
+      },
+    };
+  } catch {
+    return null;
+  }
 }
 
 export type KnowledgeNoteMeta = {
