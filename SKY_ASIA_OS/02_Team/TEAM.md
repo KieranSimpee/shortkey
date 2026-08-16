@@ -96,6 +96,7 @@ See **`03_Workflow/SKY_ASIA_WORKFLOW_V1.md`** (Workflow v1.0 SSOT · LOCKED) and
 
 - **Mon** priorities · **Tue** research · **Wed** content · **Thu** creative · **Fri** finance + gate · **Weekend** tidy only
 - Sky day loop: Morning Assign · Afternoon Monitor · Evening Review → Report to Kieran
+
 ## Seat conflict note
 
 See `CONFLICTS.md` — ShortKey family locks (Simpee Chief of Staff, Kura Brand Design Manager, etc.) remain for ShortKey. This file is the **SKY ASIA OS** seat map only.
