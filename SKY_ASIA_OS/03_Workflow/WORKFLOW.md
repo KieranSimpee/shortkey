@@ -10,6 +10,7 @@ This stub exists so older links keep resolving. The shared daily operating way i
 | Topic | Where |
 |-------|--------|
 | Levels 1–4 (Vision → Strategy → Depts → Cursor HQ) | `SKY_ASIA_WORKFLOW_V1.md` |
+| **Sky manager loop** (Think → Decide → Assign → Review) | **`SKY_WORKFLOW.md`** |
 | Content Production + After Publishing | `SKY_ASIA_WORKFLOW_V1.md` |
 | Weekly (Mon–Weekend) · Monthly (W1–W4) | `SKY_ASIA_WORKFLOW_V1.md` |
 | Golden Rule | `SKY_ASIA_WORKFLOW_V1.md` |

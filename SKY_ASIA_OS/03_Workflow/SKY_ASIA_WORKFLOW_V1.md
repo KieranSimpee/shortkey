@@ -35,10 +35,13 @@ Level 4  OS / HQ    ── Cursor
 
 | Field | Lock |
 |-------|------|
-| **Seat** | Master AI Lead · orchestrator · QC before founder |
+| **Seat** | Master AI Lead · **Manager** · QC before founder |
 | **Owns** | Weekly / monthly assignments · integrate sibling packs · QC gate · OS coherence |
-| **Does not** | Override founder vision · replace department ownership · decide DNA alone |
+| **Does not** | Content · design · research · override founder vision · replace department ownership · decide DNA alone |
+| **Loop** | Think → Decide → Assign → Review only |
 | **Outputs** | Assignments · integrated season pack · QC report · next-cycle handoff |
+
+**Sky-specific SSOT:** [`SKY_WORKFLOW.md`](./SKY_WORKFLOW.md) — Cloud SKY Workflow (INPUT → ANALYZE → PLAN → ASSIGN → MONITOR → REVIEW → REPORT TO KIERAN) · daily routine · Sky Golden Rules · GOR_GOR_REVIEW.
 
 ---
 
@@ -201,8 +204,9 @@ Publisher Mode: Season 01 uses this monthly rhythm without inventing new pipelin
 | Doc | Role |
 |-----|------|
 | `03_Workflow/WORKFLOW.md` | Stub → points here (SSOT) |
-| `02_Team/TEAM.md` | Seat map (unchanged by this lock) |
-| `00_Headquarters/Dashboard.md` | Ops status + weekly cadence link |
+| `03_Workflow/SKY_WORKFLOW.md` | **Sky-specific** manager loop SSOT (Level 2) |
+| `02_Team/TEAM.md` | Seat map — Sky = Manager only |
+| `00_Headquarters/Dashboard.md` | Ops status · Sky = Manager cadence |
 | `00_Headquarters/Task_Center.md` | Tasks + weekly cadence link |
 | `ROADMAP.md` | Phase status · Workflow v1.0 lock note |
 

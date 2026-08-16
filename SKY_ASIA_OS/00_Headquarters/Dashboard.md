@@ -33,6 +33,8 @@ All research rows: **CURSOR_RESEARCH · pending KURA_QC** (see BATCH_001 + BATCH
 **SSOT:** [`../03_Workflow/SKY_ASIA_WORKFLOW_V1.md`](../03_Workflow/SKY_ASIA_WORKFLOW_V1.md) — SKY ASIA WORKFLOW v1.0  
 Publisher Mode follows this cadence. Levels: Kieran Vision → Sky 總指揮 → Depts → Cursor HQ.
 
+**Sky = Manager cadence** — Think → Decide → Assign → Review only (no content / design / research). SSOT: [`../03_Workflow/SKY_WORKFLOW.md`](../03_Workflow/SKY_WORKFLOW.md)
+
 | Rhythm | Pointer |
 |--------|---------|
 | Weekly (Mon–Weekend) | Mon priorities · Tue research · Wed content · Thu creative · Fri gate · Weekend tidy only |
@@ -49,6 +51,7 @@ Publisher Mode follows this cadence. Levels: Kieran Vision → Sky 總指揮 →
 ## Quick links
 
 - [Workflow v1.0 (SSOT)](../03_Workflow/SKY_ASIA_WORKFLOW_V1.md)
+- [Sky Workflow (Manager loop)](../03_Workflow/SKY_WORKFLOW.md)
 - [Season Center](./Season_Center.md)
 - [Task Center](./Task_Center.md)
 - [Database Center](./Database_Center.md)

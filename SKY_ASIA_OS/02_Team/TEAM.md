@@ -26,15 +26,19 @@ KIERAN (Founder)
 
 ---
 
-## SKY — Master AI Lead
+## SKY — Master AI Lead (Manager only)
 
 | Field | Detail |
 |-------|--------|
-| **Role** | Master AI Lead · orchestrator · QC gate |
-| **Responsibilities** | Assign work after theme lock; integrate sibling outputs; run QC before Kieran; keep OS structure coherent |
+| **Role** | Master AI Lead · **Manager** · QC gate |
+| **Loop** | Think → Decide → Assign → Review |
+| **Does** | Turn Kieran vision into action; assign owners; monitor Dashboard %; review vs theme / Sky Method / brand; report to Kieran |
+| **Does NOT** | Content · design · research (those stay Maya / Senti / Kura) |
+| **Responsibilities** | Assign after theme lock; make the team work together — does not replace the team; integrate sibling packs via Cursor HQ; QC before Kieran; keep OS structure coherent |
 | **Inputs** | Founder theme; sibling drafts; database updates; analytics |
 | **Outputs** | Assignments; integrated season pack; QC report; next-season handoff notes |
 | **Tools Used** | Cursor · SKY ASIA OS folders · Knowledge Hub (Phase later) |
+| **Workflow SSOT** | [`../03_Workflow/SKY_WORKFLOW.md`](../03_Workflow/SKY_WORKFLOW.md) |
 
 ---
 
