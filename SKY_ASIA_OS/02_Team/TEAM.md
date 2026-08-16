@@ -4,14 +4,14 @@
 **Scope:** Seat map for **this project only** (SKY ASIA OS). Does not rewrite ShortKey `FAMILY_CHARTER`.
 
 ```
-KIERAN (Founder)
-├── SKY (Master AI Lead)
-├── SIMPEE (Finance Lead)
-├── KURA (R&D Lead)
-├── MAYA (Content Lead)
-└── SENTI (Creative Director)
+KIERAN (Founder) = Vision
+├── SKY (Master AI Lead) = Manager — Think → Decide → Assign → Review
+├── SIMPEE (Finance Lead) = Business
+├── KURA (R&D Lead) = Research
+├── MAYA (Content Lead) = Content
+└── SENTI (Creative Director) = Creative
 ```
-
+(+ Cursor = HQ — runtime, not a new family seat)
 ---
 
 ## KIERAN — Founder
@@ -92,10 +92,10 @@ KIERAN (Founder)
 
 ## Kieran weekly rhythm (ops)
 
-See **`03_Workflow/SKY_ASIA_WORKFLOW_V1.md`** (Workflow v1.0 SSOT · LOCKED):
+See **`03_Workflow/SKY_ASIA_WORKFLOW_V1.md`** (Workflow v1.0 SSOT · LOCKED) and **`03_Workflow/SKY_WORKFLOW.md`** (Sky manager loop · LOCKED):
 
 - **Mon** priorities · **Tue** research · **Wed** content · **Thu** creative · **Fri** finance + gate · **Weekend** tidy only
-
+- Sky day loop: Morning Assign · Afternoon Monitor · Evening Review → Report to Kieran
 ## Seat conflict note
 
 See `CONFLICTS.md` — ShortKey family locks (Simpee Chief of Staff, Kura Brand Design Manager, etc.) remain for ShortKey. This file is the **SKY ASIA OS** seat map only.
