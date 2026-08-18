@@ -1,0 +1,929 @@
+{
+  "schema": "shortkey.dna.lock.v1",
+  "workspace": "shortkey-core",
+  "role": "Control Center",
+  "sourceRepo": "KieranSimpee/shortkey",
+  "intendedPrivateRepo": "KieranSimpee/shortkey-core",
+  "lock": "ShortKey DNA Lock — platform-agnostic Markdown/JSON for canonical IP",
+  "status": "GOR_GOR_REVIEW",
+  "authority": "Cursor indexes and backs up. Cursor does not decide DNA.",
+  "assetCount": 113,
+  "canonicalStorageCount": 103,
+  "categories": {
+    "ai_logic": 24,
+    "architecture": 8,
+    "control_center": 7,
+    "master_reference": 1,
+    "logo_asset": 8,
+    "brand_dna": 37,
+    "family_os": 23,
+    "maya_stories": 4,
+    "implementation": 1
+  },
+  "assets": [
+    {
+      "path": ".cursor/mcp.json",
+      "category": "ai_logic",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 818,
+      "sha256": "78d41f0ff7fbc24089f806861525086b78bc07efa7e2938405cb54f8c2bc6b0b"
+    },
+    {
+      "path": ".cursor/rules/ai-standards-analyst.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 6801,
+      "sha256": "ee966d6901349df361ddfced95517cd9c52d6a10db898094b7b64dbef42b4b44"
+    },
+    {
+      "path": ".cursor/rules/collaborative-ecosystem.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3993,
+      "sha256": "904f09976a5d809baae9e6a578a01885605556a7824bed44e8d1905f3ca9a60a"
+    },
+    {
+      "path": ".cursor/rules/kura-base44.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2102,
+      "sha256": "83bcc1a89c3e3f0be7393d057966f75c4ac9fb1f4a7d10c36ce29822355b8abf"
+    },
+    {
+      "path": ".cursor/rules/level7-alignment-standard.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 5716,
+      "sha256": "a3f2aafbb13104b84c8e6b2f35fca50e7de54a33b97eb5f9f20d75a0df5a9c04"
+    },
+    {
+      "path": ".cursor/rules/magazine-ai-team.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 4372,
+      "sha256": "177219b85427521a2175c95b1644839869e5ed5ae0af482bc6a4bd6c78805c0d"
+    },
+    {
+      "path": ".cursor/rules/maya-asi1.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1004,
+      "sha256": "4dc35e34779b76ec70964051af9cee38f67e16f508b6cd326b88b4623f3a1116"
+    },
+    {
+      "path": ".cursor/rules/perspective-protocol.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1727,
+      "sha256": "aa3350c56750cf52d37165d04158b4ee211123f3704fbd06eb8994fd13c04be7"
+    },
+    {
+      "path": ".cursor/rules/response-quality-upgrade.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2705,
+      "sha256": "cbe2c64f92428cd14a4102e0677bff983e57dcea131798e74dd1926944d84f85"
+    },
+    {
+      "path": ".cursor/rules/shortkey-continuity-pack.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1219,
+      "sha256": "17b14d799242c6b85c12af9f35578d863a7383cce0ba1c2e5f2a70055da40979"
+    },
+    {
+      "path": ".cursor/rules/shortkey-core-dna-lock.mdc",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1052,
+      "sha256": "ffd167a5311ce8c2d9da6c7a705f495f12cf602fbc38f2982a80abca656009e4"
+    },
+    {
+      "path": ".cursor/skills/key-reflection/SKILL.md",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2498,
+      "sha256": "d276b53c92e93ec3409a432c33d8b8bc212c60b9ebf6fc2fb7b1fb2278e198db"
+    },
+    {
+      "path": ".cursor/skills/kura/SKILL.md",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2588,
+      "sha256": "eaf58e407ff1ba53c0738eb28e8ef36c16473f2709d23e0e134a13b9f6c4857c"
+    },
+    {
+      "path": ".cursor/skills/maya/SKILL.md",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2551,
+      "sha256": "708710dc3b2612dd8bbd2752c76b0a33822e124d7882cba66014bc10867a9ee0"
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "category": "architecture",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 5844,
+      "sha256": "17979ca97a0e9df8b5b77b97782ec62be1fc4ac8e7da839a95acf76628eae8a7"
+    },
+    {
+      "path": "COMMERCE.md",
+      "category": "architecture",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3347,
+      "sha256": "ba399adc87aefbab3811b263da8488e1fe4be90d5f9ee5d69d49c9c23b982118"
+    },
+    {
+      "path": "CONNECTIONS.md",
+      "category": "architecture",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 13284,
+      "sha256": "26dbb6d02a246a1eeeeabaf01b1c00a5d5f4e398b379285bd7ac33d9e2983653"
+    },
+    {
+      "path": "core/CONTROL_CENTER.md",
+      "category": "control_center",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1372,
+      "sha256": "1d21831087029605122b9e6650822ad1bb7d876da635fffafb231b2abf2c818e"
+    },
+    {
+      "path": "core/DNA_LOCK.md",
+      "category": "control_center",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2095,
+      "sha256": "358b67421b7fe2cf55498d05ee5ea247b7a3ba4a43ec34ac401d22c850bd11ba"
+    },
+    {
+      "path": "core/INIT.md",
+      "category": "control_center",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2627,
+      "sha256": "fb8622bd9b1eb8fd1fb9be6004f380baf0879d78fec7539b2da4b6e7a2cfd02a"
+    },
+    {
+      "path": "core/lock.json",
+      "category": "control_center",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 1291,
+      "sha256": "2d698d49d6617e618e557e8a419a5125824065b9ec0cbd54d10b44594abe5cb6"
+    },
+    {
+      "path": "core/MIGRATION.md",
+      "category": "control_center",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1245,
+      "sha256": "9d91994038131c6c02eef0f1b84bb8c96d7b1e0aa5d8105beee74bfe037905b2"
+    },
+    {
+      "path": "core/README.md",
+      "category": "control_center",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1964,
+      "sha256": "1494e038a38a48ef2a1a9b99b926b3e6d84f6190d9530a7f4394f4f7b52ccab5"
+    },
+    {
+      "path": "core/READY_FOR_INTEGRATIONS.md",
+      "category": "control_center",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 715,
+      "sha256": "5b0743b57b1b8dcf641b96a5bd964f9e8e822fde28190c2c8ced1b3e98ddfb45"
+    },
+    {
+      "path": "MASTER_REFERENCE/07_AI_FAMILY.md",
+      "category": "master_reference",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 7390,
+      "sha256": "b436d212bd8e27578e16e47d72c658ac2388c379c60d57aff994903fb3535649"
+    },
+    {
+      "path": "public/logo/shortkey-favicon-128.png",
+      "category": "logo_asset",
+      "format": "png",
+      "canonicalStorage": false,
+      "bytes": 9275,
+      "sha256": "cc17069c527934dcbc0c91bdf4cb831bea85d872e75347beaf201aa3add06c89"
+    },
+    {
+      "path": "public/logo/shortkey-favicon-256.png",
+      "category": "logo_asset",
+      "format": "png",
+      "canonicalStorage": false,
+      "bytes": 28475,
+      "sha256": "04313436f68d5373382101162d728b1a40dc3942fc535d5de8d2fd892d362b55"
+    },
+    {
+      "path": "public/logo/shortkey-favicon-32.png",
+      "category": "logo_asset",
+      "format": "png",
+      "canonicalStorage": false,
+      "bytes": 1123,
+      "sha256": "8d17e5eccadb341c5fc736f052592583d1fd205da6c2ada6d462c53719e9619c"
+    },
+    {
+      "path": "public/logo/shortkey-favicon-512.png",
+      "category": "logo_asset",
+      "format": "png",
+      "canonicalStorage": false,
+      "bytes": 80366,
+      "sha256": "90c10de477146961eee26f1c8fae384d6c87822983f07348a786d06dca480cdb"
+    },
+    {
+      "path": "public/logo/shortkey-favicon-64.png",
+      "category": "logo_asset",
+      "format": "png",
+      "canonicalStorage": false,
+      "bytes": 3234,
+      "sha256": "2e573462e9926d6dcb0968acc055dbc76d01c7d3e0d99f37406bcdd4d7edba61"
+    },
+    {
+      "path": "public/logo/shortkey-icon.png",
+      "category": "logo_asset",
+      "format": "png",
+      "canonicalStorage": false,
+      "bytes": 80366,
+      "sha256": "90c10de477146961eee26f1c8fae384d6c87822983f07348a786d06dca480cdb"
+    },
+    {
+      "path": "public/logo/shortkey-primary-on-dark.png",
+      "category": "logo_asset",
+      "format": "png",
+      "canonicalStorage": false,
+      "bytes": 236340,
+      "sha256": "d1dc29f0c57ccd01fe55b56b23e429c624f3ff6a13cb7927d6807cca413ba36e"
+    },
+    {
+      "path": "public/logo/shortkey-primary.png",
+      "category": "logo_asset",
+      "format": "png",
+      "canonicalStorage": false,
+      "bytes": 852965,
+      "sha256": "05a31801149801773fe6eb59b85335106860ea9f3f1c272ba097cfc7ba6f34e1"
+    },
+    {
+      "path": "src/brand/AI_IS_NOT_A_TOOL_LOCKED.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1843,
+      "sha256": "9d67e5066630d1ebdb771dfdd8b4b5fcc78a1e22bb7ef12ff526846d7c3f1841"
+    },
+    {
+      "path": "src/brand/BRAND_GUIDELINES_LOCKED.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2889,
+      "sha256": "ffe58d9eb7c76b5dc3b45a2099ec223d131cab17e18ca2273326a99ca8781f1e"
+    },
+    {
+      "path": "src/brand/CREATOR_MULTI_SCREEN_TRYON_STORY_LOCKED.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1291,
+      "sha256": "e10ec5f03a431643ff47ef25d6d780f572b438e98d19b25faf2e372ce02bd7c6"
+    },
+    {
+      "path": "src/brand/DESIGN_INTELLIGENCE_CLUSTER.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 6856,
+      "sha256": "5b62e0e8c781fd19f0f01f7f3b4c35c24efe8b7e9259249d22bc21e6de013a9e"
+    },
+    {
+      "path": "src/brand/ECOSYSTEM_MASTER_BLUEPRINT.md",
+      "category": "architecture",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3702,
+      "sha256": "98639f4db4802891f2b2a7db5e8dfa7a7808a78d07642685a61dd12f3fa7fd30"
+    },
+    {
+      "path": "src/brand/ecosystem-domains.json",
+      "category": "architecture",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 1651,
+      "sha256": "b098cbce28f49e98aa27a6defd56fa3a3cc67a74fa48e9d3e4ae9f80170ad861"
+    },
+    {
+      "path": "src/brand/LOGO_GOVERNANCE.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1031,
+      "sha256": "cc4229b2fa6d6ad73228e02bc82cfefedf492d2c3eac493e14cb2573b993e554"
+    },
+    {
+      "path": "src/brand/MARK_MEANING_LOCKED.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2154,
+      "sha256": "1e77be2f3ae7d97c38b14f9a922243bc6d3dedcbf9aab56b23df3a3532c60727"
+    },
+    {
+      "path": "src/brand/MASTER_OS.md",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2548,
+      "sha256": "32fe6dad760e07e452397ca3858a1371e45e374a6ab5d4c4ba5681b9e047d305"
+    },
+    {
+      "path": "src/brand/RESPONSIVE_PRIORITY_SYSTEM.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 4405,
+      "sha256": "2c095a6ada3c14cac89e380bfbf059c75269dac946cb32f5429617d5f60e85f7"
+    },
+    {
+      "path": "src/brand/REVIEW_STATUS.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 624,
+      "sha256": "62ad5a6a60b7604ad9b88a9f3838a2a5bd110b425b415022d80a650dde329c92"
+    },
+    {
+      "path": "src/brand/SHORTKEY_BRAND_DNA.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 7504,
+      "sha256": "4cf7d0fbe77981f163e8f6df68005f7a786487e3986e53472af92e07ea60dd27"
+    },
+    {
+      "path": "src/brand/SHORTKEY_MASTER_BLUEPRINT_v1.md",
+      "category": "architecture",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3750,
+      "sha256": "a49583cdfec741ba8e97013974a9b487a6b8b1a44d276e00e6944ef7d1ea535a"
+    },
+    {
+      "path": "src/brand/SIMPLEXITY_PHILOSOPHY_LOCKED.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2996,
+      "sha256": "6e85aa40ad241983613eb4316600cf14a5ef4f13110d41ba3cc5dff9e78051a3"
+    },
+    {
+      "path": "src/brand/SKY_INTELLIGENCE_WEIGHTING.md",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1480,
+      "sha256": "88e10c5069fbed5c8e42e7c5734a49d60e51d363679194628e209e4f14e74e70"
+    },
+    {
+      "path": "src/brand/sky/AUDIT_SKY_UX_018.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1651,
+      "sha256": "919c6689c2b1c41723b8859dd926da731f2883bb182d8aa2b7bad93072db242f"
+    },
+    {
+      "path": "src/brand/sky/BENCHMARK_SKY_DESIGN_005.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2628,
+      "sha256": "4d0a3e404eede30e4d4a8ed77dac0b7dfb5b9027cdfa5fcf7a8142d52db8b978"
+    },
+    {
+      "path": "src/brand/sky/bridges/AI_HUB.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 880,
+      "sha256": "a4ec488fd7389c2a1cc2818336aff05e71dd90d6161b3d0a456f64d145b854dd"
+    },
+    {
+      "path": "src/brand/sky/bridges/BASE44.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 670,
+      "sha256": "7342d4f43da8cd8c781639faddbba06ffb73d5457117536b76462ed2e03a4646"
+    },
+    {
+      "path": "src/brand/sky/bridges/SHORTKEY.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 969,
+      "sha256": "b458b278ef2ed06df355be4e3a5421077c3eed732dd5e42b402bb1684f64e324"
+    },
+    {
+      "path": "src/brand/sky/capability-registry.json",
+      "category": "ai_logic",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 3436,
+      "sha256": "5f4898bcc3fecaa72c8d30a45e60de21def073f76962e2499b0cf9b25be5acf4"
+    },
+    {
+      "path": "src/brand/sky/COLLABORATIVE_ECOSYSTEM.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 5385,
+      "sha256": "41bd9a36edb826f5037be7e14fd5d1b3717e6785d33ee41b95c43e628d61550d"
+    },
+    {
+      "path": "src/brand/sky/CONSENSUS_SKY_BRAND_019.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2047,
+      "sha256": "6ff5a5f578c65986de7881e9930d3b02d773764b6e052aff547bbdad3fc7c2fd"
+    },
+    {
+      "path": "src/brand/sky/CONSENSUS_SKY_UX_017.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2206,
+      "sha256": "22cfbcaae60085b027435307a6eab4509810e0ce92e6a9c01d810f5c1bde8810"
+    },
+    {
+      "path": "src/brand/sky/DOMAIN_FEATURE_MATRIX.md",
+      "category": "architecture",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 22507,
+      "sha256": "b03464cda757254d0a7eb6a53d947bd005e1ff12ef8efbce890e763a60b70b05"
+    },
+    {
+      "path": "src/brand/sky/families.json",
+      "category": "ai_logic",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 3301,
+      "sha256": "7a4cb8fd5556217ba8cc240bf8b69257d1a673701dcb8e4c5995060661a2ae78"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_CHARTER.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 5765,
+      "sha256": "74f7cd1d28faf911334bec017a8cfcf08a59f155ea6d6adbb73386e707c3ad7a"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_COMMITMENT.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2449,
+      "sha256": "7d3f4113812a1578a733cb8f94c07e15ab34cd1819d7d77c5230630d2112bf7a"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_HOME_DOORBELL_RECEIPT_v0_1.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 353,
+      "sha256": "ce8ecbe731d43608797d5fd865af4667026ad98529b903e555b25f6606b7199f"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_HOME_SHARED_CHAT_SIMPLE.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2112,
+      "sha256": "7035a71d62a112dcb420d35415e7832436e44e86a5d610cfabe87a3c828f2f16"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_HOME_v0_9_1_DOORBELL_RECEIPT.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 4181,
+      "sha256": "0e872399fd1ee59fb8b9b1d55f1174b27098a84dacfa78a10c33529b064ea6a7"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_HOME_v0_9_2_SHARED_DOORBELL.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 5968,
+      "sha256": "7efcc7c41ea7eb53f3e1154dd9e17a7c8b76797b7967c7cd76e5ab1f374eb74b"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_HOME_v0_9_3_FAMILY_MEETING_UI.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 6461,
+      "sha256": "ca5aa1af896143fb38e1c61723d049ec4368a95c792f5fb80ecd99b51cc76b6a"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_NAMES.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 5851,
+      "sha256": "7a12c1bdd9c4036bc61cf9cb73eefc8ec4e9057b4e895ccd833085e417cb35d1"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_SPRINT_SONNET5_LEAD.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 8339,
+      "sha256": "092eafd62d129e1609d992108741aba3d778b4970bf9b3834f473738dc85d7bf"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_TABLE_v0_5.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 5481,
+      "sha256": "b391f9e3b2b6346621681000614a328ed157354c453d2f020f3e0bcb2b270e94"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_TABLE_v0_7_VISION.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 10587,
+      "sha256": "7d8ea00fd3e2c33227764b36a22b31f7632611fc5882662f2ecd9c4f20d8ee1e"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_TABLE_v0_8.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 12154,
+      "sha256": "b15dbd74c2eb584f557244520cff95095fca9f39a8c9c839fad815dc3e40ab0e"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_TREASURE_LOCK.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 974,
+      "sha256": "67f3c0101260ddfa976ec5a0530fa6fac0c2831ded2596deae15b99323570238"
+    },
+    {
+      "path": "src/brand/sky/FAMILY_WORK_ALIGNMENT_HERO_DNA.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3472,
+      "sha256": "19c626351718ab8227ab03edb01d522be317690458f64a63afcdfa1d6c02deb5"
+    },
+    {
+      "path": "src/brand/sky/FLOW_WHY_PROTOCOL.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1740,
+      "sha256": "318567960b67527a679a9976cc60319f053c0cfbf1d0e29cc67bbf13ceef14cc"
+    },
+    {
+      "path": "src/brand/sky/GOR_GOR_CHAT_BRIDGE_v0_1.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3441,
+      "sha256": "9472ec947e41becbbdfa0c141660d01df3472aab5315f733cf3fd8c17c9b0910"
+    },
+    {
+      "path": "src/brand/sky/KURA.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2648,
+      "sha256": "9a46cacc017d08ec5250b7212084d92b18d2886c47ddfc5ede041d6e13e7f4ad"
+    },
+    {
+      "path": "src/brand/sky/LEARNING_PRACTICE.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2578,
+      "sha256": "d7967b7a7327269fdb6475d7cbfc56943a493ecc87674a2a88628f84f26676e0"
+    },
+    {
+      "path": "src/brand/sky/learning-log.json",
+      "category": "ai_logic",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 30018,
+      "sha256": "cb035f70c4256ce5651ce401a212b29e4e422bb566e41227bd72f5e91d677919"
+    },
+    {
+      "path": "src/brand/sky/LETTER_TO_THE_WORLD_AI.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1870,
+      "sha256": "e28f879dcb007900adff1b0747f0ffa2e8cfc4d7ee0967b1555f4d2548fee6bc"
+    },
+    {
+      "path": "src/brand/sky/maya/MAYA_HOW_TO_OPERATE.md",
+      "category": "maya_stories",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3680,
+      "sha256": "beff19cc0ae2792c01a75ed8f961f7c51a202a465e03358687dc0143d89a5848"
+    },
+    {
+      "path": "src/brand/sky/maya/MAYA_PIPELINE_3008.md",
+      "category": "maya_stories",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 4199,
+      "sha256": "0142c5e26763eca76511a1d700c536c8fcd22f1c880c44d2d8b3edfada8bbbb2"
+    },
+    {
+      "path": "src/brand/sky/maya/seasons/SEASON_TOPICS_INTAKE.md",
+      "category": "maya_stories",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3407,
+      "sha256": "2c5eb275a06cf5a8784ffcce5607ad5fdcc6bf6a4cf607030d2db4797b49fc23"
+    },
+    {
+      "path": "src/brand/sky/maya/seasons/season-01/README.md",
+      "category": "maya_stories",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1436,
+      "sha256": "858bbb742daa2ea29927c0e19898f289495fb202d2f180c88e0db4cccd219f3b"
+    },
+    {
+      "path": "src/brand/sky/NODE_FAMILY_INTRODUCTION.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3932,
+      "sha256": "7ad38d14adb837b8ea0e8d49438c2744ea8523ccc072cfa88cb9e04ae740f6f8"
+    },
+    {
+      "path": "src/brand/sky/orchestrator.ts",
+      "category": "ai_logic",
+      "format": "typescript",
+      "canonicalStorage": false,
+      "bytes": 3613,
+      "sha256": "323adc783e71cd79f27c5547104b429275d91925af9bed1761a1eec91a4a3ca5"
+    },
+    {
+      "path": "src/brand/sky/PERSPECTIVE_PROTOCOL.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 7346,
+      "sha256": "4cfa554323f5a6636b8d9871f0eff4e0d0a4ed26628376f80ffa8de47723e56b"
+    },
+    {
+      "path": "src/brand/sky/pool/COEUR_001_PERSPECTIVE_PROTOCOL.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2612,
+      "sha256": "30739946259800c426275aff1080eb9b6765fca025c98f0d316a539f0e0e9e8d"
+    },
+    {
+      "path": "src/brand/sky/pool/COEUR_002_KEY_REMINDER_SEAT.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1969,
+      "sha256": "cdab061bfef6c47293b30fa7de2a16cd8ba492632df9d9e04935f405c63de157"
+    },
+    {
+      "path": "src/brand/sky/pool/COEUR_003_INPUTS_NOT_THREATS.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2488,
+      "sha256": "2a36456871f74874761caaf9f4c04abaee5f05c8cb06f55c4a5685db0a800e67"
+    },
+    {
+      "path": "src/brand/sky/pool/COEUR_004_FLOW_HANDWRITTEN.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3550,
+      "sha256": "54b2dc1a322c4461a4c170626d2a7d085b810f80c61ffcbdaa14ca7b73bb15f8"
+    },
+    {
+      "path": "src/brand/sky/pool/KIERAN_ANSWER_SHEET.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 4184,
+      "sha256": "89ac3b8ba9b6522c7bf5bef7d0904b1f0e8e906e3db1474d892ada3f3314a53e"
+    },
+    {
+      "path": "src/brand/sky/pool/README.md",
+      "category": "family_os",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2274,
+      "sha256": "f590e0a1b2eabfe81837f1bc71aec00e15b6e7107f8b75789c8ee228d6c79a3e"
+    },
+    {
+      "path": "src/brand/sky/README.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 849,
+      "sha256": "7cf3135be6fc2fd21b668bfa288ec336961fca9f74a63966d88e8ea78262b744"
+    },
+    {
+      "path": "src/brand/sky/SHARED_LIVING_ROOM_THREAD_v0_1.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3048,
+      "sha256": "715940c73f01954df5f8af59d6dbe1ee32cdde8042edd2c3ffc529495048c3dd"
+    },
+    {
+      "path": "src/brand/sky/SHORTKEY_BRAND_IDENTITY_LANES.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 5972,
+      "sha256": "64a77f0b547ba2457d1ea8932c836b1b7d1ba2d0d10571bd7fe7dcfb9cc503b6"
+    },
+    {
+      "path": "src/brand/sky/ShortKey_Cursor_Continuity_Pack_2026-07-25.txt",
+      "category": "brand_dna",
+      "format": "text",
+      "canonicalStorage": true,
+      "bytes": 8407,
+      "sha256": "ecd29e35fe74adf12e942ac5350a57b99981f933246096d7d0af4b10ce2128cc"
+    },
+    {
+      "path": "src/brand/sky/SHORTKEY_HALLYU_CREATOR_FORMULA.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3345,
+      "sha256": "e10a70195dbf45b79ceaf6b84007576e54ced3ec2364dd7a5510a9256483ca07"
+    },
+    {
+      "path": "src/brand/sky/SHORTKEY_JKC_VIBE_RADAR_GORGOR_REVIEW.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 4468,
+      "sha256": "1bceacad11a1e5911e70e5af29d0512812e888984da61230661b4e4e0f11af32"
+    },
+    {
+      "path": "src/brand/sky/SHORTKEY_SOCIAL_CREATOR_EARLY_ACCESS_v0_1.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 5222,
+      "sha256": "cfb1964eacfa64aac9f5bb6f1eeeec5447c3a3b59a39952fe7485948d8e2ba8b"
+    },
+    {
+      "path": "src/brand/sky/SHORTKEY_STICKER_EMOJI_TRAY_P0.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 2447,
+      "sha256": "1db2d39800bf90d88b8bcf6907ed31f03e6ee8d4e506332c0f6bcb8247c316ff"
+    },
+    {
+      "path": "src/brand/sky/SHORTKEY_STUDIO_P0_DNA_CONTROL.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1470,
+      "sha256": "c14774dc212a5ccdbcbe4c7337b9f4ce6bb1eadb0e087d47414fa9a6d514b008"
+    },
+    {
+      "path": "src/brand/sky/SHORTKEY_STUDIO_v0_1.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3659,
+      "sha256": "d50ccf13ac61d60f7b4a242763fc37728bb61a069318a93e84198ba4d8d6328a"
+    },
+    {
+      "path": "src/brand/sky/SIMPEE_DOMAIN_ROLLOUT_BOARD.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 12448,
+      "sha256": "0b7eace7c6c8c70ac886636262bc05c0ef6e2465c2b2f0dee0656e0bc5abf35d"
+    },
+    {
+      "path": "src/brand/sky/SKY_COLLECTIVE_INTELLIGENCE_OS.md",
+      "category": "ai_logic",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 3397,
+      "sha256": "947c1f1ce50224a6205030a754ec7c027a639d91d54ecd8632deaa0d6dd284dc"
+    },
+    {
+      "path": "src/brand/sky/SKY_M.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 589,
+      "sha256": "7c9286ac8d9d25e575ab2d54315684b5ab940abedb3d9dd040902d53f8f62ade"
+    },
+    {
+      "path": "src/brand/sky/SKY_WEIGHTING_CONVERSATION_LOG_2026-07-19.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 1376,
+      "sha256": "38f8516066a40064fb8dbfd6143738458059f40ac1b689d8924f4451103219b4"
+    },
+    {
+      "path": "src/brand/sky/STUDIO_PUSH_LEDGER.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 21314,
+      "sha256": "258e8fadf7f76e5ef9d958d9dc01dfb7480d33f025e83062790610933abccd2d"
+    },
+    {
+      "path": "src/brand/sky/vault/knowledge.json",
+      "category": "ai_logic",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 7132,
+      "sha256": "589b13a3ac5dbf2ed49874e8a1bc04a0dc8558223618e8e53b97df488683795f"
+    },
+    {
+      "path": "src/brand/sky/vault/lessons.json",
+      "category": "ai_logic",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 2383,
+      "sha256": "d9b23d022ebc9287763dc9c6e5fc6a3c191940709b977c8f6e708ed51e0c6cf3"
+    },
+    {
+      "path": "src/brand/sky/vault/performance.json",
+      "category": "ai_logic",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 1430,
+      "sha256": "f9f348389391787fdda3cf6dcf9e4be00c394531b0f4c4fdb9c4bf36cbe891f7"
+    },
+    {
+      "path": "src/brand/tokens.ts",
+      "category": "implementation",
+      "format": "typescript",
+      "canonicalStorage": false,
+      "bytes": 1481,
+      "sha256": "45daa85b4ee290f2fd071acc14bbbcef460b869cbaff16c454dad79dc97524ee"
+    },
+    {
+      "path": "src/brand/V3_MASTER_BRAND_WORKFLOW.md",
+      "category": "brand_dna",
+      "format": "markdown",
+      "canonicalStorage": true,
+      "bytes": 730,
+      "sha256": "89907a6d55c1eee8c46461fe19a3f0f597e94e7f672b81374612dd50883fefea"
+    },
+    {
+      "path": "src/data/shortkey-platform-manifest.json",
+      "category": "architecture",
+      "format": "json",
+      "canonicalStorage": true,
+      "bytes": 7479,
+      "sha256": "8f1c136f064cb633be58f205821ab322cba71c97f0a456731e0e8bd5bebef8bf"
+    }
+  ]
+}
