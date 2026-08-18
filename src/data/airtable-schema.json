@@ -1,0 +1,60 @@
+{
+  "schema": "shortkey.airtable.v1",
+  "baseName": "ShortKey_Database",
+  "tableName": "Stories",
+  "status": "GOR_GOR_REVIEW",
+  "env": {
+    "AIRTABLE_API_KEY": "server only · never commit",
+    "AIRTABLE_BASE_ID": "app… from Airtable API docs",
+    "AIRTABLE_TABLE_NAME": "Stories"
+  },
+  "fields": [
+    {
+      "name": "Lane",
+      "type": "singleSelect",
+      "required": true,
+      "options": ["brand", "creator", "soul"]
+    },
+    {
+      "name": "Brand_Name",
+      "type": "singleLineText",
+      "required": true
+    },
+    {
+      "name": "Title",
+      "type": "singleLineText",
+      "required": true
+    },
+    {
+      "name": "Story",
+      "type": "longText",
+      "required": true
+    },
+    {
+      "name": "Image_URL",
+      "type": "url",
+      "required": false
+    },
+    {
+      "name": "Image",
+      "type": "attachment",
+      "required": false
+    },
+    {
+      "name": "Sort_Order",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "Status",
+      "type": "singleSelect",
+      "required": true,
+      "options": ["DRAFT", "GOR_GOR_REVIEW", "READY", "DO_NOT_USE"]
+    }
+  ],
+  "laneDoors": {
+    "brand": { "zh": "品牌展示", "en": "Brand Story" },
+    "creator": { "zh": "創作人共鳴", "en": "Creator Hub" },
+    "soul": { "zh": "AI 靈魂開發", "en": "AI Soul Lab" }
+  }
+}
