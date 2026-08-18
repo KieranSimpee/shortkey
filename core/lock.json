@@ -1,0 +1,38 @@
+{
+  "schema": "shortkey.dna.lock.meta.v1",
+  "name": "shortkey-core",
+  "role": "Control Center",
+  "initializedAt": "2026-08-18",
+  "status": "GOR_GOR_REVIEW",
+  "dnaLock": "active",
+  "canonicalFormats": ["markdown", "json", "text"],
+  "sourceRepo": "KieranSimpee/shortkey",
+  "sourceRepoVisibility": "public",
+  "sourceRepoUrl": "https://github.com/KieranSimpee/shortkey",
+  "intendedPrivateRepo": "KieranSimpee/shortkey-core",
+  "privateRepoCreated": false,
+  "privateRepoBlocker": "GitHub integration token cannot createRepository",
+  "gitBackup": "commit-and-push in the same agent turn for DNA changes",
+  "wholeTreeAutoCommit": false,
+  "wholeTreeAutoCommitReason": "Prevent accidental commit of .env secrets",
+  "ci": ".github/workflows/dna-lock.yml",
+  "indexCommand": "npm run dna:lock",
+  "authority": {
+    "feel": "Kieran Li",
+    "gate": "Simpee (Gor Gor)",
+    "indexAndBackup": "Key (Cursor)",
+    "monitor": "Sky"
+  },
+  "awaiting": [
+    "founder creation of private KieranSimpee/shortkey-core",
+    "Zapier integration instructions",
+    "super-agent tool-call instructions"
+  ],
+  "brandRules": {
+    "noSocialAutoPost": true,
+    "noPublicPricingDisclosure": true,
+    "noPiiInCreativeAssets": true,
+    "noPlaceholders": true,
+    "cursorDoesNotDecideDna": true
+  }
+}

@@ -1,0 +1,52 @@
+name: ShortKey DNA Lock
+
+on:
+  pull_request:
+    paths:
+      - "core/**"
+      - "src/brand/**"
+      - "MASTER_REFERENCE/**"
+      - ".cursor/rules/**"
+      - ".cursor/skills/**"
+      - ".cursor/mcp.json"
+      - "ARCHITECTURE.md"
+      - "CONNECTIONS.md"
+      - "COMMERCE.md"
+      - "src/data/shortkey-platform-manifest.json"
+      - "public/logo/**"
+      - "scripts/dna-lock-index.mjs"
+      - ".github/workflows/dna-lock.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "core/**"
+      - "src/brand/**"
+      - "MASTER_REFERENCE/**"
+      - ".cursor/rules/**"
+      - ".cursor/skills/**"
+      - ".cursor/mcp.json"
+      - "ARCHITECTURE.md"
+      - "CONNECTIONS.md"
+      - "COMMERCE.md"
+      - "src/data/shortkey-platform-manifest.json"
+      - "public/logo/**"
+      - "scripts/dna-lock-index.mjs"
+      - ".github/workflows/dna-lock.yml"
+  workflow_dispatch:
+
+jobs:
+  dna-lock:
+    name: Validate DNA lock index
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check DNA lock index
+        run: npm run dna:lock:check

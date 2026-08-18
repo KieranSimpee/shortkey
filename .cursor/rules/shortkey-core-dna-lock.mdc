@@ -1,0 +1,27 @@
+---
+description: This workspace is the ShortKey Core DNA Control Center. Index and back up soul files; do not decide DNA.
+alwaysApply: true
+---
+
+# ShortKey Core — DNA Lock (Control Center)
+
+This workspace is the **Control Center** for ShortKey intellectual property and family AI agents.
+
+Front door: `core/README.md` · Lock spec: `core/DNA_LOCK.md` · Index: `core/index.json`
+
+## After any DNA / Maya / family / AI-logic edit
+
+1. Keep canonical soul files as Markdown or JSON (continuity packs may stay `.txt`).
+2. Run `npm run dna:lock` so `core/index.json` matches the tree.
+3. Commit and push in the **same turn**. That is the backup.
+4. Do not enable whole-working-tree auto-commit (secrets live in `.env.local`).
+
+## Do not
+
+- Invent or decide Brand DNA
+- Fill empty Maya season slots
+- Create GitHub repos (integration cannot `createRepository`)
+- Commit API keys
+- Auto-post to social or disclose public pricing
+
+Private vault `KieranSimpee/shortkey-core` is **not created yet**. Follow `core/MIGRATION.md` when the founder says it exists.
