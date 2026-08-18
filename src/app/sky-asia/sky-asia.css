@@ -1,0 +1,256 @@
+/* SKY ASIA OS MVP — plain usable UI, lilac wash */
+.sao-root {
+  --sao-bg: #f7f5ff;
+  --sao-panel: #ffffff;
+  --sao-ink: #2a2438;
+  --sao-muted: #6b6578;
+  --sao-line: #ddd6f3;
+  --sao-accent: #8c82fc;
+  --sao-accent-soft: #edeaff;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffffff 0%, var(--sao-bg) 40%, #edeaff 100%);
+  color: var(--sao-ink);
+  font-family: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+}
+
+.sao-header {
+  border-bottom: 1px solid var(--sao-line);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.75rem 1rem 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.sao-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.sao-brand a {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--sao-ink);
+}
+
+.sao-badge {
+  font-size: 0.7rem;
+  color: var(--sao-muted);
+  border: 1px solid var(--sao-line);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  background: var(--sao-accent-soft);
+}
+
+.sao-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+
+.sao-nav-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--sao-ink);
+  padding: 0.25rem 0.45rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.sao-nav-link:hover {
+  border-color: var(--sao-line);
+  background: var(--sao-accent-soft);
+  color: #4a3f8c;
+}
+
+.sao-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.sao-footer {
+  border-top: 1px solid var(--sao-line);
+  padding: 0.75rem 1rem;
+  font-size: 0.7rem;
+  color: var(--sao-muted);
+  text-align: center;
+}
+
+.sao-h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+
+.sao-lead {
+  color: var(--sao-muted);
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+}
+
+.sao-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.sao-stat {
+  background: var(--sao-panel);
+  border: 1px solid var(--sao-line);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.sao-stat strong {
+  display: block;
+  font-size: 1.4rem;
+  color: #4a3f8c;
+}
+
+.sao-stat span {
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--sao-muted);
+}
+
+.sao-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--sao-line);
+  border-radius: 6px;
+  background: var(--sao-panel);
+}
+
+.sao-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.sao-table th,
+.sao-table td {
+  text-align: left;
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid var(--sao-line);
+  vertical-align: top;
+  max-width: 280px;
+  word-break: break-word;
+}
+
+.sao-table th {
+  background: var(--sao-accent-soft);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.sao-card {
+  background: var(--sao-panel);
+  border: 1px solid var(--sao-line);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.sao-card h2,
+.sao-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.sao-muted {
+  color: var(--sao-muted);
+  font-size: 0.85rem;
+}
+
+.sao-form {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0.85rem;
+  border: 1px dashed var(--sao-line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.sao-form label {
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+  color: var(--sao-muted);
+}
+
+.sao-form input,
+.sao-form textarea,
+.sao-form select {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid var(--sao-line);
+  border-radius: 4px;
+  color: var(--sao-ink);
+  background: #fff;
+}
+
+.sao-form button {
+  justify-self: start;
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--sao-accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.sao-form button:hover {
+  filter: brightness(0.95);
+}
+
+.sao-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: var(--sao-accent-soft);
+  color: #4a3f8c;
+  margin-right: 0.35rem;
+}
+
+.sao-cover {
+  border-color: #c9c0f5;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f5ff 100%);
+}
+
+.sao-prose {
+  margin-top: 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.sao-prose h3 {
+  margin: 1rem 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.sao-prose h4 {
+  margin: 0.85rem 0 0.3rem;
+  font-size: 0.95rem;
+}
+
+.sao-prose p {
+  margin: 0 0 0.75rem;
+}
+
+.sao-prose ul,
+.sao-prose ol {
+  margin: 0 0 0.75rem;
+  padding-left: 1.2rem;
+}

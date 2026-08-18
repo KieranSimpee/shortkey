@@ -1,0 +1,80 @@
+{
+  "id": "season-01",
+  "title": "Season 01 — Sticker Culture In Asia",
+  "theme": "Sticker Culture in Asia",
+  "status": "GOR_GOR_REVIEW",
+  "mode": "Publisher Mode · Phase 9 Launch",
+  "countries": ["Japan", "Korea", "Hong Kong", "Taiwan"],
+  "deadline": "TBD",
+  "coverStory": {
+    "title": "Sticker Culture in Asia: Why We Love Collecting",
+    "path": "content/COVER_STORY.md",
+    "checklist": "content/READY_TO_PUBLISH.md",
+    "status": "first_draft",
+    "gates": {
+      "gor_gor_review": "PENDING",
+      "kieran_approval": "PENDING"
+    }
+  },
+  "framework": [
+    {
+      "slot": "Cover Story",
+      "title": "Sticker Culture in Asia: Why We Love Collecting",
+      "angle": "Why Asia loves collecting stickers — identity craft across JP/KR/HK/TW.",
+      "status": "first_draft",
+      "path": "content/COVER_STORY.md"
+    },
+    {
+      "slot": "Culture",
+      "title": "Japan · Hong Kong Sticker Books · Korean Stationery · Taiwan Journaling",
+      "angle": "Four-city culture map with real short drafts.",
+      "status": "first_draft",
+      "path": "content/culture/CULTURE_STORIES.md"
+    },
+    {
+      "slot": "Beauty",
+      "title": "Sticker Inspired Beauty · K-Beauty · J-Beauty",
+      "angle": "Beauty rituals pulled from sticker aesthetics.",
+      "status": "short_draft",
+      "path": "content/beauty/BEAUTY_PACK.md"
+    },
+    {
+      "slot": "Artist",
+      "title": "5 emerging Asian artists",
+      "angle": "DB-backed shortlist — no fake IG.",
+      "status": "first_draft",
+      "path": "content/ARTIST_DISCOVERY.md"
+    },
+    {
+      "slot": "Brand",
+      "title": "5 independent Asian brands",
+      "angle": "DB-backed indie brand shortlist — no public pricing.",
+      "status": "first_draft",
+      "path": "content/BRAND_DISCOVERY.md"
+    },
+    {
+      "slot": "Games",
+      "title": "Sticker Book Memories · Paper Airplanes · Four Corners",
+      "angle": "Playful nostalgia pieces.",
+      "status": "short_draft",
+      "path": "content/games/ASIAN_GAMES.md"
+    },
+    {
+      "slot": "Interactive",
+      "title": "Show Us Your Stickers",
+      "angle": "Human-only Instagram challenge copy — no auto-post.",
+      "status": "brief_ready",
+      "path": "content/COMMUNITY_CHALLENGE.md"
+    }
+  ],
+  "slots": [
+    { "id": "cover", "file": "slots/COVER_STORY.md", "content": "content/COVER_STORY.md", "status": "first_draft" },
+    { "id": "culture", "file": "slots/CULTURE_STORY.md", "content": "content/culture/CULTURE_STORIES.md", "status": "first_draft" },
+    { "id": "beauty", "file": "slots/BEAUTY_STORY.md", "content": "content/beauty/BEAUTY_PACK.md", "status": "short_draft" },
+    { "id": "artist", "file": "slots/ARTIST_DISCOVERY.md", "content": "content/ARTIST_DISCOVERY.md", "status": "first_draft" },
+    { "id": "brand", "file": "slots/BRAND_DISCOVERY.md", "content": "content/BRAND_DISCOVERY.md", "status": "first_draft" },
+    { "id": "festival", "file": "slots/FESTIVAL_CORNER.md", "status": "stub" },
+    { "id": "games", "file": "slots/ASIAN_GAMES.md", "content": "content/games/ASIAN_GAMES.md", "status": "short_draft" },
+    { "id": "ig-challenge", "file": "slots/INSTAGRAM_CHALLENGE.md", "content": "content/COMMUNITY_CHALLENGE.md", "status": "brief_ready" }
+  ]
+}
