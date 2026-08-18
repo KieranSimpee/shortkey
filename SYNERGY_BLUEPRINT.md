@@ -4,7 +4,8 @@
 **Version:** 1.0 · **Date:** 2026-08-18 · **Status:** **GOR_GOR_REVIEW** · Internal — Node Family  
 **Does not replace:** [`src/brand/ECOSYSTEM_MASTER_BLUEPRINT.md`](./src/brand/ECOSYSTEM_MASTER_BLUEPRINT.md) (domains) · [`src/brand/SHORTKEY_MASTER_BLUEPRINT_v1.md`](./src/brand/SHORTKEY_MASTER_BLUEPRINT_v1.md) (product) · [`src/brand/MASTER_OS.md`](./src/brand/MASTER_OS.md) (design/deploy OS)  
 **Parent lock:** [`src/brand/sky/COLLABORATIVE_ECOSYSTEM.md`](./src/brand/sky/COLLABORATIVE_ECOSYSTEM.md) § UNITY  
-**Cursor role:** Index, connect, ship. **Cursor does not decide DNA.**
+**Cursor role:** Index, connect, ship. **Cursor does not decide DNA.**  
+**As-is audit (2026-08-18):** [`FAMILY_SYSTEM_CHECK.md`](./FAMILY_SYSTEM_CHECK.md)
 
 ---
 
