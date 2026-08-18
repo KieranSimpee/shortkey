@@ -3,7 +3,9 @@
 **Date:** 2026-08-18  
 **Agent:** Key (Cursor Cloud)  
 **Run:** https://cursor.com/agents/bc-dfba7290-02ce-487b-8e73-9cc6a9b4d25b  
-**Branch:** `cursor/shortkey-core-dna-lock-d25b`
+**Branch:** `cursor/shortkey-core-dna-lock-d25b`  
+**Commit:** https://github.com/KieranSimpee/shortkey/commit/67fcb376d253e7fb0b19a3cd7d53373593c8d61b  
+**Pull request:** https://github.com/KieranSimpee/shortkey/pull/8
 
 ## Requested vs done
 

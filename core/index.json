@@ -178,8 +178,8 @@
       "category": "control_center",
       "format": "markdown",
       "canonicalStorage": true,
-      "bytes": 2627,
-      "sha256": "fb8622bd9b1eb8fd1fb9be6004f380baf0879d78fec7539b2da4b6e7a2cfd02a"
+      "bytes": 2798,
+      "sha256": "00dac32c724de0e608e39d966deb0fa748a1986c6a5bd35cee3716e0f24e00b9"
     },
     {
       "path": "core/lock.json",
