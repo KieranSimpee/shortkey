@@ -279,5 +279,6 @@
 | [`SKY_WORKFLOW.md`](./SKY_WORKFLOW.md) | Sky manager loop appendix |
 | [`WORKFLOW.md`](./WORKFLOW.md) | Stub pointer |
 | [`../00_Headquarters/Dashboard.md`](../00_Headquarters/Dashboard.md) | Ops board — follow Master Workflow SOP phases |
+| [`SKY_ASIA_INTAKE_ZAPIER_SOP.md`](./SKY_ASIA_INTAKE_ZAPIER_SOP.md) | Zapier intake · Kieran gate · 3-path assign |
 
 **Honesty line:** Locking this SOP means the team **operates** these 15 phases. It does not add agents, tools, or rebuild MVP/content.

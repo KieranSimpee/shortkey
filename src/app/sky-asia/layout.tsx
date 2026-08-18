@@ -12,6 +12,7 @@ const NAV: { href: string; label: string }[] = [
   { href: "/sky-asia", label: "HOME" },
   { href: "/sky-asia/seasons", label: "SEASONS" },
   { href: "/sky-asia/tasks", label: "TASKS" },
+  { href: "/sky-asia/intake", label: "INTAKE" },
   { href: "/sky-asia/knowledge", label: "KNOWLEDGE HUB" },
   { href: "/sky-asia/artists", label: "ARTISTS" },
   { href: "/sky-asia/creators", label: "CREATORS" },

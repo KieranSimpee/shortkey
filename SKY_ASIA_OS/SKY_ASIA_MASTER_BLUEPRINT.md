@@ -202,6 +202,7 @@ Run **SKY ASIA OS** as a living discovery platform: seasons that find Asia’s c
 | `01_Vision/MISSION.md` | Mission detail |
 | `02_Team/TEAM.md` · `CONFLICTS.md` | Seat map + ShortKey conflict note |
 | `03_Workflow/SKY_ASIA_MASTER_WORKFLOW_SOP.md` | **Operating SOP · phase SSOT (how)** |
+| `03_Workflow/SKY_ASIA_INTAKE_ZAPIER_SOP.md` | Zapier intake SOP (form · 2 Zaps · Kieran gate) |
 | `03_Workflow/SKY_ASIA_WORKFLOW_V1.md` | Shared daily / weekly / monthly cadence (appendix) |
 | `03_Workflow/SKY_WORKFLOW.md` | Sky manager loop (appendix) |
 | `03_Workflow/WORKFLOW.md` | Stub pointer |

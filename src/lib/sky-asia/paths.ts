@@ -10,6 +10,12 @@ export const TASKS_PATH = path.join(
   "tasks",
   "tasks.json",
 );
+export const INTAKE_PATH = path.join(
+  SKY_ASIA_OS_ROOT,
+  "00_Headquarters",
+  "intake",
+  "intake.json",
+);
 export const SEASON_01_PATH = path.join(
   SKY_ASIA_OS_ROOT,
   "04_Season01",
