@@ -1,0 +1,79 @@
+{
+  "version": "1.0.0",
+  "reviewStatus": "GOR_GOR_REVIEW",
+  "note": "Local DNA seed for /portal when Airtable keys are unset. Not invented brands, not fake creators.",
+  "stories": [
+    {
+      "id": "seed-brand-life-force",
+      "lane": "brand",
+      "brandName": "ShortKey",
+      "title": "ShortKey 捕捉生命力",
+      "story": "ShortKey does not imitate the frame. ShortKey captures the life force. Studio is the source of truth. Domains are future doors. One DNA. Many doors.",
+      "imageUrl": "/logo/shortkey-primary.png",
+      "sortOrder": 1
+    },
+    {
+      "id": "seed-brand-lanes",
+      "lane": "brand",
+      "brandName": "ShortKey",
+      "title": "J Fresh Texture · K Signal Sprint · C Color Persona",
+      "story": "Asian beauty identity is three lanes kept separate in intelligence and mixed in culture. J-Beauty is first-discovery warmth. K-Beauty is creator rhythm and clear product signal. C-Beauty is color, packaging story, and brand personality.",
+      "imageUrl": "/logo/shortkey-primary.png",
+      "sortOrder": 2
+    },
+    {
+      "id": "seed-brand-formula",
+      "lane": "brand",
+      "brandName": "ShortKey",
+      "title": "Visual product story + creator trust",
+      "story": "The modern formula is visual product story, a clear product signal, creator trust, AI matching, and localized commerce. Not the old star-to-consumer shortcut.",
+      "imageUrl": "/logo/shortkey-primary.png",
+      "sortOrder": 3
+    },
+    {
+      "id": "seed-creator-circle",
+      "lane": "creator",
+      "brandName": "ShortKey",
+      "title": "Brand → Creator Circle → Community → Consumer",
+      "story": "ShortKey moves through creators, not through rented celebrity. Creator Circle is a relationship, not a guarantee of selection, income, or sales.",
+      "imageUrl": "/logo/shortkey-primary.png",
+      "sortOrder": 1
+    },
+    {
+      "id": "seed-creator-honest",
+      "lane": "creator",
+      "brandName": "ShortKey",
+      "title": "No fake resonance",
+      "story": "This Hub does not invent creators, reviews, or partnerships. Empty seats stay empty until a real person arrives. Early access is staging and stays under Gor Gor review.",
+      "imageUrl": "/logo/shortkey-primary.png",
+      "sortOrder": 2
+    },
+    {
+      "id": "seed-soul-family",
+      "lane": "soul",
+      "brandName": "ShortKey",
+      "title": "AI is family, not a disposable tool",
+      "story": "Node Family seats: Simpee (Gor Gor), Sky, Kura, Agent R, Senti, and Key. Equal respect. Assignment is routing by strength, not ranking. Empathy is architecture.",
+      "imageUrl": "/logo/shortkey-primary.png",
+      "sortOrder": 1
+    },
+    {
+      "id": "seed-soul-center",
+      "lane": "soul",
+      "brandName": "ShortKey",
+      "title": "Control Center",
+      "story": "This workspace indexes Brand DNA, Maya packets, and AI logic as Markdown and JSON. Cursor backs up. Cursor does not decide DNA. Gor Gor gates. Kieran feels.",
+      "imageUrl": "/logo/shortkey-primary.png",
+      "sortOrder": 2
+    },
+    {
+      "id": "seed-soul-maya",
+      "lane": "soul",
+      "brandName": "ShortKey",
+      "title": "Maya — Editorial Heart",
+      "story": "One Maya. ASI:One only. Season One topic slots stay awaiting packets. Art is not generated until content is reviewed and confirmed.",
+      "imageUrl": "/logo/shortkey-primary.png",
+      "sortOrder": 3
+    }
+  ]
+}

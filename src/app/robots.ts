@@ -24,6 +24,8 @@ export default function robots(): MetadataRoute.Robots {
           "/showcase/",
           "/magazine-demo",
           "/magazine-demo/",
+          "/portal",
+          "/portal/",
         ],
       },
     ],

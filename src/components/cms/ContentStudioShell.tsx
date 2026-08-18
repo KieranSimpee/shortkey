@@ -11,7 +11,8 @@ export function ContentStudioShell({ children }: { children: React.ReactNode }) 
   const isInternal = pathname === "/internal" || pathname.startsWith("/internal/");
   /** Public Coming Soon gate must ship with zero admin/debug surfaces (blueprint § Hide from public). */
   const isComingSoon = pathname === "/";
-  const hideStudioTooling = isControlHub || isInternal || isComingSoon;
+  const isPortal = pathname === "/portal" || pathname.startsWith("/portal/");
+  const hideStudioTooling = isControlHub || isInternal || isComingSoon || isPortal;
 
   return (
     <ContentStudioProvider>
