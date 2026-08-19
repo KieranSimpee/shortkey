@@ -21,9 +21,11 @@ Never hand raw Google radar output straight to Builder.
 
 ## Quick locks
 
+- ALWAYS TO TRUE — honesty over comfort; admit gaps; no invented DNA/Maya/JP (`src/brand/sky/ALWAYS_TO_TRUE.md`)
 - J Fresh Texture · K Signal Sprint · C Color Persona (separate in intelligence)
 - Motto: ShortKey 不模仿畫面。ShortKey 捕捉生命力。
 - No fake creators/reviews/partnerships · no income guarantees · no copyrighted scrapes
-- Ports: 3001 Beauty · 3002 Family · 3003 Studio · 3004 Social
+- Ports (LOCKED): 3005 Beauty · 3002 Family · 3003 Studio · 3004 Social · **3008 Maya Lab (isolated)** · never 3000 · not 3001 · `npm run locals:dev` (Maya separate: `npm run maya:dev`)
 
 Canonical vibe translation: `src/brand/sky/SHORTKEY_JKC_VIBE_RADAR_GORGOR_REVIEW.md`
+Editorial/Runway OS (Maya · LOCKED v1.0): `src/brand/sky/SHORTKEY_MASTER_BIBLE_v1.0.md` — GOR_GOR_REVIEW on lock conflicts

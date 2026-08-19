@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gold Standards Review · ShortKey · GOR_GOR_REVIEW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f2e8;
+      --ink: #2a241c;
+      --gold: #c9a962;
+      --soft: #8b7355;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #efe8da 0%, var(--cream) 40%, #e8dfd0 100%);
+      color: var(--ink);
+      font-family: Montserrat, system-ui, sans-serif;
+      min-height: 100vh;
+    }
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 1.25rem;
+      text-align: center;
+    }
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      margin: 0 0 0.5rem;
+      color: var(--gold);
+    }
+    .lede {
+      margin: 0 auto 1rem;
+      max-width: 36rem;
+      line-height: 1.6;
+      color: var(--soft);
+      font-size: 0.95rem;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .links a {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid rgba(139, 115, 85, 0.35);
+      padding: 0.45rem 0.85rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      background: rgba(250, 247, 240, 0.85);
+    }
+    .links a:hover { border-color: var(--gold); }
+    .gallery {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.5rem 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    figure {
+      margin: 0;
+      background: rgba(250, 247, 240, 0.9);
+      border: 1px solid rgba(139, 115, 85, 0.2);
+      overflow: hidden;
+    }
+    figure a { display: block; color: inherit; text-decoration: none; }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top center;
+      background: #ddd;
+    }
+    figcaption {
+      padding: 0.85rem 1rem 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    figcaption span {
+      display: block;
+      margin-top: 0.35rem;
+      font-size: 0.7rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--soft);
+    }
+    footer {
+      text-align: center;
+      padding: 0 1.5rem 2.5rem;
+      font-size: 0.7rem;
+      color: var(--soft);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gold Standards Review</h1>
+    <p class="lede">Screenshot gallery + live HTML links. One bookmark for founder review. Status: GOR_GOR_REVIEW.</p>
+    <nav class="links" aria-label="Live pages">
+      <a href="./index.html">Hub</a>
+      <a href="./cover.html">Cover</a>
+      <a href="./heritage.html">Heritage</a>
+      <a href="./ingredient.html">Ingredient</a>
+      <a href="./brand-story.html">Brand Story</a>
+      <a href="./creator.html">Creator</a>
+    </nav>
+  </header>
+
+  <section class="gallery" aria-label="Screenshots">
+    <figure>
+      <a href="./index.html">
+        <img src="./screenshots/hub.png" alt="Hub / index preview" />
+        <figcaption>Hub <span>index.html · live page</span></figcaption>
+      </a>
+    </figure>
+    <figure>
+      <a href="./cover.html">
+        <img src="./screenshots/cover.png" alt="Cover page preview" />
+        <figcaption>Cover <span>cover.html · live page</span></figcaption>
+      </a>
+    </figure>
+    <figure>
+      <a href="./heritage.html">
+        <img src="./screenshots/heritage.png" alt="Heritage page preview" />
+        <figcaption>Heritage <span>heritage.html · live page</span></figcaption>
+      </a>
+    </figure>
+    <figure>
+      <a href="./ingredient.html">
+        <img src="./screenshots/ingredient.png" alt="Ingredient page preview" />
+        <figcaption>Ingredient <span>ingredient.html · live page</span></figcaption>
+      </a>
+    </figure>
+    <figure>
+      <a href="./brand-story.html">
+        <img src="./screenshots/brand-story.png" alt="Brand story page preview" />
+        <figcaption>Brand Story <span>brand-story.html · live page</span></figcaption>
+      </a>
+    </figure>
+    <figure>
+      <a href="./creator.html">
+        <img src="./screenshots/creator.png" alt="Creator page preview" />
+        <figcaption>Creator <span>creator.html · live page</span></figcaption>
+      </a>
+    </figure>
+  </section>
+
+  <footer>ShortKey · Gold Standards · do not treat as Beauty V1 lock</footer>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brand Story · Gold Standard Preview · ShortKey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Merriweather:wght@400&family=Montserrat:wght@500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .btn-ripple {
+      position: absolute; border-radius: 50%; background: rgba(255,255,255,0.35);
+      transform: scale(0); animation: ripple 0.3s ease-out forwards; pointer-events: none;
+    }
+    @keyframes ripple { to { transform: scale(2.2); opacity: 0; } }
+
+    .brand-hero {
+      position: relative;
+      min-height: 88vh;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 100px 80px 80px;
+      overflow: hidden;
+      text-align: center;
+    }
+    .brand-hero-plane {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 50% 40%, rgba(201, 169, 98, 0.28), transparent 60%),
+        linear-gradient(185deg, #3a5248 0%, #2D4A3E 35%, #1f332b 100%);
+    }
+    .brand-hero-plane::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 30%, rgba(31, 51, 43, 0.75) 100%),
+        repeating-linear-gradient(
+          115deg,
+          transparent,
+          transparent 28px,
+          rgba(201, 169, 98, 0.04) 28px,
+          rgba(201, 169, 98, 0.04) 29px
+        );
+    }
+    .brand-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 36rem;
+    }
+    .brand-name {
+      font-family: var(--font-hero);
+      font-weight: 700;
+      font-size: 4rem;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 0.75rem;
+    }
+    .brand-hero-content p {
+      font-family: var(--font-body);
+      color: rgba(245, 240, 230, 0.9);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .brand-disclaimer {
+      font-family: var(--font-ui) !important;
+      font-size: 0.75rem !important;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(232, 180, 184, 0.9) !important;
+      margin-top: 1.25rem !important;
+    }
+
+    .narrative {
+      padding: 100px 80px;
+    }
+    .narrative-scroll {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
+      gap: 2.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+    }
+    .nar-section {
+      scroll-snap-align: start;
+      min-width: 0;
+    }
+    .nar-section h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 2.5rem;
+      line-height: 1.25;
+      letter-spacing: 0.03em;
+      color: var(--deep-green);
+      margin: 0 0 1.25rem;
+      position: relative;
+      display: inline-block;
+    }
+    .nar-section h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nar-section h2:hover::after {
+      width: 100%;
+    }
+    .nar-section p {
+      line-height: 1.8;
+      margin: 0 0 1rem;
+    }
+    .process-viz {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--soft-brown);
+    }
+    .process-step {
+      padding: 0.55rem 0.85rem;
+      border: 1px solid rgba(201, 169, 98, 0.45);
+      color: var(--deep-green);
+      animation: process-glow 0.5s ease-in-out infinite alternate;
+    }
+    .process-step:nth-child(3) { animation-delay: 0.15s; }
+    .process-step:nth-child(5) { animation-delay: 0.3s; }
+    @keyframes process-glow {
+      from { background: transparent; }
+      to { background: rgba(201, 169, 98, 0.12); }
+    }
+    .process-arrow { color: var(--gold); }
+
+    .gallery-block {
+      padding: 0 80px 80px;
+    }
+    .gallery-block h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 2.5rem;
+      color: var(--deep-green);
+      margin: 0 0 1.5rem;
+    }
+    .product-stage {
+      position: relative;
+      min-height: 320px;
+      background:
+        linear-gradient(145deg, #faf7f0, #ebe3d4);
+      border: 1px solid rgba(139, 115, 85, 0.2);
+      display: grid;
+      place-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-stage:hover {
+      transform: scale(1.02);
+      box-shadow: 0 16px 40px rgba(45, 74, 62, 0.1);
+    }
+    .product-silhouette {
+      width: min(160px, 40%);
+      height: 220px;
+      background: linear-gradient(180deg, rgba(201, 169, 98, 0.35), rgba(45, 74, 62, 0.45));
+      clip-path: polygon(30% 0, 70% 0, 85% 100%, 15% 100%);
+      opacity: 0.85;
+    }
+    .product-label {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--white);
+      background: rgba(45, 74, 62, 0.75);
+      padding: 0.4rem 0.85rem;
+    }
+    .hotspot.h1 { top: 28%; left: 38%; }
+    .hotspot.h2 { top: 55%; left: 58%; width: 20px; height: 20px; }
+    .hotspot.h3 { top: 72%; left: 42%; }
+
+    .try-stub {
+      margin: 0 80px 80px;
+      padding: 2rem;
+      border: 1px dashed rgba(74, 93, 122, 0.4);
+      background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(74, 93, 122, 0.06));
+    }
+    .try-stub h3 {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-blue);
+      margin: 0 0 0.75rem;
+    }
+    .try-stub p {
+      margin: 0 0 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .sim-ui {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .sim-swatch {
+      width: 36px;
+      height: 36px;
+      border: 2px solid rgba(45, 74, 62, 0.2);
+      background: #e8d5c4;
+    }
+    .sim-swatch:nth-child(2) { background: #d4b89a; }
+    .sim-swatch:nth-child(3) { background: #c9a882; }
+    .sim-frame {
+      flex: 1;
+      min-width: 180px;
+      height: 72px;
+      border: 1px solid rgba(74, 93, 122, 0.3);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      color: var(--muted-blue);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .bottom-ctas {
+      padding: 0 80px 60px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .brand-name { font-size: 2.8rem; }
+      .brand-hero, .narrative, .gallery-block, .try-stub, .bottom-ctas {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .narrative { padding-top: 60px; padding-bottom: 40px; }
+      .narrative-scroll { grid-template-columns: 1fr; }
+      .nar-section h2, .gallery-block h2 { font-size: 2rem; }
+      .try-stub { margin-left: 24px; margin-right: 24px; }
+    }
+  </style>
+</head>
+<body class="atmosphere">
+  <div class="preview-banner">
+    PREVIEW · GOR_GOR_REVIEW · not live Beauty V1 · <a href="index.html">Gallery</a>
+  </div>
+  <div class="progress-indicator" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo-link" href="index.html" style="color: var(--cream);">
+      <img src="/logo/shortkey-primary-on-dark.png" alt="" width="120" height="28" onerror="this.src='/logo/shortkey-primary.png'" />
+      <span>ShortKey</span>
+    </a>
+    <button type="button" class="nav-toggle" style="color: var(--cream);">Menu</button>
+  </header>
+
+  <div class="panel-backdrop"></div>
+  <aside class="slide-panel">
+    <button type="button" class="panel-close">Close</button>
+    <nav>
+      <a href="index.html">Gallery hub</a>
+      <a href="cover.html">Cover</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="ingredient.html">Ingredient</a>
+      <a href="brand-story.html">Brand Story</a>
+      <a href="creator.html">Creator</a>
+    </nav>
+  </aside>
+
+  <section class="brand-hero">
+    <div class="brand-hero-plane" aria-hidden="true"></div>
+    <div class="brand-hero-content reveal">
+      <h1 class="brand-name">Nihonsakari</h1>
+      <p>Issue 01 brand narrative plane — heritage brewing culture meeting skin ritual.
+        Editorial spotlight only.</p>
+      <p class="brand-disclaimer">Not a live partnership claim · GOR_GOR_REVIEW context</p>
+    </div>
+  </section>
+
+  <section class="narrative">
+    <div class="narrative-scroll">
+      <article class="nar-section reveal">
+        <h2>Heritage</h2>
+        <p>
+          Sake brewing landscapes and rice culture form the quiet backdrop for Issue 01’s
+          Japan focus. The Gold Standard asks for Heritage → Process → Product flow —
+          contemplative, not promotional noise.
+        </p>
+        <p>
+          ShortKey frames adjacency carefully: cultural storytelling without inventing
+          endorsements or revenue guarantees.
+        </p>
+      </article>
+      <article class="nar-section reveal reveal-d1">
+        <h2>Process</h2>
+        <p>
+          From grain and brew craft toward care textures — an editorial transformation story.
+          Motion below is schematic (Gold Standard process visualization stub).
+        </p>
+        <div class="process-viz" aria-hidden="true">
+          <span class="process-step">Rice</span>
+          <span class="process-arrow">→</span>
+          <span class="process-step">Brew craft</span>
+          <span class="process-arrow">→</span>
+          <span class="process-step">Bran / care</span>
+        </div>
+      </article>
+      <article class="nar-section reveal reveal-d2">
+        <h2>Product</h2>
+        <p>
+          Product photography plane uses cream studio language and gold hotspots.
+          Labels are placeholders for layout QC — not live SKUs or claims.
+        </p>
+        <p>
+          Motto remains: ShortKey 不模仿畫面。ShortKey 捕捉生命力。
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="gallery-block">
+    <h2>Product Gallery</h2>
+    <div class="product-stage">
+      <div class="product-silhouette" aria-hidden="true"></div>
+      <span class="product-label">Placeholder vessel · layout only</span>
+      <button type="button" class="hotspot h1" data-tip="Texture note (stub)" aria-label="Hotspot texture"></button>
+      <button type="button" class="hotspot h2" data-tip="Finish (stub)" aria-label="Hotspot finish"></button>
+      <button type="button" class="hotspot h3" data-tip="Heritage cue (stub)" aria-label="Hotspot heritage"></button>
+    </div>
+  </section>
+
+  <aside class="try-stub" aria-label="Try-on simulator stub">
+    <h3>Simulator · not live AR</h3>
+    <p>
+      Issue 01 briefs mention AR try-on. This block is a <strong>simulator stub UI only</strong> —
+      no camera, no try-on engine, no product recommendation claims.
+    </p>
+    <div class="sim-ui">
+      <span class="sim-swatch" title="Tone A"></span>
+      <span class="sim-swatch" title="Tone B"></span>
+      <span class="sim-swatch" title="Tone C"></span>
+      <div class="sim-frame">AR viewport · stub</div>
+      <button type="button" class="btn btn-primary" disabled style="opacity:0.7;cursor:not-allowed;">Try (disabled)</button>
+    </div>
+  </aside>
+
+  <div class="bottom-ctas">
+    <a class="btn btn-secondary" href="creator.html">Meet the Artisan</a>
+    <a class="btn btn-primary" href="ingredient.html">Continue reading</a>
+  </div>
+
+  <footer class="page-footer">
+    <a href="ingredient.html">← Ingredient</a>
+    <a href="creator.html">Creator →</a>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>

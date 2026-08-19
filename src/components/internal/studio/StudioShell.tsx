@@ -1,8 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { MayaAsi1ChatPanel } from "@/components/maya/MayaAsi1ChatPanel";
 import { HallyuFormulaStudioPanel } from "@/components/studio/HallyuFormulaStudioPanel";
 import { IdentityBenchmarkMap } from "@/components/studio/IdentityBenchmarkMap";
+import { StudioReviewShelfPanel } from "@/components/studio/StudioReviewShelfPanel";
 import { createSeedIdentityBenchmark } from "@/lib/studio/brandIdentityLanes";
 import { createStudioSeed } from "@/lib/studio/seed";
 import {
@@ -471,6 +473,7 @@ export function StudioShell() {
           {page === "dashboard" ? (
             <DashboardPage state={state} counts={counts} onGo={go} />
           ) : null}
+          {page === "maya" ? <MayaPage /> : null}
           {page === "brand-dna" ? (
             <BrandDnaPage
               dna={state.brandDna}
@@ -499,20 +502,27 @@ export function StudioShell() {
             />
           ) : null}
           {page === "assets" ? (
-            <RegistryPage
-              title="Asset Library"
-              subtitle="Metadata only — no binary upload / CDN in v0.1."
-              rows={state.assets.map((a) => ({
-                id: a.id,
-                title: a.name,
-                meta: `${a.kind} · domains: ${a.domainIds.length}`,
-                status: a.status,
-                notes: a.notes,
-              }))}
-              onStatus={(id, s, note) => changeEntityStatus("asset", id, s, note)}
-              noteDraft={noteDraft}
-              setNoteDraft={setNoteDraft}
-            />
+            <>
+              <StudioReviewShelfPanel />
+              <div className="mt-6">
+                <RegistryPage
+                  title="Asset Library"
+                  subtitle="Metadata registry (statuses) below · review shelf above pulls binaries into public/studio-review/. No CDN upload in v0.1."
+                  rows={state.assets.map((a) => ({
+                    id: a.id,
+                    title: a.name,
+                    meta: `${a.kind} · domains: ${a.domainIds.length}`,
+                    status: a.status,
+                    notes: a.notes,
+                  }))}
+                  onStatus={(id, s, note) =>
+                    changeEntityStatus("asset", id, s, note)
+                  }
+                  noteDraft={noteDraft}
+                  setNoteDraft={setNoteDraft}
+                />
+              </div>
+            </>
           ) : null}
           {page === "campaigns" ? (
             <CampaignsPage
@@ -737,6 +747,95 @@ function DashboardPage({
       </div>
 
       <div className="mt-8">
+        <h2 className="font-display text-base font-semibold text-ink">Maya</h2>
+        <p className="mt-1 text-sm text-ink-muted">
+          ASI:One API chat in Studio · Save to Studio →{" "}
+          <code className="font-mono text-[11px]">
+            src/brand/sky/maya/domain-drop/
+          </code>
+          . Not an iframe of asi1.ai. Lab :3008 remains the isolated tools
+          surface.
+        </p>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => onGo("maya")}
+            className="text-[12px] text-brand-dark underline-offset-2 hover:underline"
+          >
+            Open Maya tab
+          </button>
+          <span className="font-mono text-[10px] text-ink-subtle">
+            #maya · GOR_GOR_REVIEW
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="font-display text-base font-semibold text-ink">
+          Staging surfaces (local / after deploy)
+        </h2>
+        <p className="mt-1 text-sm text-ink-muted">
+          Magazine flip + Lovart copies live under{" "}
+          <code className="font-mono text-[11px]">public/</code> — not on{" "}
+          <code className="font-mono text-[11px]">shortkey.studio</code> until DNS
+          points at Vercel (today: Squarespace parking). Beauty V1{" "}
+          <code className="font-mono text-[11px]">/</code> untouched.
+        </p>
+        <ul className="mt-3 space-y-2 text-sm">
+          <li className="rounded-lg border border-brand/10 bg-white px-3 py-2">
+            <a
+              href="/magazine-demo/#/cover"
+              className="font-medium text-brand-dark underline-offset-2 hover:underline"
+            >
+              Magazine flip · Nihon Sakura Issue 01
+            </a>
+            <span className="mt-0.5 block text-[11px] text-ink-subtle">
+              /magazine-demo/#/cover · Prev/Next · swipe · strip
+            </span>
+          </li>
+          <li className="rounded-lg border border-brand/10 bg-white px-3 py-2">
+            <a
+              href="/shortkey-assets/"
+              className="font-medium text-brand-dark underline-offset-2 hover:underline"
+            >
+              Lovart asset gallery · copies
+            </a>
+            <span className="mt-0.5 block text-[11px] text-ink-subtle">
+              /shortkey-assets/ · pages · posters · DNA · video · audio · Issue 01
+            </span>
+          </li>
+          <li className="rounded-lg border border-brand/10 bg-white px-3 py-2">
+            <button
+              type="button"
+              onClick={() => onGo("assets")}
+              className="font-medium text-brand-dark underline-offset-2 hover:underline"
+            >
+              Studio review shelf · pull frames / Lovart
+            </button>
+            <span className="mt-0.5 block text-[11px] text-ink-subtle">
+              #assets · public/studio-review/ · batch pull · lazy thumbs
+            </span>
+          </li>
+          <li className="rounded-lg border border-brand/10 bg-white px-3 py-2">
+            <a
+              href="/shortkey-assets/dna.html"
+              className="font-medium text-brand-dark underline-offset-2 hover:underline"
+            >
+              DNA cards gallery
+            </a>
+          </li>
+          <li className="rounded-lg border border-brand/10 bg-white px-3 py-2">
+            <a
+              href="/control-center/magazine-demo/"
+              className="font-medium text-brand-dark underline-offset-2 hover:underline"
+            >
+              Control Center iframe entry
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div className="mt-8">
         <h2 className="font-display text-base font-semibold text-ink">
           Ready for review (preview)
         </h2>
@@ -772,6 +871,51 @@ function DashboardPage({
           ))}
         </ul>
       </div>
+    </Panel>
+  );
+}
+
+function MayaPage() {
+  return (
+    <Panel
+      title="Maya"
+      subtitle="Editorial Heart via ASI:One API — ShortKey-owned tab (not asi1.ai embed). After connect: Save to Studio → domain-drop. Travel Sheet optional. Art only after content confirm. GOR_GOR_REVIEW · ALWAYS TO TRUE."
+    >
+      <div className="mb-6 rounded-xl border border-brand/20 bg-brand/[0.06] px-4 py-3 text-sm leading-relaxed text-ink">
+        <p className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-brand">
+          Drop zone · 保存位置
+        </p>
+        <p className="mt-1.5">
+          EN: After Maya is connected, use <strong className="font-medium">Save to Studio</strong>.
+          Work lands in{" "}
+          <code className="font-mono text-[12px]">
+            src/brand/sky/maya/domain-drop/
+          </code>{" "}
+          as <code className="font-mono text-[12px]">maya-domain-save-*</code>.
+          Season 1 short name → <code className="font-mono text-[12px]">season-01</code>{" "}
+          after Gor Gor. No invented DNA · no art until content confirmed.
+        </p>
+        <p className="mt-1.5 text-ink-muted">
+          粵／中：連線後用「Save to Studio」；檔案落到 domain-drop。Season 1 ={" "}
+          <code className="font-mono text-[12px]">season-01</code>
+          ；唔好發明 DNA；內容確認前唔好出圖。
+        </p>
+        <p className="mt-2 font-mono text-[11px] text-ink-subtle">
+          Saves to: src/brand/sky/maya/domain-drop/ · maya-domain-save-*.json
+        </p>
+      </div>
+      <MayaAsi1ChatPanel variant="studio" source="studio" showCaptures />
+      <p className="mt-6 text-[11px] leading-relaxed text-ink-subtle">
+        Local:{" "}
+        <code className="font-mono">npm run studio:dev</code> →{" "}
+        <code className="font-mono">http://127.0.0.1:3003/internal/studio#maya</code>
+        . Full tools (Lovart / MJ handoff):{" "}
+        <code className="font-mono">npm run maya:dev</code> → :3008. Domain:{" "}
+        <code className="font-mono">shortkey.studio</code> → same{" "}
+        <code className="font-mono">/internal/studio#maya</code> when staging
+        cookie + <code className="font-mono">ASI_ONE_API_KEY</code> are set
+        (capture FS write is reliable locally).
+      </p>
     </Panel>
   );
 }

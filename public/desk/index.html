@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FBF7F2" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Minion Desk" />
+  <meta name="application-name" content="Minion Desk" />
+  <meta name="description" content="ShortKey Founder Control Desk — INTERNAL Minion Chat Box. Soft PIN required. Not a public product." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="manifest" href="/desk/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/desk/icons/icon-180.png" sizes="180x180" />
+  <link rel="icon" type="image/png" href="/desk/icons/icon-192.png" sizes="192x192" />
+  <title>ShortKey Minion · Desk (INTERNAL)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ivory: #FBF7F2;
+      --ink: #2A2420;
+      --muted: #7A6F66;
+      --blush: #E8B4B0;
+      --mist: #C9BFD0;
+      --jade: #A8C5B5;
+      --champagne: #C4A484;
+      --card: rgba(255, 252, 248, 0.88);
+      --line: rgba(42, 36, 32, 0.08);
+      --shadow: 0 10px 28px rgba(74, 58, 48, 0.08);
+      --radius: 22px;
+      --safe-b: env(safe-area-inset-bottom, 0px);
+      --safe-t: env(safe-area-inset-top, 0px);
+      --tab-h: calc(64px + var(--safe-b));
+      --bookmark: http://localhost:3005/desk/#family;
+      --bookmark-alt: https://shortkey.beauty/desk/#family;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: Outfit, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 90% 55% at 12% -5%, rgba(232, 180, 176, 0.45), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 95% 8%, rgba(201, 191, 208, 0.38), transparent 50%),
+        radial-gradient(ellipse 80% 45% at 50% 105%, rgba(168, 197, 181, 0.32), transparent 55%),
+        linear-gradient(165deg, #FFFCF8 0%, var(--ivory) 45%, #F5EFE8 100%);
+      min-height: 100%;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .phone-shell {
+      width: min(100%, 390px);
+      height: min(844px, calc(100dvh - 32px));
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 0 10px #2A2420, 0 0 0 12px #C4A484, var(--shadow);
+    }
+    @media (max-width: 480px) {
+      body { padding: 0; align-items: stretch; }
+      .phone-shell { width: 100%; height: 100dvh; border-radius: 0; box-shadow: none; }
+    }
+    .app {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(ellipse 100% 40% at 20% 0%, rgba(232, 180, 176, 0.35), transparent 55%),
+        radial-gradient(ellipse 80% 35% at 100% 15%, rgba(201, 191, 208, 0.28), transparent 50%),
+        radial-gradient(ellipse 90% 40% at 40% 100%, rgba(168, 197, 181, 0.22), transparent 50%),
+        var(--ivory);
+    }
+    .status-bar {
+      padding: calc(10px + var(--safe-t)) 18px 6px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; color: var(--muted);
+    }
+    .brand-mark { display: flex; align-items: center; gap: 8px; }
+    .brand-mark img { width: 22px; height: 22px; border-radius: 6px; }
+    .brand-mark span {
+      font-family: Fraunces, Georgia, serif; font-size: 1.05rem; font-weight: 700; color: var(--ink);
+    }
+    .badge {
+      border: 1px solid var(--line); background: rgba(255,252,248,0.8);
+      border-radius: 999px; padding: 6px 10px; font-size: 0.65rem; font-weight: 700;
+      color: var(--ink); white-space: nowrap;
+    }
+    .family-online {
+      margin-bottom: 12px; padding: 12px 14px; border-radius: 18px;
+      background: rgba(255,252,248,0.9); border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .family-online .head {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px;
+    }
+    .family-online h2 {
+      font-family: Fraunces, Georgia, serif; font-size: 1.05rem; font-weight: 700;
+    }
+    .online-count {
+      font-size: 0.68rem; font-weight: 700; padding: 5px 9px; border-radius: 999px;
+      background: rgba(168,197,181,0.4); border: 1px solid rgba(168,197,181,0.65); color: #2F4A3C;
+    }
+    .member-list { display: flex; flex-direction: column; gap: 8px; }
+    .member-row {
+      display: grid; grid-template-columns: 10px 1fr auto; gap: 10px; align-items: center;
+      padding: 10px 12px; border-radius: 14px; background: rgba(251,247,242,0.85);
+      border: 1px solid var(--line);
+    }
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #C4B8AE; box-shadow: 0 0 0 3px rgba(196,184,174,0.25);
+    }
+    .dot.on {
+      background: #5A9E78; box-shadow: 0 0 0 3px rgba(90,158,120,0.28);
+    }
+    .member-row .meta strong { display: block; font-size: 0.88rem; }
+    .member-row .meta span { display: block; font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+    .member-row .state {
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .member-row .state.on { color: #2F6B4A; }
+    .scroll {
+      flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 8px 16px calc(18px + var(--tab-h));
+    }
+    .panel { display: none; animation: rise 0.35s ease; }
+    .panel.active { display: block; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+    .save-banner {
+      margin-bottom: 12px; padding: 12px 14px; border-radius: 18px;
+      background: linear-gradient(135deg, rgba(168,197,181,0.35), rgba(232,180,176,0.28));
+      border: 1px solid rgba(168,197,181,0.55); box-shadow: var(--shadow);
+    }
+    .save-banner strong {
+      display: block; font-family: Fraunces, Georgia, serif; font-size: 1rem; margin-bottom: 4px;
+    }
+    .save-banner p { font-size: 0.78rem; color: var(--muted); line-height: 1.4; margin-bottom: 8px; }
+    .save-banner code {
+      display: block; font-size: 0.72rem; word-break: break-all;
+      background: rgba(255,252,248,0.85); padding: 8px 10px; border-radius: 12px;
+      border: 1px solid var(--line); margin-bottom: 8px; color: var(--ink);
+    }
+    .warn-banner {
+      display: none; margin-bottom: 12px; padding: 10px 12px; border-radius: 14px;
+      background: rgba(232,180,176,0.28); border: 1px solid rgba(232,180,176,0.55);
+      font-size: 0.78rem; color: #6B4A3A; line-height: 1.4;
+    }
+    .warn-banner.show { display: block; }
+    .hero-title {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(1.45rem, 6vw, 1.8rem);
+      font-weight: 700; line-height: 1.15; margin: 4px 0 6px;
+    }
+    .hero-sub { color: var(--muted); font-size: 0.9rem; line-height: 1.45; margin-bottom: 14px; }
+    .card {
+      background: var(--card); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 16px 14px; box-shadow: var(--shadow); margin-bottom: 12px;
+    }
+    .card h2 {
+      font-family: Fraunces, Georgia, serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 4px;
+    }
+    .hint { color: var(--muted); font-size: 0.8rem; line-height: 1.4; margin-bottom: 10px; }
+    .pitch { font-size: 0.95rem; line-height: 1.5; color: var(--ink); }
+    .pitch em { font-style: normal; color: #6B5A4E; }
+    .subtabs { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+    .subtabs button {
+      appearance: none; border: 1px solid var(--line); background: rgba(255,252,248,0.7);
+      border-radius: 999px; padding: 8px 12px; font: inherit; font-size: 0.75rem; font-weight: 700;
+      color: var(--muted); cursor: pointer;
+    }
+    .subtabs button[aria-pressed="true"] {
+      color: var(--ink); border-color: var(--champagne);
+      background: rgba(196, 164, 132, 0.2);
+    }
+    .subpanel { display: none; }
+    .subpanel.open { display: block; }
+    label.field {
+      display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+    }
+    textarea, input[type="text"], input[type="password"] {
+      width: 100%; font: inherit; font-size: 1.02rem; line-height: 1.45; color: var(--ink);
+      background: rgba(255,255,255,0.75); border: 1px solid rgba(42,36,32,0.1);
+      border-radius: 16px; padding: 14px; resize: vertical; min-height: 120px;
+    }
+    input[type="text"], input[type="password"] { min-height: 0; }
+    textarea:focus, input:focus {
+      outline: none; border-color: var(--champagne);
+      box-shadow: 0 0 0 3px rgba(196, 164, 132, 0.2);
+    }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+    .btn {
+      appearance: none; border: none; cursor: pointer; font: inherit; font-weight: 700;
+      font-size: 0.92rem; border-radius: 999px; padding: 13px 18px; min-height: 46px;
+      text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+      transition: transform 0.15s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn.primary {
+      background: linear-gradient(135deg, #D4A574, var(--champagne) 55%, #B8926C);
+      color: #1F1A16; box-shadow: 0 6px 16px rgba(196,164,132,0.35); flex: 1;
+    }
+    .btn.ghost {
+      background: rgba(255,255,255,0.55); color: var(--ink); border: 1px solid var(--line);
+    }
+    .btn.jade {
+      background: linear-gradient(135deg, #B8D4C4, var(--jade)); color: #1A2A22;
+    }
+    .btn.disabled, .btn:disabled {
+      opacity: 0.55; cursor: not-allowed; pointer-events: none;
+      background: #D8D0C8 !important; color: #5A524A !important; box-shadow: none !important;
+    }
+    .flash { font-size: 0.82rem; font-weight: 700; color: #3D7A58; opacity: 0; transition: opacity .25s; }
+    .flash.show { opacity: 1; }
+    .lock-row {
+      display: flex; align-items: flex-start; gap: 10px; margin-top: 10px;
+      padding: 12px; border-radius: 14px; background: rgba(232,180,176,0.18);
+      border: 1px solid rgba(232,180,176,0.35);
+    }
+    .lock-row input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--champagne); }
+    .lock-row label { font-size: 0.88rem; font-weight: 600; line-height: 1.35; color: var(--ink); }
+    .core-pill {
+      display: none; margin-bottom: 12px; padding: 12px 14px; border-radius: 16px;
+      border-left: 3px solid var(--champagne); background: rgba(255,252,248,0.9);
+      font-family: Fraunces, Georgia, serif; font-size: 1.02rem; line-height: 1.35; box-shadow: var(--shadow);
+    }
+    .core-pill.show { display: block; }
+    .core-pill .tag {
+      display: block; font-family: Outfit, sans-serif; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--champagne); margin-bottom: 4px;
+    }
+    .rail {
+      display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 10px;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    }
+    .rail::-webkit-scrollbar { height: 0; }
+    .tile {
+      flex: 0 0 auto; width: 148px; scroll-snap-align: start;
+      border-radius: 16px; overflow: hidden; border: 1px solid var(--line);
+      background: #fff; box-shadow: var(--shadow); text-decoration: none; color: var(--ink);
+      appearance: none; padding: 0; font: inherit; text-align: left; cursor: pointer; display: block;
+    }
+    .tile img, .tile video {
+      display: block; width: 100%; height: 190px; object-fit: cover; background: #EDE7E0;
+      pointer-events: none;
+    }
+    .tile .cap { padding: 8px 10px; font-size: 0.72rem; font-weight: 700; line-height: 1.3; }
+    .tile.wide { width: 220px; }
+    .tile.wide video, .tile.wide img { height: 124px; }
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .req-chip {
+      appearance: none; border: 1px solid var(--line); background: rgba(255,252,248,0.9);
+      border-radius: 18px; padding: 16px 12px; text-align: left; cursor: pointer;
+      box-shadow: var(--shadow); min-height: 84px; display: flex; flex-direction: column; gap: 4px;
+      font: inherit; color: var(--ink);
+    }
+    .req-chip .title { font-weight: 700; font-size: 1rem; }
+    .req-chip .sub { font-size: 0.72rem; color: var(--muted); }
+    .req-chip[aria-pressed="true"] {
+      border-color: var(--champagne); box-shadow: inset 0 0 0 1px var(--champagne), var(--shadow);
+    }
+    .focus-panel { display: none; margin-top: 12px; }
+    .focus-panel.open { display: block; }
+    .sell-grid { display: grid; gap: 10px; margin-top: 8px; }
+    .sell-card {
+      display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start;
+      padding: 14px 12px; border-radius: 18px; background: rgba(255,255,255,0.65);
+      border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .sell-ico {
+      width: 40px; height: 40px; border-radius: 14px; display: grid; place-items: center;
+      font-size: 1.05rem; font-weight: 800; background: rgba(196,164,132,0.22);
+    }
+    .sell-card strong { display: block; font-size: 0.95rem; margin-bottom: 3px; line-height: 1.25; }
+    .sell-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.4; margin: 0; }
+    .tint-chip {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.04em; border-radius: 999px; padding: 6px 10px; margin-bottom: 10px;
+      border: 1px solid var(--line); background: rgba(255,252,248,0.9);
+    }
+    .tint-chip.off { color: #8A5A3A; background: rgba(232,180,176,0.28); border-color: rgba(232,180,176,0.55); }
+    .tint-chip.on { color: #2F6B4A; background: rgba(168,197,181,0.4); border-color: rgba(168,197,181,0.7); }
+    .gate-box {
+      margin-top: 10px; padding: 12px; border-radius: 16px;
+      background: rgba(201,191,208,0.18); border: 1px dashed rgba(122,111,102,0.35);
+    }
+    .gate-box p { font-size: 0.8rem; color: var(--muted); line-height: 1.4; margin: 0 0 10px; }
+    .minion-chat {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .minion-lock {
+      font-size: 0.72rem; line-height: 1.4; color: #6B4A3A;
+      padding: 10px 12px; border-radius: 14px;
+      background: rgba(232,180,176,0.22); border: 1px solid rgba(232,180,176,0.45);
+    }
+    .minion-thread {
+      max-height: 340px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      display: flex; flex-direction: column; gap: 8px;
+      padding: 4px 2px 2px;
+    }
+    .bubble {
+      border-radius: 16px; padding: 10px 12px; border: 1px solid var(--line);
+      background: rgba(255,252,248,0.92); box-shadow: var(--shadow);
+    }
+    .bubble .who {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      margin-bottom: 6px;
+    }
+    .bubble .who strong { font-size: 0.78rem; font-weight: 800; }
+    .bubble .who .tag {
+      font-size: 0.58rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .bubble .body {
+      font-size: 0.86rem; line-height: 1.45; white-space: pre-wrap; color: var(--ink);
+    }
+    .bubble.role-kieran { border-left: 3px solid var(--champagne); }
+    .bubble.role-minion {
+      border-left: 3px solid #8A9E8E;
+      background: rgba(168,197,181,0.18);
+    }
+    .bubble.role-simpee { border-left: 3px solid var(--mist); }
+    .bubble.role-family { border-left: 3px solid var(--blush); }
+    .bubble.role-review, .bubble.role-other { opacity: 0.92; }
+    .minion-thread-empty {
+      text-align: center; color: var(--muted); font-size: 0.8rem; padding: 28px 12px;
+      border: 1px dashed rgba(122,111,102,0.35); border-radius: 16px;
+    }
+    .thread-meta {
+      font-size: 0.68rem; color: var(--muted); word-break: break-all; line-height: 1.35;
+    }
+    .foot-note {
+      margin-top: 14px; font-size: 0.7rem; color: var(--muted); line-height: 1.4; text-align: center;
+    }
+    .tabbar {
+      position: absolute; left: 0; right: 0; bottom: 0; height: var(--tab-h);
+      padding: 8px 8px var(--safe-b); display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+      background: rgba(255,252,248,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--line); z-index: 20;
+    }
+    .tab {
+      appearance: none; border: none; background: transparent; font: inherit; cursor: pointer;
+      border-radius: 14px; padding: 6px 2px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+      color: var(--muted);
+    }
+    .tab .ico {
+      width: 28px; height: 28px; border-radius: 10px; display: grid; place-items: center; font-size: 0.85rem;
+    }
+    .tab .lbl { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.01em; }
+    .tab[aria-selected="true"] { color: var(--ink); background: rgba(232,180,176,0.22); }
+    .tab[aria-selected="true"] .ico { background: rgba(196,164,132,0.28); }
+    .toast {
+      position: absolute; left: 50%; bottom: calc(var(--tab-h) + 12px);
+      transform: translateX(-50%) translateY(8px); background: var(--ink); color: #FBF7F2;
+      padding: 12px 18px; border-radius: 999px; font-weight: 700; font-size: 0.85rem;
+      opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 40;
+      max-width: 90%; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .player {
+      position: absolute; inset: 0; z-index: 60;
+      display: none; flex-direction: column; background: #120E0C; color: #FBF7F2;
+    }
+    .player.open { display: flex; }
+    .player-top {
+      flex: 0 0 auto; padding: calc(10px + var(--safe-t)) 12px 10px;
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(18, 14, 12, 0.92);
+      border-bottom: 1px solid rgba(255,252,248,0.08);
+    }
+    .player-back {
+      appearance: none; border: 1px solid rgba(255,252,248,0.22);
+      background: rgba(255,252,248,0.12); color: #FBF7F2;
+      border-radius: 999px; padding: 10px 14px; min-height: 44px;
+      font: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer;
+    }
+    .player-title {
+      flex: 1; min-width: 0; font-family: Fraunces, Georgia, serif; font-size: 0.95rem; font-weight: 700;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .player-stage {
+      flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;
+      position: relative; background: #000;
+    }
+    .player-stage video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+    .player-foot {
+      flex: 0 0 auto; padding: 10px 14px calc(12px + var(--safe-b));
+      display: flex; gap: 8px;
+      background: rgba(18, 14, 12, 0.92);
+      border-top: 1px solid rgba(255,252,248,0.08);
+    }
+    .player-foot .btn {
+      flex: 1; min-height: 48px;
+      background: rgba(255,252,248,0.12); color: #FBF7F2;
+      border: 1px solid rgba(255,252,248,0.22);
+    }
+    .app.player-open .tabbar, .app.player-open .toast { visibility: hidden; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div class="phone-shell">
+    <div class="app" role="application" aria-label="ShortKey Founder Desk">
+      <header class="status-bar">
+        <div class="brand-mark">
+          <img src="/shortkey-assets/logos/logo-icon.png" alt="" width="22" height="22" />
+          <span>ShortKey</span>
+        </div>
+        <span class="badge" id="accessBadge">INTERNAL</span>
+      </header>
+
+      <main class="scroll">
+        <div class="save-banner" id="saveBanner">
+          <strong>INTERNAL · Minion Chat bookmark</strong>
+          <p>Not a public product. Soft PIN unlocks Desk APIs. Phone bookmark uses shortkey.beauty (already on Vercel).</p>
+          <code id="bookmarkUrl">https://shortkey.beauty/desk/#family</code>
+          <div class="btn-row" style="margin-top:0">
+            <button type="button" class="btn primary" id="btnCopyBookmark">Copy bookmark</button>
+            <button type="button" class="btn ghost" id="btnCopyLocal">Copy this URL</button>
+          </div>
+        </div>
+
+        <div class="save-banner" id="installBanner" style="background:linear-gradient(135deg,rgba(201,191,208,0.32),rgba(168,197,181,0.28));border-color:rgba(201,191,208,0.55)">
+          <strong>Install on phone</strong>
+          <p id="installHint">
+            No App Store. Open this Desk once in Safari (iPhone) or Chrome (Android), then Add to Home Screen / Install app.
+            Looks like an app; soft PIN still required. Chat needs network.
+          </p>
+            <!-- Primary QR = shortkey.beauty (live /desk needs deploy; QR still points at correct future URL). -->
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:10px 0 8px">
+            <img src="/desk/minion-chat-qr.png" width="160" height="160" alt="QR for Minion Chat" style="display:block;border-radius:12px;background:#fff;border:1px solid rgba(42,36,32,0.12)" />
+            <p class="hint" style="margin:0;max-width:16rem;line-height:1.45">Scan - unlock with SITE_ACCESS_PASSWORD - Add to Home Screen.</p>
+          </div>
+          <code id="installUrl">https://shortkey.beauty/desk/#family</code>
+          <p class="hint" id="installSteps" style="margin:0 0 8px">
+            <strong>iPhone:</strong> Safari → Share → Add to Home Screen → name “Minion Desk”.<br />
+            <strong>Android:</strong> Chrome → ⋮ → Install app / Add to Home screen.<br />
+            <strong>LAN:</strong> phone cannot use localhost — same Wi‑Fi use http://&lt;PC-IP&gt;:3005/desk/#family while Beauty runs on PC. Prefer HTTPS deploy for iPhone.
+          </p>
+          <div class="btn-row" style="margin-top:0">
+            <button type="button" class="btn primary" id="btnCopyInstall">Copy install URL</button>
+            <a class="btn ghost" href="/minion-app/">Install guide</a>
+          </div>
+        </div>
+
+        <div class="warn-banner" id="prodWarn" role="status"></div>
+
+        <div class="core-pill" id="corePill" aria-live="polite">
+          <span class="tag">Core Value · Locked</span>
+          <div id="corePillText"></div>
+        </div>
+
+        <!-- WORK -->
+        <section class="panel active" id="panel-work" data-tab="work" aria-label="Work">
+          <h1 class="hero-title">Work</h1>
+          <p class="hero-sub">Direction, Founder Promise, and soft access for Desk Minion Chat.</p>
+
+          <div class="family-online" id="familyOnlineWork" aria-live="polite">
+            <div class="head">
+              <h2>Family online</h2>
+              <span class="online-count" id="onlineCountWork">…</span>
+            </div>
+            <div class="member-list" id="memberListWork">
+              <p class="hint">Checking who is connected…</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Soft access</h2>
+            <p class="hint">Optional PIN for Minion Chat on production. Secrets stay on the server — never in this page.</p>
+            <label class="field" for="deskPassword">Access password</label>
+            <input type="password" id="deskPassword" placeholder="SITE_ACCESS_PASSWORD" autocomplete="current-password" />
+            <div class="btn-row">
+              <button type="button" class="btn primary" id="btnUnlock">Unlock / check</button>
+              <span class="flash" id="flashUnlock">OK</span>
+            </div>
+          </div>
+
+          <div class="subtabs" role="tablist">
+            <button type="button" data-sub="dir" aria-pressed="true">Direction</button>
+            <button type="button" data-sub="promise" aria-pressed="false">Promise</button>
+          </div>
+          <div class="subpanel open" id="sub-dir">
+            <div class="card">
+              <h2>Your Direction</h2>
+              <p class="hint">Working brief for this season. Saved on this device only. Does not change Beauty home.</p>
+              <label class="field" for="directionText">Brand / season brief</label>
+              <textarea id="directionText" placeholder="e.g. soft translucency · creator-first · street energy…"></textarea>
+              <div class="btn-row">
+                <button type="button" class="btn primary" id="btnSaveDirection">Save</button>
+                <span class="flash" id="flashDirection">Saved</span>
+              </div>
+            </div>
+          </div>
+          <div class="subpanel" id="sub-promise">
+            <div class="card">
+              <h2>Founder Promise</h2>
+              <p class="hint">Your message to creators. Optional lock as Core Value.</p>
+              <label class="field" for="promiseText">Founder Promise</label>
+              <textarea id="promiseText" placeholder="Write a sincere promise for young creators…"></textarea>
+              <div class="lock-row">
+                <input type="checkbox" id="lockCore" />
+                <label for="lockCore">Lock as Core Value</label>
+              </div>
+              <div class="btn-row">
+                <button type="button" class="btn primary" id="btnSavePromise">Save</button>
+                <button type="button" class="btn ghost" id="btnUnlockCore">Unlock</button>
+                <span class="flash" id="flashPromise">Saved</span>
+              </div>
+            </div>
+          </div>
+          <p class="foot-note">Founder desk · English only · Beauty Coming Soon stays locked.</p>
+        </section>
+
+        <!-- REQUESTS -->
+        <section class="panel" id="panel-requests" data-tab="requests" aria-label="Requests">
+          <h1 class="hero-title">Requests</h1>
+          <p class="hero-sub">Tap one chip · one focus form.</p>
+          <div class="req-grid" id="reqGrid"></div>
+          <div class="focus-panel card" id="focusPanel">
+            <h3 id="focusTitle" style="font-family:Fraunces,Georgia,serif;font-size:1.15rem;margin-bottom:4px"></h3>
+            <p class="hint" id="focusLead"></p>
+            <label class="field" for="focusNote">Quick note</label>
+            <textarea id="focusNote" style="min-height:90px" placeholder="What you need…"></textarea>
+            <div class="btn-row">
+              <button type="button" class="btn primary" id="btnSaveFocus">Save note</button>
+              <a class="btn jade" id="btnOpenFull" href="/request">Full Intake</a>
+              <span class="flash" id="flashFocus">Saved</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SHOWCASE -->
+        <section class="panel" id="panel-showcase" data-tab="showcase" aria-label="Showcase">
+          <h1 class="hero-title">Showcase</h1>
+          <p class="hero-sub">Assets and selling points for brand meetings. Honest TINT status.</p>
+
+          <div class="card">
+            <h2>Why ShortKey</h2>
+            <p class="pitch">
+              ShortKey = <em>editorial-first beauty discovery</em> —
+              magazine feel × creator trust × AI matching × localized commerce.
+              Not a pure e-commerce shelf.<br /><br />
+              Motto: ShortKey does not imitate the frame. ShortKey captures vitality.<br />
+              <em>No income guarantees. Visuals here are presentation samples.</em>
+            </p>
+          </div>
+
+          <div class="card">
+            <h2>How we help brands</h2>
+            <div class="sell-grid">
+              <article class="sell-card">
+                <div class="sell-ico" aria-hidden="true">M</div>
+                <div>
+                  <strong>Magazine · downloadable</strong>
+                  <p>Editorial seed — not hard-sell shelves.</p>
+                </div>
+              </article>
+              <article class="sell-card">
+                <div class="sell-ico" aria-hidden="true">T</div>
+                <div>
+                  <strong>Try-on + Skin Analysis</strong>
+                  <p>Roadmap capability. Shared as context, not a live claim.</p>
+                </div>
+              </article>
+              <article class="sell-card">
+                <div class="sell-ico" aria-hidden="true">R</div>
+                <div>
+                  <strong>Guest records</strong>
+                  <p>Guest history supports later try-on and skin progress.</p>
+                </div>
+              </article>
+              <article class="sell-card">
+                <div class="sell-ico" aria-hidden="true">P</div>
+                <div>
+                  <strong>Product storytelling</strong>
+                  <p>Magazine × try-on × trust — brands tell product stories.</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="gate-box" id="tintGateBox">
+              <span class="tint-chip off" id="tintChip">Banuba TINT · Not connected yet</span>
+              <p id="tintGateCopy">
+                Try-on and skin analysis are roadmap capabilities.
+                <strong>Interactive try-on opens only after Banuba TINT is connected.</strong>
+              </p>
+              <div class="btn-row">
+                <button type="button" class="btn primary disabled" id="btnTryPlay" disabled aria-disabled="true">
+                  Try-on unlocks after Banuba TINT is connected
+                </button>
+                <a class="btn ghost" href="/shortkey-assets/magazine-pages/P8-virtual-tryon.png" target="_blank" rel="noopener">View Try-on poster</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Platform look</h2>
+            <p class="hint">Sample creative assets for meetings.</p>
+            <p class="field" style="margin-top:4px">Hero · Flagship video</p>
+            <div class="rail" aria-label="Hero video">
+              <button type="button" class="tile wide" data-play="/shortkey-assets/videos/V1-flagship-60s-homepage.mp4" data-title="V1 Flagship · 60s homepage">
+                <video muted playsinline preload="metadata" poster="/shortkey-assets/magazine-pages/P1-cover.png"
+                  src="/shortkey-assets/videos/V1-flagship-60s-homepage.mp4#t=0.5"></video>
+                <div class="cap">V1 Flagship · Tap to watch</div>
+              </button>
+            </div>
+            <p class="field">Magazine · P1–P8</p>
+            <div class="rail" aria-label="Magazine pages">
+              <a class="tile" href="/shortkey-assets/magazine-pages/P1-cover.png" target="_blank" rel="noopener">
+                <img src="/shortkey-assets/magazine-pages/P1-cover.png" alt="P1 cover" loading="lazy" />
+                <div class="cap">P1 Cover</div>
+              </a>
+              <a class="tile" href="/shortkey-assets/magazine-pages/P3-kbeauty.png" target="_blank" rel="noopener">
+                <img src="/shortkey-assets/magazine-pages/P3-kbeauty.png" alt="P3" loading="lazy" />
+                <div class="cap">P3 K-Beauty</div>
+              </a>
+              <a class="tile" href="/shortkey-assets/magazine-pages/P8-virtual-tryon.png" target="_blank" rel="noopener">
+                <img src="/shortkey-assets/magazine-pages/P8-virtual-tryon.png" alt="P8" loading="lazy" />
+                <div class="cap">P8 Try-on</div>
+              </a>
+            </div>
+            <div class="btn-row">
+              <a class="btn jade" href="/app/?mode=marketing&amp;share=client#showcase">Full Brand Preview</a>
+              <a class="btn ghost" href="/shortkey-assets/dna.html">DNA gallery</a>
+            </div>
+          </div>
+          <p class="foot-note">Client-safe samples · no fake partnerships · no income guarantees.</p>
+        </section>
+
+        <!-- FAMILY -->
+        <section class="panel" id="panel-family" data-tab="family" aria-label="Family">
+          <h1 class="hero-title">Minion Chat</h1>
+          <p class="hero-sub">Shared family thread · Minion reports only · seats reply in one box.</p>
+
+          <div class="family-online" id="familyOnlineFamily" aria-live="polite">
+            <div class="head">
+              <h2>Family online</h2>
+              <span class="online-count" id="onlineCountFamily">…</span>
+            </div>
+            <div class="member-list" id="memberListFamily">
+              <p class="hint">Checking who is connected…</p>
+            </div>
+          </div>
+
+          <div class="card minion-chat">
+            <h2>Minion Chat Box</h2>
+            <p class="hint">Kieran types → Minion reports verbatim → Simpee + Kura · Gor Gor · Senti · Agent R post in the <em>same</em> thread. Not private ask:* silos.</p>
+            <div class="minion-lock">Minion = messenger only. Report cannot edit / rewrite Kieran’s words. Status: GOR_GOR_REVIEW.</div>
+            <div class="minion-thread" id="minionThread" aria-live="polite">
+              <div class="minion-thread-empty" id="minionThreadEmpty">No thread yet. Send a message to open the shared board.</div>
+            </div>
+            <p class="thread-meta" id="minionThreadMeta"></p>
+            <label class="field" for="minionMessage">Message to family</label>
+            <textarea id="minionMessage" style="min-height:88px" placeholder="e.g. Platform development status — each seat update your area…"></textarea>
+            <div class="btn-row">
+              <button type="button" class="btn primary" id="btnMinionSend">Send via Minion</button>
+              <button type="button" class="btn ghost" id="btnMinionRefresh">Refresh</button>
+              <span class="flash" id="flashMinion">Posted</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Humans</h2>
+            <p class="hint">Maya = ASI:One · Lab :3008 (Base44 portal deleted). Sky is human (email). Ping Sky outside this chat box.</p>
+            <div class="btn-row">
+              <a class="btn jade" id="btnMaya" href="http://127.0.0.1:3008/internal/maya" target="_blank" rel="noopener">Open Maya Lab</a>
+              <a class="btn ghost" id="btnSky" href="mailto:sky@shortkey.beauty?subject=ShortKey%20·%20from%20Founder%20Desk">Email Sky</a>
+            </div>
+          </div>
+          <p class="foot-note">Board = Base44 Minion Message · app 6a5f20ace942aedd542584a2 · parent_id thread. Keys stay on server. Single-seat ask UI removed — use npm run ask:* or Minion seats above.</p>
+        </section>
+      </main>
+
+      <nav class="tabbar" role="tablist" aria-label="Desk tabs">
+        <button type="button" class="tab" role="tab" data-tab="work" aria-selected="true">
+          <span class="ico" aria-hidden="true">✎</span><span class="lbl">Work</span>
+        </button>
+        <button type="button" class="tab" role="tab" data-tab="requests" aria-selected="false">
+          <span class="ico" aria-hidden="true">◆</span><span class="lbl">Requests</span>
+        </button>
+        <button type="button" class="tab" role="tab" data-tab="showcase" aria-selected="false">
+          <span class="ico" aria-hidden="true">✧</span><span class="lbl">Showcase</span>
+        </button>
+        <button type="button" class="tab" role="tab" data-tab="family" aria-selected="false">
+          <span class="ico" aria-hidden="true">◎</span><span class="lbl">Family</span>
+        </button>
+      </nav>
+      <div class="toast" id="toast" role="status"></div>
+
+      <div class="player" id="videoPlayer" aria-hidden="true" role="dialog" aria-label="Video player">
+        <div class="player-top">
+          <button type="button" class="player-back" id="btnPlayerBack">← Return</button>
+          <div class="player-title" id="playerTitle">Video</div>
+        </div>
+        <div class="player-stage">
+          <video id="playerVideo" playsinline controls preload="auto"></video>
+        </div>
+        <div class="player-foot">
+          <button type="button" class="btn" id="btnPlayerClose">← Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+(function () {
+  var BOOKMARK = "http://localhost:3005/desk/#family";
+  /** Canonical INTERNAL phone URL — path on shortkey.beauty (deploys today). Not desk.shortkey.world until DNS. */
+  var BOOKMARK_ALT = "https://shortkey.beauty/desk/#family";
+  var BOOKMARK_MINION = "/desk/#family";
+  var DIRECTION_KEY = "shortkey-desk-direction-v1";
+  var CORE_VALUE_KEY = "shortkey-desk-core-value-v1";
+  var CORE_LOCKED_KEY = "shortkey-desk-core-locked-v1";
+  var FOCUS_PREFIX = "shortkey-desk-focus-v1-";
+  var PASS_KEY = "shortkey-desk-pass-session-v1";
+  var LEGACY_DIR = "shortkey-founder-direction-v1";
+  var LEGACY_CORE = "shortkey-founder-core-value-v2";
+  var LEGACY_LOCK = "shortkey-founder-core-locked-v2";
+  var TABS = ["work", "requests", "showcase", "family"];
+  var MAYA_PORTAL = "http://127.0.0.1:3008/internal/maya";
+  var SKY_EMAIL = "sky@shortkey.beauty";
+
+  var TINT_CONNECTED = false;
+  try {
+    if (new URLSearchParams(location.search).get("tint") === "connected") TINT_CONNECTED = true;
+  } catch (e) {}
+
+  var REQUESTS = [
+    { id: "brand", title: "New Brand", sub: "Intake", lead: "Story · products · cultural fit" },
+    { id: "season", title: "Season", sub: "Campaign", lead: "Season campaign structure" },
+    { id: "creator", title: "Creator", sub: "Talent", lead: "Young visual voice (no auto-outreach)" },
+    { id: "poster", title: "Poster", sub: "Visual", lead: "Visual layout direction" },
+    { id: "video", title: "Video", sub: "Motion", lead: "Clip rhythm / frame feel" },
+    { id: "magazine", title: "Magazine", sub: "Issue", lead: "Issue theme and editorial direction" }
+  ];
+
+  var activeFocus = null;
+  var passwordRequired = false;
+  var minionRootId = "";
+  var MINION_ROOT_KEY = "shortkey-desk-minion-root-v1";
+
+  try {
+    minionRootId = sessionStorage.getItem(MINION_ROOT_KEY) || "";
+  } catch (e) {
+    minionRootId = "";
+  }
+
+  function toast(msg) {
+    var el = document.getElementById("toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { el.classList.remove("show"); }, 1800);
+  }
+  function flash(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add("show");
+    clearTimeout(el._t);
+    el._t = setTimeout(function () { el.classList.remove("show"); }, 1600);
+  }
+  function getPass() {
+    try { return sessionStorage.getItem(PASS_KEY) || document.getElementById("deskPassword").value || ""; }
+    catch (e) { return document.getElementById("deskPassword").value || ""; }
+  }
+  function setPass(v) {
+    try { if (v) sessionStorage.setItem(PASS_KEY, v); } catch (e) {}
+  }
+
+  function showWarn(text) {
+    var w = document.getElementById("prodWarn");
+    if (!text) { w.classList.remove("show"); w.textContent = ""; return; }
+    w.textContent = text;
+    w.classList.add("show");
+  }
+
+  function showTab(name) {
+    if (TABS.indexOf(name) < 0) name = "work";
+    document.querySelectorAll(".panel").forEach(function (p) {
+      p.classList.toggle("active", p.getAttribute("data-tab") === name);
+    });
+    document.querySelectorAll(".tab").forEach(function (t) {
+      t.setAttribute("aria-selected", t.getAttribute("data-tab") === name ? "true" : "false");
+    });
+    try { history.replaceState(null, "", location.pathname + location.search + "#" + name); } catch (e) {}
+  }
+
+  function refreshCorePill() {
+    var locked = false, text = "";
+    try {
+      locked = localStorage.getItem(CORE_LOCKED_KEY) === "1";
+      text = localStorage.getItem(CORE_VALUE_KEY) || "";
+    } catch (e) {}
+    var pill = document.getElementById("corePill");
+    if (locked && text) {
+      document.getElementById("corePillText").textContent = text;
+      pill.classList.add("show");
+    } else pill.classList.remove("show");
+  }
+
+  function renderMemberList(listEl, countEl, data) {
+    if (!listEl) return;
+    if (!data || !data.members) {
+      listEl.innerHTML = '<p class="hint">Could not load family status. Is Beauty :3005 running?</p>';
+      if (countEl) countEl.textContent = "—";
+      return;
+    }
+    if (countEl) countEl.textContent = data.onlineCount + " / " + data.total + " online";
+    listEl.innerHTML = "";
+    data.members.forEach(function (m) {
+      var on = m.status === "online";
+      var row = document.createElement("div");
+      row.className = "member-row";
+      row.innerHTML =
+        '<span class="dot ' + (on ? "on" : "") + '" aria-hidden="true"></span>' +
+        '<div class="meta"><strong>' + m.name + '</strong><span>' + m.role + " · " + (m.note || "") + "</span></div>" +
+        '<span class="state ' + (on ? "on" : "") + '">' + (on ? "Online" : "Offline") + "</span>";
+      listEl.appendChild(row);
+    });
+  }
+
+  async function loadFamilyStatus() {
+    try {
+      var res = await fetch("/api/family/status", { cache: "no-store" });
+      var data = await res.json();
+      if (!res.ok || !data.ok) throw new Error("bad status");
+      renderMemberList(
+        document.getElementById("memberListWork"),
+        document.getElementById("onlineCountWork"),
+        data,
+      );
+      renderMemberList(
+        document.getElementById("memberListFamily"),
+        document.getElementById("onlineCountFamily"),
+        data,
+      );
+      var badge = document.getElementById("accessBadge");
+      if (badge && data.onlineCount != null) {
+        badge.textContent = data.onlineCount + " online";
+      }
+    } catch (e) {
+      renderMemberList(document.getElementById("memberListWork"), document.getElementById("onlineCountWork"), null);
+      renderMemberList(document.getElementById("memberListFamily"), document.getElementById("onlineCountFamily"), null);
+    }
+  }
+
+  function migrateLegacy() {
+    try {
+      if (!localStorage.getItem(DIRECTION_KEY) && localStorage.getItem(LEGACY_DIR)) {
+        localStorage.setItem(DIRECTION_KEY, localStorage.getItem(LEGACY_DIR));
+      }
+      if (!localStorage.getItem(CORE_VALUE_KEY) && localStorage.getItem(LEGACY_CORE)) {
+        localStorage.setItem(CORE_VALUE_KEY, localStorage.getItem(LEGACY_CORE));
+      }
+      if (!localStorage.getItem(CORE_LOCKED_KEY) && localStorage.getItem(LEGACY_LOCK)) {
+        localStorage.setItem(CORE_LOCKED_KEY, localStorage.getItem(LEGACY_LOCK));
+      }
+    } catch (e) {}
+  }
+
+  function loadFields() {
+    migrateLegacy();
+    try {
+      document.getElementById("directionText").value = localStorage.getItem(DIRECTION_KEY) || "";
+      document.getElementById("promiseText").value = localStorage.getItem(CORE_VALUE_KEY) || "";
+      document.getElementById("lockCore").checked = localStorage.getItem(CORE_LOCKED_KEY) === "1";
+      var saved = sessionStorage.getItem(PASS_KEY) || "";
+      if (saved) document.getElementById("deskPassword").value = saved;
+    } catch (e) {}
+    refreshCorePill();
+  }
+
+  function buildRequests() {
+    var grid = document.getElementById("reqGrid");
+    grid.innerHTML = "";
+    REQUESTS.forEach(function (r) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "req-chip";
+      btn.setAttribute("data-id", r.id);
+      btn.setAttribute("aria-pressed", "false");
+      btn.innerHTML = '<span class="title">' + r.title + '</span><span class="sub">' + r.sub + "</span>";
+      btn.addEventListener("click", function () {
+        activeFocus = r;
+        document.querySelectorAll(".req-chip").forEach(function (c) {
+          c.setAttribute("aria-pressed", c.getAttribute("data-id") === r.id ? "true" : "false");
+        });
+        document.getElementById("focusTitle").textContent = r.title;
+        document.getElementById("focusLead").textContent = r.lead;
+        document.getElementById("btnOpenFull").href = "/request#" + r.id;
+        try {
+          document.getElementById("focusNote").value = localStorage.getItem(FOCUS_PREFIX + r.id) || "";
+        } catch (e) { document.getElementById("focusNote").value = ""; }
+        document.getElementById("focusPanel").classList.add("open");
+      });
+      grid.appendChild(btn);
+    });
+  }
+
+  function applyTintGate() {
+    var chip = document.getElementById("tintChip");
+    var btn = document.getElementById("btnTryPlay");
+    var copy = document.getElementById("tintGateCopy");
+    if (TINT_CONNECTED) {
+      chip.textContent = "Banuba TINT · Connected";
+      chip.classList.remove("off");
+      chip.classList.add("on");
+      btn.disabled = false;
+      btn.removeAttribute("aria-disabled");
+      btn.classList.remove("disabled");
+      btn.textContent = "Open Try-on (TINT connected)";
+      btn.onclick = function () { location.href = "/try-on"; };
+      if (copy) copy.innerHTML = "Interactive try-on is connected for QA preview only. Avoid performance claims.";
+    }
+  }
+
+  async function checkUnlockStatus() {
+    try {
+      var res = await fetch("/api/desk/unlock");
+      var data = await res.json();
+      passwordRequired = !!data.passwordRequired;
+      document.getElementById("accessBadge").textContent = passwordRequired ? "Protected" : "Open local";
+      if (data.warn) showWarn(data.warn);
+      else if (!passwordRequired && /vercel\.app|shortkey\./i.test(location.hostname)) {
+        showWarn("INTERNAL tip: set SITE_ACCESS_PASSWORD on Vercel so Minion Chat is not open without a PIN.");
+      } else showWarn("");
+    } catch (e) {
+      showWarn("Could not reach unlock API. Local static open is fine; Minion Chat needs the Next server.");
+    }
+  }
+
+  document.getElementById("btnUnlock").addEventListener("click", async function () {
+    var password = document.getElementById("deskPassword").value;
+    try {
+      var res = await fetch("/api/desk/unlock", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: password })
+      });
+      var data = await res.json();
+      if (!res.ok || !data.ok) {
+        toast(data.error || "Unlock failed");
+        return;
+      }
+      setPass(password);
+      passwordRequired = !!data.passwordRequired;
+      document.getElementById("accessBadge").textContent = passwordRequired ? "Unlocked" : "Open local";
+      if (data.warn) showWarn(data.warn);
+      else showWarn("");
+      flash("flashUnlock");
+      toast(passwordRequired ? "Unlocked" : "Local access OK");
+    } catch (e) {
+      toast("Unlock request failed");
+    }
+  });
+
+  function escapeHtml(s) {
+    return String(s || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function renderMinionThread(thread) {
+    var box = document.getElementById("minionThread");
+    var empty = document.getElementById("minionThreadEmpty");
+    var meta = document.getElementById("minionThreadMeta");
+    if (!box) return;
+    var list = Array.isArray(thread) ? thread : [];
+    if (!list.length) {
+      box.innerHTML = '<div class="minion-thread-empty" id="minionThreadEmpty">No thread yet. Send a message to open the shared board.</div>';
+      if (meta) meta.textContent = minionRootId ? ("Thread id: " + minionRootId) : "";
+      return;
+    }
+    var html = list.map(function (b) {
+      var role = b.role || "other";
+      var tag = b.message_type === "minion_hop" ? "report only · verbatim" : (b.message_type || "");
+      return (
+        '<article class="bubble role-' + escapeHtml(role) + '">' +
+          '<div class="who"><strong>' + escapeHtml(b.from_seat || "Seat") + '</strong>' +
+          '<span class="tag">' + escapeHtml(tag) + '</span></div>' +
+          '<div class="body">' + escapeHtml(b.content || "") + '</div>' +
+        '</article>'
+      );
+    }).join("");
+    box.innerHTML = html;
+    box.scrollTop = box.scrollHeight;
+    if (meta) {
+      meta.textContent = minionRootId
+        ? ("Shared Message thread · root " + minionRootId + " · GOR_GOR_REVIEW")
+        : "Shared Message thread · GOR_GOR_REVIEW";
+    }
+  }
+
+  async function loadMinionThread(rootId) {
+    var id = (rootId || minionRootId || "").trim();
+    if (!id) {
+      renderMinionThread([]);
+      return;
+    }
+    try {
+      var res = await fetch("/api/minion/chat?root_id=" + encodeURIComponent(id), { cache: "no-store" });
+      var data = await res.json();
+      if (!res.ok) {
+        toast(data.error || "Could not load thread");
+        return;
+      }
+      minionRootId = data.relay_root_id || id;
+      try { sessionStorage.setItem(MINION_ROOT_KEY, minionRootId); } catch (e) {}
+      renderMinionThread(data.thread || []);
+    } catch (e) {
+      toast("Thread load failed — is Beauty :3005 running?");
+    }
+  }
+
+  document.getElementById("btnMinionRefresh").addEventListener("click", function () {
+    loadMinionThread(minionRootId);
+  });
+
+  document.getElementById("btnMinionSend").addEventListener("click", async function () {
+    var message = document.getElementById("minionMessage").value.trim();
+    if (!message) { toast("Write a message"); return; }
+    var btn = document.getElementById("btnMinionSend");
+    var box = document.getElementById("minionThread");
+    btn.disabled = true;
+    box.innerHTML = '<div class="minion-thread-empty">Minion reporting · family seating… (may take a minute)</div>';
+    try {
+      var res = await fetch("/api/minion/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: message,
+          password: getPass()
+        })
+      });
+      var data = await res.json();
+      if (!res.ok) {
+        box.innerHTML = '<div class="minion-thread-empty">' + escapeHtml(data.error || ("Failed (" + res.status + ")")) + '</div>';
+        toast(data.code === "unauthorized" ? "Password needed" : "Minion Chat failed");
+        return;
+      }
+      minionRootId = data.relay_root_id || "";
+      try { if (minionRootId) sessionStorage.setItem(MINION_ROOT_KEY, minionRootId); } catch (e) {}
+      if (data.thread && data.thread.length) {
+        renderMinionThread(data.thread);
+      } else if (minionRootId) {
+        await loadMinionThread(minionRootId);
+      } else {
+        renderMinionThread([]);
+      }
+      if (data.warnings && data.warnings.length) {
+        toast("Posted with warnings");
+      } else {
+        flash("flashMinion");
+        toast("Family thread updated");
+      }
+      document.getElementById("minionMessage").value = "";
+    } catch (e) {
+      box.innerHTML = '<div class="minion-thread-empty">Network error. Start Beauty on :3005 (npm run dev).</div>';
+      toast("Network error");
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  if (minionRootId) {
+    loadMinionThread(minionRootId);
+  }
+  document.getElementById("btnCopyBookmark").addEventListener("click", function () {
+    var localHost =
+      location.hostname === "localhost" ||
+      location.hostname === "127.0.0.1";
+    var url = localHost ? BOOKMARK : BOOKMARK_ALT;
+    document.getElementById("bookmarkUrl").textContent = url;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () { toast("INTERNAL Minion bookmark copied"); });
+    } else prompt("Copy:", url);
+  });
+  document.getElementById("btnCopyLocal").addEventListener("click", function () {
+    var url = location.origin + BOOKMARK_MINION;
+    document.getElementById("bookmarkUrl").textContent = url;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () { toast("This-host Minion URL copied"); });
+    } else prompt("Copy:", url);
+  });
+
+  document.querySelectorAll(".tab").forEach(function (tab) {
+    tab.addEventListener("click", function () { showTab(tab.getAttribute("data-tab")); });
+  });
+  document.querySelectorAll(".subtabs button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var sub = b.getAttribute("data-sub");
+      document.querySelectorAll(".subtabs button").forEach(function (x) {
+        x.setAttribute("aria-pressed", x === b ? "true" : "false");
+      });
+      document.getElementById("sub-dir").classList.toggle("open", sub === "dir");
+      document.getElementById("sub-promise").classList.toggle("open", sub === "promise");
+    });
+  });
+
+  document.getElementById("btnSaveDirection").addEventListener("click", function () {
+    var v = document.getElementById("directionText").value.trim();
+    try { localStorage.setItem(DIRECTION_KEY, v); } catch (e) {}
+    flash("flashDirection");
+    toast(v ? "Direction saved" : "Cleared");
+  });
+  document.getElementById("btnSavePromise").addEventListener("click", function () {
+    var v = document.getElementById("promiseText").value.trim();
+    var lock = document.getElementById("lockCore").checked;
+    if (lock && !v) { toast("Write a Promise first"); return; }
+    try {
+      localStorage.setItem(CORE_VALUE_KEY, v);
+      localStorage.setItem(CORE_LOCKED_KEY, lock ? "1" : "0");
+    } catch (e) {}
+    refreshCorePill();
+    flash("flashPromise");
+    toast(lock ? "Core Value locked" : "Promise saved");
+  });
+  document.getElementById("btnUnlockCore").addEventListener("click", function () {
+    try { localStorage.setItem(CORE_LOCKED_KEY, "0"); } catch (e) {}
+    document.getElementById("lockCore").checked = false;
+    refreshCorePill();
+    toast("Unlocked");
+  });
+  document.getElementById("btnSaveFocus").addEventListener("click", function () {
+    if (!activeFocus) { toast("Tap a request first"); return; }
+    try { localStorage.setItem(FOCUS_PREFIX + activeFocus.id, document.getElementById("focusNote").value.trim()); } catch (e) {}
+    flash("flashFocus");
+    toast("Note saved");
+  });
+
+  var playerEl = document.getElementById("videoPlayer");
+  var playerVideo = document.getElementById("playerVideo");
+  var appEl = document.querySelector(".app");
+  function closePlayer() {
+    playerVideo.pause();
+    playerVideo.removeAttribute("src");
+    playerVideo.load();
+    playerEl.classList.remove("open");
+    playerEl.setAttribute("aria-hidden", "true");
+    appEl.classList.remove("player-open");
+    showTab("showcase");
+  }
+  function openPlayer(src, title) {
+    document.getElementById("playerTitle").textContent = title || "Video";
+    playerVideo.src = src;
+    playerEl.classList.add("open");
+    playerEl.setAttribute("aria-hidden", "false");
+    appEl.classList.add("player-open");
+    var p = playerVideo.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  document.querySelectorAll("[data-play]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openPlayer(btn.getAttribute("data-play"), btn.getAttribute("data-title") || "Video");
+    });
+  });
+  document.getElementById("btnPlayerBack").addEventListener("click", closePlayer);
+  document.getElementById("btnPlayerClose").addEventListener("click", closePlayer);
+
+  document.getElementById("btnMaya").href = MAYA_PORTAL;
+  document.getElementById("btnSky").href = "mailto:" + SKY_EMAIL + "?subject=" + encodeURIComponent("ShortKey · from Founder Desk");
+  function isLocalHost() {
+    var h = location.hostname;
+    return h === "localhost" || h === "127.0.0.1" || h === "::1";
+  }
+  function isPrivateLanHost() {
+    return /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(location.hostname);
+  }
+  function installUrlForDisplay() {
+    if (isLocalHost()) return BOOKMARK_ALT + "  ·  LAN: http://<PC-IP>:3005/desk/#family";
+    return location.origin + BOOKMARK_MINION;
+  }
+  function installUrlForCopy() {
+    if (isLocalHost()) return BOOKMARK_ALT;
+    return location.origin + BOOKMARK_MINION;
+  }
+  (function refreshBookmarkDisplay() {
+    document.getElementById("bookmarkUrl").textContent = isLocalHost()
+      ? BOOKMARK
+      : BOOKMARK_ALT;
+    var installEl = document.getElementById("installUrl");
+    if (installEl) installEl.textContent = installUrlForDisplay();
+    var hint = document.getElementById("installHint");
+    if (hint && isLocalHost()) {
+      hint.textContent =
+        "Phones cannot reach localhost. Prefer https://shortkey.beauty/desk/#family — or same Wi‑Fi LAN http://<PC-IP>:3005/desk/#family while npm run dev is on. Soft PIN still required.";
+    } else if (hint && isPrivateLanHost()) {
+      hint.textContent =
+        "You’re on LAN HTTP. Chrome Android often allows Add to Home Screen; iPhone usually needs HTTPS (shortkey.beauty). Soft PIN still required.";
+    }
+  })();
+
+  var btnCopyInstall = document.getElementById("btnCopyInstall");
+  if (btnCopyInstall) {
+    btnCopyInstall.addEventListener("click", function () {
+      var url = installUrlForCopy();
+      document.getElementById("installUrl").textContent = url;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () { toast("Install URL copied"); });
+      } else prompt("Copy:", url);
+    });
+  }
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/desk/sw.js", { scope: "/desk/" }).catch(function () {});
+  }
+
+  buildRequests();
+  loadFields();
+  loadFamilyStatus();
+  applyTintGate();
+  checkUnlockStatus();
+
+  var hash = (location.hash || "").replace(/^#/, "");
+  showTab(TABS.indexOf(hash) >= 0 ? hash : "work");
+})();
+  </script>
+</body>
+</html>

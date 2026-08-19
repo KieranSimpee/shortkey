@@ -1,0 +1,6 @@
+﻿# Logo lock · magazine-demo assets
+# shortkey-logo-lilac.png = logo-locked Shortkey_Logo_lilac.png (=== founder attached)
+# shortkey-primary.png = /logo/shortkey-primary.png production lilac
+# shortkey-logo-lilac-on-dark.png = /logo/shortkey-primary-on-dark.png
+# Prefer production /logo/* when served by Next; relative ./assets/* for static Copilot HTML.
+# GOR_GOR_REVIEW · do not invent wordmarks

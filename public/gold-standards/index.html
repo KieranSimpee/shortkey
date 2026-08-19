@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gold Standards Preview · ShortKey · GOR_GOR_REVIEW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Merriweather:wght@400;700&family=Montserrat:wght@500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .hub-hero {
+      min-height: 72vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 6rem 1.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hub-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 40%, rgba(201, 169, 98, 0.18), transparent 65%),
+        linear-gradient(180deg, #efe8da 0%, var(--cream) 55%, #e8dfd0 100%);
+      z-index: 0;
+    }
+    .hub-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 40rem;
+    }
+    .hub-brand {
+      font-family: var(--font-hero);
+      font-weight: 700;
+      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      margin: 0 0 0.75rem;
+    }
+    .hub-tag {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--sakura);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin: 0 0 1.25rem;
+    }
+    .hub-lede {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      margin: 0 auto 1.5rem;
+      max-width: 32rem;
+    }
+    .hub-meta {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      color: var(--soft-brown);
+      letter-spacing: 0.06em;
+    }
+    .gallery {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+    }
+    .gallery-card {
+      grid-column: span 4;
+      display: block;
+      padding: 1.75rem 1.5rem 1.5rem;
+      background: linear-gradient(145deg, rgba(250, 247, 240, 0.95), rgba(245, 240, 230, 0.7));
+      border: 1px solid rgba(139, 115, 85, 0.18);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      min-height: 11rem;
+    }
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 32px rgba(45, 74, 62, 0.08);
+    }
+    .gallery-card .num {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      margin-bottom: 0.75rem;
+    }
+    .gallery-card h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.65rem;
+      color: var(--deep-green);
+      letter-spacing: 0.03em;
+      margin: 0 0 0.5rem;
+      line-height: 1.25;
+    }
+    .gallery-card p {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin: 0;
+      color: var(--charcoal);
+      opacity: 0.85;
+    }
+    .note {
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      color: var(--soft-brown);
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .gallery-card { grid-column: span 6; }
+    }
+    @media (max-width: 600px) {
+      .gallery-card { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body class="atmosphere">
+  <div class="preview-banner">
+    STAGING ONLY · visual direction = Lovart canvas pnMAt6CTYc · GOR_GOR_REVIEW · not live Beauty V1
+  </div>
+
+  <header class="hub-hero">
+    <div class="hub-inner">
+      <p class="hub-meta reveal">ShortKey Runway · Page Gold Standards v1.0</p>
+      <h1 class="hub-brand reveal reveal-d1">ShortKey</h1>
+      <p class="hub-tag reveal reveal-d2">Japan Edition · Issue 01</p>
+      <p class="hub-lede reveal reveal-d3">
+        Visual previews built from the five Page Gold Standards.
+        Layout, type, and palette follow the docs — not invented DNA.
+        Motto: ShortKey 不模仿畫面。ShortKey 捕捉生命力。
+      </p>
+      <p class="hub-meta reveal reveal-d4">Issue 01 content applied lightly (Nihonsakari / Komenuka context)</p>
+    </div>
+  </header>
+
+  <section class="gallery" aria-label="Gold Standard page previews">
+    <a class="gallery-card reveal" href="cover.html">
+      <div class="num">01 · COVER</div>
+      <h2>Cover Page</h2>
+      <p>HIDDEN GEMS hero · JAPAN EDITION · floating komenuka particles · dual CTAs</p>
+    </a>
+    <a class="gallery-card reveal reveal-d1" href="heritage.html">
+      <div class="num">02 · HERITAGE</div>
+      <h2>Heritage Page</h2>
+      <p>Japanese Komenuka Heritage · 60/40 editorial + timeline · seigaiha pattern</p>
+    </a>
+    <a class="gallery-card reveal reveal-d2" href="ingredient.html">
+      <div class="num">03 · INGREDIENT</div>
+      <h2>Ingredient Page</h2>
+      <p>Komenuka 米糠 · molecular viz · traditional / research split · benefits</p>
+    </a>
+    <a class="gallery-card reveal reveal-d3" href="brand-story.html">
+      <div class="num">04 · BRAND STORY</div>
+      <h2>Brand Story</h2>
+      <p>Heritage → Process → Product · Nihonsakari narrative · hotspot gallery</p>
+    </a>
+    <a class="gallery-card reveal reveal-d4" href="creator.html">
+      <div class="num">05 · CREATOR</div>
+      <h2>Creator Page</h2>
+      <p>Meet the Artisan · 70/30 portrait + sidebar · placeholder Creator A only</p>
+    </a>
+  </section>
+
+  <p class="note">
+    Sources: <code>src/brand/sky/gold-standards/</code> · Issue 01 · Master Bible Japan palette.
+    <strong>Superseded for direction by</strong> <code>src/brand/sky/issue-01/LOVART_SCOPE_LOCK.md</code>
+    (https://www.lovart.ai/canvas?projectId=pnMAt6CTYc — founder: this is all we will do; share gfe5fj6 superseded). These HTML previews stay as staging only.
+    No fake partnerships or reviews. AR shown only as labeled simulator stub where present.
+    Beauty V1 / Coming Soon home is untouched (LOCK_V1_MAIN_LAYOUT).
+  </p>
+
+  <footer class="page-footer">
+    <span>GOR_GOR_REVIEW · pending Gor Gor / Maya alignment</span>
+    <span>http://localhost:3005/gold-standards/</span>
+  </footer>
+</body>
+</html>

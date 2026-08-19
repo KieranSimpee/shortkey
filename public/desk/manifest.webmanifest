@@ -1,0 +1,33 @@
+{
+  "id": "/desk/",
+  "name": "ShortKey Minion",
+  "short_name": "Minion Desk",
+  "description": "INTERNAL Founder Desk · Minion Chat Box · Family. Soft PIN gated. Not a public product.",
+  "start_url": "/desk/#family",
+  "scope": "/desk/",
+  "display": "standalone",
+  "background_color": "#FBF7F2",
+  "theme_color": "#FBF7F2",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/desk/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/desk/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/desk/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

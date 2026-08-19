@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ingredient · Gold Standard Preview · ShortKey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Merriweather:wght@400&family=Montserrat:wght@500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .btn-ripple {
+      position: absolute; border-radius: 50%; background: rgba(255,255,255,0.35);
+      transform: scale(0); animation: ripple 0.3s ease-out forwards; pointer-events: none;
+    }
+    @keyframes ripple { to { transform: scale(2.2); opacity: 0; } }
+
+    .ing-page { padding: 60px 40px 80px; }
+    .ing-header {
+      text-align: center;
+      margin: 2rem 0 2.5rem;
+    }
+    .ing-name {
+      font-family: var(--font-hero);
+      font-weight: 700;
+      font-size: 3.5rem;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      color: var(--gold);
+      margin: 0;
+    }
+    .sci-name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: var(--charcoal);
+      margin: 0.5rem 0 0;
+    }
+    .tri-grid {
+      display: grid;
+      grid-template-columns: 3fr 4fr 3fr;
+      gap: 1.75rem;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .col h2 {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--deep-green);
+      letter-spacing: 0.02em;
+      margin: 0 0 1rem;
+    }
+    .col p, .col li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--charcoal);
+    }
+    .col ul { padding-left: 1.1rem; margin: 0; }
+    .col li { margin-bottom: 0.65rem; }
+    .label-soft {
+      font-family: var(--font-nav);
+      font-size: 0.85rem;
+      color: var(--soft-brown);
+    }
+
+    .molecule {
+      position: relative;
+      aspect-ratio: 1;
+      max-width: 340px;
+      margin: 0 auto;
+      background: linear-gradient(160deg, rgba(255,255,255,0.55), rgba(245,240,230,0.2));
+      border: 1px solid rgba(201, 169, 98, 0.3);
+      display: grid;
+      place-items: center;
+    }
+    .molecule-orbit {
+      position: absolute;
+      inset: 12%;
+      border: 1px solid rgba(201, 169, 98, 0.35);
+      border-radius: 50%;
+      animation: spin-slow 28s linear infinite;
+    }
+    .molecule-orbit-2 {
+      inset: 24%;
+      animation-duration: 18s;
+      animation-direction: reverse;
+      border-color: rgba(74, 93, 122, 0.25);
+    }
+    .atom {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(201, 169, 98, 0.5);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .atom:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 18px rgba(201, 169, 98, 0.75);
+    }
+    .atom::after {
+      content: attr(data-tip);
+      position: absolute;
+      left: 50%;
+      bottom: 140%;
+      transform: translateX(-50%) translateY(4px);
+      white-space: nowrap;
+      background: var(--deep-green);
+      color: var(--cream);
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      padding: 0.35rem 0.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .atom:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .atom-core {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #e8d5a0, var(--gold));
+      box-shadow: 0 0 24px rgba(201, 169, 98, 0.45);
+      z-index: 2;
+    }
+    .a1 { top: 8%; left: 48%; }
+    .a2 { top: 42%; right: 6%; background: var(--muted-blue); }
+    .a3 { bottom: 12%; left: 30%; }
+    .a4 { top: 55%; left: 8%; background: var(--muted-blue); }
+
+    .trad-line {
+      border-left: 2px solid var(--soft-brown);
+      padding-left: 1.1rem;
+    }
+    .trad-step {
+      margin-bottom: 1.25rem;
+      cursor: pointer;
+    }
+    .trad-step strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--soft-brown);
+      margin-bottom: 0.25rem;
+    }
+
+    .accordion details {
+      border-bottom: 1px solid rgba(74, 93, 122, 0.2);
+      padding: 0.75rem 0;
+    }
+    .accordion summary {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--deep-green);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.35rem 0.4rem;
+      transition: background 0.2s ease;
+    }
+    .accordion summary:hover {
+      background: rgba(201, 169, 98, 0.1);
+    }
+    .accordion summary::after {
+      content: "+";
+      color: var(--muted-blue);
+      font-weight: 500;
+      transition: transform 0.3s ease;
+    }
+    .accordion details[open] summary::after {
+      content: "−";
+    }
+    .accordion details p {
+      margin: 0.5rem 0.4rem 0.25rem;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+    }
+    .sci-tint {
+      border-left: 3px solid var(--muted-blue);
+      padding-left: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .benefits {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .benefit {
+      padding: 1.35rem 1.2rem;
+      background: linear-gradient(160deg, rgba(250,247,240,0.9), rgba(232,180,184,0.12));
+      border: 1px solid rgba(232, 180, 184, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      min-height: 7rem;
+      perspective: 600px;
+    }
+    .benefit:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(45, 74, 62, 0.1);
+    }
+    .benefit h3 {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--deep-green);
+      margin: 0 0 0.5rem;
+    }
+    .benefit p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    .benefit .back {
+      display: none;
+      font-size: 0.85rem;
+      color: var(--soft-brown);
+    }
+    .benefit.flipped .front { display: none; }
+    .benefit.flipped .back { display: block; }
+
+    .ctas {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .ing-name { font-size: 2.5rem; }
+      .sci-name { font-size: 1.2rem; }
+      .tri-grid { grid-template-columns: 1fr; }
+      .molecule { max-width: 280px; }
+      .benefits { grid-template-columns: 1fr; }
+      .ing-page { padding: 40px 20px 60px; }
+    }
+  </style>
+</head>
+<body class="atmosphere">
+  <div class="preview-banner">
+    PREVIEW · GOR_GOR_REVIEW · not live Beauty V1 · <a href="index.html">Gallery</a>
+  </div>
+  <div class="progress-indicator" aria-hidden="true"></div>
+
+  <header class="site-header" style="position: relative; top: 0; padding-top: 24px;">
+    <a class="logo-link" href="index.html">
+      <img src="/logo/shortkey-primary.png" alt="" width="120" height="28" />
+      <span>ShortKey</span>
+    </a>
+    <button type="button" class="nav-toggle">Menu</button>
+  </header>
+
+  <div class="panel-backdrop"></div>
+  <aside class="slide-panel">
+    <button type="button" class="panel-close">Close</button>
+    <nav>
+      <a href="index.html">Gallery hub</a>
+      <a href="cover.html">Cover</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="ingredient.html">Ingredient</a>
+      <a href="brand-story.html">Brand Story</a>
+      <a href="creator.html">Creator</a>
+    </nav>
+  </aside>
+
+  <main class="ing-page">
+    <header class="ing-header reveal">
+      <h1 class="ing-name">Komenuka 米糠</h1>
+      <p class="sci-name">Oryza sativa — rice bran fraction</p>
+      <p class="label-soft" style="margin-top: 0.75rem;">Ingredient Spotlight · Issue 01 Japan</p>
+    </header>
+
+    <div class="tri-grid">
+      <section class="col reveal reveal-d1">
+        <h2>Traditional Uses</h2>
+        <div class="trad-line">
+          <div class="trad-step">
+            <strong>Bath &amp; polish</strong>
+            <p style="margin:0;font-size:0.95rem;">Soft bran in water — gentle physical polish historically noted in household practice.</p>
+          </div>
+          <div class="trad-step">
+            <strong>Agricultural kinship</strong>
+            <p style="margin:0;font-size:0.95rem;">Linked to rice culture and brewing landscapes in Japan Issue 01 framing.</p>
+          </div>
+          <div class="trad-step">
+            <strong>Texture memory</strong>
+            <p style="margin:0;font-size:0.95rem;">Warm, matte, grain-soft — Fresh Texture lane signal, not miracle claim.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="col reveal reveal-d2">
+        <h2 style="text-align:center;">Molecular Viz</h2>
+        <div class="molecule" aria-label="Simplified molecular visualization stub">
+          <div class="molecule-orbit"></div>
+          <div class="molecule-orbit molecule-orbit-2"></div>
+          <span class="atom a1" data-tip="Lipids (schematic)"></span>
+          <span class="atom a2" data-tip="Vitamins (schematic)"></span>
+          <span class="atom a3" data-tip="Fiber fraction"></span>
+          <span class="atom a4" data-tip="Phytosterols (schematic)"></span>
+          <div class="atom-core" title="Core — illustrative only"></div>
+        </div>
+        <p class="label-soft" style="text-align:center;margin-top:1rem;">
+          Illustrative model · not a clinical diagram · rotate metaphor via orbit motion
+        </p>
+      </section>
+
+      <section class="col reveal reveal-d3">
+        <h2>Modern Research</h2>
+        <div class="accordion">
+          <details open>
+            <summary>Composition overview</summary>
+            <div class="sci-tint">
+              <p>Educational framing: bran contains lipids, fiber, and micronutrients. Exact claims require sourced citations before live Beauty.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Formulation notes</summary>
+            <p>Modern skincare may use bran extracts or oils — always separate traditional story from product formula claims.</p>
+          </details>
+          <details>
+            <summary>Editorial guardrails</summary>
+            <p>No guaranteed results. No before/after miracle language. Scientific accents use muted blue per Gold Standard.</p>
+          </details>
+        </div>
+      </section>
+    </div>
+
+    <div class="benefits" aria-label="Benefit breakdown cards">
+      <article class="benefit" tabindex="0">
+        <div class="front">
+          <h3>Texture</h3>
+          <p>Soft, grain-aware feel — J Fresh Texture signal.</p>
+        </div>
+        <div class="back">Click again to return. Detail panel stub for Gold Standard flip interaction.</div>
+      </article>
+      <article class="benefit" tabindex="0">
+        <div class="front">
+          <h3>Heritage link</h3>
+          <p>Rice culture adjacency — educational, not endorsement.</p>
+        </div>
+        <div class="back">Heritage → Ingredient → Brand Story remains the Issue 01 narrative path.</div>
+      </article>
+      <article class="benefit" tabindex="0">
+        <div class="front">
+          <h3>Clarity</h3>
+          <p>Sakura highlight on cards · cream base · gold name.</p>
+        </div>
+        <div class="back">Palette locked to Gold Standard / Japan Edition Master Bible tokens.</div>
+      </article>
+    </div>
+
+    <div class="ctas">
+      <a class="btn btn-primary" href="brand-story.html">Brand Story</a>
+      <a class="btn-ghost" href="heritage.html">← Heritage</a>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <a href="heritage.html">← Heritage</a>
+    <a href="brand-story.html">Brand Story →</a>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>
+    document.querySelectorAll(".benefit").forEach((card) => {
+      card.addEventListener("click", () => card.classList.toggle("flipped"));
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          card.classList.toggle("flipped");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

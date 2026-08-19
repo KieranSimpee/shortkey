@@ -1,0 +1,68 @@
+I am building the Shortkey Interactive Asian Beauty Magazine platform.
+
+LOVART SESSION: All assets, blueprints and documents are built 
+and stored at lovart.ai in this project session.
+
+BRAND IDENTITY (LOCKED FOREVER):
+- Wordmark: "shortkey" — never alter letterforms
+- Keypad icon: ctrl/alt/del grid — never alter shape
+- Fonts: Playfair Display 700 / Cormorant Garamond 600 / 
+  Merriweather 400 / Montserrat 600
+- Base: #F5F0E6 (rice paper) — always
+- Gold: #C9A962 (sake gold) — always
+- Issue color: one per issue, derived from brand DNA
+
+DEMO ISSUE: Nihon Sakura — Issue 01
+Issue color: #C4787A (Sakura Blush)
+
+ALL 11 PAGE IMAGES (use these URLs):
+Cover: https://a.lovart.ai/artifacts/agent/Bk9AumlPff8pPUU2.png
+Editor's Letter: https://a.lovart.ai/artifacts/agent/oNW9g1xPrB9uMcnc.png
+Heritage: https://a.lovart.ai/artifacts/agent/q7qhrETuZz1ssd6t.png
+Ingredient: https://a.lovart.ai/artifacts/agent/ap9Pd7kpU0EFal03.png
+Brand Spotlight: https://a.lovart.ai/artifacts/agent/g28Kd91YZPIIheVU.png
+Discovery Edit: https://a.lovart.ai/artifacts/agent/uR3whwr7mbAfqA1Q.png
+Try-On+Skin+Next: https://a.lovart.ai/artifacts/agent/BEBCC2fQCd3DaJiw.png
+Creator: https://a.lovart.ai/artifacts/agent/QiTPCf4e2CDt5npp.png
+Culture: https://a.lovart.ai/artifacts/agent/oqIR3gcrGTGyV7l2.png
+Overview: https://a.lovart.ai/artifacts/agent/WZ3AoiTZGiKkwUw1.png
+
+INTERACTIVE BLUEPRINT:
+Global Elements: https://a.lovart.ai/artifacts/agent/7smdnORZdI3Sg0C4.png
+Zone Map: https://a.lovart.ai/artifacts/agent/J83iVRw1Gi6NS5Vk.png
+Modal Overlays: https://a.lovart.ai/artifacts/agent/ZFNznbuNTV1aBFId.png
+Developer Handoff: https://a.lovart.ai/artifacts/agent/37Qvk1aVhmFH71tF.png
+
+CSS DESIGN TOKENS:
+--color-base: #F5F0E6
+--color-primary: #2C3E6B
+--color-gold: #C9A962
+--color-issue: #C4787A
+--font-hero: 'Playfair Display', serif, 700
+--font-editorial: 'Cormorant Garamond', serif, 600
+--font-body: 'Merriweather', serif, 400
+--font-ui: 'Montserrat', sans-serif, 600
+--header-height: 56px
+--strip-height: 56px
+--modal-z: 999
+--space-z: 1000
+
+9 COMPONENTS: FixedHeader / InteractiveStrip / PersonalSpaceIcon /
+TryOnModal / SkinAnalysisModal / PersonalSpaceSheet / ProductCard /
+PageNavigation / IssueColorTheme
+
+11 ROUTES: /cover /editors-letter /heritage /ingredient /brand 
+/discovery /try-on /skin-analysis /creator /culture /whats-next
+
+TEAM:
+- Maya = Creative Director (final approval)
+- Lovart AI = Design + Midjourney direction
+- Midjourney = Photography pages 01,02,03,04,05,09,10
+- Base44 = App deployment
+- Cursor = Component build
+- ASI:ONE = AI intelligence layer
+
+NEW BRAND REQUEST FORMAT:
+Brand: [name] / Product: [type] / Ingredient: [key] / 
+Country: [origin] / Category: [type]
+→ Auto-derives issue color → generates all 11 pages

@@ -1,5 +1,6 @@
 /**
- * Soft staging gate for /api/gor-gor-chat — mirrors middleware behavior:
+ * Soft staging gate for /api/family-doorbell/* — same cookie/password pattern
+ * historically shared with the retired /api/gor-gor-chat bridge.
  * - If FAMILY_TABLE_STAGING_PASSWORD / INTERNAL_STAGING_SECRET unset → allow
  * - Localhost / SHORTKEY_SURFACE=family → soft allow
  * - Otherwise require INTERNAL_STAGING_COOKIE

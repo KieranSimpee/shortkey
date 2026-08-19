@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>shortkey · Control · Magazine Demo</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --base: #F5F0E6;
+      --gold: #C9A962;
+      --issue: #C4787A;
+      --primary: #2C3E6B;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Montserrat, system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(196,120,122,0.16), transparent 65%),
+        linear-gradient(180deg, #efe8da, var(--base));
+      color: var(--primary);
+      padding: 24px 18px 40px;
+    }
+    .banner {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--issue);
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 8vw, 3rem);
+      color: var(--gold);
+      margin: 0 0 8px;
+      text-align: center;
+    }
+    .sub {
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+      margin: 0 0 32px;
+      line-height: 1.5;
+    }
+    .stack {
+      max-width: 420px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    a.cta {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      padding: 16px 18px;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1.5px solid rgba(201,169,98,0.55);
+      color: var(--primary);
+      background: rgba(245,240,230,0.85);
+    }
+    a.cta.primary {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #1a1a1a;
+    }
+    a.cta:hover { opacity: 0.92; }
+    .note {
+      max-width: 420px;
+      margin: 28px auto 0;
+      font-size: 12px;
+      line-height: 1.6;
+      opacity: 0.7;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <p class="banner">DEMO · CONTROL PANEL EXAMPLE · GOR_GOR_REVIEW · NOT LIVE BEAUTY V1</p>
+  <h1>shortkey</h1>
+  <p class="sub">Control · Magazine Demo<br />Nihon Sakura · Issue 01</p>
+  <div class="stack">
+    <a class="cta primary" href="/magazine-demo/#/cover">Open Magazine Demo · Cover</a>
+    <a class="cta" href="/control/hub.html#magazine">Full Master Hub · Magazine panel</a>
+    <a class="cta" href="/control_center.html">Runway Control Center</a>
+    <a class="cta" href="/control-center/magazine-demo/">Control Center · Magazine redirect</a>
+  </div>
+  <p class="note">Phone: open this page or the Cover link on the same Wi‑Fi as the PC running :3005.<br />Beauty V1 home is unchanged.</p>
+</body>
+</html>

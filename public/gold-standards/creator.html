@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creator · Gold Standard Preview · ShortKey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Merriweather:wght@400&family=Montserrat:wght@500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .btn-ripple {
+      position: absolute; border-radius: 50%; background: rgba(255,255,255,0.35);
+      transform: scale(0); animation: ripple 0.3s ease-out forwards; pointer-events: none;
+    }
+    @keyframes ripple { to { transform: scale(2.2); opacity: 0; } }
+
+    .creator-page {
+      display: grid;
+      grid-template-columns: 3fr 7fr;
+      min-height: calc(100vh - 2.2rem);
+      padding: 80px 60px;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding-top: 0.5rem;
+    }
+    .sidebar h1 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 2.5rem;
+      line-height: 1.25;
+      letter-spacing: 0.03em;
+      color: var(--deep-green);
+      margin: 0;
+    }
+    .sidebar .story {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: var(--soft-brown);
+      margin: 0.5rem 0;
+      padding: 0.85rem 0.75rem;
+      border-left: 2px solid rgba(201, 169, 98, 0.5);
+      transition: background 0.4s ease;
+    }
+    .quote:hover {
+      background: rgba(201, 169, 98, 0.08);
+    }
+    .tools {
+      margin-top: auto;
+      padding-top: 1rem;
+    }
+    .tools h3 {
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--soft-brown);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 0.75rem;
+    }
+    .tool-row {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+    .tool-chip {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.45rem 0.7rem;
+      background: rgba(45, 74, 62, 0.08);
+      color: var(--deep-green);
+      border: 1px solid rgba(45, 74, 62, 0.12);
+    }
+    .cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: 1.25rem;
+    }
+    .placeholder-note {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-red);
+      margin: 0;
+    }
+
+    .portrait-wrap {
+      position: relative;
+      overflow: hidden;
+      min-height: 70vh;
+      background:
+        radial-gradient(ellipse 60% 50% at 45% 35%, rgba(255,255,255,0.25), transparent 55%),
+        linear-gradient(155deg, #d9cfc0 0%, #c4b5a2 40%, #8B7355 100%);
+      transition: transform 0.4s ease;
+    }
+    .portrait-wrap:hover {
+      transform: scale(1.03);
+    }
+    .portrait-wrap:hover .creator-name {
+      filter: brightness(1.15);
+    }
+    .portrait-figure {
+      position: absolute;
+      inset: 12% 18% 18% 22%;
+      background:
+        linear-gradient(180deg, rgba(245, 240, 230, 0.15), transparent 40%),
+        radial-gradient(ellipse at 50% 30%, rgba(250, 247, 240, 0.5), transparent 55%),
+        linear-gradient(200deg, #b8a894, #6e5c48);
+      clip-path: ellipse(42% 48% at 50% 42%);
+      opacity: 0.9;
+    }
+    .portrait-workspace {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 28%;
+      background: linear-gradient(180deg, transparent, rgba(44, 44, 44, 0.35));
+    }
+    .creator-name {
+      position: absolute;
+      left: 8%;
+      bottom: 10%;
+      z-index: 4;
+      font-family: var(--font-hero);
+      font-weight: 700;
+      font-size: 3rem;
+      line-height: 1.2;
+      letter-spacing: 0.03em;
+      color: var(--gold);
+      margin: 0;
+      text-shadow: 0 2px 24px rgba(44, 44, 44, 0.25);
+      transition: filter 0.3s ease;
+      text-align: left;
+    }
+    .creator-role {
+      position: absolute;
+      left: 8%;
+      bottom: 5%;
+      z-index: 4;
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(245, 240, 230, 0.9);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .hotspot.hp1 { top: 22%; left: 70%; width: 18px; height: 18px; }
+    .hotspot.hp2 { top: 48%; left: 25%; width: 18px; height: 18px; }
+    .hotspot.hp3 { top: 62%; left: 62%; width: 18px; height: 18px; }
+
+    .social-row {
+      display: flex;
+      gap: 1rem;
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .social-row a {
+      color: var(--soft-brown);
+      transition: color 0.2s ease;
+    }
+    .social-row a:hover {
+      color: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .creator-page {
+        grid-template-columns: 1fr;
+        padding: 40px 20px 60px;
+        min-height: auto;
+      }
+      .portrait-wrap {
+        order: -1;
+        min-height: 55vh;
+      }
+      .creator-name { font-size: 2.2rem; }
+      .sidebar h1 { font-size: 2rem; }
+      .sidebar { padding-top: 0; }
+    }
+  </style>
+</head>
+<body class="atmosphere">
+  <div class="preview-banner">
+    PREVIEW · GOR_GOR_REVIEW · not live Beauty V1 · <a href="index.html">Gallery</a>
+  </div>
+  <div class="progress-indicator" aria-hidden="true"></div>
+
+  <header class="site-header" style="position: relative; top: 0; padding-top: 24px;">
+    <a class="logo-link" href="index.html">
+      <img src="/logo/shortkey-primary.png" alt="" width="120" height="28" />
+      <span>ShortKey</span>
+    </a>
+    <button type="button" class="nav-toggle">Menu</button>
+  </header>
+
+  <div class="panel-backdrop"></div>
+  <aside class="slide-panel">
+    <button type="button" class="panel-close">Close</button>
+    <nav>
+      <a href="index.html">Gallery hub</a>
+      <a href="cover.html">Cover</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="ingredient.html">Ingredient</a>
+      <a href="brand-story.html">Brand Story</a>
+      <a href="creator.html">Creator</a>
+    </nav>
+  </aside>
+
+  <main class="creator-page">
+    <aside class="sidebar reveal">
+      <p class="placeholder-note">Placeholder · not a real creator profile</p>
+      <h1>Meet the Artisan</h1>
+      <p class="story">
+        Gold Standard creator layout: story sidebar (30%) + environmental portrait (70%).
+        Issue 01 asks for artisanal beauty makers — this preview uses a clearly labeled
+        placeholder only. No fake reviews, followers, or brand deals.
+      </p>
+      <blockquote class="quote">
+        “Texture first. Light second. The frame comes last.”
+        <span style="display:block;font-size:0.85rem;margin-top:0.5rem;font-style:normal;font-family:var(--font-ui);">— Layout quote stub</span>
+      </blockquote>
+      <p class="story">
+        Interview excerpts would live here after Gor Gor / editorial approval.
+        Workspace hotspots on the portrait mark tools and process — educational UI only.
+      </p>
+      <div class="social-row" aria-label="Social placeholders">
+        <a href="#" onclick="return false;">Profile (stub)</a>
+        <a href="#" onclick="return false;">Workspace (stub)</a>
+      </div>
+      <div class="tools">
+        <h3>Tools / products (layout)</h3>
+        <div class="tool-row">
+          <span class="tool-chip">Brush set · stub</span>
+          <span class="tool-chip">Daylight desk · stub</span>
+        </div>
+        <div class="cta-row">
+          <button type="button" class="btn btn-primary" disabled style="opacity:0.65;cursor:not-allowed;">Follow (disabled)</button>
+          <a class="btn btn-secondary" href="brand-story.html">View brand story</a>
+        </div>
+      </div>
+    </aside>
+
+    <section class="portrait-wrap reveal reveal-d1" aria-label="Environmental portrait placeholder">
+      <div class="portrait-figure" aria-hidden="true"></div>
+      <div class="portrait-workspace" aria-hidden="true"></div>
+      <h2 class="creator-name">Creator A</h2>
+      <p class="creator-role">Artisan placeholder · Issue 01 layout</p>
+      <button type="button" class="hotspot hp1" data-tip="Window light (stub)" aria-label="Hotspot light"></button>
+      <button type="button" class="hotspot hp2" data-tip="Workbench (stub)" aria-label="Hotspot workbench"></button>
+      <button type="button" class="hotspot hp3" data-tip="Texture tray (stub)" aria-label="Hotspot texture"></button>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <a href="brand-story.html">← Brand Story</a>
+    <a href="index.html">Gallery hub</a>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>
