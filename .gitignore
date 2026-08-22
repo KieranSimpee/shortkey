@@ -30,6 +30,10 @@ public/studio-review/**
 !public/studio-review/FAMILY_STORAGE_BOX.md
 !public/studio-review/docs/
 !public/studio-review/docs/**
+!public/studio-review/discovery-demo/
+!public/studio-review/discovery-demo/index.html
+!public/studio-review/discovery-demo/app.js
+!public/studio-review/discovery-demo/README.md
 
 # Social Creator Early Access local file store (dev)
 data/social-early-access.json
