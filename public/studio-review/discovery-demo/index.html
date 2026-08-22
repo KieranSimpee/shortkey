@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Studio Asset Discovery · Workflow · ShortKey</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f3efe8; --ink: #1c1a18; --muted: #5c564e;
+      --line: rgba(28,26,24,.12); --lilac: #9b6bb5;
+      --lilac-soft: rgba(155,107,181,.12); --panel: #fffdf9;
+      --warn: #7a5a24; --danger: #8b3a3a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "IBM Plex Sans", system-ui, sans-serif; color: var(--ink);
+      background:
+        radial-gradient(900px 420px at 8% -8%, var(--lilac-soft), transparent 55%),
+        linear-gradient(180deg, #faf7f2 0%, var(--paper) 42%, #ebe4d8 100%);
+      min-height: 100vh; line-height: 1.5;
+    }
+    .banner {
+      position: sticky; top: 0; z-index: 30;
+      display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; align-items: center;
+      padding: .55rem 1rem; background: #1c1a18; color: #f3efe8;
+      font-size: .7rem; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .banner a { color: #e8c9a0; }
+    .banner-actions { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+    .banner button {
+      font: inherit; cursor: pointer; text-transform: none; letter-spacing: .02em;
+      border: 1px solid #5a534c; background: #2a2622; color: #f3efe8;
+      padding: .35rem .7rem; border-radius: 999px; font-size: .75rem; font-weight: 600;
+    }
+    .banner button[aria-pressed="true"] { border-color: #c9a0e0; color: #e8c9a0; background: #3a2f40; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .kicker { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--lilac); font-weight: 600; }
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 600; margin: .35rem 0 .65rem;
+    }
+    .lede { color: var(--muted); max-width: 44rem; }
+    .reason-box {
+      margin-top: 1rem; border-left: 3px solid var(--lilac);
+      background: rgba(255,255,255,.55); padding: .85rem 1rem; font-size: .9rem;
+    }
+    .honesty {
+      margin-top: .85rem; border: 1px dashed rgba(154,107,47,.45);
+      background: rgba(154,107,47,.06); color: var(--warn); padding: .7rem .9rem; font-size: .82rem;
+    }
+    .links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .links a {
+      text-decoration: none; color: var(--ink); border: 1px solid var(--line);
+      background: var(--panel); padding: .45rem .75rem; border-radius: 999px; font-size: .78rem; font-weight: 500;
+    }
+    .edit-panel {
+      display: none; margin-top: 1rem; border: 1px solid var(--lilac);
+      background: var(--lilac-soft); border-radius: 12px; padding: .9rem 1rem;
+    }
+    body.edit-on .edit-panel { display: block; }
+    .edit-panel h3 { font-size: .95rem; margin-bottom: .4rem; }
+    .edit-panel p { font-size: .82rem; color: var(--muted); margin-bottom: .75rem; }
+    .edit-form {
+      display: grid; gap: .5rem; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); align-items: end;
+    }
+    .edit-form label { font-size: .72rem; font-weight: 600; display: grid; gap: .25rem; }
+    .edit-form input, .edit-form select {
+      font: inherit; padding: .45rem .55rem; border: 1px solid var(--line); border-radius: 8px;
+    }
+    .edit-form button {
+      font: inherit; cursor: pointer; font-weight: 600; border: none;
+      background: var(--lilac); color: #fff; padding: .55rem .8rem; border-radius: 8px;
+    }
+    .status-line { font-size: .78rem; margin-top: .6rem; color: var(--muted); }
+    .status-line.err { color: var(--danger); }
+    .chips { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.5rem 0 1rem; }
+    .chips button {
+      font: inherit; cursor: pointer; border: 1px solid var(--line); background: var(--panel);
+      padding: .45rem .8rem; border-radius: 999px; font-size: .78rem; font-weight: 600;
+    }
+    .chips button[aria-pressed="true"] {
+      background: var(--lilac-soft); border-color: var(--lilac); color: #6b3d82;
+    }
+    section.pack {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+      padding: 1.15rem 1.1rem 1.25rem; margin-bottom: 1.1rem;
+    }
+    section.pack.hidden { display: none !important; }
+    .pack-head { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: baseline; justify-content: space-between; margin-bottom: .55rem; }
+    .pack-head h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.4rem; font-weight: 600; }
+    .count { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--lilac); font-weight: 600; }
+    .pack-reason { font-size: .86rem; color: var(--muted); margin-bottom: .9rem; }
+    .pack-reason em { font-style: normal; color: var(--ink); font-weight: 600; }
+    .path { font-family: ui-monospace, monospace; font-size: .72rem; color: var(--muted); margin-bottom: .85rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: .7rem; }
+    .card-wrap {
+      position: relative; border: 1px solid var(--line); border-radius: 10px;
+      overflow: hidden; background: #fff; cursor: pointer; text-align: left;
+      width: 100%; font: inherit; color: inherit; padding: 0; display: block;
+    }
+    .card-wrap.added { border-color: rgba(155,107,181,.55); }
+    .card-wrap.pinned { outline: 2px solid rgba(155,107,181,.55); outline-offset: -1px; }
+    .card-wrap:focus-visible { outline: 2px solid var(--lilac); outline-offset: 2px; }
+    .thumb {
+      position: relative;
+      aspect-ratio: 4/3;
+      background: #ece6dc;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+    .thumb img, .thumb video { width: 100%; height: 100%; object-fit: cover; }
+    .pin-mark {
+      position: absolute; top: .35rem; left: .35rem; z-index: 1;
+      font-size: .62rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      background: rgba(155,107,181,.95); color: #fff; border-radius: 999px; padding: .18rem .4rem;
+    }
+    .meta { padding: .55rem .65rem .45rem; }
+    .meta strong { display: block; font-size: .78rem; font-weight: 600; }
+    .meta span { font-size: .68rem; color: var(--muted); }
+    .badges { display: flex; flex-wrap: wrap; gap: .25rem; margin-top: .35rem; }
+    .badge {
+      font-size: .62rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      padding: .15rem .35rem; border-radius: 4px; background: var(--lilac-soft); color: #6b3d82;
+    }
+    .selected-top {
+      display: none; margin: 0 0 1.25rem; border: 1px solid rgba(155,107,181,.35);
+      border-radius: 14px; background: var(--panel); padding: 1rem 1.1rem;
+    }
+    .selected-top.on { display: block; }
+    .selected-top h2 {
+      font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.35rem; margin-bottom: .35rem;
+    }
+    .board {
+      margin-top: 1.5rem; border: 1px solid var(--line); border-radius: 14px;
+      background: var(--panel); padding: 1rem 1.1rem;
+    }
+    .board h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.35rem; margin-bottom: .5rem; }
+    .muted { color: var(--muted); font-size: .85rem; }
+    .wf-row {
+      display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--line); padding: .55rem 0; font-size: .82rem;
+    }
+    .wf-row select { font: inherit; padding: .3rem .4rem; border-radius: 6px; border: 1px solid var(--line); }
+    .removed-panel {
+      display: none; margin-top: 1.25rem; border: 1px dashed rgba(139,58,58,.35);
+      border-radius: 12px; padding: .9rem 1rem; background: rgba(139,58,58,.05);
+    }
+    body.edit-on .removed-panel { display: block; }
+    .removed-list { list-style: none; display: grid; gap: .4rem; }
+    .removed-list li {
+      display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; justify-content: space-between;
+      font-size: .8rem; background: #fff; border-radius: 8px; padding: .45rem .6rem; border: 1px solid var(--line);
+    }
+    .removed-list button {
+      font: inherit; cursor: pointer; font-size: .72rem; font-weight: 600;
+      border: 1px solid var(--lilac); color: #6b3d82; background: var(--lilac-soft);
+      border-radius: 6px; padding: .3rem .55rem;
+    }
+    dialog {
+      border: 1px solid var(--line); border-radius: 14px; background: #fffdf9; color: var(--ink);
+      width: min(920px, 94vw); padding: 0; max-height: 90vh;
+    }
+    dialog.preview-xl {
+      width: min(1180px, 96vw);
+      max-height: 94vh;
+    }
+    dialog::backdrop { background: rgba(28,26,24,.55); }
+    .dlg-bar {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      padding: 12px 14px; border-bottom: 1px solid var(--line);
+    }
+    .dlg-bar button, .preview-foot button {
+      font: inherit; cursor: pointer; border: 1px solid var(--line);
+      background: transparent; padding: 8px 12px; border-radius: 8px;
+    }
+    .dlg-body { padding: 14px; overflow: auto; max-height: calc(90vh - 56px); }
+    .dlg-body img, .dlg-body video { width: 100%; max-height: 70vh; }
+    .dlg-reason { margin-top: .55rem; font-size: .85rem; color: var(--muted); }
+    .story-text { margin-top: .75rem; white-space: pre-wrap; font-size: .95rem; }
+    .preview-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .9fr);
+      gap: 0;
+      max-height: calc(94vh - 56px);
+    }
+    @media (max-width: 860px) {
+      .preview-layout { grid-template-columns: 1fr; max-height: none; }
+    }
+    .preview-media {
+      background: #1c1a18;
+      display: grid;
+      place-items: center;
+      min-height: 320px;
+      max-height: calc(94vh - 56px);
+      overflow: auto;
+      padding: .75rem;
+    }
+    .preview-media img, .preview-media video {
+      width: 100%; max-height: min(78vh, 820px); object-fit: contain;
+    }
+    .preview-media audio { width: min(100%, 420px); }
+    .preview-side {
+      border-left: 1px solid var(--line);
+      padding: 1rem;
+      overflow: auto;
+      max-height: calc(94vh - 56px);
+      background: #fffdf9;
+    }
+    .preview-side h3 { font-size: .95rem; margin-bottom: .55rem; }
+    .action-grid {
+      display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .75rem;
+    }
+    .action-grid button {
+      font: inherit; cursor: pointer; font-size: .78rem; font-weight: 700;
+      border: 1px solid var(--line); border-radius: 999px; padding: .4rem .7rem;
+      background: #fff; color: var(--ink);
+    }
+    .action-grid button.on {
+      border-color: var(--lilac); background: var(--lilac-soft); color: #6b3d82;
+    }
+    .action-grid button.danger.on {
+      border-color: var(--danger); background: rgba(139,58,58,.12); color: var(--danger);
+    }
+    .field-stack { display: grid; gap: .55rem; margin-bottom: .85rem; }
+    .field-stack label { display: grid; gap: .25rem; font-size: .72rem; font-weight: 600; }
+    .field-stack input, .field-stack select, .field-stack textarea {
+      font: inherit; padding: .45rem .55rem; border: 1px solid var(--line); border-radius: 8px;
+    }
+    .field-stack textarea { min-height: 88px; resize: vertical; }
+    .field-stack .hidden { display: none !important; }
+    .preview-foot {
+      display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .35rem;
+    }
+    .preview-foot .save {
+      border: 0; background: var(--lilac); color: #fff; font-weight: 700;
+    }
+    .preview-foot .pin {
+      border-color: var(--lilac); color: #6b3d82; background: var(--lilac-soft); font-weight: 700;
+    }
+    .preview-status { margin-top: .65rem; font-size: .78rem; color: var(--muted); }
+    .preview-status.err { color: var(--danger); }
+    footer { margin-top: 2rem; font-size: .75rem; color: var(--muted); }
+    footer a { color: #6b3d82; }
+  </style>
+</head>
+<body>
+  <div class="banner" role="status">
+    <span>Discovery · edit / season / redesign / interview / game · GOR_GOR_REVIEW</span>
+    <div class="banner-actions">
+      <button type="button" id="btn-edit" aria-pressed="false">Edit mode</button>
+      <a href="http://127.0.0.1:3003/internal/studio#assets">Studio #assets</a>
+      <a href="http://127.0.0.1:3005/shortkey-assets/">Gallery</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <p class="kicker">Studio location · asset + story workflow</p>
+      <p class="reason-box" style="margin-bottom:.85rem">
+        <strong>Permanent link (bookmark)</strong>
+        <a href="/discovery">http://127.0.0.1:3005/discovery</a>
+        · also <a href="http://127.0.0.1:3003/discovery">:3003/discovery</a>
+        — always opens this working board.
+      </p>
+      <h1>Assets · seasons · stories · games</h1>
+      <p class="lede">
+        Click a picture → large preview. Toggle <strong>Season</strong> (default Season 1 · Hidden Gems),
+        write the <strong>modification comment</strong>, then <strong>Save</strong> once.
+        Filter <strong>Season 1 picks</strong> to see only files you moved. Disk / Lovart lock stay put.
+      </p>
+      <div class="reason-box">
+        <strong>Honesty lock</strong>
+        Remove = hide from discovery only (disk / Lovart lock kept).
+        Interview &amp; game briefs = founder paste only — empty = <em>AWAITING</em> (no invented DNA).
+      </div>
+      <p class="honesty">ALWAYS TO TRUE · ShortKey 不模仿畫面。ShortKey 捕捉生命力。 · Beauty Coming Soon untouched</p>
+      <nav class="links">
+        <a href="https://www.lovart.ai/canvas?projectId=pnMAt6CTYc">Lovart LOCK</a>
+        <a href="/magazine-demo/#/cover">Magazine flip</a>
+        <a href="/internal/studio#assets">Review shelf</a>
+      </nav>
+
+      <div class="edit-panel" id="edit-panel">
+        <h3>Add asset</h3>
+        <p>Upload or register a path under /shortkey-assets/ · /magazine-demo/ · /studio-review/ · /logo/</p>
+        <form class="edit-form" id="add-form">
+          <label>Pack <select name="packId" id="add-pack" required></select></label>
+          <label>Reason <input name="reason" id="add-reason" required placeholder="Why" /></label>
+          <label>Upload <input type="file" id="add-file" accept=".png,.jpg,.jpeg,.webp,.gif,.mp4,.mp3,.wav" /></label>
+          <label>Or URL <input id="add-url" placeholder="/shortkey-assets/…" /></label>
+          <label>Filename <input id="add-filename" placeholder="file.png" /></label>
+          <button type="submit">Add</button>
+        </form>
+        <p class="status-line" id="edit-status"></p>
+      </div>
+    </header>
+
+    <section class="selected-top" id="selected-top" aria-label="Selected at top">
+      <h2>Selected · top</h2>
+      <p class="muted">Pinned from large preview · click again to reopen · Save runs there once.</p>
+      <div class="grid" id="selected-grid"></div>
+    </section>
+
+    <nav class="chips" id="chips" aria-label="Pack filter"></nav>
+    <div id="packs"></div>
+
+    <section class="board" aria-label="Workflow board">
+      <h2>Workflow board</h2>
+      <p class="muted">Edit · Redesign · Season · Buy real · Interview · Game — update status as you go.</p>
+      <div id="workflow-board"></div>
+    </section>
+
+    <section class="board" aria-label="Games">
+      <h2>Games</h2>
+      <div id="games-board"></div>
+    </section>
+
+    <div class="removed-panel" id="removed-panel">
+      <h3>Hidden from discovery</h3>
+      <ul class="removed-list" id="removed-list"></ul>
+    </div>
+
+    <footer>
+      API <code>/api/studio/discovery-curation</code> ·
+      state <code>curation.json</code> ·
+      <a href="http://127.0.0.1:3005/studio-review/discovery-demo/">:3005</a> ·
+      <a href="http://127.0.0.1:3003/studio-review/discovery-demo/">:3003</a>
+    </footer>
+  </div>
+
+  <dialog id="preview" class="preview-xl">
+    <div class="dlg-bar">
+      <strong id="preview-title">Preview</strong>
+      <button type="button" id="preview-close">Close</button>
+    </div>
+    <div class="preview-layout">
+      <div class="preview-media" id="preview-media"></div>
+      <div class="preview-side">
+        <h3>Actions (stage, then Save once)</h3>
+        <div class="action-grid" id="preview-actions" role="group" aria-label="Asset actions"></div>
+        <div class="field-stack" id="preview-fields"></div>
+        <p class="dlg-reason" id="preview-reason"></p>
+        <div class="preview-foot">
+          <button type="button" class="pin" id="btn-pin-top">Move to top</button>
+          <button type="button" class="save" id="btn-save-once">Save</button>
+          <button type="button" id="btn-show-story">Show story</button>
+        </div>
+        <p class="preview-status" id="preview-status"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="story-dialog">
+    <div class="dlg-bar">
+      <strong>Interview / story</strong>
+      <button type="button" id="story-close">Close</button>
+    </div>
+    <div class="dlg-body" id="story-body"></div>
+  </dialog>
+
+  <script src="/studio-review/discovery-demo/app.js"></script>
+</body>
+</html>
