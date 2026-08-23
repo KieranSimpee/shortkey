@@ -321,7 +321,17 @@
       </div>
     </section>
 
-    <section class="card later" aria-label="Next wave">
+    <section class="card" aria-label="Phone QR">
+      <h2>Phone · scan to open</h2>
+      <p class="hint">相機掃 QR → 手機開 Controller → Unlock（唔係打電話）。Deploy 前 404 就等 push beauty。</p>
+      <div id="controllerQr" style="display:flex;justify-content:center;padding:12px;background:#fff;border-radius:14px;border:1px solid var(--line)"></div>
+      <code style="display:block;margin-top:10px;font-size:0.72rem;word-break:break-all" id="controllerQrUrl">https://www.shortkey.beauty/control/controller.html</code>
+      <div class="btn-row">
+        <a class="btn ghost" href="/connect-qr/controller.html">Full QR page</a>
+      </div>
+    </section>
+
+    <section class="card" aria-label="Next wave">
       <h2>Next (not this wave)</h2>
       <p class="hint">
         Full family Minion thread, Zapier live hook, and safe <code>server.py</code> + <code>pending.html</code>
@@ -420,6 +430,24 @@
 
   document.getElementById("bookmarkUrl").textContent = bookmark;
   loadStatus();
+})();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+  <script>
+(function () {
+  var host = location.hostname;
+  var isLocal = host === "localhost" || host === "127.0.0.1" || host === "::1";
+  var url = isLocal
+    ? "http://127.0.0.1:3005/control/controller.html"
+    : "https://www.shortkey.beauty/control/controller.html";
+  var urlEl = document.getElementById("controllerQrUrl");
+  if (urlEl) urlEl.textContent = url;
+  var box = document.getElementById("controllerQr");
+  if (box && window.QRCode) {
+    QRCode.toCanvas(url, { width: 200, margin: 2, color: { dark: "#2A2420", light: "#ffffff" } }, function (err, canvas) {
+      if (!err) box.appendChild(canvas);
+    });
+  }
 })();
   </script>
 </body>
