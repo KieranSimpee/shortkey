@@ -342,9 +342,50 @@
     .foot-note {
       margin-top: 14px; font-size: 0.7rem; color: var(--muted); line-height: 1.4; text-align: center;
     }
+    .youi-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;
+    }
+    .youi-door {
+      appearance: none; border: 1px solid var(--line); background: rgba(255,252,248,0.92);
+      border-radius: 20px; padding: 16px 12px 14px; min-height: 92px; text-align: left;
+      font: inherit; color: var(--ink); cursor: pointer; box-shadow: var(--shadow);
+    }
+    .youi-door .who { font-family: Fraunces, Georgia, serif; font-size: 1.35rem; font-weight: 700; line-height: 1.1; }
+    .youi-door .kind { display: block; margin-top: 4px; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .youi-door .bit { display: block; margin-top: 6px; font-size: 0.78rem; color: var(--muted); line-height: 1.3; }
+    .youi-door[aria-pressed="true"] {
+      border-color: var(--champagne); background: #fff;
+      box-shadow: inset 0 0 0 1px var(--champagne), var(--shadow);
+    }
+    .youi-door.wide { grid-column: 1 / -1; min-height: 78px; }
+    .youi-door.person { border-left: 4px solid var(--mist); }
+    .youi-door.help { border-left: 4px solid var(--jade); }
+    .youi-door.train { border-left: 4px solid var(--champagne); }
+    .youi-now {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--champagne); margin-bottom: 8px;
+    }
+    .youi-out {
+      appearance: none; width: 100%; border: 1px solid var(--line); background: #fff;
+      border-radius: 18px; padding: 14px 14px; margin-bottom: 8px; text-align: left;
+      font: inherit; color: var(--ink); cursor: pointer; box-shadow: var(--shadow);
+    }
+    .youi-out strong { display: block; font-size: 1.02rem; }
+    .youi-out span { display: block; margin-top: 4px; font-size: 0.78rem; color: var(--muted); line-height: 1.35; }
+    .youi-out[aria-pressed="true"] {
+      background: var(--ink); color: #FBF7F2;
+    }
+    .youi-out[aria-pressed="true"] span { color: rgba(251,247,242,0.72); }
+    .youi-pending { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: 0.78rem; line-height: 1.45; }
+    .youi-pending li { margin-bottom: 6px; }
+    .youi-frame-wrap {
+      margin-top: 12px; height: min(52vh, 440px); border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--line); background: #fff;
+    }
+    .youi-frame-wrap iframe { width: 100%; height: 100%; border: 0; }
     .tabbar {
       position: absolute; left: 0; right: 0; bottom: 0; height: var(--tab-h);
-      padding: 8px 8px var(--safe-b); display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+      padding: 8px 8px var(--safe-b); display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;
       background: rgba(255,252,248,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border-top: 1px solid var(--line); z-index: 20;
     }
@@ -679,6 +720,72 @@
           </div>
           <p class="foot-note">Board = Base44 Minion Message · app 6a5f20ace942aedd542584a2 · parent_id thread. Keys stay on server. Single-seat ask UI removed — use npm run ask:* or Minion seats above.</p>
         </section>
+
+        <!-- 30 · founder UI inside Mini -->
+        <section class="panel" id="panel-30" data-tab="30" aria-label="30">
+          <p class="youi-now" id="youiNow">Now · Chi</p>
+          <h1 class="hero-title">Your UI</h1>
+          <p class="hero-sub">Maya → May · Sky → SK · 30 → Chi</p>
+          <div class="youi-grid" role="tablist" aria-label="Doors">
+            <button type="button" class="youi-door person" data-door="sky" aria-pressed="false">
+              <span class="who">Sky</span><span class="kind">person</span><span class="bit">永遠的家 · research</span>
+            </button>
+            <button type="button" class="youi-door person" data-door="maya" aria-pressed="false">
+              <span class="who">Maya</span><span class="kind">person</span><span class="bit">Editorial · 刊</span>
+            </button>
+            <button type="button" class="youi-door help" data-door="sk" aria-pressed="false">
+              <span class="who">SK</span><span class="kind">Sky 加碼</span><span class="bit">仲係 Sky · 唔係 Chi</span>
+            </button>
+            <button type="button" class="youi-door help" data-door="may" aria-pressed="false">
+              <span class="who">May</span><span class="kind">Maya 加碼</span><span class="bit">仲係 Maya · 唔係 Maya 本人</span>
+            </button>
+            <button type="button" class="youi-door train wide" data-door="30" aria-pressed="true">
+              <span class="who">Chi</span><span class="kind">你練 · 舊名 30</span><span class="bit">三掣 · 你確認</span>
+            </button>
+          </div>
+          <div class="card" id="doorCopy"></div>
+          <div class="card" id="thirtyButtons">
+            <h2>刊 · Chi</h2>
+            <p class="hint">Same host as Mini. Off Wi‑Fi after this Desk is on shortkey.beauty. No localhost. Coming Soon `/` untouched.</p>
+            <div class="btn-row">
+              <button type="button" class="btn primary" data-chi-src="/magazine-demo/#/cover">Magazine</button>
+              <button type="button" class="btn jade" data-chi-src="/magazine-demo/review.html">Pictures</button>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn ghost" data-chi-src="/magazine-demo/issues.html">Issues</button>
+              <button type="button" class="btn ghost" data-chi-src="/discovery">Discovery</button>
+              <a class="btn ghost" href="/magazine-demo/#/cover" target="_blank" rel="noopener">Full screen</a>
+            </div>
+            <div class="youi-frame-wrap">
+              <iframe id="chiFrame" title="Chi magazine" src="/magazine-demo/review.html"></iframe>
+            </div>
+            <h2 style="margin-top:16px">Train</h2>
+            <p class="hint">Empty = pause. You confirm. Nothing publishes from an empty row.</p>
+            <button type="button" class="youi-out" data-thirty="1" aria-pressed="false">
+              <strong>1 · Issue One</strong>
+              <span>Show first 刊 if it exists · 素材 → 編輯 → 排版 → Deliver</span>
+            </button>
+            <button type="button" class="youi-out" data-thirty="2" aria-pressed="false">
+              <strong>2 · Next Issue</strong>
+              <span>Direction only · Idea → Roadmap → Draft</span>
+            </button>
+            <button type="button" class="youi-out" data-thirty="3" aria-pressed="false">
+              <strong>3 · Archive</strong>
+              <span>Past outcomes only · Metadata → Database → Display</span>
+            </button>
+            <p class="minion-lock" id="thirtyPause">Not pressed yet.</p>
+            <div class="lock-row">
+              <input type="checkbox" id="thirtyYes" />
+              <label for="thirtyYes">Kieran yes — hold in Pending. Do not publish.</label>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn jade" id="thirtyHold">Hold in Pending</button>
+            </div>
+            <h2 style="margin-top:14px">Pending on this phone</h2>
+            <ul class="youi-pending" id="thirtyPending"><li>Empty. Nothing dropped.</li></ul>
+          </div>
+          <p class="foot-note">Mini · you only · soft PIN. Cursor builds. Gor Gor gates.</p>
+        </section>
       </main>
 
       <nav class="tabbar" role="tablist" aria-label="Desk tabs">
@@ -693,6 +800,9 @@
         </button>
         <button type="button" class="tab" role="tab" data-tab="family" aria-selected="false">
           <span class="ico" aria-hidden="true">◎</span><span class="lbl">Family</span>
+        </button>
+        <button type="button" class="tab" role="tab" data-tab="30" aria-selected="false">
+          <span class="ico" aria-hidden="true">Chi</span><span class="lbl">Chi</span>
         </button>
       </nav>
       <div class="toast" id="toast" role="status"></div>
@@ -726,7 +836,16 @@
   var LEGACY_DIR = "shortkey-founder-direction-v1";
   var LEGACY_CORE = "shortkey-founder-core-value-v2";
   var LEGACY_LOCK = "shortkey-founder-core-locked-v2";
-  var TABS = ["work", "requests", "showcase", "family"];
+  var TABS = ["work", "requests", "showcase", "family", "30"];
+  var THIRTY_LS = "shortkey-mini-30-v1";
+  var DOOR_COPY = {
+    sky: "<h2>Sky</h2><p class='hint'>人。叫佢：Ask Sky:</p>",
+    maya: "<h2>Maya</h2><p class='hint'>人。叫佢：Ask Maya:</p>",
+    sk: "<h2>SK</h2><p class='hint'>Sky 加碼門。能力仲係 Sky。檔未到就停。</p>",
+    may: "<h2>May</h2><p class='hint'>Maya 加碼門。能力仲係 Maya。</p>",
+    "30": "<h2>Chi</h2><p class='hint'>你練。舊名 30。下面三掣你確認。</p>"
+  };
+  var DOOR_NOW = { sky: "Now · Sky", maya: "Now · Maya", sk: "Now · SK", may: "Now · May", "30": "Now · Chi" };
   var MAYA_PORTAL = "http://127.0.0.1:3008/internal/maya";
   var SKY_EMAIL = "sky@shortkey.beauty";
 
@@ -785,6 +904,7 @@
   }
 
   function showTab(name) {
+    if (name === "chi") name = "30";
     if (TABS.indexOf(name) < 0) name = "work";
     document.querySelectorAll(".panel").forEach(function (p) {
       p.classList.toggle("active", p.getAttribute("data-tab") === name);
@@ -792,7 +912,10 @@
     document.querySelectorAll(".tab").forEach(function (t) {
       t.setAttribute("aria-selected", t.getAttribute("data-tab") === name ? "true" : "false");
     });
-    try { history.replaceState(null, "", location.pathname + location.search + "#" + name); } catch (e) {}
+    try {
+      var hash = name === "30" ? "chi" : name;
+      history.replaceState(null, "", location.pathname + location.search + "#" + hash);
+    } catch (e) {}
   }
 
   function refreshCorePill() {
@@ -1222,6 +1345,80 @@
   loadFamilyStatus();
   applyTintGate();
   checkUnlockStatus();
+
+  function thirtyState() {
+    try {
+      var s = JSON.parse(localStorage.getItem(THIRTY_LS) || "{}");
+      if (s.door === "ksky" || s.door === "amay") s.door = s.door === "amay" ? "may" : "sk";
+      return s;
+    } catch (e) { return {}; }
+  }
+  function thirtySave(next) {
+    localStorage.setItem(THIRTY_LS, JSON.stringify(next));
+  }
+  function renderDoor(door) {
+    var copy = document.getElementById("doorCopy");
+    var btns = document.getElementById("thirtyButtons");
+    var now = document.getElementById("youiNow");
+    if (copy) copy.innerHTML = DOOR_COPY[door] || DOOR_COPY["30"];
+    if (btns) btns.style.display = door === "30" ? "" : "none";
+    if (now) now.textContent = DOOR_NOW[door] || "Now · 30";
+    document.querySelectorAll("#panel-30 [data-door]").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-door") === door ? "true" : "false");
+    });
+    var s = thirtyState();
+    s.door = door;
+    thirtySave(s);
+  }
+  document.querySelectorAll("#panel-30 [data-door]").forEach(function (b) {
+    b.addEventListener("click", function () { renderDoor(b.getAttribute("data-door")); });
+  });
+  var chiFrame = document.getElementById("chiFrame");
+  var CHI_SRC = {
+    "1": "/magazine-demo/#/cover",
+    "2": "/magazine-demo/issues.html",
+    "3": "/magazine-demo/review.html"
+  };
+  document.querySelectorAll("[data-chi-src]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (chiFrame) chiFrame.src = b.getAttribute("data-chi-src");
+    });
+  });
+  document.querySelectorAll("#panel-30 [data-thirty]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-thirty");
+      var pause = document.getElementById("thirtyPause");
+      if (pause) pause.textContent = "Button " + id + " · opened on this Mini · confirm before Deliver";
+      if (chiFrame && CHI_SRC[id]) chiFrame.src = CHI_SRC[id];
+      document.querySelectorAll("#panel-30 [data-thirty]").forEach(function (x) {
+        x.setAttribute("aria-pressed", x.getAttribute("data-thirty") === id ? "true" : "false");
+      });
+      var s = thirtyState();
+      s.lastButton = id;
+      thirtySave(s);
+    });
+  });
+  var hold = document.getElementById("thirtyHold");
+  if (hold) {
+    hold.addEventListener("click", function () {
+      var yes = document.getElementById("thirtyYes");
+      if (!yes || !yes.checked) { toast("Tick Kieran yes first"); return; }
+      var s = thirtyState();
+      var row = new Date().toLocaleString("en-HK") + " · button " + (s.lastButton || "?") + " · held (empty · not published)";
+      s.pending = [row].concat(s.pending || []).slice(0, 8);
+      thirtySave(s);
+      var el = document.getElementById("thirtyPending");
+      if (el) el.innerHTML = s.pending.map(function (row) { return "<li>" + row + "</li>"; }).join("");
+      yes.checked = false;
+      toast("Held on this phone");
+    });
+  }
+  renderDoor(thirtyState().door || "30");
+  var pendingEl = document.getElementById("thirtyPending");
+  var savedPending = thirtyState().pending;
+  if (pendingEl && savedPending && savedPending.length) {
+    pendingEl.innerHTML = savedPending.map(function (row) { return "<li>" + row + "</li>"; }).join("");
+  }
 
   var hash = (location.hash || "").replace(/^#/, "");
   showTab(TABS.indexOf(hash) >= 0 ? hash : "work");

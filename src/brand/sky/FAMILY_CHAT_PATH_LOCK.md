@@ -100,7 +100,11 @@ Not in this repo. Do **not** create a second family-chat product. It would fork 
 
 
 
+**Founder-only line (2026-08-24):** Mini on your phone is the only connection you use. SK / May / Chi live **inside** Mini (`#chi`). Cursor builds; it is not a second phone app.
+
 **INTERNAL phone:** https://shortkey.beauty/desk/#family  
+
+**Chi trainer on Mini:** https://shortkey.beauty/desk/#chi
 
 
 
