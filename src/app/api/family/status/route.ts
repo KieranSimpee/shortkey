@@ -17,7 +17,16 @@ export async function GET() {
     (process.env.SKY_EMAIL || "sky@shortkey.beauty").trim(),
   );
 
+  // Key first: Founder Controller opens with Cursor before other seats.
   const members = [
+    {
+      id: "key",
+      name: "Key",
+      role: "Cursor · builds with founder",
+      kind: "ai",
+      status: "online",
+      note: "Controller pair · walks with, not above",
+    },
     {
       id: "kura",
       name: "Kura",

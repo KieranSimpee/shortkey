@@ -3,51 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>shortkey · Control · Magazine Demo</title>
+  <title>shortkey · Control</title>
   <meta name="robots" content="noindex,nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --base: #F5F0E6;
-      --gold: #C9A962;
-      --issue: #C4787A;
-      --primary: #2C3E6B;
+      --ink: #2A2420;
+      --muted: #6E6560;
+      --paper: #F7F3EE;
+      --line: rgba(42, 36, 32, 0.12);
+      --jade: #A8C5B5;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Montserrat, system-ui, sans-serif;
+      font-family: Outfit, system-ui, sans-serif;
+      color: var(--ink);
       background:
-        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(196,120,122,0.16), transparent 65%),
-        linear-gradient(180deg, #efe8da, var(--base));
-      color: var(--primary);
-      padding: 24px 18px 40px;
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,191,208,0.4), transparent 60%),
+        linear-gradient(180deg, #EFE8E1, var(--paper));
+      padding: 28px 18px 40px;
     }
     .banner {
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       text-align: center;
-      color: var(--issue);
-      margin-bottom: 28px;
+      color: var(--muted);
+      margin-bottom: 20px;
     }
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: Fraunces, Georgia, serif;
       font-weight: 700;
-      font-size: clamp(2rem, 8vw, 3rem);
-      color: var(--gold);
+      font-size: clamp(2rem, 8vw, 2.8rem);
       margin: 0 0 8px;
       text-align: center;
     }
     .sub {
       text-align: center;
       font-size: 14px;
-      opacity: 0.8;
-      margin: 0 0 32px;
+      color: var(--muted);
+      margin: 0 0 28px;
       line-height: 1.5;
     }
     .stack {
@@ -64,16 +64,21 @@
       padding: 16px 18px;
       font-weight: 600;
       font-size: 12px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      border: 1.5px solid rgba(201,169,98,0.55);
-      color: var(--primary);
-      background: rgba(245,240,230,0.85);
+      border: 1.5px solid var(--line);
+      color: var(--ink);
+      background: rgba(255,255,255,0.75);
+      border-radius: 14px;
     }
     a.cta.primary {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #1a1a1a;
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+    a.cta.jade {
+      background: rgba(168, 197, 181, 0.55);
+      border-color: rgba(168, 197, 181, 0.9);
     }
     a.cta:hover { opacity: 0.92; }
     .note {
@@ -81,21 +86,27 @@
       margin: 28px auto 0;
       font-size: 12px;
       line-height: 1.6;
-      opacity: 0.7;
+      color: var(--muted);
       text-align: center;
     }
   </style>
 </head>
 <body>
-  <p class="banner">DEMO · CONTROL PANEL EXAMPLE · GOR_GOR_REVIEW · NOT LIVE BEAUTY V1</p>
-  <h1>shortkey</h1>
-  <p class="sub">Control · Magazine Demo<br />Nihon Sakura · Issue 01</p>
+  <p class="banner">INTERNAL · GOR_GOR_REVIEW · NOT PUBLIC PRODUCT</p>
+  <h1>Control</h1>
+  <p class="sub">Key first with you on the server.<br />Then Desk · Chi · Review Board.</p>
   <div class="stack">
-    <a class="cta primary" href="/magazine-demo/#/cover">Open Magazine Demo · Cover</a>
-    <a class="cta" href="/control/hub.html#magazine">Full Master Hub · Magazine panel</a>
-    <a class="cta" href="/control_center.html">Runway Control Center</a>
-    <a class="cta" href="/control-center/magazine-demo/">Control Center · Magazine redirect</a>
+    <a class="cta primary" href="/control/controller.html">Founder Controller · Kieran + Key</a>
+    <a class="cta jade" href="/desk/#chi">Chi · magazine + pictures</a>
+    <a class="cta" href="/desk/#family">Founder Desk · Family</a>
+    <a class="cta" href="/control/review-board.html">Review Board · locked v1.0</a>
+    <a class="cta" href="/control/hub.html">Master Hub</a>
+    <a class="cta" href="/magazine-demo/#/cover">Magazine Demo · Cover</a>
   </div>
-  <p class="note">Phone: open this page or the Cover link on the same Wi‑Fi as the PC running :3005.<br />Beauty V1 home is unchanged.</p>
+  <p class="note">
+    Phone bookmark after deploy:<br />
+    https://shortkey.beauty/control/controller.html<br />
+    Soft PIN = SITE_ACCESS_PASSWORD. Coming Soon `/` untouched.
+  </p>
 </body>
 </html>

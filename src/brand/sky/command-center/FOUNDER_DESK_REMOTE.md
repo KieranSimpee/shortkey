@@ -1,5 +1,8 @@
 # Founder Desk · Remote bookmark (INTERNAL Minion Chat)
 
+**Founder Controller · Key first (INTERNAL):** https://shortkey.beauty/control/controller.html  
+Kieran + Key open the server controller together first. Family seats join after this pair is solid.
+
 **Phone bookmark (INTERNAL only):** https://shortkey.beauty/desk/#family  
 
 **Chi (刊 + picture review · off Wi‑Fi after deploy):** https://shortkey.beauty/desk/#chi  

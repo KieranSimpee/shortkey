@@ -20,6 +20,7 @@ Date: 2026-08-06 · Founder ask: pick the more stable path and remove the weaker
 
 |---------|-----|
 
+| **Founder Controller · Key first** | https://shortkey.beauty/control/controller.html |
 | **Phone / remote INTERNAL** | https://shortkey.beauty/desk/#family |
 
 | Local Beauty | http://localhost:3005/desk/#family |

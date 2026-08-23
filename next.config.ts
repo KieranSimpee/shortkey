@@ -35,6 +35,50 @@ const nextConfig: NextConfig = {
       { source: "/magazine-demo/", destination: "/magazine-demo/index.html" },
       { source: "/shortkey-assets", destination: "/shortkey-assets/index.html" },
       { source: "/shortkey-assets/", destination: "/shortkey-assets/index.html" },
+      {
+        source: "/studio-review/discovery-demo",
+        destination: "/studio-review/discovery-demo/index.html",
+      },
+      {
+        source: "/studio-review/discovery-demo/",
+        destination: "/studio-review/discovery-demo/index.html",
+      },
+      // Permanent short link — bookmark /discovery (public/discovery/index.html)
+      { source: "/discovery", destination: "/discovery/index.html" },
+      { source: "/discovery/", destination: "/discovery/index.html" },
+      {
+        source: "/platform-magazine-dna",
+        destination: "/platform-magazine-dna/index.html",
+      },
+      {
+        source: "/platform-magazine-dna/",
+        destination: "/platform-magazine-dna/index.html",
+      },
+      {
+        source: "/platform-magazine-dna/v1",
+        destination: "/platform-magazine-dna/v1/index.html",
+      },
+      {
+        source: "/platform-magazine-dna/v1/",
+        destination: "/platform-magazine-dna/v1/index.html",
+      },
+      {
+        source: "/platform-magazine-dna/templates-v1",
+        destination: "/platform-magazine-dna/templates-v1/index.html",
+      },
+      {
+        source: "/platform-magazine-dna/templates-v1/",
+        destination: "/platform-magazine-dna/templates-v1/index.html",
+      },
+      {
+        source: "/platform-magazine-dna/page-turn-benchmark",
+        destination: "/platform-magazine-dna/page-turn-benchmark/index.html",
+      },
+      {
+        source: "/platform-magazine-dna/page-turn-benchmark/",
+        destination: "/platform-magazine-dna/page-turn-benchmark/index.html",
+      },
+
       // Agent roster + AOS dashboard — trailing-slash safe for Next
       { source: "/agent-roster", destination: "/agent-roster/index.html" },
       { source: "/agent-roster/", destination: "/agent-roster/index.html" },
@@ -102,6 +146,7 @@ const nextConfig: NextConfig = {
       { source: "/brand-onboarding-form/v1/", destination: "/brand-onboarding-form/v1/index.html" },
       { source: "/tint-platform", destination: "/tint-platform/index.html" },
       { source: "/tint-platform/", destination: "/tint-platform/index.html" },
+      { source: "/control/controller", destination: "/control/controller.html" },
     ];
   },
   async redirects() {

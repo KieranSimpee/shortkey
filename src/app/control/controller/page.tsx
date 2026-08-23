@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-/** Key-first Founder Controller on the server. Full hub stays at /control/hub.html. */
-export default function ControlPage() {
+/** Canonical path without .html — same shell as /control/controller.html */
+export default function ControllerPage() {
   return (
     <iframe
       src="/control/controller.html"

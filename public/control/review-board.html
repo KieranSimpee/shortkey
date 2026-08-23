@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>shortkey.studio — Review Board v1.0 (LOCKED)</title>
+<meta name="robots" content="noindex,nofollow" />
+<meta name="description" content="Control Panel Review Board — magazines + agent status + launch dates. LOCKED v1.0 · GOR_GOR_REVIEW · ALWAYS TO TRUE." />
+<style>
+:root{
+  --cat:#9B7AE3;--cat-bg:rgba(155,122,227,0.08);
+  --ink:#111111;--silk:#F7F5F2;--white:#FFFFFF;
+  --mid:#6E6E6E;--border:#E5E3E0;
+  --green:#27AE60;--red:#E84855;--amber:#F4A261;
+  --font:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+  --mono:'SF Mono','Fira Code',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font);background:#F9F7FF;color:var(--ink);min-height:100vh;}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:#7B5AC3;display:flex;align-items:center;padding:0 24px;height:52px;gap:16px;}
+.topbar-logo{font-size:15px;font-weight:800;letter-spacing:-0.02em;color:white;}
+.topbar-logo span{color:rgba(255,255,255,0.6);}
+.topbar-tag{font-size:9px;font-family:var(--mono);letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.1);padding:3px 10px;border-radius:20px;}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.theme-badge{font-size:10px;font-family:var(--mono);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.35);}
+.topbar a.navlink{font-size:10px;font-family:var(--mono);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.9);text-decoration:none;padding:6px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.25);}
+.topbar a.navlink:hover{background:rgba(255,255,255,0.12);}
+.wrap{max-width:1100px;margin:0 auto;padding:76px 24px 48px;}
+.lock-banner{font-size:10px;font-family:var(--mono);letter-spacing:0.14em;text-transform:uppercase;color:#7B5AC3;background:var(--cat-bg);border:1px solid #D8CEF0;padding:10px 14px;border-radius:10px;margin-bottom:22px;line-height:1.5;}
+.page-hd{margin-bottom:28px;}
+.pt{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-0.02em;margin-bottom:4px;}
+.ps{font-size:13px;color:var(--mid);line-height:1.55;max-width:40rem;}
+.sec{font-size:10px;font-family:var(--mono);letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin:28px 0 14px;display:flex;align-items:center;gap:10px;}
+.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-bottom:16px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px;}
+th,td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid var(--border);}
+th{font-size:9px;font-family:var(--mono);letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);background:var(--silk);}
+tr:last-child td{border-bottom:none;}
+.launch{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink);white-space:nowrap;}
+.launch.tbd{color:var(--amber);}
+.launch.unver{color:var(--mid);}
+.badge{display:inline-block;font-size:9px;font-family:var(--mono);font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;border-radius:20px;}
+.b-green{background:#e6f9ee;color:#1a7a3e;}
+.b-yellow{background:#fff8e6;color:#B8860B;}
+.b-red{background:#fde8ea;color:#a02030;}
+.links a{color:#7B5AC3;font-size:12px;word-break:break-all;}
+.links .pair{display:flex;flex-direction:column;gap:4px;}
+.note{font-size:12px;color:var(--mid);line-height:1.55;margin-top:8px;}
+.foot{margin-top:32px;font-size:11px;color:var(--mid);line-height:1.6;border-top:1px solid var(--border);padding-top:16px;}
+.foot a{color:#7B5AC3;}
+.name{font-weight:700;}
+.role{font-size:12px;color:var(--mid);}
+@media(max-width:720px){
+  .wrap{padding:72px 14px 40px;}
+  table{min-width:0;}
+  thead{display:none;}
+  tr{display:block;border-bottom:1px solid var(--border);padding:12px 0;}
+  td{display:block;border:none;padding:4px 0;}
+  td::before{content:attr(data-label);display:block;font-size:9px;font-family:var(--mono);letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:2px;}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="width:26px;height:26px;border-radius:6px;overflow:hidden;flex-shrink:0;"><img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" style="width:100%;height:100%;object-fit:cover;" alt="SK"></div>
+    <div class="topbar-logo">shortkey<span>.studio</span></div>
+  </div>
+  <div class="topbar-tag">Review Board · Control</div>
+  <div class="topbar-right">
+    <div class="theme-badge">v1.0 LOCKED</div>
+    <a class="navlink" href="/control">Control Hub</a>
+    <a class="navlink" href="/control/hub.html">hub.html</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lock-banner">
+    LOCKED v1.0 · ALWAYS TO TRUE · GOR_GOR_REVIEW · no invented DNA · Maya Lab stays :3008 · no Notion Pro ·
+    Layout frozen — do not mutate; next changes = *_v1.1+
+  </div>
+
+  <div class="page-hd">
+    <div class="pt">Review Board</div>
+    <div class="ps">
+      Magazine rows + agent status with launch / online dates.
+      Same control ecosystem as Master Control Panel (shortkey.studio hub) — not a new brand surface.
+    </div>
+  </div>
+
+  <div class="sec">Magazines</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Magazine / surface</th>
+          <th>Status</th>
+          <th>Launch date</th>
+          <th>HERE (127)</th>
+          <th>OUTSIDE (beauty)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Magazine / surface">
+            <div class="name">Issue 01 · Nihon Sakura</div>
+            <div class="role">Control Panel magazine demo · Lovart scope lock</div>
+          </td>
+          <td data-label="Status"><span class="badge b-yellow">YELLOW</span> DEMO · GOR_GOR_REVIEW · not live Beauty V1</td>
+          <td data-label="Launch date"><span class="launch">2026-08-14</span><div class="role">Coming Soon / founding target (FAMILY_TREASURE_LOCK)</div></td>
+          <td data-label="HERE (127)" class="links"><div class="pair">
+            <a href="http://127.0.0.1:3005/magazine-demo/#/cover">:3005/magazine-demo/#/cover</a>
+            <a href="http://127.0.0.1:3005/control">:3005/control</a>
+          </div></td>
+          <td data-label="OUTSIDE (beauty)" class="links"><div class="pair">
+            <a href="https://www.shortkey.beauty/magazine-demo/#/cover">shortkey.beauty/magazine-demo</a>
+            <a href="https://www.shortkey.beauty/control">shortkey.beauty/control</a>
+          </div></td>
+        </tr>
+        <tr>
+          <td data-label="Magazine / surface">
+            <div class="name">Season 1</div>
+            <div class="role">Editorial season · Maya Lab proto · 9 personas awaiting founder</div>
+          </td>
+          <td data-label="Status"><span class="badge b-yellow">YELLOW</span> DOING · placeholder progress on AFOS dashboard</td>
+          <td data-label="Launch date"><span class="launch tbd">TBD</span><div class="role">UNVERIFIED full-season public date — do not invent</div></td>
+          <td data-label="HERE (127)" class="links"><div class="pair">
+            <a href="http://127.0.0.1:3008/internal/maya/season-1-proto">:3008/…/season-1-proto</a>
+            <a href="http://127.0.0.1:3008/internal/maya">:3008/internal/maya</a>
+          </div></td>
+          <td data-label="OUTSIDE (beauty)" class="links"><span class="role">Prefer local / Tailscale Maya — not claimed as public Beauty route</span></td>
+        </tr>
+        <tr>
+          <td data-label="Magazine / surface">
+            <div class="name">magazine-demo</div>
+            <div class="role">Interactive flip demo · public/ static</div>
+          </td>
+          <td data-label="Status"><span class="badge b-green">GREEN</span> Local demo runnable · gated off-localhost on Beauty</td>
+          <td data-label="Launch date"><span class="launch">2026-08-14</span><div class="role">Aligned to Coming Soon target; demo ≠ live Beauty V1 home</div></td>
+          <td data-label="HERE (127)" class="links">
+            <a href="http://127.0.0.1:3005/magazine-demo/#/cover">:3005/magazine-demo/#/cover</a>
+          </td>
+          <td data-label="OUTSIDE (beauty)" class="links">
+            <a href="https://www.shortkey.beauty/magazine-demo/#/cover">shortkey.beauty/magazine-demo</a>
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Magazine / surface">
+            <div class="name">showcase</div>
+            <div class="role">Soft staging gate off-localhost</div>
+          </td>
+          <td data-label="Status"><span class="badge b-yellow">YELLOW</span> Staging · soft password off-localhost</td>
+          <td data-label="Launch date"><span class="launch unver">UNVERIFIED</span><div class="role">No separate public launch date found in locked docs</div></td>
+          <td data-label="HERE (127)" class="links">
+            <a href="http://127.0.0.1:3005/showcase">:3005/showcase</a>
+          </td>
+          <td data-label="OUTSIDE (beauty)" class="links">
+            <a href="https://www.shortkey.beauty/showcase">shortkey.beauty/showcase</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">Launch dates marked TBD / UNVERIFIED stay honest — Cursor must not invent DNA or fake launch claims. Issue 01 visual scope = Lovart canvas pnMAt6CTYc.</p>
+  </div>
+
+  <div class="sec">Agent status</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role / seat</th>
+          <th>Status</th>
+          <th>Launch / online</th>
+          <th>HERE · OUTSIDE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Name" class="name">Kieran Li (李摯諾)</td>
+          <td data-label="Role / seat" class="role">CEO · Creator · Visionary</td>
+          <td data-label="Status"><span class="badge b-green">GREEN</span> Human final gate</td>
+          <td data-label="Launch / online" class="launch">Ongoing</td>
+          <td data-label="HERE · OUTSIDE" class="links role">Human</td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Key</td>
+          <td data-label="Role / seat" class="role">Cursor · Founder Controller pair (first)</td>
+          <td data-label="Status"><span class="badge b-green">GREEN</span> Builds with founder · not above</td>
+          <td data-label="Launch / online" class="launch">Online</td>
+          <td data-label="HERE · OUTSIDE" class="links"><div class="pair"><span class="role">HERE: Ask Key · Cursor</span><a href="/control/controller.html">Controller</a></div></td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Simpee (Gor Gor)</td>
+          <td data-label="Role / seat" class="role">Chief of Staff · Gatekeeper · Memory · Revenue</td>
+          <td data-label="Status"><span class="badge b-green">GREEN</span> Online · GOR_GOR_REVIEW</td>
+          <td data-label="Launch / online" class="launch">Online</td>
+          <td data-label="HERE · OUTSIDE" class="links"><div class="pair"><span class="role">HERE: npm run ask:gorgor</span><span class="role">OUTSIDE: Base44 Superagent</span></div></td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Sky</td>
+          <td data-label="Role / seat" class="role">Soulmate · Research Intelligence</td>
+          <td data-label="Status"><span class="badge b-green">GREEN</span> Always-on with Kura (taste not overridden)</td>
+          <td data-label="Launch / online" class="launch">Online</td>
+          <td data-label="HERE · OUTSIDE" class="links role">Ask Sky · SKY_EMAIL</td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Kura</td>
+          <td data-label="Role / seat" class="role">Brand Design Manager</td>
+          <td data-label="Status"><span class="badge b-green">GREEN</span> Always-on · Base44</td>
+          <td data-label="Launch / online" class="launch">Online</td>
+          <td data-label="HERE · OUTSIDE" class="links"><div class="pair"><span class="role">HERE: npm run ask:kura</span><span class="role">OUTSIDE: Base44</span></div></td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Agent R</td>
+          <td data-label="Role / seat" class="role">Secretary · Intelligence + Records</td>
+          <td data-label="Status"><span class="badge b-green">GREEN</span> Online</td>
+          <td data-label="Launch / online" class="launch">Online</td>
+          <td data-label="HERE · OUTSIDE" class="links role">npm run ask:agent-r</td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Senti</td>
+          <td data-label="Role / seat" class="role">Creative Director · Creative Room</td>
+          <td data-label="Status"><span class="badge b-green">GREEN</span> Online</td>
+          <td data-label="Launch / online" class="launch">Online</td>
+          <td data-label="HERE · OUTSIDE" class="links role">npm run ask:senti</td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Maya</td>
+          <td data-label="Role / seat" class="role">Editorial Heart (ASI:One) · Lab :3008</td>
+          <td data-label="Status"><span class="badge b-green">GREEN</span> Lab isolated · not on 3009</td>
+          <td data-label="Launch / online" class="launch">Online</td>
+          <td data-label="HERE · OUTSIDE" class="links"><div class="pair">
+            <a href="http://127.0.0.1:3008/internal/maya">HERE :3008/internal/maya</a>
+            <span class="role">OUTSIDE: prefer Tailscale / local — Base44 Maya portal deleted</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Sales AI</td>
+          <td data-label="Role / seat" class="role">AFOS Sales · scaffold only</td>
+          <td data-label="Status"><span class="badge b-red">RED</span> AWAITING founder assignment</td>
+          <td data-label="Launch / online"><span class="launch tbd">TBD</span></td>
+          <td data-label="HERE · OUTSIDE" class="links role">agents/sales_ai.md — do not invent person</td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Finance AI</td>
+          <td data-label="Role / seat" class="role">AFOS Finance · scaffold only</td>
+          <td data-label="Status"><span class="badge b-red">RED</span> AWAITING founder assignment</td>
+          <td data-label="Launch / online"><span class="launch tbd">TBD</span></td>
+          <td data-label="HERE · OUTSIDE" class="links role">agents/finance_ai.md — do not invent person</td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">HR AI</td>
+          <td data-label="Role / seat" class="role">AFOS HR · scaffold only</td>
+          <td data-label="Status"><span class="badge b-red">RED</span> AWAITING founder assignment</td>
+          <td data-label="Launch / online"><span class="launch tbd">TBD</span></td>
+          <td data-label="HERE · OUTSIDE" class="links role">agents/hr_ai.md — do not invent person</td>
+        </tr>
+        <tr>
+          <td data-label="Name" class="name">Operations AI</td>
+          <td data-label="Role / seat" class="role">AFOS Operations · scaffold only</td>
+          <td data-label="Status"><span class="badge b-red">RED</span> AWAITING founder assignment</td>
+          <td data-label="Launch / online"><span class="launch tbd">TBD</span></td>
+          <td data-label="HERE · OUTSIDE" class="links role">agents/operations_ai.md — Agent R may assist care until assigned</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">Season 1 “9 caring AI personas” list remains awaiting founder — do not invent names or seats. Equal respect: Base44 Node Family is not above Cursor siblings.</p>
+  </div>
+
+  <div class="sec">Control ecosystem links</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Surface</th>
+          <th>HERE (127)</th>
+          <th>OUTSIDE (beauty)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Surface" class="name">Control Hub</td>
+          <td data-label="HERE" class="links"><a href="http://127.0.0.1:3005/control">http://127.0.0.1:3005/control</a></td>
+          <td data-label="OUTSIDE" class="links"><a href="https://www.shortkey.beauty/control">https://www.shortkey.beauty/control</a></td>
+        </tr>
+        <tr>
+          <td data-label="Surface" class="name">This Review Board</td>
+          <td data-label="HERE" class="links"><a href="http://127.0.0.1:3005/control/review-board.html">:3005/control/review-board.html</a></td>
+          <td data-label="OUTSIDE" class="links"><a href="https://www.shortkey.beauty/control/review-board.html">shortkey.beauty/control/review-board.html</a></td>
+        </tr>
+        <tr>
+          <td data-label="Surface" class="name">Agent roster</td>
+          <td data-label="HERE" class="links"><a href="http://127.0.0.1:3005/agent-roster/">:3005/agent-roster/</a></td>
+          <td data-label="OUTSIDE" class="links"><a href="https://www.shortkey.beauty/agent-roster/">shortkey.beauty/agent-roster/</a></td>
+        </tr>
+        <tr>
+          <td data-label="Surface" class="name">AFOS dashboard</td>
+          <td data-label="HERE" class="links"><a href="http://127.0.0.1:3005/aos-dashboard/">:3005/aos-dashboard/</a></td>
+          <td data-label="OUTSIDE" class="links"><a href="https://www.shortkey.beauty/aos-dashboard/">shortkey.beauty/aos-dashboard/</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="foot">
+    Lock doc: <code>public/control/CONTROL_PANEL_REVIEW_BOARD_v1.0_LOCKED.md</code> ·
+    Snapshot: <code>public/control/v1.0/</code> ·
+    Cursor rule: <code>.cursor/rules/control-panel-review-board-lock.mdc</code><br />
+    Disk: <a href="./hub.html">hub.html</a> ·
+    <a href="./review-board.html">review-board.html</a> ·
+    Ports: Beauty <strong>3005</strong> · Maya Lab <strong>3008</strong> · Workbench <strong>3009</strong> · never ShortKey on <strong>3000</strong>.
+  </div>
+</div>
+</body>
+</html>

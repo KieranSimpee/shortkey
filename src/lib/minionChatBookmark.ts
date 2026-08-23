@@ -10,6 +10,10 @@
  * Soft gate: SITE_ACCESS_PASSWORD or DESK_ACCESS_PASSWORD (+ K_MINION_API_KEY for chat).
  */
 
+/** Founder Controller — Kieran + Key first (INTERNAL). Use www — apex redirects. */
+export const FOUNDER_CONTROLLER_INTERNAL =
+  "https://www.shortkey.beauty/control/controller.html";
+
 /** Local Beauty :3005 */
 export const MINION_CHAT_LOCAL = "http://localhost:3005/desk/#family";
 
