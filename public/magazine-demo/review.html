@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Magazine Review · Nihon Sakura Issue 01 · shortkey</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Merriweather:wght@400&family=Montserrat:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <!--
+    Founder review surface (sibling to locked flip demo).
+    Relative paths → works via http://127.0.0.1:3008/magazine-demo/review.html
+    and usually as file:// (open this file directly). No ES modules.
+    Flip interactive demo (hotspots/modals): ./index.html#/cover
+  -->
+  <style>
+    :root {
+      --color-base: #F5F0E6;
+      --color-primary: #2C3E6B;
+      --color-gold: #C9A962;
+      --color-issue: #C4787A;
+      --font-hero: "Playfair Display", Georgia, serif;
+      --font-editorial: "Cormorant Garamond", Georgia, serif;
+      --font-body: "Merriweather", Georgia, serif;
+      --font-ui: "Montserrat", system-ui, sans-serif;
+      --ink: #1a1a1a;
+      --muted: rgba(26, 26, 26, 0.62);
+      --line: rgba(201, 169, 98, 0.35);
+      --banner-h: 18px;
+      --header-h: 52px;
+      --strip-h: 72px;
+      --nav-h: 56px;
+      --rail-w: 148px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--color-base);
+      color: var(--ink);
+      font-family: var(--font-body);
+    }
+
+    a { color: var(--color-primary); }
+
+    .banner {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      height: var(--banner-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-primary);
+      color: var(--color-base);
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .topbar {
+      position: sticky;
+      top: var(--banner-h);
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: var(--header-h);
+      padding: 8px 16px;
+      background: rgba(245, 240, 230, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      height: 36px;
+      width: auto;
+      max-width: min(160px, 42vw);
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-mark {
+      font-family: var(--font-hero);
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--color-gold);
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .issue {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-issue);
+    }
+
+    .issue-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-issue);
+    }
+
+    .top-links {
+      margin-left: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      color: var(--color-primary);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.35);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .chip:hover { border-color: var(--color-gold); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: var(--rail-w) minmax(0, 1fr);
+      min-height: calc(100dvh - var(--banner-h) - var(--header-h));
+    }
+
+    .rail {
+      border-right: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.28);
+      padding: 12px 8px 24px;
+      overflow-y: auto;
+      max-height: calc(100dvh - var(--banner-h) - var(--header-h));
+      position: sticky;
+      top: calc(var(--banner-h) + var(--header-h));
+    }
+
+    .rail-label {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 4px 6px 10px;
+    }
+
+    .thumb {
+      width: 100%;
+      display: block;
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 0;
+      margin: 0 0 8px;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      font: inherit;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .thumb img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      background: #e8e2d6;
+    }
+
+    .thumb span {
+      display: block;
+      padding: 5px 6px 7px;
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    .thumb[aria-current="true"] {
+      border-color: var(--color-gold);
+      box-shadow: 0 0 0 1px rgba(201, 169, 98, 0.45);
+    }
+
+    .thumb[aria-current="true"] span {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .stage-wrap {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 18px 8px;
+      min-height: min(72dvh, 820px);
+      background:
+        radial-gradient(ellipse at 50% 18%, rgba(196, 120, 122, 0.08), transparent 48%),
+        linear-gradient(180deg, rgba(44, 62, 107, 0.04), transparent 42%),
+        var(--color-base);
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    .page-frame {
+      width: min(100%, 720px);
+      aspect-ratio: 3 / 4;
+      max-height: min(68dvh, 780px);
+      position: relative;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 48px rgba(44, 62, 107, 0.12);
+      background: #ddd6c8;
+      overflow: hidden;
+    }
+
+    .page-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #ebe4d6;
+      display: block;
+    }
+
+    .page-frame.is-switching {
+      animation: pageIn 280ms ease;
+    }
+
+    @keyframes pageIn {
+      from { opacity: 0.55; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: var(--nav-h);
+      padding: 8px 18px 12px;
+      border-top: 1px solid var(--line);
+      background: rgba(245, 240, 230, 0.9);
+    }
+
+    .nav-btn {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+      color: var(--color-primary);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .nav-btn:not(:disabled):hover {
+      border-color: var(--color-gold);
+    }
+
+    .nav-meta {
+      text-align: center;
+      min-width: 0;
+    }
+
+    .nav-meta .idx {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    .nav-meta .title {
+      font-family: var(--font-editorial);
+      font-size: 1.35rem;
+      margin-top: 2px;
+      line-height: 1.15;
+    }
+
+    .nav-meta .hint {
+      margin-top: 4px;
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .strip {
+      border-top: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.3);
+      padding: 10px 12px 14px;
+    }
+
+    .strip-label {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 4px 8px;
+    }
+
+    .strip-track {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scroll-snap-type: x proximity;
+    }
+
+    .strip-item {
+      flex: 0 0 64px;
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      border-radius: 6px;
+      overflow: hidden;
+      scroll-snap-align: start;
+    }
+
+    .strip-item img {
+      width: 64px;
+      height: 86px;
+      object-fit: cover;
+      display: block;
+      background: #e8e2d6;
+    }
+
+    .strip-item[aria-current="true"] {
+      border-color: var(--color-gold);
+    }
+
+    .assets {
+      border-top: 1px solid var(--line);
+      padding: 28px 18px 48px;
+      background:
+        linear-gradient(180deg, rgba(44, 62, 107, 0.03), transparent 80px),
+        var(--color-base);
+    }
+
+    .assets-inner {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .assets h2 {
+      font-family: var(--font-editorial);
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin: 0 0 6px;
+    }
+
+    .assets .lead {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .asset-block { margin-bottom: 28px; }
+
+    .asset-block h3 {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-issue);
+      margin: 0 0 10px;
+    }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .asset-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .asset-card:hover { border-color: var(--color-gold); }
+
+    .asset-card img,
+    .asset-card video {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+      background: #e8e2d6;
+    }
+
+    .asset-card video { aspect-ratio: 16 / 9; background: #1a1a1a; }
+
+    .asset-card span {
+      display: block;
+      padding: 8px 9px 10px;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+    }
+
+    .note {
+      margin-top: 8px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.4);
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .note code {
+      font-size: 0.78em;
+      color: var(--color-primary);
+    }
+
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; }
+      .rail {
+        display: none;
+      }
+      .page-frame {
+        max-height: min(58dvh, 640px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner" role="status">
+    REVIEW · NIHON SAKURA ISSUE 01 · GOR_GOR_REVIEW · NOT LIVE BEAUTY V1
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#page-0" id="brand-home" aria-label="shortkey">
+      <img class="brand-logo" src="/logo/shortkey-primary.png" alt="shortkey" width="160" height="36" />
+    </a>
+    <div class="issue">
+      <span class="issue-dot" aria-hidden="true"></span>
+      <span>Nihon Sakura · Issue 01</span>
+    </div>
+    <div class="top-links">
+      <a class="chip" href="./issues.html" title="Compare Issue 1 Maya vs Issue 2 Copilot">Issues hub</a>
+      <a class="chip" href="./emagazine.html#/cover">Issue 1 · e-magazine</a>
+      <a class="chip" href="./lovart-phone/index.html">Phone showcase</a>
+      <a class="chip" href="./copilot-hidden-gems-magazine.html#cover" title="Issue 2 · Copilot">Issue 2 · Copilot</a>
+      <a class="chip" href="./index.html#/cover">Baseline flip</a>
+      <a class="chip" href="../shortkey-assets/index.html">Lovart gallery</a>
+      <a class="chip" href="#lovart-assets">P1–P8 · Videos</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="rail" aria-label="Page thumbnails">
+      <p class="rail-label">Issue pages</p>
+      <div id="rail-track"></div>
+    </aside>
+
+    <div class="stage-wrap">
+      <main class="stage" id="stage" aria-live="polite">
+        <div class="page-frame" id="page-frame">
+          <img id="page-img" alt="" draggable="false" />
+        </div>
+      </main>
+
+      <nav class="nav" aria-label="Page navigation">
+        <button type="button" class="nav-btn" id="nav-prev" aria-label="Previous page">← Prev</button>
+        <div class="nav-meta">
+          <div class="idx" id="nav-index">01 / 12</div>
+          <div class="title" id="nav-title">Cover</div>
+          <div class="hint">← → keys · swipe</div>
+        </div>
+        <button type="button" class="nav-btn" id="nav-next" aria-label="Next page">Next →</button>
+      </nav>
+
+      <div class="strip" aria-label="Page strip">
+        <p class="strip-label">All pages</p>
+        <div class="strip-track" id="strip-track"></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="assets" id="lovart-assets">
+    <div class="assets-inner">
+      <h2>Lovart asset copies</h2>
+      <p class="lead">
+        Gallery stills and videos — separate from the flip page-turn engine.
+        Labels from existing exports only. DEMO · GOR_GOR_REVIEW.
+      </p>
+
+      <div class="asset-block">
+        <h3>Magazine pages · P1–P8</h3>
+        <div class="asset-grid" id="p-grid"></div>
+      </div>
+
+      <div class="asset-block">
+        <h3>Videos · V1–V4</h3>
+        <div class="asset-grid" id="v-grid"></div>
+      </div>
+
+      <div class="asset-block">
+        <h3>Blueprints</h3>
+        <div class="asset-grid" id="bp-grid"></div>
+      </div>
+
+      <p class="note">
+        <strong>Open:</strong>
+        Preferred — <code>http://127.0.0.1:3008/magazine-demo/review.html</code>
+        (<code>npm run maya:dev</code>).
+        Also openable as <code>file://</code> from this HTML (relative assets).
+        Primary interactive e-magazine:
+        <a href="./emagazine.html#/cover">./emagazine.html#/cover</a>
+        (readable overlays · page-turn). Locked baseline flip:
+        <a href="./index.html#/cover">./index.html#/cover</a>.
+        Beauty Coming Soon stays on <strong>:3005</strong> — untouched.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      /* Same order as magazine-demo.js PAGES[] — local copies under ./issue-01/ */
+      var PAGES = [
+        {
+          id: "cover",
+          title: "Cover",
+          file: "cover.png",
+          remote: "https://a.lovart.ai/artifacts/agent/Bk9AumlPff8pPUU2.png",
+        },
+        {
+          id: "editors-letter",
+          title: "Editor’s Letter",
+          file: "editors-letter.png",
+          remote: "https://a.lovart.ai/artifacts/agent/oNW9g1xPrB9uMcnc.png",
+        },
+        {
+          id: "heritage",
+          title: "Heritage",
+          file: "heritage.png",
+          remote: "https://a.lovart.ai/artifacts/agent/q7qhrETuZz1ssd6t.png",
+        },
+        {
+          id: "ingredient",
+          title: "Ingredient",
+          file: "ingredient.png",
+          remote: "https://a.lovart.ai/artifacts/agent/ap9Pd7kpU0EFal03.png",
+        },
+        {
+          id: "brand",
+          title: "Brand Spotlight",
+          file: "brand.png",
+          remote: "https://a.lovart.ai/artifacts/agent/g28Kd91YZPIIheVU.png",
+        },
+        {
+          id: "discovery",
+          title: "Discovery Edit",
+          file: "discovery.png",
+          remote: "https://a.lovart.ai/artifacts/agent/uR3whwr7mbAfqA1Q.png",
+        },
+        {
+          id: "try-on",
+          title: "Try-On",
+          file: "try-on-skin-next.png",
+          remote: "https://a.lovart.ai/artifacts/agent/BEBCC2fQCd3DaJiw.png",
+        },
+        {
+          id: "skin-analysis",
+          title: "Skin Analysis",
+          file: "try-on-skin-next.png",
+          remote: "https://a.lovart.ai/artifacts/agent/BEBCC2fQCd3DaJiw.png",
+        },
+        {
+          id: "creator",
+          title: "Creator",
+          file: "creator.png",
+          remote: "https://a.lovart.ai/artifacts/agent/QiTPCf4e2CDt5npp.png",
+        },
+        {
+          id: "culture",
+          title: "Culture",
+          file: "culture.png",
+          remote: "https://a.lovart.ai/artifacts/agent/oqIR3gcrGTGyV7l2.png",
+        },
+        {
+          id: "whats-next",
+          title: "What’s Next",
+          file: "try-on-skin-next.png",
+          remote: "https://a.lovart.ai/artifacts/agent/BEBCC2fQCd3DaJiw.png",
+        },
+        {
+          id: "overview",
+          title: "Overview",
+          file: "overview.png",
+          remote: "https://a.lovart.ai/artifacts/agent/WZ3AoiTZGiKkwUw1.png",
+        },
+      ];
+
+      var BLUEPRINTS = [
+        { title: "Global Elements", file: "blueprint-global-elements.png" },
+        { title: "Zone Map", file: "blueprint-zone-map.png" },
+        { title: "Modal Overlays", file: "blueprint-modal-overlays.png" },
+        { title: "Developer Handoff", file: "blueprint-developer-handoff.png" },
+      ];
+
+      var P_STILLS = [
+        "P1-cover.png",
+        "P2-toc.png",
+        "P3-kbeauty.png",
+        "P4-jbeauty.png",
+        "P5-cbeauty.png",
+        "P6-catalog.png",
+        "P7-skin-analysis.png",
+        "P8-virtual-tryon.png",
+      ];
+
+      var VIDEOS = [
+        "V1-flagship-60s-homepage.mp4",
+        "V2-usa-canada-with-audio.mp4",
+        "V3-traditional-chinese-with-audio.mp4",
+        "V4-portrait-mobile-social.mp4",
+      ];
+
+      var index = 0;
+      var img = document.getElementById("page-img");
+      var frame = document.getElementById("page-frame");
+      var navPrev = document.getElementById("nav-prev");
+      var navNext = document.getElementById("nav-next");
+      var navIndex = document.getElementById("nav-index");
+      var navTitle = document.getElementById("nav-title");
+      var railTrack = document.getElementById("rail-track");
+      var stripTrack = document.getElementById("strip-track");
+
+      function pad(n) {
+        return n < 10 ? "0" + n : String(n);
+      }
+
+      function localPage(file) {
+        return "./issue-01/" + file;
+      }
+
+      function setImg(el, localPath, remote) {
+        el.onerror = function () {
+          if (remote && el.getAttribute("data-tried") !== "1") {
+            el.setAttribute("data-tried", "1");
+            el.src = remote;
+          }
+        };
+        el.removeAttribute("data-tried");
+        el.src = localPath;
+      }
+
+      function renderChrome() {
+        var page = PAGES[index];
+        navIndex.textContent = pad(index + 1) + " / " + pad(PAGES.length);
+        navTitle.textContent = page.title;
+        navPrev.disabled = index === 0;
+        navNext.disabled = index === PAGES.length - 1;
+
+        var thumbs = document.querySelectorAll("[data-page-index]");
+        for (var i = 0; i < thumbs.length; i++) {
+          var el = thumbs[i];
+          var on = Number(el.getAttribute("data-page-index")) === index;
+          el.setAttribute("aria-current", on ? "true" : "false");
+        }
+
+        var activeStrip = stripTrack.querySelector('[data-page-index="' + index + '"]');
+        if (activeStrip && activeStrip.scrollIntoView) {
+          activeStrip.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+        }
+      }
+
+      function show(i, pushHash) {
+        if (i < 0 || i >= PAGES.length) return;
+        index = i;
+        var page = PAGES[index];
+        frame.classList.remove("is-switching");
+        void frame.offsetWidth;
+        frame.classList.add("is-switching");
+        setImg(img, localPage(page.file), page.remote);
+        img.alt = "shortkey · " + page.title + " · Nihon Sakura Issue 01";
+        renderChrome();
+        document.title = page.title + " · Magazine Review · shortkey";
+        if (pushHash !== false) {
+          var next = "#page-" + index;
+          if (location.hash !== next) {
+            history.replaceState(null, "", next);
+          }
+        }
+      }
+
+      function buildThumbs() {
+        railTrack.innerHTML = "";
+        stripTrack.innerHTML = "";
+        PAGES.forEach(function (page, i) {
+          var railBtn = document.createElement("button");
+          railBtn.type = "button";
+          railBtn.className = "thumb";
+          railBtn.setAttribute("data-page-index", String(i));
+          railBtn.innerHTML =
+            '<img alt="" loading="lazy" src="' +
+            localPage(page.file) +
+            '" /><span>' +
+            pad(i + 1) +
+            " · " +
+            page.title +
+            "</span>";
+          railBtn.addEventListener("click", function () {
+            show(i);
+          });
+          railTrack.appendChild(railBtn);
+
+          var stripBtn = document.createElement("button");
+          stripBtn.type = "button";
+          stripBtn.className = "strip-item";
+          stripBtn.setAttribute("data-page-index", String(i));
+          stripBtn.title = page.title;
+          stripBtn.innerHTML =
+            '<img alt="" loading="lazy" src="' + localPage(page.file) + '" />';
+          stripBtn.addEventListener("click", function () {
+            show(i);
+          });
+          stripTrack.appendChild(stripBtn);
+        });
+      }
+
+      function buildAssets() {
+        var pGrid = document.getElementById("p-grid");
+        var vGrid = document.getElementById("v-grid");
+        var bpGrid = document.getElementById("bp-grid");
+
+        P_STILLS.forEach(function (file) {
+          var a = document.createElement("a");
+          a.className = "asset-card";
+          a.href = "../shortkey-assets/magazine-pages/" + file;
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.innerHTML =
+            '<img loading="lazy" src="../shortkey-assets/magazine-pages/' +
+            file +
+            '" alt="' +
+            file +
+            '" /><span>' +
+            file +
+            "</span>";
+          pGrid.appendChild(a);
+        });
+
+        VIDEOS.forEach(function (file) {
+          var a = document.createElement("a");
+          a.className = "asset-card";
+          a.href = "../shortkey-assets/videos/" + file;
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.innerHTML =
+            '<video muted preload="metadata" src="../shortkey-assets/videos/' +
+            file +
+            '#t=0.1"></video><span>' +
+            file +
+            "</span>";
+          vGrid.appendChild(a);
+        });
+
+        BLUEPRINTS.forEach(function (bp) {
+          var a = document.createElement("a");
+          a.className = "asset-card";
+          a.href = localPage(bp.file);
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.innerHTML =
+            '<img loading="lazy" src="' +
+            localPage(bp.file) +
+            '" alt="' +
+            bp.title +
+            '" /><span>' +
+            bp.title +
+            "</span>";
+          bpGrid.appendChild(a);
+        });
+      }
+
+      navPrev.addEventListener("click", function () {
+        show(index - 1);
+      });
+      navNext.addEventListener("click", function () {
+        show(index + 1);
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft" || e.key === "PageUp") {
+          e.preventDefault();
+          show(index - 1);
+        } else if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+          if (e.key === " " && e.target && e.target.tagName === "A") return;
+          e.preventDefault();
+          show(index + 1);
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          show(0);
+        } else if (e.key === "End") {
+          e.preventDefault();
+          show(PAGES.length - 1);
+        }
+      });
+
+      var touchX = null;
+      var stage = document.getElementById("stage");
+      stage.addEventListener(
+        "touchstart",
+        function (e) {
+          if (!e.changedTouches || !e.changedTouches[0]) return;
+          touchX = e.changedTouches[0].clientX;
+        },
+        { passive: true }
+      );
+      stage.addEventListener(
+        "touchend",
+        function (e) {
+          if (touchX == null || !e.changedTouches || !e.changedTouches[0]) return;
+          var dx = e.changedTouches[0].clientX - touchX;
+          touchX = null;
+          if (Math.abs(dx) < 48) return;
+          if (dx < 0) show(index + 1);
+          else show(index - 1);
+        },
+        { passive: true }
+      );
+
+      document.getElementById("brand-home").addEventListener("click", function (e) {
+        e.preventDefault();
+        show(0);
+      });
+
+      buildThumbs();
+      buildAssets();
+
+      var hashMatch = (location.hash || "").match(/^#page-(\d+)/);
+      var start = hashMatch ? Number(hashMatch[1]) : 0;
+      if (isNaN(start) || start < 0 || start >= PAGES.length) start = 0;
+      show(start, false);
+    })();
+  </script>
+</body>
+</html>

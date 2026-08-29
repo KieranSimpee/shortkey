@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>SHORTKEY — Hidden Gems of Asian Beauty</title>
+<link href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Merriweather:wght@300;400&family=Montserrat:wght@400;600;700&display=swap' rel='stylesheet'>
+<style>
+:root{
+  --base:#f5f0e6;
+  --indigo:#2c3e6b;
+  --gold:#c9a962;
+  --issue:#c4787a;
+  --charcoal:#2c2c2c;
+  --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Merriweather',serif;background:var(--base);color:var(--charcoal)}
+
+/* FIXED HEADER */
+.fixed-header{
+  position:fixed;top:0;left:0;right:0;
+  height:56px;background:var(--indigo);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;z-index:1000;
+}
+.header-left{display:flex;align-items:center;gap:12px}
+.header-logo{height:36px;width:auto;max-width:160px;object-fit:contain;display:block}
+.issue-num{font-family:'Montserrat',sans-serif;font-size:12px;color:var(--gold);letter-spacing:3px}
+.space-icon{font-size:18px;color:var(--base);cursor:pointer}
+
+/* NAV */
+nav{
+  position:sticky;top:56px;background:var(--base);
+  border-bottom:2px solid var(--gold);
+  padding:12px 24px;z-index:99;
+  display:flex;gap:28px;justify-content:center;flex-wrap:wrap;
+}
+nav a{
+  font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;
+  color:var(--indigo);text-decoration:none;letter-spacing:2px;
+  text-transform:uppercase;transition:color .3s;
+}
+nav a:hover{color:var(--gold)}
+
+/* HERO / COVER */
+.hero{
+  min-height:100vh;
+  background:var(--indigo);
+  display:flex;align-items:center;
+  padding:100px 8% 60px;
+  gap:60px;flex-wrap:wrap;
+  margin-top:56px;
+}
+.hero-left{flex:1;min-width:280px}
+.hero-img{
+  width:100%;max-width:380px;
+  border-radius:8px;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
+.hero-right{flex:1;min-width:280px;color:var(--base)}
+.issue-label{
+  font-family:'Montserrat',sans-serif;font-size:11px;
+  letter-spacing:4px;color:var(--gold);margin-bottom:16px;
+}
+.hero-title{
+  font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);
+  line-height:1.1;margin-bottom:8px;
+}
+.hero-jp{
+  font-family:'Cormorant Garamond',serif;font-size:1.8rem;
+  color:var(--issue);font-style:italic;margin-bottom:24px;
+}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;font-size:1.3rem;
+  font-style:italic;color:var(--gold);margin-bottom:16px;
+}
+.hero-body{font-size:.9rem;line-height:1.8;opacity:.8;margin-bottom:40px}
+.gold-rule{width:60px;height:2px;background:var(--gold);margin-bottom:32px}
+
+/* INTERACTIVE STRIP */
+.interactive-strip{
+  display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;
+}
+.strip-btn{
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:2px;padding:10px 20px;border-radius:40px;
+  border:none;cursor:pointer;transition:all .3s;
+}
+.strip-btn.primary{background:var(--gold);color:var(--indigo)}
+.strip-btn.outline{background:transparent;border:1px solid var(--base);color:var(--base)}
+.strip-btn:hover{transform:translateY(-2px);opacity:.9}
+.enter-btn{
+  display:inline-block;padding:16px 36px;
+  background:var(--gold);color:var(--indigo);
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;
+  letter-spacing:2px;border-radius:40px;text-decoration:none;
+  transition:all .3s;
+}
+.enter-btn:hover{background:var(--base)}
+
+/* SECTIONS */
+section{padding:90px 8%}
+.section-label{
+  font-family:'Montserrat',sans-serif;font-size:11px;
+  letter-spacing:4px;color:var(--gold);text-transform:uppercase;
+  margin-bottom:12px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);
+  color:var(--indigo);margin-bottom:8px;
+}
+.section-sub{
+  font-family:'Cormorant Garamond',serif;font-size:1.3rem;
+  font-style:italic;color:var(--gold);margin-bottom:32px;
+}
+.gold-divider{width:60px;height:2px;background:var(--gold);margin-bottom:40px}
+
+/* MANIFESTO */
+.manifesto{background:var(--indigo);color:var(--base)}
+.manifesto .section-title{color:var(--base)}
+.manifesto .gold-divider{background:var(--gold)}
+.quote-block{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.2rem);
+  font-style:italic;line-height:1.6;max-width:900px;
+  color:var(--base);border-left:3px solid var(--gold);padding-left:32px;
+}
+
+/* PAGES GRID */
+.pages-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;margin-top:16px;
+}
+.page-card{
+  background:var(--white);border-radius:12px;overflow:hidden;
+  box-shadow:0 8px 30px rgba(0,0,0,.1);transition:transform .3s;
+  cursor:pointer;
+}
+.page-card:hover{transform:translateY(-6px)}
+.page-card img{width:100%;height:220px;object-fit:cover;object-position:top}
+.page-card-body{padding:14px}
+.page-num{
+  font-family:'Montserrat',sans-serif;font-size:10px;
+  color:var(--gold);letter-spacing:3px;margin-bottom:4px;
+}
+.page-name{
+  font-family:'Playfair Display',serif;font-size:.95rem;
+  color:var(--indigo);
+}
+
+/* CULTURE TIMELINE */
+.timeline{display:flex;gap:20px;overflow-x:auto;padding-bottom:16px}
+.timeline::-webkit-scrollbar{height:4px}
+.timeline::-webkit-scrollbar-track{background:var(--base)}
+.timeline::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+.step{
+  min-width:220px;background:var(--white);padding:28px;
+  border-radius:18px;border-top:3px solid var(--gold);
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+.step h3{font-family:'Playfair Display',serif;color:var(--indigo);margin-bottom:10px;font-size:1.3rem}
+.step p{font-size:.85rem;line-height:1.7;opacity:.8}
+
+/* BRAND CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+.card{
+  background:var(--white);border-radius:20px;overflow:hidden;
+  box-shadow:0 10px 40px rgba(0,0,0,.1);transition:transform .3s;
+}
+.card:hover{transform:translateY(-6px)}
+.card-img{height:260px;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.card-body{padding:24px}
+.card-body h3{
+  font-family:'Playfair Display',serif;font-size:1.2rem;
+  color:var(--indigo);margin-bottom:10px;
+}
+.card-body p{font-size:.85rem;line-height:1.7;opacity:.8;margin-bottom:16px}
+.card-link{
+  font-family:'Montserrat',sans-serif;font-size:11px;
+  font-weight:700;letter-spacing:2px;color:var(--gold);
+  text-decoration:none;
+}
+
+/* TECH / BEAUTY LAB */
+.lab-section{background:var(--indigo)}
+.lab-section .section-title{color:var(--base)}
+.lab-section .section-sub{color:var(--gold)}
+.lab-section .gold-divider{background:var(--gold)}
+.lab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.lab-card{
+  background:rgba(255,255,255,.08);border:1px solid rgba(201,169,98,.3);
+  border-radius:20px;padding:36px;
+}
+.lab-icon{font-size:2.5rem;margin-bottom:16px}
+.lab-card h3{
+  font-family:'Playfair Display',serif;font-size:1.3rem;
+  color:var(--base);margin-bottom:12px;
+}
+.lab-card p{font-size:.85rem;line-height:1.7;color:rgba(247,243,238,.7)}
+.lab-btn{
+  display:inline-block;margin-top:20px;padding:12px 24px;
+  background:var(--gold);color:var(--indigo);
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:2px;border-radius:40px;text-decoration:none;
+  transition:all .3s;
+}
+.lab-btn:hover{background:var(--base)}
+
+/* FOOTER */
+.footer{
+  background:var(--indigo);color:var(--base);
+  text-align:center;padding:80px 20px;
+}
+.footer-logo{
+  width:180px;max-width:70%;height:auto;
+  object-fit:contain;display:block;margin:0 auto 16px;
+}
+.footer-rule{width:60px;height:2px;background:var(--gold);margin:20px auto}
+.footer-tagline{
+  font-family:'Montserrat',sans-serif;font-size:13px;
+  letter-spacing:4px;color:var(--gold);margin-bottom:8px;
+}
+.footer-sub{font-size:.85rem;opacity:.6;letter-spacing:2px}
+
+/* MODAL */
+.modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.7);z-index:2000;
+  justify-content:center;align-items:center;padding:20px;
+}
+.modal-overlay.active{display:flex}
+.modal{
+  background:var(--base);border-radius:20px;max-width:500px;width:100%;
+  padding:40px;position:relative;
+}
+.modal-close{
+  position:absolute;top:16px;right:20px;font-size:1.5rem;
+  cursor:pointer;color:var(--indigo);background:none;border:none;
+}
+.modal h3{
+  font-family:'Playfair Display',serif;font-size:1.8rem;
+  color:var(--indigo);margin-bottom:8px;
+}
+.modal p{font-size:.9rem;line-height:1.7;opacity:.8;margin-bottom:20px}
+.modal .gold-rule{width:40px;height:2px;background:var(--gold);margin-bottom:20px}
+.modal-btn{
+  display:block;width:100%;padding:14px;text-align:center;
+  background:var(--indigo);color:var(--base);border:none;
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;
+  letter-spacing:2px;border-radius:40px;cursor:pointer;margin-bottom:12px;
+  transition:all .3s;
+}
+.modal-btn:hover{background:var(--gold);color:var(--indigo)}
+
+/* PERSONAL SPACE SHEET */
+.ps-sheet{
+  display:none;position:fixed;top:0;right:0;bottom:0;
+  width:85%;max-width:380px;background:var(--base);
+  z-index:2000;box-shadow:-10px 0 40px rgba(0,0,0,.2);
+  padding:40px 28px;overflow-y:auto;transform:translateX(100%);
+  transition:transform .3s ease;
+}
+.ps-sheet.active{display:block;transform:translateX(0)}
+.ps-close{
+  position:absolute;top:16px;left:16px;font-size:1.3rem;
+  cursor:pointer;background:none;border:none;color:var(--indigo);
+}
+.ps-title{
+  font-family:'Playfair Display',serif;font-size:1.6rem;
+  color:var(--indigo);margin-bottom:4px;margin-top:20px;
+}
+.ps-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  color:var(--gold);margin-bottom:24px;font-size:1rem;
+}
+.ps-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.ps-tab{
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:1px;padding:8px 14px;border-radius:40px;cursor:pointer;
+  border:1px solid var(--indigo);color:var(--indigo);background:transparent;
+  transition:all .3s;
+}
+.ps-tab.active{background:var(--indigo);color:var(--base)}
+.ps-section h4{
+  font-family:'Playfair Display',serif;color:var(--indigo);
+  margin-bottom:12px;font-size:1rem;
+}
+.ps-empty{
+  font-size:.85rem;opacity:.6;font-style:italic;
+  text-align:center;padding:30px;border:1px dashed var(--gold);
+  border-radius:12px;
+}
+</style>
+</head>
+<body>
+<!-- LOCK: Copilot import · GOR_GOR_REVIEW · not DNA lock · reconstructed truncated footer/modals -->
+<div style="position:fixed;top:56px;left:0;right:0;z-index:998;background:#0b6e4f;color:#f5f0e6;font-family:Montserrat,sans-serif;font-size:9px;font-weight:600;letter-spacing:1.5px;text-align:center;padding:4px 8px;text-transform:uppercase">
+  COPILOT · ISSUE 2 ON COMPARE HUB · HIDDEN GEMS · GOR_GOR_REVIEW · NOT DNA LOCK ·
+  <a href="./issues.html" style="color:#fff;margin-left:8px;text-decoration:underline">← Issues hub</a>
+</div>
+<style>nav{top:76px!important}.hero{padding-top:120px!important}</style>
+
+
+<!-- FIXED HEADER -->
+<div class='fixed-header'>
+  <div class='header-left'>
+    <img class='header-logo' src='../assets/shortkey-logo-lilac-on-dark.png' alt='shortkey' width='160' height='36' />
+  </div>
+  <span class='issue-num'>ISSUE 01</span>
+  <span class='space-icon' onclick='openPS()'>👤</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href='#cover'>Cover</a>
+  <a href='#manifesto'>Manifesto</a>
+  <a href='#pages'>Magazine</a>
+  <a href='#culture'>Culture</a>
+  <a href='#brands'>Brands</a>
+  <a href='#creators'>Creators</a>
+  <a href='#lab'>Beauty Lab</a>
+</nav>
+
+<!-- HERO / COVER -->
+<div class='hero' id='cover'>
+  <div class='hero-left'>
+    <img class='hero-img'
+      src='./copilot-hidden-gems/cover.png'
+      alt='Nihon Sakura Cover'>
+  </div>
+  <div class='hero-right'>
+    <div class='issue-label'>ISSUE 01 — NIHON SAKURA — 日本版</div>
+    <h1 class='hero-title'>Hidden Gems of<br>Asian Beauty</h1>
+    <div class='hero-jp'>桜の美しさ</div>
+    <div class='gold-rule'></div>
+    <p class='hero-sub'>"The Beauty of Japanese Cherry Blossom"</p>
+    <p class='hero-body'>Discover brands with stories. Creators with purpose. Culture with meaning. Products that support stories — not the other way around.</p>
+    <div class='interactive-strip'>
+      <button class='strip-btn primary' onclick='openModal("tryon")'>TRY-ON</button>
+      <button class='strip-btn primary' onclick='openModal("skin")'>SKIN ANALYSIS</button>
+      <button class='strip-btn outline' onclick='openPS()'>PERSONAL SPACE</button>
+    </div>
+    <a href='#manifesto' class='enter-btn'>Enter Issue 01 →</a>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section id='manifesto' class='manifesto'>
+  <div class='section-label'>THE SHORTKEY MANIFESTO</div>
+  <h2 class='section-title'>Magazine First.<br>Store Second.</h2>
+  <div class='gold-divider'></div>
+  <div class='quote-block'>
+    "We are not searching for the biggest names. We are searching for the <em>next</em> names. The founders building with purpose, creators with passion, and stories worth sharing."
+  </div>
+</section>
+
+<!-- ALL 11 PAGES -->
+<section id='pages'>
+  <div class='section-label'>THE MAGAZINE SYSTEM</div>
+  <h2 class='section-title'>11 Pages. One System.</h2>
+  <p class='section-sub'>Every issue. Every brand. Every story.</p>
+  <div class='gold-divider'></div>
+  <div class='pages-grid'>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/cover.png' alt='Cover'>
+      <div class='page-card-body'><div class='page-num'>01</div><div class='page-name'>Cover Page</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/editors-letter.png' alt="Editor's Letter">
+      <div class='page-card-body'><div class='page-num'>02</div><div class='page-name'>Editor's Letter</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/heritage.png' alt='Heritage'>
+      <div class='page-card-body'><div class='page-num'>03</div><div class='page-name'>Heritage Story</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/ingredient.png' alt='Ingredient'>
+      <div class='page-card-body'><div class='page-num'>04</div><div class='page-name'>Ingredient Spotlight</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/brand.png' alt='Brand'>
+      <div class='page-card-body'><div class='page-num'>05</div><div class='page-name'>Brand Spotlight</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/discovery.png' alt='Discovery'>
+      <div class='page-card-body'><div class='page-num'>06</div><div class='page-name'>Discovery Edit</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/try-on-skin-next.png' alt='Try-On'>
+      <div class='page-card-body'><div class='page-num'>07</div><div class='page-name'>Try-On Experience</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/try-on-skin-next.png' alt='Skin'>
+      <div class='page-card-body'><div class='page-num'>08</div><div class='page-name'>Skin Analysis</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/creator.png' alt='Creator'>
+      <div class='page-card-body'><div class='page-num'>09</div><div class='page-name'>Creator Spotlight</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/culture.png' alt='Culture'>
+      <div class='page-card-body'><div class='page-num'>10</div><div class='page-name'>Culture Page</div></div>
+    </div>
+    <div class='page-card'>
+      <img src='./copilot-hidden-gems/overview.png' alt="What's Next">
+      <div class='page-card-body'><div class='page-num'>11</div><div class='page-name'>What's Next</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section id='culture' style='background:var(--indigo)'>
+  <div class='section-label' style='color:var(--gold)'>ASIA THROUGH BEAUTY</div>
+  <h2 class='section-title' style='color:var(--base)'>Culture First.</h2>
+  <p class='section-sub'>Four cities. Four beauty stories.</p>
+  <div class='gold-divider'></div>
+  <div class='timeline'>
+    <div class='step'><h3>Tokyo</h3><p>Street beauty culture, independent boutiques and Japanese minimalist design.</p></div>
+    <div class='step'><h3>Seoul</h3><p>Innovation, skincare rituals and cutting-edge beauty technology.</p></div>
+    <div class='step'><h3>Taipei</h3><p>Modern lifestyle and ingredient innovation from Taiwan.</p></div>
+    <div class='step'><h3>Bangkok</h3><p>Creative energy, colours and Southeast Asian emerging brands.</p></div>
+    <div class='step'><h3>Kyoto</h3><p>Ancient heritage, sakura rituals and artisan beauty traditions.</p></div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id='brands'>
+  <div class='section-label'>FOUNDER STORIES</div>
+  <h2 class='section-title'>Brands Before Products.</h2>
+  <p class='section-sub'>The story behind every bottle.</p>
+  <div class='gold-divider'></div>
+  <div class='grid'>
+    <div class='card'>
+      <div class='card-img'><img src='./copilot-hidden-gems/brand.png' alt='Brand 1'></div>
+      <div class='card-body'>
+        <h3>Nihon Sakura</h3>
+        <p>A Kyoto atelier built on cherry blossom heritage. Every product carries the founder's story of ancient Japanese beauty rituals passed through generations.</p>
+        <a href='#' class='card-link'>DISCOVER THE BRAND →</a>
+      </div>
+    </div>
+    <div class='card'>
+      <div class='card-img'><img src='./copilot-hidden-gems/heritage.png' alt='Brand 2'></div>
+      <div class='card-body'>
+        <h3>Heritage Skincare</h3>
+        <p>Small but passionate brands deserve global visibility. Ancient rice water rituals reimagined for modern skin.</p>
+        <a href='#' class='card-link'>READ THE HERITAGE STORY →</a>
+      </div>
+    </div>
+    <div class='card'>
+      <div class='card-img'><img src='./copilot-hidden-gems/ingredient.png' alt='Brand 3'></div>
+      <div class='card-body'>
+        <h3>Sakura Extract</h3>
+        <p>Cultural roots, ingredient stories and product experiences rooted in Japanese botanical science.</p>
+        <a href='#' class='card-link'>EXPLORE THE INGREDIENT →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEAUTY LAB -->
+<section id='lab' class='lab-section'>
+  <div class='section-label' style='color:var(--gold)'>BEAUTY INTELLIGENCE</div>
+  <h2 class='section-title'>Beauty Lab.</h2>
+  <p class='section-sub'>Where technology meets ritual.</p>
+  <div class='gold-divider'></div>
+  <div class='lab-grid'>
+    <div class='lab-card'>
+      <div class='lab-icon'>💄</div>
+      <h3>AI Try-On</h3>
+      <p>See products on your skin before purchase. AR-powered beauty trial — save your favourite looks to Personal Space.</p>
+      <a href='#' class='lab-btn' onclick='openModal("tryon");return false'>TRY IT NOW →</a>
+    </div>
+    <div class='lab-card'>
+      <div class='lab-icon'>💧</div>
+      <h3>Skin Analysis</h3>
+      <p>6-dimension skin profiling. Hydration, radiance, firmness, sensitivity, texture and pigmentation — all mapped to your ritual.</p>
+      <a href='#' class='lab-btn' onclick='openModal("skin");return false'>ANALYSE MY SKIN →</a>
+    </div>
+    <div class='lab-card'>
+      <div class='lab-icon'>✨</div>
+      <h3>Personal Space</h3>
+      <p>Your private beauty universe. Save looks, track your skin, build your ritual, follow creators and brands.</p>
+      <a href='#' class='lab-btn' onclick='openPS();return false'>OPEN MY SPACE →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CREATORS -->
+<section id='creators'>
+  <div class='section-label'>EMERGING VOICES</div>
+  <h2 class='section-title'>Creators of Asia.</h2>
+  <p class='section-sub'>Today's unknown. Tomorrow's icon.</p>
+  <div class='gold-divider'></div>
+  <div class='grid'>
+    <div class='card'>
+      <div class='card-img'><img src='./copilot-hidden-gems/creator.png' alt='Creator 1'></div>
+      <div class='card-body'>
+        <h3>Master Formulator</h3>
+        <p>A Kyoto artisan who has spent 20 years studying the chemistry of cherry blossoms. Portfolio, interview and community discovery.</p>
+        <a href='#' class='card-link'>READ THE INTERVIEW →</a>
+      </div>
+    </div>
+    <div class='card'>
+      <div class='card-img'><img src='./copilot-hidden-gems/culture.png' alt='Creator 2'></div>
+      <div class='card-body'>
+        <h3>Culture Curator</h3>
+        <p>The ritual of sakura bath. How ancient Japanese bathing ceremonies became a modern skincare movement.</p>
+        <a href='#' class='card-link'>EXPLORE THE CULTURE →</a>
+      </div>
+    </div>
+    <div class='card'>
+      <div class='card-img'><img src='./copilot-hidden-gems/editors-letter.png' alt='Creator 3'></div>
+      <div class='card-body'>
+        <h3>Beauty Creator Program</h3>
+        <p>Invite-only ambassadors who educate, engage and bring Asian beauty stories to a global audience.</p>
+        <a href='#' class='card-link'>JOIN THE PROGRAM →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class='footer'>
+  <img class='footer-logo' src='../assets/shortkey-logo-lilac-on-dark.png' alt='shortkey' width='180' height='115' />
+  <div class='footer-rule'></div>
+  
+  <div class='footer-tagline'>YOUR STYLE. YOUR CTRL.</div>
+  <p class='footer-sub'>Beauty • Culture • Community • Commerce</p>
+  <!--
+    FOOTER COMPLETION NOTE (ALWAYS TO TRUE):
+    Founder paste truncated at: <div class='footer-tagline'>YOUR
+    No complete newer Copilot HTML found under OneDrive Copilot/Created/.
+    Tagline + sub completed from earlier Copilot file pattern in
+    shortkey_premium_magazine.html (same Copilot footer pattern).
+    Modals + Personal Space sheet + JS below were NOT in the truncated paste —
+    CSS + onclick handlers already referenced them, so minimal scaffolding
+    added so the page runs. Copy reused from Beauty Lab cards in the paste only.
+  -->
+</div>
+
+<!-- MODALS (reconstructed scaffold — paste truncated before these) -->
+<div class='modal-overlay' id='modal-tryon' onclick='if(event.target===this)closeModal("tryon")'>
+  <div class='modal' role='dialog' aria-labelledby='tryon-title'>
+    <button class='modal-close' type='button' onclick='closeModal("tryon")' aria-label='Close'>×</button>
+    <h3 id='tryon-title'>AI Try-On</h3>
+    <div class='gold-rule'></div>
+    <p>See products on your skin before purchase. AR-powered beauty trial — save your favourite looks to Personal Space.</p>
+    <p style='font-size:.75rem;opacity:.55;font-family:Montserrat,sans-serif;letter-spacing:1px'>DEMO SIM · GOR_GOR_REVIEW · not live AR</p>
+    <button class='modal-btn' type='button' onclick='closeModal("tryon");openPS()'>SAVE TO PERSONAL SPACE</button>
+    <button class='modal-btn' type='button' onclick='closeModal("tryon")'>CLOSE</button>
+  </div>
+</div>
+
+<div class='modal-overlay' id='modal-skin' onclick='if(event.target===this)closeModal("skin")'>
+  <div class='modal' role='dialog' aria-labelledby='skin-title'>
+    <button class='modal-close' type='button' onclick='closeModal("skin")' aria-label='Close'>×</button>
+    <h3 id='skin-title'>Skin Analysis</h3>
+    <div class='gold-rule'></div>
+    <p>6-dimension skin profiling. Hydration, radiance, firmness, sensitivity, texture and pigmentation — all mapped to your ritual.</p>
+    <p style='font-size:.75rem;opacity:.55;font-family:Montserrat,sans-serif;letter-spacing:1px'>DEMO SIM · GOR_GOR_REVIEW · not live analysis</p>
+    <button class='modal-btn' type='button' onclick='closeModal("skin");openPS()'>SAVE TO PERSONAL SPACE</button>
+    <button class='modal-btn' type='button' onclick='closeModal("skin")'>CLOSE</button>
+  </div>
+</div>
+
+<!-- PERSONAL SPACE SHEET (reconstructed scaffold — paste truncated before this) -->
+<div class='ps-sheet' id='ps-sheet' aria-label='Personal Space'>
+  <button class='ps-close' type='button' onclick='closePS()' aria-label='Close'>←</button>
+  <h2 class='ps-title'>Personal Space</h2>
+  <p class='ps-sub'>Your private beauty universe.</p>
+  <div class='ps-tabs'>
+    <button class='ps-tab active' type='button'>Looks</button>
+    <button class='ps-tab' type='button'>Skin</button>
+    <button class='ps-tab' type='button'>Ritual</button>
+    <button class='ps-tab' type='button'>Saved</button>
+  </div>
+  <div class='ps-section'>
+    <h4>Saved Looks</h4>
+    <div class='ps-empty'>Empty for now — try AI Try-On or Skin Analysis from Beauty Lab.</div>
+  </div>
+</div>
+
+<script>
+function openModal(id){
+  var el=document.getElementById('modal-'+id);
+  if(el) el.classList.add('active');
+}
+function closeModal(id){
+  var el=document.getElementById('modal-'+id);
+  if(el) el.classList.remove('active');
+}
+function openPS(){
+  var el=document.getElementById('ps-sheet');
+  if(el) el.classList.add('active');
+}
+function closePS(){
+  var el=document.getElementById('ps-sheet');
+  if(el) el.classList.remove('active');
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    closeModal('tryon'); closeModal('skin'); closePS();
+  }
+});
+</script>
+</body>
+</html>

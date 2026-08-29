@@ -1,5 +1,11 @@
 node_modules
 .next
+.next-beauty
+.next-family
+.next-studio
+.next-social
+.next-maya
+.logs/
 out
 dist
 *.tsbuildinfo
@@ -18,9 +24,31 @@ data/family-doorbell.json
 # Studio v0.1 local file store (dev)
 data/studio-v01.json
 
+# Studio review shelf pulls (hardlinks/copies of Lovart/frame PNGs — local only; keep README)
+public/studio-review/**
+!public/studio-review/README.md
+!public/studio-review/FAMILY_STORAGE_BOX.md
+!public/studio-review/docs/
+!public/studio-review/docs/**
+!public/studio-review/discovery-demo/
+!public/studio-review/discovery-demo/index.html
+!public/studio-review/discovery-demo/app.js
+!public/studio-review/discovery-demo/README.md
+
 # Social Creator Early Access local file store (dev)
 data/social-early-access.json
 
 # Local screenshot scratch
 tmp-doorbell-shots/
+
+# Local Cursor/private agent context
+.cursor/private/
+.cursor/local/
+
+# Minion Chat bench reports (may include message previews; no keys, but keep out of git)
+scripts/minion-bench/results/
+tmp/minion-bench/
+
+# Social boot log
+.next-social-boot.log
 

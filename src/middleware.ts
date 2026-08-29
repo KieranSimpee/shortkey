@@ -39,6 +39,7 @@ import {
  * Family Table + Studio paths gated on all hosts. Localhost / family|studio surface bypass.
  * Private magazine/showcase — published on domain BUT PRIVATE (fail-closed cookie gate):
  * `/showcase`, `/showcase/*`, `/magazine-demo`, `/magazine-demo/*`,
+ * `/four-hour` (4-hour discovery story demo),
  * `/control-center/magazine-demo` (+ trailing paths). `/control` stays public (founder prefer).
  *
  * Full Rebuild preview stays at `/control/live.html` (family / control hub only).
@@ -96,7 +97,9 @@ function isPrivateMagazinePath(pathname: string): boolean {
     pathname === "/magazine-demo" ||
     pathname.startsWith("/magazine-demo/") ||
     pathname === "/control-center/magazine-demo" ||
-    pathname.startsWith("/control-center/magazine-demo/")
+    pathname.startsWith("/control-center/magazine-demo/") ||
+    pathname === "/four-hour" ||
+    pathname.startsWith("/four-hour/")
   );
 }
 

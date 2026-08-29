@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+  <title>Lovart Phone Showcase · shortkey</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="Phone-friendly Lovart showcase — wallpaper, one-page pitch, all 11 pages. GOR_GOR_REVIEW · local assets." />
+  <meta name="theme-color" content="#2C3E6B" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="SK Phone" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./phone-wallpaper.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Merriweather:wght@400&family=Montserrat:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <!--
+    Relative assets → works on Maya :3008 and as file:// / saved-to-phone.
+    Does not touch locked magazine baseline flip.
+  -->
+  <style>
+    :root {
+      --color-base: #F5F0E6;
+      --color-primary: #2C3E6B;
+      --color-gold: #C9A962;
+      --color-issue: #C4787A;
+      --font-hero: "Playfair Display", Georgia, serif;
+      --font-editorial: "Cormorant Garamond", Georgia, serif;
+      --font-body: "Merriweather", Georgia, serif;
+      --font-ui: "Montserrat", system-ui, sans-serif;
+      --ink: #1a1a1a;
+      --muted: rgba(26, 26, 26, 0.62);
+      --line: rgba(201, 169, 98, 0.35);
+      --safe-b: env(safe-area-inset-bottom, 0px);
+      --safe-t: env(safe-area-inset-top, 0px);
+      --banner-h: 18px;
+      --header-h: 52px;
+      --tabs-h: 48px;
+      --dock-h: 72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% -10%, rgba(196, 120, 122, 0.14), transparent 55%),
+        radial-gradient(ellipse 70% 40% at 100% 100%, rgba(44, 62, 107, 0.08), transparent 50%),
+        var(--color-base);
+      color: var(--ink);
+      font-family: var(--font-body);
+      -webkit-tap-highlight-color: transparent;
+      overscroll-behavior: none;
+    }
+
+    a { color: var(--color-primary); }
+
+    .banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      height: calc(var(--banner-h) + var(--safe-t));
+      padding-top: var(--safe-t);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-primary);
+      color: var(--color-base);
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .topbar {
+      position: fixed;
+      top: calc(var(--banner-h) + var(--safe-t));
+      left: 0;
+      right: 0;
+      z-index: 40;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 12px;
+      background: rgba(245, 240, 230, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: inherit;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      height: 32px;
+      width: auto;
+      max-width: min(140px, 36vw);
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-mark {
+      font-family: var(--font-hero);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-gold);
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .top-links {
+      margin-left: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--color-primary);
+      border: 1px solid var(--line);
+      padding: 6px 8px;
+      background: rgba(255, 255, 255, 0.35);
+      white-space: nowrap;
+    }
+
+    .tabs {
+      position: fixed;
+      top: calc(var(--banner-h) + var(--safe-t) + var(--header-h));
+      left: 0;
+      right: 0;
+      z-index: 35;
+      height: var(--tabs-h);
+      display: flex;
+      gap: 6px;
+      padding: 8px 12px;
+      background: rgba(245, 240, 230, 0.88);
+      border-bottom: 1px solid rgba(44, 62, 107, 0.08);
+    }
+
+    .tab {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid transparent;
+      background: transparent;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 6px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .tab[aria-selected="true"] {
+      color: var(--color-primary);
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.55);
+      box-shadow: inset 0 -2px 0 var(--color-issue);
+    }
+
+    .stage {
+      position: fixed;
+      top: calc(var(--banner-h) + var(--safe-t) + var(--header-h) + var(--tabs-h));
+      left: 0;
+      right: 0;
+      bottom: calc(var(--dock-h) + var(--safe-b));
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+
+    .slides {
+      display: flex;
+      height: 100%;
+      width: 300%;
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .slides.is-dragging { transition: none; }
+
+    .slide {
+      width: 33.333%;
+      height: 100%;
+      padding: 12px 16px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .slide-label {
+      font-family: var(--font-editorial);
+      font-size: 1.05rem;
+      color: var(--color-primary);
+      margin: 0 0 4px;
+      text-align: center;
+    }
+
+    .slide-meta {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 10px;
+      text-align: center;
+    }
+
+    /* —— Phone wallpaper mockup —— */
+    .phone-wrap {
+      position: relative;
+      width: min(72vw, 280px);
+      aspect-ratio: 9 / 19.2;
+      max-height: calc(100% - 72px);
+      perspective: 900px;
+      cursor: pointer;
+    }
+
+    .phone {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 28px;
+      background: linear-gradient(160deg, #1a2238 0%, #0e1424 55%, #1c2438 100%);
+      padding: 10px;
+      box-shadow:
+        0 24px 48px rgba(44, 62, 107, 0.28),
+        0 2px 0 rgba(255, 255, 255, 0.08) inset;
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out, box-shadow 0.2s ease;
+    }
+
+    .phone.is-press {
+      transform: scale(0.975) !important;
+      box-shadow: 0 12px 28px rgba(44, 62, 107, 0.22);
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 38%;
+      height: 18px;
+      background: #0a0e18;
+      border-radius: 12px;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .phone-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0a0e18;
+      isolation: isolate;
+    }
+
+    .phone-screen img {
+      position: absolute;
+      inset: -6%;
+      width: 112%;
+      height: 112%;
+      object-fit: cover;
+      object-position: center;
+      transform: translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1.04);
+      transition: transform 0.12s ease-out;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    .phone-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, transparent 22%, transparent 78%, rgba(0,0,0,0.22) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .phone-home {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32%;
+      height: 4px;
+      border-radius: 4px;
+      background: rgba(245, 240, 230, 0.55);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .hotspot {
+      position: absolute;
+      z-index: 4;
+      border: 1px solid rgba(201, 169, 98, 0.75);
+      background: rgba(44, 62, 107, 0.42);
+      color: var(--color-base);
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 9px;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .hotspot:active { transform: scale(0.96); background: rgba(196, 120, 122, 0.55); }
+
+    .hotspot-tl { top: 12%; left: 8%; }
+    .hotspot-br { bottom: 14%; right: 8%; }
+
+    .hint-line {
+      margin-top: 10px;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* —— Flat art viewers (pitch / 11 pages) —— */
+    .art-frame {
+      position: relative;
+      width: min(92vw, 420px);
+      height: calc(100% - 64px);
+      max-height: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.28);
+      overflow: hidden;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .art-frame:active { cursor: grabbing; }
+
+    .art-frame img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform-origin: center center;
+      transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px)) scale(var(--scale, 1));
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    .art-actions {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+      color: var(--color-primary);
+      padding: 8px 12px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:active { transform: scale(0.97); }
+    .btn-gold {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: #1a1a1a;
+    }
+
+    .dock {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 40;
+      height: calc(var(--dock-h) + var(--safe-b));
+      padding: 10px 16px calc(10px + var(--safe-b));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 240, 230, 0.94);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line);
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 0;
+      padding: 0;
+      background: rgba(44, 62, 107, 0.22);
+      cursor: pointer;
+    }
+
+    .dot[aria-current="true"] {
+      background: var(--color-issue);
+      box-shadow: 0 0 0 3px rgba(196, 120, 122, 0.22);
+    }
+
+    .dock-hint {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Fullscreen lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(14, 18, 28, 0.94);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(12px + var(--safe-t)) 12px calc(12px + var(--safe-b));
+    }
+
+    .lightbox.is-open { display: flex; }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: calc(100% - 56px);
+      object-fit: contain;
+      touch-action: none;
+      transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(var(--scale, 1));
+      transform-origin: center center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .lightbox-bar {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .lightbox .btn {
+      background: rgba(245, 240, 230, 0.12);
+      color: var(--color-base);
+      border-color: rgba(201, 169, 98, 0.45);
+    }
+
+    @media (min-width: 720px) {
+      .phone-wrap { width: min(40vw, 300px); }
+      .art-frame { width: min(70vw, 520px); }
+    }
+  </style>
+</head>
+<body data-surface="lovart-phone-showcase">
+  <div class="banner" role="status">
+    Lovart Phone Showcase · Local assets · GOR_GOR_REVIEW · Not live Beauty V1
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="../emagazine.html#/cover" aria-label="shortkey e-magazine">
+      <img class="brand-logo" src="/logo/shortkey-primary.png" alt="shortkey" width="140" height="32" />
+      <span class="brand-sub">Phone</span>
+    </a>
+    <div class="top-links">
+      <a class="chip" href="../emagazine.html#/cover">E-mag</a>
+      <a class="chip" href="../review.html">Review</a>
+      <a class="chip" href="../copilot-hidden-gems-magazine.html#cover">Copilot</a>
+      <a class="chip" href="../../shortkey-assets/index.html">Gallery</a>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Lovart assets">
+    <button type="button" class="tab" role="tab" id="tab-0" aria-selected="true" aria-controls="slide-0" data-index="0">Wallpaper</button>
+    <button type="button" class="tab" role="tab" id="tab-1" aria-selected="false" aria-controls="slide-1" data-index="1">Pitch</button>
+    <button type="button" class="tab" role="tab" id="tab-2" aria-selected="false" aria-controls="slide-2" data-index="2">11 Pages</button>
+  </div>
+
+  <main class="stage" id="stage" aria-live="polite">
+    <div class="slides" id="slides">
+      <!-- 0 Wallpaper -->
+      <section class="slide" id="slide-0" role="tabpanel" aria-labelledby="tab-0" aria-hidden="false">
+        <h1 class="slide-label">Phone Wallpaper</h1>
+        <p class="slide-meta">Lovart · WZWtrzDBbwCEnO75 · local PNG</p>
+        <div class="phone-wrap" id="phone-wrap" title="Tap for fullscreen">
+          <div class="phone" id="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen" id="phone-screen">
+              <img id="wallpaper-img" src="./phone-wallpaper.png" alt="Phone wallpaper — Lovart artifact" width="1080" height="1920" />
+              <div class="phone-veil" aria-hidden="true"></div>
+              <button type="button" class="hotspot hotspot-tl" data-action="fullscreen" data-src="./phone-wallpaper.png" data-label="Phone Wallpaper">View full</button>
+              <a class="hotspot hotspot-br" href="./phone-wallpaper.png" download="shortkey-phone-wallpaper.png">Save PNG</a>
+            </div>
+            <div class="phone-home" aria-hidden="true"></div>
+          </div>
+        </div>
+        <p class="hint-line">Tilt / drag for parallax · tap screen · swipe assets</p>
+      </section>
+
+      <!-- 1 Pitch -->
+      <section class="slide" id="slide-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="true">
+        <h1 class="slide-label">One Page Pitch</h1>
+        <p class="slide-meta">Lovart · dsqAwDiT3jJQyz6X · local PNG</p>
+        <div class="art-frame" id="frame-pitch" data-src="./one-page-pitch.png" data-label="One Page Pitch">
+          <img src="./one-page-pitch.png" alt="One page pitch — Lovart artifact" />
+        </div>
+        <div class="art-actions">
+          <button type="button" class="btn btn-gold" data-action="fullscreen" data-src="./one-page-pitch.png" data-label="One Page Pitch">Fullscreen</button>
+          <a class="btn" href="./one-page-pitch.png" download="shortkey-one-page-pitch.png">Save PNG</a>
+          <button type="button" class="btn" data-action="reset-zoom" data-frame="frame-pitch">Reset zoom</button>
+        </div>
+      </section>
+
+      <!-- 2 Eleven pages -->
+      <section class="slide" id="slide-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true">
+        <h1 class="slide-label">All 11 Pages</h1>
+        <p class="slide-meta">Lovart · 741PL00CP8BMJL4d · local PNG</p>
+        <div class="art-frame" id="frame-pages" data-src="./all-11-pages.png" data-label="All 11 Pages">
+          <img src="./all-11-pages.png" alt="All 11 pages — Lovart artifact" />
+        </div>
+        <div class="art-actions">
+          <button type="button" class="btn btn-gold" data-action="fullscreen" data-src="./all-11-pages.png" data-label="All 11 Pages">Fullscreen</button>
+          <a class="btn" href="./all-11-pages.png" download="shortkey-all-11-pages.png">Save PNG</a>
+          <button type="button" class="btn" data-action="reset-zoom" data-frame="frame-pages">Reset zoom</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="dock">
+    <div class="dots" role="tablist" aria-label="Asset dots">
+      <button type="button" class="dot" aria-label="Wallpaper" aria-current="true" data-index="0"></button>
+      <button type="button" class="dot" aria-label="One Page Pitch" aria-current="false" data-index="1"></button>
+      <button type="button" class="dot" aria-label="All 11 Pages" aria-current="false" data-index="2"></button>
+    </div>
+    <p class="dock-hint" id="dock-hint">Swipe · pinch zoom on pitch / 11 pages · Add to Home Screen for offline</p>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Fullscreen preview">
+    <img id="lightbox-img" alt="" />
+    <div class="lightbox-bar">
+      <button type="button" class="btn" id="lightbox-close">Close</button>
+      <a class="btn" id="lightbox-download" href="#" download>Save PNG</a>
+      <button type="button" class="btn" id="lightbox-reset">Reset zoom</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var ASSETS = [
+        { id: "wallpaper", label: "Phone Wallpaper", file: "phone-wallpaper.png", src: "./phone-wallpaper.png" },
+        { id: "pitch", label: "One Page Pitch", file: "one-page-pitch.png", src: "./one-page-pitch.png" },
+        { id: "pages", label: "All 11 Pages", file: "all-11-pages.png", src: "./all-11-pages.png" }
+      ];
+
+      var index = 0;
+      var slidesEl = document.getElementById("slides");
+      var stage = document.getElementById("stage");
+      var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+      var dots = Array.prototype.slice.call(document.querySelectorAll(".dot"));
+      var panels = [
+        document.getElementById("slide-0"),
+        document.getElementById("slide-1"),
+        document.getElementById("slide-2")
+      ];
+      var phone = document.getElementById("phone");
+      var phoneScreen = document.getElementById("phone-screen");
+      var wallpaperImg = document.getElementById("wallpaper-img");
+      var lightbox = document.getElementById("lightbox");
+      var lightboxImg = document.getElementById("lightbox-img");
+      var lightboxDownload = document.getElementById("lightbox-download");
+
+      function setIndex(next) {
+        index = Math.max(0, Math.min(ASSETS.length - 1, next));
+        slidesEl.style.transform = "translate3d(" + (-index * 33.333) + "%, 0, 0)";
+        tabs.forEach(function (t, i) {
+          t.setAttribute("aria-selected", i === index ? "true" : "false");
+        });
+        dots.forEach(function (d, i) {
+          d.setAttribute("aria-current", i === index ? "true" : "false");
+        });
+        panels.forEach(function (p, i) {
+          if (!p) return;
+          p.setAttribute("aria-hidden", i === index ? "false" : "true");
+        });
+        if (location.hash.replace(/^#/, "") !== ASSETS[index].id) {
+          location.hash = ASSETS[index].id;
+        }
+      }
+
+      function goHash() {
+        var h = (location.hash || "").replace(/^#/, "");
+        var i = ASSETS.findIndex(function (a) { return a.id === h; });
+        if (i >= 0) setIndex(i);
+        else setIndex(0);
+      }
+
+      tabs.forEach(function (t) {
+        t.addEventListener("click", function () { setIndex(Number(t.getAttribute("data-index"))); });
+      });
+      dots.forEach(function (d) {
+        d.addEventListener("click", function () { setIndex(Number(d.getAttribute("data-index"))); });
+      });
+
+      // Stage swipe (horizontal)
+      var drag = null;
+      stage.addEventListener("pointerdown", function (e) {
+        if (e.target.closest(".art-frame") || e.target.closest(".hotspot") || e.target.closest(".btn")) return;
+        drag = { x: e.clientX, y: e.clientY, startIndex: index, moved: false };
+        slidesEl.classList.add("is-dragging");
+        try { stage.setPointerCapture(e.pointerId); } catch (err) {}
+      });
+      stage.addEventListener("pointermove", function (e) {
+        if (!drag) return;
+        var dx = e.clientX - drag.x;
+        var dy = e.clientY - drag.y;
+        if (!drag.moved && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+        if (!drag.moved && Math.abs(dy) > Math.abs(dx)) {
+          drag = null;
+          slidesEl.classList.remove("is-dragging");
+          return;
+        }
+        drag.moved = true;
+        var pct = (-drag.startIndex * 33.333) + (dx / stage.clientWidth) * 33.333;
+        slidesEl.style.transform = "translate3d(" + pct + "%, 0, 0)";
+      });
+      function endDrag(e) {
+        if (!drag) return;
+        var dx = e.clientX - drag.x;
+        slidesEl.classList.remove("is-dragging");
+        if (drag.moved && Math.abs(dx) > 48) {
+          setIndex(drag.startIndex + (dx < 0 ? 1 : -1));
+        } else {
+          setIndex(drag.startIndex);
+        }
+        drag = null;
+      }
+      stage.addEventListener("pointerup", endDrag);
+      stage.addEventListener("pointercancel", endDrag);
+
+      // Wallpaper parallax + press
+      function setParallax(nx, ny) {
+        var px = (nx - 0.5) * 14;
+        var py = (ny - 0.5) * 18;
+        wallpaperImg.style.setProperty("--px", px + "px");
+        wallpaperImg.style.setProperty("--py", py + "px");
+        phone.style.transform = "rotateY(" + ((nx - 0.5) * 8) + "deg) rotateX(" + ((0.5 - ny) * 6) + "deg)";
+      }
+
+      phoneScreen.addEventListener("pointermove", function (e) {
+        var r = phoneScreen.getBoundingClientRect();
+        setParallax((e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height);
+      });
+      phoneScreen.addEventListener("pointerleave", function () {
+        wallpaperImg.style.setProperty("--px", "0px");
+        wallpaperImg.style.setProperty("--py", "0px");
+        phone.style.transform = "";
+      });
+      phoneScreen.addEventListener("pointerdown", function () { phone.classList.add("is-press"); });
+      phoneScreen.addEventListener("pointerup", function () { phone.classList.remove("is-press"); });
+      phoneScreen.addEventListener("pointercancel", function () { phone.classList.remove("is-press"); });
+
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", function (e) {
+          if (index !== 0) return;
+          var g = typeof e.gamma === "number" ? e.gamma : 0;
+          var b = typeof e.beta === "number" ? e.beta : 0;
+          var nx = Math.min(1, Math.max(0, 0.5 + g / 40));
+          var ny = Math.min(1, Math.max(0, 0.5 + (b - 45) / 50));
+          setParallax(nx, ny);
+        }, { passive: true });
+      }
+
+      // Zoomable frames
+      function makeZoom(el) {
+        var state = { scale: 1, tx: 0, ty: 0, pointers: new Map(), startDist: 0, startScale: 1, lastX: 0, lastY: 0 };
+        function apply() {
+          el.style.setProperty("--scale", String(state.scale));
+          el.style.setProperty("--tx", state.tx + "px");
+          el.style.setProperty("--ty", state.ty + "px");
+        }
+        function reset() {
+          state.scale = 1; state.tx = 0; state.ty = 0; apply();
+        }
+        el._resetZoom = reset;
+
+        el.addEventListener("pointerdown", function (e) {
+          el.setPointerCapture(e.pointerId);
+          state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+          if (state.pointers.size === 1) {
+            state.lastX = e.clientX; state.lastY = e.clientY;
+          } else if (state.pointers.size === 2) {
+            var pts = Array.from(state.pointers.values());
+            var dx = pts[0].x - pts[1].x;
+            var dy = pts[0].y - pts[1].y;
+            state.startDist = Math.hypot(dx, dy) || 1;
+            state.startScale = state.scale;
+          }
+        });
+        el.addEventListener("pointermove", function (e) {
+          if (!state.pointers.has(e.pointerId)) return;
+          state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+          if (state.pointers.size === 2) {
+            var pts = Array.from(state.pointers.values());
+            var dx = pts[0].x - pts[1].x;
+            var dy = pts[0].y - pts[1].y;
+            var dist = Math.hypot(dx, dy) || 1;
+            state.scale = Math.min(4, Math.max(1, state.startScale * (dist / state.startDist)));
+            apply();
+          } else if (state.pointers.size === 1 && state.scale > 1) {
+            state.tx += e.clientX - state.lastX;
+            state.ty += e.clientY - state.lastY;
+            state.lastX = e.clientX; state.lastY = e.clientY;
+            apply();
+          }
+        });
+        function up(e) {
+          state.pointers.delete(e.pointerId);
+          if (state.pointers.size < 2) state.startDist = 0;
+        }
+        el.addEventListener("pointerup", up);
+        el.addEventListener("pointercancel", up);
+        el.addEventListener("dblclick", function () {
+          if (state.scale > 1) reset();
+          else { state.scale = 2; apply(); }
+        });
+        el.addEventListener("wheel", function (e) {
+          e.preventDefault();
+          var next = state.scale * (e.deltaY < 0 ? 1.08 : 0.92);
+          state.scale = Math.min(4, Math.max(1, next));
+          if (state.scale === 1) { state.tx = 0; state.ty = 0; }
+          apply();
+        }, { passive: false });
+      }
+
+      makeZoom(document.getElementById("frame-pitch"));
+      makeZoom(document.getElementById("frame-pages"));
+
+      // Lightbox zoom
+      var lb = { scale: 1, tx: 0, ty: 0, pointers: new Map(), startDist: 0, startScale: 1, lastX: 0, lastY: 0 };
+      function applyLb() {
+        lightboxImg.style.setProperty("--scale", String(lb.scale));
+        lightboxImg.style.setProperty("--tx", lb.tx + "px");
+        lightboxImg.style.setProperty("--ty", lb.ty + "px");
+      }
+      function resetLb() { lb.scale = 1; lb.tx = 0; lb.ty = 0; applyLb(); }
+
+      function openLightbox(src, label) {
+        lightboxImg.src = src;
+        lightboxImg.alt = label || "";
+        lightboxDownload.href = src;
+        lightboxDownload.setAttribute("download", (label || "shortkey-asset").replace(/\s+/g, "-").toLowerCase() + ".png");
+        resetLb();
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+      }
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImg.removeAttribute("src");
+      }
+
+      document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+      document.getElementById("lightbox-reset").addEventListener("click", resetLb);
+      lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      lightboxImg.addEventListener("pointerdown", function (e) {
+        lightboxImg.setPointerCapture(e.pointerId);
+        lb.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        if (lb.pointers.size === 1) { lb.lastX = e.clientX; lb.lastY = e.clientY; }
+        else if (lb.pointers.size === 2) {
+          var pts = Array.from(lb.pointers.values());
+          lb.startDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1;
+          lb.startScale = lb.scale;
+        }
+      });
+      lightboxImg.addEventListener("pointermove", function (e) {
+        if (!lb.pointers.has(e.pointerId)) return;
+        lb.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        if (lb.pointers.size === 2) {
+          var pts = Array.from(lb.pointers.values());
+          var dist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1;
+          lb.scale = Math.min(5, Math.max(1, lb.startScale * (dist / lb.startDist)));
+          applyLb();
+        } else if (lb.pointers.size === 1 && lb.scale > 1) {
+          lb.tx += e.clientX - lb.lastX;
+          lb.ty += e.clientY - lb.lastY;
+          lb.lastX = e.clientX; lb.lastY = e.clientY;
+          applyLb();
+        }
+      });
+      function lbUp(e) {
+        lb.pointers.delete(e.pointerId);
+        if (lb.pointers.size < 2) lb.startDist = 0;
+      }
+      lightboxImg.addEventListener("pointerup", lbUp);
+      lightboxImg.addEventListener("pointercancel", lbUp);
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-action]");
+        if (!btn) return;
+        var action = btn.getAttribute("data-action");
+        if (action === "fullscreen") {
+          e.preventDefault();
+          openLightbox(btn.getAttribute("data-src"), btn.getAttribute("data-label"));
+        } else if (action === "reset-zoom") {
+          var frame = document.getElementById(btn.getAttribute("data-frame"));
+          if (frame && frame._resetZoom) frame._resetZoom();
+        }
+      });
+
+      // Double-tap wallpaper → fullscreen
+      var lastTap = 0;
+      phoneScreen.addEventListener("click", function (e) {
+        if (e.target.closest(".hotspot")) return;
+        var now = Date.now();
+        if (now - lastTap < 320) openLightbox("./phone-wallpaper.png", "Phone Wallpaper");
+        lastTap = now;
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (lightbox.classList.contains("is-open")) {
+          if (e.key === "Escape") closeLightbox();
+          return;
+        }
+        if (e.key === "ArrowRight") setIndex(index + 1);
+        if (e.key === "ArrowLeft") setIndex(index - 1);
+        if (e.key === "1") setIndex(0);
+        if (e.key === "2") setIndex(1);
+        if (e.key === "3") setIndex(2);
+      });
+
+      window.addEventListener("hashchange", goHash);
+      goHash();
+    })();
+  </script>
+</body>
+</html>

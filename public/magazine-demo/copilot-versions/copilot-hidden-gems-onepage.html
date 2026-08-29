@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>SHORTKEY — Hidden Gems of Asian Beauty</title>
+<link href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Merriweather:wght@300;400&family=Montserrat:wght@600;700&display=swap' rel='stylesheet'>
+<style>
+:root{
+  --base:#f5f0e6;
+  --indigo:#2c3e6b;
+  --gold:#c9a962;
+  --issue:#c4787a;
+  --charcoal:#2c2c2c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  height:100%;overflow:hidden;
+  font-family:'Merriweather',serif;
+  background:var(--base);color:var(--charcoal);
+}
+
+/* HEADER */
+.header{
+  position:fixed;top:0;left:0;right:0;
+  height:56px;background:var(--indigo);
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:0 28px;z-index:1000;
+}
+.header-left{display:flex;align-items:center;gap:10px}
+.header-logo{
+  height:36px;width:auto;max-width:160px;
+  object-fit:contain;display:block;
+}
+.header-nav{display:flex;gap:24px}
+.header-nav a{
+  font-family:'Montserrat',sans-serif;
+  font-size:10px;font-weight:700;
+  letter-spacing:2px;color:rgba(245,240,230,.7);
+  text-decoration:none;text-transform:uppercase;
+  transition:color .3s;cursor:pointer;
+}
+.header-nav a:hover{color:var(--gold)}
+.issue-pill{
+  font-family:'Montserrat',sans-serif;
+  font-size:10px;font-weight:700;
+  letter-spacing:2px;padding:6px 14px;
+  background:var(--gold);color:var(--indigo);
+  border-radius:40px;
+}
+
+/* MAIN ONE PAGE LAYOUT */
+.page{
+  position:fixed;top:56px;left:0;right:0;bottom:0;
+  display:flex;
+}
+
+/* LEFT PANEL */
+.left{
+  width:42%;background:var(--indigo);
+  display:flex;flex-direction:column;
+  justify-content:center;padding:48px 40px;
+  position:relative;overflow:hidden;
+}
+.left::after{
+  content:'';position:absolute;
+  top:-100px;right:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,
+    rgba(201,169,98,.08),transparent 70%);
+}
+.issue-label{
+  font-family:'Montserrat',sans-serif;
+  font-size:10px;letter-spacing:4px;
+  color:var(--gold);margin-bottom:20px;
+}
+.main-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3vw,3rem);
+  color:var(--base);line-height:1.15;
+  margin-bottom:10px;
+}
+.main-jp{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-style:italic;
+  color:var(--issue);margin-bottom:20px;
+}
+.gold-rule{
+  width:50px;height:2px;
+  background:var(--gold);margin-bottom:20px;
+}
+.main-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-style:italic;
+  color:var(--gold);margin-bottom:12px;
+}
+.main-body{
+  font-size:.78rem;line-height:1.9;
+  color:rgba(245,240,230,.65);
+  margin-bottom:28px;
+}
+
+/* INTERACTIVE STRIP */
+.strip{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.btn-gold{
+  font-family:'Montserrat',sans-serif;
+  font-size:9px;font-weight:700;
+  letter-spacing:2px;padding:9px 16px;
+  border-radius:40px;background:var(--gold);
+  color:var(--indigo);border:none;
+  cursor:pointer;transition:all .3s;
+}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-outline{
+  font-family:'Montserrat',sans-serif;
+  font-size:9px;font-weight:700;
+  letter-spacing:2px;padding:9px 16px;
+  border-radius:40px;background:transparent;
+  color:var(--base);
+  border:1px solid rgba(245,240,230,.4);
+  cursor:pointer;transition:all .3s;
+}
+.btn-outline:hover{
+  background:var(--base);color:var(--indigo);
+}
+.enter-btn{
+  display:inline-block;padding:13px 28px;
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  font-family:'Montserrat',sans-serif;
+  font-size:10px;font-weight:700;
+  letter-spacing:3px;border-radius:40px;
+  text-decoration:none;transition:all .3s;
+  cursor:pointer;
+}
+.enter-btn:hover{
+  background:var(--gold);color:var(--indigo);
+}
+
+/* MANIFESTO STRIP */
+.manifesto-strip{
+  margin-top:auto;padding-top:20px;
+  border-top:1px solid rgba(201,169,98,.2);
+}
+.manifesto-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.85rem;font-style:italic;
+  color:rgba(245,240,230,.5);line-height:1.6;
+}
+
+/* RIGHT PANEL */
+.right{
+  width:58%;background:var(--base);
+  display:flex;flex-direction:column;
+  padding:24px;overflow:hidden;
+}
+.right-top{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  margin-bottom:16px;
+}
+.right-title{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;color:var(--indigo);
+}
+.right-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.9rem;font-style:italic;
+  color:var(--gold);
+}
+
+/* PAGES GRID */
+.pages-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;flex:1;
+}
+.page-card{
+  background:#fff;border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 4px 16px rgba(0,0,0,.1);
+  transition:transform .3s;cursor:pointer;
+  display:flex;flex-direction:column;
+}
+.page-card:hover{transform:translateY(-4px)}
+.page-card img{
+  width:100%;flex:1;
+  object-fit:cover;object-position:top;
+  min-height:0;
+}
+.page-info{
+  padding:8px 10px;
+  border-top:2px solid var(--gold);
+}
+.page-num{
+  font-family:'Montserrat',sans-serif;
+  font-size:8px;color:var(--gold);
+  letter-spacing:2px;
+}
+.page-name{
+  font-family:'Playfair Display',serif;
+  font-size:.72rem;color:var(--indigo);
+}
+
+/* JOURNEY BAR */
+.journey-bar{
+  display:flex;gap:8px;margin-top:12px;
+  align-items:center;flex-wrap:wrap;
+}
+.journey-label{
+  font-family:'Montserrat',sans-serif;
+  font-size:9px;letter-spacing:2px;
+  color:var(--gold);margin-right:4px;
+}
+.j-step{
+  font-family:'Montserrat',sans-serif;
+  font-size:9px;font-weight:700;
+  letter-spacing:1px;padding:5px 12px;
+  border-radius:40px;
+  border:1px solid var(--indigo);
+  color:var(--indigo);background:transparent;
+  transition:all .3s;cursor:pointer;
+}
+.j-step:hover{
+  background:var(--indigo);color:var(--base);
+}
+
+/* MODAL */
+.modal-bg{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.7);z-index:2000;
+  justify-content:center;align-items:center;
+  padding:20px;
+}
+.modal-bg.open{display:flex}
+.modal-box{
+  background:var(--base);border-radius:20px;
+  max-width:420px;width:100%;
+  padding:36px;position:relative;
+}
+.modal-x{
+  position:absolute;top:14px;right:18px;
+  font-size:1.3rem;cursor:pointer;
+  background:none;border:none;color:var(--indigo);
+}
+.modal-box h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;color:var(--indigo);
+  margin-bottom:6px;
+}
+.modal-rule{
+  width:40px;height:2px;
+  background:var(--gold);margin:12px 0 16px;
+}
+.modal-box p{
+  font-size:.82rem;line-height:1.7;
+  opacity:.75;margin-bottom:20px;
+}
+.modal-btn{
+  display:block;width:100%;padding:12px;
+  background:var(--indigo);color:var(--base);
+  font-family:'Montserrat',sans-serif;
+  font-size:10px;font-weight:700;
+  letter-spacing:2px;border-radius:40px;
+  border:none;cursor:pointer;
+  margin-bottom:8px;transition:all .3s;
+}
+.modal-btn:hover{
+  background:var(--gold);color:var(--indigo);
+}
+.modal-btn.gold{
+  background:var(--gold);color:var(--indigo);
+}
+.modal-btn.gold:hover{background:var(--indigo);color:var(--base)}
+
+/* PERSONAL SPACE */
+.ps-panel{
+  position:fixed;top:0;right:0;bottom:0;
+  width:85%;max-width:340px;
+  background:var(--base);z-index:2000;
+  box-shadow:-10px 0 40px rgba(0,0,0,.2);
+  padding:36px 22px;overflow-y:auto;
+  transform:translateX(100%);
+  transition:transform .3s ease;
+}
+.ps-panel.open{transform:translateX(0)}
+.ps-close{
+  position:absolute;top:14px;left:14px;
+  font-size:1.2rem;cursor:pointer;
+  background:none;border:none;color:var(--indigo);
+}
+.ps-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;color:var(--indigo);
+  margin-top:20px;margin-bottom:4px;
+}
+.ps-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;color:var(--gold);
+  margin-bottom:20px;font-size:.95rem;
+}
+.ps-tabs{
+  display:flex;gap:6px;
+  flex-wrap:wrap;margin-bottom:20px;
+}
+.ps-tab{
+  font-family:'Montserrat',sans-serif;
+  font-size:8px;font-weight:700;
+  letter-spacing:1px;padding:6px 10px;
+  border-radius:40px;cursor:pointer;
+  border:1px solid var(--indigo);
+  color:var(--indigo);background:transparent;
+  transition:all .3s;
+}
+.ps-tab.on{background:var(--indigo);color:var(--base)}
+.ps-empty{
+  font-size:.8rem;opacity:.6;font-style:italic;
+  text-align:center;padding:24px;
+  border:1px dashed var(--gold);border-radius:12px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  html,body{overflow:auto}
+  .page{
+    position:relative;top:56px;
+    flex-direction:column;height:auto;
+  }
+  .left,.right{width:100%}
+  .left{padding:36px 24px}
+  .pages-grid{grid-template-columns:repeat(2,1fr)}
+  .header-nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- FIXED HEADER -->
+<div class='header'>
+  <!-- LOGO LOCK: official lilac on-dark · ../assets/ (was ⌨ + text wordmark) -->
+  <div class='header-left'>
+    <img class='header-logo' src='../assets/shortkey-logo-lilac-on-dark.png' alt='shortkey' width='160' height='36' />
+  </div>
+  <nav class='header-nav'>
+    <a onclick='openModal("magazine")'>MAGAZINE</a>
+    <a onclick='openModal("brands")'>BRANDS</a>
+    <a onclick='openModal("creators")'>CREATORS</a>
+    <a onclick='openModal("lab")'>BEAUTY LAB</a>
+    <a onclick='openPS()'>MY SPACE</a>
+  </nav>
+  <span class='issue-pill'>ISSUE 01</span>
+</div>
+
+<!-- ONE PAGE LAYOUT -->
+<div class='page'>
+
+  <!-- LEFT PANEL -->
+  <div class='left'>
+    <div class='issue-label'>ISSUE 01 — NIHON SAKURA — 日本版</div>
+    <h1 class='main-title'>Hidden Gems<br>of Asian Beauty</h1>
+    <div class='main-jp'>桜の美しさ</div>
+    <div class='gold-rule'></div>
+    <p class='main-quote'>"The Beauty of Japanese Cherry Blossom"</p>
+    <p class='main-body'>Discover brands with stories. Creators with purpose. Culture with meaning. Products that support stories — not the other way around.</p>
+    <div class='strip'>
+      <button class='btn-gold' onclick='openModal("tryon")'>TRY-ON</button>
+      <button class='btn-gold' onclick='openModal("skin")'>SKIN ANALYSIS</button>
+      <button class='btn-outline' onclick='openPS()'>PERSONAL SPACE</button>
+    </div>
+    <button class='enter-btn' onclick='openModal("magazine")'>ENTER ISSUE 01 →</button>
+    <div class='manifesto-strip'>
+      <p class='manifesto-text'>"We are not searching for the biggest names. We are searching for the next names."</p>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class='right'>
+    <div class='right-top'>
+      <span class='right-title'>11 Pages. One System. Every Issue.</span>
+      <span class='right-sub'>Nihon Sakura — Issue 01</span>
+    </div>
+    <div class='pages-grid'>
+      <div class='page-card' onclick='openModal("tryon")'>
+        <img src='https://a.lovart.ai/artifacts/agent/Bk9AumlPff8pPUU2.png' alt='Cover'>
+        <div class='page-info'><div class='page-num'>01</div><div class='page-name'>Cover</div></div>
+      </div>
+      <div class='page-card'>
+        <img src='https://a.lovart.ai/artifacts/agent/oNW9g1xPrB9uMcnc.png' alt='Editor'>
+        <div class='page-info'><div class='page-num'>02</div><div class='page-name'>Editor's Letter</div></div>
+      </div>
+      <div class='page-card'>
+        <img src='https://a.lovart.ai/artifacts/agent/q7qhrETuZz1ssd6t.png' alt='Heritage'>
+        <div class='page-info'><div class='page-num'>03</div><div class='page-name'>Heritage</div></div>
+      </div>
+      <div class='page-card'>
+        <img src='https://a.lovart.ai/artifacts/agent/ap9Pd7kpU0EFal03.png' alt='Ingredient'>
+        <div class='page-info'><div class='page-num'>04</div><div class='page-name'>Ingredient</div></div>
+      </div>
+      <div class='page-card'>
+        <img src='https://a.lovart.ai/artifacts/agent/g28Kd91YZPIIheVU.png' alt='Brand'>
+        <div class='page-info'><div class='page-num'>05</div><div class='page-name'>Brand Spotlight</div></div>
+      </div>
+      <div class='page-card'>
+        <img src='https://a.lovart.ai/artifacts/agent/uR3whwr7mbAfqA1Q.png' alt='Discovery'>
+        <div class='page-info'><div class='page-num'>06</div><div class='page-name'>Discovery Edit</div></div>
+      </div>
+      <div class='page-card' onclick='openModal("tryon")'>
+        <img src='https://a.lovart.ai/artifacts/agent/MorOt9IUBADraqVd.png' alt='TryOn'>
+        <div class='page-info'><div class='page-num'>07</div><div class='page-name'>Try-On</div></div>
+      </div>
+      <div class='page-card' onclick='openModal("skin")'>
+        <img src='https://a.lovart.ai/artifacts/agent/0Wsq9V61yRFZevei.png' alt='Skin'>
+        <div class='page-info'><div class='page-num'>08</div><div class='page-name'>Skin Analysis</div></div>
+      </div>
+      <div class='page-card'>
+        <img src='https://a.lovart.ai/artifacts/agent/QiTPCf4e2CDt5npp.png' alt='Creator'>
+        <div class='page-info'><div class='page-num'>09</div><div class='page-name'>Creator</div></div>
+      </div>
+      <div class='page-card'>
+        <img src='https://a.lovart.ai/artifacts/agent/oqIR3gcrGTGyV7l2.png' alt='Culture'>
+        <div class='page-info'><div class='page-num'>10</div><div class='page-name'>Culture</div></div>
+      </div>
+      <div class='page-card'>
+        <img src='https://a.lovart.ai/artifacts/agent/WZ3AoiTZGiKkwUw1.png' alt='Next'>
+        <div class='page-info'><div class='page-num'>11</div><div class='page-name'>What's Next</div></div>
+      </div>
+    </div>
+    <div class='journey-bar'>
+      <span class='journey-label'>JOURNEY →</span>
+      <button class='j-step'>STORY</button>
+      <button class='j-step'>CREATOR</button>
+      <button class='j-step'>CULTURE</button>
+      <button class='j-step' onclick='openModal("tryon")'>TRY-ON</button>
+      <button class='j-step'>COMMUNITY</button>
+      <button class='j-step'>PURCHASE</button>
+    </div>
+  </div>
+</div>
+
+<!-- TRY-ON MODAL -->
+<div class='modal-bg' id='modal-tryon'>
+  <div class='modal-box'>
+    <button class='modal-x' onclick='closeModal("tryon")'>✕</button>
+    <h3>💄 Try-On</h3>
+    <div class='modal-rule'></div>
+    <p>AR-powered product trial. See Nihon Sakura products on your skin before purchase. Save your favourite looks to Personal Space.</p>
+    <button class='modal-btn'>ACTIVATE CAMERA →</button>
+    <button class='modal-btn gold' onclick='openPS();closeModal("tryon")'>SAVE TO MY SPACE →</button>
+  </div>
+</div>
+
+<!-- SKIN ANALYSIS MODAL -->
+<div class='modal-bg' id='modal-skin'>
+  <div class='modal-box'>
+    <button class='modal-x' onclick='closeModal("skin")'>✕</button>
+    <h3>💧 Skin Analysis</h3>
+    <div class='modal-rule'></div>
+    <p>6-dimension skin profiling — Hydration, Radiance, Firmness, Sensitivity, Texture and Pigmentation. All mapped to your ritual.</p>
+    <div style='background:var(--indigo);border-radius:12px;padding:18px;margin-bottom:18px;text-align:center'>
+      <p style='font-family:Playfair Display,serif;color:var(--base);margin-bottom:6px;font-size:.9rem'>YOUR SKIN TYPE</p>
+      <p style='font-family:Cormorant Garamond,serif;font-size:1.3rem;font-style:italic;color:var(--gold)'>Combination — Hydration Focus</p>
+    </div>
+    <button class='modal-btn gold' onclick='openPS();closeModal("skin")'>SAVE TO MY SPACE →</button>
+    <button class='modal-btn' onclick='closeModal("skin")'>CLOSE</button>
+  </div>
+</div>
+
+<!-- MAGAZINE MODAL -->
+<div class='modal-bg' id='modal-magazine'>
+  <div class='modal-box'>
+    <button class='modal-x' onclick='closeModal("magazine")'>✕</button>
+    <h3>📖 Issue 01</h3>
+    <div class='modal-rule'></div>
+    <p>Nihon Sakura — 桜の美しさ. The Beauty of Japanese Cherry Blossom. 11 editorial pages exploring heritage, ingredients, brand stories and culture.</p>
+    <button class='modal-btn'>READ FULL ISSUE →</button>
+    <button class='modal-btn gold' onclick='closeModal("magazine")'>CLOSE</button>
+  </div>
+</div>
+
+<!-- BRANDS MODAL -->
+<div class='modal-bg' id='modal-brands'>
+  <div class='modal-box'>
+    <button class='modal-x' onclick='closeModal("brands")'>✕</button>
+    <h3>🌸 Brands</h3>
+    <div class='modal-rule'></div>
+    <p>Meet the founder before the product. Independent Asian beauty brands with stories worth discovering. Meaning before marketing.</p>
+    <button class='modal-btn'>DISCOVER BRANDS →</button>
+    <button class='modal-btn gold' onclick='closeModal("brands")'>CLOSE</button>
+  </div>
+</div>
+
+<!-- CREATORS MODAL -->
+<div class='modal-bg' id='modal-creators'>
+  <div class='modal-box'>
+    <button class='modal-x' onclick='closeModal("creators")'>✕</button>
+    <h3>✨ Creators</h3>
+    <div class='modal-rule'></div>
+    <p>Today's unknown. Tomorrow's icon. Illustrators, beauty experts, master formulators and cultural curators — all given a global stage.</p>
+    <button class='modal-btn'>MEET THE CREATORS →</button>
+    <button class='modal-btn gold' onclick='closeModal("creators")'>CLOSE</button>
+  </div>
+</div>
+
+<!-- BEAUTY LAB MODAL -->
+<div class='modal-bg' id='modal-lab'>
+  <div class='modal-box'>
+    <button class='modal-x' onclick='closeModal("lab")'>✕</button>
+    <h3>🔬 Beauty Lab</h3>
+    <div class='modal-rule'></div>
+    <p>Where technology meets ritual. AI Try-On, Skin Analysis and your Personal Space — all powered by intelligence, delivered with beauty.</p>
+    <button class='modal-btn' onclick='openModal("tryon");closeModal("lab")'>TRY-ON →</button>
+    <button class='modal-btn' onclick='openModal("skin");closeModal("lab")'>SKIN ANALYSIS →</button>
+    <button class='modal-btn gold' onclick='openPS();closeModal("lab")'>MY SPACE →</button>
+  </div>
+</div>
+
+<!-- PERSONAL SPACE -->
+<div class='ps-panel' id='ps-panel'>
+  <button class='ps-close' onclick='closePS()'>✕</button>
+  <h3 class='ps-title'>Your Beauty Universe</h3>
+  <p class='ps-sub'>Curated by you. Powered by Shortkey.</p>
+  <div class='ps-tabs'>
+    <button class='ps-tab on'>MY LOOKS</button>
+    <button class='ps-tab'>MY SKIN</button>
+    <button class='ps-tab'>MY RITUAL</button>
+    <button class='ps-tab'>MY CREATORS</button>
+    <button class='ps-tab'>MY BRANDS</button>
+  </div>
+  <p class='ps-empty'>Your saved looks will appear here ✨<br><br>Try a product using TRY-ON to save your first look.</p>
+</div>
+
+<script>
+function openModal(t){
+  document.querySelectorAll('.modal-bg').forEach(function(m){
+    m.classList.remove('open');
+  });
+  var m=document.getElementById('modal-'+t);
+  if(m) m.classList.add('open');
+}
+function closeModal(t){
+  var m=document.getElementById('modal-'+t);
+  if(m) m.classList.remove('open');
+}
+function openPS(){
+  document.getElementById('ps-panel').classList.add('open');
+}
+function closePS(){
+  document.getElementById('ps-panel').classList.remove('open');
+}
+document.querySelectorAll('.modal-bg').forEach(function(m){
+  m.addEventListener('click',function(e){
+    if(e.target===m) m.classList.remove('open');
+  });
+});
+document.querySelectorAll('.ps-tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.ps-tab')
+      .forEach(function(x){x.classList.remove('on')});
+    t.classList.add('on');
+  });
+});
+</script>
+</body>
+</html>

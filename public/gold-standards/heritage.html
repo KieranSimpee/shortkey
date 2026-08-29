@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heritage · Gold Standard Preview · ShortKey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Merriweather:wght@400&family=Montserrat:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .heritage-page {
+      padding: 80px 60px 60px;
+      position: relative;
+    }
+    .breadcrumb {
+      font-family: var(--font-nav);
+      font-size: 0.85rem;
+      color: var(--soft-brown);
+      margin: 2.5rem 0 0;
+      letter-spacing: 0.02em;
+    }
+    .breadcrumb a:hover {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+    .section-header {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 3rem;
+      line-height: 1.3;
+      letter-spacing: 0.03em;
+      color: var(--deep-green);
+      margin: 3.75rem 0 2.5rem;
+      max-width: 18ch;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .editorial p {
+      line-height: 1.8;
+      margin: 0 0 1.35rem;
+    }
+    .editorial p:hover {
+      background: rgba(201, 169, 98, 0.05);
+    }
+    .editorial .lede {
+      font-size: 1.15rem;
+    }
+    .pattern-layer {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+      transition: opacity 0.3s ease;
+    }
+    .heritage-page:hover .pattern-layer {
+      opacity: 0.15;
+    }
+    .heritage-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .timeline {
+      border-left: 2px solid var(--soft-brown);
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+      cursor: pointer;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: calc(-1.5rem - 7px);
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--soft-brown);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .timeline-item.active::before,
+    .timeline-item:hover::before {
+      background: var(--gold);
+      transform: scale(1.3);
+      box-shadow: 0 0 12px rgba(201, 169, 98, 0.55);
+    }
+    .timeline-year {
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--soft-brown);
+      margin-bottom: 0.35rem;
+    }
+    .timeline-title {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--deep-green);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-body {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+    .timeline-item.active .timeline-body,
+    .timeline-item:hover .timeline-body {
+      max-height: 120px;
+      opacity: 1;
+    }
+    .nav-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+    }
+    .doc-visual {
+      margin: 2rem 0;
+      height: 180px;
+      background:
+        linear-gradient(135deg, rgba(139, 115, 85, 0.15), rgba(201, 169, 98, 0.12)),
+        repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(45, 74, 62, 0.04) 12px, rgba(45, 74, 62, 0.04) 13px);
+      border: 1px solid rgba(139, 115, 85, 0.2);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft-brown);
+    }
+    @media (max-width: 900px) {
+      .heritage-page { padding: 48px 24px 40px; }
+      .section-header { font-size: 2.2rem; margin-top: 2.5rem; }
+      .split { grid-template-columns: 1fr; gap: 2.5rem; }
+      .timeline-body { max-height: none; opacity: 1; }
+    }
+  </style>
+</head>
+<body class="atmosphere">
+  <div class="preview-banner">
+    PREVIEW · GOR_GOR_REVIEW · not live Beauty V1 · <a href="index.html">Gallery</a>
+  </div>
+  <div class="progress-indicator" aria-hidden="true"></div>
+
+  <header class="site-header" style="position: relative; top: 0; padding-top: 24px;">
+    <a class="logo-link" href="index.html">
+      <img src="/logo/shortkey-primary.png" alt="" width="120" height="28" />
+      <span>ShortKey</span>
+    </a>
+    <button type="button" class="nav-toggle">Menu</button>
+  </header>
+
+  <div class="panel-backdrop"></div>
+  <aside class="slide-panel">
+    <button type="button" class="panel-close">Close</button>
+    <nav>
+      <a href="index.html">Gallery hub</a>
+      <a href="cover.html">Cover</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="ingredient.html">Ingredient</a>
+      <a href="brand-story.html">Brand Story</a>
+      <a href="creator.html">Creator</a>
+    </nav>
+  </aside>
+
+  <section class="heritage-page">
+    <div class="pattern-layer seigaiha" aria-hidden="true"></div>
+    <div class="heritage-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Issue 01</a> / <a href="cover.html">Cover</a> / Heritage
+      </nav>
+      <h1 class="section-header reveal">Japanese Komenuka Heritage</h1>
+
+      <div class="split">
+        <article class="editorial reveal reveal-d1">
+          <p class="lede">
+            Komenuka — rice bran — sits at the quiet center of Japanese beauty ritual:
+            a byproduct of polishing rice that became a soft, everyday polish for skin.
+            This page follows Gold Standard heritage layout: editorial left, timeline right.
+          </p>
+          <div class="doc-visual" aria-hidden="true">Documentary visual plane · archival warm tone</div>
+          <p>
+            In Issue 01’s Japan focus, the thread is wabi-sabi: imperfect beauty, seasonal
+            attention, craft over spectacle. ShortKey does not imitate the frame —
+            it captures life force in texture, light, and first discovery.
+          </p>
+          <p>
+            Traditional uses of komenuka are presented here as cultural context
+            (educational), not as medical claims. Modern product stories appear later
+            on Brand Story and Ingredient pages — always with clear attribution.
+          </p>
+          <p>
+            Pattern field uses seigaiha (wave) at low opacity per Gold Standard —
+            present behind content, never competing with readability.
+          </p>
+        </article>
+
+        <aside class="timeline reveal reveal-d2" aria-label="Heritage timeline">
+          <div class="timeline-item active" tabindex="0">
+            <div class="timeline-year">Edo &amp; earlier</div>
+            <div class="timeline-title">Household polish</div>
+            <div class="timeline-body">Rice bran used in baths and gentle cleansing — everyday ritual, not luxury theatre.</div>
+          </div>
+          <div class="timeline-item" tabindex="0">
+            <div class="timeline-year">Brewing culture</div>
+            <div class="timeline-title">Sake &amp; bran adjacency</div>
+            <div class="timeline-body">Brewing landscapes (e.g. Nihonsakari context in Issue 01) sit beside bran as agricultural kinship — editorial framing only.</div>
+          </div>
+          <div class="timeline-item" tabindex="0">
+            <div class="timeline-year">Modern care</div>
+            <div class="timeline-title">Texture &amp; refinement</div>
+            <div class="timeline-body">J-Beauty Fresh Texture lane: soft daylight, macro texture, first-discovery warmth — not craft-only cliché.</div>
+          </div>
+          <div class="timeline-item" tabindex="0">
+            <div class="timeline-year">Issue 01</div>
+            <div class="timeline-title">Hidden Gems · Japan</div>
+            <div class="timeline-body">Editorial spotlight on heritage → ingredient → brand narrative. GOR_GOR_REVIEW until approved.</div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="nav-ctas">
+        <a class="btn btn-primary" href="ingredient.html">Continue to Ingredient</a>
+        <a class="btn-ghost" href="cover.html">Back to Cover</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <a href="cover.html">← Cover</a>
+    <a href="ingredient.html">Ingredient →</a>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>
+    document.querySelectorAll(".timeline-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        document.querySelectorAll(".timeline-item").forEach((el) => el.classList.remove("active"));
+        item.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

@@ -29,7 +29,7 @@ Binds `0.0.0.0:3005` → `public/` when using the static script.
 
 **Disk ≠ domain.** Early pushes failed Vercel until `distDir` used `.next` on `VERCEL` (see `next.config.ts`). Magazine PNGs were also compressed so Hobby deploy stays under size pressure.
 
-**Unlock (required on Vercel):** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel → Settings → Environment Variables (Production + Preview), then open `/internal/login`. Cookie: `sk_internal_staging`. Never commit the password. Without the env, magazine paths stay blocked (cannot unlock).
+**Unlock (required on Vercel):** set `FAMILY_TABLE_STAGING_PASSWORD` (or `INTERNAL_STAGING_SECRET`) in Vercel → Settings → Environment Variables (Production + Preview), **then Redeploy**. Typing the password only on `/internal/login` does **not** create the server secret — without the env, `POST /api/internal/staging-auth` returns **503** and unlock cannot set the cookie. Cookie: `sk_internal_staging`. Never commit the password.
 
 ### Private share links (password required · not public browse)
 
@@ -49,6 +49,23 @@ Binds `0.0.0.0:3005` → `public/` when using the static script.
 3. Then open private URLs above (or login `?next=/showcase/magazine`).
 4. Confirm without cookie: `/showcase`, `/magazine-demo`, `/control-center/magazine-demo` → **3xx** to `/internal/login`.
 5. Confirm `/control` and Beauty Coming Soon `/` still **200** without cookie — do not unlock `/`.
+
+## Founder review (Maya :3008 preferred)
+
+| Entry | URL |
+|-------|-----|
+| **Issues hub · Maya vs Copilot tabs** | http://127.0.0.1:3008/magazine-demo/issues.html |
+| **Issue 1 · Maya / ShortKey** (interactive e-magazine) | http://127.0.0.1:3008/magazine-demo/emagazine.html#/cover |
+| **Copilot · Hidden Gems (scroll)** | http://127.0.0.1:3008/magazine-demo/copilot-hidden-gems-magazine.html#cover |
+| **Hidden Gems · One Page** (prefer explicit index) | http://127.0.0.1:3008/magazine-demo/copilot-onepage/index.html |
+| Magazine review HTML (sibling strip) | http://127.0.0.1:3008/magazine-demo/review.html |
+| **Lovart phone showcase** (wallpaper · pitch · 11 pages) | http://127.0.0.1:3008/magazine-demo/lovart-phone/index.html |
+| Locked baseline flip | http://127.0.0.1:3008/magazine-demo/index.html#/cover |
+| Lovart asset gallery | http://127.0.0.1:3008/shortkey-assets/ |
+
+**Use:** Next / Prev · click page edges · ArrowLeft / ArrowRight · Space · swipe · `C` toggles readable copy panel. Keys Home / End → Cover / Overview.
+
+`review.html` uses relative paths — can also open the file directly (`file://…/public/magazine-demo/review.html`) when Next is flaky. Start Maya: `npm run maya:dev`.
 
 ## Local bookmarks (Beauty :3005)
 

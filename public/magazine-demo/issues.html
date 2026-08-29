@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Magazine versions · Maya vs Copilot · shortkey</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="Tap Maya vs each Copilot magazine version. GOR_GOR_REVIEW · not DNA lock." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Montserrat:wght@600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <!--
+    Founder compare hub — tap Maya vs each Copilot version (not twins):
+      Maya · Issue 1 emagazine (interactive flip · Nihon Sakura)
+      Copilot · Premium (short) · shortkey_premium_magazine.html
+      Copilot · Hidden Gems (scroll) · richer ~25KB
+      Copilot · Hidden Gems · One Page · split layout index (copilot-onepage/)
+      Copilot · Discovery Journey · Shortkey_Discovery_Journey.html
+      Copilot · Magazine Concept · Shortkey_Magazine_Concept.html
+      Copilot · AURA ASIA · related concept (not ShortKey-branded)
+    Honesty: labels are demo names, NOT locked editorial issue DNA.
+    Prefer Maya :3008 · Full source extract: ./copilot-versions/
+  -->
+  <style>
+    :root {
+      --base: #f5f0e6;
+      --ink: #1a1a1a;
+      --muted: rgba(26, 26, 26, 0.62);
+      --primary: #2c3e6b;
+      --gold: #c9a962;
+      --maya: #c4787a;
+      --maya-ink: #8a4548;
+      --premium: #5a4a8a;
+      --premium-ink: #3d3260;
+      --gems: #0b6e4f;
+      --gems-ink: #063d2c;
+      --onepage: #2c3e6b;
+      --onepage-ink: #1a2744;
+      --journey: #1e4d6b;
+      --journey-ink: #123348;
+      --concept: #8a5a3a;
+      --concept-ink: #5c3a24;
+      --aura: #6b4a6e;
+      --aura-ink: #3f2c42;
+      --line: rgba(201, 169, 98, 0.35);
+      --font-hero: "Playfair Display", Georgia, serif;
+      --font-editorial: "Cormorant Garamond", Georgia, serif;
+      --font-ui: "Montserrat", system-ui, sans-serif;
+      --banner-h: 22px;
+      --tabs-h: 52px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background:
+        radial-gradient(120% 80% at 10% 0%, rgba(196, 120, 122, 0.12), transparent 55%),
+        radial-gradient(100% 70% at 90% 10%, rgba(11, 110, 79, 0.08), transparent 50%),
+        linear-gradient(180deg, #f8f4eb 0%, var(--base) 45%, #ebe4d6 100%);
+      color: var(--ink);
+      font-family: var(--font-ui);
+    }
+
+    a { color: inherit; }
+
+    .banner {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      min-height: var(--banner-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      background: var(--primary);
+      color: var(--base);
+      font-weight: 600;
+      font-size: 9px;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.35;
+    }
+
+    .top {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 18px 16px 10px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+
+    .brand img.brand-logo {
+      height: 36px;
+      width: auto;
+      max-width: min(160px, 42vw);
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-mark {
+      font-family: var(--font-hero);
+      font-weight: 700;
+      font-size: 1.45rem;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .top h1 {
+      margin: 0 0 6px;
+      font-family: var(--font-hero);
+      font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .top .lede {
+      margin: 0 0 10px;
+      max-width: 48rem;
+      font-family: var(--font-editorial);
+      font-size: 1.05rem;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .honesty {
+      margin: 0 0 12px;
+      max-width: 52rem;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 8px;
+      font-size: 0.7rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .honesty strong {
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.64rem;
+    }
+
+    .tabs-wrap {
+      position: sticky;
+      top: var(--banner-h);
+      z-index: 40;
+      background: rgba(245, 240, 230, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tabs {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 8px 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .tab {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      line-height: 1.2;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+
+    .tab:hover { border-color: var(--gold); transform: translateY(-1px); }
+    .tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    .tab[aria-selected="true"] {
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .tab[data-version="maya"][aria-selected="true"] { background: var(--maya); }
+    .tab[data-version="premium"][aria-selected="true"] { background: var(--premium); }
+    .tab[data-version="gems"][aria-selected="true"] { background: var(--gems); }
+    .tab[data-version="journey"][aria-selected="true"] { background: var(--journey); }
+    .tab[data-version="concept"][aria-selected="true"] { background: var(--concept); }
+    .tab[data-version="aura"][aria-selected="true"] { background: var(--aura); }
+
+    .stage {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 14px 16px 28px;
+      min-height: calc(100dvh - 180px);
+    }
+
+    .panel {
+      display: none;
+      animation: fadeIn 0.22s ease;
+    }
+
+    .panel.is-active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .panel-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .panel-head[data-tone="maya"] { border-color: rgba(196, 120, 122, 0.4); background: rgba(196, 120, 122, 0.1); }
+    .panel-head[data-tone="premium"] { border-color: rgba(90, 74, 138, 0.35); background: rgba(90, 74, 138, 0.08); }
+    .panel-head[data-tone="gems"] { border-color: rgba(11, 110, 79, 0.3); background: rgba(11, 110, 79, 0.08); }
+    .panel-head[data-tone="onepage"] { border-color: rgba(44, 62, 107, 0.35); background: rgba(44, 62, 107, 0.08); }
+    .panel-head[data-tone="journey"] { border-color: rgba(30, 77, 107, 0.35); background: rgba(30, 77, 107, 0.08); }
+    .panel-head[data-tone="concept"] { border-color: rgba(138, 90, 58, 0.35); background: rgba(138, 90, 58, 0.08); }
+    .panel-head[data-tone="aura"] { border-color: rgba(107, 74, 110, 0.35); background: rgba(107, 74, 110, 0.08); }
+
+    .panel-meta { flex: 1; min-width: 220px; }
+
+    .panel-kicker {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .panel-title {
+      margin: 0 0 4px;
+      font-family: var(--font-hero);
+      font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .panel-head[data-tone="maya"] .panel-title { color: var(--maya-ink); }
+    .panel-head[data-tone="premium"] .panel-title { color: var(--premium-ink); }
+    .panel-head[data-tone="gems"] .panel-title { color: var(--gems-ink); }
+    .panel-head[data-tone="onepage"] .panel-title { color: var(--onepage-ink); }
+    .panel-head[data-tone="journey"] .panel-title { color: var(--journey-ink); }
+    .panel-head[data-tone="concept"] .panel-title { color: var(--concept-ink); }
+    .panel-head[data-tone="aura"] .panel-title { color: var(--aura-ink); }
+
+    .panel-desc {
+      margin: 0;
+      font-family: var(--font-editorial);
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    .panel-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid transparent;
+      color: #fff;
+      background: var(--primary);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--primary);
+      border-color: var(--line);
+    }
+
+    .panel-head[data-tone="maya"] .btn { background: var(--maya); }
+    .panel-head[data-tone="premium"] .btn { background: var(--premium); }
+    .panel-head[data-tone="gems"] .btn { background: var(--gems); }
+    .panel-head[data-tone="onepage"] .btn { background: var(--onepage); }
+    .panel-head[data-tone="journey"] .btn { background: var(--journey); }
+    .panel-head[data-tone="concept"] .btn { background: var(--concept); }
+    .panel-head[data-tone="aura"] .btn { background: var(--aura); }
+
+    .frame-shell {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      min-height: min(72dvh, 820px);
+      height: calc(100dvh - 260px);
+      box-shadow: 0 12px 36px rgba(44, 62, 107, 0.1);
+    }
+
+    .frame-shell iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+
+    .source-note {
+      margin-top: 10px;
+      font-size: 0.68rem;
+      line-height: 1.45;
+      color: var(--muted);
+      word-break: break-all;
+    }
+
+    .source-note code {
+      font-size: 0.66rem;
+      color: var(--primary);
+    }
+
+    .foot-links {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+    }
+
+    .chip:hover { border-color: var(--gold); }
+
+    @media (max-width: 720px) {
+      .banner { font-size: 8px; letter-spacing: 0.07em; }
+      .tab { font-size: 0.6rem; padding: 7px 10px; }
+      .frame-shell { height: calc(100dvh - 300px); min-height: 55dvh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner" role="status">
+    TAP TO COMPARE · MAYA · PREMIUM · HIDDEN GEMS · ONE PAGE · DISCOVERY · CONCEPT · AURA · GOR_GOR_REVIEW · NOT DNA LOCK
+  </div>
+
+  <header class="top">
+    <a class="brand" href="/internal/maya" title="Maya Lab">
+      <img class="brand-logo" src="/logo/shortkey-primary.png" alt="shortkey" width="160" height="36" />
+    </a>
+    <h1>Magazine versions · tap Maya vs Copilot</h1>
+    <p class="lede">
+      One hub. Clear labels. Tap a tab to preview in-page — or open full-screen.
+      These are distinct demos, not twin Issues.
+    </p>
+    <div class="honesty" role="note">
+      <strong>Honesty · GOR_GOR_REVIEW</strong><br />
+      Issue 1 = Maya / ShortKey path only. Copilot files are separate pastes (Premium · Hidden Gems scroll · Hidden Gems One Page · Discovery Journey · Magazine Concept · AURA ASIA).
+      One Page ≠ previous Hidden Gems scroll — keep both. AURA is Copilot concept branding, not ShortKey DNA. Full coding extract: <code>public/magazine-demo/copilot-versions/</code>
+    </div>
+  </header>
+
+  <div class="tabs-wrap">
+    <div class="tabs" role="tablist" aria-label="Magazine version tabs">
+      <button class="tab" role="tab" id="tab-maya" data-version="maya" aria-controls="panel-maya" aria-selected="true" tabindex="0">Maya · Issue 1</button>
+      <button class="tab" role="tab" id="tab-premium" data-version="premium" aria-controls="panel-premium" aria-selected="false" tabindex="-1">Copilot · Premium</button>
+      <button class="tab" role="tab" id="tab-gems" data-version="gems" aria-controls="panel-gems" aria-selected="false" tabindex="-1">Copilot · Hidden Gems</button>
+      <button class="tab" role="tab" id="tab-onepage" data-version="onepage" aria-controls="panel-onepage" aria-selected="false" tabindex="-1">Hidden Gems · One Page</button>
+      <button class="tab" role="tab" id="tab-journey" data-version="journey" aria-controls="panel-journey" aria-selected="false" tabindex="-1">Copilot · Discovery Journey</button>
+      <button class="tab" role="tab" id="tab-concept" data-version="concept" aria-controls="panel-concept" aria-selected="false" tabindex="-1">Copilot · Magazine Concept</button>
+      <button class="tab" role="tab" id="tab-aura" data-version="aura" aria-controls="panel-aura" aria-selected="false" tabindex="-1">Copilot · AURA ASIA</button>
+    </div>
+  </div>
+
+  <main class="stage">
+    <!-- Maya -->
+    <section class="panel is-active" role="tabpanel" id="panel-maya" aria-labelledby="tab-maya" data-src="./emagazine.html#/cover">
+      <div class="panel-head" data-tone="maya">
+        <div class="panel-meta">
+          <div class="panel-kicker">ShortKey path · interactive flip</div>
+          <h2 class="panel-title">Maya · Issue 1 · Nihon Sakura</h2>
+          <p class="panel-desc">emagazine.html — Maya / ShortKey Issue 01. Not a Copilot paste.</p>
+        </div>
+        <div class="panel-actions">
+          <a class="btn" href="./emagazine.html#/cover" target="_blank" rel="noopener">Open Maya full</a>
+          <a class="btn btn-ghost" href="./review.html">Review strip</a>
+        </div>
+      </div>
+      <div class="frame-shell">
+        <iframe title="Maya Issue 1 emagazine" loading="lazy" data-lazy-src="./emagazine.html#/cover" src="./emagazine.html#/cover"></iframe>
+      </div>
+      <p class="source-note">Source · <code>public/magazine-demo/emagazine.html</code> (+ css/js) · URL · <code>http://127.0.0.1:3008/magazine-demo/emagazine.html#/cover</code></p>
+    </section>
+
+    <!-- Premium -->
+    <section class="panel" role="tabpanel" id="panel-premium" aria-labelledby="tab-premium" hidden>
+      <div class="panel-head" data-tone="premium">
+        <div class="panel-meta">
+          <div class="panel-kicker">Copilot A · short · ~5KB</div>
+          <h2 class="panel-title">Copilot · Premium magazine (short)</h2>
+          <p class="panel-desc">OneDrive shortkey_premium_magazine.html — cream / purple · Manifesto · Culture · Brands · Beauty Lab.</p>
+        </div>
+        <div class="panel-actions">
+          <a class="btn" href="./copilot-shortkey_premium_magazine.html#manifesto" target="_blank" rel="noopener">Open Premium full</a>
+          <a class="btn btn-ghost" href="./copilot-versions/copilot-shortkey_premium_magazine.html">Full coding file</a>
+        </div>
+      </div>
+      <div class="frame-shell">
+        <iframe title="Copilot Premium short magazine" loading="lazy" data-lazy-src="./copilot-shortkey_premium_magazine.html#manifesto"></iframe>
+      </div>
+      <p class="source-note">Runnable · <code>copilot-shortkey_premium_magazine.html</code> · Extract · <code>copilot-versions/copilot-shortkey_premium_magazine.html</code></p>
+    </section>
+
+    <!-- Hidden Gems (scroll · previous) -->
+    <section class="panel" role="tabpanel" id="panel-gems" aria-labelledby="tab-gems" hidden>
+      <div class="panel-head" data-tone="gems">
+        <div class="panel-meta">
+          <div class="panel-kicker">Copilot B · scroll · previous Hidden Gems</div>
+          <h2 class="panel-title">Copilot · Hidden Gems (scroll)</h2>
+          <p class="panel-desc">Earlier long-scroll Hidden Gems paste · fixed indigo header · 11-page grid · Beauty Lab. Kept distinct from One Page index.</p>
+        </div>
+        <div class="panel-actions">
+          <a class="btn" href="./copilot-hidden-gems-magazine.html#cover" target="_blank" rel="noopener">Open Hidden Gems scroll</a>
+          <a class="btn btn-ghost" href="./copilot-versions/copilot-hidden-gems-magazine.html">Full coding file</a>
+        </div>
+      </div>
+      <div class="frame-shell">
+        <iframe title="Copilot Hidden Gems magazine scroll" loading="lazy" data-lazy-src="./copilot-hidden-gems-magazine.html#cover"></iframe>
+      </div>
+      <p class="source-note">Runnable · <code>copilot-hidden-gems-magazine.html</code> · Assets · <code>copilot-hidden-gems/</code> · Sibling One Page → tab <strong>Hidden Gems · One Page</strong></p>
+    </section>
+
+    <!-- Hidden Gems One Page (index) -->
+    <section class="panel" role="tabpanel" id="panel-onepage" aria-labelledby="tab-onepage" hidden>
+      <div class="panel-head" data-tone="onepage">
+        <div class="panel-meta">
+          <div class="panel-kicker">Copilot · One Page index · split layout</div>
+          <h2 class="panel-title">Hidden Gems · One Page</h2>
+          <p class="panel-desc">Complete founder paste · left indigo panel + right 11-page grid · modals · Personal Space · journey bar. Not the scroll version.</p>
+        </div>
+        <div class="panel-actions">
+          <a class="btn" href="./copilot-onepage/index.html" target="_blank" rel="noopener">Open One Page index</a>
+          <a class="btn btn-ghost" href="./copilot-versions/copilot-hidden-gems-onepage.html">Full coding (verbatim)</a>
+        </div>
+      </div>
+      <div class="frame-shell">
+        <iframe title="Copilot Hidden Gems One Page" loading="lazy" data-lazy-src="./copilot-onepage/index.html"></iframe>
+      </div>
+      <p class="source-note">
+        Prefer explicit path on Next · <code>http://127.0.0.1:3008/magazine-demo/copilot-onepage/index.html</code><br />
+        Clean folder URL may 404 · try <code>/magazine-demo/copilot-onepage/</code> only if directory index works<br />
+        Assets · <code>copilot-onepage/*.png</code> · Verbatim · <code>copilot-versions/copilot-hidden-gems-onepage.html</code>
+      </p>
+    </section>
+
+    <!-- Discovery Journey -->
+    <section class="panel" role="tabpanel" id="panel-journey" aria-labelledby="tab-journey" hidden>
+      <div class="panel-head" data-tone="journey">
+        <div class="panel-meta">
+          <div class="panel-kicker">Copilot C · Discovery Journey · 6291 bytes source</div>
+          <h2 class="panel-title">Copilot · Shortkey Discovery Journey</h2>
+          <p class="panel-desc">OneDrive Shortkey_Discovery_Journey.html — scroll journey · Manifesto · Brand · Creator · Culture · Beauty Lab · Shop.</p>
+        </div>
+        <div class="panel-actions">
+          <a class="btn" href="./copilot-shortkey-discovery-journey.html#start" target="_blank" rel="noopener">Open Discovery Journey full</a>
+          <a class="btn btn-ghost" href="./copilot-versions/copilot-shortkey-discovery-journey.html">Full coding (verbatim)</a>
+        </div>
+      </div>
+      <div class="frame-shell">
+        <iframe title="Copilot Shortkey Discovery Journey" loading="lazy" data-lazy-src="./copilot-shortkey-discovery-journey.html#start"></iframe>
+      </div>
+      <p class="source-note">
+        Runnable (local assets) · <code>copilot-shortkey-discovery-journey.html</code><br />
+        Verbatim OneDrive full HTML · <code>copilot-versions/copilot-shortkey-discovery-journey.html</code> (6291 bytes)<br />
+        Assets · <code>copilot-discovery-journey/</code>
+      </p>
+    </section>
+
+    <!-- Magazine Concept -->
+    <section class="panel" role="tabpanel" id="panel-concept" aria-labelledby="tab-concept" hidden>
+      <div class="panel-head" data-tone="concept">
+        <div class="panel-meta">
+          <div class="panel-kicker">Copilot D · Magazine Concept · ~4KB</div>
+          <h2 class="panel-title">Copilot · Shortkey Magazine Concept</h2>
+          <p class="panel-desc">OneDrive Shortkey_Magazine_Concept.html — Beautyverse Issue 01 concept · Sakura Beauty · Brands · Creators · Lab.</p>
+        </div>
+        <div class="panel-actions">
+          <a class="btn" href="./copilot-shortkey-magazine-concept.html#issue" target="_blank" rel="noopener">Open Magazine Concept full</a>
+          <a class="btn btn-ghost" href="./copilot-versions/copilot-shortkey-magazine-concept.html">Full coding file</a>
+        </div>
+      </div>
+      <div class="frame-shell">
+        <iframe title="Copilot Shortkey Magazine Concept" loading="lazy" data-lazy-src="./copilot-shortkey-magazine-concept.html#issue"></iframe>
+      </div>
+      <p class="source-note">Runnable · <code>copilot-shortkey-magazine-concept.html</code> · Extract · <code>copilot-versions/copilot-shortkey-magazine-concept.html</code></p>
+    </section>
+
+    <!-- AURA -->
+    <section class="panel" role="tabpanel" id="panel-aura" aria-labelledby="tab-aura" hidden>
+      <div class="panel-head" data-tone="aura">
+        <div class="panel-meta">
+          <div class="panel-kicker">Copilot E · AURA ASIA · related · not ShortKey DNA</div>
+          <h2 class="panel-title">Copilot · AURA ASIA Interactive Magazine</h2>
+          <p class="panel-desc">OneDrive AURA_ASIA_Interactive_Magazine.html — Copilot concept brand “AURA ASIA”. Saved for completeness; not ShortKey branding.</p>
+        </div>
+        <div class="panel-actions">
+          <a class="btn" href="./copilot-aura-asia-interactive-magazine.html#culture" target="_blank" rel="noopener">Open AURA full</a>
+          <a class="btn btn-ghost" href="./copilot-versions/copilot-aura-asia-interactive-magazine.html">Full coding file</a>
+        </div>
+      </div>
+      <div class="frame-shell">
+        <iframe title="Copilot AURA ASIA magazine" loading="lazy" data-lazy-src="./copilot-aura-asia-interactive-magazine.html#culture"></iframe>
+      </div>
+      <p class="source-note">Honesty: AURA ASIA title in source — not ShortKey DNA. Extract · <code>copilot-versions/copilot-aura-asia-interactive-magazine.html</code></p>
+    </section>
+
+    <div class="foot-links" aria-label="Other surfaces">
+      <a class="chip" href="/internal/maya">Maya Lab</a>
+      <a class="chip" href="./versions.html">versions.html alias</a>
+      <a class="chip" href="./copilot-versions/README.md">Full coding README</a>
+      <a class="chip" href="./COPILOT_VERSIONS.md">COPILOT_VERSIONS.md</a>
+      <a class="chip" href="./lovart-phone/index.html">Lovart phone</a>
+      <a class="chip" href="./copilot-onepage/index.html">Hidden Gems · One Page</a>
+      <a class="chip" href="./index.html#/cover">Locked baseline flip</a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+
+      function activate(version, pushHash) {
+        tabs.forEach(function (tab) {
+          var on = tab.getAttribute('data-version') === version;
+          tab.setAttribute('aria-selected', on ? 'true' : 'false');
+          tab.tabIndex = on ? 0 : -1;
+        });
+        panels.forEach(function (panel) {
+          var on = panel.id === 'panel-' + version;
+          panel.classList.toggle('is-active', on);
+          if (on) {
+            panel.removeAttribute('hidden');
+            var frame = panel.querySelector('iframe');
+            if (frame && !frame.getAttribute('src')) {
+              var src = frame.getAttribute('data-lazy-src');
+              if (src) frame.setAttribute('src', src);
+            }
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+        if (pushHash) {
+          try { history.replaceState(null, '', '#/' + version); } catch (e) {}
+        }
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          activate(tab.getAttribute('data-version'), true);
+        });
+      });
+
+      document.querySelector('.tabs').addEventListener('keydown', function (e) {
+        var i = tabs.indexOf(document.activeElement);
+        if (i < 0) return;
+        var next = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % tabs.length;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + tabs.length) % tabs.length;
+        if (e.key === 'Home') next = 0;
+        if (e.key === 'End') next = tabs.length - 1;
+        if (next >= 0) {
+          e.preventDefault();
+          tabs[next].focus();
+          activate(tabs[next].getAttribute('data-version'), true);
+        }
+      });
+
+      var hash = (location.hash || '').replace(/^#\/?/, '').toLowerCase();
+      var map = {
+        maya: 'maya', cover: 'maya', issue1: 'maya',
+        premium: 'premium', short: 'premium',
+        gems: 'gems', 'hidden-gems': 'gems', hidden: 'gems', scroll: 'gems',
+        onepage: 'onepage', 'one-page': 'onepage', 'hidden-gems-onepage': 'onepage',
+        journey: 'journey', discovery: 'journey',
+        concept: 'concept', magazine: 'concept',
+        aura: 'aura'
+      };
+      activate(map[hash] || 'maya', false);
+    })();
+  </script>
+</body>
+</html>

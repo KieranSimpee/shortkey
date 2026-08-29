@@ -1,0 +1,878 @@
+{
+  "processed": {
+    "maya-external-2026-08-11T23-17-27-145Z.json": {
+      "mtimeMs": 1786490247146.5947,
+      "at": "2026-08-12T01:18:23.295Z",
+      "draftId": "maya-external-2026-08-11T23-17-27-145Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "pageCount": 1
+    },
+    "maya-external-2026-08-11T23-17-26-883Z.json": {
+      "mtimeMs": 1786490246885.7788,
+      "at": "2026-08-12T01:18:23.298Z",
+      "draftId": "maya-external-2026-08-11T23-17-26-883Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "pageCount": 1
+    },
+    "maya-external-2026-08-11T22-44-12-362Z.json": {
+      "mtimeMs": 1786488252366.3472,
+      "at": "2026-08-12T01:18:23.301Z",
+      "draftId": "maya-external-2026-08-11T22-44-12-362Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "pageCount": 1
+    },
+    "maya-external-2026-08-11T22-44-12-315Z.json": {
+      "mtimeMs": 1786488252318.1921,
+      "at": "2026-08-12T01:18:23.305Z",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pageCount": 1
+    },
+    "maya-external-2026-08-11T22-44-12-272Z.json": {
+      "mtimeMs": 1786488252276.9602,
+      "at": "2026-08-12T01:18:23.308Z",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pageCount": 1
+    },
+    "maya-external-2026-08-11T22-43-25-363Z.json": {
+      "mtimeMs": 1786488205365.7383,
+      "at": "2026-08-12T01:18:23.311Z",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pageCount": 1
+    },
+    "maya-external-2026-08-11T22-43-25-318Z.json": {
+      "mtimeMs": 1786488205323.0056,
+      "at": "2026-08-12T01:18:23.313Z",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pageCount": 1
+    },
+    "maya-external-2026-08-11T22-43-25-273Z.json": {
+      "mtimeMs": 1786488205280.6758,
+      "at": "2026-08-12T01:18:23.316Z",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pageCount": 1
+    },
+    "sessions-10-biweekly.json": {
+      "mtimeMs": 1786494081492.9626,
+      "at": "2026-08-12T00:21:21.910Z",
+      "draftId": "sessions-10-biweekly",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\sessions-10-biweekly.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\sessions-10-biweekly.html",
+      "pageCount": 0
+    },
+    "season-grid-template.json": {
+      "mtimeMs": 1786494592418.2314,
+      "at": "2026-08-12T00:29:52.842Z",
+      "draftId": "season-grid-template",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\season-grid-template.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\season-grid-template.html",
+      "pageCount": 10
+    },
+    "maya-biweekly-submit-template.json": {
+      "mtimeMs": 1786496094981.7205,
+      "at": "2026-08-12T00:54:55.397Z",
+      "draftId": "maya-biweekly-submit-template",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-biweekly-submit-template.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-biweekly-submit-template.html",
+      "pageCount": 2
+    },
+    "lovart-library.json": {
+      "mtimeMs": 1786496408211.691,
+      "at": "2026-08-12T01:00:08.622Z",
+      "draftId": "lovart-library",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\lovart-library.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\lovart-library.html",
+      "pageCount": 0
+    },
+    "maya-lovart-library-brief-2026-08-12T01-01-41-163Z.json": {
+      "mtimeMs": 1786496501167.6814,
+      "at": "2026-08-12T01:18:23.292Z",
+      "draftId": "maya-lovart-library-brief-2026-08-12T01-01-41-163Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-12T01-01-41-163Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-12T01-01-41-163Z.html",
+      "pageCount": 1
+    },
+    "maya-lovart-ask-2026-08-12T01-01-46-785Z.json": {
+      "mtimeMs": 1786496506785.4634,
+      "at": "2026-08-12T01:18:23.289Z",
+      "draftId": "maya-lovart-ask-2026-08-12T01-01-46-785Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-ask-2026-08-12T01-01-46-785Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-ask-2026-08-12T01-01-46-785Z.html",
+      "pageCount": 3
+    },
+    "maya-lovart-library-brief-2026-08-12T15-12-58-605Z.json": {
+      "mtimeMs": 1786547578606.4082,
+      "at": "2026-08-12T15:12:58.609Z",
+      "draftId": "maya-lovart-library-brief-2026-08-12T15-12-58-605Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-12T15-12-58-605Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-12T15-12-58-605Z.html",
+      "pageCount": 1
+    },
+    "maya-lovart-library-brief-2026-08-12T15-25-41-711Z.json": {
+      "mtimeMs": 1786548341712.4639,
+      "at": "2026-08-12T15:25:41.716Z",
+      "draftId": "maya-lovart-library-brief-2026-08-12T15-25-41-711Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-12T15-25-41-711Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-12T15-25-41-711Z.html",
+      "pageCount": 1
+    },
+    "maya-lovart-library-brief-2026-08-15T02-19-05-213Z.json": {
+      "mtimeMs": 1786760345214.98,
+      "at": "2026-08-15T02:19:05.219Z",
+      "draftId": "maya-lovart-library-brief-2026-08-15T02-19-05-213Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-15T02-19-05-213Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-15T02-19-05-213Z.html",
+      "pageCount": 1
+    },
+    "season-1-hong-kong-story-2026-08-15.json": {
+      "mtimeMs": 1786760275835.1643,
+      "at": "2026-08-15T02:19:05.224Z",
+      "draftId": "season-1-hong-kong-story-2026-08-15",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\season-1-hong-kong-story-2026-08-15.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\season-1-hong-kong-story-2026-08-15.html",
+      "pageCount": 8
+    },
+    "maya-lovart-library-brief-2026-08-18T15-15-40-313Z.json": {
+      "mtimeMs": 1787066140315.7466,
+      "at": "2026-08-18T15:15:40.320Z",
+      "draftId": "maya-lovart-library-brief-2026-08-18T15-15-40-313Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-18T15-15-40-313Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-18T15-15-40-313Z.html",
+      "pageCount": 1
+    }
+  },
+  "log": [
+    {
+      "at": "2026-08-18T15:15:40.320Z",
+      "level": "ok",
+      "file": "maya-lovart-library-brief-2026-08-18T15-15-40-313Z.json",
+      "draftId": "maya-lovart-library-brief-2026-08-18T15-15-40-313Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-18T15-15-40-313Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-18T15-15-40-313Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-15T02:19:05.224Z",
+      "level": "ok",
+      "file": "season-1-hong-kong-story-2026-08-15.json",
+      "draftId": "season-1-hong-kong-story-2026-08-15",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\season-1-hong-kong-story-2026-08-15.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\season-1-hong-kong-story-2026-08-15.html",
+      "pages": 8
+    },
+    {
+      "at": "2026-08-15T02:19:05.219Z",
+      "level": "ok",
+      "file": "maya-lovart-library-brief-2026-08-15T02-19-05-213Z.json",
+      "draftId": "maya-lovart-library-brief-2026-08-15T02-19-05-213Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-15T02-19-05-213Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-15T02-19-05-213Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T15:25:41.716Z",
+      "level": "ok",
+      "file": "maya-lovart-library-brief-2026-08-12T15-25-41-711Z.json",
+      "draftId": "maya-lovart-library-brief-2026-08-12T15-25-41-711Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-12T15-25-41-711Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-12T15-25-41-711Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T15:12:58.609Z",
+      "level": "ok",
+      "file": "maya-lovart-library-brief-2026-08-12T15-12-58-605Z.json",
+      "draftId": "maya-lovart-library-brief-2026-08-12T15-12-58-605Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-12T15-12-58-605Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-12T15-12-58-605Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.316Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-273Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.313Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-318Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.311Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-363Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.308Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-272Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.305Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-315Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.301Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-362Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-362Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.298Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-26-883Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-26-883Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.295Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-27-145Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-27-145Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.292Z",
+      "level": "ok",
+      "file": "maya-lovart-library-brief-2026-08-12T01-01-41-163Z.json",
+      "draftId": "maya-lovart-library-brief-2026-08-12T01-01-41-163Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-12T01-01-41-163Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-12T01-01-41-163Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:18:23.289Z",
+      "level": "ok",
+      "file": "maya-lovart-ask-2026-08-12T01-01-46-785Z.json",
+      "draftId": "maya-lovart-ask-2026-08-12T01-01-46-785Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-ask-2026-08-12T01-01-46-785Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-ask-2026-08-12T01-01-46-785Z.html",
+      "pages": 3
+    },
+    {
+      "at": "2026-08-12T01:01:46.789Z",
+      "level": "ok",
+      "file": "maya-lovart-ask-2026-08-12T01-01-46-785Z.json",
+      "draftId": "maya-lovart-ask-2026-08-12T01-01-46-785Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-ask-2026-08-12T01-01-46-785Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-ask-2026-08-12T01-01-46-785Z.html",
+      "pages": 3
+    },
+    {
+      "at": "2026-08-12T01:01:41.171Z",
+      "level": "ok",
+      "file": "maya-lovart-library-brief-2026-08-12T01-01-41-163Z.json",
+      "draftId": "maya-lovart-library-brief-2026-08-12T01-01-41-163Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-lovart-library-brief-2026-08-12T01-01-41-163Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-lovart-library-brief-2026-08-12T01-01-41-163Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T01:00:08.622Z",
+      "level": "ok",
+      "file": "lovart-library.json",
+      "draftId": "lovart-library",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\lovart-library.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\lovart-library.html",
+      "pages": 0
+    },
+    {
+      "at": "2026-08-12T00:55:52.166Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-273Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:52.164Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-318Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:52.161Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-363Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:52.159Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-272Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:52.156Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-315Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:52.153Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-362Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-362Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:52.151Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-26-883Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-26-883Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:52.148Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-27-145Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-27-145Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:49.663Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-273Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:49.661Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-318Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:49.658Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-363Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:49.655Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-272Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:49.652Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-315Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:49.649Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-362Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-362Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:49.646Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-26-883Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-26-883Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:55:49.643Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-27-145Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-27-145Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:54:55.397Z",
+      "level": "ok",
+      "file": "maya-biweekly-submit-template.json",
+      "draftId": "maya-biweekly-submit-template",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-biweekly-submit-template.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-biweekly-submit-template.html",
+      "pages": 2
+    },
+    {
+      "at": "2026-08-12T00:44:06.359Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-273Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:06.356Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-318Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:06.354Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-363Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:06.351Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-272Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:06.349Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-315Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:06.346Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-362Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-362Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:06.344Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-26-883Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-26-883Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:06.341Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-27-145Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-27-145Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:04.880Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-273Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:04.877Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-318Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:04.875Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-363Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:04.872Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-272Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:04.869Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-315Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:04.867Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-362Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-362Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:04.864Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-26-883Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-26-883Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:44:04.860Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-27-145Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-27-145Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:15.036Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-273Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:15.034Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-318Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:15.031Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-363Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:15.029Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-272Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:15.026Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-315Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:15.023Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-362Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-362Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:15.021Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-26-883Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-26-883Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:15.018Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-27-145Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-27-145Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:14.228Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-273Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:14.225Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-318Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:14.222Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-363Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:14.219Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-272Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:14.216Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-315Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:14.213Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-362Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-362Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:14.210Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-26-883Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-26-883Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:14.206Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-27-145Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-27-145Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:03.720Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-273Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:03.718Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-318Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:03.715Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-363Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:03.713Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-272Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:03.710Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-315Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:03.704Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-362Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-362Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-362Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:03.701Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-26-883Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-26-883Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-26-883Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:43:03.698Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T23-17-27-145Z.json",
+      "draftId": "maya-external-2026-08-11T23-17-27-145Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T23-17-27-145Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:42:52.235Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-273Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-273Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-273Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:42:52.232Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-318Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-318Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-318Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:42:52.230Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-43-25-363Z.json",
+      "draftId": "maya-external-2026-08-11T22-43-25-363Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-43-25-363Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:42:52.227Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-272Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-272Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-272Z.html",
+      "pages": 1
+    },
+    {
+      "at": "2026-08-12T00:42:52.224Z",
+      "level": "ok",
+      "file": "maya-external-2026-08-11T22-44-12-315Z.json",
+      "draftId": "maya-external-2026-08-11T22-44-12-315Z",
+      "beauty": "C:\\Users\\Kieran\\Projects\\shortkey\\public\\magazine-demo\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "portal": "C:\\Users\\Kieran\\OneDrive - 5SensesBeauty Limited\\ShortKey\\HTML\\maya-portal\\editorial-out\\maya-external-2026-08-11T22-44-12-315Z.html",
+      "pages": 1
+    }
+  ]
+}

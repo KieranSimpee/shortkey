@@ -1,0 +1,1 @@
+# Visual Creative Direction: Shortkey Issue 01 - Hidden Gems of Asian Beauty Edition - Japan (Nihonsakari) Focus Collection - Nihonsakari Rice Bran Sake Brewing Heritage Connection - Try-On Experience: AR-Enabled Beauty Testing - Creator Spotlight: Artisanal Beauty Makers - Community Engagement Component - Editorial Conclusion: Season Preview Teaser

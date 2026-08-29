@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#2A2420" />
+  <title>ShortKey · Controller QR · Register on server</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #2A2420;
+      --muted: #7A6F66;
+      --line: rgba(42, 36, 32, 0.12);
+      --paper: #F7F3EE;
+      --jade: #A8C5B5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Outfit, system-ui, sans-serif;
+      color: var(--ink);
+      min-height: 100dvh;
+      padding: 24px 18px 40px;
+      background:
+        radial-gradient(ellipse 80% 45% at 50% -10%, rgba(201, 191, 208, 0.45), transparent 55%),
+        linear-gradient(180deg, #EFE8E1, var(--paper));
+    }
+    .wrap { max-width: 400px; margin: 0 auto; }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .sub { color: var(--muted); font-size: 0.9rem; line-height: 1.45; margin-bottom: 18px; }
+    .badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(168, 197, 181, 0.4);
+      border: 1px solid rgba(168, 197, 181, 0.75);
+      margin-bottom: 12px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 10px 28px rgba(42, 36, 32, 0.06);
+    }
+    .card h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+    .card p, .card li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .card ol { padding-left: 1.15rem; display: flex; flex-direction: column; gap: 6px; }
+    #qrBox {
+      display: flex;
+      justify-content: center;
+      padding: 14px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      margin: 12px 0;
+    }
+    #qrBox canvas, #qrBox img { display: block; border-radius: 8px; }
+    code {
+      display: block;
+      word-break: break-all;
+      font-size: 0.72rem;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      margin: 10px 0;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 48px;
+      border-radius: 999px;
+      border: none;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      background: var(--ink);
+      color: #FBF7F2;
+      margin-top: 6px;
+      cursor: pointer;
+    }
+    .btn.secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    .warn {
+      border-color: rgba(196, 120, 90, 0.45);
+      background: rgba(255, 236, 220, 0.75);
+    }
+    .foot { font-size: 0.72rem; color: var(--muted); line-height: 1.45; text-align: center; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="badge">INTERNAL · Kieran + Key</span>
+    <h1>Scan · Controller</h1>
+    <p class="sub">
+      用相機掃 QR → 手機開 Controller → 輸入 soft PIN → 可加去主屏幕。
+      唔係打電話；係 HTTPS 上 server 解鎖。
+    </p>
+
+    <div class="card">
+      <h2>QR code</h2>
+      <p>Point your phone camera here. Opens Founder Controller on shortkey.beauty.</p>
+      <div id="qrBox" aria-label="QR code for Controller URL">
+        <p class="sub" style="margin:0">Loading QR…</p>
+      </div>
+      <code id="targetUrl">https://www.shortkey.beauty/control/controller.html</code>
+      <a class="btn" id="openBtn" href="https://www.shortkey.beauty/control/controller.html">Open Controller</a>
+      <button type="button" class="btn secondary" id="copyBtn">Copy URL</button>
+    </div>
+
+    <div class="card">
+      <h2>Register steps (phone)</h2>
+      <ol>
+        <li>Scan QR (or tap Open Controller).</li>
+        <li>Work tab or Controller → enter <strong>SITE_ACCESS_PASSWORD</strong> → Unlock.</li>
+        <li>Optional: Share → <strong>Add to Home Screen</strong> (looks like an app).</li>
+        <li>Chi · Pictures open on the same server — off Wi‑Fi after deploy.</li>
+      </ol>
+    </div>
+
+    <div class="card warn" id="deployNote">
+      <h2>Honest</h2>
+      <p id="deployText">
+        If Controller shows <strong>404</strong>, beauty deploy is behind this repo.
+        Push branch <code style="display:inline;padding:2px 6px">cursor/chi-mini-magazine</code> then wait for Vercel.
+        Same Wi‑Fi LAN: use your PC IP on :3005 while Beauty runs.
+      </p>
+    </div>
+
+    <p class="foot">
+      <a href="/connect-qr/">All connect QR</a> ·
+      <a href="/minion-app/">Minion install guide</a>
+    </p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+  <script>
+(function () {
+  var PROD = "https://www.shortkey.beauty/control/controller.html";
+  var LOCAL = "http://127.0.0.1:3005/control/controller.html";
+  var host = location.hostname;
+  var isLocal = host === "localhost" || host === "127.0.0.1" || host === "::1";
+  var url = isLocal ? LOCAL : PROD;
+
+  var urlEl = document.getElementById("targetUrl");
+  var openBtn = document.getElementById("openBtn");
+  var qrBox = document.getElementById("qrBox");
+  var deployText = document.getElementById("deployText");
+
+  urlEl.textContent = url;
+  openBtn.href = url;
+
+  if (isLocal && deployText) {
+    deployText.innerHTML =
+      "You are on <strong>localhost</strong>. QR points to <code style=\"padding:2px 6px\">127.0.0.1:3005</code> for same-Wi‑Fi phone scan. " +
+      "For iPhone off Wi‑Fi, deploy first then scan the production URL on <a href=\"/connect-qr/controller.html\">this page on beauty</a>.";
+  }
+
+  function drawQr(text) {
+    if (!window.QRCode) {
+      qrBox.innerHTML = "<p class=\"sub\">QR library blocked. Use Copy URL.</p>";
+      return;
+    }
+    qrBox.innerHTML = "";
+    QRCode.toCanvas(text, { width: 240, margin: 2, color: { dark: "#2A2420", light: "#ffffff" } }, function (err, canvas) {
+      if (err) {
+        qrBox.innerHTML = "<p class=\"sub\">QR failed. Use Copy URL.</p>";
+        return;
+      }
+      qrBox.appendChild(canvas);
+    });
+  }
+
+  drawQr(url);
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    navigator.clipboard.writeText(url).then(function () {
+      document.getElementById("copyBtn").textContent = "Copied";
+      setTimeout(function () { document.getElementById("copyBtn").textContent = "Copy URL"; }, 1600);
+    }).catch(function () {
+      alert(url);
+    });
+  });
+})();
+  </script>
+</body>
+</html>

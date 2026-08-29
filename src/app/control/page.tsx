@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Master Control Panel | Shortkey",
+  title: "Founder Controller · Key first | Shortkey",
   description:
-    "All-in-one ShortKey OS control — Studio v2, shortkey.live, Visual Blueprint, Homepage Execution, bridges, and Base44 agent briefs.",
+    "INTERNAL Founder Controller — Kieran + Key first. Soft PIN. Not a public product.",
   robots: { index: false, follow: false },
 };
 
-/** Full-bleed Studio v2 hub with Live, Blueprint, Execution, bridges, and agents. */
+/** Key-first Founder Controller on the server. Full hub stays at /control/hub.html. */
 export default function ControlPage() {
   return (
     <iframe
-      src="/control/hub.html"
-      title="Shortkey Master Control Panel"
+      src="/control/controller.html"
+      title="ShortKey Founder Controller · Key first"
       className="fixed inset-0 h-screen w-screen border-0"
     />
   );

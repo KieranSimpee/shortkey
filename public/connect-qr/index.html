@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShortKey — Connect QR</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #666;
+      --line: #e5e5e5;
+      --bg: #fafafa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3rem;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin: 0 0 0.35rem;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0 0 2rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    figure {
+      margin: 0;
+      padding: 1.25rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+    figure img {
+      display: block;
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      margin: 0 auto 1rem;
+      image-rendering: pixelated;
+    }
+    figcaption strong {
+      display: block;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    figcaption a {
+      color: var(--ink);
+      word-break: break-all;
+      font-size: 0.85rem;
+    }
+    .note {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .local {
+      border-style: dashed;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>ShortKey</h1>
+    <p class="lead">Scan with your phone camera. Controller QR registers you on the server (soft PIN — not a phone call).</p>
+    <div class="grid">
+      <figure>
+        <strong style="display:block;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.75rem">Controller · Kieran + Key</strong>
+        <a href="/connect-qr/controller.html" style="display:block;text-decoration:none;color:inherit">
+          <div id="qr-controller" style="max-width:280px;margin:0 auto 1rem;padding:12px;background:#fff;border:1px solid var(--line)"></div>
+          <span style="font-size:0.85rem;word-break:break-all">https://www.shortkey.beauty/control/controller.html</span>
+        </a>
+        <p class="note">Full steps + dynamic QR on <a href="/connect-qr/controller.html">connect-qr/controller</a></p>
+      </figure>
+      <figure>
+        <img src="shortkey-beauty.png" width="512" height="512" alt="QR code for https://www.shortkey.beauty/" />
+        <figcaption>
+          <strong>Public — Coming Soon</strong>
+          <a href="https://www.shortkey.beauty/">https://www.shortkey.beauty/</a>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="shortkey-beauty-control.png" width="512" height="512" alt="QR code for https://www.shortkey.beauty/control" />
+        <figcaption>
+          <strong>Public — /control</strong>
+          <a href="https://www.shortkey.beauty/control">https://www.shortkey.beauty/control</a>
+        </figcaption>
+      </figure>
+      <figure class="local">
+        <img src="maya-tailscale-local.png" width="512" height="512" alt="QR code for Tailscale Maya Lab" />
+        <figcaption>
+          <strong>LOCAL / TAILSCALE only</strong>
+          <a href="http://100.111.34.40:3008/internal/maya">http://100.111.34.40:3008/internal/maya</a>
+          <p class="note">Works only on devices on the same Tailscale network. Plain 127.0.0.1:3008 is not useful for a remote phone.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+  <script>
+    (function () {
+      var el = document.getElementById("qr-controller");
+      if (!el || !window.QRCode) return;
+      QRCode.toCanvas("https://www.shortkey.beauty/control/controller.html", { width: 256, margin: 2 }, function (err, canvas) {
+        if (!err) el.appendChild(canvas);
+      });
+    })();
+  </script>
+</body>
+</html>

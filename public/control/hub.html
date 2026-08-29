@@ -22,14 +22,14 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
 .topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px;}
 .theme-badge{font-size:10px;font-family:var(--mono);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;background:var(--cat-bg);color:var(--cat);border:1px solid var(--cat);transition:all 0.3s;}
 .layout{display:flex;margin-top:52px;min-height:calc(100vh - 52px);}
-.sidebar{width:220px;flex-shrink:0;background:#FDFCFF;border-right:1px solid #E8E2F5;position:fixed;top:52px;bottom:0;overflow-y:auto;padding:20px 0;}
+.sidebar{width:220px;flex-shrink:0;background:#FDFCFF;border-right:1px solid #E8E2F5;position:fixed;left:0;top:52px;bottom:0;z-index:40;overflow-y:auto;padding:20px 0;}
 .sl{font-size:8px;font-family:var(--mono);letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding:0 20px;}
 .ss{margin-bottom:20px;}
 .ni{display:flex;align-items:center;gap:8px;padding:9px 16px;font-size:12px;font-weight:500;color:var(--mid);cursor:pointer;border:none;background:none;width:100%;text-align:left;border-left:3px solid transparent;transition:all 0.15s;font-family:var(--font);}
 .ni:hover{background:var(--silk);color:var(--ink);}
 .ni.active{background:var(--cat-bg);color:var(--cat);font-weight:700;border-left-color:var(--cat);}
 .nb{margin-left:auto;background:var(--red);color:white;font-size:8px;padding:1px 6px;border-radius:10px;font-family:var(--mono);font-weight:700;}
-.main{margin-left:220px;padding:32px;flex:1;background:#F9F7FF;}
+.main{margin-left:220px;padding:32px;flex:1;min-width:0;background:#F9F7FF;}
 .panel{display:none;}.panel.active{display:block;}
 .panel.embed-panel{padding:0;margin:-32px;min-height:calc(100vh - 52px);}
 .embed-frame{width:100%;height:calc(100vh - 52px);border:0;display:block;background:#fff;}
@@ -245,6 +245,7 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
     <button class="ni" onclick="nav('store',this)">Store Cards</button>
   </div>
   <div class="ss"><div class="sl">Design</div>
+    <button class="ni" onclick="nav('magazine',this)">Magazine Demo</button>
     <button class="ni" onclick="nav('brand',this)">Brand Guide</button>
     <button class="ni" onclick="nav('preview',this)">Theme Preview</button>
     <button class="ni" onclick="nav('presets',this)">Preset Library</button>
@@ -265,6 +266,7 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
     <button class="ni" onclick="nav('execution',this)">Homepage Execution</button>
     <button class="ni" onclick="nav('bridges',this)">Data Bridges</button>
     <button class="ni" onclick="nav('agents',this)">Base44 Agents</button>
+    <a class="ni" href="/control/review-board.html" style="text-decoration:none;">Review Board <span class="nb" style="background:var(--cat);">v1.0</span></a>
   </div>
 </div>
 <div class="main">
@@ -272,6 +274,20 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
 <!-- OVERVIEW -->
 <div class="panel active" id="panel-overview">
   <div class="page-hd"><div><div class="pt">Overview</div><div class="ps">shortkey.studio &mdash; Single Source of Truth &middot; All 12 domains</div></div></div>
+  <div class="card" style="border-color:#C9A962;background:linear-gradient(135deg,#F5F0E6,#FAF7F0);">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
+      <div>
+        <div style="font-size:9px;font-family:var(--mono);letter-spacing:0.18em;text-transform:uppercase;color:#C4787A;font-weight:700;margin-bottom:6px;">DEMO · GOR_GOR_REVIEW · NOT LIVE BEAUTY V1</div>
+        <div style="font-size:18px;font-weight:800;letter-spacing:-0.02em;color:#2C3E6B;margin-bottom:4px;">Magazine Demo · Nihon Sakura Issue 01</div>
+        <div style="font-size:12px;color:var(--mid);line-height:1.5;">Interactive Asian Beauty Magazine example — 11 pages, correlated hotspots, Try-On / Skin SIMULATOR modals.</div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-p" href="/magazine-demo/#/cover" target="_blank" rel="noopener" style="text-decoration:none;">Open Cover</a>
+        <button class="btn btn-s" type="button" onclick="nav('magazine')">Panel entry</button>
+        <a class="btn btn-s" href="/control/review-board.html" style="text-decoration:none;">Review Board v1.0</a>
+      </div>
+    </div>
+  </div>
   <div class="stats">
     <div class="sc"><div class="sv">12</div><div class="sk">Domains</div></div>
     <div class="sc"><div class="sv">11</div><div class="sk">Element Types</div></div>
@@ -280,6 +296,17 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
   </div>
   <div class="sec">Domain Status</div>
   <div class="dg" id="overview-doms"></div>
+</div>
+
+<!-- MAGAZINE DEMO -->
+<div class="panel embed-panel" id="panel-magazine">
+  <div class="page-hd" style="padding:20px 24px 0;margin:0;">
+    <div>
+      <div class="pt">Magazine Demo · Nihon Sakura Issue 01</div>
+      <div class="ps">DEMO · CONTROL PANEL EXAMPLE · GOR_GOR_REVIEW · NOT LIVE BEAUTY V1 · <a href="/magazine-demo/#/cover" target="_blank" rel="noopener">Open full window</a></div>
+    </div>
+  </div>
+  <iframe class="embed-frame" src="/magazine-demo/#/cover" title="Magazine Demo Nihon Sakura Issue 01" style="height:calc(100vh - 120px);"></iframe>
 </div>
 
 <!-- GLOBAL THEME -->
@@ -406,7 +433,7 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
     <div class="sec">Live Page Preview</div>
     <div class="theme-canvas">
       <div class="tc-nav" style="background:#7B5AC3;">
-        <img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" style="width:20px;height:20px;border-radius:4px;object-fit:cover;margin-right:6px;vertical-align:middle;" alt="SK"><span style="color:rgba(255,255,255,0.7);">.live</span></div>
+        <img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" style="width:20px;height:20px;border-radius:4px;object-fit:cover;margin-right:6px;vertical-align:middle;" alt="SK"><span style="color:rgba(255,255,255,0.7);">.live</span>
         <div class="tc-key" style="color:#9B7AE3;border-color:#9B7AE3;background:rgba(155,122,227,0.12);box-shadow:0 2px 0 rgba(155,122,227,0.3);">Live Now</div>
         <div class="tc-key" style="color:#6E6E6E;border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);box-shadow:0 2px 0 rgba(255,255,255,0.06);">Schedule</div>
         <div style="margin-left:auto;background:#9B7AE3;color:white;padding:6px 16px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;">Join Free</div>
@@ -456,7 +483,7 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
     <div class="sec">Live Page Preview</div>
     <div class="theme-canvas">
       <div class="tc-nav" style="background:#F0F8FC;border-bottom:1px solid #d4edf7;">
-        <img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" style="width:20px;height:20px;border-radius:4px;object-fit:cover;margin-right:6px;vertical-align:middle;" alt="SK"><span style="color:#7AC4E3;">.store</span></div>
+        <img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" style="width:20px;height:20px;border-radius:4px;object-fit:cover;margin-right:6px;vertical-align:middle;" alt="SK"><span style="color:#7AC4E3;">.store</span>
         <div class="tc-key" style="color:#7AC4E3;border-color:#7AC4E3;background:rgba(122,196,227,0.1);box-shadow:0 2px 0 rgba(122,196,227,0.2);">Skincare</div>
         <div class="tc-key" style="color:#6E6E6E;border-color:#E5E3E0;background:white;box-shadow:0 2px 0 #E5E3E0;">Makeup</div>
         <div style="margin-left:auto;background:#7AC4E3;color:white;padding:6px 16px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;">Shop Now</div>
@@ -506,7 +533,7 @@ body{font-family:var(--font);background:#F9F7FF;color:var(--ink);}
     <div class="sec">Live Page Preview</div>
     <div class="theme-canvas">
       <div class="tc-nav" style="background:#FFF5F6;border-bottom:1px solid #fce4e6;">
-        <img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" style="width:20px;height:20px;border-radius:4px;object-fit:cover;margin-right:6px;vertical-align:middle;" alt="SK"><span style="color:#E84855;">.store</span></div>
+        <img src="https://base44.app/api/apps/6a54198bebbee048f44e1378/files/mp/public/6a54198bebbee048f44e1378/6be637292_51d32b26a_ShortkeyLogoLilac.jpg" style="width:20px;height:20px;border-radius:4px;object-fit:cover;margin-right:6px;vertical-align:middle;" alt="SK"><span style="color:#E84855;">.store</span>
         <div class="tc-key" style="color:#E84855;border-color:#E84855;background:rgba(232,72,85,0.06);box-shadow:0 2px 0 rgba(232,72,85,0.15);">Makeup</div>
         <div class="tc-key" style="color:#6E6E6E;border-color:#E5E3E0;background:white;box-shadow:0 2px 0 #E5E3E0;">Skincare</div>
         <div style="margin-left:auto;background:#E84855;color:white;padding:6px 16px;border-radius:100px;font-size:9px;font-weight:700;font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;">Shop Now</div>
@@ -1595,10 +1622,20 @@ function nav(id,btn){
   var target = document.getElementById('panel-'+id);
   if(target) target.classList.add('active');
   if(btn) btn.classList.add('active');
+  else {
+    for(var j=0;j<navs.length;j++){
+      var oc = navs[j].getAttribute('onclick')||'';
+      if(oc.indexOf("'"+id+"'")>=0 || oc.indexOf('"'+id+'"')>=0) navs[j].classList.add('active');
+    }
+  }
   if(id==='preview') initTP();
   if(id==='bridges') refreshBridges();
   if(id==='agents') loadBriefs();
   if(id==='ecosystem') loadEcosystemBlueprint();
+  try {
+    if(id==='magazine') history.replaceState(null,'','#magazine');
+    else if(location.hash==='#magazine') history.replaceState(null,'',location.pathname);
+  } catch(e) {}
 }
 async function loadEcosystemBlueprint(){
   var principle=document.getElementById('eco-principle');
@@ -2017,6 +2054,9 @@ function copyBrief(kind){
 }
 
 loadBriefs();
+if(location.hash==='#magazine' || location.hash==='#/magazine'){
+  nav('magazine');
+}
 </script>
 </body>
 </html>

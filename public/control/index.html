@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>shortkey · Control</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #2A2420;
+      --muted: #6E6560;
+      --paper: #F7F3EE;
+      --line: rgba(42, 36, 32, 0.12);
+      --jade: #A8C5B5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Outfit, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,191,208,0.4), transparent 60%),
+        linear-gradient(180deg, #EFE8E1, var(--paper));
+      padding: 28px 18px 40px;
+    }
+    .banner {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 8vw, 2.8rem);
+      margin: 0 0 8px;
+      text-align: center;
+    }
+    .sub {
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 28px;
+      line-height: 1.5;
+    }
+    .stack {
+      max-width: 420px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    a.cta {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      padding: 16px 18px;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1.5px solid var(--line);
+      color: var(--ink);
+      background: rgba(255,255,255,0.75);
+      border-radius: 14px;
+    }
+    a.cta.primary {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+    a.cta.jade {
+      background: rgba(168, 197, 181, 0.55);
+      border-color: rgba(168, 197, 181, 0.9);
+    }
+    a.cta:hover { opacity: 0.92; }
+    .note {
+      max-width: 420px;
+      margin: 28px auto 0;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <p class="banner">INTERNAL · GOR_GOR_REVIEW · NOT PUBLIC PRODUCT</p>
+  <h1>Control</h1>
+  <p class="sub">Key first with you on the server.<br />Then Desk · Chi · Review Board.</p>
+  <div class="stack">
+    <a class="cta primary" href="/control/controller.html">Founder Controller · Kieran + Key</a>
+    <a class="cta jade" href="/desk/#chi">Chi · magazine + pictures</a>
+    <a class="cta" href="/desk/#family">Founder Desk · Family</a>
+    <a class="cta" href="/control/review-board.html">Review Board · locked v1.0</a>
+    <a class="cta" href="/control/hub.html">Master Hub</a>
+    <a class="cta" href="/magazine-demo/#/cover">Magazine Demo · Cover</a>
+  </div>
+  <p class="note">
+    Phone bookmark after deploy:<br />
+    https://shortkey.beauty/control/controller.html<br />
+    Soft PIN = SITE_ACCESS_PASSWORD. Coming Soon `/` untouched.
+  </p>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cover · Gold Standard Preview · ShortKey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Merriweather:wght@400&family=Montserrat:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .btn-ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(0);
+      animation: ripple 0.3s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes ripple {
+      to { transform: scale(2.2); opacity: 0; }
+    }
+
+    .cover-hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 15% 8%;
+      overflow: hidden;
+    }
+
+    /* Full-bleed visual plane (editorial atmosphere — CSS plane, not inset card) */
+    .hero-plane {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 55% 70% at 70% 45%, rgba(201, 169, 98, 0.22), transparent 60%),
+        radial-gradient(ellipse 40% 50% at 15% 70%, rgba(232, 180, 184, 0.2), transparent 55%),
+        linear-gradient(160deg, #eae2d4 0%, var(--cream) 38%, #ddd4c4 100%);
+    }
+    .hero-plane::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 45%, rgba(44, 44, 44, 0.05) 100%);
+      pointer-events: none;
+    }
+    .hero-visual-band {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 60%;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, var(--cream) 0%, transparent 18%),
+        linear-gradient(200deg, rgba(45, 74, 62, 0.08), transparent 50%),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 40px,
+          rgba(201, 169, 98, 0.04) 40px,
+          rgba(201, 169, 98, 0.04) 41px
+        );
+      pointer-events: none;
+    }
+    .hero-visual-band .grain {
+      position: absolute;
+      inset: 18% 12% 22% 8%;
+      border: 1px solid rgba(201, 169, 98, 0.25);
+      background:
+        radial-gradient(circle at 40% 35%, rgba(255, 255, 255, 0.35), transparent 50%),
+        linear-gradient(145deg, rgba(245, 240, 230, 0.4), rgba(139, 115, 85, 0.12));
+    }
+
+    #particles {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.7), 0 0 10px rgba(201, 169, 98, 0.45);
+      animation: drift 8s ease-in-out infinite;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      pointer-events: auto;
+      cursor: default;
+    }
+    .particle:hover {
+      transform: scale(1.35);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 18px rgba(201, 169, 98, 0.7);
+    }
+    .particle[data-label]:hover::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 12px;
+      top: -4px;
+      white-space: nowrap;
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      color: var(--deep-green);
+      background: rgba(245, 240, 230, 0.92);
+      padding: 0.2rem 0.4rem;
+      opacity: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 36rem;
+      width: 100%;
+    }
+    .hero-headline {
+      font-family: var(--font-hero);
+      font-weight: 700;
+      font-size: 4.5rem;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      color: var(--gold);
+      margin: 0 0 0.85rem;
+    }
+    .edition-tag {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.8rem;
+      color: var(--sakura);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin: 0 0 1.25rem;
+    }
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      line-height: 1.6;
+      margin: 0 0 3.75rem;
+    }
+    .cta-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      z-index: 10;
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--soft-brown);
+      animation: bounce-soft 1s ease-in-out infinite;
+    }
+
+    .cover-note {
+      padding: 4rem 15% 5rem;
+      text-align: center;
+      max-width: 40rem;
+      margin: 0 auto;
+    }
+    .cover-note h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.6rem;
+      color: var(--deep-green);
+      margin: 0 0 1rem;
+    }
+    .cover-note p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .cover-hero {
+        padding: 20% 6%;
+      }
+      .hero-headline { font-size: 3rem; }
+      .edition-tag { font-size: 1.4rem; }
+      .hero-visual-band { width: 100%; opacity: 0.45; }
+      .hero-sub { margin-bottom: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-banner">
+    PREVIEW · GOR_GOR_REVIEW · not live Beauty V1 · <a href="index.html">Gallery</a>
+  </div>
+  <div class="progress-indicator" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo-link" href="index.html">
+      <img src="/logo/shortkey-primary.png" alt="" width="120" height="28" />
+      <span>ShortKey</span>
+    </a>
+    <button type="button" class="nav-toggle" aria-label="Open menu">Menu</button>
+  </header>
+
+  <div class="panel-backdrop" aria-hidden="true"></div>
+  <aside class="slide-panel" aria-label="Preview navigation">
+    <button type="button" class="panel-close">Close</button>
+    <nav>
+      <a href="index.html">Gallery hub</a>
+      <a href="cover.html">Cover</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="ingredient.html">Ingredient</a>
+      <a href="brand-story.html">Brand Story</a>
+      <a href="creator.html">Creator</a>
+    </nav>
+  </aside>
+
+  <main class="cover-hero">
+    <div class="hero-plane" aria-hidden="true"></div>
+    <div class="hero-visual-band" aria-hidden="true"><div class="grain"></div></div>
+    <div id="particles" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-headline reveal">HIDDEN GEMS</h1>
+      <p class="edition-tag reveal reveal-d1">Japan Edition</p>
+      <p class="hero-sub reveal reveal-d2">
+        Of Asian Beauty — Issue 01. A contemplative Japan focus on komenuka (rice bran)
+        and the quiet life force of craft. ShortKey 不模仿畫面。ShortKey 捕捉生命力。
+      </p>
+      <div class="cta-stack reveal reveal-d3">
+        <a class="btn btn-primary" href="heritage.html">Enter the Issue</a>
+        <a class="btn btn-secondary" href="ingredient.html">Explore Komenuka</a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scroll</div>
+  </main>
+
+  <section class="cover-note atmosphere">
+    <h2>Gold Standard · Cover</h2>
+    <p>
+      Spec: Playfair Display hero in gold · Cormorant edition tagline in sakura ·
+      Merriweather body · Montserrat CTAs · cream base · deep green / muted red actions ·
+      komenuka particles. Content lightly set to Issue 01 Japan / Hidden Gems.
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <a href="index.html">← Gallery</a>
+    <a href="heritage.html">Heritage →</a>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>
+    (function () {
+      const layer = document.getElementById("particles");
+      if (!layer) return;
+      const count = 28;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement("span");
+        p.className = "particle";
+        const size = 2 + Math.random() * 2;
+        p.style.width = size + "px";
+        p.style.height = size + "px";
+        p.style.left = Math.random() * 100 + "%";
+        p.style.top = Math.random() * 100 + "%";
+        p.style.opacity = 0.4 + Math.random() * 0.4;
+        p.style.animationDuration = 6 + Math.random() * 8 + "s";
+        p.style.animationDelay = Math.random() * 4 + "s";
+        if (i % 7 === 0) p.setAttribute("data-label", "Komenuka");
+        layer.appendChild(p);
+      }
+    })();
+  </script>
+</body>
+</html>
